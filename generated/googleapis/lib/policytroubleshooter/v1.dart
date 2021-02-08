@@ -146,19 +146,11 @@ class GoogleCloudPolicytroubleshooterV1AccessTuple {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fullResourceName != null) {
-      _json['fullResourceName'] = fullResourceName;
-    }
-    if (permission != null) {
-      _json['permission'] = permission;
-    }
-    if (principal != null) {
-      _json['principal'] = principal;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fullResourceName != null) 'fullResourceName': fullResourceName,
+        if (permission != null) 'permission': permission,
+        if (principal != null) 'principal': principal,
+      };
 }
 
 /// Details about how a binding in a policy affects a member's ability to use a
@@ -279,32 +271,18 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (access != null) {
-      _json['access'] = access;
-    }
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (memberships != null) {
-      _json['memberships'] =
-          memberships.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (relevance != null) {
-      _json['relevance'] = relevance;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    if (rolePermission != null) {
-      _json['rolePermission'] = rolePermission;
-    }
-    if (rolePermissionRelevance != null) {
-      _json['rolePermissionRelevance'] = rolePermissionRelevance;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (access != null) 'access': access,
+        if (condition != null) 'condition': condition.toJson(),
+        if (memberships != null)
+          'memberships':
+              memberships.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (relevance != null) 'relevance': relevance,
+        if (role != null) 'role': role,
+        if (rolePermission != null) 'rolePermission': rolePermission,
+        if (rolePermissionRelevance != null)
+          'rolePermissionRelevance': rolePermissionRelevance,
+      };
 }
 
 /// Details about whether the binding includes the member.
@@ -346,16 +324,10 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (membership != null) {
-      _json['membership'] = membership;
-    }
-    if (relevance != null) {
-      _json['relevance'] = relevance;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (membership != null) 'membership': membership,
+        if (relevance != null) 'relevance': relevance,
+      };
 }
 
 /// Details about how a specific IAM Policy contributed to the access check.
@@ -439,26 +411,15 @@ class GoogleCloudPolicytroubleshooterV1ExplainedPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (access != null) {
-      _json['access'] = access;
-    }
-    if (bindingExplanations != null) {
-      _json['bindingExplanations'] =
-          bindingExplanations.map((value) => value.toJson()).toList();
-    }
-    if (fullResourceName != null) {
-      _json['fullResourceName'] = fullResourceName;
-    }
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    if (relevance != null) {
-      _json['relevance'] = relevance;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (access != null) 'access': access,
+        if (bindingExplanations != null)
+          'bindingExplanations':
+              bindingExplanations.map((value) => value.toJson()).toList(),
+        if (fullResourceName != null) 'fullResourceName': fullResourceName,
+        if (policy != null) 'policy': policy.toJson(),
+        if (relevance != null) 'relevance': relevance,
+      };
 }
 
 /// Request for TroubleshootIamPolicy.
@@ -477,13 +438,9 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessTuple != null) {
-      _json['accessTuple'] = accessTuple.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessTuple != null) 'accessTuple': accessTuple.toJson(),
+      };
 }
 
 /// Response for TroubleshootIamPolicy.
@@ -528,17 +485,12 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (access != null) {
-      _json['access'] = access;
-    }
-    if (explainedPolicies != null) {
-      _json['explainedPolicies'] =
-          explainedPolicies.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (access != null) 'access': access,
+        if (explainedPolicies != null)
+          'explainedPolicies':
+              explainedPolicies.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Specifies the audit configuration for a service.
@@ -583,17 +535,12 @@ class GoogleIamV1AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditLogConfigs != null) {
-      _json['auditLogConfigs'] =
-          auditLogConfigs.map((value) => value.toJson()).toList();
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditLogConfigs != null)
+          'auditLogConfigs':
+              auditLogConfigs.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service,
+      };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -630,16 +577,10 @@ class GoogleIamV1AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exemptedMembers != null) {
-      _json['exemptedMembers'] = exemptedMembers;
-    }
-    if (logType != null) {
-      _json['logType'] = logType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
+        if (logType != null) 'logType': logType,
+      };
 }
 
 /// Associates `members` with a `role`.
@@ -708,19 +649,11 @@ class GoogleIamV1Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -828,23 +761,14 @@ class GoogleIamV1Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditConfigs != null) {
-      _json['auditConfigs'] =
-          auditConfigs.map((value) => value.toJson()).toList();
-    }
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditConfigs != null)
+          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -908,20 +832,10 @@ class GoogleTypeExpr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }

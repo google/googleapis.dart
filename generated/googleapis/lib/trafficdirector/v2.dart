@@ -114,16 +114,10 @@ class Address {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pipe != null) {
-      _json['pipe'] = pipe.toJson();
-    }
-    if (socketAddress != null) {
-      _json['socketAddress'] = socketAddress.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pipe != null) 'pipe': pipe.toJson(),
+        if (socketAddress != null) 'socketAddress': socketAddress.toJson(),
+      };
 }
 
 /// BuildVersion combines SemVer version of extension with free-form build
@@ -159,16 +153,10 @@ class BuildVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (version != null) {
-      _json['version'] = version.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metadata != null) 'metadata': metadata,
+        if (version != null) 'version': version.toJson(),
+      };
 }
 
 /// All xds configs for a particular client.
@@ -192,16 +180,11 @@ class ClientConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (node != null) {
-      _json['node'] = node.toJson();
-    }
-    if (xdsConfig != null) {
-      _json['xdsConfig'] = xdsConfig.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (node != null) 'node': node.toJson(),
+        if (xdsConfig != null)
+          'xdsConfig': xdsConfig.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request for client status of clients identified by a list of NodeMatchers.
@@ -222,14 +205,10 @@ class ClientStatusRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nodeMatchers != null) {
-      _json['nodeMatchers'] =
-          nodeMatchers.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nodeMatchers != null)
+          'nodeMatchers': nodeMatchers.map((value) => value.toJson()).toList(),
+      };
 }
 
 class ClientStatusResponse {
@@ -247,13 +226,10 @@ class ClientStatusResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (config != null) {
-      _json['config'] = config.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (config != null)
+          'config': config.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Envoy's cluster manager fills this message with all currently known
@@ -311,25 +287,18 @@ class ClustersConfigDump {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dynamicActiveClusters != null) {
-      _json['dynamicActiveClusters'] =
-          dynamicActiveClusters.map((value) => value.toJson()).toList();
-    }
-    if (dynamicWarmingClusters != null) {
-      _json['dynamicWarmingClusters'] =
-          dynamicWarmingClusters.map((value) => value.toJson()).toList();
-    }
-    if (staticClusters != null) {
-      _json['staticClusters'] =
-          staticClusters.map((value) => value.toJson()).toList();
-    }
-    if (versionInfo != null) {
-      _json['versionInfo'] = versionInfo;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dynamicActiveClusters != null)
+          'dynamicActiveClusters':
+              dynamicActiveClusters.map((value) => value.toJson()).toList(),
+        if (dynamicWarmingClusters != null)
+          'dynamicWarmingClusters':
+              dynamicWarmingClusters.map((value) => value.toJson()).toList(),
+        if (staticClusters != null)
+          'staticClusters':
+              staticClusters.map((value) => value.toJson()).toList(),
+        if (versionInfo != null) 'versionInfo': versionInfo,
+      };
 }
 
 /// Specifies the way to match a double value.
@@ -355,16 +324,10 @@ class DoubleMatcher {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exact != null) {
-      _json['exact'] = exact;
-    }
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exact != null) 'exact': exact,
+        if (range != null) 'range': range.toJson(),
+      };
 }
 
 /// Specifies the double start and end of the range using half-open interval
@@ -387,16 +350,10 @@ class DoubleRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (end != null) {
-      _json['end'] = end;
-    }
-    if (start != null) {
-      _json['start'] = start;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (end != null) 'end': end,
+        if (start != null) 'start': start,
+      };
 }
 
 /// Describes a dynamically loaded cluster via the CDS API.
@@ -437,19 +394,11 @@ class DynamicCluster {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cluster != null) {
-      _json['cluster'] = cluster;
-    }
-    if (lastUpdated != null) {
-      _json['lastUpdated'] = lastUpdated;
-    }
-    if (versionInfo != null) {
-      _json['versionInfo'] = versionInfo;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cluster != null) 'cluster': cluster,
+        if (lastUpdated != null) 'lastUpdated': lastUpdated,
+        if (versionInfo != null) 'versionInfo': versionInfo,
+      };
 }
 
 /// Describes a dynamically loaded listener via the LDS API.
@@ -508,25 +457,13 @@ class DynamicListener {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (activeState != null) {
-      _json['activeState'] = activeState.toJson();
-    }
-    if (drainingState != null) {
-      _json['drainingState'] = drainingState.toJson();
-    }
-    if (errorState != null) {
-      _json['errorState'] = errorState.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (warmingState != null) {
-      _json['warmingState'] = warmingState.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (activeState != null) 'activeState': activeState.toJson(),
+        if (drainingState != null) 'drainingState': drainingState.toJson(),
+        if (errorState != null) 'errorState': errorState.toJson(),
+        if (name != null) 'name': name,
+        if (warmingState != null) 'warmingState': warmingState.toJson(),
+      };
 }
 
 class DynamicListenerState {
@@ -566,19 +503,11 @@ class DynamicListenerState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (lastUpdated != null) {
-      _json['lastUpdated'] = lastUpdated;
-    }
-    if (listener != null) {
-      _json['listener'] = listener;
-    }
-    if (versionInfo != null) {
-      _json['versionInfo'] = versionInfo;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (lastUpdated != null) 'lastUpdated': lastUpdated,
+        if (listener != null) 'listener': listener,
+        if (versionInfo != null) 'versionInfo': versionInfo,
+      };
 }
 
 class DynamicRouteConfig {
@@ -618,19 +547,11 @@ class DynamicRouteConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (lastUpdated != null) {
-      _json['lastUpdated'] = lastUpdated;
-    }
-    if (routeConfig != null) {
-      _json['routeConfig'] = routeConfig;
-    }
-    if (versionInfo != null) {
-      _json['versionInfo'] = versionInfo;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (lastUpdated != null) 'lastUpdated': lastUpdated,
+        if (routeConfig != null) 'routeConfig': routeConfig,
+        if (versionInfo != null) 'versionInfo': versionInfo,
+      };
 }
 
 class DynamicScopedRouteConfigs {
@@ -677,22 +598,13 @@ class DynamicScopedRouteConfigs {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (lastUpdated != null) {
-      _json['lastUpdated'] = lastUpdated;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (scopedRouteConfigs != null) {
-      _json['scopedRouteConfigs'] = scopedRouteConfigs;
-    }
-    if (versionInfo != null) {
-      _json['versionInfo'] = versionInfo;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (lastUpdated != null) 'lastUpdated': lastUpdated,
+        if (name != null) 'name': name,
+        if (scopedRouteConfigs != null)
+          'scopedRouteConfigs': scopedRouteConfigs,
+        if (versionInfo != null) 'versionInfo': versionInfo,
+      };
 }
 
 /// Version and identification for an Envoy extension.
@@ -747,25 +659,13 @@ class Extension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (category != null) {
-      _json['category'] = category;
-    }
-    if (disabled != null) {
-      _json['disabled'] = disabled;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (typeDescriptor != null) {
-      _json['typeDescriptor'] = typeDescriptor;
-    }
-    if (version != null) {
-      _json['version'] = version.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (category != null) 'category': category,
+        if (disabled != null) 'disabled': disabled,
+        if (name != null) 'name': name,
+        if (typeDescriptor != null) 'typeDescriptor': typeDescriptor,
+        if (version != null) 'version': version.toJson(),
+      };
 }
 
 /// Google's `RE2 `_ regex engine.
@@ -802,13 +702,9 @@ class GoogleRE2 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maxProgramSize != null) {
-      _json['maxProgramSize'] = maxProgramSize;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maxProgramSize != null) 'maxProgramSize': maxProgramSize,
+      };
 }
 
 class InlineScopedRouteConfigs {
@@ -846,19 +742,12 @@ class InlineScopedRouteConfigs {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (lastUpdated != null) {
-      _json['lastUpdated'] = lastUpdated;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (scopedRouteConfigs != null) {
-      _json['scopedRouteConfigs'] = scopedRouteConfigs;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (lastUpdated != null) 'lastUpdated': lastUpdated,
+        if (name != null) 'name': name,
+        if (scopedRouteConfigs != null)
+          'scopedRouteConfigs': scopedRouteConfigs,
+      };
 }
 
 /// Specifies the way to match a list value.
@@ -876,13 +765,9 @@ class ListMatcher {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (oneOf != null) {
-      _json['oneOf'] = oneOf.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (oneOf != null) 'oneOf': oneOf.toJson(),
+      };
 }
 
 /// Envoy's listener manager fills this message with all currently known
@@ -924,21 +809,15 @@ class ListenersConfigDump {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dynamicListeners != null) {
-      _json['dynamicListeners'] =
-          dynamicListeners.map((value) => value.toJson()).toList();
-    }
-    if (staticListeners != null) {
-      _json['staticListeners'] =
-          staticListeners.map((value) => value.toJson()).toList();
-    }
-    if (versionInfo != null) {
-      _json['versionInfo'] = versionInfo;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dynamicListeners != null)
+          'dynamicListeners':
+              dynamicListeners.map((value) => value.toJson()).toList(),
+        if (staticListeners != null)
+          'staticListeners':
+              staticListeners.map((value) => value.toJson()).toList(),
+        if (versionInfo != null) 'versionInfo': versionInfo,
+      };
 }
 
 /// Identifies location of where either Envoy runs or where upstream hosts run.
@@ -973,19 +852,11 @@ class Locality {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (region != null) {
-      _json['region'] = region;
-    }
-    if (subZone != null) {
-      _json['subZone'] = subZone;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (region != null) 'region': region,
+        if (subZone != null) 'subZone': subZone,
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// Identifies a specific Envoy instance.
@@ -1117,44 +988,23 @@ class Node {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (buildVersion != null) {
-      _json['buildVersion'] = buildVersion;
-    }
-    if (clientFeatures != null) {
-      _json['clientFeatures'] = clientFeatures;
-    }
-    if (cluster != null) {
-      _json['cluster'] = cluster;
-    }
-    if (extensions != null) {
-      _json['extensions'] = extensions.map((value) => value.toJson()).toList();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (listeningAddresses != null) {
-      _json['listeningAddresses'] =
-          listeningAddresses.map((value) => value.toJson()).toList();
-    }
-    if (locality != null) {
-      _json['locality'] = locality.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (userAgentBuildVersion != null) {
-      _json['userAgentBuildVersion'] = userAgentBuildVersion.toJson();
-    }
-    if (userAgentName != null) {
-      _json['userAgentName'] = userAgentName;
-    }
-    if (userAgentVersion != null) {
-      _json['userAgentVersion'] = userAgentVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (buildVersion != null) 'buildVersion': buildVersion,
+        if (clientFeatures != null) 'clientFeatures': clientFeatures,
+        if (cluster != null) 'cluster': cluster,
+        if (extensions != null)
+          'extensions': extensions.map((value) => value.toJson()).toList(),
+        if (id != null) 'id': id,
+        if (listeningAddresses != null)
+          'listeningAddresses':
+              listeningAddresses.map((value) => value.toJson()).toList(),
+        if (locality != null) 'locality': locality.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (userAgentBuildVersion != null)
+          'userAgentBuildVersion': userAgentBuildVersion.toJson(),
+        if (userAgentName != null) 'userAgentName': userAgentName,
+        if (userAgentVersion != null) 'userAgentVersion': userAgentVersion,
+      };
 }
 
 /// Specifies the way to match a Node.
@@ -1182,17 +1032,12 @@ class NodeMatcher {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nodeId != null) {
-      _json['nodeId'] = nodeId.toJson();
-    }
-    if (nodeMetadatas != null) {
-      _json['nodeMetadatas'] =
-          nodeMetadatas.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nodeId != null) 'nodeId': nodeId.toJson(),
+        if (nodeMetadatas != null)
+          'nodeMetadatas':
+              nodeMetadatas.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// NullMatch is an empty message to specify a null value.
@@ -1203,10 +1048,7 @@ class NullMatch {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Specifies the segment in a path to retrieve value from Struct.
@@ -1222,13 +1064,9 @@ class PathSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+      };
 }
 
 /// Detailed config (per xDS) with status.
@@ -1276,25 +1114,14 @@ class PerXdsConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterConfig != null) {
-      _json['clusterConfig'] = clusterConfig.toJson();
-    }
-    if (listenerConfig != null) {
-      _json['listenerConfig'] = listenerConfig.toJson();
-    }
-    if (routeConfig != null) {
-      _json['routeConfig'] = routeConfig.toJson();
-    }
-    if (scopedRouteConfig != null) {
-      _json['scopedRouteConfig'] = scopedRouteConfig.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterConfig != null) 'clusterConfig': clusterConfig.toJson(),
+        if (listenerConfig != null) 'listenerConfig': listenerConfig.toJson(),
+        if (routeConfig != null) 'routeConfig': routeConfig.toJson(),
+        if (scopedRouteConfig != null)
+          'scopedRouteConfig': scopedRouteConfig.toJson(),
+        if (status != null) 'status': status,
+      };
 }
 
 class Pipe {
@@ -1321,16 +1148,10 @@ class Pipe {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (mode != null) {
-      _json['mode'] = mode;
-    }
-    if (path != null) {
-      _json['path'] = path;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (mode != null) 'mode': mode,
+        if (path != null) 'path': path,
+      };
 }
 
 /// A regex matcher designed for safety when used with untrusted input.
@@ -1355,16 +1176,10 @@ class RegexMatcher {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (googleRe2 != null) {
-      _json['googleRe2'] = googleRe2.toJson();
-    }
-    if (regex != null) {
-      _json['regex'] = regex;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (googleRe2 != null) 'googleRe2': googleRe2.toJson(),
+        if (regex != null) 'regex': regex,
+      };
 }
 
 /// Envoy's RDS implementation fills this message with all currently loaded
@@ -1399,18 +1214,14 @@ class RoutesConfigDump {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dynamicRouteConfigs != null) {
-      _json['dynamicRouteConfigs'] =
-          dynamicRouteConfigs.map((value) => value.toJson()).toList();
-    }
-    if (staticRouteConfigs != null) {
-      _json['staticRouteConfigs'] =
-          staticRouteConfigs.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dynamicRouteConfigs != null)
+          'dynamicRouteConfigs':
+              dynamicRouteConfigs.map((value) => value.toJson()).toList(),
+        if (staticRouteConfigs != null)
+          'staticRouteConfigs':
+              staticRouteConfigs.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Envoy's scoped RDS implementation fills this message with all currently
@@ -1448,18 +1259,14 @@ class ScopedRoutesConfigDump {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dynamicScopedRouteConfigs != null) {
-      _json['dynamicScopedRouteConfigs'] =
-          dynamicScopedRouteConfigs.map((value) => value.toJson()).toList();
-    }
-    if (inlineScopedRouteConfigs != null) {
-      _json['inlineScopedRouteConfigs'] =
-          inlineScopedRouteConfigs.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dynamicScopedRouteConfigs != null)
+          'dynamicScopedRouteConfigs':
+              dynamicScopedRouteConfigs.map((value) => value.toJson()).toList(),
+        if (inlineScopedRouteConfigs != null)
+          'inlineScopedRouteConfigs':
+              inlineScopedRouteConfigs.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Envoy uses SemVer (https://semver.org/).
@@ -1485,19 +1292,11 @@ class SemanticVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (majorNumber != null) {
-      _json['majorNumber'] = majorNumber;
-    }
-    if (minorNumber != null) {
-      _json['minorNumber'] = minorNumber;
-    }
-    if (patch != null) {
-      _json['patch'] = patch;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (majorNumber != null) 'majorNumber': majorNumber,
+        if (minorNumber != null) 'minorNumber': minorNumber,
+        if (patch != null) 'patch': patch,
+      };
 }
 
 /// \[#next-free-field: 7\]
@@ -1566,28 +1365,14 @@ class SocketAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (address != null) {
-      _json['address'] = address;
-    }
-    if (ipv4Compat != null) {
-      _json['ipv4Compat'] = ipv4Compat;
-    }
-    if (namedPort != null) {
-      _json['namedPort'] = namedPort;
-    }
-    if (portValue != null) {
-      _json['portValue'] = portValue;
-    }
-    if (protocol != null) {
-      _json['protocol'] = protocol;
-    }
-    if (resolverName != null) {
-      _json['resolverName'] = resolverName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (address != null) 'address': address,
+        if (ipv4Compat != null) 'ipv4Compat': ipv4Compat,
+        if (namedPort != null) 'namedPort': namedPort,
+        if (portValue != null) 'portValue': portValue,
+        if (protocol != null) 'protocol': protocol,
+        if (resolverName != null) 'resolverName': resolverName,
+      };
 }
 
 /// Describes a statically loaded cluster.
@@ -1618,16 +1403,10 @@ class StaticCluster {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cluster != null) {
-      _json['cluster'] = cluster;
-    }
-    if (lastUpdated != null) {
-      _json['lastUpdated'] = lastUpdated;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cluster != null) 'cluster': cluster,
+        if (lastUpdated != null) 'lastUpdated': lastUpdated,
+      };
 }
 
 /// Describes a statically loaded listener.
@@ -1658,16 +1437,10 @@ class StaticListener {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (lastUpdated != null) {
-      _json['lastUpdated'] = lastUpdated;
-    }
-    if (listener != null) {
-      _json['listener'] = listener;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (lastUpdated != null) 'lastUpdated': lastUpdated,
+        if (listener != null) 'listener': listener,
+      };
 }
 
 class StaticRouteConfig {
@@ -1698,16 +1471,10 @@ class StaticRouteConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (lastUpdated != null) {
-      _json['lastUpdated'] = lastUpdated;
-    }
-    if (routeConfig != null) {
-      _json['routeConfig'] = routeConfig;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (lastUpdated != null) 'lastUpdated': lastUpdated,
+        if (routeConfig != null) 'routeConfig': routeConfig,
+      };
 }
 
 /// Specifies the way to match a string.
@@ -1774,28 +1541,14 @@ class StringMatcher {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exact != null) {
-      _json['exact'] = exact;
-    }
-    if (ignoreCase != null) {
-      _json['ignoreCase'] = ignoreCase;
-    }
-    if (prefix != null) {
-      _json['prefix'] = prefix;
-    }
-    if (regex != null) {
-      _json['regex'] = regex;
-    }
-    if (safeRegex != null) {
-      _json['safeRegex'] = safeRegex.toJson();
-    }
-    if (suffix != null) {
-      _json['suffix'] = suffix;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exact != null) 'exact': exact,
+        if (ignoreCase != null) 'ignoreCase': ignoreCase,
+        if (prefix != null) 'prefix': prefix,
+        if (regex != null) 'regex': regex,
+        if (safeRegex != null) 'safeRegex': safeRegex.toJson(),
+        if (suffix != null) 'suffix': suffix,
+      };
 }
 
 /// StructMatcher provides a general interface to check if a given value is
@@ -1836,16 +1589,10 @@ class StructMatcher {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (path != null) {
-      _json['path'] = path.map((value) => value.toJson()).toList();
-    }
-    if (value != null) {
-      _json['value'] = value.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (path != null) 'path': path.map((value) => value.toJson()).toList(),
+        if (value != null) 'value': value.toJson(),
+      };
 }
 
 class UpdateFailureState {
@@ -1883,19 +1630,12 @@ class UpdateFailureState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (failedConfiguration != null) {
-      _json['failedConfiguration'] = failedConfiguration;
-    }
-    if (lastUpdateAttempt != null) {
-      _json['lastUpdateAttempt'] = lastUpdateAttempt;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (details != null) 'details': details,
+        if (failedConfiguration != null)
+          'failedConfiguration': failedConfiguration,
+        if (lastUpdateAttempt != null) 'lastUpdateAttempt': lastUpdateAttempt,
+      };
 }
 
 /// Specifies the way to match a ProtobufWkt::Value.
@@ -1957,26 +1697,12 @@ class ValueMatcher {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boolMatch != null) {
-      _json['boolMatch'] = boolMatch;
-    }
-    if (doubleMatch != null) {
-      _json['doubleMatch'] = doubleMatch.toJson();
-    }
-    if (listMatch != null) {
-      _json['listMatch'] = listMatch.toJson();
-    }
-    if (nullMatch != null) {
-      _json['nullMatch'] = nullMatch.toJson();
-    }
-    if (presentMatch != null) {
-      _json['presentMatch'] = presentMatch;
-    }
-    if (stringMatch != null) {
-      _json['stringMatch'] = stringMatch.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boolMatch != null) 'boolMatch': boolMatch,
+        if (doubleMatch != null) 'doubleMatch': doubleMatch.toJson(),
+        if (listMatch != null) 'listMatch': listMatch.toJson(),
+        if (nullMatch != null) 'nullMatch': nullMatch.toJson(),
+        if (presentMatch != null) 'presentMatch': presentMatch,
+        if (stringMatch != null) 'stringMatch': stringMatch.toJson(),
+      };
 }

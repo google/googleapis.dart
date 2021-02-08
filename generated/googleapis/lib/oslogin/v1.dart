@@ -389,10 +389,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A response message for importing an SSH public key.
@@ -415,16 +412,10 @@ class ImportSshPublicKeyResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (loginProfile != null) {
-      _json['loginProfile'] = loginProfile.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (details != null) 'details': details,
+        if (loginProfile != null) 'loginProfile': loginProfile.toJson(),
+      };
 }
 
 /// The user profile information used for logging in to a virtual machine on
@@ -466,21 +457,15 @@ class LoginProfile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (posixAccounts != null) {
-      _json['posixAccounts'] =
-          posixAccounts.map((value) => value.toJson()).toList();
-    }
-    if (sshPublicKeys != null) {
-      _json['sshPublicKeys'] =
-          sshPublicKeys.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (posixAccounts != null)
+          'posixAccounts':
+              posixAccounts.map((value) => value.toJson()).toList(),
+        if (sshPublicKeys != null)
+          'sshPublicKeys': sshPublicKeys
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+      };
 }
 
 /// The POSIX account information associated with a Google account.
@@ -567,43 +552,20 @@ class PosixAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (gecos != null) {
-      _json['gecos'] = gecos;
-    }
-    if (gid != null) {
-      _json['gid'] = gid;
-    }
-    if (homeDirectory != null) {
-      _json['homeDirectory'] = homeDirectory;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (operatingSystemType != null) {
-      _json['operatingSystemType'] = operatingSystemType;
-    }
-    if (primary != null) {
-      _json['primary'] = primary;
-    }
-    if (shell != null) {
-      _json['shell'] = shell;
-    }
-    if (systemId != null) {
-      _json['systemId'] = systemId;
-    }
-    if (uid != null) {
-      _json['uid'] = uid;
-    }
-    if (username != null) {
-      _json['username'] = username;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (gecos != null) 'gecos': gecos,
+        if (gid != null) 'gid': gid,
+        if (homeDirectory != null) 'homeDirectory': homeDirectory,
+        if (name != null) 'name': name,
+        if (operatingSystemType != null)
+          'operatingSystemType': operatingSystemType,
+        if (primary != null) 'primary': primary,
+        if (shell != null) 'shell': shell,
+        if (systemId != null) 'systemId': systemId,
+        if (uid != null) 'uid': uid,
+        if (username != null) 'username': username,
+      };
 }
 
 /// The SSH public key information associated with a Google account.
@@ -641,20 +603,11 @@ class SshPublicKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (expirationTimeUsec != null) {
-      _json['expirationTimeUsec'] = expirationTimeUsec;
-    }
-    if (fingerprint != null) {
-      _json['fingerprint'] = fingerprint;
-    }
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (expirationTimeUsec != null)
+          'expirationTimeUsec': expirationTimeUsec,
+        if (fingerprint != null) 'fingerprint': fingerprint,
+        if (key != null) 'key': key,
+        if (name != null) 'name': name,
+      };
 }

@@ -2184,16 +2184,10 @@ class GoogleCloudRecommenderV1CostProjection {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cost != null) {
-      _json['cost'] = cost.toJson();
-    }
-    if (duration != null) {
-      _json['duration'] = duration;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cost != null) 'cost': cost.toJson(),
+        if (duration != null) 'duration': duration,
+      };
 }
 
 /// Contains the impact a recommendation can have for a given category.
@@ -2225,16 +2219,10 @@ class GoogleCloudRecommenderV1Impact {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (category != null) {
-      _json['category'] = category;
-    }
-    if (costProjection != null) {
-      _json['costProjection'] = costProjection.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (category != null) 'category': category,
+        if (costProjection != null) 'costProjection': costProjection.toJson(),
+      };
 }
 
 /// An insight along with the information used to derive the insight.
@@ -2347,44 +2335,21 @@ class GoogleCloudRecommenderV1Insight {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (associatedRecommendations != null) {
-      _json['associatedRecommendations'] =
-          associatedRecommendations.map((value) => value.toJson()).toList();
-    }
-    if (category != null) {
-      _json['category'] = category;
-    }
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (insightSubtype != null) {
-      _json['insightSubtype'] = insightSubtype;
-    }
-    if (lastRefreshTime != null) {
-      _json['lastRefreshTime'] = lastRefreshTime;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (observationPeriod != null) {
-      _json['observationPeriod'] = observationPeriod;
-    }
-    if (stateInfo != null) {
-      _json['stateInfo'] = stateInfo.toJson();
-    }
-    if (targetResources != null) {
-      _json['targetResources'] = targetResources;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (associatedRecommendations != null)
+          'associatedRecommendations':
+              associatedRecommendations.map((value) => value.toJson()).toList(),
+        if (category != null) 'category': category,
+        if (content != null) 'content': content,
+        if (description != null) 'description': description,
+        if (etag != null) 'etag': etag,
+        if (insightSubtype != null) 'insightSubtype': insightSubtype,
+        if (lastRefreshTime != null) 'lastRefreshTime': lastRefreshTime,
+        if (name != null) 'name': name,
+        if (observationPeriod != null) 'observationPeriod': observationPeriod,
+        if (stateInfo != null) 'stateInfo': stateInfo.toJson(),
+        if (targetResources != null) 'targetResources': targetResources,
+      };
 }
 
 /// Reference to an associated recommendation.
@@ -2402,13 +2367,9 @@ class GoogleCloudRecommenderV1InsightRecommendationReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (recommendation != null) {
-      _json['recommendation'] = recommendation;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (recommendation != null) 'recommendation': recommendation,
+      };
 }
 
 /// Information related to insight state.
@@ -2448,16 +2409,10 @@ class GoogleCloudRecommenderV1InsightStateInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (stateMetadata != null) {
-      _json['stateMetadata'] = stateMetadata;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (state != null) 'state': state,
+        if (stateMetadata != null) 'stateMetadata': stateMetadata,
+      };
 }
 
 /// Response to the `ListInsights` method.
@@ -2485,16 +2440,11 @@ class GoogleCloudRecommenderV1ListInsightsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (insights != null) {
-      _json['insights'] = insights.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (insights != null)
+          'insights': insights.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response to the `ListRecommendations` method.
@@ -2522,17 +2472,12 @@ class GoogleCloudRecommenderV1ListRecommendationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (recommendations != null) {
-      _json['recommendations'] =
-          recommendations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (recommendations != null)
+          'recommendations':
+              recommendations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request for the `MarkInsightAccepted` method.
@@ -2569,16 +2514,10 @@ class GoogleCloudRecommenderV1MarkInsightAcceptedRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (stateMetadata != null) {
-      _json['stateMetadata'] = stateMetadata;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (stateMetadata != null) 'stateMetadata': stateMetadata,
+      };
 }
 
 /// Request for the `MarkRecommendationClaimed` Method.
@@ -2616,16 +2555,10 @@ class GoogleCloudRecommenderV1MarkRecommendationClaimedRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (stateMetadata != null) {
-      _json['stateMetadata'] = stateMetadata;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (stateMetadata != null) 'stateMetadata': stateMetadata,
+      };
 }
 
 /// Request for the `MarkRecommendationFailed` Method.
@@ -2663,16 +2596,10 @@ class GoogleCloudRecommenderV1MarkRecommendationFailedRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (stateMetadata != null) {
-      _json['stateMetadata'] = stateMetadata;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (stateMetadata != null) 'stateMetadata': stateMetadata,
+      };
 }
 
 /// Request for the `MarkRecommendationSucceeded` Method.
@@ -2710,16 +2637,10 @@ class GoogleCloudRecommenderV1MarkRecommendationSucceededRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (stateMetadata != null) {
-      _json['stateMetadata'] = stateMetadata;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (stateMetadata != null) 'stateMetadata': stateMetadata,
+      };
 }
 
 /// Contains an operation for a resource loosely based on the JSON-PATCH format
@@ -2859,41 +2780,20 @@ class GoogleCloudRecommenderV1Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (action != null) {
-      _json['action'] = action;
-    }
-    if (path != null) {
-      _json['path'] = path;
-    }
-    if (pathFilters != null) {
-      _json['pathFilters'] = pathFilters;
-    }
-    if (pathValueMatchers != null) {
-      _json['pathValueMatchers'] = pathValueMatchers
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (resource != null) {
-      _json['resource'] = resource;
-    }
-    if (resourceType != null) {
-      _json['resourceType'] = resourceType;
-    }
-    if (sourcePath != null) {
-      _json['sourcePath'] = sourcePath;
-    }
-    if (sourceResource != null) {
-      _json['sourceResource'] = sourceResource;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    if (valueMatcher != null) {
-      _json['valueMatcher'] = valueMatcher.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (action != null) 'action': action,
+        if (path != null) 'path': path,
+        if (pathFilters != null) 'pathFilters': pathFilters,
+        if (pathValueMatchers != null)
+          'pathValueMatchers': pathValueMatchers
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (resource != null) 'resource': resource,
+        if (resourceType != null) 'resourceType': resourceType,
+        if (sourcePath != null) 'sourcePath': sourcePath,
+        if (sourceResource != null) 'sourceResource': sourceResource,
+        if (value != null) 'value': value,
+        if (valueMatcher != null) 'valueMatcher': valueMatcher.toJson(),
+      };
 }
 
 /// Group of operations that need to be performed atomically.
@@ -2915,13 +2815,10 @@ class GoogleCloudRecommenderV1OperationGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A recommendation along with a suggested action.
@@ -3025,42 +2922,23 @@ class GoogleCloudRecommenderV1Recommendation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (additionalImpact != null) {
-      _json['additionalImpact'] =
-          additionalImpact.map((value) => value.toJson()).toList();
-    }
-    if (associatedInsights != null) {
-      _json['associatedInsights'] =
-          associatedInsights.map((value) => value.toJson()).toList();
-    }
-    if (content != null) {
-      _json['content'] = content.toJson();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (lastRefreshTime != null) {
-      _json['lastRefreshTime'] = lastRefreshTime;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (primaryImpact != null) {
-      _json['primaryImpact'] = primaryImpact.toJson();
-    }
-    if (recommenderSubtype != null) {
-      _json['recommenderSubtype'] = recommenderSubtype;
-    }
-    if (stateInfo != null) {
-      _json['stateInfo'] = stateInfo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (additionalImpact != null)
+          'additionalImpact':
+              additionalImpact.map((value) => value.toJson()).toList(),
+        if (associatedInsights != null)
+          'associatedInsights':
+              associatedInsights.map((value) => value.toJson()).toList(),
+        if (content != null) 'content': content.toJson(),
+        if (description != null) 'description': description,
+        if (etag != null) 'etag': etag,
+        if (lastRefreshTime != null) 'lastRefreshTime': lastRefreshTime,
+        if (name != null) 'name': name,
+        if (primaryImpact != null) 'primaryImpact': primaryImpact.toJson(),
+        if (recommenderSubtype != null)
+          'recommenderSubtype': recommenderSubtype,
+        if (stateInfo != null) 'stateInfo': stateInfo.toJson(),
+      };
 }
 
 /// Contains what resources are changing and how they are changing.
@@ -3082,14 +2960,11 @@ class GoogleCloudRecommenderV1RecommendationContent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operationGroups != null) {
-      _json['operationGroups'] =
-          operationGroups.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (operationGroups != null)
+          'operationGroups':
+              operationGroups.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Reference to an associated insight.
@@ -3107,13 +2982,9 @@ class GoogleCloudRecommenderV1RecommendationInsightReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (insight != null) {
-      _json['insight'] = insight;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (insight != null) 'insight': insight,
+      };
 }
 
 /// Information for state.
@@ -3161,16 +3032,10 @@ class GoogleCloudRecommenderV1RecommendationStateInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (stateMetadata != null) {
-      _json['stateMetadata'] = stateMetadata;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (state != null) 'state': state,
+        if (stateMetadata != null) 'stateMetadata': stateMetadata,
+      };
 }
 
 /// Contains various matching options for values for a GCP resource field.
@@ -3190,13 +3055,9 @@ class GoogleCloudRecommenderV1ValueMatcher {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (matchesPattern != null) {
-      _json['matchesPattern'] = matchesPattern;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (matchesPattern != null) 'matchesPattern': matchesPattern,
+      };
 }
 
 /// Represents an amount of money with its currency type.
@@ -3232,17 +3093,9 @@ class GoogleTypeMoney {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (currencyCode != null) {
-      _json['currencyCode'] = currencyCode;
-    }
-    if (nanos != null) {
-      _json['nanos'] = nanos;
-    }
-    if (units != null) {
-      _json['units'] = units;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode,
+        if (nanos != null) 'nanos': nanos,
+        if (units != null) 'units': units,
+      };
 }

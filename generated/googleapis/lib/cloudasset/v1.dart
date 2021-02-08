@@ -1033,16 +1033,10 @@ class AccessSelector {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    if (roles != null) {
-      _json['roles'] = roles;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+        if (roles != null) 'roles': roles,
+      };
 }
 
 /// A request message for AssetService.AnalyzeIamPolicyLongrunning.
@@ -1070,16 +1064,10 @@ class AnalyzeIamPolicyLongrunningRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (analysisQuery != null) {
-      _json['analysisQuery'] = analysisQuery.toJson();
-    }
-    if (outputConfig != null) {
-      _json['outputConfig'] = outputConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (analysisQuery != null) 'analysisQuery': analysisQuery.toJson(),
+        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
+      };
 }
 
 /// A response message for AssetService.AnalyzeIamPolicy.
@@ -1115,22 +1103,15 @@ class AnalyzeIamPolicyResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fullyExplored != null) {
-      _json['fullyExplored'] = fullyExplored;
-    }
-    if (mainAnalysis != null) {
-      _json['mainAnalysis'] = mainAnalysis.toJson();
-    }
-    if (serviceAccountImpersonationAnalysis != null) {
-      _json['serviceAccountImpersonationAnalysis'] =
-          serviceAccountImpersonationAnalysis
-              .map((value) => value.toJson())
-              .toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fullyExplored != null) 'fullyExplored': fullyExplored,
+        if (mainAnalysis != null) 'mainAnalysis': mainAnalysis.toJson(),
+        if (serviceAccountImpersonationAnalysis != null)
+          'serviceAccountImpersonationAnalysis':
+              serviceAccountImpersonationAnalysis
+                  .map((value) => value.toJson())
+                  .toList(),
+      };
 }
 
 /// An asset in Google Cloud.
@@ -1266,43 +1247,21 @@ class Asset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessLevel != null) {
-      _json['accessLevel'] = accessLevel.toJson();
-    }
-    if (accessPolicy != null) {
-      _json['accessPolicy'] = accessPolicy.toJson();
-    }
-    if (ancestors != null) {
-      _json['ancestors'] = ancestors;
-    }
-    if (assetType != null) {
-      _json['assetType'] = assetType;
-    }
-    if (iamPolicy != null) {
-      _json['iamPolicy'] = iamPolicy.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (orgPolicy != null) {
-      _json['orgPolicy'] = orgPolicy.map((value) => value.toJson()).toList();
-    }
-    if (osInventory != null) {
-      _json['osInventory'] = osInventory.toJson();
-    }
-    if (resource != null) {
-      _json['resource'] = resource.toJson();
-    }
-    if (servicePerimeter != null) {
-      _json['servicePerimeter'] = servicePerimeter.toJson();
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessLevel != null) 'accessLevel': accessLevel.toJson(),
+        if (accessPolicy != null) 'accessPolicy': accessPolicy.toJson(),
+        if (ancestors != null) 'ancestors': ancestors,
+        if (assetType != null) 'assetType': assetType,
+        if (iamPolicy != null) 'iamPolicy': iamPolicy.toJson(),
+        if (name != null) 'name': name,
+        if (orgPolicy != null)
+          'orgPolicy': orgPolicy.map((value) => value.toJson()).toList(),
+        if (osInventory != null) 'osInventory': osInventory.toJson(),
+        if (resource != null) 'resource': resource.toJson(),
+        if (servicePerimeter != null)
+          'servicePerimeter': servicePerimeter.toJson(),
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Specifies the audit configuration for a service.
@@ -1346,17 +1305,12 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditLogConfigs != null) {
-      _json['auditLogConfigs'] =
-          auditLogConfigs.map((value) => value.toJson()).toList();
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditLogConfigs != null)
+          'auditLogConfigs':
+              auditLogConfigs.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service,
+      };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -1393,16 +1347,10 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exemptedMembers != null) {
-      _json['exemptedMembers'] = exemptedMembers;
-    }
-    if (logType != null) {
-      _json['logType'] = logType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
+        if (logType != null) 'logType': logType,
+      };
 }
 
 /// Batch get assets history response.
@@ -1421,13 +1369,10 @@ class BatchGetAssetsHistoryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assets != null) {
-      _json['assets'] = assets.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assets != null)
+          'assets': assets.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A BigQuery destination for exporting assets to.
@@ -1522,25 +1467,14 @@ class BigQueryDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataset != null) {
-      _json['dataset'] = dataset;
-    }
-    if (force != null) {
-      _json['force'] = force;
-    }
-    if (partitionSpec != null) {
-      _json['partitionSpec'] = partitionSpec.toJson();
-    }
-    if (separateTablesPerAssetType != null) {
-      _json['separateTablesPerAssetType'] = separateTablesPerAssetType;
-    }
-    if (table != null) {
-      _json['table'] = table;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataset != null) 'dataset': dataset,
+        if (force != null) 'force': force,
+        if (partitionSpec != null) 'partitionSpec': partitionSpec.toJson(),
+        if (separateTablesPerAssetType != null)
+          'separateTablesPerAssetType': separateTablesPerAssetType,
+        if (table != null) 'table': table,
+      };
 }
 
 /// Associates `members` with a `role`.
@@ -1609,19 +1543,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// Create asset feed request.
@@ -1653,16 +1579,10 @@ class CreateFeedRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (feed != null) {
-      _json['feed'] = feed.toJson();
-    }
-    if (feedId != null) {
-      _json['feedId'] = feedId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (feed != null) 'feed': feed.toJson(),
+        if (feedId != null) 'feedId': feedId,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1679,10 +1599,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Explanation about the IAM policy search result.
@@ -1712,14 +1629,11 @@ class Explanation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (matchedPermissions != null) {
-      _json['matchedPermissions'] = matchedPermissions
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (matchedPermissions != null)
+          'matchedPermissions': matchedPermissions
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+      };
 }
 
 /// Export asset request.
@@ -1787,22 +1701,12 @@ class ExportAssetsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assetTypes != null) {
-      _json['assetTypes'] = assetTypes;
-    }
-    if (contentType != null) {
-      _json['contentType'] = contentType;
-    }
-    if (outputConfig != null) {
-      _json['outputConfig'] = outputConfig.toJson();
-    }
-    if (readTime != null) {
-      _json['readTime'] = readTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assetTypes != null) 'assetTypes': assetTypes,
+        if (contentType != null) 'contentType': contentType,
+        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
+        if (readTime != null) 'readTime': readTime,
+      };
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1866,22 +1770,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// An asset feed used to export asset updates to a destinations.
@@ -1980,28 +1874,15 @@ class Feed {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assetNames != null) {
-      _json['assetNames'] = assetNames;
-    }
-    if (assetTypes != null) {
-      _json['assetTypes'] = assetTypes;
-    }
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (contentType != null) {
-      _json['contentType'] = contentType;
-    }
-    if (feedOutputConfig != null) {
-      _json['feedOutputConfig'] = feedOutputConfig.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assetNames != null) 'assetNames': assetNames,
+        if (assetTypes != null) 'assetTypes': assetTypes,
+        if (condition != null) 'condition': condition.toJson(),
+        if (contentType != null) 'contentType': contentType,
+        if (feedOutputConfig != null)
+          'feedOutputConfig': feedOutputConfig.toJson(),
+        if (name != null) 'name': name,
+      };
 }
 
 /// Output configuration for asset feed destination.
@@ -2018,13 +1899,10 @@ class FeedOutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pubsubDestination != null) {
-      _json['pubsubDestination'] = pubsubDestination.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pubsubDestination != null)
+          'pubsubDestination': pubsubDestination.toJson(),
+      };
 }
 
 /// A Cloud Storage location.
@@ -2059,16 +1937,10 @@ class GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    if (uriPrefix != null) {
-      _json['uriPrefix'] = uriPrefix;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uri != null) 'uri': uri,
+        if (uriPrefix != null) 'uriPrefix': uriPrefix,
+      };
 }
 
 /// An IAM role or permission under analysis.
@@ -2097,19 +1969,11 @@ class GoogleCloudAssetV1Access {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (analysisState != null) {
-      _json['analysisState'] = analysisState.toJson();
-    }
-    if (permission != null) {
-      _json['permission'] = permission;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (analysisState != null) 'analysisState': analysisState.toJson(),
+        if (permission != null) 'permission': permission,
+        if (role != null) 'role': role,
+      };
 }
 
 /// An access control list, derived from the above IAM policy binding, which
@@ -2169,20 +2033,15 @@ class GoogleCloudAssetV1AccessControlList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accesses != null) {
-      _json['accesses'] = accesses.map((value) => value.toJson()).toList();
-    }
-    if (resourceEdges != null) {
-      _json['resourceEdges'] =
-          resourceEdges.map((value) => value.toJson()).toList();
-    }
-    if (resources != null) {
-      _json['resources'] = resources.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accesses != null)
+          'accesses': accesses.map((value) => value.toJson()).toList(),
+        if (resourceEdges != null)
+          'resourceEdges':
+              resourceEdges.map((value) => value.toJson()).toList(),
+        if (resources != null)
+          'resources': resources.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A BigQuery destination.
@@ -2251,22 +2110,12 @@ class GoogleCloudAssetV1BigQueryDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataset != null) {
-      _json['dataset'] = dataset;
-    }
-    if (partitionKey != null) {
-      _json['partitionKey'] = partitionKey;
-    }
-    if (tablePrefix != null) {
-      _json['tablePrefix'] = tablePrefix;
-    }
-    if (writeDisposition != null) {
-      _json['writeDisposition'] = writeDisposition;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataset != null) 'dataset': dataset,
+        if (partitionKey != null) 'partitionKey': partitionKey,
+        if (tablePrefix != null) 'tablePrefix': tablePrefix,
+        if (writeDisposition != null) 'writeDisposition': writeDisposition,
+      };
 }
 
 /// A directional edge.
@@ -2294,16 +2143,10 @@ class GoogleCloudAssetV1Edge {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sourceNode != null) {
-      _json['sourceNode'] = sourceNode;
-    }
-    if (targetNode != null) {
-      _json['targetNode'] = targetNode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sourceNode != null) 'sourceNode': sourceNode,
+        if (targetNode != null) 'targetNode': targetNode,
+      };
 }
 
 /// A Cloud Storage location.
@@ -2326,13 +2169,9 @@ class GoogleCloudAssetV1GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// An identity under analysis.
@@ -2359,16 +2198,10 @@ class GoogleCloudAssetV1Identity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (analysisState != null) {
-      _json['analysisState'] = analysisState.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (analysisState != null) 'analysisState': analysisState.toJson(),
+        if (name != null) 'name': name,
+      };
 }
 
 /// The identities and group edges.
@@ -2406,16 +2239,12 @@ class GoogleCloudAssetV1IdentityList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (groupEdges != null) {
-      _json['groupEdges'] = groupEdges.map((value) => value.toJson()).toList();
-    }
-    if (identities != null) {
-      _json['identities'] = identities.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (groupEdges != null)
+          'groupEdges': groupEdges.map((value) => value.toJson()).toList(),
+        if (identities != null)
+          'identities': identities.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A Google Cloud resource under analysis.
@@ -2439,16 +2268,10 @@ class GoogleCloudAssetV1Resource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (analysisState != null) {
-      _json['analysisState'] = analysisState.toJson();
-    }
-    if (fullResourceName != null) {
-      _json['fullResourceName'] = fullResourceName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (analysisState != null) 'analysisState': analysisState.toJson(),
+        if (fullResourceName != null) 'fullResourceName': fullResourceName,
+      };
 }
 
 /// Used in `policy_type` to specify how `boolean_policy` will behave at this
@@ -2490,13 +2313,9 @@ class GoogleCloudOrgpolicyV1BooleanPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enforced != null) {
-      _json['enforced'] = enforced;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enforced != null) 'enforced': enforced,
+      };
 }
 
 /// Used in `policy_type` to specify how `list_policy` behaves at this resource.
@@ -2632,25 +2451,13 @@ class GoogleCloudOrgpolicyV1ListPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allValues != null) {
-      _json['allValues'] = allValues;
-    }
-    if (allowedValues != null) {
-      _json['allowedValues'] = allowedValues;
-    }
-    if (deniedValues != null) {
-      _json['deniedValues'] = deniedValues;
-    }
-    if (inheritFromParent != null) {
-      _json['inheritFromParent'] = inheritFromParent;
-    }
-    if (suggestedValue != null) {
-      _json['suggestedValue'] = suggestedValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allValues != null) 'allValues': allValues,
+        if (allowedValues != null) 'allowedValues': allowedValues,
+        if (deniedValues != null) 'deniedValues': deniedValues,
+        if (inheritFromParent != null) 'inheritFromParent': inheritFromParent,
+        if (suggestedValue != null) 'suggestedValue': suggestedValue,
+      };
 }
 
 /// Defines a Cloud Organization `Policy` which is used to specify `Constraints`
@@ -2735,31 +2542,15 @@ class GoogleCloudOrgpolicyV1Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (booleanPolicy != null) {
-      _json['booleanPolicy'] = booleanPolicy.toJson();
-    }
-    if (constraint != null) {
-      _json['constraint'] = constraint;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (listPolicy != null) {
-      _json['listPolicy'] = listPolicy.toJson();
-    }
-    if (restoreDefault != null) {
-      _json['restoreDefault'] = restoreDefault.toJson();
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (booleanPolicy != null) 'booleanPolicy': booleanPolicy.toJson(),
+        if (constraint != null) 'constraint': constraint,
+        if (etag != null) 'etag': etag,
+        if (listPolicy != null) 'listPolicy': listPolicy.toJson(),
+        if (restoreDefault != null) 'restoreDefault': restoreDefault.toJson(),
+        if (updateTime != null) 'updateTime': updateTime,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Ignores policies set above this resource and restores the
@@ -2781,10 +2572,7 @@ class GoogleCloudOrgpolicyV1RestoreDefault {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// An `AccessLevel` is a label that can be applied to requests to Google Cloud
@@ -2839,25 +2627,13 @@ class GoogleIdentityAccesscontextmanagerV1AccessLevel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basic != null) {
-      _json['basic'] = basic.toJson();
-    }
-    if (custom != null) {
-      _json['custom'] = custom.toJson();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basic != null) 'basic': basic.toJson(),
+        if (custom != null) 'custom': custom.toJson(),
+        if (description != null) 'description': description,
+        if (name != null) 'name': name,
+        if (title != null) 'title': title,
+      };
 }
 
 /// `AccessPolicy` is a container for `AccessLevels` (which define the necessary
@@ -2915,22 +2691,12 @@ class GoogleIdentityAccesscontextmanagerV1AccessPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (name != null) 'name': name,
+        if (parent != null) 'parent': parent,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Identification for an API Operation.
@@ -2965,17 +2731,12 @@ class GoogleIdentityAccesscontextmanagerV1ApiOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (methodSelectors != null) {
-      _json['methodSelectors'] =
-          methodSelectors.map((value) => value.toJson()).toList();
-    }
-    if (serviceName != null) {
-      _json['serviceName'] = serviceName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (methodSelectors != null)
+          'methodSelectors':
+              methodSelectors.map((value) => value.toJson()).toList(),
+        if (serviceName != null) 'serviceName': serviceName,
+      };
 }
 
 /// `BasicLevel` is an `AccessLevel` using a set of recommended features.
@@ -3013,16 +2774,11 @@ class GoogleIdentityAccesscontextmanagerV1BasicLevel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (combiningFunction != null) {
-      _json['combiningFunction'] = combiningFunction;
-    }
-    if (conditions != null) {
-      _json['conditions'] = conditions.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (combiningFunction != null) 'combiningFunction': combiningFunction,
+        if (conditions != null)
+          'conditions': conditions.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A condition necessary for an `AccessLevel` to be granted.
@@ -3109,28 +2865,15 @@ class GoogleIdentityAccesscontextmanagerV1Condition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (devicePolicy != null) {
-      _json['devicePolicy'] = devicePolicy.toJson();
-    }
-    if (ipSubnetworks != null) {
-      _json['ipSubnetworks'] = ipSubnetworks;
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (negate != null) {
-      _json['negate'] = negate;
-    }
-    if (regions != null) {
-      _json['regions'] = regions;
-    }
-    if (requiredAccessLevels != null) {
-      _json['requiredAccessLevels'] = requiredAccessLevels;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (devicePolicy != null) 'devicePolicy': devicePolicy.toJson(),
+        if (ipSubnetworks != null) 'ipSubnetworks': ipSubnetworks,
+        if (members != null) 'members': members,
+        if (negate != null) 'negate': negate,
+        if (regions != null) 'regions': regions,
+        if (requiredAccessLevels != null)
+          'requiredAccessLevels': requiredAccessLevels,
+      };
 }
 
 /// `CustomLevel` is an `AccessLevel` using the Cloud Common Expression Language
@@ -3152,13 +2895,9 @@ class GoogleIdentityAccesscontextmanagerV1CustomLevel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (expr != null) {
-      _json['expr'] = expr.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (expr != null) 'expr': expr.toJson(),
+      };
 }
 
 /// `DevicePolicy` specifies device specific restrictions necessary to acquire a
@@ -3227,29 +2966,19 @@ class GoogleIdentityAccesscontextmanagerV1DevicePolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowedDeviceManagementLevels != null) {
-      _json['allowedDeviceManagementLevels'] = allowedDeviceManagementLevels;
-    }
-    if (allowedEncryptionStatuses != null) {
-      _json['allowedEncryptionStatuses'] = allowedEncryptionStatuses;
-    }
-    if (osConstraints != null) {
-      _json['osConstraints'] =
-          osConstraints.map((value) => value.toJson()).toList();
-    }
-    if (requireAdminApproval != null) {
-      _json['requireAdminApproval'] = requireAdminApproval;
-    }
-    if (requireCorpOwned != null) {
-      _json['requireCorpOwned'] = requireCorpOwned;
-    }
-    if (requireScreenlock != null) {
-      _json['requireScreenlock'] = requireScreenlock;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowedDeviceManagementLevels != null)
+          'allowedDeviceManagementLevels': allowedDeviceManagementLevels,
+        if (allowedEncryptionStatuses != null)
+          'allowedEncryptionStatuses': allowedEncryptionStatuses,
+        if (osConstraints != null)
+          'osConstraints':
+              osConstraints.map((value) => value.toJson()).toList(),
+        if (requireAdminApproval != null)
+          'requireAdminApproval': requireAdminApproval,
+        if (requireCorpOwned != null) 'requireCorpOwned': requireCorpOwned,
+        if (requireScreenlock != null) 'requireScreenlock': requireScreenlock,
+      };
 }
 
 /// Defines the conditions under which an EgressPolicy matches a request.
@@ -3294,16 +3023,10 @@ class GoogleIdentityAccesscontextmanagerV1EgressFrom {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (identities != null) {
-      _json['identities'] = identities;
-    }
-    if (identityType != null) {
-      _json['identityType'] = identityType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (identities != null) 'identities': identities,
+        if (identityType != null) 'identityType': identityType,
+      };
 }
 
 /// Policy for egress from perimeter.
@@ -3342,16 +3065,10 @@ class GoogleIdentityAccesscontextmanagerV1EgressPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (egressFrom != null) {
-      _json['egressFrom'] = egressFrom.toJson();
-    }
-    if (egressTo != null) {
-      _json['egressTo'] = egressTo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (egressFrom != null) 'egressFrom': egressFrom.toJson(),
+        if (egressTo != null) 'egressTo': egressTo.toJson(),
+      };
 }
 
 /// Defines the conditions under which an EgressPolicy matches a request.
@@ -3392,16 +3109,11 @@ class GoogleIdentityAccesscontextmanagerV1EgressTo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    if (resources != null) {
-      _json['resources'] = resources;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources,
+      };
 }
 
 /// Defines the conditions under which an IngressPolicy matches a request.
@@ -3452,19 +3164,12 @@ class GoogleIdentityAccesscontextmanagerV1IngressFrom {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (identities != null) {
-      _json['identities'] = identities;
-    }
-    if (identityType != null) {
-      _json['identityType'] = identityType;
-    }
-    if (sources != null) {
-      _json['sources'] = sources.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (identities != null) 'identities': identities,
+        if (identityType != null) 'identityType': identityType,
+        if (sources != null)
+          'sources': sources.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Policy for ingress into ServicePerimeter.
@@ -3501,16 +3206,10 @@ class GoogleIdentityAccesscontextmanagerV1IngressPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ingressFrom != null) {
-      _json['ingressFrom'] = ingressFrom.toJson();
-    }
-    if (ingressTo != null) {
-      _json['ingressTo'] = ingressTo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ingressFrom != null) 'ingressFrom': ingressFrom.toJson(),
+        if (ingressTo != null) 'ingressTo': ingressTo.toJson(),
+      };
 }
 
 /// The source that IngressPolicy authorizes access from.
@@ -3546,16 +3245,10 @@ class GoogleIdentityAccesscontextmanagerV1IngressSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessLevel != null) {
-      _json['accessLevel'] = accessLevel;
-    }
-    if (resource != null) {
-      _json['resource'] = resource;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessLevel != null) 'accessLevel': accessLevel,
+        if (resource != null) 'resource': resource,
+      };
 }
 
 /// Defines the conditions under which an IngressPolicy matches a request.
@@ -3594,16 +3287,11 @@ class GoogleIdentityAccesscontextmanagerV1IngressTo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    if (resources != null) {
-      _json['resources'] = resources;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources,
+      };
 }
 
 /// An allowed method or permission of a service specified in ApiOperation.
@@ -3630,16 +3318,10 @@ class GoogleIdentityAccesscontextmanagerV1MethodSelector {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (method != null) {
-      _json['method'] = method;
-    }
-    if (permission != null) {
-      _json['permission'] = permission;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (method != null) 'method': method,
+        if (permission != null) 'permission': permission,
+      };
 }
 
 /// A restriction on the OS type and version of devices making requests.
@@ -3685,19 +3367,12 @@ class GoogleIdentityAccesscontextmanagerV1OsConstraint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (minimumVersion != null) {
-      _json['minimumVersion'] = minimumVersion;
-    }
-    if (osType != null) {
-      _json['osType'] = osType;
-    }
-    if (requireVerifiedChromeOs != null) {
-      _json['requireVerifiedChromeOs'] = requireVerifiedChromeOs;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (minimumVersion != null) 'minimumVersion': minimumVersion,
+        if (osType != null) 'osType': osType,
+        if (requireVerifiedChromeOs != null)
+          'requireVerifiedChromeOs': requireVerifiedChromeOs,
+      };
 }
 
 /// `ServicePerimeter` describes a set of Google Cloud resources which can
@@ -3802,31 +3477,16 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (perimeterType != null) {
-      _json['perimeterType'] = perimeterType;
-    }
-    if (spec != null) {
-      _json['spec'] = spec.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (useExplicitDryRunSpec != null) {
-      _json['useExplicitDryRunSpec'] = useExplicitDryRunSpec;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (name != null) 'name': name,
+        if (perimeterType != null) 'perimeterType': perimeterType,
+        if (spec != null) 'spec': spec.toJson(),
+        if (status != null) 'status': status.toJson(),
+        if (title != null) 'title': title,
+        if (useExplicitDryRunSpec != null)
+          'useExplicitDryRunSpec': useExplicitDryRunSpec,
+      };
 }
 
 /// `ServicePerimeterConfig` specifies a set of Google Cloud resources that
@@ -3916,30 +3576,20 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessLevels != null) {
-      _json['accessLevels'] = accessLevels;
-    }
-    if (egressPolicies != null) {
-      _json['egressPolicies'] =
-          egressPolicies.map((value) => value.toJson()).toList();
-    }
-    if (ingressPolicies != null) {
-      _json['ingressPolicies'] =
-          ingressPolicies.map((value) => value.toJson()).toList();
-    }
-    if (resources != null) {
-      _json['resources'] = resources;
-    }
-    if (restrictedServices != null) {
-      _json['restrictedServices'] = restrictedServices;
-    }
-    if (vpcAccessibleServices != null) {
-      _json['vpcAccessibleServices'] = vpcAccessibleServices.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessLevels != null) 'accessLevels': accessLevels,
+        if (egressPolicies != null)
+          'egressPolicies':
+              egressPolicies.map((value) => value.toJson()).toList(),
+        if (ingressPolicies != null)
+          'ingressPolicies':
+              ingressPolicies.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources,
+        if (restrictedServices != null)
+          'restrictedServices': restrictedServices,
+        if (vpcAccessibleServices != null)
+          'vpcAccessibleServices': vpcAccessibleServices.toJson(),
+      };
 }
 
 /// Specifies how APIs are allowed to communicate within the Service Perimeter.
@@ -3970,16 +3620,10 @@ class GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowedServices != null) {
-      _json['allowedServices'] = allowedServices;
-    }
-    if (enableRestriction != null) {
-      _json['enableRestriction'] = enableRestriction;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowedServices != null) 'allowedServices': allowedServices,
+        if (enableRestriction != null) 'enableRestriction': enableRestriction,
+      };
 }
 
 /// An analysis message to group the query and results.
@@ -4024,24 +3668,16 @@ class IamPolicyAnalysis {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (analysisQuery != null) {
-      _json['analysisQuery'] = analysisQuery.toJson();
-    }
-    if (analysisResults != null) {
-      _json['analysisResults'] =
-          analysisResults.map((value) => value.toJson()).toList();
-    }
-    if (fullyExplored != null) {
-      _json['fullyExplored'] = fullyExplored;
-    }
-    if (nonCriticalErrors != null) {
-      _json['nonCriticalErrors'] =
-          nonCriticalErrors.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (analysisQuery != null) 'analysisQuery': analysisQuery.toJson(),
+        if (analysisResults != null)
+          'analysisResults':
+              analysisResults.map((value) => value.toJson()).toList(),
+        if (fullyExplored != null) 'fullyExplored': fullyExplored,
+        if (nonCriticalErrors != null)
+          'nonCriticalErrors':
+              nonCriticalErrors.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Output configuration for export IAM policy analysis destination.
@@ -4065,16 +3701,11 @@ class IamPolicyAnalysisOutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bigqueryDestination != null) {
-      _json['bigqueryDestination'] = bigqueryDestination.toJson();
-    }
-    if (gcsDestination != null) {
-      _json['gcsDestination'] = gcsDestination.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bigqueryDestination != null)
+          'bigqueryDestination': bigqueryDestination.toJson(),
+        if (gcsDestination != null) 'gcsDestination': gcsDestination.toJson(),
+      };
 }
 
 /// ## IAM policy analysis query message.
@@ -4139,25 +3770,15 @@ class IamPolicyAnalysisQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessSelector != null) {
-      _json['accessSelector'] = accessSelector.toJson();
-    }
-    if (identitySelector != null) {
-      _json['identitySelector'] = identitySelector.toJson();
-    }
-    if (options != null) {
-      _json['options'] = options.toJson();
-    }
-    if (resourceSelector != null) {
-      _json['resourceSelector'] = resourceSelector.toJson();
-    }
-    if (scope != null) {
-      _json['scope'] = scope;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessSelector != null) 'accessSelector': accessSelector.toJson(),
+        if (identitySelector != null)
+          'identitySelector': identitySelector.toJson(),
+        if (options != null) 'options': options.toJson(),
+        if (resourceSelector != null)
+          'resourceSelector': resourceSelector.toJson(),
+        if (scope != null) 'scope': scope,
+      };
 }
 
 /// IAM Policy analysis result, consisting of one IAM policy binding and derived
@@ -4210,26 +3831,16 @@ class IamPolicyAnalysisResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessControlLists != null) {
-      _json['accessControlLists'] =
-          accessControlLists.map((value) => value.toJson()).toList();
-    }
-    if (attachedResourceFullName != null) {
-      _json['attachedResourceFullName'] = attachedResourceFullName;
-    }
-    if (fullyExplored != null) {
-      _json['fullyExplored'] = fullyExplored;
-    }
-    if (iamBinding != null) {
-      _json['iamBinding'] = iamBinding.toJson();
-    }
-    if (identityList != null) {
-      _json['identityList'] = identityList.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessControlLists != null)
+          'accessControlLists':
+              accessControlLists.map((value) => value.toJson()).toList(),
+        if (attachedResourceFullName != null)
+          'attachedResourceFullName': attachedResourceFullName,
+        if (fullyExplored != null) 'fullyExplored': fullyExplored,
+        if (iamBinding != null) 'iamBinding': iamBinding.toJson(),
+        if (identityList != null) 'identityList': identityList.toJson(),
+      };
 }
 
 /// Represents the detailed state of an entity under analysis, such as a
@@ -4337,16 +3948,10 @@ class IamPolicyAnalysisState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cause != null) {
-      _json['cause'] = cause;
-    }
-    if (code != null) {
-      _json['code'] = code;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cause != null) 'cause': cause,
+        if (code != null) 'code': code,
+      };
 }
 
 /// A result of IAM Policy search, containing information of an IAM policy.
@@ -4409,22 +4014,12 @@ class IamPolicySearchResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (explanation != null) {
-      _json['explanation'] = explanation.toJson();
-    }
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    if (project != null) {
-      _json['project'] = project;
-    }
-    if (resource != null) {
-      _json['resource'] = resource;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (explanation != null) 'explanation': explanation.toJson(),
+        if (policy != null) 'policy': policy.toJson(),
+        if (project != null) 'project': project,
+        if (resource != null) 'resource': resource,
+      };
 }
 
 /// Specifies an identity for which to determine resource access, based on roles
@@ -4451,13 +4046,9 @@ class IdentitySelector {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (identity != null) {
-      _json['identity'] = identity;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (identity != null) 'identity': identity,
+      };
 }
 
 /// The inventory details of a VM.
@@ -4489,17 +4080,11 @@ class Inventory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] =
-          items.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (osInfo != null) {
-      _json['osInfo'] = osInfo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (osInfo != null) 'osInfo': osInfo.toJson(),
+      };
 }
 
 /// A single piece of inventory on a VM.
@@ -4563,31 +4148,17 @@ class Item {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (availablePackage != null) {
-      _json['availablePackage'] = availablePackage.toJson();
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (installedPackage != null) {
-      _json['installedPackage'] = installedPackage.toJson();
-    }
-    if (originType != null) {
-      _json['originType'] = originType;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (availablePackage != null)
+          'availablePackage': availablePackage.toJson(),
+        if (createTime != null) 'createTime': createTime,
+        if (id != null) 'id': id,
+        if (installedPackage != null)
+          'installedPackage': installedPackage.toJson(),
+        if (originType != null) 'originType': originType,
+        if (type != null) 'type': type,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 class ListFeedsResponse {
@@ -4605,13 +4176,10 @@ class ListFeedsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (feeds != null) {
-      _json['feeds'] = feeds.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (feeds != null)
+          'feeds': feeds.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -4690,25 +4258,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// Contains query options.
@@ -4817,29 +4373,17 @@ class Options {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (analyzeServiceAccountImpersonation != null) {
-      _json['analyzeServiceAccountImpersonation'] =
-          analyzeServiceAccountImpersonation;
-    }
-    if (expandGroups != null) {
-      _json['expandGroups'] = expandGroups;
-    }
-    if (expandResources != null) {
-      _json['expandResources'] = expandResources;
-    }
-    if (expandRoles != null) {
-      _json['expandRoles'] = expandRoles;
-    }
-    if (outputGroupEdges != null) {
-      _json['outputGroupEdges'] = outputGroupEdges;
-    }
-    if (outputResourceEdges != null) {
-      _json['outputResourceEdges'] = outputResourceEdges;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (analyzeServiceAccountImpersonation != null)
+          'analyzeServiceAccountImpersonation':
+              analyzeServiceAccountImpersonation,
+        if (expandGroups != null) 'expandGroups': expandGroups,
+        if (expandResources != null) 'expandResources': expandResources,
+        if (expandRoles != null) 'expandRoles': expandRoles,
+        if (outputGroupEdges != null) 'outputGroupEdges': outputGroupEdges,
+        if (outputResourceEdges != null)
+          'outputResourceEdges': outputResourceEdges,
+      };
 }
 
 /// Operating system information for the VM.
@@ -4902,34 +4446,17 @@ class OsInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (architecture != null) {
-      _json['architecture'] = architecture;
-    }
-    if (hostname != null) {
-      _json['hostname'] = hostname;
-    }
-    if (kernelRelease != null) {
-      _json['kernelRelease'] = kernelRelease;
-    }
-    if (kernelVersion != null) {
-      _json['kernelVersion'] = kernelVersion;
-    }
-    if (longName != null) {
-      _json['longName'] = longName;
-    }
-    if (osconfigAgentVersion != null) {
-      _json['osconfigAgentVersion'] = osconfigAgentVersion;
-    }
-    if (shortName != null) {
-      _json['shortName'] = shortName;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (architecture != null) 'architecture': architecture,
+        if (hostname != null) 'hostname': hostname,
+        if (kernelRelease != null) 'kernelRelease': kernelRelease,
+        if (kernelVersion != null) 'kernelVersion': kernelVersion,
+        if (longName != null) 'longName': longName,
+        if (osconfigAgentVersion != null)
+          'osconfigAgentVersion': osconfigAgentVersion,
+        if (shortName != null) 'shortName': shortName,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Output configuration for export assets destination.
@@ -4955,16 +4482,11 @@ class OutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bigqueryDestination != null) {
-      _json['bigqueryDestination'] = bigqueryDestination.toJson();
-    }
-    if (gcsDestination != null) {
-      _json['gcsDestination'] = gcsDestination.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bigqueryDestination != null)
+          'bigqueryDestination': bigqueryDestination.toJson(),
+        if (gcsDestination != null) 'gcsDestination': gcsDestination.toJson(),
+      };
 }
 
 /// Specifications of BigQuery partitioned table as export destination.
@@ -4992,13 +4514,9 @@ class PartitionSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (partitionKey != null) {
-      _json['partitionKey'] = partitionKey;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (partitionKey != null) 'partitionKey': partitionKey,
+      };
 }
 
 /// IAM permissions
@@ -5018,13 +4536,9 @@ class Permissions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -5131,23 +4645,14 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditConfigs != null) {
-      _json['auditConfigs'] =
-          auditConfigs.map((value) => value.toJson()).toList();
-    }
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditConfigs != null)
+          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// A Pub/Sub destination.
@@ -5165,13 +4670,9 @@ class PubsubDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (topic != null) {
-      _json['topic'] = topic;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (topic != null) 'topic': topic,
+      };
 }
 
 /// A representation of a Google Cloud resource.
@@ -5255,31 +4756,16 @@ class Resource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (data != null) {
-      _json['data'] = data;
-    }
-    if (discoveryDocumentUri != null) {
-      _json['discoveryDocumentUri'] = discoveryDocumentUri;
-    }
-    if (discoveryName != null) {
-      _json['discoveryName'] = discoveryName;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    if (resourceUrl != null) {
-      _json['resourceUrl'] = resourceUrl;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (data != null) 'data': data,
+        if (discoveryDocumentUri != null)
+          'discoveryDocumentUri': discoveryDocumentUri,
+        if (discoveryName != null) 'discoveryName': discoveryName,
+        if (location != null) 'location': location,
+        if (parent != null) 'parent': parent,
+        if (resourceUrl != null) 'resourceUrl': resourceUrl,
+        if (version != null) 'version': version,
+      };
 }
 
 /// A result of Resource Search, containing information of a cloud resource.
@@ -5505,55 +4991,24 @@ class ResourceSearchResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (additionalAttributes != null) {
-      _json['additionalAttributes'] = additionalAttributes;
-    }
-    if (assetType != null) {
-      _json['assetType'] = assetType;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (folders != null) {
-      _json['folders'] = folders;
-    }
-    if (kmsKey != null) {
-      _json['kmsKey'] = kmsKey;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (networkTags != null) {
-      _json['networkTags'] = networkTags;
-    }
-    if (organization != null) {
-      _json['organization'] = organization;
-    }
-    if (project != null) {
-      _json['project'] = project;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (additionalAttributes != null)
+          'additionalAttributes': additionalAttributes,
+        if (assetType != null) 'assetType': assetType,
+        if (createTime != null) 'createTime': createTime,
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (folders != null) 'folders': folders,
+        if (kmsKey != null) 'kmsKey': kmsKey,
+        if (labels != null) 'labels': labels,
+        if (location != null) 'location': location,
+        if (name != null) 'name': name,
+        if (networkTags != null) 'networkTags': networkTags,
+        if (organization != null) 'organization': organization,
+        if (project != null) 'project': project,
+        if (state != null) 'state': state,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Specifies the resource to analyze for access policies, which may be set
@@ -5576,13 +5031,9 @@ class ResourceSelector {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fullResourceName != null) {
-      _json['fullResourceName'] = fullResourceName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fullResourceName != null) 'fullResourceName': fullResourceName,
+      };
 }
 
 /// Search all IAM policies response.
@@ -5612,16 +5063,11 @@ class SearchAllIamPoliciesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (results != null) {
-      _json['results'] = results.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Search all resources response.
@@ -5652,16 +5098,11 @@ class SearchAllResourcesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (results != null) {
-      _json['results'] = results.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Software package information of the operating system.
@@ -5749,34 +5190,16 @@ class SoftwarePackage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aptPackage != null) {
-      _json['aptPackage'] = aptPackage.toJson();
-    }
-    if (cosPackage != null) {
-      _json['cosPackage'] = cosPackage.toJson();
-    }
-    if (googetPackage != null) {
-      _json['googetPackage'] = googetPackage.toJson();
-    }
-    if (qfePackage != null) {
-      _json['qfePackage'] = qfePackage.toJson();
-    }
-    if (wuaPackage != null) {
-      _json['wuaPackage'] = wuaPackage.toJson();
-    }
-    if (yumPackage != null) {
-      _json['yumPackage'] = yumPackage.toJson();
-    }
-    if (zypperPackage != null) {
-      _json['zypperPackage'] = zypperPackage.toJson();
-    }
-    if (zypperPatch != null) {
-      _json['zypperPatch'] = zypperPatch.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aptPackage != null) 'aptPackage': aptPackage.toJson(),
+        if (cosPackage != null) 'cosPackage': cosPackage.toJson(),
+        if (googetPackage != null) 'googetPackage': googetPackage.toJson(),
+        if (qfePackage != null) 'qfePackage': qfePackage.toJson(),
+        if (wuaPackage != null) 'wuaPackage': wuaPackage.toJson(),
+        if (yumPackage != null) 'yumPackage': yumPackage.toJson(),
+        if (zypperPackage != null) 'zypperPackage': zypperPackage.toJson(),
+        if (zypperPatch != null) 'zypperPatch': zypperPatch.toJson(),
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -5826,19 +5249,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// An asset in Google Cloud and its temporal metadata, including the time
@@ -5892,25 +5307,13 @@ class TemporalAsset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (asset != null) {
-      _json['asset'] = asset.toJson();
-    }
-    if (deleted != null) {
-      _json['deleted'] = deleted;
-    }
-    if (priorAsset != null) {
-      _json['priorAsset'] = priorAsset.toJson();
-    }
-    if (priorAssetState != null) {
-      _json['priorAssetState'] = priorAssetState;
-    }
-    if (window != null) {
-      _json['window'] = window.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (asset != null) 'asset': asset.toJson(),
+        if (deleted != null) 'deleted': deleted,
+        if (priorAsset != null) 'priorAsset': priorAsset.toJson(),
+        if (priorAssetState != null) 'priorAssetState': priorAssetState,
+        if (window != null) 'window': window.toJson(),
+      };
 }
 
 /// A time window specified by its `start_time` and `end_time`.
@@ -5934,16 +5337,10 @@ class TimeWindow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// Update asset feed request.
@@ -5978,16 +5375,10 @@ class UpdateFeedRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (feed != null) {
-      _json['feed'] = feed.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (feed != null) 'feed': feed.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// Information related to the a standard versioned package.
@@ -6018,19 +5409,11 @@ class VersionedPackage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (architecture != null) {
-      _json['architecture'] = architecture;
-    }
-    if (packageName != null) {
-      _json['packageName'] = packageName;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (architecture != null) 'architecture': architecture,
+        if (packageName != null) 'packageName': packageName,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Information related to a Quick Fix Engineering package.
@@ -6070,22 +5453,12 @@ class WindowsQuickFixEngineeringPackage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (caption != null) {
-      _json['caption'] = caption;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (hotFixId != null) {
-      _json['hotFixId'] = hotFixId;
-    }
-    if (installTime != null) {
-      _json['installTime'] = installTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (caption != null) 'caption': caption,
+        if (description != null) 'description': description,
+        if (hotFixId != null) 'hotFixId': hotFixId,
+        if (installTime != null) 'installTime': installTime,
+      };
 }
 
 /// Categories specified by the Windows Update.
@@ -6107,16 +5480,10 @@ class WindowsUpdateCategory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Details related to a Windows Update package.
@@ -6197,37 +5564,19 @@ class WindowsUpdatePackage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (categories != null) {
-      _json['categories'] = categories.map((value) => value.toJson()).toList();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (kbArticleIds != null) {
-      _json['kbArticleIds'] = kbArticleIds;
-    }
-    if (lastDeploymentChangeTime != null) {
-      _json['lastDeploymentChangeTime'] = lastDeploymentChangeTime;
-    }
-    if (moreInfoUrls != null) {
-      _json['moreInfoUrls'] = moreInfoUrls;
-    }
-    if (revisionNumber != null) {
-      _json['revisionNumber'] = revisionNumber;
-    }
-    if (supportUrl != null) {
-      _json['supportUrl'] = supportUrl;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (updateId != null) {
-      _json['updateId'] = updateId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (categories != null)
+          'categories': categories.map((value) => value.toJson()).toList(),
+        if (description != null) 'description': description,
+        if (kbArticleIds != null) 'kbArticleIds': kbArticleIds,
+        if (lastDeploymentChangeTime != null)
+          'lastDeploymentChangeTime': lastDeploymentChangeTime,
+        if (moreInfoUrls != null) 'moreInfoUrls': moreInfoUrls,
+        if (revisionNumber != null) 'revisionNumber': revisionNumber,
+        if (supportUrl != null) 'supportUrl': supportUrl,
+        if (title != null) 'title': title,
+        if (updateId != null) 'updateId': updateId,
+      };
 }
 
 /// Details related to a Zypper Patch.
@@ -6261,20 +5610,10 @@ class ZypperPatch {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (category != null) {
-      _json['category'] = category;
-    }
-    if (patchName != null) {
-      _json['patchName'] = patchName;
-    }
-    if (severity != null) {
-      _json['severity'] = severity;
-    }
-    if (summary != null) {
-      _json['summary'] = summary;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (category != null) 'category': category,
+        if (patchName != null) 'patchName': patchName,
+        if (severity != null) 'severity': severity,
+        if (summary != null) 'summary': summary,
+      };
 }

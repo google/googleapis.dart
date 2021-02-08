@@ -623,13 +623,9 @@ class BatchDeletePhotosRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (photoIds != null) {
-      _json['photoIds'] = photoIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (photoIds != null) 'photoIds': photoIds,
+      };
 }
 
 /// Response to batch delete of one or more Photos.
@@ -649,13 +645,10 @@ class BatchDeletePhotosResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (status != null) {
-      _json['status'] = status.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (status != null)
+          'status': status.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response to batch get of Photos.
@@ -675,13 +668,10 @@ class BatchGetPhotosResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (results != null) {
-      _json['results'] = results.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request to update the metadata of photos.
@@ -704,14 +694,11 @@ class BatchUpdatePhotosRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (updatePhotoRequests != null) {
-      _json['updatePhotoRequests'] =
-          updatePhotoRequests.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (updatePhotoRequests != null)
+          'updatePhotoRequests':
+              updatePhotoRequests.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response to batch update of metadata of one or more Photos.
@@ -731,13 +718,10 @@ class BatchUpdatePhotosResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (results != null) {
-      _json['results'] = results.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A connection is the link from a source photo to a destination photo.
@@ -757,13 +741,9 @@ class Connection {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (target != null) {
-      _json['target'] = target.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (target != null) 'target': target.toJson(),
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -780,10 +760,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// An object that represents a latitude/longitude pair.
@@ -813,16 +790,10 @@ class LatLng {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (latitude != null) {
-      _json['latitude'] = latitude;
-    }
-    if (longitude != null) {
-      _json['longitude'] = longitude;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (latitude != null) 'latitude': latitude,
+        if (longitude != null) 'longitude': longitude,
+      };
 }
 
 /// Level information containing level number and its corresponding name.
@@ -853,16 +824,10 @@ class Level {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (number != null) {
-      _json['number'] = number;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (number != null) 'number': number,
+      };
 }
 
 /// Response to list all photos that belong to a user.
@@ -890,16 +855,11 @@ class ListPhotosResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (photos != null) {
-      _json['photos'] = photos.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (photos != null)
+          'photos': photos.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -978,25 +938,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// Photo is used to store 360 photos along with photo metadata.
@@ -1131,47 +1079,23 @@ class Photo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (captureTime != null) {
-      _json['captureTime'] = captureTime;
-    }
-    if (connections != null) {
-      _json['connections'] =
-          connections.map((value) => value.toJson()).toList();
-    }
-    if (downloadUrl != null) {
-      _json['downloadUrl'] = downloadUrl;
-    }
-    if (mapsPublishStatus != null) {
-      _json['mapsPublishStatus'] = mapsPublishStatus;
-    }
-    if (photoId != null) {
-      _json['photoId'] = photoId.toJson();
-    }
-    if (places != null) {
-      _json['places'] = places.map((value) => value.toJson()).toList();
-    }
-    if (pose != null) {
-      _json['pose'] = pose.toJson();
-    }
-    if (shareLink != null) {
-      _json['shareLink'] = shareLink;
-    }
-    if (thumbnailUrl != null) {
-      _json['thumbnailUrl'] = thumbnailUrl;
-    }
-    if (transferStatus != null) {
-      _json['transferStatus'] = transferStatus;
-    }
-    if (uploadReference != null) {
-      _json['uploadReference'] = uploadReference.toJson();
-    }
-    if (viewCount != null) {
-      _json['viewCount'] = viewCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (captureTime != null) 'captureTime': captureTime,
+        if (connections != null)
+          'connections': connections.map((value) => value.toJson()).toList(),
+        if (downloadUrl != null) 'downloadUrl': downloadUrl,
+        if (mapsPublishStatus != null) 'mapsPublishStatus': mapsPublishStatus,
+        if (photoId != null) 'photoId': photoId.toJson(),
+        if (places != null)
+          'places': places.map((value) => value.toJson()).toList(),
+        if (pose != null) 'pose': pose.toJson(),
+        if (shareLink != null) 'shareLink': shareLink,
+        if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl,
+        if (transferStatus != null) 'transferStatus': transferStatus,
+        if (uploadReference != null)
+          'uploadReference': uploadReference.toJson(),
+        if (viewCount != null) 'viewCount': viewCount,
+      };
 }
 
 /// Identifier for a Photo.
@@ -1189,13 +1113,9 @@ class PhotoId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+      };
 }
 
 /// Response payload for a single Photo in batch operations including
@@ -1221,16 +1141,10 @@ class PhotoResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (photo != null) {
-      _json['photo'] = photo.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (photo != null) 'photo': photo.toJson(),
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 /// Place metadata for an entity.
@@ -1264,19 +1178,11 @@ class Place {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (placeId != null) {
-      _json['placeId'] = placeId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode,
+        if (name != null) 'name': name,
+        if (placeId != null) 'placeId': placeId,
+      };
 }
 
 /// Raw pose measurement for an entity.
@@ -1354,31 +1260,15 @@ class Pose {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accuracyMeters != null) {
-      _json['accuracyMeters'] = accuracyMeters;
-    }
-    if (altitude != null) {
-      _json['altitude'] = altitude;
-    }
-    if (heading != null) {
-      _json['heading'] = heading;
-    }
-    if (latLngPair != null) {
-      _json['latLngPair'] = latLngPair.toJson();
-    }
-    if (level != null) {
-      _json['level'] = level.toJson();
-    }
-    if (pitch != null) {
-      _json['pitch'] = pitch;
-    }
-    if (roll != null) {
-      _json['roll'] = roll;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accuracyMeters != null) 'accuracyMeters': accuracyMeters,
+        if (altitude != null) 'altitude': altitude,
+        if (heading != null) 'heading': heading,
+        if (latLngPair != null) 'latLngPair': latLngPair.toJson(),
+        if (level != null) 'level': level.toJson(),
+        if (pitch != null) 'pitch': pitch,
+        if (roll != null) 'roll': roll,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -1428,19 +1318,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Request to update the metadata of a Photo.
@@ -1480,16 +1362,10 @@ class UpdatePhotoRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (photo != null) {
-      _json['photo'] = photo.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (photo != null) 'photo': photo.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// Upload reference for media files.
@@ -1508,11 +1384,7 @@ class UploadRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uploadUrl != null) {
-      _json['uploadUrl'] = uploadUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uploadUrl != null) 'uploadUrl': uploadUrl,
+      };
 }

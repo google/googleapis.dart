@@ -656,16 +656,10 @@ class AliasContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+      };
 }
 
 /// ------------------------------------------------------------------------------
@@ -871,67 +865,31 @@ class Breakpoint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (action != null) {
-      _json['action'] = action;
-    }
-    if (canaryExpireTime != null) {
-      _json['canaryExpireTime'] = canaryExpireTime;
-    }
-    if (condition != null) {
-      _json['condition'] = condition;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (evaluatedExpressions != null) {
-      _json['evaluatedExpressions'] =
-          evaluatedExpressions.map((value) => value.toJson()).toList();
-    }
-    if (expressions != null) {
-      _json['expressions'] = expressions;
-    }
-    if (finalTime != null) {
-      _json['finalTime'] = finalTime;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (isFinalState != null) {
-      _json['isFinalState'] = isFinalState;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (location != null) {
-      _json['location'] = location.toJson();
-    }
-    if (logLevel != null) {
-      _json['logLevel'] = logLevel;
-    }
-    if (logMessageFormat != null) {
-      _json['logMessageFormat'] = logMessageFormat;
-    }
-    if (stackFrames != null) {
-      _json['stackFrames'] =
-          stackFrames.map((value) => value.toJson()).toList();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    if (userEmail != null) {
-      _json['userEmail'] = userEmail;
-    }
-    if (variableTable != null) {
-      _json['variableTable'] =
-          variableTable.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (action != null) 'action': action,
+        if (canaryExpireTime != null) 'canaryExpireTime': canaryExpireTime,
+        if (condition != null) 'condition': condition,
+        if (createTime != null) 'createTime': createTime,
+        if (evaluatedExpressions != null)
+          'evaluatedExpressions':
+              evaluatedExpressions.map((value) => value.toJson()).toList(),
+        if (expressions != null) 'expressions': expressions,
+        if (finalTime != null) 'finalTime': finalTime,
+        if (id != null) 'id': id,
+        if (isFinalState != null) 'isFinalState': isFinalState,
+        if (labels != null) 'labels': labels,
+        if (location != null) 'location': location.toJson(),
+        if (logLevel != null) 'logLevel': logLevel,
+        if (logMessageFormat != null) 'logMessageFormat': logMessageFormat,
+        if (stackFrames != null)
+          'stackFrames': stackFrames.map((value) => value.toJson()).toList(),
+        if (state != null) 'state': state,
+        if (status != null) 'status': status.toJson(),
+        if (userEmail != null) 'userEmail': userEmail,
+        if (variableTable != null)
+          'variableTable':
+              variableTable.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A CloudRepoSourceContext denotes a particular revision in a cloud repo (a
@@ -968,22 +926,12 @@ class CloudRepoSourceContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aliasContext != null) {
-      _json['aliasContext'] = aliasContext.toJson();
-    }
-    if (aliasName != null) {
-      _json['aliasName'] = aliasName;
-    }
-    if (repoId != null) {
-      _json['repoId'] = repoId.toJson();
-    }
-    if (revisionId != null) {
-      _json['revisionId'] = revisionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aliasContext != null) 'aliasContext': aliasContext.toJson(),
+        if (aliasName != null) 'aliasName': aliasName,
+        if (repoId != null) 'repoId': repoId.toJson(),
+        if (revisionId != null) 'revisionId': revisionId,
+      };
 }
 
 /// A CloudWorkspaceId is a unique identifier for a cloud workspace.
@@ -1012,16 +960,10 @@ class CloudWorkspaceId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (repoId != null) {
-      _json['repoId'] = repoId.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (repoId != null) 'repoId': repoId.toJson(),
+      };
 }
 
 /// A CloudWorkspaceSourceContext denotes a workspace at a particular snapshot.
@@ -1046,16 +988,10 @@ class CloudWorkspaceSourceContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (snapshotId != null) {
-      _json['snapshotId'] = snapshotId;
-    }
-    if (workspaceId != null) {
-      _json['workspaceId'] = workspaceId.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (snapshotId != null) 'snapshotId': snapshotId,
+        if (workspaceId != null) 'workspaceId': workspaceId.toJson(),
+      };
 }
 
 /// Represents the debugged application.
@@ -1192,48 +1128,24 @@ class Debuggee {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (agentVersion != null) {
-      _json['agentVersion'] = agentVersion;
-    }
-    if (canaryMode != null) {
-      _json['canaryMode'] = canaryMode;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (extSourceContexts != null) {
-      _json['extSourceContexts'] =
-          extSourceContexts.map((value) => value.toJson()).toList();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (isDisabled != null) {
-      _json['isDisabled'] = isDisabled;
-    }
-    if (isInactive != null) {
-      _json['isInactive'] = isInactive;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (project != null) {
-      _json['project'] = project;
-    }
-    if (sourceContexts != null) {
-      _json['sourceContexts'] =
-          sourceContexts.map((value) => value.toJson()).toList();
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    if (uniquifier != null) {
-      _json['uniquifier'] = uniquifier;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (agentVersion != null) 'agentVersion': agentVersion,
+        if (canaryMode != null) 'canaryMode': canaryMode,
+        if (description != null) 'description': description,
+        if (extSourceContexts != null)
+          'extSourceContexts':
+              extSourceContexts.map((value) => value.toJson()).toList(),
+        if (id != null) 'id': id,
+        if (isDisabled != null) 'isDisabled': isDisabled,
+        if (isInactive != null) 'isInactive': isInactive,
+        if (labels != null) 'labels': labels,
+        if (project != null) 'project': project,
+        if (sourceContexts != null)
+          'sourceContexts':
+              sourceContexts.map((value) => value.toJson()).toList(),
+        if (status != null) 'status': status.toJson(),
+        if (uniquifier != null) 'uniquifier': uniquifier,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1250,10 +1162,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// An ExtendedSourceContext is a SourceContext combined with additional details
@@ -1283,16 +1192,10 @@ class ExtendedSourceContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (context != null) {
-      _json['context'] = context.toJson();
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (context != null) 'context': context.toJson(),
+        if (labels != null) 'labels': labels,
+      };
 }
 
 /// Represents a message with parameters.
@@ -1321,16 +1224,10 @@ class FormatMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (format != null) {
-      _json['format'] = format;
-    }
-    if (parameters != null) {
-      _json['parameters'] = parameters;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (format != null) 'format': format,
+        if (parameters != null) 'parameters': parameters,
+      };
 }
 
 /// A SourceContext referring to a Gerrit project.
@@ -1374,25 +1271,13 @@ class GerritSourceContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aliasContext != null) {
-      _json['aliasContext'] = aliasContext.toJson();
-    }
-    if (aliasName != null) {
-      _json['aliasName'] = aliasName;
-    }
-    if (gerritProject != null) {
-      _json['gerritProject'] = gerritProject;
-    }
-    if (hostUri != null) {
-      _json['hostUri'] = hostUri;
-    }
-    if (revisionId != null) {
-      _json['revisionId'] = revisionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aliasContext != null) 'aliasContext': aliasContext.toJson(),
+        if (aliasName != null) 'aliasName': aliasName,
+        if (gerritProject != null) 'gerritProject': gerritProject,
+        if (hostUri != null) 'hostUri': hostUri,
+        if (revisionId != null) 'revisionId': revisionId,
+      };
 }
 
 /// Response for getting breakpoint information.
@@ -1411,13 +1296,9 @@ class GetBreakpointResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (breakpoint != null) {
-      _json['breakpoint'] = breakpoint.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (breakpoint != null) 'breakpoint': breakpoint.toJson(),
+      };
 }
 
 /// A GitSourceContext denotes a particular revision in a third party Git
@@ -1442,16 +1323,10 @@ class GitSourceContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (revisionId != null) {
-      _json['revisionId'] = revisionId;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (revisionId != null) 'revisionId': revisionId,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Response for listing active breakpoints.
@@ -1489,20 +1364,12 @@ class ListActiveBreakpointsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (breakpoints != null) {
-      _json['breakpoints'] =
-          breakpoints.map((value) => value.toJson()).toList();
-    }
-    if (nextWaitToken != null) {
-      _json['nextWaitToken'] = nextWaitToken;
-    }
-    if (waitExpired != null) {
-      _json['waitExpired'] = waitExpired;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (breakpoints != null)
+          'breakpoints': breakpoints.map((value) => value.toJson()).toList(),
+        if (nextWaitToken != null) 'nextWaitToken': nextWaitToken,
+        if (waitExpired != null) 'waitExpired': waitExpired,
+      };
 }
 
 /// Response for listing breakpoints.
@@ -1533,17 +1400,11 @@ class ListBreakpointsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (breakpoints != null) {
-      _json['breakpoints'] =
-          breakpoints.map((value) => value.toJson()).toList();
-    }
-    if (nextWaitToken != null) {
-      _json['nextWaitToken'] = nextWaitToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (breakpoints != null)
+          'breakpoints': breakpoints.map((value) => value.toJson()).toList(),
+        if (nextWaitToken != null) 'nextWaitToken': nextWaitToken,
+      };
 }
 
 /// Response for listing debuggees.
@@ -1566,13 +1427,10 @@ class ListDebuggeesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (debuggees != null) {
-      _json['debuggees'] = debuggees.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (debuggees != null)
+          'debuggees': debuggees.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Selects a repo using a Google Cloud Platform project ID (e.g.
@@ -1597,16 +1455,10 @@ class ProjectRepoId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (repoName != null) {
-      _json['repoName'] = repoName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (projectId != null) 'projectId': projectId,
+        if (repoName != null) 'repoName': repoName,
+      };
 }
 
 /// Request to register a debuggee.
@@ -1628,13 +1480,9 @@ class RegisterDebuggeeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (debuggee != null) {
-      _json['debuggee'] = debuggee.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (debuggee != null) 'debuggee': debuggee.toJson(),
+      };
 }
 
 /// Response for registering a debuggee.
@@ -1664,16 +1512,10 @@ class RegisterDebuggeeResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (agentId != null) {
-      _json['agentId'] = agentId;
-    }
-    if (debuggee != null) {
-      _json['debuggee'] = debuggee.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (agentId != null) 'agentId': agentId,
+        if (debuggee != null) 'debuggee': debuggee.toJson(),
+      };
 }
 
 /// A unique identifier for a cloud repo.
@@ -1696,16 +1538,10 @@ class RepoId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (projectRepoId != null) {
-      _json['projectRepoId'] = projectRepoId.toJson();
-    }
-    if (uid != null) {
-      _json['uid'] = uid;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (projectRepoId != null) 'projectRepoId': projectRepoId.toJson(),
+        if (uid != null) 'uid': uid,
+      };
 }
 
 /// Response for setting a breakpoint.
@@ -1724,13 +1560,9 @@ class SetBreakpointResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (breakpoint != null) {
-      _json['breakpoint'] = breakpoint.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (breakpoint != null) 'breakpoint': breakpoint.toJson(),
+      };
 }
 
 /// A SourceContext is a reference to a tree of files.
@@ -1771,22 +1603,12 @@ class SourceContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cloudRepo != null) {
-      _json['cloudRepo'] = cloudRepo.toJson();
-    }
-    if (cloudWorkspace != null) {
-      _json['cloudWorkspace'] = cloudWorkspace.toJson();
-    }
-    if (gerrit != null) {
-      _json['gerrit'] = gerrit.toJson();
-    }
-    if (git != null) {
-      _json['git'] = git.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cloudRepo != null) 'cloudRepo': cloudRepo.toJson(),
+        if (cloudWorkspace != null) 'cloudWorkspace': cloudWorkspace.toJson(),
+        if (gerrit != null) 'gerrit': gerrit.toJson(),
+        if (git != null) 'git': git.toJson(),
+      };
 }
 
 /// Represents a location in the source code.
@@ -1819,19 +1641,11 @@ class SourceLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (column != null) {
-      _json['column'] = column;
-    }
-    if (line != null) {
-      _json['line'] = line;
-    }
-    if (path != null) {
-      _json['path'] = path;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (column != null) 'column': column,
+        if (line != null) 'line': line,
+        if (path != null) 'path': path,
+      };
 }
 
 /// Represents a stack frame context.
@@ -1876,22 +1690,14 @@ class StackFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (arguments != null) {
-      _json['arguments'] = arguments.map((value) => value.toJson()).toList();
-    }
-    if (function != null) {
-      _json['function'] = function;
-    }
-    if (locals != null) {
-      _json['locals'] = locals.map((value) => value.toJson()).toList();
-    }
-    if (location != null) {
-      _json['location'] = location.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (arguments != null)
+          'arguments': arguments.map((value) => value.toJson()).toList(),
+        if (function != null) 'function': function,
+        if (locals != null)
+          'locals': locals.map((value) => value.toJson()).toList(),
+        if (location != null) 'location': location.toJson(),
+      };
 }
 
 /// Represents a contextual status message.
@@ -1940,19 +1746,11 @@ class StatusMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description.toJson();
-    }
-    if (isError != null) {
-      _json['isError'] = isError;
-    }
-    if (refersTo != null) {
-      _json['refersTo'] = refersTo;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description.toJson(),
+        if (isError != null) 'isError': isError,
+        if (refersTo != null) 'refersTo': refersTo,
+      };
 }
 
 /// Request to update an active breakpoint.
@@ -1974,13 +1772,9 @@ class UpdateActiveBreakpointRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (breakpoint != null) {
-      _json['breakpoint'] = breakpoint.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (breakpoint != null) 'breakpoint': breakpoint.toJson(),
+      };
 }
 
 /// Response for updating an active breakpoint.
@@ -1993,10 +1787,7 @@ class UpdateActiveBreakpointResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Represents a variable or an argument possibly of a compound object type.
@@ -2098,26 +1889,13 @@ class Variable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (members != null) {
-      _json['members'] = members.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    if (varTableIndex != null) {
-      _json['varTableIndex'] = varTableIndex;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (members != null)
+          'members': members.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (status != null) 'status': status.toJson(),
+        if (type != null) 'type': type,
+        if (value != null) 'value': value,
+        if (varTableIndex != null) 'varTableIndex': varTableIndex,
+      };
 }

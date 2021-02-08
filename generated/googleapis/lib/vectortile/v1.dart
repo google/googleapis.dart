@@ -542,34 +542,16 @@ class Area {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basemapZOrder != null) {
-      _json['basemapZOrder'] = basemapZOrder.toJson();
-    }
-    if (hasExternalEdges != null) {
-      _json['hasExternalEdges'] = hasExternalEdges;
-    }
-    if (internalEdges != null) {
-      _json['internalEdges'] = internalEdges;
-    }
-    if (loopBreaks != null) {
-      _json['loopBreaks'] = loopBreaks;
-    }
-    if (triangleIndices != null) {
-      _json['triangleIndices'] = triangleIndices;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (vertexOffsets != null) {
-      _json['vertexOffsets'] = vertexOffsets.toJson();
-    }
-    if (zOrder != null) {
-      _json['zOrder'] = zOrder;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basemapZOrder != null) 'basemapZOrder': basemapZOrder.toJson(),
+        if (hasExternalEdges != null) 'hasExternalEdges': hasExternalEdges,
+        if (internalEdges != null) 'internalEdges': internalEdges,
+        if (loopBreaks != null) 'loopBreaks': loopBreaks,
+        if (triangleIndices != null) 'triangleIndices': triangleIndices,
+        if (type != null) 'type': type,
+        if (vertexOffsets != null) 'vertexOffsets': vertexOffsets.toJson(),
+        if (zOrder != null) 'zOrder': zOrder,
+      };
 }
 
 /// Metadata necessary to determine the ordering of a particular basemap element
@@ -604,19 +586,11 @@ class BasemapZOrder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (zGrade != null) {
-      _json['zGrade'] = zGrade;
-    }
-    if (zPlane != null) {
-      _json['zPlane'] = zPlane;
-    }
-    if (zWithinGrade != null) {
-      _json['zWithinGrade'] = zWithinGrade;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (zGrade != null) 'zGrade': zGrade,
+        if (zPlane != null) 'zPlane': zPlane,
+        if (zWithinGrade != null) 'zWithinGrade': zWithinGrade,
+      };
 }
 
 /// Represents a height-extruded area: a 3D prism with a constant X-Y plane
@@ -655,19 +629,11 @@ class ExtrudedArea {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (area != null) {
-      _json['area'] = area.toJson();
-    }
-    if (maxZ != null) {
-      _json['maxZ'] = maxZ;
-    }
-    if (minZ != null) {
-      _json['minZ'] = minZ;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (area != null) 'area': area.toJson(),
+        if (maxZ != null) 'maxZ': maxZ,
+        if (minZ != null) 'minZ': minZ,
+      };
 }
 
 /// A feature representing a single geographic entity.
@@ -764,28 +730,15 @@ class Feature {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (geometry != null) {
-      _json['geometry'] = geometry.toJson();
-    }
-    if (placeId != null) {
-      _json['placeId'] = placeId;
-    }
-    if (relations != null) {
-      _json['relations'] = relations.map((value) => value.toJson()).toList();
-    }
-    if (segmentInfo != null) {
-      _json['segmentInfo'] = segmentInfo.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (geometry != null) 'geometry': geometry.toJson(),
+        if (placeId != null) 'placeId': placeId,
+        if (relations != null)
+          'relations': relations.map((value) => value.toJson()).toList(),
+        if (segmentInfo != null) 'segmentInfo': segmentInfo.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// A tile containing information about the map features located in the region
@@ -862,28 +815,16 @@ class FeatureTile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (coordinates != null) {
-      _json['coordinates'] = coordinates.toJson();
-    }
-    if (features != null) {
-      _json['features'] = features.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (providers != null) {
-      _json['providers'] = providers.map((value) => value.toJson()).toList();
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (versionId != null) {
-      _json['versionId'] = versionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (coordinates != null) 'coordinates': coordinates.toJson(),
+        if (features != null)
+          'features': features.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (providers != null)
+          'providers': providers.map((value) => value.toJson()).toList(),
+        if (status != null) 'status': status,
+        if (versionId != null) 'versionId': versionId,
+      };
 }
 
 /// A packed representation of a 2D grid of uniformly spaced points containing
@@ -925,16 +866,11 @@ class FirstDerivativeElevationGrid {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (altitudeMultiplier != null) {
-      _json['altitudeMultiplier'] = altitudeMultiplier;
-    }
-    if (rows != null) {
-      _json['rows'] = rows.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (altitudeMultiplier != null)
+          'altitudeMultiplier': altitudeMultiplier,
+        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents the geometry of a feature, that is, the shape that it has on the
@@ -996,24 +932,18 @@ class Geometry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (areas != null) {
-      _json['areas'] = areas.map((value) => value.toJson()).toList();
-    }
-    if (extrudedAreas != null) {
-      _json['extrudedAreas'] =
-          extrudedAreas.map((value) => value.toJson()).toList();
-    }
-    if (lines != null) {
-      _json['lines'] = lines.map((value) => value.toJson()).toList();
-    }
-    if (modeledVolumes != null) {
-      _json['modeledVolumes'] =
-          modeledVolumes.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (areas != null)
+          'areas': areas.map((value) => value.toJson()).toList(),
+        if (extrudedAreas != null)
+          'extrudedAreas':
+              extrudedAreas.map((value) => value.toJson()).toList(),
+        if (lines != null)
+          'lines': lines.map((value) => value.toJson()).toList(),
+        if (modeledVolumes != null)
+          'modeledVolumes':
+              modeledVolumes.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents a 2D polyline.
@@ -1061,19 +991,11 @@ class Line {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basemapZOrder != null) {
-      _json['basemapZOrder'] = basemapZOrder.toJson();
-    }
-    if (vertexOffsets != null) {
-      _json['vertexOffsets'] = vertexOffsets.toJson();
-    }
-    if (zOrder != null) {
-      _json['zOrder'] = zOrder;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basemapZOrder != null) 'basemapZOrder': basemapZOrder.toJson(),
+        if (vertexOffsets != null) 'vertexOffsets': vertexOffsets.toJson(),
+        if (zOrder != null) 'zOrder': zOrder,
+      };
 }
 
 /// Represents a modeled volume in 3D space.
@@ -1101,16 +1023,11 @@ class ModeledVolume {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (strips != null) {
-      _json['strips'] = strips.map((value) => value.toJson()).toList();
-    }
-    if (vertexOffsets != null) {
-      _json['vertexOffsets'] = vertexOffsets.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (strips != null)
+          'strips': strips.map((value) => value.toJson()).toList(),
+        if (vertexOffsets != null) 'vertexOffsets': vertexOffsets.toJson(),
+      };
 }
 
 /// Information about the data providers that should be included in the
@@ -1129,13 +1046,9 @@ class ProviderInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+      };
 }
 
 /// Represents a relation to another feature in the tile.
@@ -1167,16 +1080,11 @@ class Relation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (relatedFeatureIndex != null) {
-      _json['relatedFeatureIndex'] = relatedFeatureIndex;
-    }
-    if (relationType != null) {
-      _json['relationType'] = relationType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (relatedFeatureIndex != null)
+          'relatedFeatureIndex': relatedFeatureIndex,
+        if (relationType != null) 'relationType': relationType,
+      };
 }
 
 /// Extra metadata relating to roads.
@@ -1194,13 +1102,9 @@ class RoadInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (isPrivate != null) {
-      _json['isPrivate'] = isPrivate;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (isPrivate != null) 'isPrivate': isPrivate,
+      };
 }
 
 /// A row of altitude points in the elevation grid, ordered from west to east.
@@ -1226,13 +1130,9 @@ class Row {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (altitudeDiffs != null) {
-      _json['altitudeDiffs'] = altitudeDiffs;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (altitudeDiffs != null) 'altitudeDiffs': altitudeDiffs,
+      };
 }
 
 /// A packed representation of a 2D grid of uniformly spaced points containing
@@ -1311,22 +1211,13 @@ class SecondDerivativeElevationGrid {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (altitudeMultiplier != null) {
-      _json['altitudeMultiplier'] = altitudeMultiplier;
-    }
-    if (columnCount != null) {
-      _json['columnCount'] = columnCount;
-    }
-    if (encodedData != null) {
-      _json['encodedData'] = encodedData;
-    }
-    if (rowCount != null) {
-      _json['rowCount'] = rowCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (altitudeMultiplier != null)
+          'altitudeMultiplier': altitudeMultiplier,
+        if (columnCount != null) 'columnCount': columnCount,
+        if (encodedData != null) 'encodedData': encodedData,
+        if (rowCount != null) 'rowCount': rowCount,
+      };
 }
 
 /// Extra metadata relating to segments.
@@ -1343,13 +1234,9 @@ class SegmentInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (roadInfo != null) {
-      _json['roadInfo'] = roadInfo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (roadInfo != null) 'roadInfo': roadInfo.toJson(),
+      };
 }
 
 /// A tile containing information about the terrain located in the region it
@@ -1393,22 +1280,14 @@ class TerrainTile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (coordinates != null) {
-      _json['coordinates'] = coordinates.toJson();
-    }
-    if (firstDerivative != null) {
-      _json['firstDerivative'] = firstDerivative.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (secondDerivative != null) {
-      _json['secondDerivative'] = secondDerivative.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (coordinates != null) 'coordinates': coordinates.toJson(),
+        if (firstDerivative != null)
+          'firstDerivative': firstDerivative.toJson(),
+        if (name != null) 'name': name,
+        if (secondDerivative != null)
+          'secondDerivative': secondDerivative.toJson(),
+      };
 }
 
 /// Global tile coordinates.
@@ -1456,19 +1335,11 @@ class TileCoordinates {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    if (zoom != null) {
-      _json['zoom'] = zoom;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+        if (zoom != null) 'zoom': zoom,
+      };
 }
 
 /// Represents a strip of triangles.
@@ -1493,13 +1364,9 @@ class TriangleStrip {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (vertexIndices != null) {
-      _json['vertexIndices'] = vertexIndices;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (vertexIndices != null) 'vertexIndices': vertexIndices,
+      };
 }
 
 /// 2D vertex list used for lines and areas.
@@ -1530,16 +1397,10 @@ class Vertex2DList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (xOffsets != null) {
-      _json['xOffsets'] = xOffsets;
-    }
-    if (yOffsets != null) {
-      _json['yOffsets'] = yOffsets;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (xOffsets != null) 'xOffsets': xOffsets,
+        if (yOffsets != null) 'yOffsets': yOffsets,
+      };
 }
 
 /// 3D vertex list used for modeled volumes.
@@ -1576,17 +1437,9 @@ class Vertex3DList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (xOffsets != null) {
-      _json['xOffsets'] = xOffsets;
-    }
-    if (yOffsets != null) {
-      _json['yOffsets'] = yOffsets;
-    }
-    if (zOffsets != null) {
-      _json['zOffsets'] = zOffsets;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (xOffsets != null) 'xOffsets': xOffsets,
+        if (yOffsets != null) 'yOffsets': yOffsets,
+        if (zOffsets != null) 'zOffsets': zOffsets,
+      };
 }

@@ -2754,22 +2754,12 @@ class AclEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (expirationTime != null) {
-      _json['expirationTime'] = expirationTime;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (expirationTime != null) 'expirationTime': expirationTime,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+        if (value != null) 'value': value,
+      };
 }
 
 /// An Admin API warning message.
@@ -2802,19 +2792,11 @@ class ApiWarning {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    if (region != null) {
-      _json['region'] = region;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (message != null) 'message': message,
+        if (region != null) 'region': region,
+      };
 }
 
 /// Database instance backup configuration.
@@ -2887,37 +2869,21 @@ class BackupConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backupRetentionSettings != null) {
-      _json['backupRetentionSettings'] = backupRetentionSettings.toJson();
-    }
-    if (binaryLogEnabled != null) {
-      _json['binaryLogEnabled'] = binaryLogEnabled;
-    }
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (pointInTimeRecoveryEnabled != null) {
-      _json['pointInTimeRecoveryEnabled'] = pointInTimeRecoveryEnabled;
-    }
-    if (replicationLogArchivingEnabled != null) {
-      _json['replicationLogArchivingEnabled'] = replicationLogArchivingEnabled;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (transactionLogRetentionDays != null) {
-      _json['transactionLogRetentionDays'] = transactionLogRetentionDays;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backupRetentionSettings != null)
+          'backupRetentionSettings': backupRetentionSettings.toJson(),
+        if (binaryLogEnabled != null) 'binaryLogEnabled': binaryLogEnabled,
+        if (enabled != null) 'enabled': enabled,
+        if (kind != null) 'kind': kind,
+        if (location != null) 'location': location,
+        if (pointInTimeRecoveryEnabled != null)
+          'pointInTimeRecoveryEnabled': pointInTimeRecoveryEnabled,
+        if (replicationLogArchivingEnabled != null)
+          'replicationLogArchivingEnabled': replicationLogArchivingEnabled,
+        if (startTime != null) 'startTime': startTime,
+        if (transactionLogRetentionDays != null)
+          'transactionLogRetentionDays': transactionLogRetentionDays,
+      };
 }
 
 /// Backup context.
@@ -2939,16 +2905,10 @@ class BackupContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backupId != null) {
-      _json['backupId'] = backupId;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backupId != null) 'backupId': backupId,
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// We currently only support backup retention by specifying the number of
@@ -2979,16 +2939,10 @@ class BackupRetentionSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (retainedBackups != null) {
-      _json['retainedBackups'] = retainedBackups;
-    }
-    if (retentionUnit != null) {
-      _json['retentionUnit'] = retentionUnit;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (retainedBackups != null) 'retainedBackups': retainedBackups,
+        if (retentionUnit != null) 'retentionUnit': retentionUnit,
+      };
 }
 
 /// A BackupRun resource.
@@ -3135,59 +3089,26 @@ class BackupRun {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backupKind != null) {
-      _json['backupKind'] = backupKind;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (diskEncryptionConfiguration != null) {
-      _json['diskEncryptionConfiguration'] =
-          diskEncryptionConfiguration.toJson();
-    }
-    if (diskEncryptionStatus != null) {
-      _json['diskEncryptionStatus'] = diskEncryptionStatus.toJson();
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (enqueuedTime != null) {
-      _json['enqueuedTime'] = enqueuedTime;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (instance != null) {
-      _json['instance'] = instance;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (windowStartTime != null) {
-      _json['windowStartTime'] = windowStartTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backupKind != null) 'backupKind': backupKind,
+        if (description != null) 'description': description,
+        if (diskEncryptionConfiguration != null)
+          'diskEncryptionConfiguration': diskEncryptionConfiguration.toJson(),
+        if (diskEncryptionStatus != null)
+          'diskEncryptionStatus': diskEncryptionStatus.toJson(),
+        if (endTime != null) 'endTime': endTime,
+        if (enqueuedTime != null) 'enqueuedTime': enqueuedTime,
+        if (error != null) 'error': error.toJson(),
+        if (id != null) 'id': id,
+        if (instance != null) 'instance': instance,
+        if (kind != null) 'kind': kind,
+        if (location != null) 'location': location,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (startTime != null) 'startTime': startTime,
+        if (status != null) 'status': status,
+        if (type != null) 'type': type,
+        if (windowStartTime != null) 'windowStartTime': windowStartTime,
+      };
 }
 
 /// Backup run list results.
@@ -3221,19 +3142,12 @@ class BackupRunsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Binary log coordinates.
@@ -3261,19 +3175,11 @@ class BinLogCoordinates {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (binLogFileName != null) {
-      _json['binLogFileName'] = binLogFileName;
-    }
-    if (binLogPosition != null) {
-      _json['binLogPosition'] = binLogPosition;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (binLogFileName != null) 'binLogFileName': binLogFileName,
+        if (binLogPosition != null) 'binLogPosition': binLogPosition,
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// Database instance clone context.
@@ -3318,25 +3224,15 @@ class CloneContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (binLogCoordinates != null) {
-      _json['binLogCoordinates'] = binLogCoordinates.toJson();
-    }
-    if (destinationInstanceName != null) {
-      _json['destinationInstanceName'] = destinationInstanceName;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (pitrTimestampMs != null) {
-      _json['pitrTimestampMs'] = pitrTimestampMs;
-    }
-    if (pointInTime != null) {
-      _json['pointInTime'] = pointInTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (binLogCoordinates != null)
+          'binLogCoordinates': binLogCoordinates.toJson(),
+        if (destinationInstanceName != null)
+          'destinationInstanceName': destinationInstanceName,
+        if (kind != null) 'kind': kind,
+        if (pitrTimestampMs != null) 'pitrTimestampMs': pitrTimestampMs,
+        if (pointInTime != null) 'pointInTime': pointInTime,
+      };
 }
 
 /// Represents a SQL database on the Cloud SQL instance.
@@ -3407,37 +3303,18 @@ class Database {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (charset != null) {
-      _json['charset'] = charset;
-    }
-    if (collation != null) {
-      _json['collation'] = collation;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (instance != null) {
-      _json['instance'] = instance;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (project != null) {
-      _json['project'] = project;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (sqlserverDatabaseDetails != null) {
-      _json['sqlserverDatabaseDetails'] = sqlserverDatabaseDetails.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (charset != null) 'charset': charset,
+        if (collation != null) 'collation': collation,
+        if (etag != null) 'etag': etag,
+        if (instance != null) 'instance': instance,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+        if (project != null) 'project': project,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (sqlserverDatabaseDetails != null)
+          'sqlserverDatabaseDetails': sqlserverDatabaseDetails.toJson(),
+      };
 }
 
 /// Database flags for Cloud SQL instances.
@@ -3467,16 +3344,10 @@ class DatabaseFlags {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (value != null) 'value': value,
+      };
 }
 
 /// The name and status of the failover replica.
@@ -3508,16 +3379,10 @@ class DatabaseInstanceFailoverReplica {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (available != null) {
-      _json['available'] = available;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (available != null) 'available': available,
+        if (name != null) 'name': name,
+      };
 }
 
 /// A Cloud SQL instance resource.
@@ -3842,105 +3707,48 @@ class DatabaseInstance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backendType != null) {
-      _json['backendType'] = backendType;
-    }
-    if (connectionName != null) {
-      _json['connectionName'] = connectionName;
-    }
-    if (currentDiskSize != null) {
-      _json['currentDiskSize'] = currentDiskSize;
-    }
-    if (databaseVersion != null) {
-      _json['databaseVersion'] = databaseVersion;
-    }
-    if (diskEncryptionConfiguration != null) {
-      _json['diskEncryptionConfiguration'] =
-          diskEncryptionConfiguration.toJson();
-    }
-    if (diskEncryptionStatus != null) {
-      _json['diskEncryptionStatus'] = diskEncryptionStatus.toJson();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (failoverReplica != null) {
-      _json['failoverReplica'] = failoverReplica.toJson();
-    }
-    if (gceZone != null) {
-      _json['gceZone'] = gceZone;
-    }
-    if (instanceType != null) {
-      _json['instanceType'] = instanceType;
-    }
-    if (ipAddresses != null) {
-      _json['ipAddresses'] =
-          ipAddresses.map((value) => value.toJson()).toList();
-    }
-    if (ipv6Address != null) {
-      _json['ipv6Address'] = ipv6Address;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (masterInstanceName != null) {
-      _json['masterInstanceName'] = masterInstanceName;
-    }
-    if (maxDiskSize != null) {
-      _json['maxDiskSize'] = maxDiskSize;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (onPremisesConfiguration != null) {
-      _json['onPremisesConfiguration'] = onPremisesConfiguration.toJson();
-    }
-    if (project != null) {
-      _json['project'] = project;
-    }
-    if (region != null) {
-      _json['region'] = region;
-    }
-    if (replicaConfiguration != null) {
-      _json['replicaConfiguration'] = replicaConfiguration.toJson();
-    }
-    if (replicaNames != null) {
-      _json['replicaNames'] = replicaNames;
-    }
-    if (rootPassword != null) {
-      _json['rootPassword'] = rootPassword;
-    }
-    if (satisfiesPzs != null) {
-      _json['satisfiesPzs'] = satisfiesPzs;
-    }
-    if (scheduledMaintenance != null) {
-      _json['scheduledMaintenance'] = scheduledMaintenance.toJson();
-    }
-    if (secondaryGceZone != null) {
-      _json['secondaryGceZone'] = secondaryGceZone;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (serverCaCert != null) {
-      _json['serverCaCert'] = serverCaCert.toJson();
-    }
-    if (serviceAccountEmailAddress != null) {
-      _json['serviceAccountEmailAddress'] = serviceAccountEmailAddress;
-    }
-    if (settings != null) {
-      _json['settings'] = settings.toJson();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (suspensionReason != null) {
-      _json['suspensionReason'] = suspensionReason;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backendType != null) 'backendType': backendType,
+        if (connectionName != null) 'connectionName': connectionName,
+        if (currentDiskSize != null) 'currentDiskSize': currentDiskSize,
+        if (databaseVersion != null) 'databaseVersion': databaseVersion,
+        if (diskEncryptionConfiguration != null)
+          'diskEncryptionConfiguration': diskEncryptionConfiguration.toJson(),
+        if (diskEncryptionStatus != null)
+          'diskEncryptionStatus': diskEncryptionStatus.toJson(),
+        if (etag != null) 'etag': etag,
+        if (failoverReplica != null)
+          'failoverReplica': failoverReplica.toJson(),
+        if (gceZone != null) 'gceZone': gceZone,
+        if (instanceType != null) 'instanceType': instanceType,
+        if (ipAddresses != null)
+          'ipAddresses': ipAddresses.map((value) => value.toJson()).toList(),
+        if (ipv6Address != null) 'ipv6Address': ipv6Address,
+        if (kind != null) 'kind': kind,
+        if (masterInstanceName != null)
+          'masterInstanceName': masterInstanceName,
+        if (maxDiskSize != null) 'maxDiskSize': maxDiskSize,
+        if (name != null) 'name': name,
+        if (onPremisesConfiguration != null)
+          'onPremisesConfiguration': onPremisesConfiguration.toJson(),
+        if (project != null) 'project': project,
+        if (region != null) 'region': region,
+        if (replicaConfiguration != null)
+          'replicaConfiguration': replicaConfiguration.toJson(),
+        if (replicaNames != null) 'replicaNames': replicaNames,
+        if (rootPassword != null) 'rootPassword': rootPassword,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs,
+        if (scheduledMaintenance != null)
+          'scheduledMaintenance': scheduledMaintenance.toJson(),
+        if (secondaryGceZone != null) 'secondaryGceZone': secondaryGceZone,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (serverCaCert != null) 'serverCaCert': serverCaCert.toJson(),
+        if (serviceAccountEmailAddress != null)
+          'serviceAccountEmailAddress': serviceAccountEmailAddress,
+        if (settings != null) 'settings': settings.toJson(),
+        if (state != null) 'state': state,
+        if (suspensionReason != null) 'suspensionReason': suspensionReason,
+      };
 }
 
 /// Database list response.
@@ -3965,16 +3773,11 @@ class DatabasesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// Read-replica configuration for connecting to the on-premises primary
@@ -4007,16 +3810,11 @@ class DemoteMasterConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (mysqlReplicaConfiguration != null) {
-      _json['mysqlReplicaConfiguration'] = mysqlReplicaConfiguration.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (mysqlReplicaConfiguration != null)
+          'mysqlReplicaConfiguration': mysqlReplicaConfiguration.toJson(),
+      };
 }
 
 /// Database instance demote primary instance context.
@@ -4060,22 +3858,15 @@ class DemoteMasterContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (masterInstanceName != null) {
-      _json['masterInstanceName'] = masterInstanceName;
-    }
-    if (replicaConfiguration != null) {
-      _json['replicaConfiguration'] = replicaConfiguration.toJson();
-    }
-    if (verifyGtidConsistency != null) {
-      _json['verifyGtidConsistency'] = verifyGtidConsistency;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (masterInstanceName != null)
+          'masterInstanceName': masterInstanceName,
+        if (replicaConfiguration != null)
+          'replicaConfiguration': replicaConfiguration.toJson(),
+        if (verifyGtidConsistency != null)
+          'verifyGtidConsistency': verifyGtidConsistency,
+      };
 }
 
 /// Read-replica configuration specific to MySQL databases.
@@ -4124,28 +3915,14 @@ class DemoteMasterMySqlReplicaConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (caCertificate != null) {
-      _json['caCertificate'] = caCertificate;
-    }
-    if (clientCertificate != null) {
-      _json['clientCertificate'] = clientCertificate;
-    }
-    if (clientKey != null) {
-      _json['clientKey'] = clientKey;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (password != null) {
-      _json['password'] = password;
-    }
-    if (username != null) {
-      _json['username'] = username;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (caCertificate != null) 'caCertificate': caCertificate,
+        if (clientCertificate != null) 'clientCertificate': clientCertificate,
+        if (clientKey != null) 'clientKey': clientKey,
+        if (kind != null) 'kind': kind,
+        if (password != null) 'password': password,
+        if (username != null) 'username': username,
+      };
 }
 
 /// Deny Maintenance Periods.
@@ -4188,19 +3965,11 @@ class DenyMaintenancePeriod {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endDate != null) {
-      _json['endDate'] = endDate;
-    }
-    if (startDate != null) {
-      _json['startDate'] = startDate;
-    }
-    if (time != null) {
-      _json['time'] = time;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endDate != null) 'endDate': endDate,
+        if (startDate != null) 'startDate': startDate,
+        if (time != null) 'time': time,
+      };
 }
 
 /// Disk encryption configuration for an instance.
@@ -4222,16 +3991,10 @@ class DiskEncryptionConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (kmsKeyName != null) {
-      _json['kmsKeyName'] = kmsKeyName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
+      };
 }
 
 /// Disk encryption status for an instance.
@@ -4253,16 +4016,10 @@ class DiskEncryptionStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (kmsKeyVersionName != null) {
-      _json['kmsKeyVersionName'] = kmsKeyVersionName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName,
+      };
 }
 
 /// Options for exporting data as CSV.
@@ -4280,13 +4037,9 @@ class ExportContextCsvExportOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (selectQuery != null) {
-      _json['selectQuery'] = selectQuery;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (selectQuery != null) 'selectQuery': selectQuery,
+      };
 }
 
 /// Options for exporting from MySQL.
@@ -4308,13 +4061,9 @@ class ExportContextSqlExportOptionsMysqlExportOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (masterData != null) {
-      _json['masterData'] = masterData;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (masterData != null) 'masterData': masterData,
+      };
 }
 
 /// Options for exporting data as SQL statements.
@@ -4350,19 +4099,12 @@ class ExportContextSqlExportOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (mysqlExportOptions != null) {
-      _json['mysqlExportOptions'] = mysqlExportOptions.toJson();
-    }
-    if (schemaOnly != null) {
-      _json['schemaOnly'] = schemaOnly;
-    }
-    if (tables != null) {
-      _json['tables'] = tables;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (mysqlExportOptions != null)
+          'mysqlExportOptions': mysqlExportOptions.toJson(),
+        if (schemaOnly != null) 'schemaOnly': schemaOnly,
+        if (tables != null) 'tables': tables,
+      };
 }
 
 /// Database instance export context.
@@ -4442,31 +4184,17 @@ class ExportContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (csvExportOptions != null) {
-      _json['csvExportOptions'] = csvExportOptions.toJson();
-    }
-    if (databases != null) {
-      _json['databases'] = databases;
-    }
-    if (fileType != null) {
-      _json['fileType'] = fileType;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (offload != null) {
-      _json['offload'] = offload;
-    }
-    if (sqlExportOptions != null) {
-      _json['sqlExportOptions'] = sqlExportOptions.toJson();
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (csvExportOptions != null)
+          'csvExportOptions': csvExportOptions.toJson(),
+        if (databases != null) 'databases': databases,
+        if (fileType != null) 'fileType': fileType,
+        if (kind != null) 'kind': kind,
+        if (offload != null) 'offload': offload,
+        if (sqlExportOptions != null)
+          'sqlExportOptions': sqlExportOptions.toJson(),
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// Database instance failover context.
@@ -4491,16 +4219,10 @@ class FailoverContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (settingsVersion != null) {
-      _json['settingsVersion'] = settingsVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (settingsVersion != null) 'settingsVersion': settingsVersion,
+      };
 }
 
 /// A flag resource.
@@ -4599,40 +4321,19 @@ class Flag {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowedIntValues != null) {
-      _json['allowedIntValues'] = allowedIntValues;
-    }
-    if (allowedStringValues != null) {
-      _json['allowedStringValues'] = allowedStringValues;
-    }
-    if (appliesTo != null) {
-      _json['appliesTo'] = appliesTo;
-    }
-    if (inBeta != null) {
-      _json['inBeta'] = inBeta;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (maxValue != null) {
-      _json['maxValue'] = maxValue;
-    }
-    if (minValue != null) {
-      _json['minValue'] = minValue;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (requiresRestart != null) {
-      _json['requiresRestart'] = requiresRestart;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowedIntValues != null) 'allowedIntValues': allowedIntValues,
+        if (allowedStringValues != null)
+          'allowedStringValues': allowedStringValues,
+        if (appliesTo != null) 'appliesTo': appliesTo,
+        if (inBeta != null) 'inBeta': inBeta,
+        if (kind != null) 'kind': kind,
+        if (maxValue != null) 'maxValue': maxValue,
+        if (minValue != null) 'minValue': minValue,
+        if (name != null) 'name': name,
+        if (requiresRestart != null) 'requiresRestart': requiresRestart,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Flags list response.
@@ -4657,16 +4358,11 @@ class FlagsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 class ImportContextBakImportOptionsEncryptionOptions {
@@ -4701,19 +4397,11 @@ class ImportContextBakImportOptionsEncryptionOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (certPath != null) {
-      _json['certPath'] = certPath;
-    }
-    if (pvkPassword != null) {
-      _json['pvkPassword'] = pvkPassword;
-    }
-    if (pvkPath != null) {
-      _json['pvkPath'] = pvkPath;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (certPath != null) 'certPath': certPath,
+        if (pvkPassword != null) 'pvkPassword': pvkPassword,
+        if (pvkPath != null) 'pvkPath': pvkPath,
+      };
 }
 
 /// Import parameters specific to SQL Server .BAK files
@@ -4731,13 +4419,10 @@ class ImportContextBakImportOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (encryptionOptions != null) {
-      _json['encryptionOptions'] = encryptionOptions.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (encryptionOptions != null)
+          'encryptionOptions': encryptionOptions.toJson(),
+      };
 }
 
 /// Options for importing data as CSV.
@@ -4764,16 +4449,10 @@ class ImportContextCsvImportOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columns != null) {
-      _json['columns'] = columns;
-    }
-    if (table != null) {
-      _json['table'] = table;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columns != null) 'columns': columns,
+        if (table != null) 'table': table,
+      };
 }
 
 /// Database instance import context.
@@ -4847,31 +4526,17 @@ class ImportContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bakImportOptions != null) {
-      _json['bakImportOptions'] = bakImportOptions.toJson();
-    }
-    if (csvImportOptions != null) {
-      _json['csvImportOptions'] = csvImportOptions.toJson();
-    }
-    if (database != null) {
-      _json['database'] = database;
-    }
-    if (fileType != null) {
-      _json['fileType'] = fileType;
-    }
-    if (importUser != null) {
-      _json['importUser'] = importUser;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bakImportOptions != null)
+          'bakImportOptions': bakImportOptions.toJson(),
+        if (csvImportOptions != null)
+          'csvImportOptions': csvImportOptions.toJson(),
+        if (database != null) 'database': database,
+        if (fileType != null) 'fileType': fileType,
+        if (importUser != null) 'importUser': importUser,
+        if (kind != null) 'kind': kind,
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// Insights configuration.
@@ -4913,22 +4578,15 @@ class InsightsConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (queryInsightsEnabled != null) {
-      _json['queryInsightsEnabled'] = queryInsightsEnabled;
-    }
-    if (queryStringLength != null) {
-      _json['queryStringLength'] = queryStringLength;
-    }
-    if (recordApplicationTags != null) {
-      _json['recordApplicationTags'] = recordApplicationTags;
-    }
-    if (recordClientAddress != null) {
-      _json['recordClientAddress'] = recordClientAddress;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (queryInsightsEnabled != null)
+          'queryInsightsEnabled': queryInsightsEnabled,
+        if (queryStringLength != null) 'queryStringLength': queryStringLength,
+        if (recordApplicationTags != null)
+          'recordApplicationTags': recordApplicationTags,
+        if (recordClientAddress != null)
+          'recordClientAddress': recordClientAddress,
+      };
 }
 
 /// Database instance clone request.
@@ -4945,13 +4603,9 @@ class InstancesCloneRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cloneContext != null) {
-      _json['cloneContext'] = cloneContext.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cloneContext != null) 'cloneContext': cloneContext.toJson(),
+      };
 }
 
 /// Database demote primary instance request.
@@ -4968,13 +4622,10 @@ class InstancesDemoteMasterRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (demoteMasterContext != null) {
-      _json['demoteMasterContext'] = demoteMasterContext.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (demoteMasterContext != null)
+          'demoteMasterContext': demoteMasterContext.toJson(),
+      };
 }
 
 /// Database instance export request.
@@ -4991,13 +4642,9 @@ class InstancesExportRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exportContext != null) {
-      _json['exportContext'] = exportContext.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exportContext != null) 'exportContext': exportContext.toJson(),
+      };
 }
 
 /// Instance failover request.
@@ -5014,13 +4661,10 @@ class InstancesFailoverRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (failoverContext != null) {
-      _json['failoverContext'] = failoverContext.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (failoverContext != null)
+          'failoverContext': failoverContext.toJson(),
+      };
 }
 
 /// Database instance import request.
@@ -5037,13 +4681,9 @@ class InstancesImportRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (importContext != null) {
-      _json['importContext'] = importContext.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (importContext != null) 'importContext': importContext.toJson(),
+      };
 }
 
 /// Database instances list response.
@@ -5086,22 +4726,14 @@ class InstancesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (warnings != null) {
-      _json['warnings'] = warnings.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (warnings != null)
+          'warnings': warnings.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Instances ListServerCas response.
@@ -5131,19 +4763,12 @@ class InstancesListServerCasResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (activeVersion != null) {
-      _json['activeVersion'] = activeVersion;
-    }
-    if (certs != null) {
-      _json['certs'] = certs.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (activeVersion != null) 'activeVersion': activeVersion,
+        if (certs != null)
+          'certs': certs.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// Database instance restore backup request.
@@ -5160,13 +4785,10 @@ class InstancesRestoreBackupRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (restoreBackupContext != null) {
-      _json['restoreBackupContext'] = restoreBackupContext.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (restoreBackupContext != null)
+          'restoreBackupContext': restoreBackupContext.toJson(),
+      };
 }
 
 /// Rotate Server CA request.
@@ -5184,13 +4806,10 @@ class InstancesRotateServerCaRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (rotateServerCaContext != null) {
-      _json['rotateServerCaContext'] = rotateServerCaContext.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (rotateServerCaContext != null)
+          'rotateServerCaContext': rotateServerCaContext.toJson(),
+      };
 }
 
 /// Instance truncate log request.
@@ -5207,13 +4826,10 @@ class InstancesTruncateLogRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (truncateLogContext != null) {
-      _json['truncateLogContext'] = truncateLogContext.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (truncateLogContext != null)
+          'truncateLogContext': truncateLogContext.toJson(),
+      };
 }
 
 /// IP Management configuration.
@@ -5258,23 +4874,14 @@ class IpConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (authorizedNetworks != null) {
-      _json['authorizedNetworks'] =
-          authorizedNetworks.map((value) => value.toJson()).toList();
-    }
-    if (ipv4Enabled != null) {
-      _json['ipv4Enabled'] = ipv4Enabled;
-    }
-    if (privateNetwork != null) {
-      _json['privateNetwork'] = privateNetwork;
-    }
-    if (requireSsl != null) {
-      _json['requireSsl'] = requireSsl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (authorizedNetworks != null)
+          'authorizedNetworks':
+              authorizedNetworks.map((value) => value.toJson()).toList(),
+        if (ipv4Enabled != null) 'ipv4Enabled': ipv4Enabled,
+        if (privateNetwork != null) 'privateNetwork': privateNetwork,
+        if (requireSsl != null) 'requireSsl': requireSsl,
+      };
 }
 
 /// Database instance IP Mapping.
@@ -5322,19 +4929,11 @@ class IpMapping {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ipAddress != null) {
-      _json['ipAddress'] = ipAddress;
-    }
-    if (timeToRetire != null) {
-      _json['timeToRetire'] = timeToRetire;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ipAddress != null) 'ipAddress': ipAddress,
+        if (timeToRetire != null) 'timeToRetire': timeToRetire,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Preferred location.
@@ -5378,22 +4977,13 @@ class LocationPreference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (followGaeApplication != null) {
-      _json['followGaeApplication'] = followGaeApplication;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (secondaryZone != null) {
-      _json['secondaryZone'] = secondaryZone;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (followGaeApplication != null)
+          'followGaeApplication': followGaeApplication,
+        if (kind != null) 'kind': kind,
+        if (secondaryZone != null) 'secondaryZone': secondaryZone,
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// Maintenance window.
@@ -5441,22 +5031,12 @@ class MaintenanceWindow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (day != null) {
-      _json['day'] = day;
-    }
-    if (hour != null) {
-      _json['hour'] = hour;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (updateTrack != null) {
-      _json['updateTrack'] = updateTrack;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (day != null) 'day': day,
+        if (hour != null) 'hour': hour,
+        if (kind != null) 'kind': kind,
+        if (updateTrack != null) 'updateTrack': updateTrack,
+      };
 }
 
 /// Read-replica configuration specific to MySQL databases.
@@ -5543,43 +5123,22 @@ class MySqlReplicaConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (caCertificate != null) {
-      _json['caCertificate'] = caCertificate;
-    }
-    if (clientCertificate != null) {
-      _json['clientCertificate'] = clientCertificate;
-    }
-    if (clientKey != null) {
-      _json['clientKey'] = clientKey;
-    }
-    if (connectRetryInterval != null) {
-      _json['connectRetryInterval'] = connectRetryInterval;
-    }
-    if (dumpFilePath != null) {
-      _json['dumpFilePath'] = dumpFilePath;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (masterHeartbeatPeriod != null) {
-      _json['masterHeartbeatPeriod'] = masterHeartbeatPeriod;
-    }
-    if (password != null) {
-      _json['password'] = password;
-    }
-    if (sslCipher != null) {
-      _json['sslCipher'] = sslCipher;
-    }
-    if (username != null) {
-      _json['username'] = username;
-    }
-    if (verifyServerCertificate != null) {
-      _json['verifyServerCertificate'] = verifyServerCertificate;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (caCertificate != null) 'caCertificate': caCertificate,
+        if (clientCertificate != null) 'clientCertificate': clientCertificate,
+        if (clientKey != null) 'clientKey': clientKey,
+        if (connectRetryInterval != null)
+          'connectRetryInterval': connectRetryInterval,
+        if (dumpFilePath != null) 'dumpFilePath': dumpFilePath,
+        if (kind != null) 'kind': kind,
+        if (masterHeartbeatPeriod != null)
+          'masterHeartbeatPeriod': masterHeartbeatPeriod,
+        if (password != null) 'password': password,
+        if (sslCipher != null) 'sslCipher': sslCipher,
+        if (username != null) 'username': username,
+        if (verifyServerCertificate != null)
+          'verifyServerCertificate': verifyServerCertificate,
+      };
 }
 
 /// On-premises instance configuration.
@@ -5639,34 +5198,16 @@ class OnPremisesConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (caCertificate != null) {
-      _json['caCertificate'] = caCertificate;
-    }
-    if (clientCertificate != null) {
-      _json['clientCertificate'] = clientCertificate;
-    }
-    if (clientKey != null) {
-      _json['clientKey'] = clientKey;
-    }
-    if (dumpFilePath != null) {
-      _json['dumpFilePath'] = dumpFilePath;
-    }
-    if (hostPort != null) {
-      _json['hostPort'] = hostPort;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (password != null) {
-      _json['password'] = password;
-    }
-    if (username != null) {
-      _json['username'] = username;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (caCertificate != null) 'caCertificate': caCertificate,
+        if (clientCertificate != null) 'clientCertificate': clientCertificate,
+        if (clientKey != null) 'clientKey': clientKey,
+        if (dumpFilePath != null) 'dumpFilePath': dumpFilePath,
+        if (hostPort != null) 'hostPort': hostPort,
+        if (kind != null) 'kind': kind,
+        if (password != null) 'password': password,
+        if (username != null) 'username': username,
+      };
 }
 
 /// An Operation resource.
@@ -5841,58 +5382,24 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backupContext != null) {
-      _json['backupContext'] = backupContext.toJson();
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (exportContext != null) {
-      _json['exportContext'] = exportContext.toJson();
-    }
-    if (importContext != null) {
-      _json['importContext'] = importContext.toJson();
-    }
-    if (insertTime != null) {
-      _json['insertTime'] = insertTime;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (operationType != null) {
-      _json['operationType'] = operationType;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (targetId != null) {
-      _json['targetId'] = targetId;
-    }
-    if (targetLink != null) {
-      _json['targetLink'] = targetLink;
-    }
-    if (targetProject != null) {
-      _json['targetProject'] = targetProject;
-    }
-    if (user != null) {
-      _json['user'] = user;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backupContext != null) 'backupContext': backupContext.toJson(),
+        if (endTime != null) 'endTime': endTime,
+        if (error != null) 'error': error.toJson(),
+        if (exportContext != null) 'exportContext': exportContext.toJson(),
+        if (importContext != null) 'importContext': importContext.toJson(),
+        if (insertTime != null) 'insertTime': insertTime,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+        if (operationType != null) 'operationType': operationType,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (startTime != null) 'startTime': startTime,
+        if (status != null) 'status': status,
+        if (targetId != null) 'targetId': targetId,
+        if (targetLink != null) 'targetLink': targetLink,
+        if (targetProject != null) 'targetProject': targetProject,
+        if (user != null) 'user': user,
+      };
 }
 
 /// Database instance operation error.
@@ -5920,19 +5427,11 @@ class OperationError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (kind != null) 'kind': kind,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Database instance operation errors list wrapper.
@@ -5957,16 +5456,11 @@ class OperationErrors {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errors != null) {
-      _json['errors'] = errors.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errors != null)
+          'errors': errors.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// Database instance list operations response.
@@ -6000,19 +5494,12 @@ class OperationsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Read-replica configuration for connecting to the primary instance.
@@ -6055,19 +5542,12 @@ class ReplicaConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (failoverTarget != null) {
-      _json['failoverTarget'] = failoverTarget;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (mysqlReplicaConfiguration != null) {
-      _json['mysqlReplicaConfiguration'] = mysqlReplicaConfiguration.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (failoverTarget != null) 'failoverTarget': failoverTarget,
+        if (kind != null) 'kind': kind,
+        if (mysqlReplicaConfiguration != null)
+          'mysqlReplicaConfiguration': mysqlReplicaConfiguration.toJson(),
+      };
 }
 
 class Reschedule {
@@ -6102,16 +5582,10 @@ class Reschedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (rescheduleType != null) {
-      _json['rescheduleType'] = rescheduleType;
-    }
-    if (scheduleTime != null) {
-      _json['scheduleTime'] = scheduleTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (rescheduleType != null) 'rescheduleType': rescheduleType,
+        if (scheduleTime != null) 'scheduleTime': scheduleTime,
+      };
 }
 
 /// Database instance restore from backup context.
@@ -6147,22 +5621,12 @@ class RestoreBackupContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backupRunId != null) {
-      _json['backupRunId'] = backupRunId;
-    }
-    if (instanceId != null) {
-      _json['instanceId'] = instanceId;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (project != null) {
-      _json['project'] = project;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backupRunId != null) 'backupRunId': backupRunId,
+        if (instanceId != null) 'instanceId': instanceId,
+        if (kind != null) 'kind': kind,
+        if (project != null) 'project': project,
+      };
 }
 
 /// Instance rotate server CA context.
@@ -6187,16 +5651,10 @@ class RotateServerCaContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextVersion != null) {
-      _json['nextVersion'] = nextVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (nextVersion != null) 'nextVersion': nextVersion,
+      };
 }
 
 /// Database instance settings.
@@ -6456,84 +5914,45 @@ class Settings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (activationPolicy != null) {
-      _json['activationPolicy'] = activationPolicy;
-    }
-    if (activeDirectoryConfig != null) {
-      _json['activeDirectoryConfig'] = activeDirectoryConfig.toJson();
-    }
-    if (authorizedGaeApplications != null) {
-      _json['authorizedGaeApplications'] = authorizedGaeApplications;
-    }
-    if (availabilityType != null) {
-      _json['availabilityType'] = availabilityType;
-    }
-    if (backupConfiguration != null) {
-      _json['backupConfiguration'] = backupConfiguration.toJson();
-    }
-    if (collation != null) {
-      _json['collation'] = collation;
-    }
-    if (crashSafeReplicationEnabled != null) {
-      _json['crashSafeReplicationEnabled'] = crashSafeReplicationEnabled;
-    }
-    if (dataDiskSizeGb != null) {
-      _json['dataDiskSizeGb'] = dataDiskSizeGb;
-    }
-    if (dataDiskType != null) {
-      _json['dataDiskType'] = dataDiskType;
-    }
-    if (databaseFlags != null) {
-      _json['databaseFlags'] =
-          databaseFlags.map((value) => value.toJson()).toList();
-    }
-    if (databaseReplicationEnabled != null) {
-      _json['databaseReplicationEnabled'] = databaseReplicationEnabled;
-    }
-    if (denyMaintenancePeriods != null) {
-      _json['denyMaintenancePeriods'] =
-          denyMaintenancePeriods.map((value) => value.toJson()).toList();
-    }
-    if (insightsConfig != null) {
-      _json['insightsConfig'] = insightsConfig.toJson();
-    }
-    if (ipConfiguration != null) {
-      _json['ipConfiguration'] = ipConfiguration.toJson();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (locationPreference != null) {
-      _json['locationPreference'] = locationPreference.toJson();
-    }
-    if (maintenanceWindow != null) {
-      _json['maintenanceWindow'] = maintenanceWindow.toJson();
-    }
-    if (pricingPlan != null) {
-      _json['pricingPlan'] = pricingPlan;
-    }
-    if (replicationType != null) {
-      _json['replicationType'] = replicationType;
-    }
-    if (settingsVersion != null) {
-      _json['settingsVersion'] = settingsVersion;
-    }
-    if (storageAutoResize != null) {
-      _json['storageAutoResize'] = storageAutoResize;
-    }
-    if (storageAutoResizeLimit != null) {
-      _json['storageAutoResizeLimit'] = storageAutoResizeLimit;
-    }
-    if (tier != null) {
-      _json['tier'] = tier;
-    }
-    if (userLabels != null) {
-      _json['userLabels'] = userLabels;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (activationPolicy != null) 'activationPolicy': activationPolicy,
+        if (activeDirectoryConfig != null)
+          'activeDirectoryConfig': activeDirectoryConfig.toJson(),
+        if (authorizedGaeApplications != null)
+          'authorizedGaeApplications': authorizedGaeApplications,
+        if (availabilityType != null) 'availabilityType': availabilityType,
+        if (backupConfiguration != null)
+          'backupConfiguration': backupConfiguration.toJson(),
+        if (collation != null) 'collation': collation,
+        if (crashSafeReplicationEnabled != null)
+          'crashSafeReplicationEnabled': crashSafeReplicationEnabled,
+        if (dataDiskSizeGb != null) 'dataDiskSizeGb': dataDiskSizeGb,
+        if (dataDiskType != null) 'dataDiskType': dataDiskType,
+        if (databaseFlags != null)
+          'databaseFlags':
+              databaseFlags.map((value) => value.toJson()).toList(),
+        if (databaseReplicationEnabled != null)
+          'databaseReplicationEnabled': databaseReplicationEnabled,
+        if (denyMaintenancePeriods != null)
+          'denyMaintenancePeriods':
+              denyMaintenancePeriods.map((value) => value.toJson()).toList(),
+        if (insightsConfig != null) 'insightsConfig': insightsConfig.toJson(),
+        if (ipConfiguration != null)
+          'ipConfiguration': ipConfiguration.toJson(),
+        if (kind != null) 'kind': kind,
+        if (locationPreference != null)
+          'locationPreference': locationPreference.toJson(),
+        if (maintenanceWindow != null)
+          'maintenanceWindow': maintenanceWindow.toJson(),
+        if (pricingPlan != null) 'pricingPlan': pricingPlan,
+        if (replicationType != null) 'replicationType': replicationType,
+        if (settingsVersion != null) 'settingsVersion': settingsVersion,
+        if (storageAutoResize != null) 'storageAutoResize': storageAutoResize,
+        if (storageAutoResizeLimit != null)
+          'storageAutoResizeLimit': storageAutoResizeLimit,
+        if (tier != null) 'tier': tier,
+        if (userLabels != null) 'userLabels': userLabels,
+      };
 }
 
 /// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
@@ -6555,16 +5974,10 @@ class SqlActiveDirectoryConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (domain != null) {
-      _json['domain'] = domain;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (domain != null) 'domain': domain,
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// External primary instance migration setting error.
@@ -6629,19 +6042,11 @@ class SqlExternalSyncSettingError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detail != null) {
-      _json['detail'] = detail;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detail != null) 'detail': detail,
+        if (kind != null) 'kind': kind,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Reschedule options for maintenance windows.
@@ -6660,13 +6065,9 @@ class SqlInstancesRescheduleMaintenanceRequestBody {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (reschedule != null) {
-      _json['reschedule'] = reschedule.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (reschedule != null) 'reschedule': reschedule.toJson(),
+      };
 }
 
 /// Instance verify external sync settings response.
@@ -6692,16 +6093,11 @@ class SqlInstancesVerifyExternalSyncSettingsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errors != null) {
-      _json['errors'] = errors.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errors != null)
+          'errors': errors.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// Any scheduled maintenancce for this instance.
@@ -6728,19 +6124,11 @@ class SqlScheduledMaintenance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (canDefer != null) {
-      _json['canDefer'] = canDefer;
-    }
-    if (canReschedule != null) {
-      _json['canReschedule'] = canReschedule;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (canDefer != null) 'canDefer': canDefer,
+        if (canReschedule != null) 'canReschedule': canReschedule,
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// Represents a Sql Server database on the Cloud SQL instance.
@@ -6762,16 +6150,11 @@ class SqlServerDatabaseDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (compatibilityLevel != null) {
-      _json['compatibilityLevel'] = compatibilityLevel;
-    }
-    if (recoveryModel != null) {
-      _json['recoveryModel'] = recoveryModel;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (compatibilityLevel != null)
+          'compatibilityLevel': compatibilityLevel,
+        if (recoveryModel != null) 'recoveryModel': recoveryModel,
+      };
 }
 
 /// Represents a Sql Server user on the Cloud SQL instance.
@@ -6795,16 +6178,10 @@ class SqlServerUserDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (disabled != null) {
-      _json['disabled'] = disabled;
-    }
-    if (serverRoles != null) {
-      _json['serverRoles'] = serverRoles;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (disabled != null) 'disabled': disabled,
+        if (serverRoles != null) 'serverRoles': serverRoles,
+      };
 }
 
 /// SslCerts Resource
@@ -6872,37 +6249,17 @@ class SslCert {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cert != null) {
-      _json['cert'] = cert;
-    }
-    if (certSerialNumber != null) {
-      _json['certSerialNumber'] = certSerialNumber;
-    }
-    if (commonName != null) {
-      _json['commonName'] = commonName;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (expirationTime != null) {
-      _json['expirationTime'] = expirationTime;
-    }
-    if (instance != null) {
-      _json['instance'] = instance;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (sha1Fingerprint != null) {
-      _json['sha1Fingerprint'] = sha1Fingerprint;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cert != null) 'cert': cert,
+        if (certSerialNumber != null) 'certSerialNumber': certSerialNumber,
+        if (commonName != null) 'commonName': commonName,
+        if (createTime != null) 'createTime': createTime,
+        if (expirationTime != null) 'expirationTime': expirationTime,
+        if (instance != null) 'instance': instance,
+        if (kind != null) 'kind': kind,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (sha1Fingerprint != null) 'sha1Fingerprint': sha1Fingerprint,
+      };
 }
 
 /// SslCertDetail.
@@ -6927,16 +6284,10 @@ class SslCertDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (certInfo != null) {
-      _json['certInfo'] = certInfo.toJson();
-    }
-    if (certPrivateKey != null) {
-      _json['certPrivateKey'] = certPrivateKey;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (certInfo != null) 'certInfo': certInfo.toJson(),
+        if (certPrivateKey != null) 'certPrivateKey': certPrivateKey,
+      };
 }
 
 /// SslCerts create ephemeral certificate request.
@@ -6958,16 +6309,10 @@ class SslCertsCreateEphemeralRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessToken != null) {
-      _json['access_token'] = accessToken;
-    }
-    if (publicKey != null) {
-      _json['public_key'] = publicKey;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessToken != null) 'access_token': accessToken,
+        if (publicKey != null) 'public_key': publicKey,
+      };
 }
 
 /// SslCerts insert request.
@@ -6985,13 +6330,9 @@ class SslCertsInsertRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (commonName != null) {
-      _json['commonName'] = commonName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (commonName != null) 'commonName': commonName,
+      };
 }
 
 /// SslCert insert response.
@@ -7031,22 +6372,12 @@ class SslCertsInsertResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clientCert != null) {
-      _json['clientCert'] = clientCert.toJson();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (operation != null) {
-      _json['operation'] = operation.toJson();
-    }
-    if (serverCaCert != null) {
-      _json['serverCaCert'] = serverCaCert.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clientCert != null) 'clientCert': clientCert.toJson(),
+        if (kind != null) 'kind': kind,
+        if (operation != null) 'operation': operation.toJson(),
+        if (serverCaCert != null) 'serverCaCert': serverCaCert.toJson(),
+      };
 }
 
 /// SslCerts list response.
@@ -7071,16 +6402,11 @@ class SslCertsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// A Google Cloud SQL service tier resource.
@@ -7124,25 +6450,13 @@ class Tier {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (DiskQuota != null) {
-      _json['DiskQuota'] = DiskQuota;
-    }
-    if (RAM != null) {
-      _json['RAM'] = RAM;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (region != null) {
-      _json['region'] = region;
-    }
-    if (tier != null) {
-      _json['tier'] = tier;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (DiskQuota != null) 'DiskQuota': DiskQuota,
+        if (RAM != null) 'RAM': RAM,
+        if (kind != null) 'kind': kind,
+        if (region != null) 'region': region,
+        if (tier != null) 'tier': tier,
+      };
 }
 
 /// Tiers list response.
@@ -7167,16 +6481,11 @@ class TiersListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// Database Instance truncate log context.
@@ -7200,16 +6509,10 @@ class TruncateLogContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (logType != null) {
-      _json['logType'] = logType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (logType != null) 'logType': logType,
+      };
 }
 
 /// A Cloud SQL user resource.
@@ -7292,37 +6595,18 @@ class User {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (host != null) {
-      _json['host'] = host;
-    }
-    if (instance != null) {
-      _json['instance'] = instance;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (password != null) {
-      _json['password'] = password;
-    }
-    if (project != null) {
-      _json['project'] = project;
-    }
-    if (sqlserverUserDetails != null) {
-      _json['sqlserverUserDetails'] = sqlserverUserDetails.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (host != null) 'host': host,
+        if (instance != null) 'instance': instance,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+        if (password != null) 'password': password,
+        if (project != null) 'project': project,
+        if (sqlserverUserDetails != null)
+          'sqlserverUserDetails': sqlserverUserDetails.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// User list response.
@@ -7356,17 +6640,10 @@ class UsersListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }

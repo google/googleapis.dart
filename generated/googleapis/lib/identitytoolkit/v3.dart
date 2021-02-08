@@ -911,37 +911,18 @@ class CreateAuthUriResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allProviders != null) {
-      _json['allProviders'] = allProviders;
-    }
-    if (authUri != null) {
-      _json['authUri'] = authUri;
-    }
-    if (captchaRequired != null) {
-      _json['captchaRequired'] = captchaRequired;
-    }
-    if (forExistingProvider != null) {
-      _json['forExistingProvider'] = forExistingProvider;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (providerId != null) {
-      _json['providerId'] = providerId;
-    }
-    if (registered != null) {
-      _json['registered'] = registered;
-    }
-    if (sessionId != null) {
-      _json['sessionId'] = sessionId;
-    }
-    if (signinMethods != null) {
-      _json['signinMethods'] = signinMethods;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allProviders != null) 'allProviders': allProviders,
+        if (authUri != null) 'authUri': authUri,
+        if (captchaRequired != null) 'captchaRequired': captchaRequired,
+        if (forExistingProvider != null)
+          'forExistingProvider': forExistingProvider,
+        if (kind != null) 'kind': kind,
+        if (providerId != null) 'providerId': providerId,
+        if (registered != null) 'registered': registered,
+        if (sessionId != null) 'sessionId': sessionId,
+        if (signinMethods != null) 'signinMethods': signinMethods,
+      };
 }
 
 /// Respone of deleting account.
@@ -957,13 +938,9 @@ class DeleteAccountResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// Response of downloading accounts in batch.
@@ -996,19 +973,12 @@ class DownloadAccountResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (users != null) {
-      _json['users'] = users.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (users != null)
+          'users': users.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response of email signIn.
@@ -1060,31 +1030,15 @@ class EmailLinkSigninResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (expiresIn != null) {
-      _json['expiresIn'] = expiresIn;
-    }
-    if (idToken != null) {
-      _json['idToken'] = idToken;
-    }
-    if (isNewUser != null) {
-      _json['isNewUser'] = isNewUser;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (localId != null) {
-      _json['localId'] = localId;
-    }
-    if (refreshToken != null) {
-      _json['refreshToken'] = refreshToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (email != null) 'email': email,
+        if (expiresIn != null) 'expiresIn': expiresIn,
+        if (idToken != null) 'idToken': idToken,
+        if (isNewUser != null) 'isNewUser': isNewUser,
+        if (kind != null) 'kind': kind,
+        if (localId != null) 'localId': localId,
+        if (refreshToken != null) 'refreshToken': refreshToken,
+      };
 }
 
 /// Template for an email template.
@@ -1130,28 +1084,14 @@ class EmailTemplate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (body != null) {
-      _json['body'] = body;
-    }
-    if (format != null) {
-      _json['format'] = format;
-    }
-    if (from != null) {
-      _json['from'] = from;
-    }
-    if (fromDisplayName != null) {
-      _json['fromDisplayName'] = fromDisplayName;
-    }
-    if (replyTo != null) {
-      _json['replyTo'] = replyTo;
-    }
-    if (subject != null) {
-      _json['subject'] = subject;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (body != null) 'body': body,
+        if (format != null) 'format': format,
+        if (from != null) 'from': from,
+        if (fromDisplayName != null) 'fromDisplayName': fromDisplayName,
+        if (replyTo != null) 'replyTo': replyTo,
+        if (subject != null) 'subject': subject,
+      };
 }
 
 /// Response of getting account information.
@@ -1176,16 +1116,11 @@ class GetAccountInfoResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (users != null) {
-      _json['users'] = users.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (users != null)
+          'users': users.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response of getting a code for user confirmation (reset password, change
@@ -1214,19 +1149,11 @@ class GetOobConfirmationCodeResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (oobCode != null) {
-      _json['oobCode'] = oobCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (email != null) 'email': email,
+        if (kind != null) 'kind': kind,
+        if (oobCode != null) 'oobCode': oobCode,
+      };
 }
 
 /// Response of getting recaptcha param.
@@ -1255,19 +1182,11 @@ class GetRecaptchaParamResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (recaptchaSiteKey != null) {
-      _json['recaptchaSiteKey'] = recaptchaSiteKey;
-    }
-    if (recaptchaStoken != null) {
-      _json['recaptchaStoken'] = recaptchaStoken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (recaptchaSiteKey != null) 'recaptchaSiteKey': recaptchaSiteKey,
+        if (recaptchaStoken != null) 'recaptchaStoken': recaptchaStoken,
+      };
 }
 
 /// Request to get the IDP authentication URL.
@@ -1400,58 +1319,25 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appId != null) {
-      _json['appId'] = appId;
-    }
-    if (authFlowType != null) {
-      _json['authFlowType'] = authFlowType;
-    }
-    if (clientId != null) {
-      _json['clientId'] = clientId;
-    }
-    if (context != null) {
-      _json['context'] = context;
-    }
-    if (continueUri != null) {
-      _json['continueUri'] = continueUri;
-    }
-    if (customParameter != null) {
-      _json['customParameter'] = customParameter;
-    }
-    if (hostedDomain != null) {
-      _json['hostedDomain'] = hostedDomain;
-    }
-    if (identifier != null) {
-      _json['identifier'] = identifier;
-    }
-    if (oauthConsumerKey != null) {
-      _json['oauthConsumerKey'] = oauthConsumerKey;
-    }
-    if (oauthScope != null) {
-      _json['oauthScope'] = oauthScope;
-    }
-    if (openidRealm != null) {
-      _json['openidRealm'] = openidRealm;
-    }
-    if (otaApp != null) {
-      _json['otaApp'] = otaApp;
-    }
-    if (providerId != null) {
-      _json['providerId'] = providerId;
-    }
-    if (sessionId != null) {
-      _json['sessionId'] = sessionId;
-    }
-    if (tenantId != null) {
-      _json['tenantId'] = tenantId;
-    }
-    if (tenantProjectNumber != null) {
-      _json['tenantProjectNumber'] = tenantProjectNumber;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appId != null) 'appId': appId,
+        if (authFlowType != null) 'authFlowType': authFlowType,
+        if (clientId != null) 'clientId': clientId,
+        if (context != null) 'context': context,
+        if (continueUri != null) 'continueUri': continueUri,
+        if (customParameter != null) 'customParameter': customParameter,
+        if (hostedDomain != null) 'hostedDomain': hostedDomain,
+        if (identifier != null) 'identifier': identifier,
+        if (oauthConsumerKey != null) 'oauthConsumerKey': oauthConsumerKey,
+        if (oauthScope != null) 'oauthScope': oauthScope,
+        if (openidRealm != null) 'openidRealm': openidRealm,
+        if (otaApp != null) 'otaApp': otaApp,
+        if (providerId != null) 'providerId': providerId,
+        if (sessionId != null) 'sessionId': sessionId,
+        if (tenantId != null) 'tenantId': tenantId,
+        if (tenantProjectNumber != null)
+          'tenantProjectNumber': tenantProjectNumber,
+      };
 }
 
 /// Request to delete account.
@@ -1481,19 +1367,12 @@ class IdentitytoolkitRelyingpartyDeleteAccountRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (delegatedProjectNumber != null) {
-      _json['delegatedProjectNumber'] = delegatedProjectNumber;
-    }
-    if (idToken != null) {
-      _json['idToken'] = idToken;
-    }
-    if (localId != null) {
-      _json['localId'] = localId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (delegatedProjectNumber != null)
+          'delegatedProjectNumber': delegatedProjectNumber,
+        if (idToken != null) 'idToken': idToken,
+        if (localId != null) 'localId': localId,
+      };
 }
 
 /// Request to download user account in batch.
@@ -1533,22 +1412,13 @@ class IdentitytoolkitRelyingpartyDownloadAccountRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (delegatedProjectNumber != null) {
-      _json['delegatedProjectNumber'] = delegatedProjectNumber;
-    }
-    if (maxResults != null) {
-      _json['maxResults'] = maxResults;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (targetProjectId != null) {
-      _json['targetProjectId'] = targetProjectId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (delegatedProjectNumber != null)
+          'delegatedProjectNumber': delegatedProjectNumber,
+        if (maxResults != null) 'maxResults': maxResults,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (targetProjectId != null) 'targetProjectId': targetProjectId,
+      };
 }
 
 /// Request to sign in with email.
@@ -1576,19 +1446,11 @@ class IdentitytoolkitRelyingpartyEmailLinkSigninRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (idToken != null) {
-      _json['idToken'] = idToken;
-    }
-    if (oobCode != null) {
-      _json['oobCode'] = oobCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (email != null) 'email': email,
+        if (idToken != null) 'idToken': idToken,
+        if (oobCode != null) 'oobCode': oobCode,
+      };
 }
 
 /// Request to get the account information.
@@ -1636,25 +1498,14 @@ class IdentitytoolkitRelyingpartyGetAccountInfoRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (delegatedProjectNumber != null) {
-      _json['delegatedProjectNumber'] = delegatedProjectNumber;
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (idToken != null) {
-      _json['idToken'] = idToken;
-    }
-    if (localId != null) {
-      _json['localId'] = localId;
-    }
-    if (phoneNumber != null) {
-      _json['phoneNumber'] = phoneNumber;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (delegatedProjectNumber != null)
+          'delegatedProjectNumber': delegatedProjectNumber,
+        if (email != null) 'email': email,
+        if (idToken != null) 'idToken': idToken,
+        if (localId != null) 'localId': localId,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber,
+      };
 }
 
 /// Response of getting the project configuration.
@@ -1745,47 +1596,27 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowPasswordUser != null) {
-      _json['allowPasswordUser'] = allowPasswordUser;
-    }
-    if (apiKey != null) {
-      _json['apiKey'] = apiKey;
-    }
-    if (authorizedDomains != null) {
-      _json['authorizedDomains'] = authorizedDomains;
-    }
-    if (changeEmailTemplate != null) {
-      _json['changeEmailTemplate'] = changeEmailTemplate.toJson();
-    }
-    if (dynamicLinksDomain != null) {
-      _json['dynamicLinksDomain'] = dynamicLinksDomain;
-    }
-    if (enableAnonymousUser != null) {
-      _json['enableAnonymousUser'] = enableAnonymousUser;
-    }
-    if (idpConfig != null) {
-      _json['idpConfig'] = idpConfig.map((value) => value.toJson()).toList();
-    }
-    if (legacyResetPasswordTemplate != null) {
-      _json['legacyResetPasswordTemplate'] =
-          legacyResetPasswordTemplate.toJson();
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (resetPasswordTemplate != null) {
-      _json['resetPasswordTemplate'] = resetPasswordTemplate.toJson();
-    }
-    if (useEmailSending != null) {
-      _json['useEmailSending'] = useEmailSending;
-    }
-    if (verifyEmailTemplate != null) {
-      _json['verifyEmailTemplate'] = verifyEmailTemplate.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowPasswordUser != null) 'allowPasswordUser': allowPasswordUser,
+        if (apiKey != null) 'apiKey': apiKey,
+        if (authorizedDomains != null) 'authorizedDomains': authorizedDomains,
+        if (changeEmailTemplate != null)
+          'changeEmailTemplate': changeEmailTemplate.toJson(),
+        if (dynamicLinksDomain != null)
+          'dynamicLinksDomain': dynamicLinksDomain,
+        if (enableAnonymousUser != null)
+          'enableAnonymousUser': enableAnonymousUser,
+        if (idpConfig != null)
+          'idpConfig': idpConfig.map((value) => value.toJson()).toList(),
+        if (legacyResetPasswordTemplate != null)
+          'legacyResetPasswordTemplate': legacyResetPasswordTemplate.toJson(),
+        if (projectId != null) 'projectId': projectId,
+        if (resetPasswordTemplate != null)
+          'resetPasswordTemplate': resetPasswordTemplate.toJson(),
+        if (useEmailSending != null) 'useEmailSending': useEmailSending,
+        if (verifyEmailTemplate != null)
+          'verifyEmailTemplate': verifyEmailTemplate.toJson(),
+      };
 }
 
 /// Respone of getting public keys.
@@ -1856,22 +1687,12 @@ class IdentitytoolkitRelyingpartyResetPasswordRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (newPassword != null) {
-      _json['newPassword'] = newPassword;
-    }
-    if (oldPassword != null) {
-      _json['oldPassword'] = oldPassword;
-    }
-    if (oobCode != null) {
-      _json['oobCode'] = oobCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (email != null) 'email': email,
+        if (newPassword != null) 'newPassword': newPassword,
+        if (oldPassword != null) 'oldPassword': oldPassword,
+        if (oobCode != null) 'oobCode': oobCode,
+      };
 }
 
 /// Request for Identitytoolkit-SendVerificationCode
@@ -1906,22 +1727,12 @@ class IdentitytoolkitRelyingpartySendVerificationCodeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (iosReceipt != null) {
-      _json['iosReceipt'] = iosReceipt;
-    }
-    if (iosSecret != null) {
-      _json['iosSecret'] = iosSecret;
-    }
-    if (phoneNumber != null) {
-      _json['phoneNumber'] = phoneNumber;
-    }
-    if (recaptchaToken != null) {
-      _json['recaptchaToken'] = recaptchaToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (iosReceipt != null) 'iosReceipt': iosReceipt,
+        if (iosSecret != null) 'iosSecret': iosSecret,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber,
+        if (recaptchaToken != null) 'recaptchaToken': recaptchaToken,
+      };
 }
 
 /// Response for Identitytoolkit-SendVerificationCode
@@ -1938,13 +1749,9 @@ class IdentitytoolkitRelyingpartySendVerificationCodeResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sessionInfo != null) {
-      _json['sessionInfo'] = sessionInfo;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sessionInfo != null) 'sessionInfo': sessionInfo,
+      };
 }
 
 /// Request to set the account information.
@@ -2100,79 +1907,33 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (captchaChallenge != null) {
-      _json['captchaChallenge'] = captchaChallenge;
-    }
-    if (captchaResponse != null) {
-      _json['captchaResponse'] = captchaResponse;
-    }
-    if (createdAt != null) {
-      _json['createdAt'] = createdAt;
-    }
-    if (customAttributes != null) {
-      _json['customAttributes'] = customAttributes;
-    }
-    if (delegatedProjectNumber != null) {
-      _json['delegatedProjectNumber'] = delegatedProjectNumber;
-    }
-    if (deleteAttribute != null) {
-      _json['deleteAttribute'] = deleteAttribute;
-    }
-    if (deleteProvider != null) {
-      _json['deleteProvider'] = deleteProvider;
-    }
-    if (disableUser != null) {
-      _json['disableUser'] = disableUser;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (emailVerified != null) {
-      _json['emailVerified'] = emailVerified;
-    }
-    if (idToken != null) {
-      _json['idToken'] = idToken;
-    }
-    if (instanceId != null) {
-      _json['instanceId'] = instanceId;
-    }
-    if (lastLoginAt != null) {
-      _json['lastLoginAt'] = lastLoginAt;
-    }
-    if (localId != null) {
-      _json['localId'] = localId;
-    }
-    if (oobCode != null) {
-      _json['oobCode'] = oobCode;
-    }
-    if (password != null) {
-      _json['password'] = password;
-    }
-    if (phoneNumber != null) {
-      _json['phoneNumber'] = phoneNumber;
-    }
-    if (photoUrl != null) {
-      _json['photoUrl'] = photoUrl;
-    }
-    if (provider != null) {
-      _json['provider'] = provider;
-    }
-    if (returnSecureToken != null) {
-      _json['returnSecureToken'] = returnSecureToken;
-    }
-    if (upgradeToFederatedLogin != null) {
-      _json['upgradeToFederatedLogin'] = upgradeToFederatedLogin;
-    }
-    if (validSince != null) {
-      _json['validSince'] = validSince;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (captchaChallenge != null) 'captchaChallenge': captchaChallenge,
+        if (captchaResponse != null) 'captchaResponse': captchaResponse,
+        if (createdAt != null) 'createdAt': createdAt,
+        if (customAttributes != null) 'customAttributes': customAttributes,
+        if (delegatedProjectNumber != null)
+          'delegatedProjectNumber': delegatedProjectNumber,
+        if (deleteAttribute != null) 'deleteAttribute': deleteAttribute,
+        if (deleteProvider != null) 'deleteProvider': deleteProvider,
+        if (disableUser != null) 'disableUser': disableUser,
+        if (displayName != null) 'displayName': displayName,
+        if (email != null) 'email': email,
+        if (emailVerified != null) 'emailVerified': emailVerified,
+        if (idToken != null) 'idToken': idToken,
+        if (instanceId != null) 'instanceId': instanceId,
+        if (lastLoginAt != null) 'lastLoginAt': lastLoginAt,
+        if (localId != null) 'localId': localId,
+        if (oobCode != null) 'oobCode': oobCode,
+        if (password != null) 'password': password,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber,
+        if (photoUrl != null) 'photoUrl': photoUrl,
+        if (provider != null) 'provider': provider,
+        if (returnSecureToken != null) 'returnSecureToken': returnSecureToken,
+        if (upgradeToFederatedLogin != null)
+          'upgradeToFederatedLogin': upgradeToFederatedLogin,
+        if (validSince != null) 'validSince': validSince,
+      };
 }
 
 /// Request to set the project configuration.
@@ -2261,44 +2022,26 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowPasswordUser != null) {
-      _json['allowPasswordUser'] = allowPasswordUser;
-    }
-    if (apiKey != null) {
-      _json['apiKey'] = apiKey;
-    }
-    if (authorizedDomains != null) {
-      _json['authorizedDomains'] = authorizedDomains;
-    }
-    if (changeEmailTemplate != null) {
-      _json['changeEmailTemplate'] = changeEmailTemplate.toJson();
-    }
-    if (delegatedProjectNumber != null) {
-      _json['delegatedProjectNumber'] = delegatedProjectNumber;
-    }
-    if (enableAnonymousUser != null) {
-      _json['enableAnonymousUser'] = enableAnonymousUser;
-    }
-    if (idpConfig != null) {
-      _json['idpConfig'] = idpConfig.map((value) => value.toJson()).toList();
-    }
-    if (legacyResetPasswordTemplate != null) {
-      _json['legacyResetPasswordTemplate'] =
-          legacyResetPasswordTemplate.toJson();
-    }
-    if (resetPasswordTemplate != null) {
-      _json['resetPasswordTemplate'] = resetPasswordTemplate.toJson();
-    }
-    if (useEmailSending != null) {
-      _json['useEmailSending'] = useEmailSending;
-    }
-    if (verifyEmailTemplate != null) {
-      _json['verifyEmailTemplate'] = verifyEmailTemplate.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowPasswordUser != null) 'allowPasswordUser': allowPasswordUser,
+        if (apiKey != null) 'apiKey': apiKey,
+        if (authorizedDomains != null) 'authorizedDomains': authorizedDomains,
+        if (changeEmailTemplate != null)
+          'changeEmailTemplate': changeEmailTemplate.toJson(),
+        if (delegatedProjectNumber != null)
+          'delegatedProjectNumber': delegatedProjectNumber,
+        if (enableAnonymousUser != null)
+          'enableAnonymousUser': enableAnonymousUser,
+        if (idpConfig != null)
+          'idpConfig': idpConfig.map((value) => value.toJson()).toList(),
+        if (legacyResetPasswordTemplate != null)
+          'legacyResetPasswordTemplate': legacyResetPasswordTemplate.toJson(),
+        if (resetPasswordTemplate != null)
+          'resetPasswordTemplate': resetPasswordTemplate.toJson(),
+        if (useEmailSending != null) 'useEmailSending': useEmailSending,
+        if (verifyEmailTemplate != null)
+          'verifyEmailTemplate': verifyEmailTemplate.toJson(),
+      };
 }
 
 /// Response of setting the project configuration.
@@ -2314,13 +2057,9 @@ class IdentitytoolkitRelyingpartySetProjectConfigResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (projectId != null) 'projectId': projectId,
+      };
 }
 
 /// Request to sign out user.
@@ -2342,16 +2081,10 @@ class IdentitytoolkitRelyingpartySignOutUserRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (instanceId != null) {
-      _json['instanceId'] = instanceId;
-    }
-    if (localId != null) {
-      _json['localId'] = localId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (instanceId != null) 'instanceId': instanceId,
+        if (localId != null) 'localId': localId,
+      };
 }
 
 /// Response of signing out user.
@@ -2367,13 +2100,9 @@ class IdentitytoolkitRelyingpartySignOutUserResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (localId != null) {
-      _json['localId'] = localId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (localId != null) 'localId': localId,
+      };
 }
 
 /// Request to signup new user, create anonymous user or anonymous user reauth.
@@ -2473,52 +2202,23 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (captchaChallenge != null) {
-      _json['captchaChallenge'] = captchaChallenge;
-    }
-    if (captchaResponse != null) {
-      _json['captchaResponse'] = captchaResponse;
-    }
-    if (disabled != null) {
-      _json['disabled'] = disabled;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (emailVerified != null) {
-      _json['emailVerified'] = emailVerified;
-    }
-    if (idToken != null) {
-      _json['idToken'] = idToken;
-    }
-    if (instanceId != null) {
-      _json['instanceId'] = instanceId;
-    }
-    if (localId != null) {
-      _json['localId'] = localId;
-    }
-    if (password != null) {
-      _json['password'] = password;
-    }
-    if (phoneNumber != null) {
-      _json['phoneNumber'] = phoneNumber;
-    }
-    if (photoUrl != null) {
-      _json['photoUrl'] = photoUrl;
-    }
-    if (tenantId != null) {
-      _json['tenantId'] = tenantId;
-    }
-    if (tenantProjectNumber != null) {
-      _json['tenantProjectNumber'] = tenantProjectNumber;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (captchaChallenge != null) 'captchaChallenge': captchaChallenge,
+        if (captchaResponse != null) 'captchaResponse': captchaResponse,
+        if (disabled != null) 'disabled': disabled,
+        if (displayName != null) 'displayName': displayName,
+        if (email != null) 'email': email,
+        if (emailVerified != null) 'emailVerified': emailVerified,
+        if (idToken != null) 'idToken': idToken,
+        if (instanceId != null) 'instanceId': instanceId,
+        if (localId != null) 'localId': localId,
+        if (password != null) 'password': password,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber,
+        if (photoUrl != null) 'photoUrl': photoUrl,
+        if (tenantId != null) 'tenantId': tenantId,
+        if (tenantProjectNumber != null)
+          'tenantProjectNumber': tenantProjectNumber,
+      };
 }
 
 /// Request to upload user account in batch.
@@ -2631,52 +2331,24 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowOverwrite != null) {
-      _json['allowOverwrite'] = allowOverwrite;
-    }
-    if (blockSize != null) {
-      _json['blockSize'] = blockSize;
-    }
-    if (cpuMemCost != null) {
-      _json['cpuMemCost'] = cpuMemCost;
-    }
-    if (delegatedProjectNumber != null) {
-      _json['delegatedProjectNumber'] = delegatedProjectNumber;
-    }
-    if (dkLen != null) {
-      _json['dkLen'] = dkLen;
-    }
-    if (hashAlgorithm != null) {
-      _json['hashAlgorithm'] = hashAlgorithm;
-    }
-    if (memoryCost != null) {
-      _json['memoryCost'] = memoryCost;
-    }
-    if (parallelization != null) {
-      _json['parallelization'] = parallelization;
-    }
-    if (rounds != null) {
-      _json['rounds'] = rounds;
-    }
-    if (saltSeparator != null) {
-      _json['saltSeparator'] = saltSeparator;
-    }
-    if (sanityCheck != null) {
-      _json['sanityCheck'] = sanityCheck;
-    }
-    if (signerKey != null) {
-      _json['signerKey'] = signerKey;
-    }
-    if (targetProjectId != null) {
-      _json['targetProjectId'] = targetProjectId;
-    }
-    if (users != null) {
-      _json['users'] = users.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowOverwrite != null) 'allowOverwrite': allowOverwrite,
+        if (blockSize != null) 'blockSize': blockSize,
+        if (cpuMemCost != null) 'cpuMemCost': cpuMemCost,
+        if (delegatedProjectNumber != null)
+          'delegatedProjectNumber': delegatedProjectNumber,
+        if (dkLen != null) 'dkLen': dkLen,
+        if (hashAlgorithm != null) 'hashAlgorithm': hashAlgorithm,
+        if (memoryCost != null) 'memoryCost': memoryCost,
+        if (parallelization != null) 'parallelization': parallelization,
+        if (rounds != null) 'rounds': rounds,
+        if (saltSeparator != null) 'saltSeparator': saltSeparator,
+        if (sanityCheck != null) 'sanityCheck': sanityCheck,
+        if (signerKey != null) 'signerKey': signerKey,
+        if (targetProjectId != null) 'targetProjectId': targetProjectId,
+        if (users != null)
+          'users': users.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request to verify the IDP assertion.
@@ -2776,49 +2448,25 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (autoCreate != null) {
-      _json['autoCreate'] = autoCreate;
-    }
-    if (delegatedProjectNumber != null) {
-      _json['delegatedProjectNumber'] = delegatedProjectNumber;
-    }
-    if (idToken != null) {
-      _json['idToken'] = idToken;
-    }
-    if (instanceId != null) {
-      _json['instanceId'] = instanceId;
-    }
-    if (pendingIdToken != null) {
-      _json['pendingIdToken'] = pendingIdToken;
-    }
-    if (postBody != null) {
-      _json['postBody'] = postBody;
-    }
-    if (requestUri != null) {
-      _json['requestUri'] = requestUri;
-    }
-    if (returnIdpCredential != null) {
-      _json['returnIdpCredential'] = returnIdpCredential;
-    }
-    if (returnRefreshToken != null) {
-      _json['returnRefreshToken'] = returnRefreshToken;
-    }
-    if (returnSecureToken != null) {
-      _json['returnSecureToken'] = returnSecureToken;
-    }
-    if (sessionId != null) {
-      _json['sessionId'] = sessionId;
-    }
-    if (tenantId != null) {
-      _json['tenantId'] = tenantId;
-    }
-    if (tenantProjectNumber != null) {
-      _json['tenantProjectNumber'] = tenantProjectNumber;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (autoCreate != null) 'autoCreate': autoCreate,
+        if (delegatedProjectNumber != null)
+          'delegatedProjectNumber': delegatedProjectNumber,
+        if (idToken != null) 'idToken': idToken,
+        if (instanceId != null) 'instanceId': instanceId,
+        if (pendingIdToken != null) 'pendingIdToken': pendingIdToken,
+        if (postBody != null) 'postBody': postBody,
+        if (requestUri != null) 'requestUri': requestUri,
+        if (returnIdpCredential != null)
+          'returnIdpCredential': returnIdpCredential,
+        if (returnRefreshToken != null)
+          'returnRefreshToken': returnRefreshToken,
+        if (returnSecureToken != null) 'returnSecureToken': returnSecureToken,
+        if (sessionId != null) 'sessionId': sessionId,
+        if (tenantId != null) 'tenantId': tenantId,
+        if (tenantProjectNumber != null)
+          'tenantProjectNumber': tenantProjectNumber,
+      };
 }
 
 /// Request to verify a custom token
@@ -2854,22 +2502,13 @@ class IdentitytoolkitRelyingpartyVerifyCustomTokenRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (delegatedProjectNumber != null) {
-      _json['delegatedProjectNumber'] = delegatedProjectNumber;
-    }
-    if (instanceId != null) {
-      _json['instanceId'] = instanceId;
-    }
-    if (returnSecureToken != null) {
-      _json['returnSecureToken'] = returnSecureToken;
-    }
-    if (token != null) {
-      _json['token'] = token;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (delegatedProjectNumber != null)
+          'delegatedProjectNumber': delegatedProjectNumber,
+        if (instanceId != null) 'instanceId': instanceId,
+        if (returnSecureToken != null) 'returnSecureToken': returnSecureToken,
+        if (token != null) 'token': token,
+      };
 }
 
 /// Request to verify the password.
@@ -2950,43 +2589,21 @@ class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (captchaChallenge != null) {
-      _json['captchaChallenge'] = captchaChallenge;
-    }
-    if (captchaResponse != null) {
-      _json['captchaResponse'] = captchaResponse;
-    }
-    if (delegatedProjectNumber != null) {
-      _json['delegatedProjectNumber'] = delegatedProjectNumber;
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (idToken != null) {
-      _json['idToken'] = idToken;
-    }
-    if (instanceId != null) {
-      _json['instanceId'] = instanceId;
-    }
-    if (password != null) {
-      _json['password'] = password;
-    }
-    if (pendingIdToken != null) {
-      _json['pendingIdToken'] = pendingIdToken;
-    }
-    if (returnSecureToken != null) {
-      _json['returnSecureToken'] = returnSecureToken;
-    }
-    if (tenantId != null) {
-      _json['tenantId'] = tenantId;
-    }
-    if (tenantProjectNumber != null) {
-      _json['tenantProjectNumber'] = tenantProjectNumber;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (captchaChallenge != null) 'captchaChallenge': captchaChallenge,
+        if (captchaResponse != null) 'captchaResponse': captchaResponse,
+        if (delegatedProjectNumber != null)
+          'delegatedProjectNumber': delegatedProjectNumber,
+        if (email != null) 'email': email,
+        if (idToken != null) 'idToken': idToken,
+        if (instanceId != null) 'instanceId': instanceId,
+        if (password != null) 'password': password,
+        if (pendingIdToken != null) 'pendingIdToken': pendingIdToken,
+        if (returnSecureToken != null) 'returnSecureToken': returnSecureToken,
+        if (tenantId != null) 'tenantId': tenantId,
+        if (tenantProjectNumber != null)
+          'tenantProjectNumber': tenantProjectNumber,
+      };
 }
 
 /// Request for Identitytoolkit-VerifyPhoneNumber
@@ -3028,31 +2645,15 @@ class IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (idToken != null) {
-      _json['idToken'] = idToken;
-    }
-    if (operation != null) {
-      _json['operation'] = operation;
-    }
-    if (phoneNumber != null) {
-      _json['phoneNumber'] = phoneNumber;
-    }
-    if (sessionInfo != null) {
-      _json['sessionInfo'] = sessionInfo;
-    }
-    if (temporaryProof != null) {
-      _json['temporaryProof'] = temporaryProof;
-    }
-    if (verificationProof != null) {
-      _json['verificationProof'] = verificationProof;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (idToken != null) 'idToken': idToken,
+        if (operation != null) 'operation': operation,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber,
+        if (sessionInfo != null) 'sessionInfo': sessionInfo,
+        if (temporaryProof != null) 'temporaryProof': temporaryProof,
+        if (verificationProof != null) 'verificationProof': verificationProof,
+      };
 }
 
 /// Response for Identitytoolkit-VerifyPhoneNumber
@@ -3105,40 +2706,20 @@ class IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (expiresIn != null) {
-      _json['expiresIn'] = expiresIn;
-    }
-    if (idToken != null) {
-      _json['idToken'] = idToken;
-    }
-    if (isNewUser != null) {
-      _json['isNewUser'] = isNewUser;
-    }
-    if (localId != null) {
-      _json['localId'] = localId;
-    }
-    if (phoneNumber != null) {
-      _json['phoneNumber'] = phoneNumber;
-    }
-    if (refreshToken != null) {
-      _json['refreshToken'] = refreshToken;
-    }
-    if (temporaryProof != null) {
-      _json['temporaryProof'] = temporaryProof;
-    }
-    if (temporaryProofExpiresIn != null) {
-      _json['temporaryProofExpiresIn'] = temporaryProofExpiresIn;
-    }
-    if (verificationProof != null) {
-      _json['verificationProof'] = verificationProof;
-    }
-    if (verificationProofExpiresIn != null) {
-      _json['verificationProofExpiresIn'] = verificationProofExpiresIn;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (expiresIn != null) 'expiresIn': expiresIn,
+        if (idToken != null) 'idToken': idToken,
+        if (isNewUser != null) 'isNewUser': isNewUser,
+        if (localId != null) 'localId': localId,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber,
+        if (refreshToken != null) 'refreshToken': refreshToken,
+        if (temporaryProof != null) 'temporaryProof': temporaryProof,
+        if (temporaryProofExpiresIn != null)
+          'temporaryProofExpiresIn': temporaryProofExpiresIn,
+        if (verificationProof != null) 'verificationProof': verificationProof,
+        if (verificationProofExpiresIn != null)
+          'verificationProofExpiresIn': verificationProofExpiresIn,
+      };
 }
 
 /// Template for a single idp configuration.
@@ -3187,28 +2768,15 @@ class IdpConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clientId != null) {
-      _json['clientId'] = clientId;
-    }
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    if (experimentPercent != null) {
-      _json['experimentPercent'] = experimentPercent;
-    }
-    if (provider != null) {
-      _json['provider'] = provider;
-    }
-    if (secret != null) {
-      _json['secret'] = secret;
-    }
-    if (whitelistedAudiences != null) {
-      _json['whitelistedAudiences'] = whitelistedAudiences;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clientId != null) 'clientId': clientId,
+        if (enabled != null) 'enabled': enabled,
+        if (experimentPercent != null) 'experimentPercent': experimentPercent,
+        if (provider != null) 'provider': provider,
+        if (secret != null) 'secret': secret,
+        if (whitelistedAudiences != null)
+          'whitelistedAudiences': whitelistedAudiences,
+      };
 }
 
 /// Request of getting a code for user confirmation (reset password, change
@@ -3313,55 +2881,26 @@ class Relyingparty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (androidInstallApp != null) {
-      _json['androidInstallApp'] = androidInstallApp;
-    }
-    if (androidMinimumVersion != null) {
-      _json['androidMinimumVersion'] = androidMinimumVersion;
-    }
-    if (androidPackageName != null) {
-      _json['androidPackageName'] = androidPackageName;
-    }
-    if (canHandleCodeInApp != null) {
-      _json['canHandleCodeInApp'] = canHandleCodeInApp;
-    }
-    if (captchaResp != null) {
-      _json['captchaResp'] = captchaResp;
-    }
-    if (challenge != null) {
-      _json['challenge'] = challenge;
-    }
-    if (continueUrl != null) {
-      _json['continueUrl'] = continueUrl;
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (iOSAppStoreId != null) {
-      _json['iOSAppStoreId'] = iOSAppStoreId;
-    }
-    if (iOSBundleId != null) {
-      _json['iOSBundleId'] = iOSBundleId;
-    }
-    if (idToken != null) {
-      _json['idToken'] = idToken;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (newEmail != null) {
-      _json['newEmail'] = newEmail;
-    }
-    if (requestType != null) {
-      _json['requestType'] = requestType;
-    }
-    if (userIp != null) {
-      _json['userIp'] = userIp;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (androidInstallApp != null) 'androidInstallApp': androidInstallApp,
+        if (androidMinimumVersion != null)
+          'androidMinimumVersion': androidMinimumVersion,
+        if (androidPackageName != null)
+          'androidPackageName': androidPackageName,
+        if (canHandleCodeInApp != null)
+          'canHandleCodeInApp': canHandleCodeInApp,
+        if (captchaResp != null) 'captchaResp': captchaResp,
+        if (challenge != null) 'challenge': challenge,
+        if (continueUrl != null) 'continueUrl': continueUrl,
+        if (email != null) 'email': email,
+        if (iOSAppStoreId != null) 'iOSAppStoreId': iOSAppStoreId,
+        if (iOSBundleId != null) 'iOSBundleId': iOSBundleId,
+        if (idToken != null) 'idToken': idToken,
+        if (kind != null) 'kind': kind,
+        if (newEmail != null) 'newEmail': newEmail,
+        if (requestType != null) 'requestType': requestType,
+        if (userIp != null) 'userIp': userIp,
+      };
 }
 
 /// Response of resetting the password.
@@ -3397,22 +2936,12 @@ class ResetPasswordResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (newEmail != null) {
-      _json['newEmail'] = newEmail;
-    }
-    if (requestType != null) {
-      _json['requestType'] = requestType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (email != null) 'email': email,
+        if (kind != null) 'kind': kind,
+        if (newEmail != null) 'newEmail': newEmail,
+        if (requestType != null) 'requestType': requestType,
+      };
 }
 
 class SetAccountInfoResponseProviderUserInfo {
@@ -3448,22 +2977,12 @@ class SetAccountInfoResponseProviderUserInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (federatedId != null) {
-      _json['federatedId'] = federatedId;
-    }
-    if (photoUrl != null) {
-      _json['photoUrl'] = photoUrl;
-    }
-    if (providerId != null) {
-      _json['providerId'] = providerId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (federatedId != null) 'federatedId': federatedId,
+        if (photoUrl != null) 'photoUrl': photoUrl,
+        if (providerId != null) 'providerId': providerId,
+      };
 }
 
 /// Respone of setting the account information.
@@ -3557,47 +3076,22 @@ class SetAccountInfoResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (emailVerified != null) {
-      _json['emailVerified'] = emailVerified;
-    }
-    if (expiresIn != null) {
-      _json['expiresIn'] = expiresIn;
-    }
-    if (idToken != null) {
-      _json['idToken'] = idToken;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (localId != null) {
-      _json['localId'] = localId;
-    }
-    if (newEmail != null) {
-      _json['newEmail'] = newEmail;
-    }
-    if (passwordHash != null) {
-      _json['passwordHash'] = passwordHash;
-    }
-    if (photoUrl != null) {
-      _json['photoUrl'] = photoUrl;
-    }
-    if (providerUserInfo != null) {
-      _json['providerUserInfo'] =
-          providerUserInfo.map((value) => value.toJson()).toList();
-    }
-    if (refreshToken != null) {
-      _json['refreshToken'] = refreshToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (email != null) 'email': email,
+        if (emailVerified != null) 'emailVerified': emailVerified,
+        if (expiresIn != null) 'expiresIn': expiresIn,
+        if (idToken != null) 'idToken': idToken,
+        if (kind != null) 'kind': kind,
+        if (localId != null) 'localId': localId,
+        if (newEmail != null) 'newEmail': newEmail,
+        if (passwordHash != null) 'passwordHash': passwordHash,
+        if (photoUrl != null) 'photoUrl': photoUrl,
+        if (providerUserInfo != null)
+          'providerUserInfo':
+              providerUserInfo.map((value) => value.toJson()).toList(),
+        if (refreshToken != null) 'refreshToken': refreshToken,
+      };
 }
 
 /// Response of signing up new user, creating anonymous user or anonymous user
@@ -3651,31 +3145,15 @@ class SignupNewUserResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (expiresIn != null) {
-      _json['expiresIn'] = expiresIn;
-    }
-    if (idToken != null) {
-      _json['idToken'] = idToken;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (localId != null) {
-      _json['localId'] = localId;
-    }
-    if (refreshToken != null) {
-      _json['refreshToken'] = refreshToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (email != null) 'email': email,
+        if (expiresIn != null) 'expiresIn': expiresIn,
+        if (idToken != null) 'idToken': idToken,
+        if (kind != null) 'kind': kind,
+        if (localId != null) 'localId': localId,
+        if (refreshToken != null) 'refreshToken': refreshToken,
+      };
 }
 
 class UploadAccountResponseError {
@@ -3696,16 +3174,10 @@ class UploadAccountResponseError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (index != null) {
-      _json['index'] = index;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (index != null) 'index': index,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Respone of uploading accounts in batch.
@@ -3731,16 +3203,11 @@ class UploadAccountResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (error != null) {
-      _json['error'] = error.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (error != null)
+          'error': error.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 class UserInfoProviderUserInfo {
@@ -3800,34 +3267,16 @@ class UserInfoProviderUserInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (federatedId != null) {
-      _json['federatedId'] = federatedId;
-    }
-    if (phoneNumber != null) {
-      _json['phoneNumber'] = phoneNumber;
-    }
-    if (photoUrl != null) {
-      _json['photoUrl'] = photoUrl;
-    }
-    if (providerId != null) {
-      _json['providerId'] = providerId;
-    }
-    if (rawId != null) {
-      _json['rawId'] = rawId;
-    }
-    if (screenName != null) {
-      _json['screenName'] = screenName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (email != null) 'email': email,
+        if (federatedId != null) 'federatedId': federatedId,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber,
+        if (photoUrl != null) 'photoUrl': photoUrl,
+        if (providerId != null) 'providerId': providerId,
+        if (rawId != null) 'rawId': rawId,
+        if (screenName != null) 'screenName': screenName,
+      };
 }
 
 /// Template for an individual account info.
@@ -3968,68 +3417,29 @@ class UserInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createdAt != null) {
-      _json['createdAt'] = createdAt;
-    }
-    if (customAttributes != null) {
-      _json['customAttributes'] = customAttributes;
-    }
-    if (customAuth != null) {
-      _json['customAuth'] = customAuth;
-    }
-    if (disabled != null) {
-      _json['disabled'] = disabled;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (emailVerified != null) {
-      _json['emailVerified'] = emailVerified;
-    }
-    if (lastLoginAt != null) {
-      _json['lastLoginAt'] = lastLoginAt;
-    }
-    if (localId != null) {
-      _json['localId'] = localId;
-    }
-    if (passwordHash != null) {
-      _json['passwordHash'] = passwordHash;
-    }
-    if (passwordUpdatedAt != null) {
-      _json['passwordUpdatedAt'] = passwordUpdatedAt;
-    }
-    if (phoneNumber != null) {
-      _json['phoneNumber'] = phoneNumber;
-    }
-    if (photoUrl != null) {
-      _json['photoUrl'] = photoUrl;
-    }
-    if (providerUserInfo != null) {
-      _json['providerUserInfo'] =
-          providerUserInfo.map((value) => value.toJson()).toList();
-    }
-    if (rawPassword != null) {
-      _json['rawPassword'] = rawPassword;
-    }
-    if (salt != null) {
-      _json['salt'] = salt;
-    }
-    if (screenName != null) {
-      _json['screenName'] = screenName;
-    }
-    if (validSince != null) {
-      _json['validSince'] = validSince;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createdAt != null) 'createdAt': createdAt,
+        if (customAttributes != null) 'customAttributes': customAttributes,
+        if (customAuth != null) 'customAuth': customAuth,
+        if (disabled != null) 'disabled': disabled,
+        if (displayName != null) 'displayName': displayName,
+        if (email != null) 'email': email,
+        if (emailVerified != null) 'emailVerified': emailVerified,
+        if (lastLoginAt != null) 'lastLoginAt': lastLoginAt,
+        if (localId != null) 'localId': localId,
+        if (passwordHash != null) 'passwordHash': passwordHash,
+        if (passwordUpdatedAt != null) 'passwordUpdatedAt': passwordUpdatedAt,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber,
+        if (photoUrl != null) 'photoUrl': photoUrl,
+        if (providerUserInfo != null)
+          'providerUserInfo':
+              providerUserInfo.map((value) => value.toJson()).toList(),
+        if (rawPassword != null) 'rawPassword': rawPassword,
+        if (salt != null) 'salt': salt,
+        if (screenName != null) 'screenName': screenName,
+        if (validSince != null) 'validSince': validSince,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Response of verifying the IDP assertion.
@@ -4296,127 +3706,49 @@ class VerifyAssertionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (action != null) {
-      _json['action'] = action;
-    }
-    if (appInstallationUrl != null) {
-      _json['appInstallationUrl'] = appInstallationUrl;
-    }
-    if (appScheme != null) {
-      _json['appScheme'] = appScheme;
-    }
-    if (context != null) {
-      _json['context'] = context;
-    }
-    if (dateOfBirth != null) {
-      _json['dateOfBirth'] = dateOfBirth;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (emailRecycled != null) {
-      _json['emailRecycled'] = emailRecycled;
-    }
-    if (emailVerified != null) {
-      _json['emailVerified'] = emailVerified;
-    }
-    if (errorMessage != null) {
-      _json['errorMessage'] = errorMessage;
-    }
-    if (expiresIn != null) {
-      _json['expiresIn'] = expiresIn;
-    }
-    if (federatedId != null) {
-      _json['federatedId'] = federatedId;
-    }
-    if (firstName != null) {
-      _json['firstName'] = firstName;
-    }
-    if (fullName != null) {
-      _json['fullName'] = fullName;
-    }
-    if (idToken != null) {
-      _json['idToken'] = idToken;
-    }
-    if (inputEmail != null) {
-      _json['inputEmail'] = inputEmail;
-    }
-    if (isNewUser != null) {
-      _json['isNewUser'] = isNewUser;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (language != null) {
-      _json['language'] = language;
-    }
-    if (lastName != null) {
-      _json['lastName'] = lastName;
-    }
-    if (localId != null) {
-      _json['localId'] = localId;
-    }
-    if (needConfirmation != null) {
-      _json['needConfirmation'] = needConfirmation;
-    }
-    if (needEmail != null) {
-      _json['needEmail'] = needEmail;
-    }
-    if (nickName != null) {
-      _json['nickName'] = nickName;
-    }
-    if (oauthAccessToken != null) {
-      _json['oauthAccessToken'] = oauthAccessToken;
-    }
-    if (oauthAuthorizationCode != null) {
-      _json['oauthAuthorizationCode'] = oauthAuthorizationCode;
-    }
-    if (oauthExpireIn != null) {
-      _json['oauthExpireIn'] = oauthExpireIn;
-    }
-    if (oauthIdToken != null) {
-      _json['oauthIdToken'] = oauthIdToken;
-    }
-    if (oauthRequestToken != null) {
-      _json['oauthRequestToken'] = oauthRequestToken;
-    }
-    if (oauthScope != null) {
-      _json['oauthScope'] = oauthScope;
-    }
-    if (oauthTokenSecret != null) {
-      _json['oauthTokenSecret'] = oauthTokenSecret;
-    }
-    if (originalEmail != null) {
-      _json['originalEmail'] = originalEmail;
-    }
-    if (photoUrl != null) {
-      _json['photoUrl'] = photoUrl;
-    }
-    if (providerId != null) {
-      _json['providerId'] = providerId;
-    }
-    if (rawUserInfo != null) {
-      _json['rawUserInfo'] = rawUserInfo;
-    }
-    if (refreshToken != null) {
-      _json['refreshToken'] = refreshToken;
-    }
-    if (screenName != null) {
-      _json['screenName'] = screenName;
-    }
-    if (timeZone != null) {
-      _json['timeZone'] = timeZone;
-    }
-    if (verifiedProvider != null) {
-      _json['verifiedProvider'] = verifiedProvider;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (action != null) 'action': action,
+        if (appInstallationUrl != null)
+          'appInstallationUrl': appInstallationUrl,
+        if (appScheme != null) 'appScheme': appScheme,
+        if (context != null) 'context': context,
+        if (dateOfBirth != null) 'dateOfBirth': dateOfBirth,
+        if (displayName != null) 'displayName': displayName,
+        if (email != null) 'email': email,
+        if (emailRecycled != null) 'emailRecycled': emailRecycled,
+        if (emailVerified != null) 'emailVerified': emailVerified,
+        if (errorMessage != null) 'errorMessage': errorMessage,
+        if (expiresIn != null) 'expiresIn': expiresIn,
+        if (federatedId != null) 'federatedId': federatedId,
+        if (firstName != null) 'firstName': firstName,
+        if (fullName != null) 'fullName': fullName,
+        if (idToken != null) 'idToken': idToken,
+        if (inputEmail != null) 'inputEmail': inputEmail,
+        if (isNewUser != null) 'isNewUser': isNewUser,
+        if (kind != null) 'kind': kind,
+        if (language != null) 'language': language,
+        if (lastName != null) 'lastName': lastName,
+        if (localId != null) 'localId': localId,
+        if (needConfirmation != null) 'needConfirmation': needConfirmation,
+        if (needEmail != null) 'needEmail': needEmail,
+        if (nickName != null) 'nickName': nickName,
+        if (oauthAccessToken != null) 'oauthAccessToken': oauthAccessToken,
+        if (oauthAuthorizationCode != null)
+          'oauthAuthorizationCode': oauthAuthorizationCode,
+        if (oauthExpireIn != null) 'oauthExpireIn': oauthExpireIn,
+        if (oauthIdToken != null) 'oauthIdToken': oauthIdToken,
+        if (oauthRequestToken != null) 'oauthRequestToken': oauthRequestToken,
+        if (oauthScope != null) 'oauthScope': oauthScope,
+        if (oauthTokenSecret != null) 'oauthTokenSecret': oauthTokenSecret,
+        if (originalEmail != null) 'originalEmail': originalEmail,
+        if (photoUrl != null) 'photoUrl': photoUrl,
+        if (providerId != null) 'providerId': providerId,
+        if (rawUserInfo != null) 'rawUserInfo': rawUserInfo,
+        if (refreshToken != null) 'refreshToken': refreshToken,
+        if (screenName != null) 'screenName': screenName,
+        if (timeZone != null) 'timeZone': timeZone,
+        if (verifiedProvider != null) 'verifiedProvider': verifiedProvider,
+      };
 }
 
 /// Response from verifying a custom token
@@ -4457,25 +3789,13 @@ class VerifyCustomTokenResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (expiresIn != null) {
-      _json['expiresIn'] = expiresIn;
-    }
-    if (idToken != null) {
-      _json['idToken'] = idToken;
-    }
-    if (isNewUser != null) {
-      _json['isNewUser'] = isNewUser;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (refreshToken != null) {
-      _json['refreshToken'] = refreshToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (expiresIn != null) 'expiresIn': expiresIn,
+        if (idToken != null) 'idToken': idToken,
+        if (isNewUser != null) 'isNewUser': isNewUser,
+        if (kind != null) 'kind': kind,
+        if (refreshToken != null) 'refreshToken': refreshToken,
+      };
 }
 
 /// Request of verifying the password.
@@ -4561,44 +3881,19 @@ class VerifyPasswordResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (expiresIn != null) {
-      _json['expiresIn'] = expiresIn;
-    }
-    if (idToken != null) {
-      _json['idToken'] = idToken;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (localId != null) {
-      _json['localId'] = localId;
-    }
-    if (oauthAccessToken != null) {
-      _json['oauthAccessToken'] = oauthAccessToken;
-    }
-    if (oauthAuthorizationCode != null) {
-      _json['oauthAuthorizationCode'] = oauthAuthorizationCode;
-    }
-    if (oauthExpireIn != null) {
-      _json['oauthExpireIn'] = oauthExpireIn;
-    }
-    if (photoUrl != null) {
-      _json['photoUrl'] = photoUrl;
-    }
-    if (refreshToken != null) {
-      _json['refreshToken'] = refreshToken;
-    }
-    if (registered != null) {
-      _json['registered'] = registered;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (email != null) 'email': email,
+        if (expiresIn != null) 'expiresIn': expiresIn,
+        if (idToken != null) 'idToken': idToken,
+        if (kind != null) 'kind': kind,
+        if (localId != null) 'localId': localId,
+        if (oauthAccessToken != null) 'oauthAccessToken': oauthAccessToken,
+        if (oauthAuthorizationCode != null)
+          'oauthAuthorizationCode': oauthAuthorizationCode,
+        if (oauthExpireIn != null) 'oauthExpireIn': oauthExpireIn,
+        if (photoUrl != null) 'photoUrl': photoUrl,
+        if (refreshToken != null) 'refreshToken': refreshToken,
+        if (registered != null) 'registered': registered,
+      };
 }

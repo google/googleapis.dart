@@ -1122,13 +1122,9 @@ class AttachTrustRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (trust != null) {
-      _json['trust'] = trust.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (trust != null) 'trust': trust.toJson(),
+      };
 }
 
 /// Associates `members` with a `role`.
@@ -1197,19 +1193,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -1220,10 +1208,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Time window specified for daily operations.
@@ -1248,16 +1233,10 @@ class DailyCycle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (duration != null) {
-      _json['duration'] = duration;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (duration != null) 'duration': duration,
+        if (startTime != null) 'startTime': startTime.toJson(),
+      };
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.
@@ -1300,19 +1279,11 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (day != null) {
-      _json['day'] = day;
-    }
-    if (month != null) {
-      _json['month'] = month;
-    }
-    if (year != null) {
-      _json['year'] = year;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (day != null) 'day': day,
+        if (month != null) 'month': month,
+        if (year != null) 'year': year,
+      };
 }
 
 /// DenyMaintenancePeriod definition.
@@ -1358,19 +1329,11 @@ class DenyMaintenancePeriod {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endDate != null) {
-      _json['endDate'] = endDate.toJson();
-    }
-    if (startDate != null) {
-      _json['startDate'] = startDate.toJson();
-    }
-    if (time != null) {
-      _json['time'] = time.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endDate != null) 'endDate': endDate.toJson(),
+        if (startDate != null) 'startDate': startDate.toJson(),
+        if (time != null) 'time': time.toJson(),
+      };
 }
 
 /// Request message for DetachTrust
@@ -1389,13 +1352,9 @@ class DetachTrustRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (trust != null) {
-      _json['trust'] = trust.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (trust != null) 'trust': trust.toJson(),
+      };
 }
 
 /// Represents a managed Microsoft Active Directory domain.
@@ -1550,46 +1509,22 @@ class Domain {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (admin != null) {
-      _json['admin'] = admin;
-    }
-    if (authorizedNetworks != null) {
-      _json['authorizedNetworks'] = authorizedNetworks;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (fqdn != null) {
-      _json['fqdn'] = fqdn;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (locations != null) {
-      _json['locations'] = locations;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (reservedIpRange != null) {
-      _json['reservedIpRange'] = reservedIpRange;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (statusMessage != null) {
-      _json['statusMessage'] = statusMessage;
-    }
-    if (trusts != null) {
-      _json['trusts'] = trusts.map((value) => value.toJson()).toList();
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (admin != null) 'admin': admin,
+        if (authorizedNetworks != null)
+          'authorizedNetworks': authorizedNetworks,
+        if (createTime != null) 'createTime': createTime,
+        if (fqdn != null) 'fqdn': fqdn,
+        if (labels != null) 'labels': labels,
+        if (locations != null) 'locations': locations,
+        if (name != null) 'name': name,
+        if (reservedIpRange != null) 'reservedIpRange': reservedIpRange,
+        if (state != null) 'state': state,
+        if (statusMessage != null) 'statusMessage': statusMessage,
+        if (trusts != null)
+          'trusts': trusts.map((value) => value.toJson()).toList(),
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1606,10 +1541,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1673,22 +1605,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Represents the metadata of the long-running operation.
@@ -1750,28 +1672,15 @@ class GoogleCloudManagedidentitiesV1OpMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiVersion != null) {
-      _json['apiVersion'] = apiVersion;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (requestedCancellation != null) {
-      _json['requestedCancellation'] = requestedCancellation;
-    }
-    if (target != null) {
-      _json['target'] = target;
-    }
-    if (verb != null) {
-      _json['verb'] = verb;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion,
+        if (createTime != null) 'createTime': createTime,
+        if (endTime != null) 'endTime': endTime,
+        if (requestedCancellation != null)
+          'requestedCancellation': requestedCancellation,
+        if (target != null) 'target': target,
+        if (verb != null) 'verb': verb,
+      };
 }
 
 /// Represents the metadata of the long-running operation.
@@ -1833,28 +1742,15 @@ class GoogleCloudManagedidentitiesV1alpha1OpMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiVersion != null) {
-      _json['apiVersion'] = apiVersion;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (requestedCancellation != null) {
-      _json['requestedCancellation'] = requestedCancellation;
-    }
-    if (target != null) {
-      _json['target'] = target;
-    }
-    if (verb != null) {
-      _json['verb'] = verb;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion,
+        if (createTime != null) 'createTime': createTime,
+        if (endTime != null) 'endTime': endTime,
+        if (requestedCancellation != null)
+          'requestedCancellation': requestedCancellation,
+        if (target != null) 'target': target,
+        if (verb != null) 'verb': verb,
+      };
 }
 
 /// Represents the metadata of the long-running operation.
@@ -1916,28 +1812,15 @@ class GoogleCloudManagedidentitiesV1beta1OpMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiVersion != null) {
-      _json['apiVersion'] = apiVersion;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (requestedCancellation != null) {
-      _json['requestedCancellation'] = requestedCancellation;
-    }
-    if (target != null) {
-      _json['target'] = target;
-    }
-    if (verb != null) {
-      _json['verb'] = verb;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion,
+        if (createTime != null) 'createTime': createTime,
+        if (endTime != null) 'endTime': endTime,
+        if (requestedCancellation != null)
+          'requestedCancellation': requestedCancellation,
+        if (target != null) 'target': target,
+        if (verb != null) 'verb': verb,
+      };
 }
 
 class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
@@ -2150,57 +2033,31 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (consumerDefinedName != null) {
-      _json['consumerDefinedName'] = consumerDefinedName;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (maintenancePolicyNames != null) {
-      _json['maintenancePolicyNames'] = maintenancePolicyNames;
-    }
-    if (maintenanceSchedules != null) {
-      _json['maintenanceSchedules'] = maintenanceSchedules
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (maintenanceSettings != null) {
-      _json['maintenanceSettings'] = maintenanceSettings.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (producerMetadata != null) {
-      _json['producerMetadata'] = producerMetadata;
-    }
-    if (provisionedResources != null) {
-      _json['provisionedResources'] =
-          provisionedResources.map((value) => value.toJson()).toList();
-    }
-    if (slmInstanceTemplate != null) {
-      _json['slmInstanceTemplate'] = slmInstanceTemplate;
-    }
-    if (sloMetadata != null) {
-      _json['sloMetadata'] = sloMetadata.toJson();
-    }
-    if (softwareVersions != null) {
-      _json['softwareVersions'] = softwareVersions;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (tenantProjectId != null) {
-      _json['tenantProjectId'] = tenantProjectId;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (consumerDefinedName != null)
+          'consumerDefinedName': consumerDefinedName,
+        if (createTime != null) 'createTime': createTime,
+        if (labels != null) 'labels': labels,
+        if (maintenancePolicyNames != null)
+          'maintenancePolicyNames': maintenancePolicyNames,
+        if (maintenanceSchedules != null)
+          'maintenanceSchedules': maintenanceSchedules
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (maintenanceSettings != null)
+          'maintenanceSettings': maintenanceSettings.toJson(),
+        if (name != null) 'name': name,
+        if (producerMetadata != null) 'producerMetadata': producerMetadata,
+        if (provisionedResources != null)
+          'provisionedResources':
+              provisionedResources.map((value) => value.toJson()).toList(),
+        if (slmInstanceTemplate != null)
+          'slmInstanceTemplate': slmInstanceTemplate,
+        if (sloMetadata != null) 'sloMetadata': sloMetadata.toJson(),
+        if (softwareVersions != null) 'softwareVersions': softwareVersions,
+        if (state != null) 'state': state,
+        if (tenantProjectId != null) 'tenantProjectId': tenantProjectId,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Maintenance schedule which is exposed to customer and potentially end user,
@@ -2254,25 +2111,15 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (canReschedule != null) {
-      _json['canReschedule'] = canReschedule;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (rolloutManagementPolicy != null) {
-      _json['rolloutManagementPolicy'] = rolloutManagementPolicy;
-    }
-    if (scheduleDeadlineTime != null) {
-      _json['scheduleDeadlineTime'] = scheduleDeadlineTime;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (canReschedule != null) 'canReschedule': canReschedule,
+        if (endTime != null) 'endTime': endTime,
+        if (rolloutManagementPolicy != null)
+          'rolloutManagementPolicy': rolloutManagementPolicy,
+        if (scheduleDeadlineTime != null)
+          'scheduleDeadlineTime': scheduleDeadlineTime,
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// Maintenance settings associated with instance.
@@ -2321,17 +2168,12 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exclude != null) {
-      _json['exclude'] = exclude;
-    }
-    if (maintenancePolicies != null) {
-      _json['maintenancePolicies'] = maintenancePolicies
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exclude != null) 'exclude': exclude,
+        if (maintenancePolicies != null)
+          'maintenancePolicies': maintenancePolicies
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+      };
 }
 
 /// Node information for custom per-node SLO implementations.
@@ -2377,19 +2219,12 @@ class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exclusions != null) {
-      _json['exclusions'] = exclusions.map((value) => value.toJson()).toList();
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (nodeId != null) {
-      _json['nodeId'] = nodeId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exclusions != null)
+          'exclusions': exclusions.map((value) => value.toJson()).toList(),
+        if (location != null) 'location': location,
+        if (nodeId != null) 'nodeId': nodeId,
+      };
 }
 
 /// Describes provisioned dataplane resources.
@@ -2420,16 +2255,10 @@ class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceType != null) {
-      _json['resourceType'] = resourceType;
-    }
-    if (resourceUrl != null) {
-      _json['resourceUrl'] = resourceUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceType != null) 'resourceType': resourceType,
+        if (resourceUrl != null) 'resourceUrl': resourceUrl,
+      };
 }
 
 /// SloEligibility is a tuple containing eligibility value: true if an instance
@@ -2457,16 +2286,10 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (eligible != null) {
-      _json['eligible'] = eligible;
-    }
-    if (reason != null) {
-      _json['reason'] = reason;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (eligible != null) 'eligible': eligible,
+        if (reason != null) 'reason': reason,
+      };
 }
 
 /// SloExclusion represents an exclusion in SLI calculation applies to all SLOs.
@@ -2518,22 +2341,12 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (duration != null) {
-      _json['duration'] = duration;
-    }
-    if (reason != null) {
-      _json['reason'] = reason;
-    }
-    if (sliName != null) {
-      _json['sliName'] = sliName;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (duration != null) 'duration': duration,
+        if (reason != null) 'reason': reason,
+        if (sliName != null) 'sliName': sliName,
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// SloMetadata contains resources required for proper SLO classification of the
@@ -2607,22 +2420,14 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (eligibility != null) {
-      _json['eligibility'] = eligibility.toJson();
-    }
-    if (exclusions != null) {
-      _json['exclusions'] = exclusions.map((value) => value.toJson()).toList();
-    }
-    if (nodes != null) {
-      _json['nodes'] = nodes.map((value) => value.toJson()).toList();
-    }
-    if (tier != null) {
-      _json['tier'] = tier;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (eligibility != null) 'eligibility': eligibility.toJson(),
+        if (exclusions != null)
+          'exclusions': exclusions.map((value) => value.toJson()).toList(),
+        if (nodes != null)
+          'nodes': nodes.map((value) => value.toJson()).toList(),
+        if (tier != null) 'tier': tier,
+      };
 }
 
 /// Response message for ListDomains
@@ -2656,19 +2461,12 @@ class ListDomainsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (domains != null) {
-      _json['domains'] = domains.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (unreachable != null) {
-      _json['unreachable'] = unreachable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (domains != null)
+          'domains': domains.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (unreachable != null) 'unreachable': unreachable,
+      };
 }
 
 /// The response message for Locations.ListLocations.
@@ -2693,16 +2491,11 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -2727,16 +2520,11 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A resource that represents Google Cloud Platform location.
@@ -2801,25 +2589,13 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (labels != null) 'labels': labels,
+        if (locationId != null) 'locationId': locationId,
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Defines policies to service maintenance events.
@@ -2906,31 +2682,15 @@ class MaintenancePolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (updatePolicy != null) {
-      _json['updatePolicy'] = updatePolicy.toJson();
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (description != null) 'description': description,
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+        if (state != null) 'state': state,
+        if (updatePolicy != null) 'updatePolicy': updatePolicy.toJson(),
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// MaintenanceWindow definition.
@@ -2954,16 +2714,10 @@ class MaintenanceWindow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dailyCycle != null) {
-      _json['dailyCycle'] = dailyCycle.toJson();
-    }
-    if (weeklyCycle != null) {
-      _json['weeklyCycle'] = weeklyCycle.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dailyCycle != null) 'dailyCycle': dailyCycle.toJson(),
+        if (weeklyCycle != null) 'weeklyCycle': weeklyCycle.toJson(),
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -3042,25 +2796,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// Represents the metadata of the long-running operation.
@@ -3130,31 +2872,15 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiVersion != null) {
-      _json['apiVersion'] = apiVersion;
-    }
-    if (cancelRequested != null) {
-      _json['cancelRequested'] = cancelRequested;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (statusDetail != null) {
-      _json['statusDetail'] = statusDetail;
-    }
-    if (target != null) {
-      _json['target'] = target;
-    }
-    if (verb != null) {
-      _json['verb'] = verb;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion,
+        if (cancelRequested != null) 'cancelRequested': cancelRequested,
+        if (createTime != null) 'createTime': createTime,
+        if (endTime != null) 'endTime': endTime,
+        if (statusDetail != null) 'statusDetail': statusDetail,
+        if (target != null) 'target': target,
+        if (verb != null) 'verb': verb,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -3252,19 +2978,12 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Request message for ReconfigureTrust
@@ -3294,16 +3013,11 @@ class ReconfigureTrustRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (targetDnsIpAddresses != null) {
-      _json['targetDnsIpAddresses'] = targetDnsIpAddresses;
-    }
-    if (targetDomainName != null) {
-      _json['targetDomainName'] = targetDomainName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (targetDnsIpAddresses != null)
+          'targetDnsIpAddresses': targetDnsIpAddresses,
+        if (targetDomainName != null) 'targetDomainName': targetDomainName,
+      };
 }
 
 /// Request message for ResetAdminPassword
@@ -3314,10 +3028,7 @@ class ResetAdminPasswordRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Response message for ResetAdminPassword
@@ -3335,13 +3046,9 @@ class ResetAdminPasswordResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (password != null) {
-      _json['password'] = password;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (password != null) 'password': password,
+      };
 }
 
 /// Configure the schedule.
@@ -3381,19 +3088,11 @@ class Schedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (day != null) {
-      _json['day'] = day;
-    }
-    if (duration != null) {
-      _json['duration'] = duration;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (day != null) 'day': day,
+        if (duration != null) 'duration': duration,
+        if (startTime != null) 'startTime': startTime.toJson(),
+      };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -3414,13 +3113,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -3470,19 +3165,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -3504,13 +3191,9 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -3529,13 +3212,9 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Represents a time of day.
@@ -3583,22 +3262,12 @@ class TimeOfDay {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hours != null) {
-      _json['hours'] = hours;
-    }
-    if (minutes != null) {
-      _json['minutes'] = minutes;
-    }
-    if (nanos != null) {
-      _json['nanos'] = nanos;
-    }
-    if (seconds != null) {
-      _json['seconds'] = seconds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hours != null) 'hours': hours,
+        if (minutes != null) 'minutes': minutes,
+        if (nanos != null) 'nanos': nanos,
+        if (seconds != null) 'seconds': seconds,
+      };
 }
 
 /// Represents a relationship between two domains.
@@ -3727,43 +3396,23 @@ class Trust {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (lastTrustHeartbeatTime != null) {
-      _json['lastTrustHeartbeatTime'] = lastTrustHeartbeatTime;
-    }
-    if (selectiveAuthentication != null) {
-      _json['selectiveAuthentication'] = selectiveAuthentication;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (stateDescription != null) {
-      _json['stateDescription'] = stateDescription;
-    }
-    if (targetDnsIpAddresses != null) {
-      _json['targetDnsIpAddresses'] = targetDnsIpAddresses;
-    }
-    if (targetDomainName != null) {
-      _json['targetDomainName'] = targetDomainName;
-    }
-    if (trustDirection != null) {
-      _json['trustDirection'] = trustDirection;
-    }
-    if (trustHandshakeSecret != null) {
-      _json['trustHandshakeSecret'] = trustHandshakeSecret;
-    }
-    if (trustType != null) {
-      _json['trustType'] = trustType;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (lastTrustHeartbeatTime != null)
+          'lastTrustHeartbeatTime': lastTrustHeartbeatTime,
+        if (selectiveAuthentication != null)
+          'selectiveAuthentication': selectiveAuthentication,
+        if (state != null) 'state': state,
+        if (stateDescription != null) 'stateDescription': stateDescription,
+        if (targetDnsIpAddresses != null)
+          'targetDnsIpAddresses': targetDnsIpAddresses,
+        if (targetDomainName != null) 'targetDomainName': targetDomainName,
+        if (trustDirection != null) 'trustDirection': trustDirection,
+        if (trustHandshakeSecret != null)
+          'trustHandshakeSecret': trustHandshakeSecret,
+        if (trustType != null) 'trustType': trustType,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Maintenance policy applicable to instance updates.
@@ -3807,20 +3456,13 @@ class UpdatePolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channel != null) {
-      _json['channel'] = channel;
-    }
-    if (denyMaintenancePeriods != null) {
-      _json['denyMaintenancePeriods'] =
-          denyMaintenancePeriods.map((value) => value.toJson()).toList();
-    }
-    if (window != null) {
-      _json['window'] = window.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (channel != null) 'channel': channel,
+        if (denyMaintenancePeriods != null)
+          'denyMaintenancePeriods':
+              denyMaintenancePeriods.map((value) => value.toJson()).toList(),
+        if (window != null) 'window': window.toJson(),
+      };
 }
 
 /// Request message for ValidateTrust
@@ -3839,13 +3481,9 @@ class ValidateTrustRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (trust != null) {
-      _json['trust'] = trust.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (trust != null) 'trust': trust.toJson(),
+      };
 }
 
 /// Time window specified for weekly operations.
@@ -3866,11 +3504,8 @@ class WeeklyCycle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (schedule != null) {
-      _json['schedule'] = schedule.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (schedule != null)
+          'schedule': schedule.map((value) => value.toJson()).toList(),
+      };
 }

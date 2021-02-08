@@ -2576,19 +2576,11 @@ class GoogleApiHttpBody {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentType != null) {
-      _json['contentType'] = contentType;
-    }
-    if (data != null) {
-      _json['data'] = data;
-    }
-    if (extensions != null) {
-      _json['extensions'] = extensions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentType != null) 'contentType': contentType,
+        if (data != null) 'data': data,
+        if (extensions != null) 'extensions': extensions,
+      };
 }
 
 class GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig {
@@ -2607,13 +2599,9 @@ class GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (useElapsedTime != null) {
-      _json['useElapsedTime'] = useElapsedTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (useElapsedTime != null) 'useElapsedTime': useElapsedTime,
+      };
 }
 
 /// The median automated stopping rule stops a pending trial if the trial's best
@@ -2638,13 +2626,9 @@ class GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (useElapsedTime != null) {
-      _json['useElapsedTime'] = useElapsedTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (useElapsedTime != null) 'useElapsedTime': useElapsedTime,
+      };
 }
 
 /// An observed value of a metric.
@@ -2667,16 +2651,10 @@ class GoogleCloudMlV1HyperparameterOutputHyperparameterMetric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (objectiveValue != null) {
-      _json['objectiveValue'] = objectiveValue;
-    }
-    if (trainingStep != null) {
-      _json['trainingStep'] = trainingStep;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (objectiveValue != null) 'objectiveValue': objectiveValue,
+        if (trainingStep != null) 'trainingStep': trainingStep,
+      };
 }
 
 /// A message representing a metric in the measurement.
@@ -2702,16 +2680,10 @@ class GoogleCloudMlV1MeasurementMetric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metric != null) {
-      _json['metric'] = metric;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metric != null) 'metric': metric,
+        if (value != null) 'value': value,
+      };
 }
 
 class GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec {
@@ -2731,13 +2703,9 @@ class GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (values != null) {
-      _json['values'] = values;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (values != null) 'values': values,
+      };
 }
 
 class GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec {
@@ -2759,13 +2727,9 @@ class GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (values != null) {
-      _json['values'] = values;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (values != null) 'values': values,
+      };
 }
 
 class GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec {
@@ -2791,16 +2755,10 @@ class GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maxValue != null) {
-      _json['maxValue'] = maxValue;
-    }
-    if (minValue != null) {
-      _json['minValue'] = minValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maxValue != null) 'maxValue': maxValue,
+        if (minValue != null) 'minValue': minValue,
+      };
 }
 
 class GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec {
@@ -2826,16 +2784,10 @@ class GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maxValue != null) {
-      _json['maxValue'] = maxValue;
-    }
-    if (minValue != null) {
-      _json['minValue'] = minValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maxValue != null) 'maxValue': maxValue,
+        if (minValue != null) 'minValue': minValue,
+      };
 }
 
 /// Represents the spec to match categorical values from parent parameter.
@@ -2856,13 +2808,9 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec 
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (values != null) {
-      _json['values'] = values;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (values != null) 'values': values,
+      };
 }
 
 /// Represents the spec to match discrete values from parent parameter.
@@ -2883,13 +2831,9 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (values != null) {
-      _json['values'] = values;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (values != null) 'values': values,
+      };
 }
 
 /// Represents the spec to match integer values from parent parameter.
@@ -2910,13 +2854,9 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (values != null) {
-      _json['values'] = values;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (values != null) 'values': values,
+      };
 }
 
 /// Represents a metric to optimize.
@@ -2946,16 +2886,10 @@ class GoogleCloudMlV1StudyConfigMetricSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (goal != null) {
-      _json['goal'] = goal;
-    }
-    if (metric != null) {
-      _json['metric'] = metric;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (goal != null) 'goal': goal,
+        if (metric != null) 'metric': metric,
+      };
 }
 
 /// Represents a single parameter to optimize.
@@ -3081,44 +3015,28 @@ class GoogleCloudMlV1StudyConfigParameterSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (categoricalValueSpec != null) {
-      _json['categoricalValueSpec'] = categoricalValueSpec.toJson();
-    }
-    if (childParameterSpecs != null) {
-      _json['childParameterSpecs'] =
-          childParameterSpecs.map((value) => value.toJson()).toList();
-    }
-    if (discreteValueSpec != null) {
-      _json['discreteValueSpec'] = discreteValueSpec.toJson();
-    }
-    if (doubleValueSpec != null) {
-      _json['doubleValueSpec'] = doubleValueSpec.toJson();
-    }
-    if (integerValueSpec != null) {
-      _json['integerValueSpec'] = integerValueSpec.toJson();
-    }
-    if (parameter != null) {
-      _json['parameter'] = parameter;
-    }
-    if (parentCategoricalValues != null) {
-      _json['parentCategoricalValues'] = parentCategoricalValues.toJson();
-    }
-    if (parentDiscreteValues != null) {
-      _json['parentDiscreteValues'] = parentDiscreteValues.toJson();
-    }
-    if (parentIntValues != null) {
-      _json['parentIntValues'] = parentIntValues.toJson();
-    }
-    if (scaleType != null) {
-      _json['scaleType'] = scaleType;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (categoricalValueSpec != null)
+          'categoricalValueSpec': categoricalValueSpec.toJson(),
+        if (childParameterSpecs != null)
+          'childParameterSpecs':
+              childParameterSpecs.map((value) => value.toJson()).toList(),
+        if (discreteValueSpec != null)
+          'discreteValueSpec': discreteValueSpec.toJson(),
+        if (doubleValueSpec != null)
+          'doubleValueSpec': doubleValueSpec.toJson(),
+        if (integerValueSpec != null)
+          'integerValueSpec': integerValueSpec.toJson(),
+        if (parameter != null) 'parameter': parameter,
+        if (parentCategoricalValues != null)
+          'parentCategoricalValues': parentCategoricalValues.toJson(),
+        if (parentDiscreteValues != null)
+          'parentDiscreteValues': parentDiscreteValues.toJson(),
+        if (parentIntValues != null)
+          'parentIntValues': parentIntValues.toJson(),
+        if (scaleType != null) 'scaleType': scaleType,
+        if (type != null) 'type': type,
+      };
 }
 
 /// A message representing a parameter to be tuned.
@@ -3155,22 +3073,12 @@ class GoogleCloudMlV1TrialParameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (floatValue != null) {
-      _json['floatValue'] = floatValue;
-    }
-    if (intValue != null) {
-      _json['intValue'] = intValue;
-    }
-    if (parameter != null) {
-      _json['parameter'] = parameter;
-    }
-    if (stringValue != null) {
-      _json['stringValue'] = stringValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (floatValue != null) 'floatValue': floatValue,
+        if (intValue != null) 'intValue': intValue,
+        if (parameter != null) 'parameter': parameter,
+        if (stringValue != null) 'stringValue': stringValue,
+      };
 }
 
 /// Represents a hardware accelerator request config.
@@ -3208,16 +3116,10 @@ class GoogleCloudMlV1AcceleratorConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (count != null) {
-      _json['count'] = count;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (count != null) 'count': count,
+        if (type != null) 'type': type,
+      };
 }
 
 /// The request message for the AddTrialMeasurement service method.
@@ -3236,13 +3138,9 @@ class GoogleCloudMlV1AddTrialMeasurementRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (measurement != null) {
-      _json['measurement'] = measurement.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (measurement != null) 'measurement': measurement.toJson(),
+      };
 }
 
 /// Options for automatically scaling a model.
@@ -3303,19 +3201,12 @@ class GoogleCloudMlV1AutoScaling {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maxNodes != null) {
-      _json['maxNodes'] = maxNodes;
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics.map((value) => value.toJson()).toList();
-    }
-    if (minNodes != null) {
-      _json['minNodes'] = minNodes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maxNodes != null) 'maxNodes': maxNodes,
+        if (metrics != null)
+          'metrics': metrics.map((value) => value.toJson()).toList(),
+        if (minNodes != null) 'minNodes': minNodes,
+      };
 }
 
 /// Configuration for Automated Early Stopping of Trials.
@@ -3345,17 +3236,13 @@ class GoogleCloudMlV1AutomatedStoppingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (decayCurveStoppingConfig != null) {
-      _json['decayCurveStoppingConfig'] = decayCurveStoppingConfig.toJson();
-    }
-    if (medianAutomatedStoppingConfig != null) {
-      _json['medianAutomatedStoppingConfig'] =
-          medianAutomatedStoppingConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (decayCurveStoppingConfig != null)
+          'decayCurveStoppingConfig': decayCurveStoppingConfig.toJson(),
+        if (medianAutomatedStoppingConfig != null)
+          'medianAutomatedStoppingConfig':
+              medianAutomatedStoppingConfig.toJson(),
+      };
 }
 
 /// Represents output related to a built-in algorithm Job.
@@ -3392,22 +3279,12 @@ class GoogleCloudMlV1BuiltInAlgorithmOutput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (framework != null) {
-      _json['framework'] = framework;
-    }
-    if (modelPath != null) {
-      _json['modelPath'] = modelPath;
-    }
-    if (pythonVersion != null) {
-      _json['pythonVersion'] = pythonVersion;
-    }
-    if (runtimeVersion != null) {
-      _json['runtimeVersion'] = runtimeVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (framework != null) 'framework': framework,
+        if (modelPath != null) 'modelPath': modelPath,
+        if (pythonVersion != null) 'pythonVersion': pythonVersion,
+        if (runtimeVersion != null) 'runtimeVersion': runtimeVersion,
+      };
 }
 
 /// Request message for the CancelJob method.
@@ -3418,10 +3295,7 @@ class GoogleCloudMlV1CancelJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 class GoogleCloudMlV1Capability {
@@ -3449,16 +3323,11 @@ class GoogleCloudMlV1Capability {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (availableAccelerators != null) {
-      _json['availableAccelerators'] = availableAccelerators;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (availableAccelerators != null)
+          'availableAccelerators': availableAccelerators,
+        if (type != null) 'type': type,
+      };
 }
 
 /// This message will be placed in the metadata field of a
@@ -3489,19 +3358,11 @@ class GoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (study != null) {
-      _json['study'] = study;
-    }
-    if (trial != null) {
-      _json['trial'] = trial;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (study != null) 'study': study,
+        if (trial != null) 'trial': trial,
+      };
 }
 
 /// The request message for the CheckTrialEarlyStoppingState service method.
@@ -3512,10 +3373,7 @@ class GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The message will be placed in the response field of a completed
@@ -3545,19 +3403,11 @@ class GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (shouldStop != null) {
-      _json['shouldStop'] = shouldStop;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (shouldStop != null) 'shouldStop': shouldStop,
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// The request message for the CompleteTrial service method.
@@ -3597,19 +3447,12 @@ class GoogleCloudMlV1CompleteTrialRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (finalMeasurement != null) {
-      _json['finalMeasurement'] = finalMeasurement.toJson();
-    }
-    if (infeasibleReason != null) {
-      _json['infeasibleReason'] = infeasibleReason;
-    }
-    if (trialInfeasible != null) {
-      _json['trialInfeasible'] = trialInfeasible;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (finalMeasurement != null)
+          'finalMeasurement': finalMeasurement.toJson(),
+        if (infeasibleReason != null) 'infeasibleReason': infeasibleReason,
+        if (trialInfeasible != null) 'trialInfeasible': trialInfeasible,
+      };
 }
 
 class GoogleCloudMlV1Config {
@@ -3624,13 +3467,9 @@ class GoogleCloudMlV1Config {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (tpuServiceAccount != null) {
-      _json['tpuServiceAccount'] = tpuServiceAccount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (tpuServiceAccount != null) 'tpuServiceAccount': tpuServiceAccount,
+      };
 }
 
 /// Represents a network port in a single container.
@@ -3651,13 +3490,9 @@ class GoogleCloudMlV1ContainerPort {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (containerPort != null) {
-      _json['containerPort'] = containerPort;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (containerPort != null) 'containerPort': containerPort,
+      };
 }
 
 /// Specification of a custom container for serving predictions.
@@ -3822,25 +3657,14 @@ class GoogleCloudMlV1ContainerSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (args != null) {
-      _json['args'] = args;
-    }
-    if (command != null) {
-      _json['command'] = command;
-    }
-    if (env != null) {
-      _json['env'] = env.map((value) => value.toJson()).toList();
-    }
-    if (image != null) {
-      _json['image'] = image;
-    }
-    if (ports != null) {
-      _json['ports'] = ports.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (args != null) 'args': args,
+        if (command != null) 'command': command,
+        if (env != null) 'env': env.map((value) => value.toJson()).toList(),
+        if (image != null) 'image': image,
+        if (ports != null)
+          'ports': ports.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents the config of disk options.
@@ -3865,16 +3689,10 @@ class GoogleCloudMlV1DiskConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bootDiskSizeGb != null) {
-      _json['bootDiskSizeGb'] = bootDiskSizeGb;
-    }
-    if (bootDiskType != null) {
-      _json['bootDiskType'] = bootDiskType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb,
+        if (bootDiskType != null) 'bootDiskType': bootDiskType,
+      };
 }
 
 /// Represents a custom encryption key configuration that can be applied to a
@@ -3895,13 +3713,9 @@ class GoogleCloudMlV1EncryptionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kmsKeyName != null) {
-      _json['kmsKeyName'] = kmsKeyName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
+      };
 }
 
 /// Represents an environment variable to be made available in a container.
@@ -3942,16 +3756,10 @@ class GoogleCloudMlV1EnvVar {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Request for explanations to be issued against a trained model.
@@ -3970,13 +3778,9 @@ class GoogleCloudMlV1ExplainRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (httpBody != null) {
-      _json['httpBody'] = httpBody.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (httpBody != null) 'httpBody': httpBody.toJson(),
+      };
 }
 
 /// Message holding configuration options for explaining model predictions.
@@ -4026,20 +3830,15 @@ class GoogleCloudMlV1ExplanationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (integratedGradientsAttribution != null) {
-      _json['integratedGradientsAttribution'] =
-          integratedGradientsAttribution.toJson();
-    }
-    if (sampledShapleyAttribution != null) {
-      _json['sampledShapleyAttribution'] = sampledShapleyAttribution.toJson();
-    }
-    if (xraiAttribution != null) {
-      _json['xraiAttribution'] = xraiAttribution.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (integratedGradientsAttribution != null)
+          'integratedGradientsAttribution':
+              integratedGradientsAttribution.toJson(),
+        if (sampledShapleyAttribution != null)
+          'sampledShapleyAttribution': sampledShapleyAttribution.toJson(),
+        if (xraiAttribution != null)
+          'xraiAttribution': xraiAttribution.toJson(),
+      };
 }
 
 /// Returns service account information associated with a project.
@@ -4067,19 +3866,12 @@ class GoogleCloudMlV1GetConfigResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (config != null) {
-      _json['config'] = config.toJson();
-    }
-    if (serviceAccount != null) {
-      _json['serviceAccount'] = serviceAccount;
-    }
-    if (serviceAccountProject != null) {
-      _json['serviceAccountProject'] = serviceAccountProject;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (config != null) 'config': config.toJson(),
+        if (serviceAccount != null) 'serviceAccount': serviceAccount,
+        if (serviceAccountProject != null)
+          'serviceAccountProject': serviceAccountProject,
+      };
 }
 
 /// Represents the result of a single hyperparameter tuning trial from a
@@ -4186,37 +3978,20 @@ class GoogleCloudMlV1HyperparameterOutput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allMetrics != null) {
-      _json['allMetrics'] = allMetrics.map((value) => value.toJson()).toList();
-    }
-    if (builtInAlgorithmOutput != null) {
-      _json['builtInAlgorithmOutput'] = builtInAlgorithmOutput.toJson();
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (finalMetric != null) {
-      _json['finalMetric'] = finalMetric.toJson();
-    }
-    if (hyperparameters != null) {
-      _json['hyperparameters'] = hyperparameters;
-    }
-    if (isTrialStoppedEarly != null) {
-      _json['isTrialStoppedEarly'] = isTrialStoppedEarly;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (trialId != null) {
-      _json['trialId'] = trialId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allMetrics != null)
+          'allMetrics': allMetrics.map((value) => value.toJson()).toList(),
+        if (builtInAlgorithmOutput != null)
+          'builtInAlgorithmOutput': builtInAlgorithmOutput.toJson(),
+        if (endTime != null) 'endTime': endTime,
+        if (finalMetric != null) 'finalMetric': finalMetric.toJson(),
+        if (hyperparameters != null) 'hyperparameters': hyperparameters,
+        if (isTrialStoppedEarly != null)
+          'isTrialStoppedEarly': isTrialStoppedEarly,
+        if (startTime != null) 'startTime': startTime,
+        if (state != null) 'state': state,
+        if (trialId != null) 'trialId': trialId,
+      };
 }
 
 /// Represents a set of hyperparameters to optimize.
@@ -4342,37 +4117,21 @@ class GoogleCloudMlV1HyperparameterSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (algorithm != null) {
-      _json['algorithm'] = algorithm;
-    }
-    if (enableTrialEarlyStopping != null) {
-      _json['enableTrialEarlyStopping'] = enableTrialEarlyStopping;
-    }
-    if (goal != null) {
-      _json['goal'] = goal;
-    }
-    if (hyperparameterMetricTag != null) {
-      _json['hyperparameterMetricTag'] = hyperparameterMetricTag;
-    }
-    if (maxFailedTrials != null) {
-      _json['maxFailedTrials'] = maxFailedTrials;
-    }
-    if (maxParallelTrials != null) {
-      _json['maxParallelTrials'] = maxParallelTrials;
-    }
-    if (maxTrials != null) {
-      _json['maxTrials'] = maxTrials;
-    }
-    if (params != null) {
-      _json['params'] = params.map((value) => value.toJson()).toList();
-    }
-    if (resumePreviousJobId != null) {
-      _json['resumePreviousJobId'] = resumePreviousJobId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (algorithm != null) 'algorithm': algorithm,
+        if (enableTrialEarlyStopping != null)
+          'enableTrialEarlyStopping': enableTrialEarlyStopping,
+        if (goal != null) 'goal': goal,
+        if (hyperparameterMetricTag != null)
+          'hyperparameterMetricTag': hyperparameterMetricTag,
+        if (maxFailedTrials != null) 'maxFailedTrials': maxFailedTrials,
+        if (maxParallelTrials != null) 'maxParallelTrials': maxParallelTrials,
+        if (maxTrials != null) 'maxTrials': maxTrials,
+        if (params != null)
+          'params': params.map((value) => value.toJson()).toList(),
+        if (resumePreviousJobId != null)
+          'resumePreviousJobId': resumePreviousJobId,
+      };
 }
 
 /// Attributes credit by computing the Aumann-Shapley value taking advantage of
@@ -4394,13 +4153,9 @@ class GoogleCloudMlV1IntegratedGradientsAttribution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (numIntegralSteps != null) {
-      _json['numIntegralSteps'] = numIntegralSteps;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (numIntegralSteps != null) 'numIntegralSteps': numIntegralSteps,
+      };
 }
 
 /// Represents a training or prediction job.
@@ -4536,46 +4291,22 @@ class GoogleCloudMlV1Job {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (errorMessage != null) {
-      _json['errorMessage'] = errorMessage;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (jobId != null) {
-      _json['jobId'] = jobId;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (predictionInput != null) {
-      _json['predictionInput'] = predictionInput.toJson();
-    }
-    if (predictionOutput != null) {
-      _json['predictionOutput'] = predictionOutput.toJson();
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (trainingInput != null) {
-      _json['trainingInput'] = trainingInput.toJson();
-    }
-    if (trainingOutput != null) {
-      _json['trainingOutput'] = trainingOutput.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (endTime != null) 'endTime': endTime,
+        if (errorMessage != null) 'errorMessage': errorMessage,
+        if (etag != null) 'etag': etag,
+        if (jobId != null) 'jobId': jobId,
+        if (labels != null) 'labels': labels,
+        if (predictionInput != null)
+          'predictionInput': predictionInput.toJson(),
+        if (predictionOutput != null)
+          'predictionOutput': predictionOutput.toJson(),
+        if (startTime != null) 'startTime': startTime,
+        if (state != null) 'state': state,
+        if (trainingInput != null) 'trainingInput': trainingInput.toJson(),
+        if (trainingOutput != null) 'trainingOutput': trainingOutput.toJson(),
+      };
 }
 
 /// Response message for the ListJobs method.
@@ -4603,16 +4334,10 @@ class GoogleCloudMlV1ListJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (jobs != null) {
-      _json['jobs'] = jobs.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (jobs != null) 'jobs': jobs.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class GoogleCloudMlV1ListLocationsResponse {
@@ -4640,16 +4365,11 @@ class GoogleCloudMlV1ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message for the ListModels method.
@@ -4677,16 +4397,11 @@ class GoogleCloudMlV1ListModelsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (models != null) {
-      _json['models'] = models.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (models != null)
+          'models': models.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The request message for the ListTrials service method.
@@ -4697,10 +4412,7 @@ class GoogleCloudMlV1ListOptimalTrialsRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The response message for the ListOptimalTrials method.
@@ -4723,13 +4435,10 @@ class GoogleCloudMlV1ListOptimalTrialsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (trials != null) {
-      _json['trials'] = trials.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (trials != null)
+          'trials': trials.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GoogleCloudMlV1ListStudiesResponse {
@@ -4747,13 +4456,10 @@ class GoogleCloudMlV1ListStudiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (studies != null) {
-      _json['studies'] = studies.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (studies != null)
+          'studies': studies.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response message for the ListTrials method.
@@ -4772,13 +4478,10 @@ class GoogleCloudMlV1ListTrialsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (trials != null) {
-      _json['trials'] = trials.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (trials != null)
+          'trials': trials.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for the ListVersions method.
@@ -4807,16 +4510,11 @@ class GoogleCloudMlV1ListVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (versions != null) {
-      _json['versions'] = versions.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (versions != null)
+          'versions': versions.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GoogleCloudMlV1Location {
@@ -4839,17 +4537,11 @@ class GoogleCloudMlV1Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (capabilities != null) {
-      _json['capabilities'] =
-          capabilities.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (capabilities != null)
+          'capabilities': capabilities.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+      };
 }
 
 /// Options for manually scaling a model.
@@ -4870,13 +4562,9 @@ class GoogleCloudMlV1ManualScaling {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nodes != null) {
-      _json['nodes'] = nodes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nodes != null) 'nodes': nodes,
+      };
 }
 
 /// A message representing a measurement.
@@ -4912,19 +4600,12 @@ class GoogleCloudMlV1Measurement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (elapsedTime != null) {
-      _json['elapsedTime'] = elapsedTime;
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics.map((value) => value.toJson()).toList();
-    }
-    if (stepCount != null) {
-      _json['stepCount'] = stepCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (elapsedTime != null) 'elapsedTime': elapsedTime,
+        if (metrics != null)
+          'metrics': metrics.map((value) => value.toJson()).toList(),
+        if (stepCount != null) 'stepCount': stepCount,
+      };
 }
 
 /// MetricSpec contains the specifications to use to calculate the desired nodes
@@ -4953,16 +4634,10 @@ class GoogleCloudMlV1MetricSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (target != null) {
-      _json['target'] = target;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (target != null) 'target': target,
+      };
 }
 
 /// Represents a machine learning solution.
@@ -5092,34 +4767,18 @@ class GoogleCloudMlV1Model {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (defaultVersion != null) {
-      _json['defaultVersion'] = defaultVersion.toJson();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (onlinePredictionConsoleLogging != null) {
-      _json['onlinePredictionConsoleLogging'] = onlinePredictionConsoleLogging;
-    }
-    if (onlinePredictionLogging != null) {
-      _json['onlinePredictionLogging'] = onlinePredictionLogging;
-    }
-    if (regions != null) {
-      _json['regions'] = regions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (defaultVersion != null) 'defaultVersion': defaultVersion.toJson(),
+        if (description != null) 'description': description,
+        if (etag != null) 'etag': etag,
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+        if (onlinePredictionConsoleLogging != null)
+          'onlinePredictionConsoleLogging': onlinePredictionConsoleLogging,
+        if (onlinePredictionLogging != null)
+          'onlinePredictionLogging': onlinePredictionLogging,
+        if (regions != null) 'regions': regions,
+      };
 }
 
 /// Represents the metadata of the long-running operation.
@@ -5199,37 +4858,18 @@ class GoogleCloudMlV1OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (isCancellationRequested != null) {
-      _json['isCancellationRequested'] = isCancellationRequested;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (modelName != null) {
-      _json['modelName'] = modelName;
-    }
-    if (operationType != null) {
-      _json['operationType'] = operationType;
-    }
-    if (projectNumber != null) {
-      _json['projectNumber'] = projectNumber;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (version != null) {
-      _json['version'] = version.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (endTime != null) 'endTime': endTime,
+        if (isCancellationRequested != null)
+          'isCancellationRequested': isCancellationRequested,
+        if (labels != null) 'labels': labels,
+        if (modelName != null) 'modelName': modelName,
+        if (operationType != null) 'operationType': operationType,
+        if (projectNumber != null) 'projectNumber': projectNumber,
+        if (startTime != null) 'startTime': startTime,
+        if (version != null) 'version': version.toJson(),
+      };
 }
 
 /// Represents a single hyperparameter to optimize.
@@ -5328,31 +4968,15 @@ class GoogleCloudMlV1ParameterSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (categoricalValues != null) {
-      _json['categoricalValues'] = categoricalValues;
-    }
-    if (discreteValues != null) {
-      _json['discreteValues'] = discreteValues;
-    }
-    if (maxValue != null) {
-      _json['maxValue'] = maxValue;
-    }
-    if (minValue != null) {
-      _json['minValue'] = minValue;
-    }
-    if (parameterName != null) {
-      _json['parameterName'] = parameterName;
-    }
-    if (scaleType != null) {
-      _json['scaleType'] = scaleType;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (categoricalValues != null) 'categoricalValues': categoricalValues,
+        if (discreteValues != null) 'discreteValues': discreteValues,
+        if (maxValue != null) 'maxValue': maxValue,
+        if (minValue != null) 'minValue': minValue,
+        if (parameterName != null) 'parameterName': parameterName,
+        if (scaleType != null) 'scaleType': scaleType,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Request for predictions to be issued against a trained model.
@@ -5373,13 +4997,9 @@ class GoogleCloudMlV1PredictRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (httpBody != null) {
-      _json['httpBody'] = httpBody.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (httpBody != null) 'httpBody': httpBody.toJson(),
+      };
 }
 
 /// Represents input parameters for a prediction job.
@@ -5533,46 +5153,20 @@ class GoogleCloudMlV1PredictionInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (batchSize != null) {
-      _json['batchSize'] = batchSize;
-    }
-    if (dataFormat != null) {
-      _json['dataFormat'] = dataFormat;
-    }
-    if (inputPaths != null) {
-      _json['inputPaths'] = inputPaths;
-    }
-    if (maxWorkerCount != null) {
-      _json['maxWorkerCount'] = maxWorkerCount;
-    }
-    if (modelName != null) {
-      _json['modelName'] = modelName;
-    }
-    if (outputDataFormat != null) {
-      _json['outputDataFormat'] = outputDataFormat;
-    }
-    if (outputPath != null) {
-      _json['outputPath'] = outputPath;
-    }
-    if (region != null) {
-      _json['region'] = region;
-    }
-    if (runtimeVersion != null) {
-      _json['runtimeVersion'] = runtimeVersion;
-    }
-    if (signatureName != null) {
-      _json['signatureName'] = signatureName;
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    if (versionName != null) {
-      _json['versionName'] = versionName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (batchSize != null) 'batchSize': batchSize,
+        if (dataFormat != null) 'dataFormat': dataFormat,
+        if (inputPaths != null) 'inputPaths': inputPaths,
+        if (maxWorkerCount != null) 'maxWorkerCount': maxWorkerCount,
+        if (modelName != null) 'modelName': modelName,
+        if (outputDataFormat != null) 'outputDataFormat': outputDataFormat,
+        if (outputPath != null) 'outputPath': outputPath,
+        if (region != null) 'region': region,
+        if (runtimeVersion != null) 'runtimeVersion': runtimeVersion,
+        if (signatureName != null) 'signatureName': signatureName,
+        if (uri != null) 'uri': uri,
+        if (versionName != null) 'versionName': versionName,
+      };
 }
 
 /// Represents results of a prediction job.
@@ -5607,22 +5201,12 @@ class GoogleCloudMlV1PredictionOutput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errorCount != null) {
-      _json['errorCount'] = errorCount;
-    }
-    if (nodeHours != null) {
-      _json['nodeHours'] = nodeHours;
-    }
-    if (outputPath != null) {
-      _json['outputPath'] = outputPath;
-    }
-    if (predictionCount != null) {
-      _json['predictionCount'] = predictionCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errorCount != null) 'errorCount': errorCount,
+        if (nodeHours != null) 'nodeHours': nodeHours,
+        if (outputPath != null) 'outputPath': outputPath,
+        if (predictionCount != null) 'predictionCount': predictionCount,
+      };
 }
 
 /// Represents the configuration for a replica in a cluster.
@@ -5712,28 +5296,15 @@ class GoogleCloudMlV1ReplicaConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (acceleratorConfig != null) {
-      _json['acceleratorConfig'] = acceleratorConfig.toJson();
-    }
-    if (containerArgs != null) {
-      _json['containerArgs'] = containerArgs;
-    }
-    if (containerCommand != null) {
-      _json['containerCommand'] = containerCommand;
-    }
-    if (diskConfig != null) {
-      _json['diskConfig'] = diskConfig.toJson();
-    }
-    if (imageUri != null) {
-      _json['imageUri'] = imageUri;
-    }
-    if (tpuTfVersion != null) {
-      _json['tpuTfVersion'] = tpuTfVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (acceleratorConfig != null)
+          'acceleratorConfig': acceleratorConfig.toJson(),
+        if (containerArgs != null) 'containerArgs': containerArgs,
+        if (containerCommand != null) 'containerCommand': containerCommand,
+        if (diskConfig != null) 'diskConfig': diskConfig.toJson(),
+        if (imageUri != null) 'imageUri': imageUri,
+        if (tpuTfVersion != null) 'tpuTfVersion': tpuTfVersion,
+      };
 }
 
 /// Configuration for logging request-response pairs to a BigQuery table.
@@ -5778,16 +5349,11 @@ class GoogleCloudMlV1RequestLoggingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bigqueryTableName != null) {
-      _json['bigqueryTableName'] = bigqueryTableName;
-    }
-    if (samplingPercentage != null) {
-      _json['samplingPercentage'] = samplingPercentage;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bigqueryTableName != null) 'bigqueryTableName': bigqueryTableName,
+        if (samplingPercentage != null)
+          'samplingPercentage': samplingPercentage,
+      };
 }
 
 /// Specifies HTTP paths served by a custom container.
@@ -5849,16 +5415,10 @@ class GoogleCloudMlV1RouteMap {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (health != null) {
-      _json['health'] = health;
-    }
-    if (predict != null) {
-      _json['predict'] = predict;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (health != null) 'health': health,
+        if (predict != null) 'predict': predict,
+      };
 }
 
 /// An attribution method that approximates Shapley values for features that
@@ -5879,13 +5439,9 @@ class GoogleCloudMlV1SampledShapleyAttribution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (numPaths != null) {
-      _json['numPaths'] = numPaths;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (numPaths != null) 'numPaths': numPaths,
+      };
 }
 
 /// All parameters related to scheduling of training jobs.
@@ -5944,16 +5500,10 @@ class GoogleCloudMlV1Scheduling {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maxRunningTime != null) {
-      _json['maxRunningTime'] = maxRunningTime;
-    }
-    if (maxWaitTime != null) {
-      _json['maxWaitTime'] = maxWaitTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maxRunningTime != null) 'maxRunningTime': maxRunningTime,
+        if (maxWaitTime != null) 'maxWaitTime': maxWaitTime,
+      };
 }
 
 /// Request message for the SetDefaultVersion request.
@@ -5964,10 +5514,7 @@ class GoogleCloudMlV1SetDefaultVersionRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 class GoogleCloudMlV1StopTrialRequest {
@@ -5977,10 +5524,7 @@ class GoogleCloudMlV1StopTrialRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A message representing a Study.
@@ -6039,25 +5583,13 @@ class GoogleCloudMlV1Study {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (inactiveReason != null) {
-      _json['inactiveReason'] = inactiveReason;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (studyConfig != null) {
-      _json['studyConfig'] = studyConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (inactiveReason != null) 'inactiveReason': inactiveReason,
+        if (name != null) 'name': name,
+        if (state != null) 'state': state,
+        if (studyConfig != null) 'studyConfig': studyConfig.toJson(),
+      };
 }
 
 /// Represents configuration of a study.
@@ -6111,22 +5643,15 @@ class GoogleCloudMlV1StudyConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (algorithm != null) {
-      _json['algorithm'] = algorithm;
-    }
-    if (automatedStoppingConfig != null) {
-      _json['automatedStoppingConfig'] = automatedStoppingConfig.toJson();
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics.map((value) => value.toJson()).toList();
-    }
-    if (parameters != null) {
-      _json['parameters'] = parameters.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (algorithm != null) 'algorithm': algorithm,
+        if (automatedStoppingConfig != null)
+          'automatedStoppingConfig': automatedStoppingConfig.toJson(),
+        if (metrics != null)
+          'metrics': metrics.map((value) => value.toJson()).toList(),
+        if (parameters != null)
+          'parameters': parameters.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Metadata field of a google.longrunning.Operation associated with a
@@ -6161,22 +5686,12 @@ class GoogleCloudMlV1SuggestTrialsMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clientId != null) {
-      _json['clientId'] = clientId;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (study != null) {
-      _json['study'] = study;
-    }
-    if (suggestionCount != null) {
-      _json['suggestionCount'] = suggestionCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clientId != null) 'clientId': clientId,
+        if (createTime != null) 'createTime': createTime,
+        if (study != null) 'study': study,
+        if (suggestionCount != null) 'suggestionCount': suggestionCount,
+      };
 }
 
 /// The request message for the SuggestTrial service method.
@@ -6206,16 +5721,10 @@ class GoogleCloudMlV1SuggestTrialsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clientId != null) {
-      _json['clientId'] = clientId;
-    }
-    if (suggestionCount != null) {
-      _json['suggestionCount'] = suggestionCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clientId != null) 'clientId': clientId,
+        if (suggestionCount != null) 'suggestionCount': suggestionCount,
+      };
 }
 
 /// This message will be placed in the response field of a completed
@@ -6259,22 +5768,13 @@ class GoogleCloudMlV1SuggestTrialsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (studyState != null) {
-      _json['studyState'] = studyState;
-    }
-    if (trials != null) {
-      _json['trials'] = trials.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (startTime != null) 'startTime': startTime,
+        if (studyState != null) 'studyState': studyState,
+        if (trials != null)
+          'trials': trials.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents input parameters for a training job.
@@ -6686,85 +6186,40 @@ class GoogleCloudMlV1TrainingInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (args != null) {
-      _json['args'] = args;
-    }
-    if (encryptionConfig != null) {
-      _json['encryptionConfig'] = encryptionConfig.toJson();
-    }
-    if (evaluatorConfig != null) {
-      _json['evaluatorConfig'] = evaluatorConfig.toJson();
-    }
-    if (evaluatorCount != null) {
-      _json['evaluatorCount'] = evaluatorCount;
-    }
-    if (evaluatorType != null) {
-      _json['evaluatorType'] = evaluatorType;
-    }
-    if (hyperparameters != null) {
-      _json['hyperparameters'] = hyperparameters.toJson();
-    }
-    if (jobDir != null) {
-      _json['jobDir'] = jobDir;
-    }
-    if (masterConfig != null) {
-      _json['masterConfig'] = masterConfig.toJson();
-    }
-    if (masterType != null) {
-      _json['masterType'] = masterType;
-    }
-    if (network != null) {
-      _json['network'] = network;
-    }
-    if (packageUris != null) {
-      _json['packageUris'] = packageUris;
-    }
-    if (parameterServerConfig != null) {
-      _json['parameterServerConfig'] = parameterServerConfig.toJson();
-    }
-    if (parameterServerCount != null) {
-      _json['parameterServerCount'] = parameterServerCount;
-    }
-    if (parameterServerType != null) {
-      _json['parameterServerType'] = parameterServerType;
-    }
-    if (pythonModule != null) {
-      _json['pythonModule'] = pythonModule;
-    }
-    if (pythonVersion != null) {
-      _json['pythonVersion'] = pythonVersion;
-    }
-    if (region != null) {
-      _json['region'] = region;
-    }
-    if (runtimeVersion != null) {
-      _json['runtimeVersion'] = runtimeVersion;
-    }
-    if (scaleTier != null) {
-      _json['scaleTier'] = scaleTier;
-    }
-    if (scheduling != null) {
-      _json['scheduling'] = scheduling.toJson();
-    }
-    if (serviceAccount != null) {
-      _json['serviceAccount'] = serviceAccount;
-    }
-    if (useChiefInTfConfig != null) {
-      _json['useChiefInTfConfig'] = useChiefInTfConfig;
-    }
-    if (workerConfig != null) {
-      _json['workerConfig'] = workerConfig.toJson();
-    }
-    if (workerCount != null) {
-      _json['workerCount'] = workerCount;
-    }
-    if (workerType != null) {
-      _json['workerType'] = workerType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (args != null) 'args': args,
+        if (encryptionConfig != null)
+          'encryptionConfig': encryptionConfig.toJson(),
+        if (evaluatorConfig != null)
+          'evaluatorConfig': evaluatorConfig.toJson(),
+        if (evaluatorCount != null) 'evaluatorCount': evaluatorCount,
+        if (evaluatorType != null) 'evaluatorType': evaluatorType,
+        if (hyperparameters != null)
+          'hyperparameters': hyperparameters.toJson(),
+        if (jobDir != null) 'jobDir': jobDir,
+        if (masterConfig != null) 'masterConfig': masterConfig.toJson(),
+        if (masterType != null) 'masterType': masterType,
+        if (network != null) 'network': network,
+        if (packageUris != null) 'packageUris': packageUris,
+        if (parameterServerConfig != null)
+          'parameterServerConfig': parameterServerConfig.toJson(),
+        if (parameterServerCount != null)
+          'parameterServerCount': parameterServerCount,
+        if (parameterServerType != null)
+          'parameterServerType': parameterServerType,
+        if (pythonModule != null) 'pythonModule': pythonModule,
+        if (pythonVersion != null) 'pythonVersion': pythonVersion,
+        if (region != null) 'region': region,
+        if (runtimeVersion != null) 'runtimeVersion': runtimeVersion,
+        if (scaleTier != null) 'scaleTier': scaleTier,
+        if (scheduling != null) 'scheduling': scheduling.toJson(),
+        if (serviceAccount != null) 'serviceAccount': serviceAccount,
+        if (useChiefInTfConfig != null)
+          'useChiefInTfConfig': useChiefInTfConfig,
+        if (workerConfig != null) 'workerConfig': workerConfig.toJson(),
+        if (workerCount != null) 'workerCount': workerCount,
+        if (workerType != null) 'workerType': workerType,
+      };
 }
 
 /// Represents results of a training job.
@@ -6836,31 +6291,21 @@ class GoogleCloudMlV1TrainingOutput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (builtInAlgorithmOutput != null) {
-      _json['builtInAlgorithmOutput'] = builtInAlgorithmOutput.toJson();
-    }
-    if (completedTrialCount != null) {
-      _json['completedTrialCount'] = completedTrialCount;
-    }
-    if (consumedMLUnits != null) {
-      _json['consumedMLUnits'] = consumedMLUnits;
-    }
-    if (hyperparameterMetricTag != null) {
-      _json['hyperparameterMetricTag'] = hyperparameterMetricTag;
-    }
-    if (isBuiltInAlgorithmJob != null) {
-      _json['isBuiltInAlgorithmJob'] = isBuiltInAlgorithmJob;
-    }
-    if (isHyperparameterTuningJob != null) {
-      _json['isHyperparameterTuningJob'] = isHyperparameterTuningJob;
-    }
-    if (trials != null) {
-      _json['trials'] = trials.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (builtInAlgorithmOutput != null)
+          'builtInAlgorithmOutput': builtInAlgorithmOutput.toJson(),
+        if (completedTrialCount != null)
+          'completedTrialCount': completedTrialCount,
+        if (consumedMLUnits != null) 'consumedMLUnits': consumedMLUnits,
+        if (hyperparameterMetricTag != null)
+          'hyperparameterMetricTag': hyperparameterMetricTag,
+        if (isBuiltInAlgorithmJob != null)
+          'isBuiltInAlgorithmJob': isBuiltInAlgorithmJob,
+        if (isHyperparameterTuningJob != null)
+          'isHyperparameterTuningJob': isHyperparameterTuningJob,
+        if (trials != null)
+          'trials': trials.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A message representing a trial.
@@ -6965,41 +6410,21 @@ class GoogleCloudMlV1Trial {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clientId != null) {
-      _json['clientId'] = clientId;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (finalMeasurement != null) {
-      _json['finalMeasurement'] = finalMeasurement.toJson();
-    }
-    if (infeasibleReason != null) {
-      _json['infeasibleReason'] = infeasibleReason;
-    }
-    if (measurements != null) {
-      _json['measurements'] =
-          measurements.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parameters != null) {
-      _json['parameters'] = parameters.map((value) => value.toJson()).toList();
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (trialInfeasible != null) {
-      _json['trialInfeasible'] = trialInfeasible;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clientId != null) 'clientId': clientId,
+        if (endTime != null) 'endTime': endTime,
+        if (finalMeasurement != null)
+          'finalMeasurement': finalMeasurement.toJson(),
+        if (infeasibleReason != null) 'infeasibleReason': infeasibleReason,
+        if (measurements != null)
+          'measurements': measurements.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (parameters != null)
+          'parameters': parameters.map((value) => value.toJson()).toList(),
+        if (startTime != null) 'startTime': startTime,
+        if (state != null) 'state': state,
+        if (trialInfeasible != null) 'trialInfeasible': trialInfeasible,
+      };
 }
 
 /// Represents a version of the model.
@@ -7394,88 +6819,38 @@ class GoogleCloudMlV1Version {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (acceleratorConfig != null) {
-      _json['acceleratorConfig'] = acceleratorConfig.toJson();
-    }
-    if (autoScaling != null) {
-      _json['autoScaling'] = autoScaling.toJson();
-    }
-    if (container != null) {
-      _json['container'] = container.toJson();
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (deploymentUri != null) {
-      _json['deploymentUri'] = deploymentUri;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (errorMessage != null) {
-      _json['errorMessage'] = errorMessage;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (explanationConfig != null) {
-      _json['explanationConfig'] = explanationConfig.toJson();
-    }
-    if (framework != null) {
-      _json['framework'] = framework;
-    }
-    if (isDefault != null) {
-      _json['isDefault'] = isDefault;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (lastMigrationModelId != null) {
-      _json['lastMigrationModelId'] = lastMigrationModelId;
-    }
-    if (lastMigrationTime != null) {
-      _json['lastMigrationTime'] = lastMigrationTime;
-    }
-    if (lastUseTime != null) {
-      _json['lastUseTime'] = lastUseTime;
-    }
-    if (machineType != null) {
-      _json['machineType'] = machineType;
-    }
-    if (manualScaling != null) {
-      _json['manualScaling'] = manualScaling.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (packageUris != null) {
-      _json['packageUris'] = packageUris;
-    }
-    if (predictionClass != null) {
-      _json['predictionClass'] = predictionClass;
-    }
-    if (pythonVersion != null) {
-      _json['pythonVersion'] = pythonVersion;
-    }
-    if (requestLoggingConfig != null) {
-      _json['requestLoggingConfig'] = requestLoggingConfig.toJson();
-    }
-    if (routes != null) {
-      _json['routes'] = routes.toJson();
-    }
-    if (runtimeVersion != null) {
-      _json['runtimeVersion'] = runtimeVersion;
-    }
-    if (serviceAccount != null) {
-      _json['serviceAccount'] = serviceAccount;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (acceleratorConfig != null)
+          'acceleratorConfig': acceleratorConfig.toJson(),
+        if (autoScaling != null) 'autoScaling': autoScaling.toJson(),
+        if (container != null) 'container': container.toJson(),
+        if (createTime != null) 'createTime': createTime,
+        if (deploymentUri != null) 'deploymentUri': deploymentUri,
+        if (description != null) 'description': description,
+        if (errorMessage != null) 'errorMessage': errorMessage,
+        if (etag != null) 'etag': etag,
+        if (explanationConfig != null)
+          'explanationConfig': explanationConfig.toJson(),
+        if (framework != null) 'framework': framework,
+        if (isDefault != null) 'isDefault': isDefault,
+        if (labels != null) 'labels': labels,
+        if (lastMigrationModelId != null)
+          'lastMigrationModelId': lastMigrationModelId,
+        if (lastMigrationTime != null) 'lastMigrationTime': lastMigrationTime,
+        if (lastUseTime != null) 'lastUseTime': lastUseTime,
+        if (machineType != null) 'machineType': machineType,
+        if (manualScaling != null) 'manualScaling': manualScaling.toJson(),
+        if (name != null) 'name': name,
+        if (packageUris != null) 'packageUris': packageUris,
+        if (predictionClass != null) 'predictionClass': predictionClass,
+        if (pythonVersion != null) 'pythonVersion': pythonVersion,
+        if (requestLoggingConfig != null)
+          'requestLoggingConfig': requestLoggingConfig.toJson(),
+        if (routes != null) 'routes': routes.toJson(),
+        if (runtimeVersion != null) 'runtimeVersion': runtimeVersion,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount,
+        if (state != null) 'state': state,
+      };
 }
 
 /// Attributes credit by computing the XRAI taking advantage of the model's
@@ -7498,13 +6873,9 @@ class GoogleCloudMlV1XraiAttribution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (numIntegralSteps != null) {
-      _json['numIntegralSteps'] = numIntegralSteps;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (numIntegralSteps != null) 'numIntegralSteps': numIntegralSteps,
+      };
 }
 
 /// Specifies the audit configuration for a service.
@@ -7549,17 +6920,12 @@ class GoogleIamV1AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditLogConfigs != null) {
-      _json['auditLogConfigs'] =
-          auditLogConfigs.map((value) => value.toJson()).toList();
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditLogConfigs != null)
+          'auditLogConfigs':
+              auditLogConfigs.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service,
+      };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -7596,16 +6962,10 @@ class GoogleIamV1AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exemptedMembers != null) {
-      _json['exemptedMembers'] = exemptedMembers;
-    }
-    if (logType != null) {
-      _json['logType'] = logType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
+        if (logType != null) 'logType': logType,
+      };
 }
 
 /// Associates `members` with a `role`.
@@ -7674,19 +7034,11 @@ class GoogleIamV1Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -7794,23 +7146,14 @@ class GoogleIamV1Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditConfigs != null) {
-      _json['auditConfigs'] =
-          auditConfigs.map((value) => value.toJson()).toList();
-    }
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditConfigs != null)
+          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -7840,16 +7183,10 @@ class GoogleIamV1SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -7871,13 +7208,9 @@ class GoogleIamV1TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -7896,13 +7229,9 @@ class GoogleIamV1TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -7928,16 +7257,11 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -8016,25 +7340,13 @@ class GoogleLongrunningOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -8051,10 +7363,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -8104,19 +7413,11 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -8180,20 +7481,10 @@ class GoogleTypeExpr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }

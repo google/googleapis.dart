@@ -2256,13 +2256,9 @@ class AddProductToProductSetRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (product != null) {
-      _json['product'] = product;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (product != null) 'product': product,
+      };
 }
 
 /// A request to annotate one single file, e.g. a PDF, TIFF or GIF file.
@@ -2315,22 +2311,13 @@ class AnnotateFileRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (features != null) {
-      _json['features'] = features.map((value) => value.toJson()).toList();
-    }
-    if (imageContext != null) {
-      _json['imageContext'] = imageContext.toJson();
-    }
-    if (inputConfig != null) {
-      _json['inputConfig'] = inputConfig.toJson();
-    }
-    if (pages != null) {
-      _json['pages'] = pages;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (features != null)
+          'features': features.map((value) => value.toJson()).toList(),
+        if (imageContext != null) 'imageContext': imageContext.toJson(),
+        if (inputConfig != null) 'inputConfig': inputConfig.toJson(),
+        if (pages != null) 'pages': pages,
+      };
 }
 
 /// Response to a single file annotation request.
@@ -2376,22 +2363,13 @@ class AnnotateFileResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (inputConfig != null) {
-      _json['inputConfig'] = inputConfig.toJson();
-    }
-    if (responses != null) {
-      _json['responses'] = responses.map((value) => value.toJson()).toList();
-    }
-    if (totalPages != null) {
-      _json['totalPages'] = totalPages;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (error != null) 'error': error.toJson(),
+        if (inputConfig != null) 'inputConfig': inputConfig.toJson(),
+        if (responses != null)
+          'responses': responses.map((value) => value.toJson()).toList(),
+        if (totalPages != null) 'totalPages': totalPages,
+      };
 }
 
 /// Request for performing Google Cloud Vision API tasks over a user-provided
@@ -2425,19 +2403,12 @@ class AnnotateImageRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (features != null) {
-      _json['features'] = features.map((value) => value.toJson()).toList();
-    }
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    if (imageContext != null) {
-      _json['imageContext'] = imageContext.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (features != null)
+          'features': features.map((value) => value.toJson()).toList(),
+        if (image != null) 'image': image.toJson(),
+        if (imageContext != null) 'imageContext': imageContext.toJson(),
+      };
 }
 
 /// Response to an image annotation request.
@@ -2570,58 +2541,40 @@ class AnnotateImageResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (context != null) {
-      _json['context'] = context.toJson();
-    }
-    if (cropHintsAnnotation != null) {
-      _json['cropHintsAnnotation'] = cropHintsAnnotation.toJson();
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (faceAnnotations != null) {
-      _json['faceAnnotations'] =
-          faceAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (fullTextAnnotation != null) {
-      _json['fullTextAnnotation'] = fullTextAnnotation.toJson();
-    }
-    if (imagePropertiesAnnotation != null) {
-      _json['imagePropertiesAnnotation'] = imagePropertiesAnnotation.toJson();
-    }
-    if (labelAnnotations != null) {
-      _json['labelAnnotations'] =
-          labelAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (landmarkAnnotations != null) {
-      _json['landmarkAnnotations'] =
-          landmarkAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (localizedObjectAnnotations != null) {
-      _json['localizedObjectAnnotations'] =
-          localizedObjectAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (logoAnnotations != null) {
-      _json['logoAnnotations'] =
-          logoAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (productSearchResults != null) {
-      _json['productSearchResults'] = productSearchResults.toJson();
-    }
-    if (safeSearchAnnotation != null) {
-      _json['safeSearchAnnotation'] = safeSearchAnnotation.toJson();
-    }
-    if (textAnnotations != null) {
-      _json['textAnnotations'] =
-          textAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (webDetection != null) {
-      _json['webDetection'] = webDetection.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (context != null) 'context': context.toJson(),
+        if (cropHintsAnnotation != null)
+          'cropHintsAnnotation': cropHintsAnnotation.toJson(),
+        if (error != null) 'error': error.toJson(),
+        if (faceAnnotations != null)
+          'faceAnnotations':
+              faceAnnotations.map((value) => value.toJson()).toList(),
+        if (fullTextAnnotation != null)
+          'fullTextAnnotation': fullTextAnnotation.toJson(),
+        if (imagePropertiesAnnotation != null)
+          'imagePropertiesAnnotation': imagePropertiesAnnotation.toJson(),
+        if (labelAnnotations != null)
+          'labelAnnotations':
+              labelAnnotations.map((value) => value.toJson()).toList(),
+        if (landmarkAnnotations != null)
+          'landmarkAnnotations':
+              landmarkAnnotations.map((value) => value.toJson()).toList(),
+        if (localizedObjectAnnotations != null)
+          'localizedObjectAnnotations': localizedObjectAnnotations
+              .map((value) => value.toJson())
+              .toList(),
+        if (logoAnnotations != null)
+          'logoAnnotations':
+              logoAnnotations.map((value) => value.toJson()).toList(),
+        if (productSearchResults != null)
+          'productSearchResults': productSearchResults.toJson(),
+        if (safeSearchAnnotation != null)
+          'safeSearchAnnotation': safeSearchAnnotation.toJson(),
+        if (textAnnotations != null)
+          'textAnnotations':
+              textAnnotations.map((value) => value.toJson()).toList(),
+        if (webDetection != null) 'webDetection': webDetection.toJson(),
+      };
 }
 
 /// An offline file annotation request.
@@ -2667,22 +2620,13 @@ class AsyncAnnotateFileRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (features != null) {
-      _json['features'] = features.map((value) => value.toJson()).toList();
-    }
-    if (imageContext != null) {
-      _json['imageContext'] = imageContext.toJson();
-    }
-    if (inputConfig != null) {
-      _json['inputConfig'] = inputConfig.toJson();
-    }
-    if (outputConfig != null) {
-      _json['outputConfig'] = outputConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (features != null)
+          'features': features.map((value) => value.toJson()).toList(),
+        if (imageContext != null) 'imageContext': imageContext.toJson(),
+        if (inputConfig != null) 'inputConfig': inputConfig.toJson(),
+        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
+      };
 }
 
 /// The response for a single offline file annotation request.
@@ -2699,13 +2643,9 @@ class AsyncAnnotateFileResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (outputConfig != null) {
-      _json['outputConfig'] = outputConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
+      };
 }
 
 /// Multiple async file annotation requests are batched into a single service
@@ -2741,16 +2681,11 @@ class AsyncBatchAnnotateFilesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    if (requests != null) {
-      _json['requests'] = requests.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (parent != null) 'parent': parent,
+        if (requests != null)
+          'requests': requests.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response to an async batch file annotation request.
@@ -2771,13 +2706,10 @@ class AsyncBatchAnnotateFilesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (responses != null) {
-      _json['responses'] = responses.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (responses != null)
+          'responses': responses.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request for async image annotation for a list of images.
@@ -2820,19 +2752,12 @@ class AsyncBatchAnnotateImagesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (outputConfig != null) {
-      _json['outputConfig'] = outputConfig.toJson();
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    if (requests != null) {
-      _json['requests'] = requests.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
+        if (parent != null) 'parent': parent,
+        if (requests != null)
+          'requests': requests.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response to an async batch image annotation request.
@@ -2849,13 +2774,9 @@ class AsyncBatchAnnotateImagesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (outputConfig != null) {
-      _json['outputConfig'] = outputConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
+      };
 }
 
 /// A list of requests to annotate files using the BatchAnnotateFiles API.
@@ -2892,16 +2813,11 @@ class BatchAnnotateFilesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    if (requests != null) {
-      _json['requests'] = requests.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (parent != null) 'parent': parent,
+        if (requests != null)
+          'requests': requests.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A list of file annotation responses.
@@ -2921,13 +2837,10 @@ class BatchAnnotateFilesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (responses != null) {
-      _json['responses'] = responses.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (responses != null)
+          'responses': responses.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Multiple image annotation requests are batched into a single service call.
@@ -2961,16 +2874,11 @@ class BatchAnnotateImagesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    if (requests != null) {
-      _json['requests'] = requests.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (parent != null) 'parent': parent,
+        if (requests != null)
+          'requests': requests.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response to a batch image annotation request.
@@ -2989,13 +2897,10 @@ class BatchAnnotateImagesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (responses != null) {
-      _json['responses'] = responses.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (responses != null)
+          'responses': responses.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Metadata for the batch operations such as the current state.
@@ -3038,19 +2943,11 @@ class BatchOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (submitTime != null) {
-      _json['submitTime'] = submitTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (state != null) 'state': state,
+        if (submitTime != null) 'submitTime': submitTime,
+      };
 }
 
 /// Logical element on the page.
@@ -3112,25 +3009,14 @@ class Block {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blockType != null) {
-      _json['blockType'] = blockType;
-    }
-    if (boundingBox != null) {
-      _json['boundingBox'] = boundingBox.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (paragraphs != null) {
-      _json['paragraphs'] = paragraphs.map((value) => value.toJson()).toList();
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blockType != null) 'blockType': blockType,
+        if (boundingBox != null) 'boundingBox': boundingBox.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (paragraphs != null)
+          'paragraphs': paragraphs.map((value) => value.toJson()).toList(),
+        if (property != null) 'property': property.toJson(),
+      };
 }
 
 /// A bounding polygon for the detected image annotation.
@@ -3158,17 +3044,13 @@ class BoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (normalizedVertices != null) {
-      _json['normalizedVertices'] =
-          normalizedVertices.map((value) => value.toJson()).toList();
-    }
-    if (vertices != null) {
-      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (normalizedVertices != null)
+          'normalizedVertices':
+              normalizedVertices.map((value) => value.toJson()).toList(),
+        if (vertices != null)
+          'vertices': vertices.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -3179,10 +3061,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Represents a color in the RGBA color space.
@@ -3273,22 +3152,12 @@ class Color {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alpha != null) {
-      _json['alpha'] = alpha;
-    }
-    if (blue != null) {
-      _json['blue'] = blue;
-    }
-    if (green != null) {
-      _json['green'] = green;
-    }
-    if (red != null) {
-      _json['red'] = red;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alpha != null) 'alpha': alpha,
+        if (blue != null) 'blue': blue,
+        if (green != null) 'green': green,
+        if (red != null) 'red': red,
+      };
 }
 
 /// Color information consists of RGB channels, score, and the fraction of the
@@ -3322,19 +3191,11 @@ class ColorInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (color != null) {
-      _json['color'] = color.toJson();
-    }
-    if (pixelFraction != null) {
-      _json['pixelFraction'] = pixelFraction;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (color != null) 'color': color.toJson(),
+        if (pixelFraction != null) 'pixelFraction': pixelFraction,
+        if (score != null) 'score': score,
+      };
 }
 
 /// Single crop hint that is used to generate a new crop when serving an image.
@@ -3368,19 +3229,12 @@ class CropHint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (importanceFraction != null) {
-      _json['importanceFraction'] = importanceFraction;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (importanceFraction != null)
+          'importanceFraction': importanceFraction,
+      };
 }
 
 /// Set of crop hints that are used to generate new crops when serving images.
@@ -3399,13 +3253,10 @@ class CropHintsAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cropHints != null) {
-      _json['cropHints'] = cropHints.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cropHints != null)
+          'cropHints': cropHints.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Parameters for crop hints annotation request.
@@ -3429,13 +3280,9 @@ class CropHintsParams {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aspectRatios != null) {
-      _json['aspectRatios'] = aspectRatios;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aspectRatios != null) 'aspectRatios': aspectRatios,
+      };
 }
 
 /// Detected start or end of a structural component.
@@ -3465,16 +3312,10 @@ class DetectedBreak {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (isPrefix != null) {
-      _json['isPrefix'] = isPrefix;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (isPrefix != null) 'isPrefix': isPrefix,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Detected language for a structural component.
@@ -3501,16 +3342,10 @@ class DetectedLanguage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// Set of dominant colors and their corresponding scores.
@@ -3529,13 +3364,10 @@ class DominantColorsAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (colors != null) {
-      _json['colors'] = colors.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (colors != null)
+          'colors': colors.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -3552,10 +3384,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Set of detected entity features.
@@ -3650,37 +3479,19 @@ class EntityAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (locale != null) {
-      _json['locale'] = locale;
-    }
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (mid != null) {
-      _json['mid'] = mid;
-    }
-    if (properties != null) {
-      _json['properties'] = properties.map((value) => value.toJson()).toList();
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    if (topicality != null) {
-      _json['topicality'] = topicality;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (description != null) 'description': description,
+        if (locale != null) 'locale': locale,
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (mid != null) 'mid': mid,
+        if (properties != null)
+          'properties': properties.map((value) => value.toJson()).toList(),
+        if (score != null) 'score': score,
+        if (topicality != null) 'topicality': topicality,
+      };
 }
 
 /// A face annotation object contains the results of face detection.
@@ -3863,55 +3674,29 @@ class FaceAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (angerLikelihood != null) {
-      _json['angerLikelihood'] = angerLikelihood;
-    }
-    if (blurredLikelihood != null) {
-      _json['blurredLikelihood'] = blurredLikelihood;
-    }
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (detectionConfidence != null) {
-      _json['detectionConfidence'] = detectionConfidence;
-    }
-    if (fdBoundingPoly != null) {
-      _json['fdBoundingPoly'] = fdBoundingPoly.toJson();
-    }
-    if (headwearLikelihood != null) {
-      _json['headwearLikelihood'] = headwearLikelihood;
-    }
-    if (joyLikelihood != null) {
-      _json['joyLikelihood'] = joyLikelihood;
-    }
-    if (landmarkingConfidence != null) {
-      _json['landmarkingConfidence'] = landmarkingConfidence;
-    }
-    if (landmarks != null) {
-      _json['landmarks'] = landmarks.map((value) => value.toJson()).toList();
-    }
-    if (panAngle != null) {
-      _json['panAngle'] = panAngle;
-    }
-    if (rollAngle != null) {
-      _json['rollAngle'] = rollAngle;
-    }
-    if (sorrowLikelihood != null) {
-      _json['sorrowLikelihood'] = sorrowLikelihood;
-    }
-    if (surpriseLikelihood != null) {
-      _json['surpriseLikelihood'] = surpriseLikelihood;
-    }
-    if (tiltAngle != null) {
-      _json['tiltAngle'] = tiltAngle;
-    }
-    if (underExposedLikelihood != null) {
-      _json['underExposedLikelihood'] = underExposedLikelihood;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (angerLikelihood != null) 'angerLikelihood': angerLikelihood,
+        if (blurredLikelihood != null) 'blurredLikelihood': blurredLikelihood,
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (detectionConfidence != null)
+          'detectionConfidence': detectionConfidence,
+        if (fdBoundingPoly != null) 'fdBoundingPoly': fdBoundingPoly.toJson(),
+        if (headwearLikelihood != null)
+          'headwearLikelihood': headwearLikelihood,
+        if (joyLikelihood != null) 'joyLikelihood': joyLikelihood,
+        if (landmarkingConfidence != null)
+          'landmarkingConfidence': landmarkingConfidence,
+        if (landmarks != null)
+          'landmarks': landmarks.map((value) => value.toJson()).toList(),
+        if (panAngle != null) 'panAngle': panAngle,
+        if (rollAngle != null) 'rollAngle': rollAngle,
+        if (sorrowLikelihood != null) 'sorrowLikelihood': sorrowLikelihood,
+        if (surpriseLikelihood != null)
+          'surpriseLikelihood': surpriseLikelihood,
+        if (tiltAngle != null) 'tiltAngle': tiltAngle,
+        if (underExposedLikelihood != null)
+          'underExposedLikelihood': underExposedLikelihood,
+      };
 }
 
 /// The type of Google Cloud Vision API detection to perform, and the maximum
@@ -3968,19 +3753,11 @@ class Feature {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maxResults != null) {
-      _json['maxResults'] = maxResults;
-    }
-    if (model != null) {
-      _json['model'] = model;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maxResults != null) 'maxResults': maxResults,
+        if (model != null) 'model': model,
+        if (type != null) 'type': type,
+      };
 }
 
 /// The Google Cloud Storage location where the output will be written to.
@@ -4011,13 +3788,9 @@ class GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// The Google Cloud Storage location where the input will be read from.
@@ -4036,13 +3809,9 @@ class GcsSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// Response to a single file annotation request.
@@ -4089,22 +3858,13 @@ class GoogleCloudVisionV1p1beta1AnnotateFileResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (inputConfig != null) {
-      _json['inputConfig'] = inputConfig.toJson();
-    }
-    if (responses != null) {
-      _json['responses'] = responses.map((value) => value.toJson()).toList();
-    }
-    if (totalPages != null) {
-      _json['totalPages'] = totalPages;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (error != null) 'error': error.toJson(),
+        if (inputConfig != null) 'inputConfig': inputConfig.toJson(),
+        if (responses != null)
+          'responses': responses.map((value) => value.toJson()).toList(),
+        if (totalPages != null) 'totalPages': totalPages,
+      };
 }
 
 /// Response to an image annotation request.
@@ -4250,58 +4010,40 @@ class GoogleCloudVisionV1p1beta1AnnotateImageResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (context != null) {
-      _json['context'] = context.toJson();
-    }
-    if (cropHintsAnnotation != null) {
-      _json['cropHintsAnnotation'] = cropHintsAnnotation.toJson();
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (faceAnnotations != null) {
-      _json['faceAnnotations'] =
-          faceAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (fullTextAnnotation != null) {
-      _json['fullTextAnnotation'] = fullTextAnnotation.toJson();
-    }
-    if (imagePropertiesAnnotation != null) {
-      _json['imagePropertiesAnnotation'] = imagePropertiesAnnotation.toJson();
-    }
-    if (labelAnnotations != null) {
-      _json['labelAnnotations'] =
-          labelAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (landmarkAnnotations != null) {
-      _json['landmarkAnnotations'] =
-          landmarkAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (localizedObjectAnnotations != null) {
-      _json['localizedObjectAnnotations'] =
-          localizedObjectAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (logoAnnotations != null) {
-      _json['logoAnnotations'] =
-          logoAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (productSearchResults != null) {
-      _json['productSearchResults'] = productSearchResults.toJson();
-    }
-    if (safeSearchAnnotation != null) {
-      _json['safeSearchAnnotation'] = safeSearchAnnotation.toJson();
-    }
-    if (textAnnotations != null) {
-      _json['textAnnotations'] =
-          textAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (webDetection != null) {
-      _json['webDetection'] = webDetection.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (context != null) 'context': context.toJson(),
+        if (cropHintsAnnotation != null)
+          'cropHintsAnnotation': cropHintsAnnotation.toJson(),
+        if (error != null) 'error': error.toJson(),
+        if (faceAnnotations != null)
+          'faceAnnotations':
+              faceAnnotations.map((value) => value.toJson()).toList(),
+        if (fullTextAnnotation != null)
+          'fullTextAnnotation': fullTextAnnotation.toJson(),
+        if (imagePropertiesAnnotation != null)
+          'imagePropertiesAnnotation': imagePropertiesAnnotation.toJson(),
+        if (labelAnnotations != null)
+          'labelAnnotations':
+              labelAnnotations.map((value) => value.toJson()).toList(),
+        if (landmarkAnnotations != null)
+          'landmarkAnnotations':
+              landmarkAnnotations.map((value) => value.toJson()).toList(),
+        if (localizedObjectAnnotations != null)
+          'localizedObjectAnnotations': localizedObjectAnnotations
+              .map((value) => value.toJson())
+              .toList(),
+        if (logoAnnotations != null)
+          'logoAnnotations':
+              logoAnnotations.map((value) => value.toJson()).toList(),
+        if (productSearchResults != null)
+          'productSearchResults': productSearchResults.toJson(),
+        if (safeSearchAnnotation != null)
+          'safeSearchAnnotation': safeSearchAnnotation.toJson(),
+        if (textAnnotations != null)
+          'textAnnotations':
+              textAnnotations.map((value) => value.toJson()).toList(),
+        if (webDetection != null) 'webDetection': webDetection.toJson(),
+      };
 }
 
 /// The response for a single offline file annotation request.
@@ -4318,13 +4060,9 @@ class GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (outputConfig != null) {
-      _json['outputConfig'] = outputConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
+      };
 }
 
 /// Response to an async batch file annotation request.
@@ -4346,13 +4084,10 @@ class GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (responses != null) {
-      _json['responses'] = responses.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (responses != null)
+          'responses': responses.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Logical element on the page.
@@ -4415,25 +4150,14 @@ class GoogleCloudVisionV1p1beta1Block {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blockType != null) {
-      _json['blockType'] = blockType;
-    }
-    if (boundingBox != null) {
-      _json['boundingBox'] = boundingBox.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (paragraphs != null) {
-      _json['paragraphs'] = paragraphs.map((value) => value.toJson()).toList();
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blockType != null) 'blockType': blockType,
+        if (boundingBox != null) 'boundingBox': boundingBox.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (paragraphs != null)
+          'paragraphs': paragraphs.map((value) => value.toJson()).toList(),
+        if (property != null) 'property': property.toJson(),
+      };
 }
 
 /// A bounding polygon for the detected image annotation.
@@ -4463,17 +4187,13 @@ class GoogleCloudVisionV1p1beta1BoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (normalizedVertices != null) {
-      _json['normalizedVertices'] =
-          normalizedVertices.map((value) => value.toJson()).toList();
-    }
-    if (vertices != null) {
-      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (normalizedVertices != null)
+          'normalizedVertices':
+              normalizedVertices.map((value) => value.toJson()).toList(),
+        if (vertices != null)
+          'vertices': vertices.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Color information consists of RGB channels, score, and the fraction of the
@@ -4507,19 +4227,11 @@ class GoogleCloudVisionV1p1beta1ColorInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (color != null) {
-      _json['color'] = color.toJson();
-    }
-    if (pixelFraction != null) {
-      _json['pixelFraction'] = pixelFraction;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (color != null) 'color': color.toJson(),
+        if (pixelFraction != null) 'pixelFraction': pixelFraction,
+        if (score != null) 'score': score,
+      };
 }
 
 /// Single crop hint that is used to generate a new crop when serving an image.
@@ -4553,19 +4265,12 @@ class GoogleCloudVisionV1p1beta1CropHint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (importanceFraction != null) {
-      _json['importanceFraction'] = importanceFraction;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (importanceFraction != null)
+          'importanceFraction': importanceFraction,
+      };
 }
 
 /// Set of crop hints that are used to generate new crops when serving images.
@@ -4585,13 +4290,10 @@ class GoogleCloudVisionV1p1beta1CropHintsAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cropHints != null) {
-      _json['cropHints'] = cropHints.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cropHints != null)
+          'cropHints': cropHints.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Set of dominant colors and their corresponding scores.
@@ -4611,13 +4313,10 @@ class GoogleCloudVisionV1p1beta1DominantColorsAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (colors != null) {
-      _json['colors'] = colors.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (colors != null)
+          'colors': colors.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Set of detected entity features.
@@ -4714,37 +4413,19 @@ class GoogleCloudVisionV1p1beta1EntityAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (locale != null) {
-      _json['locale'] = locale;
-    }
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (mid != null) {
-      _json['mid'] = mid;
-    }
-    if (properties != null) {
-      _json['properties'] = properties.map((value) => value.toJson()).toList();
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    if (topicality != null) {
-      _json['topicality'] = topicality;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (description != null) 'description': description,
+        if (locale != null) 'locale': locale,
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (mid != null) 'mid': mid,
+        if (properties != null)
+          'properties': properties.map((value) => value.toJson()).toList(),
+        if (score != null) 'score': score,
+        if (topicality != null) 'topicality': topicality,
+      };
 }
 
 /// A face annotation object contains the results of face detection.
@@ -4928,55 +4609,29 @@ class GoogleCloudVisionV1p1beta1FaceAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (angerLikelihood != null) {
-      _json['angerLikelihood'] = angerLikelihood;
-    }
-    if (blurredLikelihood != null) {
-      _json['blurredLikelihood'] = blurredLikelihood;
-    }
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (detectionConfidence != null) {
-      _json['detectionConfidence'] = detectionConfidence;
-    }
-    if (fdBoundingPoly != null) {
-      _json['fdBoundingPoly'] = fdBoundingPoly.toJson();
-    }
-    if (headwearLikelihood != null) {
-      _json['headwearLikelihood'] = headwearLikelihood;
-    }
-    if (joyLikelihood != null) {
-      _json['joyLikelihood'] = joyLikelihood;
-    }
-    if (landmarkingConfidence != null) {
-      _json['landmarkingConfidence'] = landmarkingConfidence;
-    }
-    if (landmarks != null) {
-      _json['landmarks'] = landmarks.map((value) => value.toJson()).toList();
-    }
-    if (panAngle != null) {
-      _json['panAngle'] = panAngle;
-    }
-    if (rollAngle != null) {
-      _json['rollAngle'] = rollAngle;
-    }
-    if (sorrowLikelihood != null) {
-      _json['sorrowLikelihood'] = sorrowLikelihood;
-    }
-    if (surpriseLikelihood != null) {
-      _json['surpriseLikelihood'] = surpriseLikelihood;
-    }
-    if (tiltAngle != null) {
-      _json['tiltAngle'] = tiltAngle;
-    }
-    if (underExposedLikelihood != null) {
-      _json['underExposedLikelihood'] = underExposedLikelihood;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (angerLikelihood != null) 'angerLikelihood': angerLikelihood,
+        if (blurredLikelihood != null) 'blurredLikelihood': blurredLikelihood,
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (detectionConfidence != null)
+          'detectionConfidence': detectionConfidence,
+        if (fdBoundingPoly != null) 'fdBoundingPoly': fdBoundingPoly.toJson(),
+        if (headwearLikelihood != null)
+          'headwearLikelihood': headwearLikelihood,
+        if (joyLikelihood != null) 'joyLikelihood': joyLikelihood,
+        if (landmarkingConfidence != null)
+          'landmarkingConfidence': landmarkingConfidence,
+        if (landmarks != null)
+          'landmarks': landmarks.map((value) => value.toJson()).toList(),
+        if (panAngle != null) 'panAngle': panAngle,
+        if (rollAngle != null) 'rollAngle': rollAngle,
+        if (sorrowLikelihood != null) 'sorrowLikelihood': sorrowLikelihood,
+        if (surpriseLikelihood != null)
+          'surpriseLikelihood': surpriseLikelihood,
+        if (tiltAngle != null) 'tiltAngle': tiltAngle,
+        if (underExposedLikelihood != null)
+          'underExposedLikelihood': underExposedLikelihood,
+      };
 }
 
 /// A face-specific landmark (for example, a face feature).
@@ -5038,16 +4693,10 @@ class GoogleCloudVisionV1p1beta1FaceAnnotationLandmark {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (position != null) {
-      _json['position'] = position.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (position != null) 'position': position.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// The Google Cloud Storage location where the output will be written to.
@@ -5078,13 +4727,9 @@ class GoogleCloudVisionV1p1beta1GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// The Google Cloud Storage location where the input will be read from.
@@ -5103,13 +4748,9 @@ class GoogleCloudVisionV1p1beta1GcsSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// If an image was produced from a file (e.g. a PDF), this message gives
@@ -5133,16 +4774,10 @@ class GoogleCloudVisionV1p1beta1ImageAnnotationContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pageNumber != null) {
-      _json['pageNumber'] = pageNumber;
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pageNumber != null) 'pageNumber': pageNumber,
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// Stores image properties, such as dominant colors.
@@ -5160,13 +4795,9 @@ class GoogleCloudVisionV1p1beta1ImageProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dominantColors != null) {
-      _json['dominantColors'] = dominantColors.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dominantColors != null) 'dominantColors': dominantColors.toJson(),
+      };
 }
 
 /// The desired input location and metadata.
@@ -5209,19 +4840,11 @@ class GoogleCloudVisionV1p1beta1InputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (gcsSource != null) {
-      _json['gcsSource'] = gcsSource.toJson();
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (gcsSource != null) 'gcsSource': gcsSource.toJson(),
+        if (mimeType != null) 'mimeType': mimeType,
+      };
 }
 
 /// Set of detected objects with bounding boxes.
@@ -5269,25 +4892,13 @@ class GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (mid != null) {
-      _json['mid'] = mid;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (languageCode != null) 'languageCode': languageCode,
+        if (mid != null) 'mid': mid,
+        if (name != null) 'name': name,
+        if (score != null) 'score': score,
+      };
 }
 
 /// Detected entity location information.
@@ -5304,13 +4915,9 @@ class GoogleCloudVisionV1p1beta1LocationInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (latLng != null) {
-      _json['latLng'] = latLng.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (latLng != null) 'latLng': latLng.toJson(),
+      };
 }
 
 /// A vertex represents a 2D point in the image.
@@ -5335,16 +4942,10 @@ class GoogleCloudVisionV1p1beta1NormalizedVertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+      };
 }
 
 /// Contains metadata for the BatchAnnotateImages operation.
@@ -5378,19 +4979,11 @@ class GoogleCloudVisionV1p1beta1OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (state != null) 'state': state,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// The desired output location and metadata.
@@ -5421,16 +5014,10 @@ class GoogleCloudVisionV1p1beta1OutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (batchSize != null) {
-      _json['batchSize'] = batchSize;
-    }
-    if (gcsDestination != null) {
-      _json['gcsDestination'] = gcsDestination.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (batchSize != null) 'batchSize': batchSize,
+        if (gcsDestination != null) 'gcsDestination': gcsDestination.toJson(),
+      };
 }
 
 /// Detected page from OCR.
@@ -5483,25 +5070,14 @@ class GoogleCloudVisionV1p1beta1Page {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blocks != null) {
-      _json['blocks'] = blocks.map((value) => value.toJson()).toList();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (height != null) {
-      _json['height'] = height;
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    if (width != null) {
-      _json['width'] = width;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blocks != null)
+          'blocks': blocks.map((value) => value.toJson()).toList(),
+        if (confidence != null) 'confidence': confidence,
+        if (height != null) 'height': height,
+        if (property != null) 'property': property.toJson(),
+        if (width != null) 'width': width,
+      };
 }
 
 /// Structural unit of text representing a number of words in certain order.
@@ -5551,22 +5127,13 @@ class GoogleCloudVisionV1p1beta1Paragraph {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingBox != null) {
-      _json['boundingBox'] = boundingBox.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    if (words != null) {
-      _json['words'] = words.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingBox != null) 'boundingBox': boundingBox.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (property != null) 'property': property.toJson(),
+        if (words != null)
+          'words': words.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A 3D position in the image, used primarily for Face detection landmarks.
@@ -5597,19 +5164,11 @@ class GoogleCloudVisionV1p1beta1Position {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    if (z != null) {
-      _json['z'] = z;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+        if (z != null) 'z': z,
+      };
 }
 
 /// A Product contains ReferenceImages.
@@ -5676,26 +5235,15 @@ class GoogleCloudVisionV1p1beta1Product {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (productCategory != null) {
-      _json['productCategory'] = productCategory;
-    }
-    if (productLabels != null) {
-      _json['productLabels'] =
-          productLabels.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (productCategory != null) 'productCategory': productCategory,
+        if (productLabels != null)
+          'productLabels':
+              productLabels.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A product label represented as a key-value pair.
@@ -5721,16 +5269,10 @@ class GoogleCloudVisionV1p1beta1ProductKeyValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Results for a product search request.
@@ -5775,20 +5317,14 @@ class GoogleCloudVisionV1p1beta1ProductSearchResults {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (indexTime != null) {
-      _json['indexTime'] = indexTime;
-    }
-    if (productGroupedResults != null) {
-      _json['productGroupedResults'] =
-          productGroupedResults.map((value) => value.toJson()).toList();
-    }
-    if (results != null) {
-      _json['results'] = results.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (indexTime != null) 'indexTime': indexTime,
+        if (productGroupedResults != null)
+          'productGroupedResults':
+              productGroupedResults.map((value) => value.toJson()).toList(),
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Information about the products similar to a single product in a query image.
@@ -5828,20 +5364,14 @@ class GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (objectAnnotations != null) {
-      _json['objectAnnotations'] =
-          objectAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (results != null) {
-      _json['results'] = results.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (objectAnnotations != null)
+          'objectAnnotations':
+              objectAnnotations.map((value) => value.toJson()).toList(),
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Prediction for what the object in the bounding box is.
@@ -5881,22 +5411,12 @@ class GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (mid != null) {
-      _json['mid'] = mid;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode,
+        if (mid != null) 'mid': mid,
+        if (name != null) 'name': name,
+        if (score != null) 'score': score,
+      };
 }
 
 /// Information about a product.
@@ -5928,19 +5448,11 @@ class GoogleCloudVisionV1p1beta1ProductSearchResultsResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (image != null) {
-      _json['image'] = image;
-    }
-    if (product != null) {
-      _json['product'] = product.toJson();
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (image != null) 'image': image,
+        if (product != null) 'product': product.toJson(),
+        if (score != null) 'score': score,
+      };
 }
 
 /// A `Property` consists of a user-supplied name/value pair.
@@ -5968,19 +5480,11 @@ class GoogleCloudVisionV1p1beta1Property {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (uint64Value != null) {
-      _json['uint64Value'] = uint64Value;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (uint64Value != null) 'uint64Value': uint64Value,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Set of features pertaining to the image, computed by computer vision methods
@@ -6066,25 +5570,13 @@ class GoogleCloudVisionV1p1beta1SafeSearchAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adult != null) {
-      _json['adult'] = adult;
-    }
-    if (medical != null) {
-      _json['medical'] = medical;
-    }
-    if (racy != null) {
-      _json['racy'] = racy;
-    }
-    if (spoof != null) {
-      _json['spoof'] = spoof;
-    }
-    if (violence != null) {
-      _json['violence'] = violence;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adult != null) 'adult': adult,
+        if (medical != null) 'medical': medical,
+        if (racy != null) 'racy': racy,
+        if (spoof != null) 'spoof': spoof,
+        if (violence != null) 'violence': violence,
+      };
 }
 
 /// A single symbol representation.
@@ -6130,22 +5622,12 @@ class GoogleCloudVisionV1p1beta1Symbol {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingBox != null) {
-      _json['boundingBox'] = boundingBox.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingBox != null) 'boundingBox': boundingBox.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (property != null) 'property': property.toJson(),
+        if (text != null) 'text': text,
+      };
 }
 
 /// TextAnnotation contains a structured representation of OCR extracted text.
@@ -6178,16 +5660,11 @@ class GoogleCloudVisionV1p1beta1TextAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pages != null) {
-      _json['pages'] = pages.map((value) => value.toJson()).toList();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pages != null)
+          'pages': pages.map((value) => value.toJson()).toList(),
+        if (text != null) 'text': text,
+      };
 }
 
 /// Detected start or end of a structural component.
@@ -6218,16 +5695,10 @@ class GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (isPrefix != null) {
-      _json['isPrefix'] = isPrefix;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (isPrefix != null) 'isPrefix': isPrefix,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Detected language for a structural component.
@@ -6255,16 +5726,10 @@ class GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// Additional information detected on the structural component.
@@ -6295,17 +5760,12 @@ class GoogleCloudVisionV1p1beta1TextAnnotationTextProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detectedBreak != null) {
-      _json['detectedBreak'] = detectedBreak.toJson();
-    }
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detectedBreak != null) 'detectedBreak': detectedBreak.toJson(),
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A vertex represents a 2D point in the image.
@@ -6329,16 +5789,10 @@ class GoogleCloudVisionV1p1beta1Vertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+      };
 }
 
 /// Relevant information for the image from the Internet.
@@ -6418,34 +5872,25 @@ class GoogleCloudVisionV1p1beta1WebDetection {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bestGuessLabels != null) {
-      _json['bestGuessLabels'] =
-          bestGuessLabels.map((value) => value.toJson()).toList();
-    }
-    if (fullMatchingImages != null) {
-      _json['fullMatchingImages'] =
-          fullMatchingImages.map((value) => value.toJson()).toList();
-    }
-    if (pagesWithMatchingImages != null) {
-      _json['pagesWithMatchingImages'] =
-          pagesWithMatchingImages.map((value) => value.toJson()).toList();
-    }
-    if (partialMatchingImages != null) {
-      _json['partialMatchingImages'] =
-          partialMatchingImages.map((value) => value.toJson()).toList();
-    }
-    if (visuallySimilarImages != null) {
-      _json['visuallySimilarImages'] =
-          visuallySimilarImages.map((value) => value.toJson()).toList();
-    }
-    if (webEntities != null) {
-      _json['webEntities'] =
-          webEntities.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bestGuessLabels != null)
+          'bestGuessLabels':
+              bestGuessLabels.map((value) => value.toJson()).toList(),
+        if (fullMatchingImages != null)
+          'fullMatchingImages':
+              fullMatchingImages.map((value) => value.toJson()).toList(),
+        if (pagesWithMatchingImages != null)
+          'pagesWithMatchingImages':
+              pagesWithMatchingImages.map((value) => value.toJson()).toList(),
+        if (partialMatchingImages != null)
+          'partialMatchingImages':
+              partialMatchingImages.map((value) => value.toJson()).toList(),
+        if (visuallySimilarImages != null)
+          'visuallySimilarImages':
+              visuallySimilarImages.map((value) => value.toJson()).toList(),
+        if (webEntities != null)
+          'webEntities': webEntities.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Entity deduced from similar images on the Internet.
@@ -6475,19 +5920,11 @@ class GoogleCloudVisionV1p1beta1WebDetectionWebEntity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (entityId != null) {
-      _json['entityId'] = entityId;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (entityId != null) 'entityId': entityId,
+        if (score != null) 'score': score,
+      };
 }
 
 /// Metadata for online images.
@@ -6509,16 +5946,10 @@ class GoogleCloudVisionV1p1beta1WebDetectionWebImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (score != null) {
-      _json['score'] = score;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (score != null) 'score': score,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Label to provide extra metadata for the web detection.
@@ -6543,16 +5974,10 @@ class GoogleCloudVisionV1p1beta1WebDetectionWebLabel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (label != null) {
-      _json['label'] = label;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (label != null) 'label': label,
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// Metadata for web pages.
@@ -6606,27 +6031,17 @@ class GoogleCloudVisionV1p1beta1WebDetectionWebPage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fullMatchingImages != null) {
-      _json['fullMatchingImages'] =
-          fullMatchingImages.map((value) => value.toJson()).toList();
-    }
-    if (pageTitle != null) {
-      _json['pageTitle'] = pageTitle;
-    }
-    if (partialMatchingImages != null) {
-      _json['partialMatchingImages'] =
-          partialMatchingImages.map((value) => value.toJson()).toList();
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fullMatchingImages != null)
+          'fullMatchingImages':
+              fullMatchingImages.map((value) => value.toJson()).toList(),
+        if (pageTitle != null) 'pageTitle': pageTitle,
+        if (partialMatchingImages != null)
+          'partialMatchingImages':
+              partialMatchingImages.map((value) => value.toJson()).toList(),
+        if (score != null) 'score': score,
+        if (url != null) 'url': url,
+      };
 }
 
 /// A word representation.
@@ -6678,22 +6093,13 @@ class GoogleCloudVisionV1p1beta1Word {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingBox != null) {
-      _json['boundingBox'] = boundingBox.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    if (symbols != null) {
-      _json['symbols'] = symbols.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingBox != null) 'boundingBox': boundingBox.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (property != null) 'property': property.toJson(),
+        if (symbols != null)
+          'symbols': symbols.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response to a single file annotation request.
@@ -6740,22 +6146,13 @@ class GoogleCloudVisionV1p2beta1AnnotateFileResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (inputConfig != null) {
-      _json['inputConfig'] = inputConfig.toJson();
-    }
-    if (responses != null) {
-      _json['responses'] = responses.map((value) => value.toJson()).toList();
-    }
-    if (totalPages != null) {
-      _json['totalPages'] = totalPages;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (error != null) 'error': error.toJson(),
+        if (inputConfig != null) 'inputConfig': inputConfig.toJson(),
+        if (responses != null)
+          'responses': responses.map((value) => value.toJson()).toList(),
+        if (totalPages != null) 'totalPages': totalPages,
+      };
 }
 
 /// Response to an image annotation request.
@@ -6901,58 +6298,40 @@ class GoogleCloudVisionV1p2beta1AnnotateImageResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (context != null) {
-      _json['context'] = context.toJson();
-    }
-    if (cropHintsAnnotation != null) {
-      _json['cropHintsAnnotation'] = cropHintsAnnotation.toJson();
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (faceAnnotations != null) {
-      _json['faceAnnotations'] =
-          faceAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (fullTextAnnotation != null) {
-      _json['fullTextAnnotation'] = fullTextAnnotation.toJson();
-    }
-    if (imagePropertiesAnnotation != null) {
-      _json['imagePropertiesAnnotation'] = imagePropertiesAnnotation.toJson();
-    }
-    if (labelAnnotations != null) {
-      _json['labelAnnotations'] =
-          labelAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (landmarkAnnotations != null) {
-      _json['landmarkAnnotations'] =
-          landmarkAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (localizedObjectAnnotations != null) {
-      _json['localizedObjectAnnotations'] =
-          localizedObjectAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (logoAnnotations != null) {
-      _json['logoAnnotations'] =
-          logoAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (productSearchResults != null) {
-      _json['productSearchResults'] = productSearchResults.toJson();
-    }
-    if (safeSearchAnnotation != null) {
-      _json['safeSearchAnnotation'] = safeSearchAnnotation.toJson();
-    }
-    if (textAnnotations != null) {
-      _json['textAnnotations'] =
-          textAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (webDetection != null) {
-      _json['webDetection'] = webDetection.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (context != null) 'context': context.toJson(),
+        if (cropHintsAnnotation != null)
+          'cropHintsAnnotation': cropHintsAnnotation.toJson(),
+        if (error != null) 'error': error.toJson(),
+        if (faceAnnotations != null)
+          'faceAnnotations':
+              faceAnnotations.map((value) => value.toJson()).toList(),
+        if (fullTextAnnotation != null)
+          'fullTextAnnotation': fullTextAnnotation.toJson(),
+        if (imagePropertiesAnnotation != null)
+          'imagePropertiesAnnotation': imagePropertiesAnnotation.toJson(),
+        if (labelAnnotations != null)
+          'labelAnnotations':
+              labelAnnotations.map((value) => value.toJson()).toList(),
+        if (landmarkAnnotations != null)
+          'landmarkAnnotations':
+              landmarkAnnotations.map((value) => value.toJson()).toList(),
+        if (localizedObjectAnnotations != null)
+          'localizedObjectAnnotations': localizedObjectAnnotations
+              .map((value) => value.toJson())
+              .toList(),
+        if (logoAnnotations != null)
+          'logoAnnotations':
+              logoAnnotations.map((value) => value.toJson()).toList(),
+        if (productSearchResults != null)
+          'productSearchResults': productSearchResults.toJson(),
+        if (safeSearchAnnotation != null)
+          'safeSearchAnnotation': safeSearchAnnotation.toJson(),
+        if (textAnnotations != null)
+          'textAnnotations':
+              textAnnotations.map((value) => value.toJson()).toList(),
+        if (webDetection != null) 'webDetection': webDetection.toJson(),
+      };
 }
 
 /// The response for a single offline file annotation request.
@@ -6969,13 +6348,9 @@ class GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (outputConfig != null) {
-      _json['outputConfig'] = outputConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
+      };
 }
 
 /// Response to an async batch file annotation request.
@@ -6997,13 +6372,10 @@ class GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (responses != null) {
-      _json['responses'] = responses.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (responses != null)
+          'responses': responses.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Logical element on the page.
@@ -7066,25 +6438,14 @@ class GoogleCloudVisionV1p2beta1Block {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blockType != null) {
-      _json['blockType'] = blockType;
-    }
-    if (boundingBox != null) {
-      _json['boundingBox'] = boundingBox.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (paragraphs != null) {
-      _json['paragraphs'] = paragraphs.map((value) => value.toJson()).toList();
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blockType != null) 'blockType': blockType,
+        if (boundingBox != null) 'boundingBox': boundingBox.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (paragraphs != null)
+          'paragraphs': paragraphs.map((value) => value.toJson()).toList(),
+        if (property != null) 'property': property.toJson(),
+      };
 }
 
 /// A bounding polygon for the detected image annotation.
@@ -7114,17 +6475,13 @@ class GoogleCloudVisionV1p2beta1BoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (normalizedVertices != null) {
-      _json['normalizedVertices'] =
-          normalizedVertices.map((value) => value.toJson()).toList();
-    }
-    if (vertices != null) {
-      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (normalizedVertices != null)
+          'normalizedVertices':
+              normalizedVertices.map((value) => value.toJson()).toList(),
+        if (vertices != null)
+          'vertices': vertices.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Color information consists of RGB channels, score, and the fraction of the
@@ -7158,19 +6515,11 @@ class GoogleCloudVisionV1p2beta1ColorInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (color != null) {
-      _json['color'] = color.toJson();
-    }
-    if (pixelFraction != null) {
-      _json['pixelFraction'] = pixelFraction;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (color != null) 'color': color.toJson(),
+        if (pixelFraction != null) 'pixelFraction': pixelFraction,
+        if (score != null) 'score': score,
+      };
 }
 
 /// Single crop hint that is used to generate a new crop when serving an image.
@@ -7204,19 +6553,12 @@ class GoogleCloudVisionV1p2beta1CropHint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (importanceFraction != null) {
-      _json['importanceFraction'] = importanceFraction;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (importanceFraction != null)
+          'importanceFraction': importanceFraction,
+      };
 }
 
 /// Set of crop hints that are used to generate new crops when serving images.
@@ -7236,13 +6578,10 @@ class GoogleCloudVisionV1p2beta1CropHintsAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cropHints != null) {
-      _json['cropHints'] = cropHints.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cropHints != null)
+          'cropHints': cropHints.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Set of dominant colors and their corresponding scores.
@@ -7262,13 +6601,10 @@ class GoogleCloudVisionV1p2beta1DominantColorsAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (colors != null) {
-      _json['colors'] = colors.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (colors != null)
+          'colors': colors.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Set of detected entity features.
@@ -7365,37 +6701,19 @@ class GoogleCloudVisionV1p2beta1EntityAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (locale != null) {
-      _json['locale'] = locale;
-    }
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (mid != null) {
-      _json['mid'] = mid;
-    }
-    if (properties != null) {
-      _json['properties'] = properties.map((value) => value.toJson()).toList();
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    if (topicality != null) {
-      _json['topicality'] = topicality;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (description != null) 'description': description,
+        if (locale != null) 'locale': locale,
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (mid != null) 'mid': mid,
+        if (properties != null)
+          'properties': properties.map((value) => value.toJson()).toList(),
+        if (score != null) 'score': score,
+        if (topicality != null) 'topicality': topicality,
+      };
 }
 
 /// A face annotation object contains the results of face detection.
@@ -7579,55 +6897,29 @@ class GoogleCloudVisionV1p2beta1FaceAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (angerLikelihood != null) {
-      _json['angerLikelihood'] = angerLikelihood;
-    }
-    if (blurredLikelihood != null) {
-      _json['blurredLikelihood'] = blurredLikelihood;
-    }
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (detectionConfidence != null) {
-      _json['detectionConfidence'] = detectionConfidence;
-    }
-    if (fdBoundingPoly != null) {
-      _json['fdBoundingPoly'] = fdBoundingPoly.toJson();
-    }
-    if (headwearLikelihood != null) {
-      _json['headwearLikelihood'] = headwearLikelihood;
-    }
-    if (joyLikelihood != null) {
-      _json['joyLikelihood'] = joyLikelihood;
-    }
-    if (landmarkingConfidence != null) {
-      _json['landmarkingConfidence'] = landmarkingConfidence;
-    }
-    if (landmarks != null) {
-      _json['landmarks'] = landmarks.map((value) => value.toJson()).toList();
-    }
-    if (panAngle != null) {
-      _json['panAngle'] = panAngle;
-    }
-    if (rollAngle != null) {
-      _json['rollAngle'] = rollAngle;
-    }
-    if (sorrowLikelihood != null) {
-      _json['sorrowLikelihood'] = sorrowLikelihood;
-    }
-    if (surpriseLikelihood != null) {
-      _json['surpriseLikelihood'] = surpriseLikelihood;
-    }
-    if (tiltAngle != null) {
-      _json['tiltAngle'] = tiltAngle;
-    }
-    if (underExposedLikelihood != null) {
-      _json['underExposedLikelihood'] = underExposedLikelihood;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (angerLikelihood != null) 'angerLikelihood': angerLikelihood,
+        if (blurredLikelihood != null) 'blurredLikelihood': blurredLikelihood,
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (detectionConfidence != null)
+          'detectionConfidence': detectionConfidence,
+        if (fdBoundingPoly != null) 'fdBoundingPoly': fdBoundingPoly.toJson(),
+        if (headwearLikelihood != null)
+          'headwearLikelihood': headwearLikelihood,
+        if (joyLikelihood != null) 'joyLikelihood': joyLikelihood,
+        if (landmarkingConfidence != null)
+          'landmarkingConfidence': landmarkingConfidence,
+        if (landmarks != null)
+          'landmarks': landmarks.map((value) => value.toJson()).toList(),
+        if (panAngle != null) 'panAngle': panAngle,
+        if (rollAngle != null) 'rollAngle': rollAngle,
+        if (sorrowLikelihood != null) 'sorrowLikelihood': sorrowLikelihood,
+        if (surpriseLikelihood != null)
+          'surpriseLikelihood': surpriseLikelihood,
+        if (tiltAngle != null) 'tiltAngle': tiltAngle,
+        if (underExposedLikelihood != null)
+          'underExposedLikelihood': underExposedLikelihood,
+      };
 }
 
 /// A face-specific landmark (for example, a face feature).
@@ -7689,16 +6981,10 @@ class GoogleCloudVisionV1p2beta1FaceAnnotationLandmark {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (position != null) {
-      _json['position'] = position.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (position != null) 'position': position.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// The Google Cloud Storage location where the output will be written to.
@@ -7729,13 +7015,9 @@ class GoogleCloudVisionV1p2beta1GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// The Google Cloud Storage location where the input will be read from.
@@ -7754,13 +7036,9 @@ class GoogleCloudVisionV1p2beta1GcsSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// If an image was produced from a file (e.g. a PDF), this message gives
@@ -7784,16 +7062,10 @@ class GoogleCloudVisionV1p2beta1ImageAnnotationContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pageNumber != null) {
-      _json['pageNumber'] = pageNumber;
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pageNumber != null) 'pageNumber': pageNumber,
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// Stores image properties, such as dominant colors.
@@ -7811,13 +7083,9 @@ class GoogleCloudVisionV1p2beta1ImageProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dominantColors != null) {
-      _json['dominantColors'] = dominantColors.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dominantColors != null) 'dominantColors': dominantColors.toJson(),
+      };
 }
 
 /// The desired input location and metadata.
@@ -7860,19 +7128,11 @@ class GoogleCloudVisionV1p2beta1InputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (gcsSource != null) {
-      _json['gcsSource'] = gcsSource.toJson();
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (gcsSource != null) 'gcsSource': gcsSource.toJson(),
+        if (mimeType != null) 'mimeType': mimeType,
+      };
 }
 
 /// Set of detected objects with bounding boxes.
@@ -7920,25 +7180,13 @@ class GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (mid != null) {
-      _json['mid'] = mid;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (languageCode != null) 'languageCode': languageCode,
+        if (mid != null) 'mid': mid,
+        if (name != null) 'name': name,
+        if (score != null) 'score': score,
+      };
 }
 
 /// Detected entity location information.
@@ -7955,13 +7203,9 @@ class GoogleCloudVisionV1p2beta1LocationInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (latLng != null) {
-      _json['latLng'] = latLng.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (latLng != null) 'latLng': latLng.toJson(),
+      };
 }
 
 /// A vertex represents a 2D point in the image.
@@ -7986,16 +7230,10 @@ class GoogleCloudVisionV1p2beta1NormalizedVertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+      };
 }
 
 /// Contains metadata for the BatchAnnotateImages operation.
@@ -8029,19 +7267,11 @@ class GoogleCloudVisionV1p2beta1OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (state != null) 'state': state,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// The desired output location and metadata.
@@ -8072,16 +7302,10 @@ class GoogleCloudVisionV1p2beta1OutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (batchSize != null) {
-      _json['batchSize'] = batchSize;
-    }
-    if (gcsDestination != null) {
-      _json['gcsDestination'] = gcsDestination.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (batchSize != null) 'batchSize': batchSize,
+        if (gcsDestination != null) 'gcsDestination': gcsDestination.toJson(),
+      };
 }
 
 /// Detected page from OCR.
@@ -8134,25 +7358,14 @@ class GoogleCloudVisionV1p2beta1Page {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blocks != null) {
-      _json['blocks'] = blocks.map((value) => value.toJson()).toList();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (height != null) {
-      _json['height'] = height;
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    if (width != null) {
-      _json['width'] = width;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blocks != null)
+          'blocks': blocks.map((value) => value.toJson()).toList(),
+        if (confidence != null) 'confidence': confidence,
+        if (height != null) 'height': height,
+        if (property != null) 'property': property.toJson(),
+        if (width != null) 'width': width,
+      };
 }
 
 /// Structural unit of text representing a number of words in certain order.
@@ -8202,22 +7415,13 @@ class GoogleCloudVisionV1p2beta1Paragraph {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingBox != null) {
-      _json['boundingBox'] = boundingBox.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    if (words != null) {
-      _json['words'] = words.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingBox != null) 'boundingBox': boundingBox.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (property != null) 'property': property.toJson(),
+        if (words != null)
+          'words': words.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A 3D position in the image, used primarily for Face detection landmarks.
@@ -8248,19 +7452,11 @@ class GoogleCloudVisionV1p2beta1Position {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    if (z != null) {
-      _json['z'] = z;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+        if (z != null) 'z': z,
+      };
 }
 
 /// A Product contains ReferenceImages.
@@ -8327,26 +7523,15 @@ class GoogleCloudVisionV1p2beta1Product {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (productCategory != null) {
-      _json['productCategory'] = productCategory;
-    }
-    if (productLabels != null) {
-      _json['productLabels'] =
-          productLabels.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (productCategory != null) 'productCategory': productCategory,
+        if (productLabels != null)
+          'productLabels':
+              productLabels.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A product label represented as a key-value pair.
@@ -8372,16 +7557,10 @@ class GoogleCloudVisionV1p2beta1ProductKeyValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Results for a product search request.
@@ -8426,20 +7605,14 @@ class GoogleCloudVisionV1p2beta1ProductSearchResults {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (indexTime != null) {
-      _json['indexTime'] = indexTime;
-    }
-    if (productGroupedResults != null) {
-      _json['productGroupedResults'] =
-          productGroupedResults.map((value) => value.toJson()).toList();
-    }
-    if (results != null) {
-      _json['results'] = results.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (indexTime != null) 'indexTime': indexTime,
+        if (productGroupedResults != null)
+          'productGroupedResults':
+              productGroupedResults.map((value) => value.toJson()).toList(),
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Information about the products similar to a single product in a query image.
@@ -8479,20 +7652,14 @@ class GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (objectAnnotations != null) {
-      _json['objectAnnotations'] =
-          objectAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (results != null) {
-      _json['results'] = results.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (objectAnnotations != null)
+          'objectAnnotations':
+              objectAnnotations.map((value) => value.toJson()).toList(),
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Prediction for what the object in the bounding box is.
@@ -8532,22 +7699,12 @@ class GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (mid != null) {
-      _json['mid'] = mid;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode,
+        if (mid != null) 'mid': mid,
+        if (name != null) 'name': name,
+        if (score != null) 'score': score,
+      };
 }
 
 /// Information about a product.
@@ -8579,19 +7736,11 @@ class GoogleCloudVisionV1p2beta1ProductSearchResultsResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (image != null) {
-      _json['image'] = image;
-    }
-    if (product != null) {
-      _json['product'] = product.toJson();
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (image != null) 'image': image,
+        if (product != null) 'product': product.toJson(),
+        if (score != null) 'score': score,
+      };
 }
 
 /// A `Property` consists of a user-supplied name/value pair.
@@ -8619,19 +7768,11 @@ class GoogleCloudVisionV1p2beta1Property {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (uint64Value != null) {
-      _json['uint64Value'] = uint64Value;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (uint64Value != null) 'uint64Value': uint64Value,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Set of features pertaining to the image, computed by computer vision methods
@@ -8717,25 +7858,13 @@ class GoogleCloudVisionV1p2beta1SafeSearchAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adult != null) {
-      _json['adult'] = adult;
-    }
-    if (medical != null) {
-      _json['medical'] = medical;
-    }
-    if (racy != null) {
-      _json['racy'] = racy;
-    }
-    if (spoof != null) {
-      _json['spoof'] = spoof;
-    }
-    if (violence != null) {
-      _json['violence'] = violence;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adult != null) 'adult': adult,
+        if (medical != null) 'medical': medical,
+        if (racy != null) 'racy': racy,
+        if (spoof != null) 'spoof': spoof,
+        if (violence != null) 'violence': violence,
+      };
 }
 
 /// A single symbol representation.
@@ -8781,22 +7910,12 @@ class GoogleCloudVisionV1p2beta1Symbol {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingBox != null) {
-      _json['boundingBox'] = boundingBox.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingBox != null) 'boundingBox': boundingBox.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (property != null) 'property': property.toJson(),
+        if (text != null) 'text': text,
+      };
 }
 
 /// TextAnnotation contains a structured representation of OCR extracted text.
@@ -8829,16 +7948,11 @@ class GoogleCloudVisionV1p2beta1TextAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pages != null) {
-      _json['pages'] = pages.map((value) => value.toJson()).toList();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pages != null)
+          'pages': pages.map((value) => value.toJson()).toList(),
+        if (text != null) 'text': text,
+      };
 }
 
 /// Detected start or end of a structural component.
@@ -8869,16 +7983,10 @@ class GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (isPrefix != null) {
-      _json['isPrefix'] = isPrefix;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (isPrefix != null) 'isPrefix': isPrefix,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Detected language for a structural component.
@@ -8906,16 +8014,10 @@ class GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// Additional information detected on the structural component.
@@ -8946,17 +8048,12 @@ class GoogleCloudVisionV1p2beta1TextAnnotationTextProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detectedBreak != null) {
-      _json['detectedBreak'] = detectedBreak.toJson();
-    }
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detectedBreak != null) 'detectedBreak': detectedBreak.toJson(),
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A vertex represents a 2D point in the image.
@@ -8980,16 +8077,10 @@ class GoogleCloudVisionV1p2beta1Vertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+      };
 }
 
 /// Relevant information for the image from the Internet.
@@ -9069,34 +8160,25 @@ class GoogleCloudVisionV1p2beta1WebDetection {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bestGuessLabels != null) {
-      _json['bestGuessLabels'] =
-          bestGuessLabels.map((value) => value.toJson()).toList();
-    }
-    if (fullMatchingImages != null) {
-      _json['fullMatchingImages'] =
-          fullMatchingImages.map((value) => value.toJson()).toList();
-    }
-    if (pagesWithMatchingImages != null) {
-      _json['pagesWithMatchingImages'] =
-          pagesWithMatchingImages.map((value) => value.toJson()).toList();
-    }
-    if (partialMatchingImages != null) {
-      _json['partialMatchingImages'] =
-          partialMatchingImages.map((value) => value.toJson()).toList();
-    }
-    if (visuallySimilarImages != null) {
-      _json['visuallySimilarImages'] =
-          visuallySimilarImages.map((value) => value.toJson()).toList();
-    }
-    if (webEntities != null) {
-      _json['webEntities'] =
-          webEntities.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bestGuessLabels != null)
+          'bestGuessLabels':
+              bestGuessLabels.map((value) => value.toJson()).toList(),
+        if (fullMatchingImages != null)
+          'fullMatchingImages':
+              fullMatchingImages.map((value) => value.toJson()).toList(),
+        if (pagesWithMatchingImages != null)
+          'pagesWithMatchingImages':
+              pagesWithMatchingImages.map((value) => value.toJson()).toList(),
+        if (partialMatchingImages != null)
+          'partialMatchingImages':
+              partialMatchingImages.map((value) => value.toJson()).toList(),
+        if (visuallySimilarImages != null)
+          'visuallySimilarImages':
+              visuallySimilarImages.map((value) => value.toJson()).toList(),
+        if (webEntities != null)
+          'webEntities': webEntities.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Entity deduced from similar images on the Internet.
@@ -9126,19 +8208,11 @@ class GoogleCloudVisionV1p2beta1WebDetectionWebEntity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (entityId != null) {
-      _json['entityId'] = entityId;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (entityId != null) 'entityId': entityId,
+        if (score != null) 'score': score,
+      };
 }
 
 /// Metadata for online images.
@@ -9160,16 +8234,10 @@ class GoogleCloudVisionV1p2beta1WebDetectionWebImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (score != null) {
-      _json['score'] = score;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (score != null) 'score': score,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Label to provide extra metadata for the web detection.
@@ -9194,16 +8262,10 @@ class GoogleCloudVisionV1p2beta1WebDetectionWebLabel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (label != null) {
-      _json['label'] = label;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (label != null) 'label': label,
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// Metadata for web pages.
@@ -9257,27 +8319,17 @@ class GoogleCloudVisionV1p2beta1WebDetectionWebPage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fullMatchingImages != null) {
-      _json['fullMatchingImages'] =
-          fullMatchingImages.map((value) => value.toJson()).toList();
-    }
-    if (pageTitle != null) {
-      _json['pageTitle'] = pageTitle;
-    }
-    if (partialMatchingImages != null) {
-      _json['partialMatchingImages'] =
-          partialMatchingImages.map((value) => value.toJson()).toList();
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fullMatchingImages != null)
+          'fullMatchingImages':
+              fullMatchingImages.map((value) => value.toJson()).toList(),
+        if (pageTitle != null) 'pageTitle': pageTitle,
+        if (partialMatchingImages != null)
+          'partialMatchingImages':
+              partialMatchingImages.map((value) => value.toJson()).toList(),
+        if (score != null) 'score': score,
+        if (url != null) 'url': url,
+      };
 }
 
 /// A word representation.
@@ -9329,22 +8381,13 @@ class GoogleCloudVisionV1p2beta1Word {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingBox != null) {
-      _json['boundingBox'] = boundingBox.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    if (symbols != null) {
-      _json['symbols'] = symbols.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingBox != null) 'boundingBox': boundingBox.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (property != null) 'property': property.toJson(),
+        if (symbols != null)
+          'symbols': symbols.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response to a single file annotation request.
@@ -9391,22 +8434,13 @@ class GoogleCloudVisionV1p3beta1AnnotateFileResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (inputConfig != null) {
-      _json['inputConfig'] = inputConfig.toJson();
-    }
-    if (responses != null) {
-      _json['responses'] = responses.map((value) => value.toJson()).toList();
-    }
-    if (totalPages != null) {
-      _json['totalPages'] = totalPages;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (error != null) 'error': error.toJson(),
+        if (inputConfig != null) 'inputConfig': inputConfig.toJson(),
+        if (responses != null)
+          'responses': responses.map((value) => value.toJson()).toList(),
+        if (totalPages != null) 'totalPages': totalPages,
+      };
 }
 
 /// Response to an image annotation request.
@@ -9552,58 +8586,40 @@ class GoogleCloudVisionV1p3beta1AnnotateImageResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (context != null) {
-      _json['context'] = context.toJson();
-    }
-    if (cropHintsAnnotation != null) {
-      _json['cropHintsAnnotation'] = cropHintsAnnotation.toJson();
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (faceAnnotations != null) {
-      _json['faceAnnotations'] =
-          faceAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (fullTextAnnotation != null) {
-      _json['fullTextAnnotation'] = fullTextAnnotation.toJson();
-    }
-    if (imagePropertiesAnnotation != null) {
-      _json['imagePropertiesAnnotation'] = imagePropertiesAnnotation.toJson();
-    }
-    if (labelAnnotations != null) {
-      _json['labelAnnotations'] =
-          labelAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (landmarkAnnotations != null) {
-      _json['landmarkAnnotations'] =
-          landmarkAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (localizedObjectAnnotations != null) {
-      _json['localizedObjectAnnotations'] =
-          localizedObjectAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (logoAnnotations != null) {
-      _json['logoAnnotations'] =
-          logoAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (productSearchResults != null) {
-      _json['productSearchResults'] = productSearchResults.toJson();
-    }
-    if (safeSearchAnnotation != null) {
-      _json['safeSearchAnnotation'] = safeSearchAnnotation.toJson();
-    }
-    if (textAnnotations != null) {
-      _json['textAnnotations'] =
-          textAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (webDetection != null) {
-      _json['webDetection'] = webDetection.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (context != null) 'context': context.toJson(),
+        if (cropHintsAnnotation != null)
+          'cropHintsAnnotation': cropHintsAnnotation.toJson(),
+        if (error != null) 'error': error.toJson(),
+        if (faceAnnotations != null)
+          'faceAnnotations':
+              faceAnnotations.map((value) => value.toJson()).toList(),
+        if (fullTextAnnotation != null)
+          'fullTextAnnotation': fullTextAnnotation.toJson(),
+        if (imagePropertiesAnnotation != null)
+          'imagePropertiesAnnotation': imagePropertiesAnnotation.toJson(),
+        if (labelAnnotations != null)
+          'labelAnnotations':
+              labelAnnotations.map((value) => value.toJson()).toList(),
+        if (landmarkAnnotations != null)
+          'landmarkAnnotations':
+              landmarkAnnotations.map((value) => value.toJson()).toList(),
+        if (localizedObjectAnnotations != null)
+          'localizedObjectAnnotations': localizedObjectAnnotations
+              .map((value) => value.toJson())
+              .toList(),
+        if (logoAnnotations != null)
+          'logoAnnotations':
+              logoAnnotations.map((value) => value.toJson()).toList(),
+        if (productSearchResults != null)
+          'productSearchResults': productSearchResults.toJson(),
+        if (safeSearchAnnotation != null)
+          'safeSearchAnnotation': safeSearchAnnotation.toJson(),
+        if (textAnnotations != null)
+          'textAnnotations':
+              textAnnotations.map((value) => value.toJson()).toList(),
+        if (webDetection != null) 'webDetection': webDetection.toJson(),
+      };
 }
 
 /// The response for a single offline file annotation request.
@@ -9620,13 +8636,9 @@ class GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (outputConfig != null) {
-      _json['outputConfig'] = outputConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
+      };
 }
 
 /// Response to an async batch file annotation request.
@@ -9648,13 +8660,10 @@ class GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (responses != null) {
-      _json['responses'] = responses.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (responses != null)
+          'responses': responses.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Metadata for the batch operations such as the current state.
@@ -9697,19 +8706,11 @@ class GoogleCloudVisionV1p3beta1BatchOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (submitTime != null) {
-      _json['submitTime'] = submitTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (state != null) 'state': state,
+        if (submitTime != null) 'submitTime': submitTime,
+      };
 }
 
 /// Logical element on the page.
@@ -9772,25 +8773,14 @@ class GoogleCloudVisionV1p3beta1Block {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blockType != null) {
-      _json['blockType'] = blockType;
-    }
-    if (boundingBox != null) {
-      _json['boundingBox'] = boundingBox.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (paragraphs != null) {
-      _json['paragraphs'] = paragraphs.map((value) => value.toJson()).toList();
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blockType != null) 'blockType': blockType,
+        if (boundingBox != null) 'boundingBox': boundingBox.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (paragraphs != null)
+          'paragraphs': paragraphs.map((value) => value.toJson()).toList(),
+        if (property != null) 'property': property.toJson(),
+      };
 }
 
 /// A bounding polygon for the detected image annotation.
@@ -9820,17 +8810,13 @@ class GoogleCloudVisionV1p3beta1BoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (normalizedVertices != null) {
-      _json['normalizedVertices'] =
-          normalizedVertices.map((value) => value.toJson()).toList();
-    }
-    if (vertices != null) {
-      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (normalizedVertices != null)
+          'normalizedVertices':
+              normalizedVertices.map((value) => value.toJson()).toList(),
+        if (vertices != null)
+          'vertices': vertices.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Color information consists of RGB channels, score, and the fraction of the
@@ -9864,19 +8850,11 @@ class GoogleCloudVisionV1p3beta1ColorInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (color != null) {
-      _json['color'] = color.toJson();
-    }
-    if (pixelFraction != null) {
-      _json['pixelFraction'] = pixelFraction;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (color != null) 'color': color.toJson(),
+        if (pixelFraction != null) 'pixelFraction': pixelFraction,
+        if (score != null) 'score': score,
+      };
 }
 
 /// Single crop hint that is used to generate a new crop when serving an image.
@@ -9910,19 +8888,12 @@ class GoogleCloudVisionV1p3beta1CropHint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (importanceFraction != null) {
-      _json['importanceFraction'] = importanceFraction;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (importanceFraction != null)
+          'importanceFraction': importanceFraction,
+      };
 }
 
 /// Set of crop hints that are used to generate new crops when serving images.
@@ -9942,13 +8913,10 @@ class GoogleCloudVisionV1p3beta1CropHintsAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cropHints != null) {
-      _json['cropHints'] = cropHints.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cropHints != null)
+          'cropHints': cropHints.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Set of dominant colors and their corresponding scores.
@@ -9968,13 +8936,10 @@ class GoogleCloudVisionV1p3beta1DominantColorsAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (colors != null) {
-      _json['colors'] = colors.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (colors != null)
+          'colors': colors.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Set of detected entity features.
@@ -10071,37 +9036,19 @@ class GoogleCloudVisionV1p3beta1EntityAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (locale != null) {
-      _json['locale'] = locale;
-    }
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (mid != null) {
-      _json['mid'] = mid;
-    }
-    if (properties != null) {
-      _json['properties'] = properties.map((value) => value.toJson()).toList();
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    if (topicality != null) {
-      _json['topicality'] = topicality;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (description != null) 'description': description,
+        if (locale != null) 'locale': locale,
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (mid != null) 'mid': mid,
+        if (properties != null)
+          'properties': properties.map((value) => value.toJson()).toList(),
+        if (score != null) 'score': score,
+        if (topicality != null) 'topicality': topicality,
+      };
 }
 
 /// A face annotation object contains the results of face detection.
@@ -10285,55 +9232,29 @@ class GoogleCloudVisionV1p3beta1FaceAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (angerLikelihood != null) {
-      _json['angerLikelihood'] = angerLikelihood;
-    }
-    if (blurredLikelihood != null) {
-      _json['blurredLikelihood'] = blurredLikelihood;
-    }
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (detectionConfidence != null) {
-      _json['detectionConfidence'] = detectionConfidence;
-    }
-    if (fdBoundingPoly != null) {
-      _json['fdBoundingPoly'] = fdBoundingPoly.toJson();
-    }
-    if (headwearLikelihood != null) {
-      _json['headwearLikelihood'] = headwearLikelihood;
-    }
-    if (joyLikelihood != null) {
-      _json['joyLikelihood'] = joyLikelihood;
-    }
-    if (landmarkingConfidence != null) {
-      _json['landmarkingConfidence'] = landmarkingConfidence;
-    }
-    if (landmarks != null) {
-      _json['landmarks'] = landmarks.map((value) => value.toJson()).toList();
-    }
-    if (panAngle != null) {
-      _json['panAngle'] = panAngle;
-    }
-    if (rollAngle != null) {
-      _json['rollAngle'] = rollAngle;
-    }
-    if (sorrowLikelihood != null) {
-      _json['sorrowLikelihood'] = sorrowLikelihood;
-    }
-    if (surpriseLikelihood != null) {
-      _json['surpriseLikelihood'] = surpriseLikelihood;
-    }
-    if (tiltAngle != null) {
-      _json['tiltAngle'] = tiltAngle;
-    }
-    if (underExposedLikelihood != null) {
-      _json['underExposedLikelihood'] = underExposedLikelihood;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (angerLikelihood != null) 'angerLikelihood': angerLikelihood,
+        if (blurredLikelihood != null) 'blurredLikelihood': blurredLikelihood,
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (detectionConfidence != null)
+          'detectionConfidence': detectionConfidence,
+        if (fdBoundingPoly != null) 'fdBoundingPoly': fdBoundingPoly.toJson(),
+        if (headwearLikelihood != null)
+          'headwearLikelihood': headwearLikelihood,
+        if (joyLikelihood != null) 'joyLikelihood': joyLikelihood,
+        if (landmarkingConfidence != null)
+          'landmarkingConfidence': landmarkingConfidence,
+        if (landmarks != null)
+          'landmarks': landmarks.map((value) => value.toJson()).toList(),
+        if (panAngle != null) 'panAngle': panAngle,
+        if (rollAngle != null) 'rollAngle': rollAngle,
+        if (sorrowLikelihood != null) 'sorrowLikelihood': sorrowLikelihood,
+        if (surpriseLikelihood != null)
+          'surpriseLikelihood': surpriseLikelihood,
+        if (tiltAngle != null) 'tiltAngle': tiltAngle,
+        if (underExposedLikelihood != null)
+          'underExposedLikelihood': underExposedLikelihood,
+      };
 }
 
 /// A face-specific landmark (for example, a face feature).
@@ -10395,16 +9316,10 @@ class GoogleCloudVisionV1p3beta1FaceAnnotationLandmark {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (position != null) {
-      _json['position'] = position.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (position != null) 'position': position.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// The Google Cloud Storage location where the output will be written to.
@@ -10435,13 +9350,9 @@ class GoogleCloudVisionV1p3beta1GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// The Google Cloud Storage location where the input will be read from.
@@ -10460,13 +9371,9 @@ class GoogleCloudVisionV1p3beta1GcsSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// If an image was produced from a file (e.g. a PDF), this message gives
@@ -10490,16 +9397,10 @@ class GoogleCloudVisionV1p3beta1ImageAnnotationContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pageNumber != null) {
-      _json['pageNumber'] = pageNumber;
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pageNumber != null) 'pageNumber': pageNumber,
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// Stores image properties, such as dominant colors.
@@ -10517,13 +9418,9 @@ class GoogleCloudVisionV1p3beta1ImageProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dominantColors != null) {
-      _json['dominantColors'] = dominantColors.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dominantColors != null) 'dominantColors': dominantColors.toJson(),
+      };
 }
 
 /// Response message for the `ImportProductSets` method.
@@ -10560,17 +9457,13 @@ class GoogleCloudVisionV1p3beta1ImportProductSetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (referenceImages != null) {
-      _json['referenceImages'] =
-          referenceImages.map((value) => value.toJson()).toList();
-    }
-    if (statuses != null) {
-      _json['statuses'] = statuses.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (referenceImages != null)
+          'referenceImages':
+              referenceImages.map((value) => value.toJson()).toList(),
+        if (statuses != null)
+          'statuses': statuses.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The desired input location and metadata.
@@ -10613,19 +9506,11 @@ class GoogleCloudVisionV1p3beta1InputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (gcsSource != null) {
-      _json['gcsSource'] = gcsSource.toJson();
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (gcsSource != null) 'gcsSource': gcsSource.toJson(),
+        if (mimeType != null) 'mimeType': mimeType,
+      };
 }
 
 /// Set of detected objects with bounding boxes.
@@ -10673,25 +9558,13 @@ class GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (mid != null) {
-      _json['mid'] = mid;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (languageCode != null) 'languageCode': languageCode,
+        if (mid != null) 'mid': mid,
+        if (name != null) 'name': name,
+        if (score != null) 'score': score,
+      };
 }
 
 /// Detected entity location information.
@@ -10708,13 +9581,9 @@ class GoogleCloudVisionV1p3beta1LocationInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (latLng != null) {
-      _json['latLng'] = latLng.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (latLng != null) 'latLng': latLng.toJson(),
+      };
 }
 
 /// A vertex represents a 2D point in the image.
@@ -10739,16 +9608,10 @@ class GoogleCloudVisionV1p3beta1NormalizedVertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+      };
 }
 
 /// Contains metadata for the BatchAnnotateImages operation.
@@ -10782,19 +9645,11 @@ class GoogleCloudVisionV1p3beta1OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (state != null) 'state': state,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// The desired output location and metadata.
@@ -10825,16 +9680,10 @@ class GoogleCloudVisionV1p3beta1OutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (batchSize != null) {
-      _json['batchSize'] = batchSize;
-    }
-    if (gcsDestination != null) {
-      _json['gcsDestination'] = gcsDestination.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (batchSize != null) 'batchSize': batchSize,
+        if (gcsDestination != null) 'gcsDestination': gcsDestination.toJson(),
+      };
 }
 
 /// Detected page from OCR.
@@ -10887,25 +9736,14 @@ class GoogleCloudVisionV1p3beta1Page {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blocks != null) {
-      _json['blocks'] = blocks.map((value) => value.toJson()).toList();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (height != null) {
-      _json['height'] = height;
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    if (width != null) {
-      _json['width'] = width;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blocks != null)
+          'blocks': blocks.map((value) => value.toJson()).toList(),
+        if (confidence != null) 'confidence': confidence,
+        if (height != null) 'height': height,
+        if (property != null) 'property': property.toJson(),
+        if (width != null) 'width': width,
+      };
 }
 
 /// Structural unit of text representing a number of words in certain order.
@@ -10955,22 +9793,13 @@ class GoogleCloudVisionV1p3beta1Paragraph {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingBox != null) {
-      _json['boundingBox'] = boundingBox.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    if (words != null) {
-      _json['words'] = words.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingBox != null) 'boundingBox': boundingBox.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (property != null) 'property': property.toJson(),
+        if (words != null)
+          'words': words.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A 3D position in the image, used primarily for Face detection landmarks.
@@ -11001,19 +9830,11 @@ class GoogleCloudVisionV1p3beta1Position {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    if (z != null) {
-      _json['z'] = z;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+        if (z != null) 'z': z,
+      };
 }
 
 /// A Product contains ReferenceImages.
@@ -11080,26 +9901,15 @@ class GoogleCloudVisionV1p3beta1Product {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (productCategory != null) {
-      _json['productCategory'] = productCategory;
-    }
-    if (productLabels != null) {
-      _json['productLabels'] =
-          productLabels.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (productCategory != null) 'productCategory': productCategory,
+        if (productLabels != null)
+          'productLabels':
+              productLabels.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A product label represented as a key-value pair.
@@ -11125,16 +9935,10 @@ class GoogleCloudVisionV1p3beta1ProductKeyValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Results for a product search request.
@@ -11179,20 +9983,14 @@ class GoogleCloudVisionV1p3beta1ProductSearchResults {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (indexTime != null) {
-      _json['indexTime'] = indexTime;
-    }
-    if (productGroupedResults != null) {
-      _json['productGroupedResults'] =
-          productGroupedResults.map((value) => value.toJson()).toList();
-    }
-    if (results != null) {
-      _json['results'] = results.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (indexTime != null) 'indexTime': indexTime,
+        if (productGroupedResults != null)
+          'productGroupedResults':
+              productGroupedResults.map((value) => value.toJson()).toList(),
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Information about the products similar to a single product in a query image.
@@ -11232,20 +10030,14 @@ class GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (objectAnnotations != null) {
-      _json['objectAnnotations'] =
-          objectAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (results != null) {
-      _json['results'] = results.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (objectAnnotations != null)
+          'objectAnnotations':
+              objectAnnotations.map((value) => value.toJson()).toList(),
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Prediction for what the object in the bounding box is.
@@ -11285,22 +10077,12 @@ class GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (mid != null) {
-      _json['mid'] = mid;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode,
+        if (mid != null) 'mid': mid,
+        if (name != null) 'name': name,
+        if (score != null) 'score': score,
+      };
 }
 
 /// Information about a product.
@@ -11332,19 +10114,11 @@ class GoogleCloudVisionV1p3beta1ProductSearchResultsResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (image != null) {
-      _json['image'] = image;
-    }
-    if (product != null) {
-      _json['product'] = product.toJson();
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (image != null) 'image': image,
+        if (product != null) 'product': product.toJson(),
+        if (score != null) 'score': score,
+      };
 }
 
 /// A `Property` consists of a user-supplied name/value pair.
@@ -11372,19 +10146,11 @@ class GoogleCloudVisionV1p3beta1Property {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (uint64Value != null) {
-      _json['uint64Value'] = uint64Value;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (uint64Value != null) 'uint64Value': uint64Value,
+        if (value != null) 'value': value,
+      };
 }
 
 /// A `ReferenceImage` represents a product image and its associated metadata,
@@ -11433,20 +10199,13 @@ class GoogleCloudVisionV1p3beta1ReferenceImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPolys != null) {
-      _json['boundingPolys'] =
-          boundingPolys.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPolys != null)
+          'boundingPolys':
+              boundingPolys.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// Set of features pertaining to the image, computed by computer vision methods
@@ -11532,25 +10291,13 @@ class GoogleCloudVisionV1p3beta1SafeSearchAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adult != null) {
-      _json['adult'] = adult;
-    }
-    if (medical != null) {
-      _json['medical'] = medical;
-    }
-    if (racy != null) {
-      _json['racy'] = racy;
-    }
-    if (spoof != null) {
-      _json['spoof'] = spoof;
-    }
-    if (violence != null) {
-      _json['violence'] = violence;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adult != null) 'adult': adult,
+        if (medical != null) 'medical': medical,
+        if (racy != null) 'racy': racy,
+        if (spoof != null) 'spoof': spoof,
+        if (violence != null) 'violence': violence,
+      };
 }
 
 /// A single symbol representation.
@@ -11596,22 +10343,12 @@ class GoogleCloudVisionV1p3beta1Symbol {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingBox != null) {
-      _json['boundingBox'] = boundingBox.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingBox != null) 'boundingBox': boundingBox.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (property != null) 'property': property.toJson(),
+        if (text != null) 'text': text,
+      };
 }
 
 /// TextAnnotation contains a structured representation of OCR extracted text.
@@ -11644,16 +10381,11 @@ class GoogleCloudVisionV1p3beta1TextAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pages != null) {
-      _json['pages'] = pages.map((value) => value.toJson()).toList();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pages != null)
+          'pages': pages.map((value) => value.toJson()).toList(),
+        if (text != null) 'text': text,
+      };
 }
 
 /// Detected start or end of a structural component.
@@ -11684,16 +10416,10 @@ class GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (isPrefix != null) {
-      _json['isPrefix'] = isPrefix;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (isPrefix != null) 'isPrefix': isPrefix,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Detected language for a structural component.
@@ -11721,16 +10447,10 @@ class GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// Additional information detected on the structural component.
@@ -11761,17 +10481,12 @@ class GoogleCloudVisionV1p3beta1TextAnnotationTextProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detectedBreak != null) {
-      _json['detectedBreak'] = detectedBreak.toJson();
-    }
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detectedBreak != null) 'detectedBreak': detectedBreak.toJson(),
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A vertex represents a 2D point in the image.
@@ -11795,16 +10510,10 @@ class GoogleCloudVisionV1p3beta1Vertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+      };
 }
 
 /// Relevant information for the image from the Internet.
@@ -11884,34 +10593,25 @@ class GoogleCloudVisionV1p3beta1WebDetection {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bestGuessLabels != null) {
-      _json['bestGuessLabels'] =
-          bestGuessLabels.map((value) => value.toJson()).toList();
-    }
-    if (fullMatchingImages != null) {
-      _json['fullMatchingImages'] =
-          fullMatchingImages.map((value) => value.toJson()).toList();
-    }
-    if (pagesWithMatchingImages != null) {
-      _json['pagesWithMatchingImages'] =
-          pagesWithMatchingImages.map((value) => value.toJson()).toList();
-    }
-    if (partialMatchingImages != null) {
-      _json['partialMatchingImages'] =
-          partialMatchingImages.map((value) => value.toJson()).toList();
-    }
-    if (visuallySimilarImages != null) {
-      _json['visuallySimilarImages'] =
-          visuallySimilarImages.map((value) => value.toJson()).toList();
-    }
-    if (webEntities != null) {
-      _json['webEntities'] =
-          webEntities.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bestGuessLabels != null)
+          'bestGuessLabels':
+              bestGuessLabels.map((value) => value.toJson()).toList(),
+        if (fullMatchingImages != null)
+          'fullMatchingImages':
+              fullMatchingImages.map((value) => value.toJson()).toList(),
+        if (pagesWithMatchingImages != null)
+          'pagesWithMatchingImages':
+              pagesWithMatchingImages.map((value) => value.toJson()).toList(),
+        if (partialMatchingImages != null)
+          'partialMatchingImages':
+              partialMatchingImages.map((value) => value.toJson()).toList(),
+        if (visuallySimilarImages != null)
+          'visuallySimilarImages':
+              visuallySimilarImages.map((value) => value.toJson()).toList(),
+        if (webEntities != null)
+          'webEntities': webEntities.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Entity deduced from similar images on the Internet.
@@ -11941,19 +10641,11 @@ class GoogleCloudVisionV1p3beta1WebDetectionWebEntity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (entityId != null) {
-      _json['entityId'] = entityId;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (entityId != null) 'entityId': entityId,
+        if (score != null) 'score': score,
+      };
 }
 
 /// Metadata for online images.
@@ -11975,16 +10667,10 @@ class GoogleCloudVisionV1p3beta1WebDetectionWebImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (score != null) {
-      _json['score'] = score;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (score != null) 'score': score,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Label to provide extra metadata for the web detection.
@@ -12009,16 +10695,10 @@ class GoogleCloudVisionV1p3beta1WebDetectionWebLabel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (label != null) {
-      _json['label'] = label;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (label != null) 'label': label,
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// Metadata for web pages.
@@ -12072,27 +10752,17 @@ class GoogleCloudVisionV1p3beta1WebDetectionWebPage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fullMatchingImages != null) {
-      _json['fullMatchingImages'] =
-          fullMatchingImages.map((value) => value.toJson()).toList();
-    }
-    if (pageTitle != null) {
-      _json['pageTitle'] = pageTitle;
-    }
-    if (partialMatchingImages != null) {
-      _json['partialMatchingImages'] =
-          partialMatchingImages.map((value) => value.toJson()).toList();
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fullMatchingImages != null)
+          'fullMatchingImages':
+              fullMatchingImages.map((value) => value.toJson()).toList(),
+        if (pageTitle != null) 'pageTitle': pageTitle,
+        if (partialMatchingImages != null)
+          'partialMatchingImages':
+              partialMatchingImages.map((value) => value.toJson()).toList(),
+        if (score != null) 'score': score,
+        if (url != null) 'url': url,
+      };
 }
 
 /// A word representation.
@@ -12144,22 +10814,13 @@ class GoogleCloudVisionV1p3beta1Word {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingBox != null) {
-      _json['boundingBox'] = boundingBox.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    if (symbols != null) {
-      _json['symbols'] = symbols.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingBox != null) 'boundingBox': boundingBox.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (property != null) 'property': property.toJson(),
+        if (symbols != null)
+          'symbols': symbols.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response to a single file annotation request.
@@ -12206,22 +10867,13 @@ class GoogleCloudVisionV1p4beta1AnnotateFileResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (inputConfig != null) {
-      _json['inputConfig'] = inputConfig.toJson();
-    }
-    if (responses != null) {
-      _json['responses'] = responses.map((value) => value.toJson()).toList();
-    }
-    if (totalPages != null) {
-      _json['totalPages'] = totalPages;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (error != null) 'error': error.toJson(),
+        if (inputConfig != null) 'inputConfig': inputConfig.toJson(),
+        if (responses != null)
+          'responses': responses.map((value) => value.toJson()).toList(),
+        if (totalPages != null) 'totalPages': totalPages,
+      };
 }
 
 /// Response to an image annotation request.
@@ -12367,58 +11019,40 @@ class GoogleCloudVisionV1p4beta1AnnotateImageResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (context != null) {
-      _json['context'] = context.toJson();
-    }
-    if (cropHintsAnnotation != null) {
-      _json['cropHintsAnnotation'] = cropHintsAnnotation.toJson();
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (faceAnnotations != null) {
-      _json['faceAnnotations'] =
-          faceAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (fullTextAnnotation != null) {
-      _json['fullTextAnnotation'] = fullTextAnnotation.toJson();
-    }
-    if (imagePropertiesAnnotation != null) {
-      _json['imagePropertiesAnnotation'] = imagePropertiesAnnotation.toJson();
-    }
-    if (labelAnnotations != null) {
-      _json['labelAnnotations'] =
-          labelAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (landmarkAnnotations != null) {
-      _json['landmarkAnnotations'] =
-          landmarkAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (localizedObjectAnnotations != null) {
-      _json['localizedObjectAnnotations'] =
-          localizedObjectAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (logoAnnotations != null) {
-      _json['logoAnnotations'] =
-          logoAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (productSearchResults != null) {
-      _json['productSearchResults'] = productSearchResults.toJson();
-    }
-    if (safeSearchAnnotation != null) {
-      _json['safeSearchAnnotation'] = safeSearchAnnotation.toJson();
-    }
-    if (textAnnotations != null) {
-      _json['textAnnotations'] =
-          textAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (webDetection != null) {
-      _json['webDetection'] = webDetection.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (context != null) 'context': context.toJson(),
+        if (cropHintsAnnotation != null)
+          'cropHintsAnnotation': cropHintsAnnotation.toJson(),
+        if (error != null) 'error': error.toJson(),
+        if (faceAnnotations != null)
+          'faceAnnotations':
+              faceAnnotations.map((value) => value.toJson()).toList(),
+        if (fullTextAnnotation != null)
+          'fullTextAnnotation': fullTextAnnotation.toJson(),
+        if (imagePropertiesAnnotation != null)
+          'imagePropertiesAnnotation': imagePropertiesAnnotation.toJson(),
+        if (labelAnnotations != null)
+          'labelAnnotations':
+              labelAnnotations.map((value) => value.toJson()).toList(),
+        if (landmarkAnnotations != null)
+          'landmarkAnnotations':
+              landmarkAnnotations.map((value) => value.toJson()).toList(),
+        if (localizedObjectAnnotations != null)
+          'localizedObjectAnnotations': localizedObjectAnnotations
+              .map((value) => value.toJson())
+              .toList(),
+        if (logoAnnotations != null)
+          'logoAnnotations':
+              logoAnnotations.map((value) => value.toJson()).toList(),
+        if (productSearchResults != null)
+          'productSearchResults': productSearchResults.toJson(),
+        if (safeSearchAnnotation != null)
+          'safeSearchAnnotation': safeSearchAnnotation.toJson(),
+        if (textAnnotations != null)
+          'textAnnotations':
+              textAnnotations.map((value) => value.toJson()).toList(),
+        if (webDetection != null) 'webDetection': webDetection.toJson(),
+      };
 }
 
 /// The response for a single offline file annotation request.
@@ -12435,13 +11069,9 @@ class GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (outputConfig != null) {
-      _json['outputConfig'] = outputConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
+      };
 }
 
 /// Response to an async batch file annotation request.
@@ -12463,13 +11093,10 @@ class GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (responses != null) {
-      _json['responses'] = responses.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (responses != null)
+          'responses': responses.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response to an async batch image annotation request.
@@ -12487,13 +11114,9 @@ class GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (outputConfig != null) {
-      _json['outputConfig'] = outputConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
+      };
 }
 
 /// A list of file annotation responses.
@@ -12515,13 +11138,10 @@ class GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (responses != null) {
-      _json['responses'] = responses.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (responses != null)
+          'responses': responses.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Metadata for the batch operations such as the current state.
@@ -12564,19 +11184,11 @@ class GoogleCloudVisionV1p4beta1BatchOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (submitTime != null) {
-      _json['submitTime'] = submitTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (state != null) 'state': state,
+        if (submitTime != null) 'submitTime': submitTime,
+      };
 }
 
 /// Logical element on the page.
@@ -12639,25 +11251,14 @@ class GoogleCloudVisionV1p4beta1Block {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blockType != null) {
-      _json['blockType'] = blockType;
-    }
-    if (boundingBox != null) {
-      _json['boundingBox'] = boundingBox.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (paragraphs != null) {
-      _json['paragraphs'] = paragraphs.map((value) => value.toJson()).toList();
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blockType != null) 'blockType': blockType,
+        if (boundingBox != null) 'boundingBox': boundingBox.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (paragraphs != null)
+          'paragraphs': paragraphs.map((value) => value.toJson()).toList(),
+        if (property != null) 'property': property.toJson(),
+      };
 }
 
 /// A bounding polygon for the detected image annotation.
@@ -12687,17 +11288,13 @@ class GoogleCloudVisionV1p4beta1BoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (normalizedVertices != null) {
-      _json['normalizedVertices'] =
-          normalizedVertices.map((value) => value.toJson()).toList();
-    }
-    if (vertices != null) {
-      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (normalizedVertices != null)
+          'normalizedVertices':
+              normalizedVertices.map((value) => value.toJson()).toList(),
+        if (vertices != null)
+          'vertices': vertices.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A Celebrity is a group of Faces with an identity.
@@ -12727,19 +11324,11 @@ class GoogleCloudVisionV1p4beta1Celebrity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Color information consists of RGB channels, score, and the fraction of the
@@ -12773,19 +11362,11 @@ class GoogleCloudVisionV1p4beta1ColorInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (color != null) {
-      _json['color'] = color.toJson();
-    }
-    if (pixelFraction != null) {
-      _json['pixelFraction'] = pixelFraction;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (color != null) 'color': color.toJson(),
+        if (pixelFraction != null) 'pixelFraction': pixelFraction,
+        if (score != null) 'score': score,
+      };
 }
 
 /// Single crop hint that is used to generate a new crop when serving an image.
@@ -12819,19 +11400,12 @@ class GoogleCloudVisionV1p4beta1CropHint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (importanceFraction != null) {
-      _json['importanceFraction'] = importanceFraction;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (importanceFraction != null)
+          'importanceFraction': importanceFraction,
+      };
 }
 
 /// Set of crop hints that are used to generate new crops when serving images.
@@ -12851,13 +11425,10 @@ class GoogleCloudVisionV1p4beta1CropHintsAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cropHints != null) {
-      _json['cropHints'] = cropHints.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cropHints != null)
+          'cropHints': cropHints.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Set of dominant colors and their corresponding scores.
@@ -12877,13 +11448,10 @@ class GoogleCloudVisionV1p4beta1DominantColorsAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (colors != null) {
-      _json['colors'] = colors.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (colors != null)
+          'colors': colors.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Set of detected entity features.
@@ -12980,37 +11548,19 @@ class GoogleCloudVisionV1p4beta1EntityAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (locale != null) {
-      _json['locale'] = locale;
-    }
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (mid != null) {
-      _json['mid'] = mid;
-    }
-    if (properties != null) {
-      _json['properties'] = properties.map((value) => value.toJson()).toList();
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    if (topicality != null) {
-      _json['topicality'] = topicality;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (description != null) 'description': description,
+        if (locale != null) 'locale': locale,
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (mid != null) 'mid': mid,
+        if (properties != null)
+          'properties': properties.map((value) => value.toJson()).toList(),
+        if (score != null) 'score': score,
+        if (topicality != null) 'topicality': topicality,
+      };
 }
 
 /// A face annotation object contains the results of face detection.
@@ -13208,59 +11758,32 @@ class GoogleCloudVisionV1p4beta1FaceAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (angerLikelihood != null) {
-      _json['angerLikelihood'] = angerLikelihood;
-    }
-    if (blurredLikelihood != null) {
-      _json['blurredLikelihood'] = blurredLikelihood;
-    }
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (detectionConfidence != null) {
-      _json['detectionConfidence'] = detectionConfidence;
-    }
-    if (fdBoundingPoly != null) {
-      _json['fdBoundingPoly'] = fdBoundingPoly.toJson();
-    }
-    if (headwearLikelihood != null) {
-      _json['headwearLikelihood'] = headwearLikelihood;
-    }
-    if (joyLikelihood != null) {
-      _json['joyLikelihood'] = joyLikelihood;
-    }
-    if (landmarkingConfidence != null) {
-      _json['landmarkingConfidence'] = landmarkingConfidence;
-    }
-    if (landmarks != null) {
-      _json['landmarks'] = landmarks.map((value) => value.toJson()).toList();
-    }
-    if (panAngle != null) {
-      _json['panAngle'] = panAngle;
-    }
-    if (recognitionResult != null) {
-      _json['recognitionResult'] =
-          recognitionResult.map((value) => value.toJson()).toList();
-    }
-    if (rollAngle != null) {
-      _json['rollAngle'] = rollAngle;
-    }
-    if (sorrowLikelihood != null) {
-      _json['sorrowLikelihood'] = sorrowLikelihood;
-    }
-    if (surpriseLikelihood != null) {
-      _json['surpriseLikelihood'] = surpriseLikelihood;
-    }
-    if (tiltAngle != null) {
-      _json['tiltAngle'] = tiltAngle;
-    }
-    if (underExposedLikelihood != null) {
-      _json['underExposedLikelihood'] = underExposedLikelihood;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (angerLikelihood != null) 'angerLikelihood': angerLikelihood,
+        if (blurredLikelihood != null) 'blurredLikelihood': blurredLikelihood,
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (detectionConfidence != null)
+          'detectionConfidence': detectionConfidence,
+        if (fdBoundingPoly != null) 'fdBoundingPoly': fdBoundingPoly.toJson(),
+        if (headwearLikelihood != null)
+          'headwearLikelihood': headwearLikelihood,
+        if (joyLikelihood != null) 'joyLikelihood': joyLikelihood,
+        if (landmarkingConfidence != null)
+          'landmarkingConfidence': landmarkingConfidence,
+        if (landmarks != null)
+          'landmarks': landmarks.map((value) => value.toJson()).toList(),
+        if (panAngle != null) 'panAngle': panAngle,
+        if (recognitionResult != null)
+          'recognitionResult':
+              recognitionResult.map((value) => value.toJson()).toList(),
+        if (rollAngle != null) 'rollAngle': rollAngle,
+        if (sorrowLikelihood != null) 'sorrowLikelihood': sorrowLikelihood,
+        if (surpriseLikelihood != null)
+          'surpriseLikelihood': surpriseLikelihood,
+        if (tiltAngle != null) 'tiltAngle': tiltAngle,
+        if (underExposedLikelihood != null)
+          'underExposedLikelihood': underExposedLikelihood,
+      };
 }
 
 /// A face-specific landmark (for example, a face feature).
@@ -13322,16 +11845,10 @@ class GoogleCloudVisionV1p4beta1FaceAnnotationLandmark {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (position != null) {
-      _json['position'] = position.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (position != null) 'position': position.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// Information about a face's identity.
@@ -13356,16 +11873,10 @@ class GoogleCloudVisionV1p4beta1FaceRecognitionResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (celebrity != null) {
-      _json['celebrity'] = celebrity.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (celebrity != null) 'celebrity': celebrity.toJson(),
+        if (confidence != null) 'confidence': confidence,
+      };
 }
 
 /// The Google Cloud Storage location where the output will be written to.
@@ -13396,13 +11907,9 @@ class GoogleCloudVisionV1p4beta1GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// The Google Cloud Storage location where the input will be read from.
@@ -13421,13 +11928,9 @@ class GoogleCloudVisionV1p4beta1GcsSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// If an image was produced from a file (e.g. a PDF), this message gives
@@ -13451,16 +11954,10 @@ class GoogleCloudVisionV1p4beta1ImageAnnotationContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pageNumber != null) {
-      _json['pageNumber'] = pageNumber;
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pageNumber != null) 'pageNumber': pageNumber,
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// Stores image properties, such as dominant colors.
@@ -13478,13 +11975,9 @@ class GoogleCloudVisionV1p4beta1ImageProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dominantColors != null) {
-      _json['dominantColors'] = dominantColors.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dominantColors != null) 'dominantColors': dominantColors.toJson(),
+      };
 }
 
 /// Response message for the `ImportProductSets` method.
@@ -13521,17 +12014,13 @@ class GoogleCloudVisionV1p4beta1ImportProductSetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (referenceImages != null) {
-      _json['referenceImages'] =
-          referenceImages.map((value) => value.toJson()).toList();
-    }
-    if (statuses != null) {
-      _json['statuses'] = statuses.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (referenceImages != null)
+          'referenceImages':
+              referenceImages.map((value) => value.toJson()).toList(),
+        if (statuses != null)
+          'statuses': statuses.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The desired input location and metadata.
@@ -13574,19 +12063,11 @@ class GoogleCloudVisionV1p4beta1InputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (gcsSource != null) {
-      _json['gcsSource'] = gcsSource.toJson();
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (gcsSource != null) 'gcsSource': gcsSource.toJson(),
+        if (mimeType != null) 'mimeType': mimeType,
+      };
 }
 
 /// Set of detected objects with bounding boxes.
@@ -13634,25 +12115,13 @@ class GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (mid != null) {
-      _json['mid'] = mid;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (languageCode != null) 'languageCode': languageCode,
+        if (mid != null) 'mid': mid,
+        if (name != null) 'name': name,
+        if (score != null) 'score': score,
+      };
 }
 
 /// Detected entity location information.
@@ -13669,13 +12138,9 @@ class GoogleCloudVisionV1p4beta1LocationInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (latLng != null) {
-      _json['latLng'] = latLng.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (latLng != null) 'latLng': latLng.toJson(),
+      };
 }
 
 /// A vertex represents a 2D point in the image.
@@ -13700,16 +12165,10 @@ class GoogleCloudVisionV1p4beta1NormalizedVertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+      };
 }
 
 /// Contains metadata for the BatchAnnotateImages operation.
@@ -13743,19 +12202,11 @@ class GoogleCloudVisionV1p4beta1OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (state != null) 'state': state,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// The desired output location and metadata.
@@ -13786,16 +12237,10 @@ class GoogleCloudVisionV1p4beta1OutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (batchSize != null) {
-      _json['batchSize'] = batchSize;
-    }
-    if (gcsDestination != null) {
-      _json['gcsDestination'] = gcsDestination.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (batchSize != null) 'batchSize': batchSize,
+        if (gcsDestination != null) 'gcsDestination': gcsDestination.toJson(),
+      };
 }
 
 /// Detected page from OCR.
@@ -13848,25 +12293,14 @@ class GoogleCloudVisionV1p4beta1Page {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blocks != null) {
-      _json['blocks'] = blocks.map((value) => value.toJson()).toList();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (height != null) {
-      _json['height'] = height;
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    if (width != null) {
-      _json['width'] = width;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blocks != null)
+          'blocks': blocks.map((value) => value.toJson()).toList(),
+        if (confidence != null) 'confidence': confidence,
+        if (height != null) 'height': height,
+        if (property != null) 'property': property.toJson(),
+        if (width != null) 'width': width,
+      };
 }
 
 /// Structural unit of text representing a number of words in certain order.
@@ -13916,22 +12350,13 @@ class GoogleCloudVisionV1p4beta1Paragraph {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingBox != null) {
-      _json['boundingBox'] = boundingBox.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    if (words != null) {
-      _json['words'] = words.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingBox != null) 'boundingBox': boundingBox.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (property != null) 'property': property.toJson(),
+        if (words != null)
+          'words': words.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A 3D position in the image, used primarily for Face detection landmarks.
@@ -13962,19 +12387,11 @@ class GoogleCloudVisionV1p4beta1Position {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    if (z != null) {
-      _json['z'] = z;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+        if (z != null) 'z': z,
+      };
 }
 
 /// A Product contains ReferenceImages.
@@ -14041,26 +12458,15 @@ class GoogleCloudVisionV1p4beta1Product {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (productCategory != null) {
-      _json['productCategory'] = productCategory;
-    }
-    if (productLabels != null) {
-      _json['productLabels'] =
-          productLabels.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (productCategory != null) 'productCategory': productCategory,
+        if (productLabels != null)
+          'productLabels':
+              productLabels.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A product label represented as a key-value pair.
@@ -14086,16 +12492,10 @@ class GoogleCloudVisionV1p4beta1ProductKeyValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Results for a product search request.
@@ -14140,20 +12540,14 @@ class GoogleCloudVisionV1p4beta1ProductSearchResults {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (indexTime != null) {
-      _json['indexTime'] = indexTime;
-    }
-    if (productGroupedResults != null) {
-      _json['productGroupedResults'] =
-          productGroupedResults.map((value) => value.toJson()).toList();
-    }
-    if (results != null) {
-      _json['results'] = results.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (indexTime != null) 'indexTime': indexTime,
+        if (productGroupedResults != null)
+          'productGroupedResults':
+              productGroupedResults.map((value) => value.toJson()).toList(),
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Information about the products similar to a single product in a query image.
@@ -14193,20 +12587,14 @@ class GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (objectAnnotations != null) {
-      _json['objectAnnotations'] =
-          objectAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (results != null) {
-      _json['results'] = results.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (objectAnnotations != null)
+          'objectAnnotations':
+              objectAnnotations.map((value) => value.toJson()).toList(),
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Prediction for what the object in the bounding box is.
@@ -14246,22 +12634,12 @@ class GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (mid != null) {
-      _json['mid'] = mid;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode,
+        if (mid != null) 'mid': mid,
+        if (name != null) 'name': name,
+        if (score != null) 'score': score,
+      };
 }
 
 /// Information about a product.
@@ -14293,19 +12671,11 @@ class GoogleCloudVisionV1p4beta1ProductSearchResultsResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (image != null) {
-      _json['image'] = image;
-    }
-    if (product != null) {
-      _json['product'] = product.toJson();
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (image != null) 'image': image,
+        if (product != null) 'product': product.toJson(),
+        if (score != null) 'score': score,
+      };
 }
 
 /// A `Property` consists of a user-supplied name/value pair.
@@ -14333,19 +12703,11 @@ class GoogleCloudVisionV1p4beta1Property {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (uint64Value != null) {
-      _json['uint64Value'] = uint64Value;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (uint64Value != null) 'uint64Value': uint64Value,
+        if (value != null) 'value': value,
+      };
 }
 
 /// A `ReferenceImage` represents a product image and its associated metadata,
@@ -14394,20 +12756,13 @@ class GoogleCloudVisionV1p4beta1ReferenceImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPolys != null) {
-      _json['boundingPolys'] =
-          boundingPolys.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPolys != null)
+          'boundingPolys':
+              boundingPolys.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// Set of features pertaining to the image, computed by computer vision methods
@@ -14493,25 +12848,13 @@ class GoogleCloudVisionV1p4beta1SafeSearchAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adult != null) {
-      _json['adult'] = adult;
-    }
-    if (medical != null) {
-      _json['medical'] = medical;
-    }
-    if (racy != null) {
-      _json['racy'] = racy;
-    }
-    if (spoof != null) {
-      _json['spoof'] = spoof;
-    }
-    if (violence != null) {
-      _json['violence'] = violence;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adult != null) 'adult': adult,
+        if (medical != null) 'medical': medical,
+        if (racy != null) 'racy': racy,
+        if (spoof != null) 'spoof': spoof,
+        if (violence != null) 'violence': violence,
+      };
 }
 
 /// A single symbol representation.
@@ -14557,22 +12900,12 @@ class GoogleCloudVisionV1p4beta1Symbol {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingBox != null) {
-      _json['boundingBox'] = boundingBox.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingBox != null) 'boundingBox': boundingBox.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (property != null) 'property': property.toJson(),
+        if (text != null) 'text': text,
+      };
 }
 
 /// TextAnnotation contains a structured representation of OCR extracted text.
@@ -14605,16 +12938,11 @@ class GoogleCloudVisionV1p4beta1TextAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pages != null) {
-      _json['pages'] = pages.map((value) => value.toJson()).toList();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pages != null)
+          'pages': pages.map((value) => value.toJson()).toList(),
+        if (text != null) 'text': text,
+      };
 }
 
 /// Detected start or end of a structural component.
@@ -14645,16 +12973,10 @@ class GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (isPrefix != null) {
-      _json['isPrefix'] = isPrefix;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (isPrefix != null) 'isPrefix': isPrefix,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Detected language for a structural component.
@@ -14682,16 +13004,10 @@ class GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// Additional information detected on the structural component.
@@ -14722,17 +13038,12 @@ class GoogleCloudVisionV1p4beta1TextAnnotationTextProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detectedBreak != null) {
-      _json['detectedBreak'] = detectedBreak.toJson();
-    }
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detectedBreak != null) 'detectedBreak': detectedBreak.toJson(),
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A vertex represents a 2D point in the image.
@@ -14756,16 +13067,10 @@ class GoogleCloudVisionV1p4beta1Vertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+      };
 }
 
 /// Relevant information for the image from the Internet.
@@ -14845,34 +13150,25 @@ class GoogleCloudVisionV1p4beta1WebDetection {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bestGuessLabels != null) {
-      _json['bestGuessLabels'] =
-          bestGuessLabels.map((value) => value.toJson()).toList();
-    }
-    if (fullMatchingImages != null) {
-      _json['fullMatchingImages'] =
-          fullMatchingImages.map((value) => value.toJson()).toList();
-    }
-    if (pagesWithMatchingImages != null) {
-      _json['pagesWithMatchingImages'] =
-          pagesWithMatchingImages.map((value) => value.toJson()).toList();
-    }
-    if (partialMatchingImages != null) {
-      _json['partialMatchingImages'] =
-          partialMatchingImages.map((value) => value.toJson()).toList();
-    }
-    if (visuallySimilarImages != null) {
-      _json['visuallySimilarImages'] =
-          visuallySimilarImages.map((value) => value.toJson()).toList();
-    }
-    if (webEntities != null) {
-      _json['webEntities'] =
-          webEntities.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bestGuessLabels != null)
+          'bestGuessLabels':
+              bestGuessLabels.map((value) => value.toJson()).toList(),
+        if (fullMatchingImages != null)
+          'fullMatchingImages':
+              fullMatchingImages.map((value) => value.toJson()).toList(),
+        if (pagesWithMatchingImages != null)
+          'pagesWithMatchingImages':
+              pagesWithMatchingImages.map((value) => value.toJson()).toList(),
+        if (partialMatchingImages != null)
+          'partialMatchingImages':
+              partialMatchingImages.map((value) => value.toJson()).toList(),
+        if (visuallySimilarImages != null)
+          'visuallySimilarImages':
+              visuallySimilarImages.map((value) => value.toJson()).toList(),
+        if (webEntities != null)
+          'webEntities': webEntities.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Entity deduced from similar images on the Internet.
@@ -14902,19 +13198,11 @@ class GoogleCloudVisionV1p4beta1WebDetectionWebEntity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (entityId != null) {
-      _json['entityId'] = entityId;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (entityId != null) 'entityId': entityId,
+        if (score != null) 'score': score,
+      };
 }
 
 /// Metadata for online images.
@@ -14936,16 +13224,10 @@ class GoogleCloudVisionV1p4beta1WebDetectionWebImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (score != null) {
-      _json['score'] = score;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (score != null) 'score': score,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Label to provide extra metadata for the web detection.
@@ -14970,16 +13252,10 @@ class GoogleCloudVisionV1p4beta1WebDetectionWebLabel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (label != null) {
-      _json['label'] = label;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (label != null) 'label': label,
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// Metadata for web pages.
@@ -15033,27 +13309,17 @@ class GoogleCloudVisionV1p4beta1WebDetectionWebPage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fullMatchingImages != null) {
-      _json['fullMatchingImages'] =
-          fullMatchingImages.map((value) => value.toJson()).toList();
-    }
-    if (pageTitle != null) {
-      _json['pageTitle'] = pageTitle;
-    }
-    if (partialMatchingImages != null) {
-      _json['partialMatchingImages'] =
-          partialMatchingImages.map((value) => value.toJson()).toList();
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fullMatchingImages != null)
+          'fullMatchingImages':
+              fullMatchingImages.map((value) => value.toJson()).toList(),
+        if (pageTitle != null) 'pageTitle': pageTitle,
+        if (partialMatchingImages != null)
+          'partialMatchingImages':
+              partialMatchingImages.map((value) => value.toJson()).toList(),
+        if (score != null) 'score': score,
+        if (url != null) 'url': url,
+      };
 }
 
 /// A word representation.
@@ -15105,22 +13371,13 @@ class GoogleCloudVisionV1p4beta1Word {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingBox != null) {
-      _json['boundingBox'] = boundingBox.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    if (symbols != null) {
-      _json['symbols'] = symbols.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingBox != null) 'boundingBox': boundingBox.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (property != null) 'property': property.toJson(),
+        if (symbols != null)
+          'symbols': symbols.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Information about the products similar to a single product in a query image.
@@ -15155,20 +13412,14 @@ class GroupedResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (objectAnnotations != null) {
-      _json['objectAnnotations'] =
-          objectAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (results != null) {
-      _json['results'] = results.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (objectAnnotations != null)
+          'objectAnnotations':
+              objectAnnotations.map((value) => value.toJson()).toList(),
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Client image to perform Google Cloud Vision API tasks over.
@@ -15205,16 +13456,10 @@ class Image {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (source != null) {
-      _json['source'] = source.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (source != null) 'source': source.toJson(),
+      };
 }
 
 /// If an image was produced from a file (e.g. a PDF), this message gives
@@ -15238,16 +13483,10 @@ class ImageAnnotationContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pageNumber != null) {
-      _json['pageNumber'] = pageNumber;
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pageNumber != null) 'pageNumber': pageNumber,
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// Image context and/or feature-specific parameters.
@@ -15302,25 +13541,16 @@ class ImageContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cropHintsParams != null) {
-      _json['cropHintsParams'] = cropHintsParams.toJson();
-    }
-    if (languageHints != null) {
-      _json['languageHints'] = languageHints;
-    }
-    if (latLongRect != null) {
-      _json['latLongRect'] = latLongRect.toJson();
-    }
-    if (productSearchParams != null) {
-      _json['productSearchParams'] = productSearchParams.toJson();
-    }
-    if (webDetectionParams != null) {
-      _json['webDetectionParams'] = webDetectionParams.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cropHintsParams != null)
+          'cropHintsParams': cropHintsParams.toJson(),
+        if (languageHints != null) 'languageHints': languageHints,
+        if (latLongRect != null) 'latLongRect': latLongRect.toJson(),
+        if (productSearchParams != null)
+          'productSearchParams': productSearchParams.toJson(),
+        if (webDetectionParams != null)
+          'webDetectionParams': webDetectionParams.toJson(),
+      };
 }
 
 /// Stores image properties, such as dominant colors.
@@ -15337,13 +13567,9 @@ class ImageProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dominantColors != null) {
-      _json['dominantColors'] = dominantColors.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dominantColors != null) 'dominantColors': dominantColors.toJson(),
+      };
 }
 
 /// External image source (Google Cloud Storage or web URL image location).
@@ -15382,16 +13608,10 @@ class ImageSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcsImageUri != null) {
-      _json['gcsImageUri'] = gcsImageUri;
-    }
-    if (imageUri != null) {
-      _json['imageUri'] = imageUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsImageUri != null) 'gcsImageUri': gcsImageUri,
+        if (imageUri != null) 'imageUri': imageUri,
+      };
 }
 
 /// The Google Cloud Storage location for a csv file which preserves a list of
@@ -15441,13 +13661,9 @@ class ImportProductSetsGcsSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (csvFileUri != null) {
-      _json['csvFileUri'] = csvFileUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (csvFileUri != null) 'csvFileUri': csvFileUri,
+      };
 }
 
 /// The input content for the `ImportProductSets` method.
@@ -15465,13 +13681,9 @@ class ImportProductSetsInputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcsSource != null) {
-      _json['gcsSource'] = gcsSource.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsSource != null) 'gcsSource': gcsSource.toJson(),
+      };
 }
 
 /// Request message for the `ImportProductSets` method.
@@ -15490,13 +13702,9 @@ class ImportProductSetsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (inputConfig != null) {
-      _json['inputConfig'] = inputConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (inputConfig != null) 'inputConfig': inputConfig.toJson(),
+      };
 }
 
 /// Response message for the `ImportProductSets` method.
@@ -15532,17 +13740,13 @@ class ImportProductSetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (referenceImages != null) {
-      _json['referenceImages'] =
-          referenceImages.map((value) => value.toJson()).toList();
-    }
-    if (statuses != null) {
-      _json['statuses'] = statuses.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (referenceImages != null)
+          'referenceImages':
+              referenceImages.map((value) => value.toJson()).toList(),
+        if (statuses != null)
+          'statuses': statuses.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The desired input location and metadata.
@@ -15585,19 +13789,11 @@ class InputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (gcsSource != null) {
-      _json['gcsSource'] = gcsSource.toJson();
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (gcsSource != null) 'gcsSource': gcsSource.toJson(),
+        if (mimeType != null) 'mimeType': mimeType,
+      };
 }
 
 /// A product label represented as a key-value pair.
@@ -15623,16 +13819,10 @@ class KeyValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (value != null) 'value': value,
+      };
 }
 
 /// A face-specific landmark (for example, a face feature).
@@ -15694,16 +13884,10 @@ class Landmark {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (position != null) {
-      _json['position'] = position.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (position != null) 'position': position.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// An object that represents a latitude/longitude pair.
@@ -15733,16 +13917,10 @@ class LatLng {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (latitude != null) {
-      _json['latitude'] = latitude;
-    }
-    if (longitude != null) {
-      _json['longitude'] = longitude;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (latitude != null) 'latitude': latitude,
+        if (longitude != null) 'longitude': longitude,
+      };
 }
 
 /// Rectangle determined by min and max `LatLng` pairs.
@@ -15766,16 +13944,10 @@ class LatLongRect {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maxLatLng != null) {
-      _json['maxLatLng'] = maxLatLng.toJson();
-    }
-    if (minLatLng != null) {
-      _json['minLatLng'] = minLatLng.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maxLatLng != null) 'maxLatLng': maxLatLng.toJson(),
+        if (minLatLng != null) 'minLatLng': minLatLng.toJson(),
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -15800,16 +13972,11 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for the `ListProductSets` method.
@@ -15835,17 +14002,11 @@ class ListProductSetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (productSets != null) {
-      _json['productSets'] =
-          productSets.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (productSets != null)
+          'productSets': productSets.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for the `ListProductsInProductSet` method.
@@ -15871,16 +14032,11 @@ class ListProductsInProductSetResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (products != null) {
-      _json['products'] = products.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (products != null)
+          'products': products.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for the `ListProducts` method.
@@ -15906,16 +14062,11 @@ class ListProductsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (products != null) {
-      _json['products'] = products.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (products != null)
+          'products': products.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for the `ListReferenceImages` method.
@@ -15948,20 +14099,13 @@ class ListReferenceImagesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (pageSize != null) {
-      _json['pageSize'] = pageSize;
-    }
-    if (referenceImages != null) {
-      _json['referenceImages'] =
-          referenceImages.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (pageSize != null) 'pageSize': pageSize,
+        if (referenceImages != null)
+          'referenceImages':
+              referenceImages.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Set of detected objects with bounding boxes.
@@ -16009,25 +14153,13 @@ class LocalizedObjectAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (mid != null) {
-      _json['mid'] = mid;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (languageCode != null) 'languageCode': languageCode,
+        if (mid != null) 'mid': mid,
+        if (name != null) 'name': name,
+        if (score != null) 'score': score,
+      };
 }
 
 /// Detected entity location information.
@@ -16044,13 +14176,9 @@ class LocationInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (latLng != null) {
-      _json['latLng'] = latLng.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (latLng != null) 'latLng': latLng.toJson(),
+      };
 }
 
 /// A vertex represents a 2D point in the image.
@@ -16075,16 +14203,10 @@ class NormalizedVertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+      };
 }
 
 /// Prediction for what the object in the bounding box is.
@@ -16123,22 +14245,12 @@ class ObjectAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (mid != null) {
-      _json['mid'] = mid;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode,
+        if (mid != null) 'mid': mid,
+        if (name != null) 'name': name,
+        if (score != null) 'score': score,
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -16217,25 +14329,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// Contains metadata for the BatchAnnotateImages operation.
@@ -16269,19 +14369,11 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (state != null) 'state': state,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// The desired output location and metadata.
@@ -16312,16 +14404,10 @@ class OutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (batchSize != null) {
-      _json['batchSize'] = batchSize;
-    }
-    if (gcsDestination != null) {
-      _json['gcsDestination'] = gcsDestination.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (batchSize != null) 'batchSize': batchSize,
+        if (gcsDestination != null) 'gcsDestination': gcsDestination.toJson(),
+      };
 }
 
 /// Detected page from OCR.
@@ -16373,25 +14459,14 @@ class Page {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blocks != null) {
-      _json['blocks'] = blocks.map((value) => value.toJson()).toList();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (height != null) {
-      _json['height'] = height;
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    if (width != null) {
-      _json['width'] = width;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blocks != null)
+          'blocks': blocks.map((value) => value.toJson()).toList(),
+        if (confidence != null) 'confidence': confidence,
+        if (height != null) 'height': height,
+        if (property != null) 'property': property.toJson(),
+        if (width != null) 'width': width,
+      };
 }
 
 /// Structural unit of text representing a number of words in certain order.
@@ -16440,22 +14515,13 @@ class Paragraph {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingBox != null) {
-      _json['boundingBox'] = boundingBox.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    if (words != null) {
-      _json['words'] = words.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingBox != null) 'boundingBox': boundingBox.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (property != null) 'property': property.toJson(),
+        if (words != null)
+          'words': words.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A 3D position in the image, used primarily for Face detection landmarks.
@@ -16486,19 +14552,11 @@ class Position {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    if (z != null) {
-      _json['z'] = z;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+        if (z != null) 'z': z,
+      };
 }
 
 /// A Product contains ReferenceImages.
@@ -16564,26 +14622,15 @@ class Product {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (productCategory != null) {
-      _json['productCategory'] = productCategory;
-    }
-    if (productLabels != null) {
-      _json['productLabels'] =
-          productLabels.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (productCategory != null) 'productCategory': productCategory,
+        if (productLabels != null)
+          'productLabels':
+              productLabels.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Parameters for a product search request.
@@ -16641,22 +14688,12 @@ class ProductSearchParams {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    if (productCategories != null) {
-      _json['productCategories'] = productCategories;
-    }
-    if (productSet != null) {
-      _json['productSet'] = productSet;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (filter != null) 'filter': filter,
+        if (productCategories != null) 'productCategories': productCategories,
+        if (productSet != null) 'productSet': productSet,
+      };
 }
 
 /// Results for a product search request.
@@ -16697,20 +14734,14 @@ class ProductSearchResults {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (indexTime != null) {
-      _json['indexTime'] = indexTime;
-    }
-    if (productGroupedResults != null) {
-      _json['productGroupedResults'] =
-          productGroupedResults.map((value) => value.toJson()).toList();
-    }
-    if (results != null) {
-      _json['results'] = results.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (indexTime != null) 'indexTime': indexTime,
+        if (productGroupedResults != null)
+          'productGroupedResults':
+              productGroupedResults.map((value) => value.toJson()).toList(),
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A ProductSet contains Products.
@@ -16765,22 +14796,12 @@ class ProductSet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (indexError != null) {
-      _json['indexError'] = indexError.toJson();
-    }
-    if (indexTime != null) {
-      _json['indexTime'] = indexTime;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (indexError != null) 'indexError': indexError.toJson(),
+        if (indexTime != null) 'indexTime': indexTime,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Config to control which ProductSet contains the Products to be deleted.
@@ -16799,13 +14820,9 @@ class ProductSetPurgeConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (productSetId != null) {
-      _json['productSetId'] = productSetId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (productSetId != null) 'productSetId': productSetId,
+      };
 }
 
 /// A `Property` consists of a user-supplied name/value pair.
@@ -16833,19 +14850,11 @@ class Property {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (uint64Value != null) {
-      _json['uint64Value'] = uint64Value;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (uint64Value != null) 'uint64Value': uint64Value,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Request message for the `PurgeProducts` method.
@@ -16878,19 +14887,13 @@ class PurgeProductsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deleteOrphanProducts != null) {
-      _json['deleteOrphanProducts'] = deleteOrphanProducts;
-    }
-    if (force != null) {
-      _json['force'] = force;
-    }
-    if (productSetPurgeConfig != null) {
-      _json['productSetPurgeConfig'] = productSetPurgeConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deleteOrphanProducts != null)
+          'deleteOrphanProducts': deleteOrphanProducts,
+        if (force != null) 'force': force,
+        if (productSetPurgeConfig != null)
+          'productSetPurgeConfig': productSetPurgeConfig.toJson(),
+      };
 }
 
 /// A `ReferenceImage` represents a product image and its associated metadata,
@@ -16938,20 +14941,13 @@ class ReferenceImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPolys != null) {
-      _json['boundingPolys'] =
-          boundingPolys.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPolys != null)
+          'boundingPolys':
+              boundingPolys.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// Request message for the `RemoveProductFromProductSet` method.
@@ -16971,13 +14967,9 @@ class RemoveProductFromProductSetRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (product != null) {
-      _json['product'] = product;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (product != null) 'product': product,
+      };
 }
 
 /// Information about a product.
@@ -17008,19 +15000,11 @@ class Result {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (image != null) {
-      _json['image'] = image;
-    }
-    if (product != null) {
-      _json['product'] = product.toJson();
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (image != null) 'image': image,
+        if (product != null) 'product': product.toJson(),
+        if (score != null) 'score': score,
+      };
 }
 
 /// Set of features pertaining to the image, computed by computer vision methods
@@ -17106,25 +15090,13 @@ class SafeSearchAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adult != null) {
-      _json['adult'] = adult;
-    }
-    if (medical != null) {
-      _json['medical'] = medical;
-    }
-    if (racy != null) {
-      _json['racy'] = racy;
-    }
-    if (spoof != null) {
-      _json['spoof'] = spoof;
-    }
-    if (violence != null) {
-      _json['violence'] = violence;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adult != null) 'adult': adult,
+        if (medical != null) 'medical': medical,
+        if (racy != null) 'racy': racy,
+        if (spoof != null) 'spoof': spoof,
+        if (violence != null) 'violence': violence,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -17174,19 +15146,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// A single symbol representation.
@@ -17232,22 +15196,12 @@ class Symbol {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingBox != null) {
-      _json['boundingBox'] = boundingBox.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingBox != null) 'boundingBox': boundingBox.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (property != null) 'property': property.toJson(),
+        if (text != null) 'text': text,
+      };
 }
 
 /// TextAnnotation contains a structured representation of OCR extracted text.
@@ -17279,16 +15233,11 @@ class TextAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pages != null) {
-      _json['pages'] = pages.map((value) => value.toJson()).toList();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pages != null)
+          'pages': pages.map((value) => value.toJson()).toList(),
+        if (text != null) 'text': text,
+      };
 }
 
 /// Additional information detected on the structural component.
@@ -17314,17 +15263,12 @@ class TextProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detectedBreak != null) {
-      _json['detectedBreak'] = detectedBreak.toJson();
-    }
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detectedBreak != null) 'detectedBreak': detectedBreak.toJson(),
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A vertex represents a 2D point in the image.
@@ -17348,16 +15292,10 @@ class Vertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+      };
 }
 
 /// Relevant information for the image from the Internet.
@@ -17428,34 +15366,25 @@ class WebDetection {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bestGuessLabels != null) {
-      _json['bestGuessLabels'] =
-          bestGuessLabels.map((value) => value.toJson()).toList();
-    }
-    if (fullMatchingImages != null) {
-      _json['fullMatchingImages'] =
-          fullMatchingImages.map((value) => value.toJson()).toList();
-    }
-    if (pagesWithMatchingImages != null) {
-      _json['pagesWithMatchingImages'] =
-          pagesWithMatchingImages.map((value) => value.toJson()).toList();
-    }
-    if (partialMatchingImages != null) {
-      _json['partialMatchingImages'] =
-          partialMatchingImages.map((value) => value.toJson()).toList();
-    }
-    if (visuallySimilarImages != null) {
-      _json['visuallySimilarImages'] =
-          visuallySimilarImages.map((value) => value.toJson()).toList();
-    }
-    if (webEntities != null) {
-      _json['webEntities'] =
-          webEntities.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bestGuessLabels != null)
+          'bestGuessLabels':
+              bestGuessLabels.map((value) => value.toJson()).toList(),
+        if (fullMatchingImages != null)
+          'fullMatchingImages':
+              fullMatchingImages.map((value) => value.toJson()).toList(),
+        if (pagesWithMatchingImages != null)
+          'pagesWithMatchingImages':
+              pagesWithMatchingImages.map((value) => value.toJson()).toList(),
+        if (partialMatchingImages != null)
+          'partialMatchingImages':
+              partialMatchingImages.map((value) => value.toJson()).toList(),
+        if (visuallySimilarImages != null)
+          'visuallySimilarImages':
+              visuallySimilarImages.map((value) => value.toJson()).toList(),
+        if (webEntities != null)
+          'webEntities': webEntities.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Parameters for web detection request.
@@ -17471,13 +15400,9 @@ class WebDetectionParams {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (includeGeoResults != null) {
-      _json['includeGeoResults'] = includeGeoResults;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (includeGeoResults != null) 'includeGeoResults': includeGeoResults,
+      };
 }
 
 /// Entity deduced from similar images on the Internet.
@@ -17507,19 +15432,11 @@ class WebEntity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (entityId != null) {
-      _json['entityId'] = entityId;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (entityId != null) 'entityId': entityId,
+        if (score != null) 'score': score,
+      };
 }
 
 /// Metadata for online images.
@@ -17541,16 +15458,10 @@ class WebImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (score != null) {
-      _json['score'] = score;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (score != null) 'score': score,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Label to provide extra metadata for the web detection.
@@ -17575,16 +15486,10 @@ class WebLabel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (label != null) {
-      _json['label'] = label;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (label != null) 'label': label,
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// Metadata for web pages.
@@ -17635,27 +15540,17 @@ class WebPage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fullMatchingImages != null) {
-      _json['fullMatchingImages'] =
-          fullMatchingImages.map((value) => value.toJson()).toList();
-    }
-    if (pageTitle != null) {
-      _json['pageTitle'] = pageTitle;
-    }
-    if (partialMatchingImages != null) {
-      _json['partialMatchingImages'] =
-          partialMatchingImages.map((value) => value.toJson()).toList();
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fullMatchingImages != null)
+          'fullMatchingImages':
+              fullMatchingImages.map((value) => value.toJson()).toList(),
+        if (pageTitle != null) 'pageTitle': pageTitle,
+        if (partialMatchingImages != null)
+          'partialMatchingImages':
+              partialMatchingImages.map((value) => value.toJson()).toList(),
+        if (score != null) 'score': score,
+        if (url != null) 'url': url,
+      };
 }
 
 /// A word representation.
@@ -17706,20 +15601,11 @@ class Word {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingBox != null) {
-      _json['boundingBox'] = boundingBox.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    if (symbols != null) {
-      _json['symbols'] = symbols.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingBox != null) 'boundingBox': boundingBox.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (property != null) 'property': property.toJson(),
+        if (symbols != null)
+          'symbols': symbols.map((value) => value.toJson()).toList(),
+      };
 }

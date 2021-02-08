@@ -1260,25 +1260,14 @@ class AppEngineHttpRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appEngineRouting != null) {
-      _json['appEngineRouting'] = appEngineRouting.toJson();
-    }
-    if (body != null) {
-      _json['body'] = body;
-    }
-    if (headers != null) {
-      _json['headers'] = headers;
-    }
-    if (httpMethod != null) {
-      _json['httpMethod'] = httpMethod;
-    }
-    if (relativeUri != null) {
-      _json['relativeUri'] = relativeUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appEngineRouting != null)
+          'appEngineRouting': appEngineRouting.toJson(),
+        if (body != null) 'body': body,
+        if (headers != null) 'headers': headers,
+        if (httpMethod != null) 'httpMethod': httpMethod,
+        if (relativeUri != null) 'relativeUri': relativeUri,
+      };
 }
 
 /// App Engine Routing.
@@ -1357,22 +1346,12 @@ class AppEngineRouting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (host != null) {
-      _json['host'] = host;
-    }
-    if (instance != null) {
-      _json['instance'] = instance;
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (host != null) 'host': host,
+        if (instance != null) 'instance': instance,
+        if (service != null) 'service': service,
+        if (version != null) 'version': version,
+      };
 }
 
 /// The status of a task attempt.
@@ -1424,22 +1403,12 @@ class Attempt {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dispatchTime != null) {
-      _json['dispatchTime'] = dispatchTime;
-    }
-    if (responseStatus != null) {
-      _json['responseStatus'] = responseStatus.toJson();
-    }
-    if (responseTime != null) {
-      _json['responseTime'] = responseTime;
-    }
-    if (scheduleTime != null) {
-      _json['scheduleTime'] = scheduleTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dispatchTime != null) 'dispatchTime': dispatchTime,
+        if (responseStatus != null) 'responseStatus': responseStatus.toJson(),
+        if (responseTime != null) 'responseTime': responseTime,
+        if (scheduleTime != null) 'scheduleTime': scheduleTime,
+      };
 }
 
 /// Associates `members` with a `role`.
@@ -1508,19 +1477,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// Request message for CreateTask.
@@ -1584,16 +1545,10 @@ class CreateTaskRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (responseView != null) {
-      _json['responseView'] = responseView;
-    }
-    if (task != null) {
-      _json['task'] = task.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (responseView != null) 'responseView': responseView,
+        if (task != null) 'task': task.toJson(),
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1610,10 +1565,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1677,22 +1629,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Request message for `GetIamPolicy` method.
@@ -1710,13 +1652,9 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (options != null) {
-      _json['options'] = options.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (options != null) 'options': options.toJson(),
+      };
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
@@ -1741,13 +1679,10 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (requestedPolicyVersion != null) {
-      _json['requestedPolicyVersion'] = requestedPolicyVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (requestedPolicyVersion != null)
+          'requestedPolicyVersion': requestedPolicyVersion,
+      };
 }
 
 /// HTTP request.
@@ -1877,28 +1812,14 @@ class HttpRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (body != null) {
-      _json['body'] = body;
-    }
-    if (headers != null) {
-      _json['headers'] = headers;
-    }
-    if (httpMethod != null) {
-      _json['httpMethod'] = httpMethod;
-    }
-    if (oauthToken != null) {
-      _json['oauthToken'] = oauthToken.toJson();
-    }
-    if (oidcToken != null) {
-      _json['oidcToken'] = oidcToken.toJson();
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (body != null) 'body': body,
+        if (headers != null) 'headers': headers,
+        if (httpMethod != null) 'httpMethod': httpMethod,
+        if (oauthToken != null) 'oauthToken': oauthToken.toJson(),
+        if (oidcToken != null) 'oidcToken': oidcToken.toJson(),
+        if (url != null) 'url': url,
+      };
 }
 
 /// The response message for Locations.ListLocations.
@@ -1923,16 +1844,11 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message for ListQueues.
@@ -1961,16 +1877,11 @@ class ListQueuesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (queues != null) {
-      _json['queues'] = queues.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (queues != null)
+          'queues': queues.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for listing tasks using ListTasks.
@@ -1998,16 +1909,11 @@ class ListTasksResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (tasks != null) {
-      _json['tasks'] = tasks.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (tasks != null)
+          'tasks': tasks.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A resource that represents Google Cloud Platform location.
@@ -2072,25 +1978,13 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (labels != null) 'labels': labels,
+        if (locationId != null) 'locationId': locationId,
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Contains information needed for generating an
@@ -2124,16 +2018,11 @@ class OAuthToken {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (scope != null) {
-      _json['scope'] = scope;
-    }
-    if (serviceAccountEmail != null) {
-      _json['serviceAccountEmail'] = serviceAccountEmail;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (scope != null) 'scope': scope,
+        if (serviceAccountEmail != null)
+          'serviceAccountEmail': serviceAccountEmail,
+      };
 }
 
 /// Contains information needed for generating an
@@ -2166,16 +2055,11 @@ class OidcToken {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audience != null) {
-      _json['audience'] = audience;
-    }
-    if (serviceAccountEmail != null) {
-      _json['serviceAccountEmail'] = serviceAccountEmail;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audience != null) 'audience': audience,
+        if (serviceAccountEmail != null)
+          'serviceAccountEmail': serviceAccountEmail,
+      };
 }
 
 /// Request message for PauseQueue.
@@ -2186,10 +2070,7 @@ class PauseQueueRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -2287,19 +2168,12 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Request message for PurgeQueue.
@@ -2310,10 +2184,7 @@ class PurgeQueueRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A queue is a container of related tasks.
@@ -2448,31 +2319,17 @@ class Queue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appEngineRoutingOverride != null) {
-      _json['appEngineRoutingOverride'] = appEngineRoutingOverride.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (purgeTime != null) {
-      _json['purgeTime'] = purgeTime;
-    }
-    if (rateLimits != null) {
-      _json['rateLimits'] = rateLimits.toJson();
-    }
-    if (retryConfig != null) {
-      _json['retryConfig'] = retryConfig.toJson();
-    }
-    if (stackdriverLoggingConfig != null) {
-      _json['stackdriverLoggingConfig'] = stackdriverLoggingConfig.toJson();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appEngineRoutingOverride != null)
+          'appEngineRoutingOverride': appEngineRoutingOverride.toJson(),
+        if (name != null) 'name': name,
+        if (purgeTime != null) 'purgeTime': purgeTime,
+        if (rateLimits != null) 'rateLimits': rateLimits.toJson(),
+        if (retryConfig != null) 'retryConfig': retryConfig.toJson(),
+        if (stackdriverLoggingConfig != null)
+          'stackdriverLoggingConfig': stackdriverLoggingConfig.toJson(),
+        if (state != null) 'state': state,
+      };
 }
 
 /// Rate limits.
@@ -2540,19 +2397,13 @@ class RateLimits {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maxBurstSize != null) {
-      _json['maxBurstSize'] = maxBurstSize;
-    }
-    if (maxConcurrentDispatches != null) {
-      _json['maxConcurrentDispatches'] = maxConcurrentDispatches;
-    }
-    if (maxDispatchesPerSecond != null) {
-      _json['maxDispatchesPerSecond'] = maxDispatchesPerSecond;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maxBurstSize != null) 'maxBurstSize': maxBurstSize,
+        if (maxConcurrentDispatches != null)
+          'maxConcurrentDispatches': maxConcurrentDispatches,
+        if (maxDispatchesPerSecond != null)
+          'maxDispatchesPerSecond': maxDispatchesPerSecond,
+      };
 }
 
 /// Request message for ResumeQueue.
@@ -2563,10 +2414,7 @@ class ResumeQueueRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Retry config.
@@ -2650,25 +2498,13 @@ class RetryConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maxAttempts != null) {
-      _json['maxAttempts'] = maxAttempts;
-    }
-    if (maxBackoff != null) {
-      _json['maxBackoff'] = maxBackoff;
-    }
-    if (maxDoublings != null) {
-      _json['maxDoublings'] = maxDoublings;
-    }
-    if (maxRetryDuration != null) {
-      _json['maxRetryDuration'] = maxRetryDuration;
-    }
-    if (minBackoff != null) {
-      _json['minBackoff'] = minBackoff;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maxAttempts != null) 'maxAttempts': maxAttempts,
+        if (maxBackoff != null) 'maxBackoff': maxBackoff,
+        if (maxDoublings != null) 'maxDoublings': maxDoublings,
+        if (maxRetryDuration != null) 'maxRetryDuration': maxRetryDuration,
+        if (minBackoff != null) 'minBackoff': minBackoff,
+      };
 }
 
 /// Request message for forcing a task to run now using RunTask.
@@ -2701,13 +2537,9 @@ class RunTaskRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (responseView != null) {
-      _json['responseView'] = responseView;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (responseView != null) 'responseView': responseView,
+      };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -2728,13 +2560,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+      };
 }
 
 /// Configuration options for writing logs to
@@ -2755,13 +2583,9 @@ class StackdriverLoggingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (samplingRatio != null) {
-      _json['samplingRatio'] = samplingRatio;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (samplingRatio != null) 'samplingRatio': samplingRatio,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -2811,19 +2635,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// A unit of scheduled work.
@@ -2976,43 +2792,20 @@ class Task {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appEngineHttpRequest != null) {
-      _json['appEngineHttpRequest'] = appEngineHttpRequest.toJson();
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (dispatchCount != null) {
-      _json['dispatchCount'] = dispatchCount;
-    }
-    if (dispatchDeadline != null) {
-      _json['dispatchDeadline'] = dispatchDeadline;
-    }
-    if (firstAttempt != null) {
-      _json['firstAttempt'] = firstAttempt.toJson();
-    }
-    if (httpRequest != null) {
-      _json['httpRequest'] = httpRequest.toJson();
-    }
-    if (lastAttempt != null) {
-      _json['lastAttempt'] = lastAttempt.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (responseCount != null) {
-      _json['responseCount'] = responseCount;
-    }
-    if (scheduleTime != null) {
-      _json['scheduleTime'] = scheduleTime;
-    }
-    if (view != null) {
-      _json['view'] = view;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appEngineHttpRequest != null)
+          'appEngineHttpRequest': appEngineHttpRequest.toJson(),
+        if (createTime != null) 'createTime': createTime,
+        if (dispatchCount != null) 'dispatchCount': dispatchCount,
+        if (dispatchDeadline != null) 'dispatchDeadline': dispatchDeadline,
+        if (firstAttempt != null) 'firstAttempt': firstAttempt.toJson(),
+        if (httpRequest != null) 'httpRequest': httpRequest.toJson(),
+        if (lastAttempt != null) 'lastAttempt': lastAttempt.toJson(),
+        if (name != null) 'name': name,
+        if (responseCount != null) 'responseCount': responseCount,
+        if (scheduleTime != null) 'scheduleTime': scheduleTime,
+        if (view != null) 'view': view,
+      };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -3034,13 +2827,9 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -3059,11 +2848,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }

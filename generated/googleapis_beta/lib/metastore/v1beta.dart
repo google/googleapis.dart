@@ -1209,17 +1209,12 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditLogConfigs != null) {
-      _json['auditLogConfigs'] =
-          auditLogConfigs.map((value) => value.toJson()).toList();
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditLogConfigs != null)
+          'auditLogConfigs':
+              auditLogConfigs.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service,
+      };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -1256,16 +1251,10 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exemptedMembers != null) {
-      _json['exemptedMembers'] = exemptedMembers;
-    }
-    if (logType != null) {
-      _json['logType'] = logType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
+        if (logType != null) 'logType': logType,
+      };
 }
 
 /// Associates members with a role.
@@ -1335,19 +1324,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// A specification of the location of and metadata about a database dump from a
@@ -1383,19 +1364,11 @@ class DatabaseDump {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (databaseType != null) {
-      _json['databaseType'] = databaseType;
-    }
-    if (gcsUri != null) {
-      _json['gcsUri'] = gcsUri;
-    }
-    if (sourceDatabase != null) {
-      _json['sourceDatabase'] = sourceDatabase;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (databaseType != null) 'databaseType': databaseType,
+        if (gcsUri != null) 'gcsUri': gcsUri,
+        if (sourceDatabase != null) 'sourceDatabase': sourceDatabase,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1412,10 +1385,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Request message for DataprocMetastore.ExportMetadata.
@@ -1453,16 +1423,11 @@ class ExportMetadataRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (destinationGcsFolder != null) {
-      _json['destinationGcsFolder'] = destinationGcsFolder;
-    }
-    if (requestId != null) {
-      _json['requestId'] = requestId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (destinationGcsFolder != null)
+          'destinationGcsFolder': destinationGcsFolder,
+        if (requestId != null) 'requestId': requestId,
+      };
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1526,22 +1491,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Specifies configuration information specific to running Hive metastore
@@ -1588,19 +1543,11 @@ class HiveMetastoreConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (configOverrides != null) {
-      _json['configOverrides'] = configOverrides;
-    }
-    if (kerberosConfig != null) {
-      _json['kerberosConfig'] = kerberosConfig.toJson();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (configOverrides != null) 'configOverrides': configOverrides,
+        if (kerberosConfig != null) 'kerberosConfig': kerberosConfig.toJson(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// A specification of a supported version of the Hive Metastore software.
@@ -1623,16 +1570,10 @@ class HiveMetastoreVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (isDefault != null) {
-      _json['isDefault'] = isDefault;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (isDefault != null) 'isDefault': isDefault,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Configuration information for a Kerberos principal.
@@ -1669,19 +1610,11 @@ class KerberosConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (keytab != null) {
-      _json['keytab'] = keytab.toJson();
-    }
-    if (krb5ConfigGcsUri != null) {
-      _json['krb5ConfigGcsUri'] = krb5ConfigGcsUri;
-    }
-    if (principal != null) {
-      _json['principal'] = principal;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (keytab != null) 'keytab': keytab.toJson(),
+        if (krb5ConfigGcsUri != null) 'krb5ConfigGcsUri': krb5ConfigGcsUri,
+        if (principal != null) 'principal': principal,
+      };
 }
 
 /// The response message for Locations.ListLocations.
@@ -1706,16 +1639,11 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message for DataprocMetastore.ListMetadataImports.
@@ -1750,20 +1678,13 @@ class ListMetadataImportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metadataImports != null) {
-      _json['metadataImports'] =
-          metadataImports.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (unreachable != null) {
-      _json['unreachable'] = unreachable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metadataImports != null)
+          'metadataImports':
+              metadataImports.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (unreachable != null) 'unreachable': unreachable,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -1788,16 +1709,11 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for DataprocMetastore.ListServices.
@@ -1832,19 +1748,12 @@ class ListServicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (services != null) {
-      _json['services'] = services.map((value) => value.toJson()).toList();
-    }
-    if (unreachable != null) {
-      _json['unreachable'] = unreachable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (services != null)
+          'services': services.map((value) => value.toJson()).toList(),
+        if (unreachable != null) 'unreachable': unreachable,
+      };
 }
 
 /// A resource that represents Google Cloud Platform location.
@@ -1909,25 +1818,13 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (labels != null) 'labels': labels,
+        if (locationId != null) 'locationId': locationId,
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Metadata about the service in a location.
@@ -1951,15 +1848,12 @@ class LocationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (supportedHiveMetastoreVersions != null) {
-      _json['supportedHiveMetastoreVersions'] = supportedHiveMetastoreVersions
-          .map((value) => value.toJson())
-          .toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (supportedHiveMetastoreVersions != null)
+          'supportedHiveMetastoreVersions': supportedHiveMetastoreVersions
+              .map((value) => value.toJson())
+              .toList(),
+      };
 }
 
 /// Maintenance window.
@@ -1993,16 +1887,10 @@ class MaintenanceWindow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dayOfWeek != null) {
-      _json['dayOfWeek'] = dayOfWeek;
-    }
-    if (hourOfDay != null) {
-      _json['hourOfDay'] = hourOfDay;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dayOfWeek != null) 'dayOfWeek': dayOfWeek,
+        if (hourOfDay != null) 'hourOfDay': hourOfDay,
+      };
 }
 
 /// The details of a metadata export operation.
@@ -2051,22 +1939,12 @@ class MetadataExport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (destinationGcsUri != null) {
-      _json['destinationGcsUri'] = destinationGcsUri;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (destinationGcsUri != null) 'destinationGcsUri': destinationGcsUri,
+        if (endTime != null) 'endTime': endTime,
+        if (startTime != null) 'startTime': startTime,
+        if (state != null) 'state': state,
+      };
 }
 
 /// A metastore resource that imports metadata.
@@ -2131,28 +2009,14 @@ class MetadataImport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (databaseDump != null) {
-      _json['databaseDump'] = databaseDump.toJson();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (databaseDump != null) 'databaseDump': databaseDump.toJson(),
+        if (description != null) 'description': description,
+        if (name != null) 'name': name,
+        if (state != null) 'state': state,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Specifies how metastore metadata should be integrated with external
@@ -2164,10 +2028,7 @@ class MetadataIntegration {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The metadata management activities of the metastore service.
@@ -2188,14 +2049,11 @@ class MetadataManagementActivity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metadataExports != null) {
-      _json['metadataExports'] =
-          metadataExports.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metadataExports != null)
+          'metadataExports':
+              metadataExports.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -2274,25 +2132,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -2397,23 +2243,14 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditConfigs != null) {
-      _json['auditConfigs'] =
-          auditConfigs.map((value) => value.toJson()).toList();
-    }
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditConfigs != null)
+          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// A securely stored value.
@@ -2431,13 +2268,9 @@ class Secret {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cloudSecret != null) {
-      _json['cloudSecret'] = cloudSecret;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cloudSecret != null) 'cloudSecret': cloudSecret,
+      };
 }
 
 /// A managed metastore service that serves metadata queries.
@@ -2610,58 +2443,28 @@ class Service {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (artifactGcsUri != null) {
-      _json['artifactGcsUri'] = artifactGcsUri;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (endpointUri != null) {
-      _json['endpointUri'] = endpointUri;
-    }
-    if (hiveMetastoreConfig != null) {
-      _json['hiveMetastoreConfig'] = hiveMetastoreConfig.toJson();
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (maintenanceWindow != null) {
-      _json['maintenanceWindow'] = maintenanceWindow.toJson();
-    }
-    if (metadataIntegration != null) {
-      _json['metadataIntegration'] = metadataIntegration.toJson();
-    }
-    if (metadataManagementActivity != null) {
-      _json['metadataManagementActivity'] = metadataManagementActivity.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (network != null) {
-      _json['network'] = network;
-    }
-    if (port != null) {
-      _json['port'] = port;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (stateMessage != null) {
-      _json['stateMessage'] = stateMessage;
-    }
-    if (tier != null) {
-      _json['tier'] = tier;
-    }
-    if (uid != null) {
-      _json['uid'] = uid;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (artifactGcsUri != null) 'artifactGcsUri': artifactGcsUri,
+        if (createTime != null) 'createTime': createTime,
+        if (endpointUri != null) 'endpointUri': endpointUri,
+        if (hiveMetastoreConfig != null)
+          'hiveMetastoreConfig': hiveMetastoreConfig.toJson(),
+        if (labels != null) 'labels': labels,
+        if (maintenanceWindow != null)
+          'maintenanceWindow': maintenanceWindow.toJson(),
+        if (metadataIntegration != null)
+          'metadataIntegration': metadataIntegration.toJson(),
+        if (metadataManagementActivity != null)
+          'metadataManagementActivity': metadataManagementActivity.toJson(),
+        if (name != null) 'name': name,
+        if (network != null) 'network': network,
+        if (port != null) 'port': port,
+        if (state != null) 'state': state,
+        if (stateMessage != null) 'stateMessage': stateMessage,
+        if (tier != null) 'tier': tier,
+        if (uid != null) 'uid': uid,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Request message for SetIamPolicy method.
@@ -2691,16 +2494,10 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// The Status type defines a logical error model that is suitable for different
@@ -2750,19 +2547,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Request message for TestIamPermissions method.
@@ -2784,13 +2573,9 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for TestIamPermissions method.
@@ -2808,11 +2593,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }

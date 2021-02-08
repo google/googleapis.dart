@@ -2070,16 +2070,10 @@ class AsymmetricDecryptRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ciphertext != null) {
-      _json['ciphertext'] = ciphertext;
-    }
-    if (ciphertextCrc32c != null) {
-      _json['ciphertextCrc32c'] = ciphertextCrc32c;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ciphertext != null) 'ciphertext': ciphertext,
+        if (ciphertextCrc32c != null) 'ciphertextCrc32c': ciphertextCrc32c,
+      };
 }
 
 /// Response message for KeyManagementService.AsymmetricDecrypt.
@@ -2145,22 +2139,13 @@ class AsymmetricDecryptResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (plaintext != null) {
-      _json['plaintext'] = plaintext;
-    }
-    if (plaintextCrc32c != null) {
-      _json['plaintextCrc32c'] = plaintextCrc32c;
-    }
-    if (protectionLevel != null) {
-      _json['protectionLevel'] = protectionLevel;
-    }
-    if (verifiedCiphertextCrc32c != null) {
-      _json['verifiedCiphertextCrc32c'] = verifiedCiphertextCrc32c;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (plaintext != null) 'plaintext': plaintext,
+        if (plaintextCrc32c != null) 'plaintextCrc32c': plaintextCrc32c,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel,
+        if (verifiedCiphertextCrc32c != null)
+          'verifiedCiphertextCrc32c': verifiedCiphertextCrc32c,
+      };
 }
 
 /// Request message for KeyManagementService.AsymmetricSign.
@@ -2203,16 +2188,10 @@ class AsymmetricSignRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (digest != null) {
-      _json['digest'] = digest.toJson();
-    }
-    if (digestCrc32c != null) {
-      _json['digestCrc32c'] = digestCrc32c;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (digest != null) 'digest': digest.toJson(),
+        if (digestCrc32c != null) 'digestCrc32c': digestCrc32c,
+      };
 }
 
 /// Response message for KeyManagementService.AsymmetricSign.
@@ -2287,25 +2266,14 @@ class AsymmetricSignResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (protectionLevel != null) {
-      _json['protectionLevel'] = protectionLevel;
-    }
-    if (signature != null) {
-      _json['signature'] = signature;
-    }
-    if (signatureCrc32c != null) {
-      _json['signatureCrc32c'] = signatureCrc32c;
-    }
-    if (verifiedDigestCrc32c != null) {
-      _json['verifiedDigestCrc32c'] = verifiedDigestCrc32c;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel,
+        if (signature != null) 'signature': signature,
+        if (signatureCrc32c != null) 'signatureCrc32c': signatureCrc32c,
+        if (verifiedDigestCrc32c != null)
+          'verifiedDigestCrc32c': verifiedDigestCrc32c,
+      };
 }
 
 /// Specifies the audit configuration for a service.
@@ -2349,17 +2317,12 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditLogConfigs != null) {
-      _json['auditLogConfigs'] =
-          auditLogConfigs.map((value) => value.toJson()).toList();
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditLogConfigs != null)
+          'auditLogConfigs':
+              auditLogConfigs.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service,
+      };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -2396,16 +2359,10 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exemptedMembers != null) {
-      _json['exemptedMembers'] = exemptedMembers;
-    }
-    if (logType != null) {
-      _json['logType'] = logType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
+        if (logType != null) 'logType': logType,
+      };
 }
 
 /// Associates `members` with a `role`.
@@ -2474,19 +2431,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// Certificate chains needed to verify the attestation.
@@ -2523,19 +2472,12 @@ class CertificateChains {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (caviumCerts != null) {
-      _json['caviumCerts'] = caviumCerts;
-    }
-    if (googleCardCerts != null) {
-      _json['googleCardCerts'] = googleCardCerts;
-    }
-    if (googlePartitionCerts != null) {
-      _json['googlePartitionCerts'] = googlePartitionCerts;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (caviumCerts != null) 'caviumCerts': caviumCerts,
+        if (googleCardCerts != null) 'googleCardCerts': googleCardCerts,
+        if (googlePartitionCerts != null)
+          'googlePartitionCerts': googlePartitionCerts,
+      };
 }
 
 /// A CryptoKey represents a logical key that can be used for cryptographic
@@ -2645,34 +2587,17 @@ class CryptoKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (nextRotationTime != null) {
-      _json['nextRotationTime'] = nextRotationTime;
-    }
-    if (primary != null) {
-      _json['primary'] = primary.toJson();
-    }
-    if (purpose != null) {
-      _json['purpose'] = purpose;
-    }
-    if (rotationPeriod != null) {
-      _json['rotationPeriod'] = rotationPeriod;
-    }
-    if (versionTemplate != null) {
-      _json['versionTemplate'] = versionTemplate.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+        if (nextRotationTime != null) 'nextRotationTime': nextRotationTime,
+        if (primary != null) 'primary': primary.toJson(),
+        if (purpose != null) 'purpose': purpose,
+        if (rotationPeriod != null) 'rotationPeriod': rotationPeriod,
+        if (versionTemplate != null)
+          'versionTemplate': versionTemplate.toJson(),
+      };
 }
 
 /// A CryptoKeyVersion represents an individual cryptographic key, and the
@@ -2867,50 +2792,24 @@ class CryptoKeyVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (algorithm != null) {
-      _json['algorithm'] = algorithm;
-    }
-    if (attestation != null) {
-      _json['attestation'] = attestation.toJson();
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (destroyEventTime != null) {
-      _json['destroyEventTime'] = destroyEventTime;
-    }
-    if (destroyTime != null) {
-      _json['destroyTime'] = destroyTime;
-    }
-    if (externalProtectionLevelOptions != null) {
-      _json['externalProtectionLevelOptions'] =
-          externalProtectionLevelOptions.toJson();
-    }
-    if (generateTime != null) {
-      _json['generateTime'] = generateTime;
-    }
-    if (importFailureReason != null) {
-      _json['importFailureReason'] = importFailureReason;
-    }
-    if (importJob != null) {
-      _json['importJob'] = importJob;
-    }
-    if (importTime != null) {
-      _json['importTime'] = importTime;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (protectionLevel != null) {
-      _json['protectionLevel'] = protectionLevel;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (algorithm != null) 'algorithm': algorithm,
+        if (attestation != null) 'attestation': attestation.toJson(),
+        if (createTime != null) 'createTime': createTime,
+        if (destroyEventTime != null) 'destroyEventTime': destroyEventTime,
+        if (destroyTime != null) 'destroyTime': destroyTime,
+        if (externalProtectionLevelOptions != null)
+          'externalProtectionLevelOptions':
+              externalProtectionLevelOptions.toJson(),
+        if (generateTime != null) 'generateTime': generateTime,
+        if (importFailureReason != null)
+          'importFailureReason': importFailureReason,
+        if (importJob != null) 'importJob': importJob,
+        if (importTime != null) 'importTime': importTime,
+        if (name != null) 'name': name,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel,
+        if (state != null) 'state': state,
+      };
 }
 
 /// A CryptoKeyVersionTemplate specifies the properties to use when creating a
@@ -2980,16 +2879,10 @@ class CryptoKeyVersionTemplate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (algorithm != null) {
-      _json['algorithm'] = algorithm;
-    }
-    if (protectionLevel != null) {
-      _json['protectionLevel'] = protectionLevel;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (algorithm != null) 'algorithm': algorithm,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel,
+      };
 }
 
 /// Request message for KeyManagementService.Decrypt.
@@ -3075,23 +2968,15 @@ class DecryptRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (additionalAuthenticatedData != null) {
-      _json['additionalAuthenticatedData'] = additionalAuthenticatedData;
-    }
-    if (additionalAuthenticatedDataCrc32c != null) {
-      _json['additionalAuthenticatedDataCrc32c'] =
-          additionalAuthenticatedDataCrc32c;
-    }
-    if (ciphertext != null) {
-      _json['ciphertext'] = ciphertext;
-    }
-    if (ciphertextCrc32c != null) {
-      _json['ciphertextCrc32c'] = ciphertextCrc32c;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (additionalAuthenticatedData != null)
+          'additionalAuthenticatedData': additionalAuthenticatedData,
+        if (additionalAuthenticatedDataCrc32c != null)
+          'additionalAuthenticatedDataCrc32c':
+              additionalAuthenticatedDataCrc32c,
+        if (ciphertext != null) 'ciphertext': ciphertext,
+        if (ciphertextCrc32c != null) 'ciphertextCrc32c': ciphertextCrc32c,
+      };
 }
 
 /// Response message for KeyManagementService.Decrypt.
@@ -3149,22 +3034,12 @@ class DecryptResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (plaintext != null) {
-      _json['plaintext'] = plaintext;
-    }
-    if (plaintextCrc32c != null) {
-      _json['plaintextCrc32c'] = plaintextCrc32c;
-    }
-    if (protectionLevel != null) {
-      _json['protectionLevel'] = protectionLevel;
-    }
-    if (usedPrimary != null) {
-      _json['usedPrimary'] = usedPrimary;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (plaintext != null) 'plaintext': plaintext,
+        if (plaintextCrc32c != null) 'plaintextCrc32c': plaintextCrc32c,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel,
+        if (usedPrimary != null) 'usedPrimary': usedPrimary,
+      };
 }
 
 /// Request message for KeyManagementService.DestroyCryptoKeyVersion.
@@ -3175,10 +3050,7 @@ class DestroyCryptoKeyVersionRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A Digest holds a cryptographic message digest.
@@ -3224,19 +3096,11 @@ class Digest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sha256 != null) {
-      _json['sha256'] = sha256;
-    }
-    if (sha384 != null) {
-      _json['sha384'] = sha384;
-    }
-    if (sha512 != null) {
-      _json['sha512'] = sha512;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sha256 != null) 'sha256': sha256,
+        if (sha384 != null) 'sha384': sha384,
+        if (sha512 != null) 'sha512': sha512,
+      };
 }
 
 /// Request message for KeyManagementService.Encrypt.
@@ -3331,23 +3195,15 @@ class EncryptRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (additionalAuthenticatedData != null) {
-      _json['additionalAuthenticatedData'] = additionalAuthenticatedData;
-    }
-    if (additionalAuthenticatedDataCrc32c != null) {
-      _json['additionalAuthenticatedDataCrc32c'] =
-          additionalAuthenticatedDataCrc32c;
-    }
-    if (plaintext != null) {
-      _json['plaintext'] = plaintext;
-    }
-    if (plaintextCrc32c != null) {
-      _json['plaintextCrc32c'] = plaintextCrc32c;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (additionalAuthenticatedData != null)
+          'additionalAuthenticatedData': additionalAuthenticatedData,
+        if (additionalAuthenticatedDataCrc32c != null)
+          'additionalAuthenticatedDataCrc32c':
+              additionalAuthenticatedDataCrc32c,
+        if (plaintext != null) 'plaintext': plaintext,
+        if (plaintextCrc32c != null) 'plaintextCrc32c': plaintextCrc32c,
+      };
 }
 
 /// Response message for KeyManagementService.Encrypt.
@@ -3439,29 +3295,17 @@ class EncryptResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ciphertext != null) {
-      _json['ciphertext'] = ciphertext;
-    }
-    if (ciphertextCrc32c != null) {
-      _json['ciphertextCrc32c'] = ciphertextCrc32c;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (protectionLevel != null) {
-      _json['protectionLevel'] = protectionLevel;
-    }
-    if (verifiedAdditionalAuthenticatedDataCrc32c != null) {
-      _json['verifiedAdditionalAuthenticatedDataCrc32c'] =
-          verifiedAdditionalAuthenticatedDataCrc32c;
-    }
-    if (verifiedPlaintextCrc32c != null) {
-      _json['verifiedPlaintextCrc32c'] = verifiedPlaintextCrc32c;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ciphertext != null) 'ciphertext': ciphertext,
+        if (ciphertextCrc32c != null) 'ciphertextCrc32c': ciphertextCrc32c,
+        if (name != null) 'name': name,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel,
+        if (verifiedAdditionalAuthenticatedDataCrc32c != null)
+          'verifiedAdditionalAuthenticatedDataCrc32c':
+              verifiedAdditionalAuthenticatedDataCrc32c,
+        if (verifiedPlaintextCrc32c != null)
+          'verifiedPlaintextCrc32c': verifiedPlaintextCrc32c,
+      };
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -3525,22 +3369,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// ExternalProtectionLevelOptions stores a group of additional fields for
@@ -3558,13 +3392,9 @@ class ExternalProtectionLevelOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (externalKeyUri != null) {
-      _json['externalKeyUri'] = externalKeyUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (externalKeyUri != null) 'externalKeyUri': externalKeyUri,
+      };
 }
 
 /// Request message for KeyManagementService.ImportCryptoKeyVersion.
@@ -3650,19 +3480,11 @@ class ImportCryptoKeyVersionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (algorithm != null) {
-      _json['algorithm'] = algorithm;
-    }
-    if (importJob != null) {
-      _json['importJob'] = importJob;
-    }
-    if (rsaAesWrappedKey != null) {
-      _json['rsaAesWrappedKey'] = rsaAesWrappedKey;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (algorithm != null) 'algorithm': algorithm,
+        if (importJob != null) 'importJob': importJob,
+        if (rsaAesWrappedKey != null) 'rsaAesWrappedKey': rsaAesWrappedKey,
+      };
 }
 
 /// An ImportJob can be used to create CryptoKeys and CryptoKeyVersions using
@@ -3814,40 +3636,18 @@ class ImportJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attestation != null) {
-      _json['attestation'] = attestation.toJson();
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (expireEventTime != null) {
-      _json['expireEventTime'] = expireEventTime;
-    }
-    if (expireTime != null) {
-      _json['expireTime'] = expireTime;
-    }
-    if (generateTime != null) {
-      _json['generateTime'] = generateTime;
-    }
-    if (importMethod != null) {
-      _json['importMethod'] = importMethod;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (protectionLevel != null) {
-      _json['protectionLevel'] = protectionLevel;
-    }
-    if (publicKey != null) {
-      _json['publicKey'] = publicKey.toJson();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attestation != null) 'attestation': attestation.toJson(),
+        if (createTime != null) 'createTime': createTime,
+        if (expireEventTime != null) 'expireEventTime': expireEventTime,
+        if (expireTime != null) 'expireTime': expireTime,
+        if (generateTime != null) 'generateTime': generateTime,
+        if (importMethod != null) 'importMethod': importMethod,
+        if (name != null) 'name': name,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel,
+        if (publicKey != null) 'publicKey': publicKey.toJson(),
+        if (state != null) 'state': state,
+      };
 }
 
 /// Contains an HSM-generated attestation about a key operation.
@@ -3899,19 +3699,11 @@ class KeyOperationAttestation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (certChains != null) {
-      _json['certChains'] = certChains.toJson();
-    }
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (format != null) {
-      _json['format'] = format;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (certChains != null) 'certChains': certChains.toJson(),
+        if (content != null) 'content': content,
+        if (format != null) 'format': format,
+      };
 }
 
 /// A KeyRing is a toplevel logical grouping of CryptoKeys.
@@ -3938,16 +3730,10 @@ class KeyRing {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Response message for KeyManagementService.ListCryptoKeyVersions.
@@ -3981,20 +3767,13 @@ class ListCryptoKeyVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cryptoKeyVersions != null) {
-      _json['cryptoKeyVersions'] =
-          cryptoKeyVersions.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (totalSize != null) {
-      _json['totalSize'] = totalSize;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cryptoKeyVersions != null)
+          'cryptoKeyVersions':
+              cryptoKeyVersions.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (totalSize != null) 'totalSize': totalSize,
+      };
 }
 
 /// Response message for KeyManagementService.ListCryptoKeys.
@@ -4028,19 +3807,12 @@ class ListCryptoKeysResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cryptoKeys != null) {
-      _json['cryptoKeys'] = cryptoKeys.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (totalSize != null) {
-      _json['totalSize'] = totalSize;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cryptoKeys != null)
+          'cryptoKeys': cryptoKeys.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (totalSize != null) 'totalSize': totalSize,
+      };
 }
 
 /// Response message for KeyManagementService.ListImportJobs.
@@ -4074,19 +3846,12 @@ class ListImportJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (importJobs != null) {
-      _json['importJobs'] = importJobs.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (totalSize != null) {
-      _json['totalSize'] = totalSize;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (importJobs != null)
+          'importJobs': importJobs.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (totalSize != null) 'totalSize': totalSize,
+      };
 }
 
 /// Response message for KeyManagementService.ListKeyRings.
@@ -4120,19 +3885,12 @@ class ListKeyRingsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (keyRings != null) {
-      _json['keyRings'] = keyRings.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (totalSize != null) {
-      _json['totalSize'] = totalSize;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (keyRings != null)
+          'keyRings': keyRings.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (totalSize != null) 'totalSize': totalSize,
+      };
 }
 
 /// The response message for Locations.ListLocations.
@@ -4157,16 +3915,11 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// A resource that represents Google Cloud Platform location.
@@ -4231,25 +3984,13 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (labels != null) 'labels': labels,
+        if (locationId != null) 'locationId': locationId,
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Cloud KMS metadata for the given google.cloud.location.Location.
@@ -4273,16 +4014,10 @@ class LocationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ekmAvailable != null) {
-      _json['ekmAvailable'] = ekmAvailable;
-    }
-    if (hsmAvailable != null) {
-      _json['hsmAvailable'] = hsmAvailable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ekmAvailable != null) 'ekmAvailable': ekmAvailable,
+        if (hsmAvailable != null) 'hsmAvailable': hsmAvailable,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -4389,23 +4124,14 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditConfigs != null) {
-      _json['auditConfigs'] =
-          auditConfigs.map((value) => value.toJson()).toList();
-    }
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditConfigs != null)
+          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// The public key for a given CryptoKeyVersion.
@@ -4504,25 +4230,13 @@ class PublicKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (algorithm != null) {
-      _json['algorithm'] = algorithm;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (pem != null) {
-      _json['pem'] = pem;
-    }
-    if (pemCrc32c != null) {
-      _json['pemCrc32c'] = pemCrc32c;
-    }
-    if (protectionLevel != null) {
-      _json['protectionLevel'] = protectionLevel;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (algorithm != null) 'algorithm': algorithm,
+        if (name != null) 'name': name,
+        if (pem != null) 'pem': pem,
+        if (pemCrc32c != null) 'pemCrc32c': pemCrc32c,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel,
+      };
 }
 
 /// Request message for KeyManagementService.RestoreCryptoKeyVersion.
@@ -4533,10 +4247,7 @@ class RestoreCryptoKeyVersionRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -4566,16 +4277,10 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -4597,13 +4302,9 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -4622,13 +4323,9 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Request message for KeyManagementService.UpdateCryptoKeyPrimaryVersion.
@@ -4646,13 +4343,10 @@ class UpdateCryptoKeyPrimaryVersionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cryptoKeyVersionId != null) {
-      _json['cryptoKeyVersionId'] = cryptoKeyVersionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cryptoKeyVersionId != null)
+          'cryptoKeyVersionId': cryptoKeyVersionId,
+      };
 }
 
 /// The public key component of the wrapping key.
@@ -4677,11 +4371,7 @@ class WrappingPublicKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pem != null) {
-      _json['pem'] = pem;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pem != null) 'pem': pem,
+      };
 }

@@ -2980,13 +2980,9 @@ class BooleanOperatorOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operatorName != null) {
-      _json['operatorName'] = operatorName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (operatorName != null) 'operatorName': operatorName,
+      };
 }
 
 /// Options for boolean properties.
@@ -3003,13 +2999,10 @@ class BooleanPropertyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operatorOptions != null) {
-      _json['operatorOptions'] = operatorOptions.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (operatorOptions != null)
+          'operatorOptions': operatorOptions.toJson(),
+      };
 }
 
 class CheckAccessResponse {
@@ -3026,13 +3019,9 @@ class CheckAccessResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hasAccess != null) {
-      _json['hasAccess'] = hasAccess;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hasAccess != null) 'hasAccess': hasAccess,
+      };
 }
 
 class CompositeFilter {
@@ -3060,16 +3049,11 @@ class CompositeFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (logicOperator != null) {
-      _json['logicOperator'] = logicOperator;
-    }
-    if (subFilters != null) {
-      _json['subFilters'] = subFilters.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (logicOperator != null) 'logicOperator': logicOperator,
+        if (subFilters != null)
+          'subFilters': subFilters.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Aggregation of items by status code as of the specified date.
@@ -3095,17 +3079,12 @@ class CustomerIndexStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (date != null) {
-      _json['date'] = date.toJson();
-    }
-    if (itemCountByStatus != null) {
-      _json['itemCountByStatus'] =
-          itemCountByStatus.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (date != null) 'date': date.toJson(),
+        if (itemCountByStatus != null)
+          'itemCountByStatus':
+              itemCountByStatus.map((value) => value.toJson()).toList(),
+      };
 }
 
 class CustomerQueryStats {
@@ -3130,17 +3109,12 @@ class CustomerQueryStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (date != null) {
-      _json['date'] = date.toJson();
-    }
-    if (queryCountByStatus != null) {
-      _json['queryCountByStatus'] =
-          queryCountByStatus.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (date != null) 'date': date.toJson(),
+        if (queryCountByStatus != null)
+          'queryCountByStatus':
+              queryCountByStatus.map((value) => value.toJson()).toList(),
+      };
 }
 
 class CustomerSessionStats {
@@ -3164,16 +3138,11 @@ class CustomerSessionStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (date != null) {
-      _json['date'] = date.toJson();
-    }
-    if (searchSessionsCount != null) {
-      _json['searchSessionsCount'] = searchSessionsCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (date != null) 'date': date.toJson(),
+        if (searchSessionsCount != null)
+          'searchSessionsCount': searchSessionsCount,
+      };
 }
 
 class CustomerUserStats {
@@ -3211,22 +3180,15 @@ class CustomerUserStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (date != null) {
-      _json['date'] = date.toJson();
-    }
-    if (oneDayActiveUsersCount != null) {
-      _json['oneDayActiveUsersCount'] = oneDayActiveUsersCount;
-    }
-    if (sevenDaysActiveUsersCount != null) {
-      _json['sevenDaysActiveUsersCount'] = sevenDaysActiveUsersCount;
-    }
-    if (thirtyDaysActiveUsersCount != null) {
-      _json['thirtyDaysActiveUsersCount'] = thirtyDaysActiveUsersCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (date != null) 'date': date.toJson(),
+        if (oneDayActiveUsersCount != null)
+          'oneDayActiveUsersCount': oneDayActiveUsersCount,
+        if (sevenDaysActiveUsersCount != null)
+          'sevenDaysActiveUsersCount': sevenDaysActiveUsersCount,
+        if (thirtyDaysActiveUsersCount != null)
+          'thirtyDaysActiveUsersCount': thirtyDaysActiveUsersCount,
+      };
 }
 
 /// Datasource is a logical namespace for items to be indexed.
@@ -3318,35 +3280,20 @@ class DataSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (disableModifications != null) {
-      _json['disableModifications'] = disableModifications;
-    }
-    if (disableServing != null) {
-      _json['disableServing'] = disableServing;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (indexingServiceAccounts != null) {
-      _json['indexingServiceAccounts'] = indexingServiceAccounts;
-    }
-    if (itemsVisibility != null) {
-      _json['itemsVisibility'] =
-          itemsVisibility.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (operationIds != null) {
-      _json['operationIds'] = operationIds;
-    }
-    if (shortName != null) {
-      _json['shortName'] = shortName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (disableModifications != null)
+          'disableModifications': disableModifications,
+        if (disableServing != null) 'disableServing': disableServing,
+        if (displayName != null) 'displayName': displayName,
+        if (indexingServiceAccounts != null)
+          'indexingServiceAccounts': indexingServiceAccounts,
+        if (itemsVisibility != null)
+          'itemsVisibility':
+              itemsVisibility.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (operationIds != null) 'operationIds': operationIds,
+        if (shortName != null) 'shortName': shortName,
+      };
 }
 
 /// Aggregation of items by status code as of the specified date.
@@ -3377,17 +3324,12 @@ class DataSourceIndexStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (date != null) {
-      _json['date'] = date.toJson();
-    }
-    if (itemCountByStatus != null) {
-      _json['itemCountByStatus'] =
-          itemCountByStatus.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (date != null) 'date': date.toJson(),
+        if (itemCountByStatus != null)
+          'itemCountByStatus':
+              itemCountByStatus.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Restriction on Datasource.
@@ -3420,17 +3362,12 @@ class DataSourceRestriction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filterOptions != null) {
-      _json['filterOptions'] =
-          filterOptions.map((value) => value.toJson()).toList();
-    }
-    if (source != null) {
-      _json['source'] = source.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filterOptions != null)
+          'filterOptions':
+              filterOptions.map((value) => value.toJson()).toList(),
+        if (source != null) 'source': source.toJson(),
+      };
 }
 
 /// Represents a whole calendar date, for example a date of birth.
@@ -3469,19 +3406,11 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (day != null) {
-      _json['day'] = day;
-    }
-    if (month != null) {
-      _json['month'] = month;
-    }
-    if (year != null) {
-      _json['year'] = year;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (day != null) 'day': day,
+        if (month != null) 'month': month,
+        if (year != null) 'year': year,
+      };
 }
 
 /// Provides a search operator for date properties.
@@ -3539,19 +3468,13 @@ class DateOperatorOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (greaterThanOperatorName != null) {
-      _json['greaterThanOperatorName'] = greaterThanOperatorName;
-    }
-    if (lessThanOperatorName != null) {
-      _json['lessThanOperatorName'] = lessThanOperatorName;
-    }
-    if (operatorName != null) {
-      _json['operatorName'] = operatorName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (greaterThanOperatorName != null)
+          'greaterThanOperatorName': greaterThanOperatorName,
+        if (lessThanOperatorName != null)
+          'lessThanOperatorName': lessThanOperatorName,
+        if (operatorName != null) 'operatorName': operatorName,
+      };
 }
 
 /// Options for date properties.
@@ -3568,13 +3491,10 @@ class DatePropertyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operatorOptions != null) {
-      _json['operatorOptions'] = operatorOptions.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (operatorOptions != null)
+          'operatorOptions': operatorOptions.toJson(),
+      };
 }
 
 /// List of date values.
@@ -3592,13 +3512,10 @@ class DateValues {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (values != null) {
-      _json['values'] = values.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (values != null)
+          'values': values.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Shared request debug options for all cloudsearch RPC methods.
@@ -3616,13 +3533,9 @@ class DebugOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enableDebugging != null) {
-      _json['enableDebugging'] = enableDebugging;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enableDebugging != null) 'enableDebugging': enableDebugging,
+      };
 }
 
 class DeleteQueueItemsRequest {
@@ -3652,19 +3565,11 @@ class DeleteQueueItemsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (connectorName != null) {
-      _json['connectorName'] = connectorName;
-    }
-    if (debugOptions != null) {
-      _json['debugOptions'] = debugOptions.toJson();
-    }
-    if (queue != null) {
-      _json['queue'] = queue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (connectorName != null) 'connectorName': connectorName,
+        if (debugOptions != null) 'debugOptions': debugOptions.toJson(),
+        if (queue != null) 'queue': queue,
+      };
 }
 
 /// A reference to a top-level property within the object that should be
@@ -3689,13 +3594,9 @@ class DisplayedProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (propertyName != null) {
-      _json['propertyName'] = propertyName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (propertyName != null) 'propertyName': propertyName,
+      };
 }
 
 /// Used to provide a search operator for double properties.
@@ -3718,13 +3619,9 @@ class DoubleOperatorOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operatorName != null) {
-      _json['operatorName'] = operatorName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (operatorName != null) 'operatorName': operatorName,
+      };
 }
 
 /// Options for double properties.
@@ -3741,13 +3638,10 @@ class DoublePropertyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operatorOptions != null) {
-      _json['operatorOptions'] = operatorOptions.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (operatorOptions != null)
+          'operatorOptions': operatorOptions.toJson(),
+      };
 }
 
 /// List of double values.
@@ -3764,13 +3658,9 @@ class DoubleValues {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (values != null) {
-      _json['values'] = values;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (values != null) 'values': values,
+      };
 }
 
 /// Drive follow-up search restricts (e.g. "followup:suggestions").
@@ -3790,13 +3680,9 @@ class DriveFollowUpRestrict {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+      };
 }
 
 /// Drive location search restricts (e.g. "is:starred").
@@ -3816,13 +3702,9 @@ class DriveLocationRestrict {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+      };
 }
 
 /// Drive mime-type search restricts (e.g. "type:pdf").
@@ -3854,13 +3736,9 @@ class DriveMimeTypeRestrict {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+      };
 }
 
 /// The time span search restrict (e.g. "after:2017-09-11 before:2017-09-12").
@@ -3883,13 +3761,9 @@ class DriveTimeSpanRestrict {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+      };
 }
 
 /// A person's email address.
@@ -3905,13 +3779,9 @@ class EmailAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (emailAddress != null) {
-      _json['emailAddress'] = emailAddress;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (emailAddress != null) 'emailAddress': emailAddress,
+      };
 }
 
 /// Used to provide a search operator for enum properties.
@@ -3947,13 +3817,9 @@ class EnumOperatorOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operatorName != null) {
-      _json['operatorName'] = operatorName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (operatorName != null) 'operatorName': operatorName,
+      };
 }
 
 /// Options for enum properties, which allow you to define a restricted set of
@@ -4016,20 +3882,14 @@ class EnumPropertyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operatorOptions != null) {
-      _json['operatorOptions'] = operatorOptions.toJson();
-    }
-    if (orderedRanking != null) {
-      _json['orderedRanking'] = orderedRanking;
-    }
-    if (possibleValues != null) {
-      _json['possibleValues'] =
-          possibleValues.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (operatorOptions != null)
+          'operatorOptions': operatorOptions.toJson(),
+        if (orderedRanking != null) 'orderedRanking': orderedRanking,
+        if (possibleValues != null)
+          'possibleValues':
+              possibleValues.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The enumeration value pair defines two things: a required string value and
@@ -4068,16 +3928,10 @@ class EnumValuePair {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (integerValue != null) {
-      _json['integerValue'] = integerValue;
-    }
-    if (stringValue != null) {
-      _json['stringValue'] = stringValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (integerValue != null) 'integerValue': integerValue,
+        if (stringValue != null) 'stringValue': stringValue,
+      };
 }
 
 /// List of enum values.
@@ -4095,13 +3949,9 @@ class EnumValues {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (values != null) {
-      _json['values'] = values;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (values != null) 'values': values,
+      };
 }
 
 /// Error information about the response.
@@ -4119,14 +3969,11 @@ class ErrorInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errorMessages != null) {
-      _json['errorMessages'] =
-          errorMessages.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errorMessages != null)
+          'errorMessages':
+              errorMessages.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Error message per source response.
@@ -4146,16 +3993,10 @@ class ErrorMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errorMessage != null) {
-      _json['errorMessage'] = errorMessage;
-    }
-    if (source != null) {
-      _json['source'] = source.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errorMessage != null) 'errorMessage': errorMessage,
+        if (source != null) 'source': source.toJson(),
+      };
 }
 
 /// A bucket in a facet is the basic unit of operation.
@@ -4195,19 +4036,11 @@ class FacetBucket {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (count != null) {
-      _json['count'] = count;
-    }
-    if (percentage != null) {
-      _json['percentage'] = percentage;
-    }
-    if (value != null) {
-      _json['value'] = value.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (count != null) 'count': count,
+        if (percentage != null) 'percentage': percentage,
+        if (value != null) 'value': value.toJson(),
+      };
 }
 
 /// Specifies operators to return facet results for.
@@ -4253,22 +4086,12 @@ class FacetOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (numFacetBuckets != null) {
-      _json['numFacetBuckets'] = numFacetBuckets;
-    }
-    if (objectType != null) {
-      _json['objectType'] = objectType;
-    }
-    if (operatorName != null) {
-      _json['operatorName'] = operatorName;
-    }
-    if (sourceName != null) {
-      _json['sourceName'] = sourceName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (numFacetBuckets != null) 'numFacetBuckets': numFacetBuckets,
+        if (objectType != null) 'objectType': objectType,
+        if (operatorName != null) 'operatorName': operatorName,
+        if (sourceName != null) 'sourceName': sourceName,
+      };
 }
 
 /// Source specific facet response
@@ -4311,22 +4134,13 @@ class FacetResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (buckets != null) {
-      _json['buckets'] = buckets.map((value) => value.toJson()).toList();
-    }
-    if (objectType != null) {
-      _json['objectType'] = objectType;
-    }
-    if (operatorName != null) {
-      _json['operatorName'] = operatorName;
-    }
-    if (sourceName != null) {
-      _json['sourceName'] = sourceName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (buckets != null)
+          'buckets': buckets.map((value) => value.toJson()).toList(),
+        if (objectType != null) 'objectType': objectType,
+        if (operatorName != null) 'operatorName': operatorName,
+        if (sourceName != null) 'sourceName': sourceName,
+      };
 }
 
 class FieldViolation {
@@ -4347,16 +4161,10 @@ class FieldViolation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (field != null) {
-      _json['field'] = field;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (field != null) 'field': field,
+      };
 }
 
 /// A generic way of expressing filters in a query, which supports two
@@ -4384,16 +4192,11 @@ class Filter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (compositeFilter != null) {
-      _json['compositeFilter'] = compositeFilter.toJson();
-    }
-    if (valueFilter != null) {
-      _json['valueFilter'] = valueFilter.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (compositeFilter != null)
+          'compositeFilter': compositeFilter.toJson(),
+        if (valueFilter != null) 'valueFilter': valueFilter.toJson(),
+      };
 }
 
 /// Filter options to be applied on query.
@@ -4419,16 +4222,10 @@ class FilterOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filter != null) {
-      _json['filter'] = filter.toJson();
-    }
-    if (objectType != null) {
-      _json['objectType'] = objectType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filter != null) 'filter': filter.toJson(),
+        if (objectType != null) 'objectType': objectType,
+      };
 }
 
 /// Indicates which freshness property to use when adjusting search ranking for
@@ -4466,16 +4263,10 @@ class FreshnessOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (freshnessDuration != null) {
-      _json['freshnessDuration'] = freshnessDuration;
-    }
-    if (freshnessProperty != null) {
-      _json['freshnessProperty'] = freshnessProperty;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (freshnessDuration != null) 'freshnessDuration': freshnessDuration,
+        if (freshnessProperty != null) 'freshnessProperty': freshnessProperty,
+      };
 }
 
 class GSuitePrincipal {
@@ -4502,19 +4293,11 @@ class GSuitePrincipal {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gsuiteDomain != null) {
-      _json['gsuiteDomain'] = gsuiteDomain;
-    }
-    if (gsuiteGroupEmail != null) {
-      _json['gsuiteGroupEmail'] = gsuiteGroupEmail;
-    }
-    if (gsuiteUserEmail != null) {
-      _json['gsuiteUserEmail'] = gsuiteUserEmail;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gsuiteDomain != null) 'gsuiteDomain': gsuiteDomain,
+        if (gsuiteGroupEmail != null) 'gsuiteGroupEmail': gsuiteGroupEmail,
+        if (gsuiteUserEmail != null) 'gsuiteUserEmail': gsuiteUserEmail,
+      };
 }
 
 class GetCustomerIndexStatsResponse {
@@ -4532,13 +4315,10 @@ class GetCustomerIndexStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (stats != null) {
-      _json['stats'] = stats.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (stats != null)
+          'stats': stats.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GetCustomerQueryStatsResponse {
@@ -4555,13 +4335,10 @@ class GetCustomerQueryStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (stats != null) {
-      _json['stats'] = stats.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (stats != null)
+          'stats': stats.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GetCustomerSessionStatsResponse {
@@ -4578,13 +4355,10 @@ class GetCustomerSessionStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (stats != null) {
-      _json['stats'] = stats.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (stats != null)
+          'stats': stats.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GetCustomerUserStatsResponse {
@@ -4601,13 +4375,10 @@ class GetCustomerUserStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (stats != null) {
-      _json['stats'] = stats.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (stats != null)
+          'stats': stats.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GetDataSourceIndexStatsResponse {
@@ -4625,13 +4396,10 @@ class GetDataSourceIndexStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (stats != null) {
-      _json['stats'] = stats.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (stats != null)
+          'stats': stats.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GetSearchApplicationQueryStatsResponse {
@@ -4649,13 +4417,10 @@ class GetSearchApplicationQueryStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (stats != null) {
-      _json['stats'] = stats.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (stats != null)
+          'stats': stats.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GetSearchApplicationSessionStatsResponse {
@@ -4673,13 +4438,10 @@ class GetSearchApplicationSessionStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (stats != null) {
-      _json['stats'] = stats.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (stats != null)
+          'stats': stats.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GetSearchApplicationUserStatsResponse {
@@ -4697,13 +4459,10 @@ class GetSearchApplicationUserStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (stats != null) {
-      _json['stats'] = stats.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (stats != null)
+          'stats': stats.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Used to provide a search operator for html properties.
@@ -4731,13 +4490,9 @@ class HtmlOperatorOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operatorName != null) {
-      _json['operatorName'] = operatorName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (operatorName != null) 'operatorName': operatorName,
+      };
 }
 
 /// Options for html properties.
@@ -4764,16 +4519,12 @@ class HtmlPropertyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operatorOptions != null) {
-      _json['operatorOptions'] = operatorOptions.toJson();
-    }
-    if (retrievalImportance != null) {
-      _json['retrievalImportance'] = retrievalImportance.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (operatorOptions != null)
+          'operatorOptions': operatorOptions.toJson(),
+        if (retrievalImportance != null)
+          'retrievalImportance': retrievalImportance.toJson(),
+      };
 }
 
 /// List of html values.
@@ -4791,13 +4542,9 @@ class HtmlValues {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (values != null) {
-      _json['values'] = values;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (values != null) 'values': values,
+      };
 }
 
 class IndexItemOptions {
@@ -4814,13 +4561,10 @@ class IndexItemOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowUnknownGsuitePrincipals != null) {
-      _json['allowUnknownGsuitePrincipals'] = allowUnknownGsuitePrincipals;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowUnknownGsuitePrincipals != null)
+          'allowUnknownGsuitePrincipals': allowUnknownGsuitePrincipals,
+      };
 }
 
 class IndexItemRequest {
@@ -4872,25 +4616,14 @@ class IndexItemRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (connectorName != null) {
-      _json['connectorName'] = connectorName;
-    }
-    if (debugOptions != null) {
-      _json['debugOptions'] = debugOptions.toJson();
-    }
-    if (indexItemOptions != null) {
-      _json['indexItemOptions'] = indexItemOptions.toJson();
-    }
-    if (item != null) {
-      _json['item'] = item.toJson();
-    }
-    if (mode != null) {
-      _json['mode'] = mode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (connectorName != null) 'connectorName': connectorName,
+        if (debugOptions != null) 'debugOptions': debugOptions.toJson(),
+        if (indexItemOptions != null)
+          'indexItemOptions': indexItemOptions.toJson(),
+        if (item != null) 'item': item.toJson(),
+        if (mode != null) 'mode': mode,
+      };
 }
 
 /// Used to provide a search operator for integer properties.
@@ -4945,19 +4678,13 @@ class IntegerOperatorOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (greaterThanOperatorName != null) {
-      _json['greaterThanOperatorName'] = greaterThanOperatorName;
-    }
-    if (lessThanOperatorName != null) {
-      _json['lessThanOperatorName'] = lessThanOperatorName;
-    }
-    if (operatorName != null) {
-      _json['operatorName'] = operatorName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (greaterThanOperatorName != null)
+          'greaterThanOperatorName': greaterThanOperatorName,
+        if (lessThanOperatorName != null)
+          'lessThanOperatorName': lessThanOperatorName,
+        if (operatorName != null) 'operatorName': operatorName,
+      };
 }
 
 /// Options for integer properties.
@@ -5011,22 +4738,13 @@ class IntegerPropertyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maximumValue != null) {
-      _json['maximumValue'] = maximumValue;
-    }
-    if (minimumValue != null) {
-      _json['minimumValue'] = minimumValue;
-    }
-    if (operatorOptions != null) {
-      _json['operatorOptions'] = operatorOptions.toJson();
-    }
-    if (orderedRanking != null) {
-      _json['orderedRanking'] = orderedRanking;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maximumValue != null) 'maximumValue': maximumValue,
+        if (minimumValue != null) 'minimumValue': minimumValue,
+        if (operatorOptions != null)
+          'operatorOptions': operatorOptions.toJson(),
+        if (orderedRanking != null) 'orderedRanking': orderedRanking,
+      };
 }
 
 /// List of integer values.
@@ -5043,13 +4761,9 @@ class IntegerValues {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (values != null) {
-      _json['values'] = values;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (values != null) 'values': values,
+      };
 }
 
 /// Represents an interaction between a user and an item.
@@ -5085,19 +4799,11 @@ class Interaction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (interactionTime != null) {
-      _json['interactionTime'] = interactionTime;
-    }
-    if (principal != null) {
-      _json['principal'] = principal.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (interactionTime != null) 'interactionTime': interactionTime,
+        if (principal != null) 'principal': principal.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// Represents a single object that is an item in the search index, such as a
@@ -5212,40 +4918,18 @@ class Item {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (acl != null) {
-      _json['acl'] = acl.toJson();
-    }
-    if (content != null) {
-      _json['content'] = content.toJson();
-    }
-    if (itemType != null) {
-      _json['itemType'] = itemType;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (payload != null) {
-      _json['payload'] = payload;
-    }
-    if (queue != null) {
-      _json['queue'] = queue;
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    if (structuredData != null) {
-      _json['structuredData'] = structuredData.toJson();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (acl != null) 'acl': acl.toJson(),
+        if (content != null) 'content': content.toJson(),
+        if (itemType != null) 'itemType': itemType,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (name != null) 'name': name,
+        if (payload != null) 'payload': payload,
+        if (queue != null) 'queue': queue,
+        if (status != null) 'status': status.toJson(),
+        if (structuredData != null) 'structuredData': structuredData.toJson(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// Access control list information for the item.
@@ -5336,26 +5020,18 @@ class ItemAcl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aclInheritanceType != null) {
-      _json['aclInheritanceType'] = aclInheritanceType;
-    }
-    if (deniedReaders != null) {
-      _json['deniedReaders'] =
-          deniedReaders.map((value) => value.toJson()).toList();
-    }
-    if (inheritAclFrom != null) {
-      _json['inheritAclFrom'] = inheritAclFrom;
-    }
-    if (owners != null) {
-      _json['owners'] = owners.map((value) => value.toJson()).toList();
-    }
-    if (readers != null) {
-      _json['readers'] = readers.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aclInheritanceType != null)
+          'aclInheritanceType': aclInheritanceType,
+        if (deniedReaders != null)
+          'deniedReaders':
+              deniedReaders.map((value) => value.toJson()).toList(),
+        if (inheritAclFrom != null) 'inheritAclFrom': inheritAclFrom,
+        if (owners != null)
+          'owners': owners.map((value) => value.toJson()).toList(),
+        if (readers != null)
+          'readers': readers.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Content of an item to be indexed and surfaced by Cloud Search.
@@ -5410,22 +5086,12 @@ class ItemContent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentDataRef != null) {
-      _json['contentDataRef'] = contentDataRef.toJson();
-    }
-    if (contentFormat != null) {
-      _json['contentFormat'] = contentFormat;
-    }
-    if (hash != null) {
-      _json['hash'] = hash;
-    }
-    if (inlineContent != null) {
-      _json['inlineContent'] = inlineContent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentDataRef != null) 'contentDataRef': contentDataRef.toJson(),
+        if (contentFormat != null) 'contentFormat': contentFormat,
+        if (hash != null) 'hash': hash,
+        if (inlineContent != null) 'inlineContent': inlineContent,
+      };
 }
 
 class ItemCountByStatus {
@@ -5457,16 +5123,10 @@ class ItemCountByStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (count != null) {
-      _json['count'] = count;
-    }
-    if (statusCode != null) {
-      _json['statusCode'] = statusCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (count != null) 'count': count,
+        if (statusCode != null) 'statusCode': statusCode,
+      };
 }
 
 /// Available metadata fields for the item.
@@ -5589,47 +5249,23 @@ class ItemMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (containerName != null) {
-      _json['containerName'] = containerName;
-    }
-    if (contentLanguage != null) {
-      _json['contentLanguage'] = contentLanguage;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (hash != null) {
-      _json['hash'] = hash;
-    }
-    if (interactions != null) {
-      _json['interactions'] =
-          interactions.map((value) => value.toJson()).toList();
-    }
-    if (keywords != null) {
-      _json['keywords'] = keywords;
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    if (objectType != null) {
-      _json['objectType'] = objectType;
-    }
-    if (searchQualityMetadata != null) {
-      _json['searchQualityMetadata'] = searchQualityMetadata.toJson();
-    }
-    if (sourceRepositoryUrl != null) {
-      _json['sourceRepositoryUrl'] = sourceRepositoryUrl;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (containerName != null) 'containerName': containerName,
+        if (contentLanguage != null) 'contentLanguage': contentLanguage,
+        if (createTime != null) 'createTime': createTime,
+        if (hash != null) 'hash': hash,
+        if (interactions != null)
+          'interactions': interactions.map((value) => value.toJson()).toList(),
+        if (keywords != null) 'keywords': keywords,
+        if (mimeType != null) 'mimeType': mimeType,
+        if (objectType != null) 'objectType': objectType,
+        if (searchQualityMetadata != null)
+          'searchQualityMetadata': searchQualityMetadata.toJson(),
+        if (sourceRepositoryUrl != null)
+          'sourceRepositoryUrl': sourceRepositoryUrl,
+        if (title != null) 'title': title,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// This contains item's status and any errors.
@@ -5674,21 +5310,15 @@ class ItemStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (processingErrors != null) {
-      _json['processingErrors'] =
-          processingErrors.map((value) => value.toJson()).toList();
-    }
-    if (repositoryErrors != null) {
-      _json['repositoryErrors'] =
-          repositoryErrors.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (processingErrors != null)
+          'processingErrors':
+              processingErrors.map((value) => value.toJson()).toList(),
+        if (repositoryErrors != null)
+          'repositoryErrors':
+              repositoryErrors.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Available structured data fields for the item.
@@ -5715,16 +5345,10 @@ class ItemStructuredData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hash != null) {
-      _json['hash'] = hash;
-    }
-    if (object != null) {
-      _json['object'] = object.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hash != null) 'hash': hash,
+        if (object != null) 'object': object.toJson(),
+      };
 }
 
 class ListDataSourceResponse {
@@ -5747,16 +5371,11 @@ class ListDataSourceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (sources != null) {
-      _json['sources'] = sources.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (sources != null)
+          'sources': sources.map((value) => value.toJson()).toList(),
+      };
 }
 
 class ListItemNamesForUnmappedIdentityResponse {
@@ -5779,16 +5398,10 @@ class ListItemNamesForUnmappedIdentityResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (itemNames != null) {
-      _json['itemNames'] = itemNames;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (itemNames != null) 'itemNames': itemNames,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class ListItemsResponse {
@@ -5812,16 +5425,11 @@ class ListItemsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -5846,16 +5454,11 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// List sources response.
@@ -5877,16 +5480,11 @@ class ListQuerySourcesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (sources != null) {
-      _json['sources'] = sources.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (sources != null)
+          'sources': sources.map((value) => value.toJson()).toList(),
+      };
 }
 
 class ListSearchApplicationsResponse {
@@ -5909,17 +5507,12 @@ class ListSearchApplicationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (searchApplications != null) {
-      _json['searchApplications'] =
-          searchApplications.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (searchApplications != null)
+          'searchApplications':
+              searchApplications.map((value) => value.toJson()).toList(),
+      };
 }
 
 class ListUnmappedIdentitiesResponse {
@@ -5942,17 +5535,12 @@ class ListUnmappedIdentitiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (unmappedIdentities != null) {
-      _json['unmappedIdentities'] =
-          unmappedIdentities.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (unmappedIdentities != null)
+          'unmappedIdentities':
+              unmappedIdentities.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Matched range of a snippet \[start, end).
@@ -5974,16 +5562,10 @@ class MatchRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (end != null) {
-      _json['end'] = end;
-    }
-    if (start != null) {
-      _json['start'] = start;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (end != null) 'end': end,
+        if (start != null) 'start': start,
+      };
 }
 
 /// Media resource.
@@ -5999,13 +5581,9 @@ class Media {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceName != null) {
-      _json['resourceName'] = resourceName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceName != null) 'resourceName': resourceName,
+      };
 }
 
 /// Metadata of a matched search result.
@@ -6073,34 +5651,17 @@ class Metadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (displayOptions != null) {
-      _json['displayOptions'] = displayOptions.toJson();
-    }
-    if (fields != null) {
-      _json['fields'] = fields.map((value) => value.toJson()).toList();
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    if (objectType != null) {
-      _json['objectType'] = objectType;
-    }
-    if (owner != null) {
-      _json['owner'] = owner.toJson();
-    }
-    if (source != null) {
-      _json['source'] = source.toJson();
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (displayOptions != null) 'displayOptions': displayOptions.toJson(),
+        if (fields != null)
+          'fields': fields.map((value) => value.toJson()).toList(),
+        if (mimeType != null) 'mimeType': mimeType,
+        if (objectType != null) 'objectType': objectType,
+        if (owner != null) 'owner': owner.toJson(),
+        if (source != null) 'source': source.toJson(),
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// A metaline is a list of properties that are displayed along with the search
@@ -6122,13 +5683,10 @@ class Metaline {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (properties != null) {
-      _json['properties'] = properties.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (properties != null)
+          'properties': properties.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A person's name.
@@ -6145,13 +5703,9 @@ class Name {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+      };
 }
 
 /// A typed name-value pair for structured data.
@@ -6219,40 +5773,19 @@ class NamedProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (booleanValue != null) {
-      _json['booleanValue'] = booleanValue;
-    }
-    if (dateValues != null) {
-      _json['dateValues'] = dateValues.toJson();
-    }
-    if (doubleValues != null) {
-      _json['doubleValues'] = doubleValues.toJson();
-    }
-    if (enumValues != null) {
-      _json['enumValues'] = enumValues.toJson();
-    }
-    if (htmlValues != null) {
-      _json['htmlValues'] = htmlValues.toJson();
-    }
-    if (integerValues != null) {
-      _json['integerValues'] = integerValues.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (objectValues != null) {
-      _json['objectValues'] = objectValues.toJson();
-    }
-    if (textValues != null) {
-      _json['textValues'] = textValues.toJson();
-    }
-    if (timestampValues != null) {
-      _json['timestampValues'] = timestampValues.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (booleanValue != null) 'booleanValue': booleanValue,
+        if (dateValues != null) 'dateValues': dateValues.toJson(),
+        if (doubleValues != null) 'doubleValues': doubleValues.toJson(),
+        if (enumValues != null) 'enumValues': enumValues.toJson(),
+        if (htmlValues != null) 'htmlValues': htmlValues.toJson(),
+        if (integerValues != null) 'integerValues': integerValues.toJson(),
+        if (name != null) 'name': name,
+        if (objectValues != null) 'objectValues': objectValues.toJson(),
+        if (textValues != null) 'textValues': textValues.toJson(),
+        if (timestampValues != null)
+          'timestampValues': timestampValues.toJson(),
+      };
 }
 
 /// The definition for an object within a data source.
@@ -6293,20 +5826,13 @@ class ObjectDefinition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (options != null) {
-      _json['options'] = options.toJson();
-    }
-    if (propertyDefinitions != null) {
-      _json['propertyDefinitions'] =
-          propertyDefinitions.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (options != null) 'options': options.toJson(),
+        if (propertyDefinitions != null)
+          'propertyDefinitions':
+              propertyDefinitions.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The display options for an object.
@@ -6342,16 +5868,12 @@ class ObjectDisplayOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metalines != null) {
-      _json['metalines'] = metalines.map((value) => value.toJson()).toList();
-    }
-    if (objectDisplayLabel != null) {
-      _json['objectDisplayLabel'] = objectDisplayLabel;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metalines != null)
+          'metalines': metalines.map((value) => value.toJson()).toList(),
+        if (objectDisplayLabel != null)
+          'objectDisplayLabel': objectDisplayLabel,
+      };
 }
 
 /// The options for an object.
@@ -6376,16 +5898,11 @@ class ObjectOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayOptions != null) {
-      _json['displayOptions'] = displayOptions.toJson();
-    }
-    if (freshnessOptions != null) {
-      _json['freshnessOptions'] = freshnessOptions.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayOptions != null) 'displayOptions': displayOptions.toJson(),
+        if (freshnessOptions != null)
+          'freshnessOptions': freshnessOptions.toJson(),
+      };
 }
 
 /// Options for object properties.
@@ -6408,14 +5925,11 @@ class ObjectPropertyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (subobjectProperties != null) {
-      _json['subobjectProperties'] =
-          subobjectProperties.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (subobjectProperties != null)
+          'subobjectProperties':
+              subobjectProperties.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// List of object values.
@@ -6433,13 +5947,10 @@ class ObjectValues {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (values != null) {
-      _json['values'] = values.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (values != null)
+          'values': values.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -6518,25 +6029,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// This field contains information about the person being suggested.
@@ -6555,13 +6054,9 @@ class PeopleSuggestion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (person != null) {
-      _json['person'] = person.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (person != null) 'person': person.toJson(),
+      };
 }
 
 /// Object to represent a person.
@@ -6615,27 +6110,17 @@ class Person {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (emailAddresses != null) {
-      _json['emailAddresses'] =
-          emailAddresses.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (obfuscatedId != null) {
-      _json['obfuscatedId'] = obfuscatedId;
-    }
-    if (personNames != null) {
-      _json['personNames'] =
-          personNames.map((value) => value.toJson()).toList();
-    }
-    if (photos != null) {
-      _json['photos'] = photos.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (emailAddresses != null)
+          'emailAddresses':
+              emailAddresses.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (obfuscatedId != null) 'obfuscatedId': obfuscatedId,
+        if (personNames != null)
+          'personNames': personNames.map((value) => value.toJson()).toList(),
+        if (photos != null)
+          'photos': photos.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A person's photo.
@@ -6651,13 +6136,9 @@ class Photo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (url != null) 'url': url,
+      };
 }
 
 class PollItemsRequest {
@@ -6706,25 +6187,13 @@ class PollItemsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (connectorName != null) {
-      _json['connectorName'] = connectorName;
-    }
-    if (debugOptions != null) {
-      _json['debugOptions'] = debugOptions.toJson();
-    }
-    if (limit != null) {
-      _json['limit'] = limit;
-    }
-    if (queue != null) {
-      _json['queue'] = queue;
-    }
-    if (statusCodes != null) {
-      _json['statusCodes'] = statusCodes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (connectorName != null) 'connectorName': connectorName,
+        if (debugOptions != null) 'debugOptions': debugOptions.toJson(),
+        if (limit != null) 'limit': limit,
+        if (queue != null) 'queue': queue,
+        if (statusCodes != null) 'statusCodes': statusCodes,
+      };
 }
 
 class PollItemsResponse {
@@ -6745,13 +6214,10 @@ class PollItemsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Reference to a user, group, or domain.
@@ -6786,19 +6252,12 @@ class Principal {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (groupResourceName != null) {
-      _json['groupResourceName'] = groupResourceName;
-    }
-    if (gsuitePrincipal != null) {
-      _json['gsuitePrincipal'] = gsuitePrincipal.toJson();
-    }
-    if (userResourceName != null) {
-      _json['userResourceName'] = userResourceName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (groupResourceName != null) 'groupResourceName': groupResourceName,
+        if (gsuitePrincipal != null)
+          'gsuitePrincipal': gsuitePrincipal.toJson(),
+        if (userResourceName != null) 'userResourceName': userResourceName,
+      };
 }
 
 class ProcessingError {
@@ -6840,20 +6299,13 @@ class ProcessingError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (errorMessage != null) {
-      _json['errorMessage'] = errorMessage;
-    }
-    if (fieldViolations != null) {
-      _json['fieldViolations'] =
-          fieldViolations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (errorMessage != null) 'errorMessage': errorMessage,
+        if (fieldViolations != null)
+          'fieldViolations':
+              fieldViolations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The definition of a property within an object.
@@ -6999,61 +6451,35 @@ class PropertyDefinition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (booleanPropertyOptions != null) {
-      _json['booleanPropertyOptions'] = booleanPropertyOptions.toJson();
-    }
-    if (datePropertyOptions != null) {
-      _json['datePropertyOptions'] = datePropertyOptions.toJson();
-    }
-    if (displayOptions != null) {
-      _json['displayOptions'] = displayOptions.toJson();
-    }
-    if (doublePropertyOptions != null) {
-      _json['doublePropertyOptions'] = doublePropertyOptions.toJson();
-    }
-    if (enumPropertyOptions != null) {
-      _json['enumPropertyOptions'] = enumPropertyOptions.toJson();
-    }
-    if (htmlPropertyOptions != null) {
-      _json['htmlPropertyOptions'] = htmlPropertyOptions.toJson();
-    }
-    if (integerPropertyOptions != null) {
-      _json['integerPropertyOptions'] = integerPropertyOptions.toJson();
-    }
-    if (isFacetable != null) {
-      _json['isFacetable'] = isFacetable;
-    }
-    if (isRepeatable != null) {
-      _json['isRepeatable'] = isRepeatable;
-    }
-    if (isReturnable != null) {
-      _json['isReturnable'] = isReturnable;
-    }
-    if (isSortable != null) {
-      _json['isSortable'] = isSortable;
-    }
-    if (isSuggestable != null) {
-      _json['isSuggestable'] = isSuggestable;
-    }
-    if (isWildcardSearchable != null) {
-      _json['isWildcardSearchable'] = isWildcardSearchable;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (objectPropertyOptions != null) {
-      _json['objectPropertyOptions'] = objectPropertyOptions.toJson();
-    }
-    if (textPropertyOptions != null) {
-      _json['textPropertyOptions'] = textPropertyOptions.toJson();
-    }
-    if (timestampPropertyOptions != null) {
-      _json['timestampPropertyOptions'] = timestampPropertyOptions.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (booleanPropertyOptions != null)
+          'booleanPropertyOptions': booleanPropertyOptions.toJson(),
+        if (datePropertyOptions != null)
+          'datePropertyOptions': datePropertyOptions.toJson(),
+        if (displayOptions != null) 'displayOptions': displayOptions.toJson(),
+        if (doublePropertyOptions != null)
+          'doublePropertyOptions': doublePropertyOptions.toJson(),
+        if (enumPropertyOptions != null)
+          'enumPropertyOptions': enumPropertyOptions.toJson(),
+        if (htmlPropertyOptions != null)
+          'htmlPropertyOptions': htmlPropertyOptions.toJson(),
+        if (integerPropertyOptions != null)
+          'integerPropertyOptions': integerPropertyOptions.toJson(),
+        if (isFacetable != null) 'isFacetable': isFacetable,
+        if (isRepeatable != null) 'isRepeatable': isRepeatable,
+        if (isReturnable != null) 'isReturnable': isReturnable,
+        if (isSortable != null) 'isSortable': isSortable,
+        if (isSuggestable != null) 'isSuggestable': isSuggestable,
+        if (isWildcardSearchable != null)
+          'isWildcardSearchable': isWildcardSearchable,
+        if (name != null) 'name': name,
+        if (objectPropertyOptions != null)
+          'objectPropertyOptions': objectPropertyOptions.toJson(),
+        if (textPropertyOptions != null)
+          'textPropertyOptions': textPropertyOptions.toJson(),
+        if (timestampPropertyOptions != null)
+          'timestampPropertyOptions': timestampPropertyOptions.toJson(),
+      };
 }
 
 /// The display options for a property.
@@ -7078,13 +6504,9 @@ class PropertyDisplayOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayLabel != null) {
-      _json['displayLabel'] = displayLabel;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayLabel != null) 'displayLabel': displayLabel,
+      };
 }
 
 /// Represents an item to be pushed to the indexing queue.
@@ -7179,31 +6601,17 @@ class PushItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentHash != null) {
-      _json['contentHash'] = contentHash;
-    }
-    if (metadataHash != null) {
-      _json['metadataHash'] = metadataHash;
-    }
-    if (payload != null) {
-      _json['payload'] = payload;
-    }
-    if (queue != null) {
-      _json['queue'] = queue;
-    }
-    if (repositoryError != null) {
-      _json['repositoryError'] = repositoryError.toJson();
-    }
-    if (structuredDataHash != null) {
-      _json['structuredDataHash'] = structuredDataHash;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentHash != null) 'contentHash': contentHash,
+        if (metadataHash != null) 'metadataHash': metadataHash,
+        if (payload != null) 'payload': payload,
+        if (queue != null) 'queue': queue,
+        if (repositoryError != null)
+          'repositoryError': repositoryError.toJson(),
+        if (structuredDataHash != null)
+          'structuredDataHash': structuredDataHash,
+        if (type != null) 'type': type,
+      };
 }
 
 class PushItemRequest {
@@ -7234,19 +6642,11 @@ class PushItemRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (connectorName != null) {
-      _json['connectorName'] = connectorName;
-    }
-    if (debugOptions != null) {
-      _json['debugOptions'] = debugOptions.toJson();
-    }
-    if (item != null) {
-      _json['item'] = item.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (connectorName != null) 'connectorName': connectorName,
+        if (debugOptions != null) 'debugOptions': debugOptions.toJson(),
+        if (item != null) 'item': item.toJson(),
+      };
 }
 
 class QueryCountByStatus {
@@ -7266,16 +6666,10 @@ class QueryCountByStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (count != null) {
-      _json['count'] = count;
-    }
-    if (statusCode != null) {
-      _json['statusCode'] = statusCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (count != null) 'count': count,
+        if (statusCode != null) 'statusCode': statusCode,
+      };
 }
 
 class QueryInterpretation {
@@ -7325,19 +6719,12 @@ class QueryInterpretation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (interpretationType != null) {
-      _json['interpretationType'] = interpretationType;
-    }
-    if (interpretedQuery != null) {
-      _json['interpretedQuery'] = interpretedQuery;
-    }
-    if (reason != null) {
-      _json['reason'] = reason;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (interpretationType != null)
+          'interpretationType': interpretationType,
+        if (interpretedQuery != null) 'interpretedQuery': interpretedQuery,
+        if (reason != null) 'reason': reason,
+      };
 }
 
 /// Options to interpret user query.
@@ -7366,16 +6753,12 @@ class QueryInterpretationOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (disableNlInterpretation != null) {
-      _json['disableNlInterpretation'] = disableNlInterpretation;
-    }
-    if (enableVerbatimMode != null) {
-      _json['enableVerbatimMode'] = enableVerbatimMode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (disableNlInterpretation != null)
+          'disableNlInterpretation': disableNlInterpretation,
+        if (enableVerbatimMode != null)
+          'enableVerbatimMode': enableVerbatimMode,
+      };
 }
 
 /// Information relevant only to a query entry.
@@ -7391,13 +6774,9 @@ class QueryItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (isSynthetic != null) {
-      _json['isSynthetic'] = isSynthetic;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (isSynthetic != null) 'isSynthetic': isSynthetic,
+      };
 }
 
 /// The definition of a operator that can be used in a Search/Suggest request.
@@ -7500,46 +6879,22 @@ class QueryOperator {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (enumValues != null) {
-      _json['enumValues'] = enumValues;
-    }
-    if (greaterThanOperatorName != null) {
-      _json['greaterThanOperatorName'] = greaterThanOperatorName;
-    }
-    if (isFacetable != null) {
-      _json['isFacetable'] = isFacetable;
-    }
-    if (isRepeatable != null) {
-      _json['isRepeatable'] = isRepeatable;
-    }
-    if (isReturnable != null) {
-      _json['isReturnable'] = isReturnable;
-    }
-    if (isSortable != null) {
-      _json['isSortable'] = isSortable;
-    }
-    if (isSuggestable != null) {
-      _json['isSuggestable'] = isSuggestable;
-    }
-    if (lessThanOperatorName != null) {
-      _json['lessThanOperatorName'] = lessThanOperatorName;
-    }
-    if (objectType != null) {
-      _json['objectType'] = objectType;
-    }
-    if (operatorName != null) {
-      _json['operatorName'] = operatorName;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (enumValues != null) 'enumValues': enumValues,
+        if (greaterThanOperatorName != null)
+          'greaterThanOperatorName': greaterThanOperatorName,
+        if (isFacetable != null) 'isFacetable': isFacetable,
+        if (isRepeatable != null) 'isRepeatable': isRepeatable,
+        if (isReturnable != null) 'isReturnable': isReturnable,
+        if (isSortable != null) 'isSortable': isSortable,
+        if (isSuggestable != null) 'isSuggestable': isSuggestable,
+        if (lessThanOperatorName != null)
+          'lessThanOperatorName': lessThanOperatorName,
+        if (objectType != null) 'objectType': objectType,
+        if (operatorName != null) 'operatorName': operatorName,
+        if (type != null) 'type': type,
+      };
 }
 
 /// List of sources that the user can search using the query API.
@@ -7579,22 +6934,13 @@ class QuerySource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (operators != null) {
-      _json['operators'] = operators.map((value) => value.toJson()).toList();
-    }
-    if (shortName != null) {
-      _json['shortName'] = shortName;
-    }
-    if (source != null) {
-      _json['source'] = source.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (operators != null)
+          'operators': operators.map((value) => value.toJson()).toList(),
+        if (shortName != null) 'shortName': shortName,
+        if (source != null) 'source': source.toJson(),
+      };
 }
 
 /// This field does not contain anything as of now and is just used as an
@@ -7606,10 +6952,7 @@ class QuerySuggestion {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Errors when the connector is communicating to the source repository.
@@ -7655,19 +6998,11 @@ class RepositoryError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errorMessage != null) {
-      _json['errorMessage'] = errorMessage;
-    }
-    if (httpStatusCode != null) {
-      _json['httpStatusCode'] = httpStatusCode;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errorMessage != null) 'errorMessage': errorMessage,
+        if (httpStatusCode != null) 'httpStatusCode': httpStatusCode,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Shared request options for all RPC methods.
@@ -7720,22 +7055,13 @@ class RequestOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (debugOptions != null) {
-      _json['debugOptions'] = debugOptions.toJson();
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (searchApplicationId != null) {
-      _json['searchApplicationId'] = searchApplicationId;
-    }
-    if (timeZone != null) {
-      _json['timeZone'] = timeZone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (debugOptions != null) 'debugOptions': debugOptions.toJson(),
+        if (languageCode != null) 'languageCode': languageCode,
+        if (searchApplicationId != null)
+          'searchApplicationId': searchApplicationId,
+        if (timeZone != null) 'timeZone': timeZone,
+      };
 }
 
 class ResetSearchApplicationRequest {
@@ -7751,13 +7077,9 @@ class ResetSearchApplicationRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (debugOptions != null) {
-      _json['debugOptions'] = debugOptions.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (debugOptions != null) 'debugOptions': debugOptions.toJson(),
+      };
 }
 
 /// Debugging information about the response.
@@ -7773,13 +7095,10 @@ class ResponseDebugInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (formattedDebugInfo != null) {
-      _json['formattedDebugInfo'] = formattedDebugInfo;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (formattedDebugInfo != null)
+          'formattedDebugInfo': formattedDebugInfo,
+      };
 }
 
 /// Information relevant only to a restrict entry.
@@ -7825,25 +7144,17 @@ class RestrictItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (driveFollowUpRestrict != null) {
-      _json['driveFollowUpRestrict'] = driveFollowUpRestrict.toJson();
-    }
-    if (driveLocationRestrict != null) {
-      _json['driveLocationRestrict'] = driveLocationRestrict.toJson();
-    }
-    if (driveMimeTypeRestrict != null) {
-      _json['driveMimeTypeRestrict'] = driveMimeTypeRestrict.toJson();
-    }
-    if (driveTimeSpanRestrict != null) {
-      _json['driveTimeSpanRestrict'] = driveTimeSpanRestrict.toJson();
-    }
-    if (searchOperator != null) {
-      _json['searchOperator'] = searchOperator;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (driveFollowUpRestrict != null)
+          'driveFollowUpRestrict': driveFollowUpRestrict.toJson(),
+        if (driveLocationRestrict != null)
+          'driveLocationRestrict': driveLocationRestrict.toJson(),
+        if (driveMimeTypeRestrict != null)
+          'driveMimeTypeRestrict': driveMimeTypeRestrict.toJson(),
+        if (driveTimeSpanRestrict != null)
+          'driveTimeSpanRestrict': driveTimeSpanRestrict.toJson(),
+        if (searchOperator != null) 'searchOperator': searchOperator,
+      };
 }
 
 /// Result count information
@@ -7862,14 +7173,11 @@ class ResultCounts {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sourceResultCounts != null) {
-      _json['sourceResultCounts'] =
-          sourceResultCounts.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sourceResultCounts != null)
+          'sourceResultCounts':
+              sourceResultCounts.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Debugging information about the result.
@@ -7885,13 +7193,10 @@ class ResultDebugInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (formattedDebugInfo != null) {
-      _json['formattedDebugInfo'] = formattedDebugInfo;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (formattedDebugInfo != null)
+          'formattedDebugInfo': formattedDebugInfo,
+      };
 }
 
 /// Display Fields for Search Results
@@ -7920,19 +7225,11 @@ class ResultDisplayField {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (label != null) {
-      _json['label'] = label;
-    }
-    if (operatorName != null) {
-      _json['operatorName'] = operatorName;
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (label != null) 'label': label,
+        if (operatorName != null) 'operatorName': operatorName,
+        if (property != null) 'property': property.toJson(),
+      };
 }
 
 /// The collection of fields that make up a displayed line
@@ -7950,13 +7247,10 @@ class ResultDisplayLine {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fields != null) {
-      _json['fields'] = fields.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fields != null)
+          'fields': fields.map((value) => value.toJson()).toList(),
+      };
 }
 
 class ResultDisplayMetadata {
@@ -7980,16 +7274,11 @@ class ResultDisplayMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metalines != null) {
-      _json['metalines'] = metalines.map((value) => value.toJson()).toList();
-    }
-    if (objectTypeLabel != null) {
-      _json['objectTypeLabel'] = objectTypeLabel;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metalines != null)
+          'metalines': metalines.map((value) => value.toJson()).toList(),
+        if (objectTypeLabel != null) 'objectTypeLabel': objectTypeLabel,
+      };
 }
 
 class RetrievalImportance {
@@ -8014,13 +7303,9 @@ class RetrievalImportance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (importance != null) {
-      _json['importance'] = importance;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (importance != null) 'importance': importance,
+      };
 }
 
 /// The schema definition for a data source.
@@ -8053,17 +7338,12 @@ class Schema {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (objectDefinitions != null) {
-      _json['objectDefinitions'] =
-          objectDefinitions.map((value) => value.toJson()).toList();
-    }
-    if (operationIds != null) {
-      _json['operationIds'] = operationIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (objectDefinitions != null)
+          'objectDefinitions':
+              objectDefinitions.map((value) => value.toJson()).toList(),
+        if (operationIds != null) 'operationIds': operationIds,
+      };
 }
 
 /// Scoring configurations for a source while processing a Search or Suggest
@@ -8091,16 +7371,11 @@ class ScoringConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (disableFreshness != null) {
-      _json['disableFreshness'] = disableFreshness;
-    }
-    if (disablePersonalization != null) {
-      _json['disablePersonalization'] = disablePersonalization;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (disableFreshness != null) 'disableFreshness': disableFreshness,
+        if (disablePersonalization != null)
+          'disablePersonalization': disablePersonalization,
+      };
 }
 
 /// SearchApplication
@@ -8185,37 +7460,22 @@ class SearchApplication {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataSourceRestrictions != null) {
-      _json['dataSourceRestrictions'] =
-          dataSourceRestrictions.map((value) => value.toJson()).toList();
-    }
-    if (defaultFacetOptions != null) {
-      _json['defaultFacetOptions'] =
-          defaultFacetOptions.map((value) => value.toJson()).toList();
-    }
-    if (defaultSortOptions != null) {
-      _json['defaultSortOptions'] = defaultSortOptions.toJson();
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (operationIds != null) {
-      _json['operationIds'] = operationIds;
-    }
-    if (scoringConfig != null) {
-      _json['scoringConfig'] = scoringConfig.toJson();
-    }
-    if (sourceConfig != null) {
-      _json['sourceConfig'] =
-          sourceConfig.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataSourceRestrictions != null)
+          'dataSourceRestrictions':
+              dataSourceRestrictions.map((value) => value.toJson()).toList(),
+        if (defaultFacetOptions != null)
+          'defaultFacetOptions':
+              defaultFacetOptions.map((value) => value.toJson()).toList(),
+        if (defaultSortOptions != null)
+          'defaultSortOptions': defaultSortOptions.toJson(),
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (operationIds != null) 'operationIds': operationIds,
+        if (scoringConfig != null) 'scoringConfig': scoringConfig.toJson(),
+        if (sourceConfig != null)
+          'sourceConfig': sourceConfig.map((value) => value.toJson()).toList(),
+      };
 }
 
 class SearchApplicationQueryStats {
@@ -8240,17 +7500,12 @@ class SearchApplicationQueryStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (date != null) {
-      _json['date'] = date.toJson();
-    }
-    if (queryCountByStatus != null) {
-      _json['queryCountByStatus'] =
-          queryCountByStatus.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (date != null) 'date': date.toJson(),
+        if (queryCountByStatus != null)
+          'queryCountByStatus':
+              queryCountByStatus.map((value) => value.toJson()).toList(),
+      };
 }
 
 class SearchApplicationSessionStats {
@@ -8274,16 +7529,11 @@ class SearchApplicationSessionStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (date != null) {
-      _json['date'] = date.toJson();
-    }
-    if (searchSessionsCount != null) {
-      _json['searchSessionsCount'] = searchSessionsCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (date != null) 'date': date.toJson(),
+        if (searchSessionsCount != null)
+          'searchSessionsCount': searchSessionsCount,
+      };
 }
 
 class SearchApplicationUserStats {
@@ -8321,22 +7571,15 @@ class SearchApplicationUserStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (date != null) {
-      _json['date'] = date.toJson();
-    }
-    if (oneDayActiveUsersCount != null) {
-      _json['oneDayActiveUsersCount'] = oneDayActiveUsersCount;
-    }
-    if (sevenDaysActiveUsersCount != null) {
-      _json['sevenDaysActiveUsersCount'] = sevenDaysActiveUsersCount;
-    }
-    if (thirtyDaysActiveUsersCount != null) {
-      _json['thirtyDaysActiveUsersCount'] = thirtyDaysActiveUsersCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (date != null) 'date': date.toJson(),
+        if (oneDayActiveUsersCount != null)
+          'oneDayActiveUsersCount': oneDayActiveUsersCount,
+        if (sevenDaysActiveUsersCount != null)
+          'sevenDaysActiveUsersCount': sevenDaysActiveUsersCount,
+        if (thirtyDaysActiveUsersCount != null)
+          'thirtyDaysActiveUsersCount': thirtyDaysActiveUsersCount,
+      };
 }
 
 class SearchItemsByViewUrlRequest {
@@ -8366,19 +7609,11 @@ class SearchItemsByViewUrlRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (debugOptions != null) {
-      _json['debugOptions'] = debugOptions.toJson();
-    }
-    if (pageToken != null) {
-      _json['pageToken'] = pageToken;
-    }
-    if (viewUrl != null) {
-      _json['viewUrl'] = viewUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (debugOptions != null) 'debugOptions': debugOptions.toJson(),
+        if (pageToken != null) 'pageToken': pageToken,
+        if (viewUrl != null) 'viewUrl': viewUrl,
+      };
 }
 
 class SearchItemsByViewUrlResponse {
@@ -8402,16 +7637,11 @@ class SearchItemsByViewUrlResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Additional search quality metadata of the item.
@@ -8431,13 +7661,9 @@ class SearchQualityMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (quality != null) {
-      _json['quality'] = quality;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (quality != null) 'quality': quality,
+      };
 }
 
 /// The search API request.
@@ -8512,36 +7738,20 @@ class SearchRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataSourceRestrictions != null) {
-      _json['dataSourceRestrictions'] =
-          dataSourceRestrictions.map((value) => value.toJson()).toList();
-    }
-    if (facetOptions != null) {
-      _json['facetOptions'] =
-          facetOptions.map((value) => value.toJson()).toList();
-    }
-    if (pageSize != null) {
-      _json['pageSize'] = pageSize;
-    }
-    if (query != null) {
-      _json['query'] = query;
-    }
-    if (queryInterpretationOptions != null) {
-      _json['queryInterpretationOptions'] = queryInterpretationOptions.toJson();
-    }
-    if (requestOptions != null) {
-      _json['requestOptions'] = requestOptions.toJson();
-    }
-    if (sortOptions != null) {
-      _json['sortOptions'] = sortOptions.toJson();
-    }
-    if (start != null) {
-      _json['start'] = start;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataSourceRestrictions != null)
+          'dataSourceRestrictions':
+              dataSourceRestrictions.map((value) => value.toJson()).toList(),
+        if (facetOptions != null)
+          'facetOptions': facetOptions.map((value) => value.toJson()).toList(),
+        if (pageSize != null) 'pageSize': pageSize,
+        if (query != null) 'query': query,
+        if (queryInterpretationOptions != null)
+          'queryInterpretationOptions': queryInterpretationOptions.toJson(),
+        if (requestOptions != null) 'requestOptions': requestOptions.toJson(),
+        if (sortOptions != null) 'sortOptions': sortOptions.toJson(),
+        if (start != null) 'start': start,
+      };
 }
 
 /// The search API response.
@@ -8637,46 +7847,26 @@ class SearchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (debugInfo != null) {
-      _json['debugInfo'] = debugInfo.toJson();
-    }
-    if (errorInfo != null) {
-      _json['errorInfo'] = errorInfo.toJson();
-    }
-    if (facetResults != null) {
-      _json['facetResults'] =
-          facetResults.map((value) => value.toJson()).toList();
-    }
-    if (hasMoreResults != null) {
-      _json['hasMoreResults'] = hasMoreResults;
-    }
-    if (queryInterpretation != null) {
-      _json['queryInterpretation'] = queryInterpretation.toJson();
-    }
-    if (resultCountEstimate != null) {
-      _json['resultCountEstimate'] = resultCountEstimate;
-    }
-    if (resultCountExact != null) {
-      _json['resultCountExact'] = resultCountExact;
-    }
-    if (resultCounts != null) {
-      _json['resultCounts'] = resultCounts.toJson();
-    }
-    if (results != null) {
-      _json['results'] = results.map((value) => value.toJson()).toList();
-    }
-    if (spellResults != null) {
-      _json['spellResults'] =
-          spellResults.map((value) => value.toJson()).toList();
-    }
-    if (structuredResults != null) {
-      _json['structuredResults'] =
-          structuredResults.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (debugInfo != null) 'debugInfo': debugInfo.toJson(),
+        if (errorInfo != null) 'errorInfo': errorInfo.toJson(),
+        if (facetResults != null)
+          'facetResults': facetResults.map((value) => value.toJson()).toList(),
+        if (hasMoreResults != null) 'hasMoreResults': hasMoreResults,
+        if (queryInterpretation != null)
+          'queryInterpretation': queryInterpretation.toJson(),
+        if (resultCountEstimate != null)
+          'resultCountEstimate': resultCountEstimate,
+        if (resultCountExact != null) 'resultCountExact': resultCountExact,
+        if (resultCounts != null) 'resultCounts': resultCounts.toJson(),
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+        if (spellResults != null)
+          'spellResults': spellResults.map((value) => value.toJson()).toList(),
+        if (structuredResults != null)
+          'structuredResults':
+              structuredResults.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Results containing indexed information for a document.
@@ -8734,29 +7924,16 @@ class SearchResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusteredResults != null) {
-      _json['clusteredResults'] =
-          clusteredResults.map((value) => value.toJson()).toList();
-    }
-    if (debugInfo != null) {
-      _json['debugInfo'] = debugInfo.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusteredResults != null)
+          'clusteredResults':
+              clusteredResults.map((value) => value.toJson()).toList(),
+        if (debugInfo != null) 'debugInfo': debugInfo.toJson(),
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (snippet != null) 'snippet': snippet.toJson(),
+        if (title != null) 'title': title,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Snippet of the search result, which summarizes the content of the resulting
@@ -8785,17 +7962,11 @@ class Snippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (matchRanges != null) {
-      _json['matchRanges'] =
-          matchRanges.map((value) => value.toJson()).toList();
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (matchRanges != null)
+          'matchRanges': matchRanges.map((value) => value.toJson()).toList(),
+        if (snippet != null) 'snippet': snippet,
+      };
 }
 
 class SortOptions {
@@ -8821,16 +7992,10 @@ class SortOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operatorName != null) {
-      _json['operatorName'] = operatorName;
-    }
-    if (sortOrder != null) {
-      _json['sortOrder'] = sortOrder;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (operatorName != null) 'operatorName': operatorName,
+        if (sortOrder != null) 'sortOrder': sortOrder,
+      };
 }
 
 /// Defines sources for the suggest/search APIs.
@@ -8864,16 +8029,10 @@ class Source {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (predefinedSource != null) {
-      _json['predefinedSource'] = predefinedSource;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (predefinedSource != null) 'predefinedSource': predefinedSource,
+      };
 }
 
 /// Configurations for a source while processing a Search or Suggest request.
@@ -8904,19 +8063,11 @@ class SourceConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (crowdingConfig != null) {
-      _json['crowdingConfig'] = crowdingConfig.toJson();
-    }
-    if (scoringConfig != null) {
-      _json['scoringConfig'] = scoringConfig.toJson();
-    }
-    if (source != null) {
-      _json['source'] = source.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (crowdingConfig != null) 'crowdingConfig': crowdingConfig.toJson(),
+        if (scoringConfig != null) 'scoringConfig': scoringConfig.toJson(),
+        if (source != null) 'source': source.toJson(),
+      };
 }
 
 /// Set search results crowding limits.
@@ -8947,16 +8098,10 @@ class SourceCrowdingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (numResults != null) {
-      _json['numResults'] = numResults;
-    }
-    if (numSuggestions != null) {
-      _json['numSuggestions'] = numSuggestions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (numResults != null) 'numResults': numResults,
+        if (numSuggestions != null) 'numSuggestions': numSuggestions,
+      };
 }
 
 /// Per source result count information.
@@ -8991,22 +8136,13 @@ class SourceResultCount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hasMoreResults != null) {
-      _json['hasMoreResults'] = hasMoreResults;
-    }
-    if (resultCountEstimate != null) {
-      _json['resultCountEstimate'] = resultCountEstimate;
-    }
-    if (resultCountExact != null) {
-      _json['resultCountExact'] = resultCountExact;
-    }
-    if (source != null) {
-      _json['source'] = source.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hasMoreResults != null) 'hasMoreResults': hasMoreResults,
+        if (resultCountEstimate != null)
+          'resultCountEstimate': resultCountEstimate,
+        if (resultCountExact != null) 'resultCountExact': resultCountExact,
+        if (source != null) 'source': source.toJson(),
+      };
 }
 
 /// Set the scoring configuration.
@@ -9028,13 +8164,9 @@ class SourceScoringConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sourceImportance != null) {
-      _json['sourceImportance'] = sourceImportance;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sourceImportance != null) 'sourceImportance': sourceImportance,
+      };
 }
 
 class SpellResult {
@@ -9049,13 +8181,9 @@ class SpellResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (suggestedQuery != null) {
-      _json['suggestedQuery'] = suggestedQuery;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (suggestedQuery != null) 'suggestedQuery': suggestedQuery,
+      };
 }
 
 /// Start upload file request.
@@ -9080,16 +8208,10 @@ class StartUploadItemRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (connectorName != null) {
-      _json['connectorName'] = connectorName;
-    }
-    if (debugOptions != null) {
-      _json['debugOptions'] = debugOptions.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (connectorName != null) 'connectorName': connectorName,
+        if (debugOptions != null) 'debugOptions': debugOptions.toJson(),
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -9139,19 +8261,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// A structured data object consisting of named properties.
@@ -9172,13 +8286,10 @@ class StructuredDataObject {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (properties != null) {
-      _json['properties'] = properties.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (properties != null)
+          'properties': properties.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Structured results that are returned as part of search request.
@@ -9195,13 +8306,9 @@ class StructuredResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (person != null) {
-      _json['person'] = person.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (person != null) 'person': person.toJson(),
+      };
 }
 
 /// Request of suggest API.
@@ -9241,20 +8348,13 @@ class SuggestRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataSourceRestrictions != null) {
-      _json['dataSourceRestrictions'] =
-          dataSourceRestrictions.map((value) => value.toJson()).toList();
-    }
-    if (query != null) {
-      _json['query'] = query;
-    }
-    if (requestOptions != null) {
-      _json['requestOptions'] = requestOptions.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataSourceRestrictions != null)
+          'dataSourceRestrictions':
+              dataSourceRestrictions.map((value) => value.toJson()).toList(),
+        if (query != null) 'query': query,
+        if (requestOptions != null) 'requestOptions': requestOptions.toJson(),
+      };
 }
 
 /// Response of the suggest API.
@@ -9273,14 +8373,11 @@ class SuggestResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (suggestResults != null) {
-      _json['suggestResults'] =
-          suggestResults.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (suggestResults != null)
+          'suggestResults':
+              suggestResults.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// One suggestion result.
@@ -9322,22 +8419,14 @@ class SuggestResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (peopleSuggestion != null) {
-      _json['peopleSuggestion'] = peopleSuggestion.toJson();
-    }
-    if (querySuggestion != null) {
-      _json['querySuggestion'] = querySuggestion.toJson();
-    }
-    if (source != null) {
-      _json['source'] = source.toJson();
-    }
-    if (suggestedQuery != null) {
-      _json['suggestedQuery'] = suggestedQuery;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (peopleSuggestion != null)
+          'peopleSuggestion': peopleSuggestion.toJson(),
+        if (querySuggestion != null)
+          'querySuggestion': querySuggestion.toJson(),
+        if (source != null) 'source': source.toJson(),
+        if (suggestedQuery != null) 'suggestedQuery': suggestedQuery,
+      };
 }
 
 /// Used to provide a search operator for text properties.
@@ -9380,16 +8469,11 @@ class TextOperatorOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exactMatchWithOperator != null) {
-      _json['exactMatchWithOperator'] = exactMatchWithOperator;
-    }
-    if (operatorName != null) {
-      _json['operatorName'] = operatorName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exactMatchWithOperator != null)
+          'exactMatchWithOperator': exactMatchWithOperator,
+        if (operatorName != null) 'operatorName': operatorName,
+      };
 }
 
 /// Options for text properties.
@@ -9414,16 +8498,12 @@ class TextPropertyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operatorOptions != null) {
-      _json['operatorOptions'] = operatorOptions.toJson();
-    }
-    if (retrievalImportance != null) {
-      _json['retrievalImportance'] = retrievalImportance.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (operatorOptions != null)
+          'operatorOptions': operatorOptions.toJson(),
+        if (retrievalImportance != null)
+          'retrievalImportance': retrievalImportance.toJson(),
+      };
 }
 
 /// List of text values.
@@ -9441,13 +8521,9 @@ class TextValues {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (values != null) {
-      _json['values'] = values;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (values != null) 'values': values,
+      };
 }
 
 /// Used to provide a search operator for timestamp properties.
@@ -9502,19 +8578,13 @@ class TimestampOperatorOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (greaterThanOperatorName != null) {
-      _json['greaterThanOperatorName'] = greaterThanOperatorName;
-    }
-    if (lessThanOperatorName != null) {
-      _json['lessThanOperatorName'] = lessThanOperatorName;
-    }
-    if (operatorName != null) {
-      _json['operatorName'] = operatorName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (greaterThanOperatorName != null)
+          'greaterThanOperatorName': greaterThanOperatorName,
+        if (lessThanOperatorName != null)
+          'lessThanOperatorName': lessThanOperatorName,
+        if (operatorName != null) 'operatorName': operatorName,
+      };
 }
 
 /// Options for timestamp properties.
@@ -9531,13 +8601,10 @@ class TimestampPropertyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operatorOptions != null) {
-      _json['operatorOptions'] = operatorOptions.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (operatorOptions != null)
+          'operatorOptions': operatorOptions.toJson(),
+      };
 }
 
 /// List of timestamp values.
@@ -9554,13 +8621,9 @@ class TimestampValues {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (values != null) {
-      _json['values'] = values;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (values != null) 'values': values,
+      };
 }
 
 class UnmappedIdentity {
@@ -9594,16 +8657,12 @@ class UnmappedIdentity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (externalIdentity != null) {
-      _json['externalIdentity'] = externalIdentity.toJson();
-    }
-    if (resolutionStatusCode != null) {
-      _json['resolutionStatusCode'] = resolutionStatusCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (externalIdentity != null)
+          'externalIdentity': externalIdentity.toJson(),
+        if (resolutionStatusCode != null)
+          'resolutionStatusCode': resolutionStatusCode,
+      };
 }
 
 class UnreserveItemsRequest {
@@ -9633,19 +8692,11 @@ class UnreserveItemsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (connectorName != null) {
-      _json['connectorName'] = connectorName;
-    }
-    if (debugOptions != null) {
-      _json['debugOptions'] = debugOptions.toJson();
-    }
-    if (queue != null) {
-      _json['queue'] = queue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (connectorName != null) 'connectorName': connectorName,
+        if (debugOptions != null) 'debugOptions': debugOptions.toJson(),
+        if (queue != null) 'queue': queue,
+      };
 }
 
 class UpdateDataSourceRequest {
@@ -9666,16 +8717,10 @@ class UpdateDataSourceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (debugOptions != null) {
-      _json['debugOptions'] = debugOptions.toJson();
-    }
-    if (source != null) {
-      _json['source'] = source.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (debugOptions != null) 'debugOptions': debugOptions.toJson(),
+        if (source != null) 'source': source.toJson(),
+      };
 }
 
 class UpdateSchemaRequest {
@@ -9705,19 +8750,11 @@ class UpdateSchemaRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (debugOptions != null) {
-      _json['debugOptions'] = debugOptions.toJson();
-    }
-    if (schema != null) {
-      _json['schema'] = schema.toJson();
-    }
-    if (validateOnly != null) {
-      _json['validateOnly'] = validateOnly;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (debugOptions != null) 'debugOptions': debugOptions.toJson(),
+        if (schema != null) 'schema': schema.toJson(),
+        if (validateOnly != null) 'validateOnly': validateOnly,
+      };
 }
 
 /// Represents an upload session reference.
@@ -9738,13 +8775,9 @@ class UploadItemRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+      };
 }
 
 /// Definition of a single value with generic type.
@@ -9780,28 +8813,14 @@ class Value {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (booleanValue != null) {
-      _json['booleanValue'] = booleanValue;
-    }
-    if (dateValue != null) {
-      _json['dateValue'] = dateValue.toJson();
-    }
-    if (doubleValue != null) {
-      _json['doubleValue'] = doubleValue;
-    }
-    if (integerValue != null) {
-      _json['integerValue'] = integerValue;
-    }
-    if (stringValue != null) {
-      _json['stringValue'] = stringValue;
-    }
-    if (timestampValue != null) {
-      _json['timestampValue'] = timestampValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (booleanValue != null) 'booleanValue': booleanValue,
+        if (dateValue != null) 'dateValue': dateValue.toJson(),
+        if (doubleValue != null) 'doubleValue': doubleValue,
+        if (integerValue != null) 'integerValue': integerValue,
+        if (stringValue != null) 'stringValue': stringValue,
+        if (timestampValue != null) 'timestampValue': timestampValue,
+      };
 }
 
 class ValueFilter {
@@ -9830,14 +8849,8 @@ class ValueFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operatorName != null) {
-      _json['operatorName'] = operatorName;
-    }
-    if (value != null) {
-      _json['value'] = value.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (operatorName != null) 'operatorName': operatorName,
+        if (value != null) 'value': value.toJson(),
+      };
 }

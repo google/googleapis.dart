@@ -1100,28 +1100,15 @@ class AggregateBucket {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (activity != null) {
-      _json['activity'] = activity;
-    }
-    if (dataset != null) {
-      _json['dataset'] = dataset.map((value) => value.toJson()).toList();
-    }
-    if (endTimeMillis != null) {
-      _json['endTimeMillis'] = endTimeMillis;
-    }
-    if (session != null) {
-      _json['session'] = session.toJson();
-    }
-    if (startTimeMillis != null) {
-      _json['startTimeMillis'] = startTimeMillis;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (activity != null) 'activity': activity,
+        if (dataset != null)
+          'dataset': dataset.map((value) => value.toJson()).toList(),
+        if (endTimeMillis != null) 'endTimeMillis': endTimeMillis,
+        if (session != null) 'session': session.toJson(),
+        if (startTimeMillis != null) 'startTimeMillis': startTimeMillis,
+        if (type != null) 'type': type,
+      };
 }
 
 /// The specification of which data to aggregate.
@@ -1156,16 +1143,10 @@ class AggregateBy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataSourceId != null) {
-      _json['dataSourceId'] = dataSourceId;
-    }
-    if (dataTypeName != null) {
-      _json['dataTypeName'] = dataTypeName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataSourceId != null) 'dataSourceId': dataSourceId,
+        if (dataTypeName != null) 'dataTypeName': dataTypeName,
+      };
 }
 
 /// Next id: 10
@@ -1263,35 +1244,21 @@ class AggregateRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aggregateBy != null) {
-      _json['aggregateBy'] =
-          aggregateBy.map((value) => value.toJson()).toList();
-    }
-    if (bucketByActivitySegment != null) {
-      _json['bucketByActivitySegment'] = bucketByActivitySegment.toJson();
-    }
-    if (bucketByActivityType != null) {
-      _json['bucketByActivityType'] = bucketByActivityType.toJson();
-    }
-    if (bucketBySession != null) {
-      _json['bucketBySession'] = bucketBySession.toJson();
-    }
-    if (bucketByTime != null) {
-      _json['bucketByTime'] = bucketByTime.toJson();
-    }
-    if (endTimeMillis != null) {
-      _json['endTimeMillis'] = endTimeMillis;
-    }
-    if (filteredDataQualityStandard != null) {
-      _json['filteredDataQualityStandard'] = filteredDataQualityStandard;
-    }
-    if (startTimeMillis != null) {
-      _json['startTimeMillis'] = startTimeMillis;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aggregateBy != null)
+          'aggregateBy': aggregateBy.map((value) => value.toJson()).toList(),
+        if (bucketByActivitySegment != null)
+          'bucketByActivitySegment': bucketByActivitySegment.toJson(),
+        if (bucketByActivityType != null)
+          'bucketByActivityType': bucketByActivityType.toJson(),
+        if (bucketBySession != null)
+          'bucketBySession': bucketBySession.toJson(),
+        if (bucketByTime != null) 'bucketByTime': bucketByTime.toJson(),
+        if (endTimeMillis != null) 'endTimeMillis': endTimeMillis,
+        if (filteredDataQualityStandard != null)
+          'filteredDataQualityStandard': filteredDataQualityStandard,
+        if (startTimeMillis != null) 'startTimeMillis': startTimeMillis,
+      };
 }
 
 class AggregateResponse {
@@ -1309,13 +1276,10 @@ class AggregateResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bucket != null) {
-      _json['bucket'] = bucket.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bucket != null)
+          'bucket': bucket.map((value) => value.toJson()).toList(),
+      };
 }
 
 class Application {
@@ -1361,22 +1325,12 @@ class Application {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detailsUrl != null) {
-      _json['detailsUrl'] = detailsUrl;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (packageName != null) {
-      _json['packageName'] = packageName;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detailsUrl != null) 'detailsUrl': detailsUrl,
+        if (name != null) 'name': name,
+        if (packageName != null) 'packageName': packageName,
+        if (version != null) 'version': version,
+      };
 }
 
 class BucketByActivity {
@@ -1400,16 +1354,11 @@ class BucketByActivity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (activityDataSourceId != null) {
-      _json['activityDataSourceId'] = activityDataSourceId;
-    }
-    if (minDurationMillis != null) {
-      _json['minDurationMillis'] = minDurationMillis;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (activityDataSourceId != null)
+          'activityDataSourceId': activityDataSourceId,
+        if (minDurationMillis != null) 'minDurationMillis': minDurationMillis,
+      };
 }
 
 class BucketBySession {
@@ -1425,13 +1374,9 @@ class BucketBySession {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (minDurationMillis != null) {
-      _json['minDurationMillis'] = minDurationMillis;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (minDurationMillis != null) 'minDurationMillis': minDurationMillis,
+      };
 }
 
 class BucketByTime {
@@ -1455,16 +1400,10 @@ class BucketByTime {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (durationMillis != null) {
-      _json['durationMillis'] = durationMillis;
-    }
-    if (period != null) {
-      _json['period'] = period.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (durationMillis != null) 'durationMillis': durationMillis,
+        if (period != null) 'period': period.toJson(),
+      };
 }
 
 class BucketByTimePeriod {
@@ -1493,19 +1432,11 @@ class BucketByTimePeriod {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (timeZoneId != null) {
-      _json['timeZoneId'] = timeZoneId;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (timeZoneId != null) 'timeZoneId': timeZoneId,
+        if (type != null) 'type': type,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Represents a single data point, generated by a particular data source.
@@ -1593,34 +1524,20 @@ class DataPoint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (computationTimeMillis != null) {
-      _json['computationTimeMillis'] = computationTimeMillis;
-    }
-    if (dataTypeName != null) {
-      _json['dataTypeName'] = dataTypeName;
-    }
-    if (endTimeNanos != null) {
-      _json['endTimeNanos'] = endTimeNanos;
-    }
-    if (modifiedTimeMillis != null) {
-      _json['modifiedTimeMillis'] = modifiedTimeMillis;
-    }
-    if (originDataSourceId != null) {
-      _json['originDataSourceId'] = originDataSourceId;
-    }
-    if (rawTimestampNanos != null) {
-      _json['rawTimestampNanos'] = rawTimestampNanos;
-    }
-    if (startTimeNanos != null) {
-      _json['startTimeNanos'] = startTimeNanos;
-    }
-    if (value != null) {
-      _json['value'] = value.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (computationTimeMillis != null)
+          'computationTimeMillis': computationTimeMillis,
+        if (dataTypeName != null) 'dataTypeName': dataTypeName,
+        if (endTimeNanos != null) 'endTimeNanos': endTimeNanos,
+        if (modifiedTimeMillis != null)
+          'modifiedTimeMillis': modifiedTimeMillis,
+        if (originDataSourceId != null)
+          'originDataSourceId': originDataSourceId,
+        if (rawTimestampNanos != null) 'rawTimestampNanos': rawTimestampNanos,
+        if (startTimeNanos != null) 'startTimeNanos': startTimeNanos,
+        if (value != null)
+          'value': value.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Definition of a unique source of sensor data.
@@ -1737,34 +1654,17 @@ class DataSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (application != null) {
-      _json['application'] = application.toJson();
-    }
-    if (dataQualityStandard != null) {
-      _json['dataQualityStandard'] = dataQualityStandard;
-    }
-    if (dataStreamId != null) {
-      _json['dataStreamId'] = dataStreamId;
-    }
-    if (dataStreamName != null) {
-      _json['dataStreamName'] = dataStreamName;
-    }
-    if (dataType != null) {
-      _json['dataType'] = dataType.toJson();
-    }
-    if (device != null) {
-      _json['device'] = device.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (application != null) 'application': application.toJson(),
+        if (dataQualityStandard != null)
+          'dataQualityStandard': dataQualityStandard,
+        if (dataStreamId != null) 'dataStreamId': dataStreamId,
+        if (dataStreamName != null) 'dataStreamName': dataStreamName,
+        if (dataType != null) 'dataType': dataType.toJson(),
+        if (device != null) 'device': device.toJson(),
+        if (name != null) 'name': name,
+        if (type != null) 'type': type,
+      };
 }
 
 class DataType {
@@ -1791,16 +1691,11 @@ class DataType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (field != null) {
-      _json['field'] = field.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (field != null)
+          'field': field.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+      };
 }
 
 /// In case of multi-dimensional data (such as an accelerometer with x, y, and z
@@ -1842,19 +1737,11 @@ class DataTypeField {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (format != null) {
-      _json['format'] = format;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (optional != null) {
-      _json['optional'] = optional;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (format != null) 'format': format,
+        if (name != null) 'name': name,
+        if (optional != null) 'optional': optional,
+      };
 }
 
 /// A dataset represents a projection container for data points.
@@ -1919,25 +1806,14 @@ class Dataset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataSourceId != null) {
-      _json['dataSourceId'] = dataSourceId;
-    }
-    if (maxEndTimeNs != null) {
-      _json['maxEndTimeNs'] = maxEndTimeNs;
-    }
-    if (minStartTimeNs != null) {
-      _json['minStartTimeNs'] = minStartTimeNs;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (point != null) {
-      _json['point'] = point.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataSourceId != null) 'dataSourceId': dataSourceId,
+        if (maxEndTimeNs != null) 'maxEndTimeNs': maxEndTimeNs,
+        if (minStartTimeNs != null) 'minStartTimeNs': minStartTimeNs,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (point != null)
+          'point': point.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Representation of an integrated device (such as a phone or a wearable) that
@@ -2001,25 +1877,13 @@ class Device {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (manufacturer != null) {
-      _json['manufacturer'] = manufacturer;
-    }
-    if (model != null) {
-      _json['model'] = model;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (uid != null) {
-      _json['uid'] = uid;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (manufacturer != null) 'manufacturer': manufacturer,
+        if (model != null) 'model': model,
+        if (type != null) 'type': type,
+        if (uid != null) 'uid': uid,
+        if (version != null) 'version': version,
+      };
 }
 
 class ListDataPointChangesResponse {
@@ -2063,24 +1927,16 @@ class ListDataPointChangesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataSourceId != null) {
-      _json['dataSourceId'] = dataSourceId;
-    }
-    if (deletedDataPoint != null) {
-      _json['deletedDataPoint'] =
-          deletedDataPoint.map((value) => value.toJson()).toList();
-    }
-    if (insertedDataPoint != null) {
-      _json['insertedDataPoint'] =
-          insertedDataPoint.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataSourceId != null) 'dataSourceId': dataSourceId,
+        if (deletedDataPoint != null)
+          'deletedDataPoint':
+              deletedDataPoint.map((value) => value.toJson()).toList(),
+        if (insertedDataPoint != null)
+          'insertedDataPoint':
+              insertedDataPoint.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class ListDataSourcesResponse {
@@ -2098,13 +1954,10 @@ class ListDataSourcesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataSource != null) {
-      _json['dataSource'] = dataSource.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataSource != null)
+          'dataSource': dataSource.map((value) => value.toJson()).toList(),
+      };
 }
 
 class ListSessionsResponse {
@@ -2151,23 +2004,15 @@ class ListSessionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deletedSession != null) {
-      _json['deletedSession'] =
-          deletedSession.map((value) => value.toJson()).toList();
-    }
-    if (hasMoreData != null) {
-      _json['hasMoreData'] = hasMoreData;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (session != null) {
-      _json['session'] = session.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deletedSession != null)
+          'deletedSession':
+              deletedSession.map((value) => value.toJson()).toList(),
+        if (hasMoreData != null) 'hasMoreData': hasMoreData,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (session != null)
+          'session': session.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Holder object for the value of an entry in a map field of a data point.
@@ -2186,13 +2031,9 @@ class MapValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fpVal != null) {
-      _json['fpVal'] = fpVal;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fpVal != null) 'fpVal': fpVal,
+      };
 }
 
 /// Sessions contain metadata, such as a user-friendly name and time interval
@@ -2264,37 +2105,18 @@ class Session {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (activeTimeMillis != null) {
-      _json['activeTimeMillis'] = activeTimeMillis;
-    }
-    if (activityType != null) {
-      _json['activityType'] = activityType;
-    }
-    if (application != null) {
-      _json['application'] = application.toJson();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (endTimeMillis != null) {
-      _json['endTimeMillis'] = endTimeMillis;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (modifiedTimeMillis != null) {
-      _json['modifiedTimeMillis'] = modifiedTimeMillis;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (startTimeMillis != null) {
-      _json['startTimeMillis'] = startTimeMillis;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (activeTimeMillis != null) 'activeTimeMillis': activeTimeMillis,
+        if (activityType != null) 'activityType': activityType,
+        if (application != null) 'application': application.toJson(),
+        if (description != null) 'description': description,
+        if (endTimeMillis != null) 'endTimeMillis': endTimeMillis,
+        if (id != null) 'id': id,
+        if (modifiedTimeMillis != null)
+          'modifiedTimeMillis': modifiedTimeMillis,
+        if (name != null) 'name': name,
+        if (startTimeMillis != null) 'startTimeMillis': startTimeMillis,
+      };
 }
 
 /// Holder object for the value of a single field in a data point.
@@ -2347,22 +2169,13 @@ class Value {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fpVal != null) {
-      _json['fpVal'] = fpVal;
-    }
-    if (intVal != null) {
-      _json['intVal'] = intVal;
-    }
-    if (mapVal != null) {
-      _json['mapVal'] = mapVal.map((value) => value.toJson()).toList();
-    }
-    if (stringVal != null) {
-      _json['stringVal'] = stringVal;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fpVal != null) 'fpVal': fpVal,
+        if (intVal != null) 'intVal': intVal,
+        if (mapVal != null)
+          'mapVal': mapVal.map((value) => value.toJson()).toList(),
+        if (stringVal != null) 'stringVal': stringVal,
+      };
 }
 
 class ValueMapValEntry {
@@ -2381,14 +2194,8 @@ class ValueMapValEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (value != null) {
-      _json['value'] = value.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (value != null) 'value': value.toJson(),
+      };
 }

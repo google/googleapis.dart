@@ -4252,13 +4252,9 @@ class Administrator {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (email != null) {
-      _json['email'] = email;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (email != null) 'email': email,
+      };
 }
 
 /// A token authorizing an admin to access an iframe.
@@ -4274,13 +4270,9 @@ class AdministratorWebToken {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (token != null) {
-      _json['token'] = token;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (token != null) 'token': token,
+      };
 }
 
 /// Specification for a token used to generate iframes.
@@ -4349,31 +4341,16 @@ class AdministratorWebTokenSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (managedConfigurations != null) {
-      _json['managedConfigurations'] = managedConfigurations.toJson();
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    if (permission != null) {
-      _json['permission'] = permission;
-    }
-    if (playSearch != null) {
-      _json['playSearch'] = playSearch.toJson();
-    }
-    if (privateApps != null) {
-      _json['privateApps'] = privateApps.toJson();
-    }
-    if (storeBuilder != null) {
-      _json['storeBuilder'] = storeBuilder.toJson();
-    }
-    if (webApps != null) {
-      _json['webApps'] = webApps.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (managedConfigurations != null)
+          'managedConfigurations': managedConfigurations.toJson(),
+        if (parent != null) 'parent': parent,
+        if (permission != null) 'permission': permission,
+        if (playSearch != null) 'playSearch': playSearch.toJson(),
+        if (privateApps != null) 'privateApps': privateApps.toJson(),
+        if (storeBuilder != null) 'storeBuilder': storeBuilder.toJson(),
+        if (webApps != null) 'webApps': webApps.toJson(),
+      };
 }
 
 class AdministratorWebTokenSpecManagedConfigurations {
@@ -4390,13 +4367,9 @@ class AdministratorWebTokenSpecManagedConfigurations {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enabled != null) 'enabled': enabled,
+      };
 }
 
 class AdministratorWebTokenSpecPlaySearch {
@@ -4421,16 +4394,10 @@ class AdministratorWebTokenSpecPlaySearch {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (approveApps != null) {
-      _json['approveApps'] = approveApps;
-    }
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (approveApps != null) 'approveApps': approveApps,
+        if (enabled != null) 'enabled': enabled,
+      };
 }
 
 class AdministratorWebTokenSpecPrivateApps {
@@ -4447,13 +4414,9 @@ class AdministratorWebTokenSpecPrivateApps {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enabled != null) 'enabled': enabled,
+      };
 }
 
 class AdministratorWebTokenSpecStoreBuilder {
@@ -4470,13 +4433,9 @@ class AdministratorWebTokenSpecStoreBuilder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enabled != null) 'enabled': enabled,
+      };
 }
 
 class AdministratorWebTokenSpecWebApps {
@@ -4493,13 +4452,9 @@ class AdministratorWebTokenSpecWebApps {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enabled != null) 'enabled': enabled,
+      };
 }
 
 /// Represents the list of app restrictions available to be pre-configured for
@@ -4526,17 +4481,11 @@ class AppRestrictionsSchema {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (restrictions != null) {
-      _json['restrictions'] =
-          restrictions.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (restrictions != null)
+          'restrictions': restrictions.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// An event generated when a new app version is uploaded to Google Play and its
@@ -4559,13 +4508,9 @@ class AppRestrictionsSchemaChangeEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (productId != null) {
-      _json['productId'] = productId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (productId != null) 'productId': productId,
+      };
 }
 
 /// A restriction in the App Restriction Schema represents a piece of
@@ -4657,35 +4602,18 @@ class AppRestrictionsSchemaRestriction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (defaultValue != null) {
-      _json['defaultValue'] = defaultValue.toJson();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (entry != null) {
-      _json['entry'] = entry;
-    }
-    if (entryValue != null) {
-      _json['entryValue'] = entryValue;
-    }
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (nestedRestriction != null) {
-      _json['nestedRestriction'] =
-          nestedRestriction.map((value) => value.toJson()).toList();
-    }
-    if (restrictionType != null) {
-      _json['restrictionType'] = restrictionType;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (defaultValue != null) 'defaultValue': defaultValue.toJson(),
+        if (description != null) 'description': description,
+        if (entry != null) 'entry': entry,
+        if (entryValue != null) 'entryValue': entryValue,
+        if (key != null) 'key': key,
+        if (nestedRestriction != null)
+          'nestedRestriction':
+              nestedRestriction.map((value) => value.toJson()).toList(),
+        if (restrictionType != null) 'restrictionType': restrictionType,
+        if (title != null) 'title': title,
+      };
 }
 
 /// A typed value for the restriction.
@@ -4740,25 +4668,13 @@ class AppRestrictionsSchemaRestrictionRestrictionValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (valueBool != null) {
-      _json['valueBool'] = valueBool;
-    }
-    if (valueInteger != null) {
-      _json['valueInteger'] = valueInteger;
-    }
-    if (valueMultiselect != null) {
-      _json['valueMultiselect'] = valueMultiselect;
-    }
-    if (valueString != null) {
-      _json['valueString'] = valueString;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+        if (valueBool != null) 'valueBool': valueBool,
+        if (valueInteger != null) 'valueInteger': valueInteger,
+        if (valueMultiselect != null) 'valueMultiselect': valueMultiselect,
+        if (valueString != null) 'valueString': valueString,
+      };
 }
 
 /// List of states set by the app.
@@ -4787,17 +4703,12 @@ class AppState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (keyedAppState != null) {
-      _json['keyedAppState'] =
-          keyedAppState.map((value) => value.toJson()).toList();
-    }
-    if (packageName != null) {
-      _json['packageName'] = packageName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (keyedAppState != null)
+          'keyedAppState':
+              keyedAppState.map((value) => value.toJson()).toList(),
+        if (packageName != null) 'packageName': packageName,
+      };
 }
 
 /// An event generated when a new version of an app is uploaded to Google Play.
@@ -4819,13 +4730,9 @@ class AppUpdateEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (productId != null) {
-      _json['productId'] = productId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (productId != null) 'productId': productId,
+      };
 }
 
 /// This represents a single version of the app.
@@ -4879,25 +4786,13 @@ class AppVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (isProduction != null) {
-      _json['isProduction'] = isProduction;
-    }
-    if (track != null) {
-      _json['track'] = track;
-    }
-    if (trackId != null) {
-      _json['trackId'] = trackId;
-    }
-    if (versionCode != null) {
-      _json['versionCode'] = versionCode;
-    }
-    if (versionString != null) {
-      _json['versionString'] = versionString;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (isProduction != null) 'isProduction': isProduction,
+        if (track != null) 'track': track,
+        if (trackId != null) 'trackId': trackId,
+        if (versionCode != null) 'versionCode': versionCode,
+        if (versionString != null) 'versionString': versionString,
+      };
 }
 
 /// Information on an approval URL.
@@ -4914,13 +4809,9 @@ class ApprovalUrlInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (approvalUrl != null) {
-      _json['approvalUrl'] = approvalUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (approvalUrl != null) 'approvalUrl': approvalUrl,
+      };
 }
 
 /// An AuthenticationToken is used by the EMM's device policy client on a device
@@ -4939,13 +4830,9 @@ class AuthenticationToken {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (token != null) {
-      _json['token'] = token;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (token != null) 'token': token,
+      };
 }
 
 /// The auto-install constraint.
@@ -4990,19 +4877,14 @@ class AutoInstallConstraint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (chargingStateConstraint != null) {
-      _json['chargingStateConstraint'] = chargingStateConstraint;
-    }
-    if (deviceIdleStateConstraint != null) {
-      _json['deviceIdleStateConstraint'] = deviceIdleStateConstraint;
-    }
-    if (networkTypeConstraint != null) {
-      _json['networkTypeConstraint'] = networkTypeConstraint;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (chargingStateConstraint != null)
+          'chargingStateConstraint': chargingStateConstraint,
+        if (deviceIdleStateConstraint != null)
+          'deviceIdleStateConstraint': deviceIdleStateConstraint,
+        if (networkTypeConstraint != null)
+          'networkTypeConstraint': networkTypeConstraint,
+      };
 }
 
 class AutoInstallPolicy {
@@ -5058,23 +4940,16 @@ class AutoInstallPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (autoInstallConstraint != null) {
-      _json['autoInstallConstraint'] =
-          autoInstallConstraint.map((value) => value.toJson()).toList();
-    }
-    if (autoInstallMode != null) {
-      _json['autoInstallMode'] = autoInstallMode;
-    }
-    if (autoInstallPriority != null) {
-      _json['autoInstallPriority'] = autoInstallPriority;
-    }
-    if (minimumVersionCode != null) {
-      _json['minimumVersionCode'] = minimumVersionCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (autoInstallConstraint != null)
+          'autoInstallConstraint':
+              autoInstallConstraint.map((value) => value.toJson()).toList(),
+        if (autoInstallMode != null) 'autoInstallMode': autoInstallMode,
+        if (autoInstallPriority != null)
+          'autoInstallPriority': autoInstallPriority,
+        if (minimumVersionCode != null)
+          'minimumVersionCode': minimumVersionCode,
+      };
 }
 
 /// A configuration variables resource contains the managed configuration
@@ -5104,17 +4979,11 @@ class ConfigurationVariables {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (mcmId != null) {
-      _json['mcmId'] = mcmId;
-    }
-    if (variableSet != null) {
-      _json['variableSet'] =
-          variableSet.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (mcmId != null) 'mcmId': mcmId,
+        if (variableSet != null)
+          'variableSet': variableSet.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A Devices resource represents a mobile device managed by the EMM and
@@ -5169,22 +5038,12 @@ class Device {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (androidId != null) {
-      _json['androidId'] = androidId;
-    }
-    if (managementType != null) {
-      _json['managementType'] = managementType;
-    }
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    if (report != null) {
-      _json['report'] = report.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (androidId != null) 'androidId': androidId,
+        if (managementType != null) 'managementType': managementType,
+        if (policy != null) 'policy': policy.toJson(),
+        if (report != null) 'report': report.toJson(),
+      };
 }
 
 /// Device report updated with the latest app states for managed apps on the
@@ -5216,16 +5075,12 @@ class DeviceReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appState != null) {
-      _json['appState'] = appState.map((value) => value.toJson()).toList();
-    }
-    if (lastUpdatedTimestampMillis != null) {
-      _json['lastUpdatedTimestampMillis'] = lastUpdatedTimestampMillis;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appState != null)
+          'appState': appState.map((value) => value.toJson()).toList(),
+        if (lastUpdatedTimestampMillis != null)
+          'lastUpdatedTimestampMillis': lastUpdatedTimestampMillis,
+      };
 }
 
 /// An event generated when an updated device report is available.
@@ -5260,19 +5115,11 @@ class DeviceReportUpdateEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceId != null) {
-      _json['deviceId'] = deviceId;
-    }
-    if (report != null) {
-      _json['report'] = report.toJson();
-    }
-    if (userId != null) {
-      _json['userId'] = userId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId,
+        if (report != null) 'report': report.toJson(),
+        if (userId != null) 'userId': userId,
+      };
 }
 
 /// The state of a user's device, as accessed by the getState and setState
@@ -5296,13 +5143,9 @@ class DeviceState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountState != null) {
-      _json['accountState'] = accountState;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountState != null) 'accountState': accountState,
+      };
 }
 
 class DevicesListResponse {
@@ -5320,13 +5163,10 @@ class DevicesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (device != null) {
-      _json['device'] = device.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (device != null)
+          'device': device.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// An Enterprises resource represents the binding between an EMM and a specific
@@ -5378,23 +5218,14 @@ class Enterprise {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (administrator != null) {
-      _json['administrator'] =
-          administrator.map((value) => value.toJson()).toList();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (primaryDomain != null) {
-      _json['primaryDomain'] = primaryDomain;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (administrator != null)
+          'administrator':
+              administrator.map((value) => value.toJson()).toList(),
+        if (id != null) 'id': id,
+        if (name != null) 'name': name,
+        if (primaryDomain != null) 'primaryDomain': primaryDomain,
+      };
 }
 
 /// A service account that can be used to authenticate as the enterprise to API
@@ -5411,13 +5242,9 @@ class EnterpriseAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountEmail != null) {
-      _json['accountEmail'] = accountEmail;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountEmail != null) 'accountEmail': accountEmail,
+      };
 }
 
 class EnterprisesListResponse {
@@ -5435,13 +5262,10 @@ class EnterprisesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enterprise != null) {
-      _json['enterprise'] = enterprise.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enterprise != null)
+          'enterprise': enterprise.map((value) => value.toJson()).toList(),
+      };
 }
 
 class EnterprisesSendTestPushNotificationResponse {
@@ -5463,16 +5287,10 @@ class EnterprisesSendTestPushNotificationResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (messageId != null) {
-      _json['messageId'] = messageId;
-    }
-    if (topicName != null) {
-      _json['topicName'] = topicName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (messageId != null) 'messageId': messageId,
+        if (topicName != null) 'topicName': topicName,
+      };
 }
 
 /// The presence of an Entitlements resource indicates that a user has the right
@@ -5522,16 +5340,10 @@ class Entitlement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (productId != null) {
-      _json['productId'] = productId;
-    }
-    if (reason != null) {
-      _json['reason'] = reason;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (productId != null) 'productId': productId,
+        if (reason != null) 'reason': reason,
+      };
 }
 
 class EntitlementsListResponse {
@@ -5552,14 +5364,10 @@ class EntitlementsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entitlement != null) {
-      _json['entitlement'] =
-          entitlement.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entitlement != null)
+          'entitlement': entitlement.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Group license objects allow you to keep track of licenses (called
@@ -5657,28 +5465,14 @@ class GroupLicense {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (acquisitionKind != null) {
-      _json['acquisitionKind'] = acquisitionKind;
-    }
-    if (approval != null) {
-      _json['approval'] = approval;
-    }
-    if (numProvisioned != null) {
-      _json['numProvisioned'] = numProvisioned;
-    }
-    if (numPurchased != null) {
-      _json['numPurchased'] = numPurchased;
-    }
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    if (productId != null) {
-      _json['productId'] = productId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (acquisitionKind != null) 'acquisitionKind': acquisitionKind,
+        if (approval != null) 'approval': approval,
+        if (numProvisioned != null) 'numProvisioned': numProvisioned,
+        if (numPurchased != null) 'numPurchased': numPurchased,
+        if (permissions != null) 'permissions': permissions,
+        if (productId != null) 'productId': productId,
+      };
 }
 
 class GroupLicenseUsersListResponse {
@@ -5696,13 +5490,9 @@ class GroupLicenseUsersListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (user != null) {
-      _json['user'] = user.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (user != null) 'user': user.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GroupLicensesListResponse {
@@ -5720,14 +5510,10 @@ class GroupLicensesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (groupLicense != null) {
-      _json['groupLicense'] =
-          groupLicense.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (groupLicense != null)
+          'groupLicense': groupLicense.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The existence of an Installs resource indicates that an app is installed on
@@ -5784,19 +5570,11 @@ class Install {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (installState != null) {
-      _json['installState'] = installState;
-    }
-    if (productId != null) {
-      _json['productId'] = productId;
-    }
-    if (versionCode != null) {
-      _json['versionCode'] = versionCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (installState != null) 'installState': installState,
+        if (productId != null) 'productId': productId,
+        if (versionCode != null) 'versionCode': versionCode,
+      };
 }
 
 /// An event generated when an app installation failed on a device
@@ -5851,25 +5629,13 @@ class InstallFailureEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceId != null) {
-      _json['deviceId'] = deviceId;
-    }
-    if (failureDetails != null) {
-      _json['failureDetails'] = failureDetails;
-    }
-    if (failureReason != null) {
-      _json['failureReason'] = failureReason;
-    }
-    if (productId != null) {
-      _json['productId'] = productId;
-    }
-    if (userId != null) {
-      _json['userId'] = userId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId,
+        if (failureDetails != null) 'failureDetails': failureDetails,
+        if (failureReason != null) 'failureReason': failureReason,
+        if (productId != null) 'productId': productId,
+        if (userId != null) 'userId': userId,
+      };
 }
 
 class InstallsListResponse {
@@ -5890,13 +5656,10 @@ class InstallsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (install != null) {
-      _json['install'] = install.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (install != null)
+          'install': install.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents a keyed app state containing a key, timestamp, severity level,
@@ -5955,25 +5718,14 @@ class KeyedAppState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (data != null) {
-      _json['data'] = data;
-    }
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    if (severity != null) {
-      _json['severity'] = severity;
-    }
-    if (stateTimestampMillis != null) {
-      _json['stateTimestampMillis'] = stateTimestampMillis;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (data != null) 'data': data,
+        if (key != null) 'key': key,
+        if (message != null) 'message': message,
+        if (severity != null) 'severity': severity,
+        if (stateTimestampMillis != null)
+          'stateTimestampMillis': stateTimestampMillis,
+      };
 }
 
 /// A localized string with its locale.
@@ -5997,16 +5749,10 @@ class LocalizedText {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locale != null) {
-      _json['locale'] = locale;
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locale != null) 'locale': locale,
+        if (text != null) 'text': text,
+      };
 }
 
 /// Maintenance window for managed Google Play Accounts.
@@ -6037,16 +5783,11 @@ class MaintenanceWindow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (durationMs != null) {
-      _json['durationMs'] = durationMs;
-    }
-    if (startTimeAfterMidnightMs != null) {
-      _json['startTimeAfterMidnightMs'] = startTimeAfterMidnightMs;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (durationMs != null) 'durationMs': durationMs,
+        if (startTimeAfterMidnightMs != null)
+          'startTimeAfterMidnightMs': startTimeAfterMidnightMs,
+      };
 }
 
 /// A managed configuration resource contains the set of managed properties
@@ -6089,23 +5830,15 @@ class ManagedConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (configurationVariables != null) {
-      _json['configurationVariables'] = configurationVariables.toJson();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (managedProperty != null) {
-      _json['managedProperty'] =
-          managedProperty.map((value) => value.toJson()).toList();
-    }
-    if (productId != null) {
-      _json['productId'] = productId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (configurationVariables != null)
+          'configurationVariables': configurationVariables.toJson(),
+        if (kind != null) 'kind': kind,
+        if (managedProperty != null)
+          'managedProperty':
+              managedProperty.map((value) => value.toJson()).toList(),
+        if (productId != null) 'productId': productId,
+      };
 }
 
 class ManagedConfigurationsForDeviceListResponse {
@@ -6124,14 +5857,12 @@ class ManagedConfigurationsForDeviceListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (managedConfigurationForDevice != null) {
-      _json['managedConfigurationForDevice'] =
-          managedConfigurationForDevice.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (managedConfigurationForDevice != null)
+          'managedConfigurationForDevice': managedConfigurationForDevice
+              .map((value) => value.toJson())
+              .toList(),
+      };
 }
 
 class ManagedConfigurationsForUserListResponse {
@@ -6150,14 +5881,12 @@ class ManagedConfigurationsForUserListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (managedConfigurationForUser != null) {
-      _json['managedConfigurationForUser'] =
-          managedConfigurationForUser.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (managedConfigurationForUser != null)
+          'managedConfigurationForUser': managedConfigurationForUser
+              .map((value) => value.toJson())
+              .toList(),
+      };
 }
 
 /// A managed configurations settings resource contains the set of managed
@@ -6192,19 +5921,12 @@ class ManagedConfigurationsSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (lastUpdatedTimestampMillis != null) {
-      _json['lastUpdatedTimestampMillis'] = lastUpdatedTimestampMillis;
-    }
-    if (mcmId != null) {
-      _json['mcmId'] = mcmId;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (lastUpdatedTimestampMillis != null)
+          'lastUpdatedTimestampMillis': lastUpdatedTimestampMillis,
+        if (mcmId != null) 'mcmId': mcmId,
+        if (name != null) 'name': name,
+      };
 }
 
 class ManagedConfigurationsSettingsListResponse {
@@ -6225,14 +5947,12 @@ class ManagedConfigurationsSettingsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (managedConfigurationsSettings != null) {
-      _json['managedConfigurationsSettings'] =
-          managedConfigurationsSettings.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (managedConfigurationsSettings != null)
+          'managedConfigurationsSettings': managedConfigurationsSettings
+              .map((value) => value.toJson())
+              .toList(),
+      };
 }
 
 /// A managed property of a managed configuration.
@@ -6300,32 +6020,17 @@ class ManagedProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (valueBool != null) {
-      _json['valueBool'] = valueBool;
-    }
-    if (valueBundle != null) {
-      _json['valueBundle'] = valueBundle.toJson();
-    }
-    if (valueBundleArray != null) {
-      _json['valueBundleArray'] =
-          valueBundleArray.map((value) => value.toJson()).toList();
-    }
-    if (valueInteger != null) {
-      _json['valueInteger'] = valueInteger;
-    }
-    if (valueString != null) {
-      _json['valueString'] = valueString;
-    }
-    if (valueStringArray != null) {
-      _json['valueStringArray'] = valueStringArray;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (valueBool != null) 'valueBool': valueBool,
+        if (valueBundle != null) 'valueBundle': valueBundle.toJson(),
+        if (valueBundleArray != null)
+          'valueBundleArray':
+              valueBundleArray.map((value) => value.toJson()).toList(),
+        if (valueInteger != null) 'valueInteger': valueInteger,
+        if (valueString != null) 'valueString': valueString,
+        if (valueStringArray != null) 'valueStringArray': valueStringArray,
+      };
 }
 
 /// A bundle of managed properties.
@@ -6344,14 +6049,11 @@ class ManagedPropertyBundle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (managedProperty != null) {
-      _json['managedProperty'] =
-          managedProperty.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (managedProperty != null)
+          'managedProperty':
+              managedProperty.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// An event generated when a new device is ready to be managed.
@@ -6397,22 +6099,12 @@ class NewDeviceEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceId != null) {
-      _json['deviceId'] = deviceId;
-    }
-    if (dpcPackageName != null) {
-      _json['dpcPackageName'] = dpcPackageName;
-    }
-    if (managementType != null) {
-      _json['managementType'] = managementType;
-    }
-    if (userId != null) {
-      _json['userId'] = userId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId,
+        if (dpcPackageName != null) 'dpcPackageName': dpcPackageName,
+        if (managementType != null) 'managementType': managementType,
+        if (userId != null) 'userId': userId,
+      };
 }
 
 /// An event generated when new permissions are added to an app.
@@ -6454,19 +6146,13 @@ class NewPermissionsEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (approvedPermissions != null) {
-      _json['approvedPermissions'] = approvedPermissions;
-    }
-    if (productId != null) {
-      _json['productId'] = productId;
-    }
-    if (requestedPermissions != null) {
-      _json['requestedPermissions'] = requestedPermissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (approvedPermissions != null)
+          'approvedPermissions': approvedPermissions,
+        if (productId != null) 'productId': productId,
+        if (requestedPermissions != null)
+          'requestedPermissions': requestedPermissions,
+      };
 }
 
 /// A notification of one event relating to an enterprise.
@@ -6573,45 +6259,27 @@ class Notification {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appRestrictionsSchemaChangeEvent != null) {
-      _json['appRestrictionsSchemaChangeEvent'] =
-          appRestrictionsSchemaChangeEvent.toJson();
-    }
-    if (appUpdateEvent != null) {
-      _json['appUpdateEvent'] = appUpdateEvent.toJson();
-    }
-    if (deviceReportUpdateEvent != null) {
-      _json['deviceReportUpdateEvent'] = deviceReportUpdateEvent.toJson();
-    }
-    if (enterpriseId != null) {
-      _json['enterpriseId'] = enterpriseId;
-    }
-    if (installFailureEvent != null) {
-      _json['installFailureEvent'] = installFailureEvent.toJson();
-    }
-    if (newDeviceEvent != null) {
-      _json['newDeviceEvent'] = newDeviceEvent.toJson();
-    }
-    if (newPermissionsEvent != null) {
-      _json['newPermissionsEvent'] = newPermissionsEvent.toJson();
-    }
-    if (notificationType != null) {
-      _json['notificationType'] = notificationType;
-    }
-    if (productApprovalEvent != null) {
-      _json['productApprovalEvent'] = productApprovalEvent.toJson();
-    }
-    if (productAvailabilityChangeEvent != null) {
-      _json['productAvailabilityChangeEvent'] =
-          productAvailabilityChangeEvent.toJson();
-    }
-    if (timestampMillis != null) {
-      _json['timestampMillis'] = timestampMillis;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appRestrictionsSchemaChangeEvent != null)
+          'appRestrictionsSchemaChangeEvent':
+              appRestrictionsSchemaChangeEvent.toJson(),
+        if (appUpdateEvent != null) 'appUpdateEvent': appUpdateEvent.toJson(),
+        if (deviceReportUpdateEvent != null)
+          'deviceReportUpdateEvent': deviceReportUpdateEvent.toJson(),
+        if (enterpriseId != null) 'enterpriseId': enterpriseId,
+        if (installFailureEvent != null)
+          'installFailureEvent': installFailureEvent.toJson(),
+        if (newDeviceEvent != null) 'newDeviceEvent': newDeviceEvent.toJson(),
+        if (newPermissionsEvent != null)
+          'newPermissionsEvent': newPermissionsEvent.toJson(),
+        if (notificationType != null) 'notificationType': notificationType,
+        if (productApprovalEvent != null)
+          'productApprovalEvent': productApprovalEvent.toJson(),
+        if (productAvailabilityChangeEvent != null)
+          'productAvailabilityChangeEvent':
+              productAvailabilityChangeEvent.toJson(),
+        if (timestampMillis != null) 'timestampMillis': timestampMillis,
+      };
 }
 
 /// A resource returned by the PullNotificationSet API, which contains a
@@ -6641,17 +6309,11 @@ class NotificationSet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (notification != null) {
-      _json['notification'] =
-          notification.map((value) => value.toJson()).toList();
-    }
-    if (notificationSetId != null) {
-      _json['notificationSetId'] = notificationSetId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (notification != null)
+          'notification': notification.map((value) => value.toJson()).toList(),
+        if (notificationSetId != null) 'notificationSetId': notificationSetId,
+      };
 }
 
 /// Information about the current page.
@@ -6685,19 +6347,11 @@ class PageInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resultPerPage != null) {
-      _json['resultPerPage'] = resultPerPage;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resultPerPage != null) 'resultPerPage': resultPerPage,
+        if (startIndex != null) 'startIndex': startIndex,
+        if (totalResults != null) 'totalResults': totalResults,
+      };
 }
 
 /// A Permissions resource represents some extra capability, to be granted to an
@@ -6733,19 +6387,11 @@ class Permission {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (permissionId != null) {
-      _json['permissionId'] = permissionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (name != null) 'name': name,
+        if (permissionId != null) 'permissionId': permissionId,
+      };
 }
 
 /// The device policy for a given managed device.
@@ -6825,26 +6471,18 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (autoUpdatePolicy != null) {
-      _json['autoUpdatePolicy'] = autoUpdatePolicy;
-    }
-    if (deviceReportPolicy != null) {
-      _json['deviceReportPolicy'] = deviceReportPolicy;
-    }
-    if (maintenanceWindow != null) {
-      _json['maintenanceWindow'] = maintenanceWindow.toJson();
-    }
-    if (productAvailabilityPolicy != null) {
-      _json['productAvailabilityPolicy'] = productAvailabilityPolicy;
-    }
-    if (productPolicy != null) {
-      _json['productPolicy'] =
-          productPolicy.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (autoUpdatePolicy != null) 'autoUpdatePolicy': autoUpdatePolicy,
+        if (deviceReportPolicy != null)
+          'deviceReportPolicy': deviceReportPolicy,
+        if (maintenanceWindow != null)
+          'maintenanceWindow': maintenanceWindow.toJson(),
+        if (productAvailabilityPolicy != null)
+          'productAvailabilityPolicy': productAvailabilityPolicy,
+        if (productPolicy != null)
+          'productPolicy':
+              productPolicy.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A Products resource represents an app in the Google Play store that is
@@ -7060,83 +6698,41 @@ class Product {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appTracks != null) {
-      _json['appTracks'] = appTracks.map((value) => value.toJson()).toList();
-    }
-    if (appVersion != null) {
-      _json['appVersion'] = appVersion.map((value) => value.toJson()).toList();
-    }
-    if (authorName != null) {
-      _json['authorName'] = authorName;
-    }
-    if (availableCountries != null) {
-      _json['availableCountries'] = availableCountries;
-    }
-    if (availableTracks != null) {
-      _json['availableTracks'] = availableTracks;
-    }
-    if (category != null) {
-      _json['category'] = category;
-    }
-    if (contentRating != null) {
-      _json['contentRating'] = contentRating;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (detailsUrl != null) {
-      _json['detailsUrl'] = detailsUrl;
-    }
-    if (distributionChannel != null) {
-      _json['distributionChannel'] = distributionChannel;
-    }
-    if (features != null) {
-      _json['features'] = features;
-    }
-    if (iconUrl != null) {
-      _json['iconUrl'] = iconUrl;
-    }
-    if (lastUpdatedTimestampMillis != null) {
-      _json['lastUpdatedTimestampMillis'] = lastUpdatedTimestampMillis;
-    }
-    if (minAndroidSdkVersion != null) {
-      _json['minAndroidSdkVersion'] = minAndroidSdkVersion;
-    }
-    if (permissions != null) {
-      _json['permissions'] =
-          permissions.map((value) => value.toJson()).toList();
-    }
-    if (productId != null) {
-      _json['productId'] = productId;
-    }
-    if (productPricing != null) {
-      _json['productPricing'] = productPricing;
-    }
-    if (recentChanges != null) {
-      _json['recentChanges'] = recentChanges;
-    }
-    if (requiresContainerApp != null) {
-      _json['requiresContainerApp'] = requiresContainerApp;
-    }
-    if (screenshotUrls != null) {
-      _json['screenshotUrls'] = screenshotUrls;
-    }
-    if (signingCertificate != null) {
-      _json['signingCertificate'] = signingCertificate.toJson();
-    }
-    if (smallIconUrl != null) {
-      _json['smallIconUrl'] = smallIconUrl;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (workDetailsUrl != null) {
-      _json['workDetailsUrl'] = workDetailsUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appTracks != null)
+          'appTracks': appTracks.map((value) => value.toJson()).toList(),
+        if (appVersion != null)
+          'appVersion': appVersion.map((value) => value.toJson()).toList(),
+        if (authorName != null) 'authorName': authorName,
+        if (availableCountries != null)
+          'availableCountries': availableCountries,
+        if (availableTracks != null) 'availableTracks': availableTracks,
+        if (category != null) 'category': category,
+        if (contentRating != null) 'contentRating': contentRating,
+        if (description != null) 'description': description,
+        if (detailsUrl != null) 'detailsUrl': detailsUrl,
+        if (distributionChannel != null)
+          'distributionChannel': distributionChannel,
+        if (features != null) 'features': features,
+        if (iconUrl != null) 'iconUrl': iconUrl,
+        if (lastUpdatedTimestampMillis != null)
+          'lastUpdatedTimestampMillis': lastUpdatedTimestampMillis,
+        if (minAndroidSdkVersion != null)
+          'minAndroidSdkVersion': minAndroidSdkVersion,
+        if (permissions != null)
+          'permissions': permissions.map((value) => value.toJson()).toList(),
+        if (productId != null) 'productId': productId,
+        if (productPricing != null) 'productPricing': productPricing,
+        if (recentChanges != null) 'recentChanges': recentChanges,
+        if (requiresContainerApp != null)
+          'requiresContainerApp': requiresContainerApp,
+        if (screenshotUrls != null) 'screenshotUrls': screenshotUrls,
+        if (signingCertificate != null)
+          'signingCertificate': signingCertificate.toJson(),
+        if (smallIconUrl != null) 'smallIconUrl': smallIconUrl,
+        if (title != null) 'title': title,
+        if (workDetailsUrl != null) 'workDetailsUrl': workDetailsUrl,
+      };
 }
 
 /// An event generated when a product's approval status is changed.
@@ -7167,16 +6763,10 @@ class ProductApprovalEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (approved != null) {
-      _json['approved'] = approved;
-    }
-    if (productId != null) {
-      _json['productId'] = productId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (approved != null) 'approved': approved,
+        if (productId != null) 'productId': productId,
+      };
 }
 
 /// An event generated whenever a product's availability changes.
@@ -7209,16 +6799,11 @@ class ProductAvailabilityChangeEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (availabilityStatus != null) {
-      _json['availabilityStatus'] = availabilityStatus;
-    }
-    if (productId != null) {
-      _json['productId'] = productId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (availabilityStatus != null)
+          'availabilityStatus': availabilityStatus,
+        if (productId != null) 'productId': productId,
+      };
 }
 
 /// A product permissions resource represents the set of permissions required by
@@ -7249,16 +6834,10 @@ class ProductPermission {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissionId != null) {
-      _json['permissionId'] = permissionId;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissionId != null) 'permissionId': permissionId,
+        if (state != null) 'state': state,
+      };
 }
 
 /// Information about the permissions required by a specific app and whether
@@ -7285,16 +6864,11 @@ class ProductPermissions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permission != null) {
-      _json['permission'] = permission.map((value) => value.toJson()).toList();
-    }
-    if (productId != null) {
-      _json['productId'] = productId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permission != null)
+          'permission': permission.map((value) => value.toJson()).toList(),
+        if (productId != null) 'productId': productId,
+      };
 }
 
 /// The policy for a product.
@@ -7375,28 +6949,16 @@ class ProductPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (autoInstallPolicy != null) {
-      _json['autoInstallPolicy'] = autoInstallPolicy.toJson();
-    }
-    if (autoUpdateMode != null) {
-      _json['autoUpdateMode'] = autoUpdateMode;
-    }
-    if (managedConfiguration != null) {
-      _json['managedConfiguration'] = managedConfiguration.toJson();
-    }
-    if (productId != null) {
-      _json['productId'] = productId;
-    }
-    if (trackIds != null) {
-      _json['trackIds'] = trackIds;
-    }
-    if (tracks != null) {
-      _json['tracks'] = tracks;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (autoInstallPolicy != null)
+          'autoInstallPolicy': autoInstallPolicy.toJson(),
+        if (autoUpdateMode != null) 'autoUpdateMode': autoUpdateMode,
+        if (managedConfiguration != null)
+          'managedConfiguration': managedConfiguration.toJson(),
+        if (productId != null) 'productId': productId,
+        if (trackIds != null) 'trackIds': trackIds,
+        if (tracks != null) 'tracks': tracks,
+      };
 }
 
 /// A set of products.
@@ -7456,20 +7018,14 @@ class ProductSet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (productId != null) {
-      _json['productId'] = productId;
-    }
-    if (productSetBehavior != null) {
-      _json['productSetBehavior'] = productSetBehavior;
-    }
-    if (productVisibility != null) {
-      _json['productVisibility'] =
-          productVisibility.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (productId != null) 'productId': productId,
+        if (productSetBehavior != null)
+          'productSetBehavior': productSetBehavior,
+        if (productVisibility != null)
+          'productVisibility':
+              productVisibility.map((value) => value.toJson()).toList(),
+      };
 }
 
 class ProductSigningCertificate {
@@ -7493,16 +7049,12 @@ class ProductSigningCertificate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (certificateHashSha1 != null) {
-      _json['certificateHashSha1'] = certificateHashSha1;
-    }
-    if (certificateHashSha256 != null) {
-      _json['certificateHashSha256'] = certificateHashSha256;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (certificateHashSha1 != null)
+          'certificateHashSha1': certificateHashSha1,
+        if (certificateHashSha256 != null)
+          'certificateHashSha256': certificateHashSha256,
+      };
 }
 
 /// A product to be made visible to a user.
@@ -7539,19 +7091,11 @@ class ProductVisibility {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (productId != null) {
-      _json['productId'] = productId;
-    }
-    if (trackIds != null) {
-      _json['trackIds'] = trackIds;
-    }
-    if (tracks != null) {
-      _json['tracks'] = tracks;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (productId != null) 'productId': productId,
+        if (trackIds != null) 'trackIds': trackIds,
+        if (tracks != null) 'tracks': tracks,
+      };
 }
 
 class ProductsApproveRequest {
@@ -7592,16 +7136,12 @@ class ProductsApproveRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (approvalUrlInfo != null) {
-      _json['approvalUrlInfo'] = approvalUrlInfo.toJson();
-    }
-    if (approvedPermissions != null) {
-      _json['approvedPermissions'] = approvedPermissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (approvalUrlInfo != null)
+          'approvalUrlInfo': approvalUrlInfo.toJson(),
+        if (approvedPermissions != null)
+          'approvedPermissions': approvedPermissions,
+      };
 }
 
 class ProductsGenerateApprovalUrlResponse {
@@ -7625,13 +7165,9 @@ class ProductsGenerateApprovalUrlResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (url != null) 'url': url,
+      };
 }
 
 class ProductsListResponse {
@@ -7664,19 +7200,13 @@ class ProductsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pageInfo != null) {
-      _json['pageInfo'] = pageInfo.toJson();
-    }
-    if (product != null) {
-      _json['product'] = product.map((value) => value.toJson()).toList();
-    }
-    if (tokenPagination != null) {
-      _json['tokenPagination'] = tokenPagination.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+        if (product != null)
+          'product': product.map((value) => value.toJson()).toList(),
+        if (tokenPagination != null)
+          'tokenPagination': tokenPagination.toJson(),
+      };
 }
 
 /// A service account identity, including the name and credentials that can be
@@ -7702,16 +7232,10 @@ class ServiceAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key.toJson(),
+        if (name != null) 'name': name,
+      };
 }
 
 /// Credentials that can be used to authenticate as a service account.
@@ -7761,22 +7285,12 @@ class ServiceAccountKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (data != null) {
-      _json['data'] = data;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (publicData != null) {
-      _json['publicData'] = publicData;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (data != null) 'data': data,
+        if (id != null) 'id': id,
+        if (publicData != null) 'publicData': publicData,
+        if (type != null) 'type': type,
+      };
 }
 
 class ServiceAccountKeysListResponse {
@@ -7794,14 +7308,11 @@ class ServiceAccountKeysListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (serviceAccountKey != null) {
-      _json['serviceAccountKey'] =
-          serviceAccountKey.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (serviceAccountKey != null)
+          'serviceAccountKey':
+              serviceAccountKey.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A resource returned by the GenerateSignupUrl API, which contains the Signup
@@ -7833,19 +7344,11 @@ class SignupInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (completionToken != null) {
-      _json['completionToken'] = completionToken;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (completionToken != null) 'completionToken': completionToken,
+        if (kind != null) 'kind': kind,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Definition of a managed Google Play store cluster, a list of products
@@ -7900,22 +7403,12 @@ class StoreCluster {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (name != null) {
-      _json['name'] = name.map((value) => value.toJson()).toList();
-    }
-    if (orderInPage != null) {
-      _json['orderInPage'] = orderInPage;
-    }
-    if (productId != null) {
-      _json['productId'] = productId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (name != null) 'name': name.map((value) => value.toJson()).toList(),
+        if (orderInPage != null) 'orderInPage': orderInPage,
+        if (productId != null) 'productId': productId,
+      };
 }
 
 /// General setting for the managed Google Play store layout, currently only
@@ -7950,16 +7443,10 @@ class StoreLayout {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (homepageId != null) {
-      _json['homepageId'] = homepageId;
-    }
-    if (storeLayoutType != null) {
-      _json['storeLayoutType'] = storeLayoutType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (homepageId != null) 'homepageId': homepageId,
+        if (storeLayoutType != null) 'storeLayoutType': storeLayoutType,
+      };
 }
 
 class StoreLayoutClustersListResponse {
@@ -7977,13 +7464,10 @@ class StoreLayoutClustersListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cluster != null) {
-      _json['cluster'] = cluster.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cluster != null)
+          'cluster': cluster.map((value) => value.toJson()).toList(),
+      };
 }
 
 class StoreLayoutPagesListResponse {
@@ -8001,13 +7485,9 @@ class StoreLayoutPagesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (page != null) {
-      _json['page'] = page.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (page != null) 'page': page.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Definition of a managed Google Play store page, made of a localized name and
@@ -8053,19 +7533,11 @@ class StorePage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (link != null) {
-      _json['link'] = link;
-    }
-    if (name != null) {
-      _json['name'] = name.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (link != null) 'link': link,
+        if (name != null) 'name': name.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Pagination information returned by a List operation when token pagination is
@@ -8096,16 +7568,10 @@ class TokenPagination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (previousPageToken != null) {
-      _json['previousPageToken'] = previousPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (previousPageToken != null) 'previousPageToken': previousPageToken,
+      };
 }
 
 /// Id to name association of a track.
@@ -8132,16 +7598,10 @@ class TrackInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (trackAlias != null) {
-      _json['trackAlias'] = trackAlias;
-    }
-    if (trackId != null) {
-      _json['trackId'] = trackId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (trackAlias != null) 'trackAlias': trackAlias,
+        if (trackId != null) 'trackId': trackId,
+      };
 }
 
 /// A Users resource represents an account associated with an enterprise.
@@ -8224,28 +7684,14 @@ class User {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountIdentifier != null) {
-      _json['accountIdentifier'] = accountIdentifier;
-    }
-    if (accountType != null) {
-      _json['accountType'] = accountType;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (managementType != null) {
-      _json['managementType'] = managementType;
-    }
-    if (primaryEmail != null) {
-      _json['primaryEmail'] = primaryEmail;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountIdentifier != null) 'accountIdentifier': accountIdentifier,
+        if (accountType != null) 'accountType': accountType,
+        if (displayName != null) 'displayName': displayName,
+        if (id != null) 'id': id,
+        if (managementType != null) 'managementType': managementType,
+        if (primaryEmail != null) 'primaryEmail': primaryEmail,
+      };
 }
 
 class UsersListResponse {
@@ -8263,13 +7709,9 @@ class UsersListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (user != null) {
-      _json['user'] = user.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (user != null) 'user': user.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A variable set is a key-value pair of EMM-provided placeholders and its
@@ -8296,16 +7738,10 @@ class VariableSet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (placeholder != null) {
-      _json['placeholder'] = placeholder;
-    }
-    if (userValue != null) {
-      _json['userValue'] = userValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (placeholder != null) 'placeholder': placeholder,
+        if (userValue != null) 'userValue': userValue,
+      };
 }
 
 /// A WebApps resource represents a web app created for an enterprise.
@@ -8396,31 +7832,16 @@ class WebApp {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayMode != null) {
-      _json['displayMode'] = displayMode;
-    }
-    if (icons != null) {
-      _json['icons'] = icons.map((value) => value.toJson()).toList();
-    }
-    if (isPublished != null) {
-      _json['isPublished'] = isPublished;
-    }
-    if (startUrl != null) {
-      _json['startUrl'] = startUrl;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (versionCode != null) {
-      _json['versionCode'] = versionCode;
-    }
-    if (webAppId != null) {
-      _json['webAppId'] = webAppId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayMode != null) 'displayMode': displayMode,
+        if (icons != null)
+          'icons': icons.map((value) => value.toJson()).toList(),
+        if (isPublished != null) 'isPublished': isPublished,
+        if (startUrl != null) 'startUrl': startUrl,
+        if (title != null) 'title': title,
+        if (versionCode != null) 'versionCode': versionCode,
+        if (webAppId != null) 'webAppId': webAppId,
+      };
 }
 
 /// Icon for a web app.
@@ -8440,13 +7861,9 @@ class WebAppIcon {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (imageData != null) {
-      _json['imageData'] = imageData;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (imageData != null) 'imageData': imageData,
+      };
 }
 
 class WebAppsListResponse {
@@ -8464,11 +7881,8 @@ class WebAppsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (webApp != null) {
-      _json['webApp'] = webApp.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (webApp != null)
+          'webApp': webApp.map((value) => value.toJson()).toList(),
+      };
 }

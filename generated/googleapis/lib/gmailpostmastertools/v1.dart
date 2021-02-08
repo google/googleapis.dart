@@ -378,19 +378,11 @@ class DeliveryError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errorClass != null) {
-      _json['errorClass'] = errorClass;
-    }
-    if (errorRatio != null) {
-      _json['errorRatio'] = errorRatio;
-    }
-    if (errorType != null) {
-      _json['errorType'] = errorType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errorClass != null) 'errorClass': errorClass,
+        if (errorRatio != null) 'errorRatio': errorRatio,
+        if (errorType != null) 'errorType': errorType,
+      };
 }
 
 /// A registered domain resource in the Postmaster API.
@@ -434,19 +426,11 @@ class Domain {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (permission != null) {
-      _json['permission'] = permission;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (name != null) 'name': name,
+        if (permission != null) 'permission': permission,
+      };
 }
 
 /// [Feedback loop](https://support.google.com/mail/answer/6254652) identifier
@@ -470,16 +454,10 @@ class FeedbackLoop {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (spamRatio != null) {
-      _json['spamRatio'] = spamRatio;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (spamRatio != null) 'spamRatio': spamRatio,
+      };
 }
 
 /// IP Reputation information for a set of IPs in a specific reputation
@@ -529,19 +507,11 @@ class IpReputation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ipCount != null) {
-      _json['ipCount'] = ipCount;
-    }
-    if (reputation != null) {
-      _json['reputation'] = reputation;
-    }
-    if (sampleIps != null) {
-      _json['sampleIps'] = sampleIps;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ipCount != null) 'ipCount': ipCount,
+        if (reputation != null) 'reputation': reputation,
+        if (sampleIps != null) 'sampleIps': sampleIps,
+      };
 }
 
 /// Response message for ListDomains.
@@ -567,16 +537,11 @@ class ListDomainsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (domains != null) {
-      _json['domains'] = domains.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (domains != null)
+          'domains': domains.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message for ListTrafficStats.
@@ -602,17 +567,11 @@ class ListTrafficStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (trafficStats != null) {
-      _json['trafficStats'] =
-          trafficStats.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (trafficStats != null)
+          'trafficStats': trafficStats.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Email traffic statistics pertaining to a specific date.
@@ -751,44 +710,26 @@ class TrafficStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deliveryErrors != null) {
-      _json['deliveryErrors'] =
-          deliveryErrors.map((value) => value.toJson()).toList();
-    }
-    if (dkimSuccessRatio != null) {
-      _json['dkimSuccessRatio'] = dkimSuccessRatio;
-    }
-    if (dmarcSuccessRatio != null) {
-      _json['dmarcSuccessRatio'] = dmarcSuccessRatio;
-    }
-    if (domainReputation != null) {
-      _json['domainReputation'] = domainReputation;
-    }
-    if (inboundEncryptionRatio != null) {
-      _json['inboundEncryptionRatio'] = inboundEncryptionRatio;
-    }
-    if (ipReputations != null) {
-      _json['ipReputations'] =
-          ipReputations.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (outboundEncryptionRatio != null) {
-      _json['outboundEncryptionRatio'] = outboundEncryptionRatio;
-    }
-    if (spammyFeedbackLoops != null) {
-      _json['spammyFeedbackLoops'] =
-          spammyFeedbackLoops.map((value) => value.toJson()).toList();
-    }
-    if (spfSuccessRatio != null) {
-      _json['spfSuccessRatio'] = spfSuccessRatio;
-    }
-    if (userReportedSpamRatio != null) {
-      _json['userReportedSpamRatio'] = userReportedSpamRatio;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deliveryErrors != null)
+          'deliveryErrors':
+              deliveryErrors.map((value) => value.toJson()).toList(),
+        if (dkimSuccessRatio != null) 'dkimSuccessRatio': dkimSuccessRatio,
+        if (dmarcSuccessRatio != null) 'dmarcSuccessRatio': dmarcSuccessRatio,
+        if (domainReputation != null) 'domainReputation': domainReputation,
+        if (inboundEncryptionRatio != null)
+          'inboundEncryptionRatio': inboundEncryptionRatio,
+        if (ipReputations != null)
+          'ipReputations':
+              ipReputations.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (outboundEncryptionRatio != null)
+          'outboundEncryptionRatio': outboundEncryptionRatio,
+        if (spammyFeedbackLoops != null)
+          'spammyFeedbackLoops':
+              spammyFeedbackLoops.map((value) => value.toJson()).toList(),
+        if (spfSuccessRatio != null) 'spfSuccessRatio': spfSuccessRatio,
+        if (userReportedSpamRatio != null)
+          'userReportedSpamRatio': userReportedSpamRatio,
+      };
 }

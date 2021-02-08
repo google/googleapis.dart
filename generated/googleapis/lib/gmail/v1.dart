@@ -3974,19 +3974,11 @@ class AutoForwarding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (disposition != null) {
-      _json['disposition'] = disposition;
-    }
-    if (emailAddress != null) {
-      _json['emailAddress'] = emailAddress;
-    }
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (disposition != null) 'disposition': disposition,
+        if (emailAddress != null) 'emailAddress': emailAddress,
+        if (enabled != null) 'enabled': enabled,
+      };
 }
 
 class BatchDeleteMessagesRequest {
@@ -4003,13 +3995,9 @@ class BatchDeleteMessagesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ids != null) {
-      _json['ids'] = ids;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ids != null) 'ids': ids,
+      };
 }
 
 class BatchModifyMessagesRequest {
@@ -4044,19 +4032,11 @@ class BatchModifyMessagesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (addLabelIds != null) {
-      _json['addLabelIds'] = addLabelIds;
-    }
-    if (ids != null) {
-      _json['ids'] = ids;
-    }
-    if (removeLabelIds != null) {
-      _json['removeLabelIds'] = removeLabelIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (addLabelIds != null) 'addLabelIds': addLabelIds,
+        if (ids != null) 'ids': ids,
+        if (removeLabelIds != null) 'removeLabelIds': removeLabelIds,
+      };
 }
 
 /// Settings for a delegate.
@@ -4094,16 +4074,11 @@ class Delegate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (delegateEmail != null) {
-      _json['delegateEmail'] = delegateEmail;
-    }
-    if (verificationStatus != null) {
-      _json['verificationStatus'] = verificationStatus;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (delegateEmail != null) 'delegateEmail': delegateEmail,
+        if (verificationStatus != null)
+          'verificationStatus': verificationStatus,
+      };
 }
 
 /// A draft email in the user's mailbox.
@@ -4126,16 +4101,10 @@ class Draft {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (message != null) {
-      _json['message'] = message.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (message != null) 'message': message.toJson(),
+      };
 }
 
 /// Resource definition for Gmail filters.
@@ -4167,19 +4136,11 @@ class Filter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (action != null) {
-      _json['action'] = action.toJson();
-    }
-    if (criteria != null) {
-      _json['criteria'] = criteria.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (action != null) 'action': action.toJson(),
+        if (criteria != null) 'criteria': criteria.toJson(),
+        if (id != null) 'id': id,
+      };
 }
 
 /// A set of actions to perform on a message.
@@ -4211,19 +4172,11 @@ class FilterAction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (addLabelIds != null) {
-      _json['addLabelIds'] = addLabelIds;
-    }
-    if (forward != null) {
-      _json['forward'] = forward;
-    }
-    if (removeLabelIds != null) {
-      _json['removeLabelIds'] = removeLabelIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (addLabelIds != null) 'addLabelIds': addLabelIds,
+        if (forward != null) 'forward': forward,
+        if (removeLabelIds != null) 'removeLabelIds': removeLabelIds,
+      };
 }
 
 /// Message matching criteria.
@@ -4305,37 +4258,17 @@ class FilterCriteria {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (excludeChats != null) {
-      _json['excludeChats'] = excludeChats;
-    }
-    if (from != null) {
-      _json['from'] = from;
-    }
-    if (hasAttachment != null) {
-      _json['hasAttachment'] = hasAttachment;
-    }
-    if (negatedQuery != null) {
-      _json['negatedQuery'] = negatedQuery;
-    }
-    if (query != null) {
-      _json['query'] = query;
-    }
-    if (size != null) {
-      _json['size'] = size;
-    }
-    if (sizeComparison != null) {
-      _json['sizeComparison'] = sizeComparison;
-    }
-    if (subject != null) {
-      _json['subject'] = subject;
-    }
-    if (to != null) {
-      _json['to'] = to;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (excludeChats != null) 'excludeChats': excludeChats,
+        if (from != null) 'from': from,
+        if (hasAttachment != null) 'hasAttachment': hasAttachment,
+        if (negatedQuery != null) 'negatedQuery': negatedQuery,
+        if (query != null) 'query': query,
+        if (size != null) 'size': size,
+        if (sizeComparison != null) 'sizeComparison': sizeComparison,
+        if (subject != null) 'subject': subject,
+        if (to != null) 'to': to,
+      };
 }
 
 /// Settings for a forwarding address.
@@ -4364,16 +4297,11 @@ class ForwardingAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (forwardingEmail != null) {
-      _json['forwardingEmail'] = forwardingEmail;
-    }
-    if (verificationStatus != null) {
-      _json['verificationStatus'] = verificationStatus;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (forwardingEmail != null) 'forwardingEmail': forwardingEmail,
+        if (verificationStatus != null)
+          'verificationStatus': verificationStatus,
+      };
 }
 
 /// A record of a change to the user's mailbox.
@@ -4440,32 +4368,22 @@ class History {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (labelsAdded != null) {
-      _json['labelsAdded'] =
-          labelsAdded.map((value) => value.toJson()).toList();
-    }
-    if (labelsRemoved != null) {
-      _json['labelsRemoved'] =
-          labelsRemoved.map((value) => value.toJson()).toList();
-    }
-    if (messages != null) {
-      _json['messages'] = messages.map((value) => value.toJson()).toList();
-    }
-    if (messagesAdded != null) {
-      _json['messagesAdded'] =
-          messagesAdded.map((value) => value.toJson()).toList();
-    }
-    if (messagesDeleted != null) {
-      _json['messagesDeleted'] =
-          messagesDeleted.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (labelsAdded != null)
+          'labelsAdded': labelsAdded.map((value) => value.toJson()).toList(),
+        if (labelsRemoved != null)
+          'labelsRemoved':
+              labelsRemoved.map((value) => value.toJson()).toList(),
+        if (messages != null)
+          'messages': messages.map((value) => value.toJson()).toList(),
+        if (messagesAdded != null)
+          'messagesAdded':
+              messagesAdded.map((value) => value.toJson()).toList(),
+        if (messagesDeleted != null)
+          'messagesDeleted':
+              messagesDeleted.map((value) => value.toJson()).toList(),
+      };
 }
 
 class HistoryLabelAdded {
@@ -4487,16 +4405,10 @@ class HistoryLabelAdded {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (labelIds != null) {
-      _json['labelIds'] = labelIds;
-    }
-    if (message != null) {
-      _json['message'] = message.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (labelIds != null) 'labelIds': labelIds,
+        if (message != null) 'message': message.toJson(),
+      };
 }
 
 class HistoryLabelRemoved {
@@ -4518,16 +4430,10 @@ class HistoryLabelRemoved {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (labelIds != null) {
-      _json['labelIds'] = labelIds;
-    }
-    if (message != null) {
-      _json['message'] = message.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (labelIds != null) 'labelIds': labelIds,
+        if (message != null) 'message': message.toJson(),
+      };
 }
 
 class HistoryMessageAdded {
@@ -4542,13 +4448,9 @@ class HistoryMessageAdded {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (message != null) {
-      _json['message'] = message.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (message != null) 'message': message.toJson(),
+      };
 }
 
 class HistoryMessageDeleted {
@@ -4563,13 +4465,9 @@ class HistoryMessageDeleted {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (message != null) {
-      _json['message'] = message.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (message != null) 'message': message.toJson(),
+      };
 }
 
 /// IMAP settings for an account.
@@ -4618,22 +4516,12 @@ class ImapSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (autoExpunge != null) {
-      _json['autoExpunge'] = autoExpunge;
-    }
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    if (expungeBehavior != null) {
-      _json['expungeBehavior'] = expungeBehavior;
-    }
-    if (maxFolderSize != null) {
-      _json['maxFolderSize'] = maxFolderSize;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (autoExpunge != null) 'autoExpunge': autoExpunge,
+        if (enabled != null) 'enabled': enabled,
+        if (expungeBehavior != null) 'expungeBehavior': expungeBehavior,
+        if (maxFolderSize != null) 'maxFolderSize': maxFolderSize,
+      };
 }
 
 /// Labels are used to categorize messages and threads within the user's
@@ -4728,40 +4616,20 @@ class Label {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (color != null) {
-      _json['color'] = color.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (labelListVisibility != null) {
-      _json['labelListVisibility'] = labelListVisibility;
-    }
-    if (messageListVisibility != null) {
-      _json['messageListVisibility'] = messageListVisibility;
-    }
-    if (messagesTotal != null) {
-      _json['messagesTotal'] = messagesTotal;
-    }
-    if (messagesUnread != null) {
-      _json['messagesUnread'] = messagesUnread;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (threadsTotal != null) {
-      _json['threadsTotal'] = threadsTotal;
-    }
-    if (threadsUnread != null) {
-      _json['threadsUnread'] = threadsUnread;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (color != null) 'color': color.toJson(),
+        if (id != null) 'id': id,
+        if (labelListVisibility != null)
+          'labelListVisibility': labelListVisibility,
+        if (messageListVisibility != null)
+          'messageListVisibility': messageListVisibility,
+        if (messagesTotal != null) 'messagesTotal': messagesTotal,
+        if (messagesUnread != null) 'messagesUnread': messagesUnread,
+        if (name != null) 'name': name,
+        if (threadsTotal != null) 'threadsTotal': threadsTotal,
+        if (threadsUnread != null) 'threadsUnread': threadsUnread,
+        if (type != null) 'type': type,
+      };
 }
 
 class LabelColor {
@@ -4814,16 +4682,10 @@ class LabelColor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backgroundColor != null) {
-      _json['backgroundColor'] = backgroundColor;
-    }
-    if (textColor != null) {
-      _json['textColor'] = textColor;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backgroundColor != null) 'backgroundColor': backgroundColor,
+        if (textColor != null) 'textColor': textColor,
+      };
 }
 
 /// Language settings for an account.
@@ -4853,13 +4715,9 @@ class LanguageSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayLanguage != null) {
-      _json['displayLanguage'] = displayLanguage;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayLanguage != null) 'displayLanguage': displayLanguage,
+      };
 }
 
 /// Response for the ListDelegates method.
@@ -4880,13 +4738,10 @@ class ListDelegatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (delegates != null) {
-      _json['delegates'] = delegates.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (delegates != null)
+          'delegates': delegates.map((value) => value.toJson()).toList(),
+      };
 }
 
 class ListDraftsResponse {
@@ -4920,19 +4775,13 @@ class ListDraftsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (drafts != null) {
-      _json['drafts'] = drafts.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (resultSizeEstimate != null) {
-      _json['resultSizeEstimate'] = resultSizeEstimate;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (drafts != null)
+          'drafts': drafts.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (resultSizeEstimate != null)
+          'resultSizeEstimate': resultSizeEstimate,
+      };
 }
 
 /// Response for the ListFilters method.
@@ -4951,13 +4800,10 @@ class ListFiltersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filter != null) {
-      _json['filter'] = filter.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filter != null)
+          'filter': filter.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response for the ListForwardingAddresses method.
@@ -4976,14 +4822,11 @@ class ListForwardingAddressesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (forwardingAddresses != null) {
-      _json['forwardingAddresses'] =
-          forwardingAddresses.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (forwardingAddresses != null)
+          'forwardingAddresses':
+              forwardingAddresses.map((value) => value.toJson()).toList(),
+      };
 }
 
 class ListHistoryResponse {
@@ -5016,19 +4859,12 @@ class ListHistoryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (history != null) {
-      _json['history'] = history.map((value) => value.toJson()).toList();
-    }
-    if (historyId != null) {
-      _json['historyId'] = historyId;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (history != null)
+          'history': history.map((value) => value.toJson()).toList(),
+        if (historyId != null) 'historyId': historyId,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class ListLabelsResponse {
@@ -5050,13 +4886,10 @@ class ListLabelsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (labels != null) {
-      _json['labels'] = labels.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (labels != null)
+          'labels': labels.map((value) => value.toJson()).toList(),
+      };
 }
 
 class ListMessagesResponse {
@@ -5089,19 +4922,13 @@ class ListMessagesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (messages != null) {
-      _json['messages'] = messages.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (resultSizeEstimate != null) {
-      _json['resultSizeEstimate'] = resultSizeEstimate;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (messages != null)
+          'messages': messages.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (resultSizeEstimate != null)
+          'resultSizeEstimate': resultSizeEstimate,
+      };
 }
 
 /// Response for the ListSendAs method.
@@ -5120,13 +4947,10 @@ class ListSendAsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sendAs != null) {
-      _json['sendAs'] = sendAs.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sendAs != null)
+          'sendAs': sendAs.map((value) => value.toJson()).toList(),
+      };
 }
 
 class ListSmimeInfoResponse {
@@ -5144,13 +4968,10 @@ class ListSmimeInfoResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (smimeInfo != null) {
-      _json['smimeInfo'] = smimeInfo.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (smimeInfo != null)
+          'smimeInfo': smimeInfo.map((value) => value.toJson()).toList(),
+      };
 }
 
 class ListThreadsResponse {
@@ -5184,19 +5005,13 @@ class ListThreadsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (resultSizeEstimate != null) {
-      _json['resultSizeEstimate'] = resultSizeEstimate;
-    }
-    if (threads != null) {
-      _json['threads'] = threads.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (resultSizeEstimate != null)
+          'resultSizeEstimate': resultSizeEstimate,
+        if (threads != null)
+          'threads': threads.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// An email message.
@@ -5286,37 +5101,17 @@ class Message {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (historyId != null) {
-      _json['historyId'] = historyId;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (internalDate != null) {
-      _json['internalDate'] = internalDate;
-    }
-    if (labelIds != null) {
-      _json['labelIds'] = labelIds;
-    }
-    if (payload != null) {
-      _json['payload'] = payload.toJson();
-    }
-    if (raw != null) {
-      _json['raw'] = raw;
-    }
-    if (sizeEstimate != null) {
-      _json['sizeEstimate'] = sizeEstimate;
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet;
-    }
-    if (threadId != null) {
-      _json['threadId'] = threadId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (historyId != null) 'historyId': historyId,
+        if (id != null) 'id': id,
+        if (internalDate != null) 'internalDate': internalDate,
+        if (labelIds != null) 'labelIds': labelIds,
+        if (payload != null) 'payload': payload.toJson(),
+        if (raw != null) 'raw': raw,
+        if (sizeEstimate != null) 'sizeEstimate': sizeEstimate,
+        if (snippet != null) 'snippet': snippet,
+        if (threadId != null) 'threadId': threadId,
+      };
 }
 
 /// A single MIME message part.
@@ -5380,28 +5175,16 @@ class MessagePart {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (body != null) {
-      _json['body'] = body.toJson();
-    }
-    if (filename != null) {
-      _json['filename'] = filename;
-    }
-    if (headers != null) {
-      _json['headers'] = headers.map((value) => value.toJson()).toList();
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    if (partId != null) {
-      _json['partId'] = partId;
-    }
-    if (parts != null) {
-      _json['parts'] = parts.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (body != null) 'body': body.toJson(),
+        if (filename != null) 'filename': filename,
+        if (headers != null)
+          'headers': headers.map((value) => value.toJson()).toList(),
+        if (mimeType != null) 'mimeType': mimeType,
+        if (partId != null) 'partId': partId,
+        if (parts != null)
+          'parts': parts.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The body of a single MIME message part.
@@ -5443,19 +5226,11 @@ class MessagePartBody {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attachmentId != null) {
-      _json['attachmentId'] = attachmentId;
-    }
-    if (data != null) {
-      _json['data'] = data;
-    }
-    if (size != null) {
-      _json['size'] = size;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attachmentId != null) 'attachmentId': attachmentId,
+        if (data != null) 'data': data,
+        if (size != null) 'size': size,
+      };
 }
 
 class MessagePartHeader {
@@ -5480,16 +5255,10 @@ class MessagePartHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (value != null) 'value': value,
+      };
 }
 
 class ModifyMessageRequest {
@@ -5514,16 +5283,10 @@ class ModifyMessageRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (addLabelIds != null) {
-      _json['addLabelIds'] = addLabelIds;
-    }
-    if (removeLabelIds != null) {
-      _json['removeLabelIds'] = removeLabelIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (addLabelIds != null) 'addLabelIds': addLabelIds,
+        if (removeLabelIds != null) 'removeLabelIds': removeLabelIds,
+      };
 }
 
 class ModifyThreadRequest {
@@ -5548,16 +5311,10 @@ class ModifyThreadRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (addLabelIds != null) {
-      _json['addLabelIds'] = addLabelIds;
-    }
-    if (removeLabelIds != null) {
-      _json['removeLabelIds'] = removeLabelIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (addLabelIds != null) 'addLabelIds': addLabelIds,
+        if (removeLabelIds != null) 'removeLabelIds': removeLabelIds,
+      };
 }
 
 /// POP settings for an account.
@@ -5593,16 +5350,10 @@ class PopSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessWindow != null) {
-      _json['accessWindow'] = accessWindow;
-    }
-    if (disposition != null) {
-      _json['disposition'] = disposition;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessWindow != null) 'accessWindow': accessWindow,
+        if (disposition != null) 'disposition': disposition,
+      };
 }
 
 /// Profile for a Gmail user.
@@ -5636,22 +5387,12 @@ class Profile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (emailAddress != null) {
-      _json['emailAddress'] = emailAddress;
-    }
-    if (historyId != null) {
-      _json['historyId'] = historyId;
-    }
-    if (messagesTotal != null) {
-      _json['messagesTotal'] = messagesTotal;
-    }
-    if (threadsTotal != null) {
-      _json['threadsTotal'] = threadsTotal;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (emailAddress != null) 'emailAddress': emailAddress,
+        if (historyId != null) 'historyId': historyId,
+        if (messagesTotal != null) 'messagesTotal': messagesTotal,
+        if (threadsTotal != null) 'threadsTotal': threadsTotal,
+      };
 }
 
 /// Settings associated with a send-as alias, which can be either the primary
@@ -5758,37 +5499,18 @@ class SendAs {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (isDefault != null) {
-      _json['isDefault'] = isDefault;
-    }
-    if (isPrimary != null) {
-      _json['isPrimary'] = isPrimary;
-    }
-    if (replyToAddress != null) {
-      _json['replyToAddress'] = replyToAddress;
-    }
-    if (sendAsEmail != null) {
-      _json['sendAsEmail'] = sendAsEmail;
-    }
-    if (signature != null) {
-      _json['signature'] = signature;
-    }
-    if (smtpMsa != null) {
-      _json['smtpMsa'] = smtpMsa.toJson();
-    }
-    if (treatAsAlias != null) {
-      _json['treatAsAlias'] = treatAsAlias;
-    }
-    if (verificationStatus != null) {
-      _json['verificationStatus'] = verificationStatus;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (isDefault != null) 'isDefault': isDefault,
+        if (isPrimary != null) 'isPrimary': isPrimary,
+        if (replyToAddress != null) 'replyToAddress': replyToAddress,
+        if (sendAsEmail != null) 'sendAsEmail': sendAsEmail,
+        if (signature != null) 'signature': signature,
+        if (smtpMsa != null) 'smtpMsa': smtpMsa.toJson(),
+        if (treatAsAlias != null) 'treatAsAlias': treatAsAlias,
+        if (verificationStatus != null)
+          'verificationStatus': verificationStatus,
+      };
 }
 
 /// An S/MIME email config.
@@ -5856,31 +5578,16 @@ class SmimeInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (encryptedKeyPassword != null) {
-      _json['encryptedKeyPassword'] = encryptedKeyPassword;
-    }
-    if (expiration != null) {
-      _json['expiration'] = expiration;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (isDefault != null) {
-      _json['isDefault'] = isDefault;
-    }
-    if (issuerCn != null) {
-      _json['issuerCn'] = issuerCn;
-    }
-    if (pem != null) {
-      _json['pem'] = pem;
-    }
-    if (pkcs12 != null) {
-      _json['pkcs12'] = pkcs12;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (encryptedKeyPassword != null)
+          'encryptedKeyPassword': encryptedKeyPassword,
+        if (expiration != null) 'expiration': expiration,
+        if (id != null) 'id': id,
+        if (isDefault != null) 'isDefault': isDefault,
+        if (issuerCn != null) 'issuerCn': issuerCn,
+        if (pem != null) 'pem': pem,
+        if (pkcs12 != null) 'pkcs12': pkcs12,
+      };
 }
 
 /// Configuration for communication with an SMTP service.
@@ -5940,25 +5647,13 @@ class SmtpMsa {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (host != null) {
-      _json['host'] = host;
-    }
-    if (password != null) {
-      _json['password'] = password;
-    }
-    if (port != null) {
-      _json['port'] = port;
-    }
-    if (securityMode != null) {
-      _json['securityMode'] = securityMode;
-    }
-    if (username != null) {
-      _json['username'] = username;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (host != null) 'host': host,
+        if (password != null) 'password': password,
+        if (port != null) 'port': port,
+        if (securityMode != null) 'securityMode': securityMode,
+        if (username != null) 'username': username,
+      };
 }
 
 /// A collection of messages representing a conversation.
@@ -5995,22 +5690,13 @@ class Thread {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (historyId != null) {
-      _json['historyId'] = historyId;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (messages != null) {
-      _json['messages'] = messages.map((value) => value.toJson()).toList();
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (historyId != null) 'historyId': historyId,
+        if (id != null) 'id': id,
+        if (messages != null)
+          'messages': messages.map((value) => value.toJson()).toList(),
+        if (snippet != null) 'snippet': snippet,
+      };
 }
 
 /// Vacation auto-reply settings for an account.
@@ -6093,34 +5779,18 @@ class VacationSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enableAutoReply != null) {
-      _json['enableAutoReply'] = enableAutoReply;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (responseBodyHtml != null) {
-      _json['responseBodyHtml'] = responseBodyHtml;
-    }
-    if (responseBodyPlainText != null) {
-      _json['responseBodyPlainText'] = responseBodyPlainText;
-    }
-    if (responseSubject != null) {
-      _json['responseSubject'] = responseSubject;
-    }
-    if (restrictToContacts != null) {
-      _json['restrictToContacts'] = restrictToContacts;
-    }
-    if (restrictToDomain != null) {
-      _json['restrictToDomain'] = restrictToDomain;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enableAutoReply != null) 'enableAutoReply': enableAutoReply,
+        if (endTime != null) 'endTime': endTime,
+        if (responseBodyHtml != null) 'responseBodyHtml': responseBodyHtml,
+        if (responseBodyPlainText != null)
+          'responseBodyPlainText': responseBodyPlainText,
+        if (responseSubject != null) 'responseSubject': responseSubject,
+        if (restrictToContacts != null)
+          'restrictToContacts': restrictToContacts,
+        if (restrictToDomain != null) 'restrictToDomain': restrictToDomain,
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// Set up or update a new push notification watch on this user's mailbox.
@@ -6167,19 +5837,11 @@ class WatchRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (labelFilterAction != null) {
-      _json['labelFilterAction'] = labelFilterAction;
-    }
-    if (labelIds != null) {
-      _json['labelIds'] = labelIds;
-    }
-    if (topicName != null) {
-      _json['topicName'] = topicName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (labelFilterAction != null) 'labelFilterAction': labelFilterAction,
+        if (labelIds != null) 'labelIds': labelIds,
+        if (topicName != null) 'topicName': topicName,
+      };
 }
 
 /// Push notification watch response.
@@ -6204,14 +5866,8 @@ class WatchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (expiration != null) {
-      _json['expiration'] = expiration;
-    }
-    if (historyId != null) {
-      _json['historyId'] = historyId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (expiration != null) 'expiration': expiration,
+        if (historyId != null) 'historyId': historyId,
+      };
 }

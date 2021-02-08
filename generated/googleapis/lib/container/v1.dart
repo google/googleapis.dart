@@ -4120,16 +4120,10 @@ class AcceleratorConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (acceleratorCount != null) {
-      _json['acceleratorCount'] = acceleratorCount;
-    }
-    if (acceleratorType != null) {
-      _json['acceleratorType'] = acceleratorType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (acceleratorCount != null) 'acceleratorCount': acceleratorCount,
+        if (acceleratorType != null) 'acceleratorType': acceleratorType,
+      };
 }
 
 /// Configuration for the addons that can be automatically spun up in the
@@ -4213,35 +4207,23 @@ class AddonsConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cloudRunConfig != null) {
-      _json['cloudRunConfig'] = cloudRunConfig.toJson();
-    }
-    if (configConnectorConfig != null) {
-      _json['configConnectorConfig'] = configConnectorConfig.toJson();
-    }
-    if (dnsCacheConfig != null) {
-      _json['dnsCacheConfig'] = dnsCacheConfig.toJson();
-    }
-    if (gcePersistentDiskCsiDriverConfig != null) {
-      _json['gcePersistentDiskCsiDriverConfig'] =
-          gcePersistentDiskCsiDriverConfig.toJson();
-    }
-    if (horizontalPodAutoscaling != null) {
-      _json['horizontalPodAutoscaling'] = horizontalPodAutoscaling.toJson();
-    }
-    if (httpLoadBalancing != null) {
-      _json['httpLoadBalancing'] = httpLoadBalancing.toJson();
-    }
-    if (kubernetesDashboard != null) {
-      _json['kubernetesDashboard'] = kubernetesDashboard.toJson();
-    }
-    if (networkPolicyConfig != null) {
-      _json['networkPolicyConfig'] = networkPolicyConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cloudRunConfig != null) 'cloudRunConfig': cloudRunConfig.toJson(),
+        if (configConnectorConfig != null)
+          'configConnectorConfig': configConnectorConfig.toJson(),
+        if (dnsCacheConfig != null) 'dnsCacheConfig': dnsCacheConfig.toJson(),
+        if (gcePersistentDiskCsiDriverConfig != null)
+          'gcePersistentDiskCsiDriverConfig':
+              gcePersistentDiskCsiDriverConfig.toJson(),
+        if (horizontalPodAutoscaling != null)
+          'horizontalPodAutoscaling': horizontalPodAutoscaling.toJson(),
+        if (httpLoadBalancing != null)
+          'httpLoadBalancing': httpLoadBalancing.toJson(),
+        if (kubernetesDashboard != null)
+          'kubernetesDashboard': kubernetesDashboard.toJson(),
+        if (networkPolicyConfig != null)
+          'networkPolicyConfig': networkPolicyConfig.toJson(),
+      };
 }
 
 /// Configuration for returning group information from authenticators.
@@ -4266,16 +4248,10 @@ class AuthenticatorGroupsConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    if (securityGroup != null) {
-      _json['securityGroup'] = securityGroup;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enabled != null) 'enabled': enabled,
+        if (securityGroup != null) 'securityGroup': securityGroup,
+      };
 }
 
 /// AutoUpgradeOptions defines the set of options for the user to control how
@@ -4305,16 +4281,11 @@ class AutoUpgradeOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (autoUpgradeStartTime != null) {
-      _json['autoUpgradeStartTime'] = autoUpgradeStartTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (autoUpgradeStartTime != null)
+          'autoUpgradeStartTime': autoUpgradeStartTime,
+        if (description != null) 'description': description,
+      };
 }
 
 /// AutoprovisioningNodePoolDefaults contains defaults for a node pool created
@@ -4403,37 +4374,19 @@ class AutoprovisioningNodePoolDefaults {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bootDiskKmsKey != null) {
-      _json['bootDiskKmsKey'] = bootDiskKmsKey;
-    }
-    if (diskSizeGb != null) {
-      _json['diskSizeGb'] = diskSizeGb;
-    }
-    if (diskType != null) {
-      _json['diskType'] = diskType;
-    }
-    if (management != null) {
-      _json['management'] = management.toJson();
-    }
-    if (minCpuPlatform != null) {
-      _json['minCpuPlatform'] = minCpuPlatform;
-    }
-    if (oauthScopes != null) {
-      _json['oauthScopes'] = oauthScopes;
-    }
-    if (serviceAccount != null) {
-      _json['serviceAccount'] = serviceAccount;
-    }
-    if (shieldedInstanceConfig != null) {
-      _json['shieldedInstanceConfig'] = shieldedInstanceConfig.toJson();
-    }
-    if (upgradeSettings != null) {
-      _json['upgradeSettings'] = upgradeSettings.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bootDiskKmsKey != null) 'bootDiskKmsKey': bootDiskKmsKey,
+        if (diskSizeGb != null) 'diskSizeGb': diskSizeGb,
+        if (diskType != null) 'diskType': diskType,
+        if (management != null) 'management': management.toJson(),
+        if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform,
+        if (oauthScopes != null) 'oauthScopes': oauthScopes,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount,
+        if (shieldedInstanceConfig != null)
+          'shieldedInstanceConfig': shieldedInstanceConfig.toJson(),
+        if (upgradeSettings != null)
+          'upgradeSettings': upgradeSettings.toJson(),
+      };
 }
 
 /// Parameters for using BigQuery as the destination of resource usage export.
@@ -4449,13 +4402,9 @@ class BigQueryDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (datasetId != null) {
-      _json['datasetId'] = datasetId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (datasetId != null) 'datasetId': datasetId,
+      };
 }
 
 /// Configuration for Binary Authorization.
@@ -4474,13 +4423,9 @@ class BinaryAuthorization {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enabled != null) 'enabled': enabled,
+      };
 }
 
 /// CancelOperationRequest cancels a single operation.
@@ -4531,22 +4476,12 @@ class CancelOperationRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (operationId != null) {
-      _json['operationId'] = operationId;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (operationId != null) 'operationId': operationId,
+        if (projectId != null) 'projectId': projectId,
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// CidrBlock contains an optional name and one CIDR block.
@@ -4568,16 +4503,10 @@ class CidrBlock {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cidrBlock != null) {
-      _json['cidrBlock'] = cidrBlock;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cidrBlock != null) 'cidrBlock': cidrBlock,
+        if (displayName != null) 'displayName': displayName,
+      };
 }
 
 /// Configuration for client certificates on the cluster.
@@ -4593,13 +4522,10 @@ class ClientCertificateConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (issueClientCertificate != null) {
-      _json['issueClientCertificate'] = issueClientCertificate;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (issueClientCertificate != null)
+          'issueClientCertificate': issueClientCertificate,
+      };
 }
 
 /// Configuration options for the Cloud Run feature.
@@ -4628,16 +4554,10 @@ class CloudRunConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (disabled != null) {
-      _json['disabled'] = disabled;
-    }
-    if (loadBalancerType != null) {
-      _json['loadBalancerType'] = loadBalancerType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (disabled != null) 'disabled': disabled,
+        if (loadBalancerType != null) 'loadBalancerType': loadBalancerType,
+      };
 }
 
 /// A Google Kubernetes Engine cluster.
@@ -5171,167 +5091,79 @@ class Cluster {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (addonsConfig != null) {
-      _json['addonsConfig'] = addonsConfig.toJson();
-    }
-    if (authenticatorGroupsConfig != null) {
-      _json['authenticatorGroupsConfig'] = authenticatorGroupsConfig.toJson();
-    }
-    if (autoscaling != null) {
-      _json['autoscaling'] = autoscaling.toJson();
-    }
-    if (binaryAuthorization != null) {
-      _json['binaryAuthorization'] = binaryAuthorization.toJson();
-    }
-    if (clusterIpv4Cidr != null) {
-      _json['clusterIpv4Cidr'] = clusterIpv4Cidr;
-    }
-    if (conditions != null) {
-      _json['conditions'] = conditions.map((value) => value.toJson()).toList();
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (currentMasterVersion != null) {
-      _json['currentMasterVersion'] = currentMasterVersion;
-    }
-    if (currentNodeCount != null) {
-      _json['currentNodeCount'] = currentNodeCount;
-    }
-    if (currentNodeVersion != null) {
-      _json['currentNodeVersion'] = currentNodeVersion;
-    }
-    if (databaseEncryption != null) {
-      _json['databaseEncryption'] = databaseEncryption.toJson();
-    }
-    if (defaultMaxPodsConstraint != null) {
-      _json['defaultMaxPodsConstraint'] = defaultMaxPodsConstraint.toJson();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (enableKubernetesAlpha != null) {
-      _json['enableKubernetesAlpha'] = enableKubernetesAlpha;
-    }
-    if (enableTpu != null) {
-      _json['enableTpu'] = enableTpu;
-    }
-    if (endpoint != null) {
-      _json['endpoint'] = endpoint;
-    }
-    if (expireTime != null) {
-      _json['expireTime'] = expireTime;
-    }
-    if (initialClusterVersion != null) {
-      _json['initialClusterVersion'] = initialClusterVersion;
-    }
-    if (initialNodeCount != null) {
-      _json['initialNodeCount'] = initialNodeCount;
-    }
-    if (instanceGroupUrls != null) {
-      _json['instanceGroupUrls'] = instanceGroupUrls;
-    }
-    if (ipAllocationPolicy != null) {
-      _json['ipAllocationPolicy'] = ipAllocationPolicy.toJson();
-    }
-    if (labelFingerprint != null) {
-      _json['labelFingerprint'] = labelFingerprint;
-    }
-    if (legacyAbac != null) {
-      _json['legacyAbac'] = legacyAbac.toJson();
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (locations != null) {
-      _json['locations'] = locations;
-    }
-    if (loggingService != null) {
-      _json['loggingService'] = loggingService;
-    }
-    if (maintenancePolicy != null) {
-      _json['maintenancePolicy'] = maintenancePolicy.toJson();
-    }
-    if (masterAuth != null) {
-      _json['masterAuth'] = masterAuth.toJson();
-    }
-    if (masterAuthorizedNetworksConfig != null) {
-      _json['masterAuthorizedNetworksConfig'] =
-          masterAuthorizedNetworksConfig.toJson();
-    }
-    if (monitoringService != null) {
-      _json['monitoringService'] = monitoringService;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (network != null) {
-      _json['network'] = network;
-    }
-    if (networkConfig != null) {
-      _json['networkConfig'] = networkConfig.toJson();
-    }
-    if (networkPolicy != null) {
-      _json['networkPolicy'] = networkPolicy.toJson();
-    }
-    if (nodeConfig != null) {
-      _json['nodeConfig'] = nodeConfig.toJson();
-    }
-    if (nodeIpv4CidrSize != null) {
-      _json['nodeIpv4CidrSize'] = nodeIpv4CidrSize;
-    }
-    if (nodePools != null) {
-      _json['nodePools'] = nodePools.map((value) => value.toJson()).toList();
-    }
-    if (notificationConfig != null) {
-      _json['notificationConfig'] = notificationConfig.toJson();
-    }
-    if (privateClusterConfig != null) {
-      _json['privateClusterConfig'] = privateClusterConfig.toJson();
-    }
-    if (releaseChannel != null) {
-      _json['releaseChannel'] = releaseChannel.toJson();
-    }
-    if (resourceLabels != null) {
-      _json['resourceLabels'] = resourceLabels;
-    }
-    if (resourceUsageExportConfig != null) {
-      _json['resourceUsageExportConfig'] = resourceUsageExportConfig.toJson();
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (servicesIpv4Cidr != null) {
-      _json['servicesIpv4Cidr'] = servicesIpv4Cidr;
-    }
-    if (shieldedNodes != null) {
-      _json['shieldedNodes'] = shieldedNodes.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (statusMessage != null) {
-      _json['statusMessage'] = statusMessage;
-    }
-    if (subnetwork != null) {
-      _json['subnetwork'] = subnetwork;
-    }
-    if (tpuIpv4CidrBlock != null) {
-      _json['tpuIpv4CidrBlock'] = tpuIpv4CidrBlock;
-    }
-    if (verticalPodAutoscaling != null) {
-      _json['verticalPodAutoscaling'] = verticalPodAutoscaling.toJson();
-    }
-    if (workloadIdentityConfig != null) {
-      _json['workloadIdentityConfig'] = workloadIdentityConfig.toJson();
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (addonsConfig != null) 'addonsConfig': addonsConfig.toJson(),
+        if (authenticatorGroupsConfig != null)
+          'authenticatorGroupsConfig': authenticatorGroupsConfig.toJson(),
+        if (autoscaling != null) 'autoscaling': autoscaling.toJson(),
+        if (binaryAuthorization != null)
+          'binaryAuthorization': binaryAuthorization.toJson(),
+        if (clusterIpv4Cidr != null) 'clusterIpv4Cidr': clusterIpv4Cidr,
+        if (conditions != null)
+          'conditions': conditions.map((value) => value.toJson()).toList(),
+        if (createTime != null) 'createTime': createTime,
+        if (currentMasterVersion != null)
+          'currentMasterVersion': currentMasterVersion,
+        if (currentNodeCount != null) 'currentNodeCount': currentNodeCount,
+        if (currentNodeVersion != null)
+          'currentNodeVersion': currentNodeVersion,
+        if (databaseEncryption != null)
+          'databaseEncryption': databaseEncryption.toJson(),
+        if (defaultMaxPodsConstraint != null)
+          'defaultMaxPodsConstraint': defaultMaxPodsConstraint.toJson(),
+        if (description != null) 'description': description,
+        if (enableKubernetesAlpha != null)
+          'enableKubernetesAlpha': enableKubernetesAlpha,
+        if (enableTpu != null) 'enableTpu': enableTpu,
+        if (endpoint != null) 'endpoint': endpoint,
+        if (expireTime != null) 'expireTime': expireTime,
+        if (initialClusterVersion != null)
+          'initialClusterVersion': initialClusterVersion,
+        if (initialNodeCount != null) 'initialNodeCount': initialNodeCount,
+        if (instanceGroupUrls != null) 'instanceGroupUrls': instanceGroupUrls,
+        if (ipAllocationPolicy != null)
+          'ipAllocationPolicy': ipAllocationPolicy.toJson(),
+        if (labelFingerprint != null) 'labelFingerprint': labelFingerprint,
+        if (legacyAbac != null) 'legacyAbac': legacyAbac.toJson(),
+        if (location != null) 'location': location,
+        if (locations != null) 'locations': locations,
+        if (loggingService != null) 'loggingService': loggingService,
+        if (maintenancePolicy != null)
+          'maintenancePolicy': maintenancePolicy.toJson(),
+        if (masterAuth != null) 'masterAuth': masterAuth.toJson(),
+        if (masterAuthorizedNetworksConfig != null)
+          'masterAuthorizedNetworksConfig':
+              masterAuthorizedNetworksConfig.toJson(),
+        if (monitoringService != null) 'monitoringService': monitoringService,
+        if (name != null) 'name': name,
+        if (network != null) 'network': network,
+        if (networkConfig != null) 'networkConfig': networkConfig.toJson(),
+        if (networkPolicy != null) 'networkPolicy': networkPolicy.toJson(),
+        if (nodeConfig != null) 'nodeConfig': nodeConfig.toJson(),
+        if (nodeIpv4CidrSize != null) 'nodeIpv4CidrSize': nodeIpv4CidrSize,
+        if (nodePools != null)
+          'nodePools': nodePools.map((value) => value.toJson()).toList(),
+        if (notificationConfig != null)
+          'notificationConfig': notificationConfig.toJson(),
+        if (privateClusterConfig != null)
+          'privateClusterConfig': privateClusterConfig.toJson(),
+        if (releaseChannel != null) 'releaseChannel': releaseChannel.toJson(),
+        if (resourceLabels != null) 'resourceLabels': resourceLabels,
+        if (resourceUsageExportConfig != null)
+          'resourceUsageExportConfig': resourceUsageExportConfig.toJson(),
+        if (selfLink != null) 'selfLink': selfLink,
+        if (servicesIpv4Cidr != null) 'servicesIpv4Cidr': servicesIpv4Cidr,
+        if (shieldedNodes != null) 'shieldedNodes': shieldedNodes.toJson(),
+        if (status != null) 'status': status,
+        if (statusMessage != null) 'statusMessage': statusMessage,
+        if (subnetwork != null) 'subnetwork': subnetwork,
+        if (tpuIpv4CidrBlock != null) 'tpuIpv4CidrBlock': tpuIpv4CidrBlock,
+        if (verticalPodAutoscaling != null)
+          'verticalPodAutoscaling': verticalPodAutoscaling.toJson(),
+        if (workloadIdentityConfig != null)
+          'workloadIdentityConfig': workloadIdentityConfig.toJson(),
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// ClusterAutoscaling contains global, per-cluster information required by
@@ -5381,24 +5213,18 @@ class ClusterAutoscaling {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (autoprovisioningLocations != null) {
-      _json['autoprovisioningLocations'] = autoprovisioningLocations;
-    }
-    if (autoprovisioningNodePoolDefaults != null) {
-      _json['autoprovisioningNodePoolDefaults'] =
-          autoprovisioningNodePoolDefaults.toJson();
-    }
-    if (enableNodeAutoprovisioning != null) {
-      _json['enableNodeAutoprovisioning'] = enableNodeAutoprovisioning;
-    }
-    if (resourceLimits != null) {
-      _json['resourceLimits'] =
-          resourceLimits.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (autoprovisioningLocations != null)
+          'autoprovisioningLocations': autoprovisioningLocations,
+        if (autoprovisioningNodePoolDefaults != null)
+          'autoprovisioningNodePoolDefaults':
+              autoprovisioningNodePoolDefaults.toJson(),
+        if (enableNodeAutoprovisioning != null)
+          'enableNodeAutoprovisioning': enableNodeAutoprovisioning,
+        if (resourceLimits != null)
+          'resourceLimits':
+              resourceLimits.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// ClusterUpdate describes an update to the cluster.
@@ -5637,85 +5463,56 @@ class ClusterUpdate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (desiredAddonsConfig != null) {
-      _json['desiredAddonsConfig'] = desiredAddonsConfig.toJson();
-    }
-    if (desiredBinaryAuthorization != null) {
-      _json['desiredBinaryAuthorization'] = desiredBinaryAuthorization.toJson();
-    }
-    if (desiredClusterAutoscaling != null) {
-      _json['desiredClusterAutoscaling'] = desiredClusterAutoscaling.toJson();
-    }
-    if (desiredDatabaseEncryption != null) {
-      _json['desiredDatabaseEncryption'] = desiredDatabaseEncryption.toJson();
-    }
-    if (desiredDefaultSnatStatus != null) {
-      _json['desiredDefaultSnatStatus'] = desiredDefaultSnatStatus.toJson();
-    }
-    if (desiredImageType != null) {
-      _json['desiredImageType'] = desiredImageType;
-    }
-    if (desiredIntraNodeVisibilityConfig != null) {
-      _json['desiredIntraNodeVisibilityConfig'] =
-          desiredIntraNodeVisibilityConfig.toJson();
-    }
-    if (desiredLocations != null) {
-      _json['desiredLocations'] = desiredLocations;
-    }
-    if (desiredLoggingService != null) {
-      _json['desiredLoggingService'] = desiredLoggingService;
-    }
-    if (desiredMasterAuthorizedNetworksConfig != null) {
-      _json['desiredMasterAuthorizedNetworksConfig'] =
-          desiredMasterAuthorizedNetworksConfig.toJson();
-    }
-    if (desiredMasterVersion != null) {
-      _json['desiredMasterVersion'] = desiredMasterVersion;
-    }
-    if (desiredMonitoringService != null) {
-      _json['desiredMonitoringService'] = desiredMonitoringService;
-    }
-    if (desiredNodePoolAutoscaling != null) {
-      _json['desiredNodePoolAutoscaling'] = desiredNodePoolAutoscaling.toJson();
-    }
-    if (desiredNodePoolId != null) {
-      _json['desiredNodePoolId'] = desiredNodePoolId;
-    }
-    if (desiredNodeVersion != null) {
-      _json['desiredNodeVersion'] = desiredNodeVersion;
-    }
-    if (desiredNotificationConfig != null) {
-      _json['desiredNotificationConfig'] = desiredNotificationConfig.toJson();
-    }
-    if (desiredPrivateClusterConfig != null) {
-      _json['desiredPrivateClusterConfig'] =
-          desiredPrivateClusterConfig.toJson();
-    }
-    if (desiredPrivateIpv6GoogleAccess != null) {
-      _json['desiredPrivateIpv6GoogleAccess'] = desiredPrivateIpv6GoogleAccess;
-    }
-    if (desiredReleaseChannel != null) {
-      _json['desiredReleaseChannel'] = desiredReleaseChannel.toJson();
-    }
-    if (desiredResourceUsageExportConfig != null) {
-      _json['desiredResourceUsageExportConfig'] =
-          desiredResourceUsageExportConfig.toJson();
-    }
-    if (desiredShieldedNodes != null) {
-      _json['desiredShieldedNodes'] = desiredShieldedNodes.toJson();
-    }
-    if (desiredVerticalPodAutoscaling != null) {
-      _json['desiredVerticalPodAutoscaling'] =
-          desiredVerticalPodAutoscaling.toJson();
-    }
-    if (desiredWorkloadIdentityConfig != null) {
-      _json['desiredWorkloadIdentityConfig'] =
-          desiredWorkloadIdentityConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (desiredAddonsConfig != null)
+          'desiredAddonsConfig': desiredAddonsConfig.toJson(),
+        if (desiredBinaryAuthorization != null)
+          'desiredBinaryAuthorization': desiredBinaryAuthorization.toJson(),
+        if (desiredClusterAutoscaling != null)
+          'desiredClusterAutoscaling': desiredClusterAutoscaling.toJson(),
+        if (desiredDatabaseEncryption != null)
+          'desiredDatabaseEncryption': desiredDatabaseEncryption.toJson(),
+        if (desiredDefaultSnatStatus != null)
+          'desiredDefaultSnatStatus': desiredDefaultSnatStatus.toJson(),
+        if (desiredImageType != null) 'desiredImageType': desiredImageType,
+        if (desiredIntraNodeVisibilityConfig != null)
+          'desiredIntraNodeVisibilityConfig':
+              desiredIntraNodeVisibilityConfig.toJson(),
+        if (desiredLocations != null) 'desiredLocations': desiredLocations,
+        if (desiredLoggingService != null)
+          'desiredLoggingService': desiredLoggingService,
+        if (desiredMasterAuthorizedNetworksConfig != null)
+          'desiredMasterAuthorizedNetworksConfig':
+              desiredMasterAuthorizedNetworksConfig.toJson(),
+        if (desiredMasterVersion != null)
+          'desiredMasterVersion': desiredMasterVersion,
+        if (desiredMonitoringService != null)
+          'desiredMonitoringService': desiredMonitoringService,
+        if (desiredNodePoolAutoscaling != null)
+          'desiredNodePoolAutoscaling': desiredNodePoolAutoscaling.toJson(),
+        if (desiredNodePoolId != null) 'desiredNodePoolId': desiredNodePoolId,
+        if (desiredNodeVersion != null)
+          'desiredNodeVersion': desiredNodeVersion,
+        if (desiredNotificationConfig != null)
+          'desiredNotificationConfig': desiredNotificationConfig.toJson(),
+        if (desiredPrivateClusterConfig != null)
+          'desiredPrivateClusterConfig': desiredPrivateClusterConfig.toJson(),
+        if (desiredPrivateIpv6GoogleAccess != null)
+          'desiredPrivateIpv6GoogleAccess': desiredPrivateIpv6GoogleAccess,
+        if (desiredReleaseChannel != null)
+          'desiredReleaseChannel': desiredReleaseChannel.toJson(),
+        if (desiredResourceUsageExportConfig != null)
+          'desiredResourceUsageExportConfig':
+              desiredResourceUsageExportConfig.toJson(),
+        if (desiredShieldedNodes != null)
+          'desiredShieldedNodes': desiredShieldedNodes.toJson(),
+        if (desiredVerticalPodAutoscaling != null)
+          'desiredVerticalPodAutoscaling':
+              desiredVerticalPodAutoscaling.toJson(),
+        if (desiredWorkloadIdentityConfig != null)
+          'desiredWorkloadIdentityConfig':
+              desiredWorkloadIdentityConfig.toJson(),
+      };
 }
 
 /// CompleteIPRotationRequest moves the cluster master back into single-IP mode.
@@ -5767,22 +5564,12 @@ class CompleteIPRotationRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterId != null) {
-      _json['clusterId'] = clusterId;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterId != null) 'clusterId': clusterId,
+        if (name != null) 'name': name,
+        if (projectId != null) 'projectId': projectId,
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// Configuration options for the Config Connector add-on.
@@ -5798,13 +5585,9 @@ class ConfigConnectorConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enabled != null) 'enabled': enabled,
+      };
 }
 
 /// Parameters for controlling consumption metering.
@@ -5823,13 +5606,9 @@ class ConsumptionMeteringConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enabled != null) 'enabled': enabled,
+      };
 }
 
 /// CreateClusterRequest creates a cluster.
@@ -5880,22 +5659,12 @@ class CreateClusterRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cluster != null) {
-      _json['cluster'] = cluster.toJson();
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cluster != null) 'cluster': cluster.toJson(),
+        if (parent != null) 'parent': parent,
+        if (projectId != null) 'projectId': projectId,
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// CreateNodePoolRequest creates a node pool for a cluster.
@@ -5956,25 +5725,13 @@ class CreateNodePoolRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterId != null) {
-      _json['clusterId'] = clusterId;
-    }
-    if (nodePool != null) {
-      _json['nodePool'] = nodePool.toJson();
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterId != null) 'clusterId': clusterId,
+        if (nodePool != null) 'nodePool': nodePool.toJson(),
+        if (parent != null) 'parent': parent,
+        if (projectId != null) 'projectId': projectId,
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// Time window specified for daily maintenance operations.
@@ -6005,16 +5762,10 @@ class DailyMaintenanceWindow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (duration != null) {
-      _json['duration'] = duration;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (duration != null) 'duration': duration,
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// Configuration of etcd encryption.
@@ -6044,16 +5795,10 @@ class DatabaseEncryption {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (keyName != null) {
-      _json['keyName'] = keyName;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (keyName != null) 'keyName': keyName,
+        if (state != null) 'state': state,
+      };
 }
 
 /// DefaultSnatStatus contains the desired state of whether default sNAT should
@@ -6070,13 +5815,9 @@ class DefaultSnatStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (disabled != null) {
-      _json['disabled'] = disabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (disabled != null) 'disabled': disabled,
+      };
 }
 
 /// Configuration for NodeLocal DNSCache
@@ -6092,13 +5833,9 @@ class DnsCacheConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enabled != null) 'enabled': enabled,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -6115,10 +5852,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Configuration for the Compute Engine PD CSI driver.
@@ -6134,13 +5868,9 @@ class GcePersistentDiskCsiDriverConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enabled != null) 'enabled': enabled,
+      };
 }
 
 /// GetJSONWebKeysResponse is a valid JSON Web Key Set as specififed in rfc 7517
@@ -6168,16 +5898,10 @@ class GetJSONWebKeysResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cacheHeader != null) {
-      _json['cacheHeader'] = cacheHeader.toJson();
-    }
-    if (keys != null) {
-      _json['keys'] = keys.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cacheHeader != null) 'cacheHeader': cacheHeader.toJson(),
+        if (keys != null) 'keys': keys.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// GetOpenIDConfigResponse is an OIDC discovery document for the cluster.
@@ -6250,35 +5974,20 @@ class GetOpenIDConfigResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cacheHeader != null) {
-      _json['cacheHeader'] = cacheHeader.toJson();
-    }
-    if (claimsSupported != null) {
-      _json['claims_supported'] = claimsSupported;
-    }
-    if (grantTypes != null) {
-      _json['grant_types'] = grantTypes;
-    }
-    if (idTokenSigningAlgValuesSupported != null) {
-      _json['id_token_signing_alg_values_supported'] =
-          idTokenSigningAlgValuesSupported;
-    }
-    if (issuer != null) {
-      _json['issuer'] = issuer;
-    }
-    if (jwksUri != null) {
-      _json['jwks_uri'] = jwksUri;
-    }
-    if (responseTypesSupported != null) {
-      _json['response_types_supported'] = responseTypesSupported;
-    }
-    if (subjectTypesSupported != null) {
-      _json['subject_types_supported'] = subjectTypesSupported;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cacheHeader != null) 'cacheHeader': cacheHeader.toJson(),
+        if (claimsSupported != null) 'claims_supported': claimsSupported,
+        if (grantTypes != null) 'grant_types': grantTypes,
+        if (idTokenSigningAlgValuesSupported != null)
+          'id_token_signing_alg_values_supported':
+              idTokenSigningAlgValuesSupported,
+        if (issuer != null) 'issuer': issuer,
+        if (jwksUri != null) 'jwks_uri': jwksUri,
+        if (responseTypesSupported != null)
+          'response_types_supported': responseTypesSupported,
+        if (subjectTypesSupported != null)
+          'subject_types_supported': subjectTypesSupported,
+      };
 }
 
 /// Configuration options for the horizontal pod autoscaling feature, which
@@ -6299,13 +6008,9 @@ class HorizontalPodAutoscaling {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (disabled != null) {
-      _json['disabled'] = disabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (disabled != null) 'disabled': disabled,
+      };
 }
 
 /// RFC-2616: cache control support
@@ -6333,19 +6038,11 @@ class HttpCacheControlResponseHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (age != null) {
-      _json['age'] = age;
-    }
-    if (directive != null) {
-      _json['directive'] = directive;
-    }
-    if (expires != null) {
-      _json['expires'] = expires;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (age != null) 'age': age,
+        if (directive != null) 'directive': directive,
+        if (expires != null) 'expires': expires,
+      };
 }
 
 /// Configuration options for the HTTP (L7) load balancing controller addon,
@@ -6365,13 +6062,9 @@ class HttpLoadBalancing {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (disabled != null) {
-      _json['disabled'] = disabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (disabled != null) 'disabled': disabled,
+      };
 }
 
 /// Configuration for controlling how IPs are allocated in the cluster.
@@ -6519,49 +6212,25 @@ class IPAllocationPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterIpv4Cidr != null) {
-      _json['clusterIpv4Cidr'] = clusterIpv4Cidr;
-    }
-    if (clusterIpv4CidrBlock != null) {
-      _json['clusterIpv4CidrBlock'] = clusterIpv4CidrBlock;
-    }
-    if (clusterSecondaryRangeName != null) {
-      _json['clusterSecondaryRangeName'] = clusterSecondaryRangeName;
-    }
-    if (createSubnetwork != null) {
-      _json['createSubnetwork'] = createSubnetwork;
-    }
-    if (nodeIpv4Cidr != null) {
-      _json['nodeIpv4Cidr'] = nodeIpv4Cidr;
-    }
-    if (nodeIpv4CidrBlock != null) {
-      _json['nodeIpv4CidrBlock'] = nodeIpv4CidrBlock;
-    }
-    if (servicesIpv4Cidr != null) {
-      _json['servicesIpv4Cidr'] = servicesIpv4Cidr;
-    }
-    if (servicesIpv4CidrBlock != null) {
-      _json['servicesIpv4CidrBlock'] = servicesIpv4CidrBlock;
-    }
-    if (servicesSecondaryRangeName != null) {
-      _json['servicesSecondaryRangeName'] = servicesSecondaryRangeName;
-    }
-    if (subnetworkName != null) {
-      _json['subnetworkName'] = subnetworkName;
-    }
-    if (tpuIpv4CidrBlock != null) {
-      _json['tpuIpv4CidrBlock'] = tpuIpv4CidrBlock;
-    }
-    if (useIpAliases != null) {
-      _json['useIpAliases'] = useIpAliases;
-    }
-    if (useRoutes != null) {
-      _json['useRoutes'] = useRoutes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterIpv4Cidr != null) 'clusterIpv4Cidr': clusterIpv4Cidr,
+        if (clusterIpv4CidrBlock != null)
+          'clusterIpv4CidrBlock': clusterIpv4CidrBlock,
+        if (clusterSecondaryRangeName != null)
+          'clusterSecondaryRangeName': clusterSecondaryRangeName,
+        if (createSubnetwork != null) 'createSubnetwork': createSubnetwork,
+        if (nodeIpv4Cidr != null) 'nodeIpv4Cidr': nodeIpv4Cidr,
+        if (nodeIpv4CidrBlock != null) 'nodeIpv4CidrBlock': nodeIpv4CidrBlock,
+        if (servicesIpv4Cidr != null) 'servicesIpv4Cidr': servicesIpv4Cidr,
+        if (servicesIpv4CidrBlock != null)
+          'servicesIpv4CidrBlock': servicesIpv4CidrBlock,
+        if (servicesSecondaryRangeName != null)
+          'servicesSecondaryRangeName': servicesSecondaryRangeName,
+        if (subnetworkName != null) 'subnetworkName': subnetworkName,
+        if (tpuIpv4CidrBlock != null) 'tpuIpv4CidrBlock': tpuIpv4CidrBlock,
+        if (useIpAliases != null) 'useIpAliases': useIpAliases,
+        if (useRoutes != null) 'useRoutes': useRoutes,
+      };
 }
 
 /// IntraNodeVisibilityConfig contains the desired config of the intra-node
@@ -6578,13 +6247,9 @@ class IntraNodeVisibilityConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enabled != null) 'enabled': enabled,
+      };
 }
 
 /// Jwk is a JSON Web Key as specified in RFC 7517
@@ -6648,37 +6313,17 @@ class Jwk {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alg != null) {
-      _json['alg'] = alg;
-    }
-    if (crv != null) {
-      _json['crv'] = crv;
-    }
-    if (e != null) {
-      _json['e'] = e;
-    }
-    if (kid != null) {
-      _json['kid'] = kid;
-    }
-    if (kty != null) {
-      _json['kty'] = kty;
-    }
-    if (n != null) {
-      _json['n'] = n;
-    }
-    if (use != null) {
-      _json['use'] = use;
-    }
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alg != null) 'alg': alg,
+        if (crv != null) 'crv': crv,
+        if (e != null) 'e': e,
+        if (kid != null) 'kid': kid,
+        if (kty != null) 'kty': kty,
+        if (n != null) 'n': n,
+        if (use != null) 'use': use,
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+      };
 }
 
 /// Configuration for the Kubernetes Dashboard.
@@ -6694,13 +6339,9 @@ class KubernetesDashboard {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (disabled != null) {
-      _json['disabled'] = disabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (disabled != null) 'disabled': disabled,
+      };
 }
 
 /// Configuration for the legacy Attribute Based Access Control authorization
@@ -6721,13 +6362,9 @@ class LegacyAbac {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enabled != null) 'enabled': enabled,
+      };
 }
 
 /// ListClustersResponse is the result of ListClustersRequest.
@@ -6756,16 +6393,11 @@ class ListClustersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusters != null) {
-      _json['clusters'] = clusters.map((value) => value.toJson()).toList();
-    }
-    if (missingZones != null) {
-      _json['missingZones'] = missingZones;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusters != null)
+          'clusters': clusters.map((value) => value.toJson()).toList(),
+        if (missingZones != null) 'missingZones': missingZones,
+      };
 }
 
 /// ListNodePoolsResponse is the result of ListNodePoolsRequest.
@@ -6784,13 +6416,10 @@ class ListNodePoolsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nodePools != null) {
-      _json['nodePools'] = nodePools.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nodePools != null)
+          'nodePools': nodePools.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// ListOperationsResponse is the result of ListOperationsRequest.
@@ -6818,16 +6447,11 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (missingZones != null) {
-      _json['missingZones'] = missingZones;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (missingZones != null) 'missingZones': missingZones,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// ListUsableSubnetworksResponse is the response of
@@ -6857,17 +6481,11 @@ class ListUsableSubnetworksResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (subnetworks != null) {
-      _json['subnetworks'] =
-          subnetworks.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (subnetworks != null)
+          'subnetworks': subnetworks.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// MaintenancePolicy defines the maintenance policy to be used for the cluster.
@@ -6896,16 +6514,10 @@ class MaintenancePolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceVersion != null) {
-      _json['resourceVersion'] = resourceVersion;
-    }
-    if (window != null) {
-      _json['window'] = window.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceVersion != null) 'resourceVersion': resourceVersion,
+        if (window != null) 'window': window.toJson(),
+      };
 }
 
 /// MaintenanceWindow defines the maintenance window to be used for the cluster.
@@ -6949,20 +6561,15 @@ class MaintenanceWindow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dailyMaintenanceWindow != null) {
-      _json['dailyMaintenanceWindow'] = dailyMaintenanceWindow.toJson();
-    }
-    if (maintenanceExclusions != null) {
-      _json['maintenanceExclusions'] = maintenanceExclusions
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (recurringWindow != null) {
-      _json['recurringWindow'] = recurringWindow.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dailyMaintenanceWindow != null)
+          'dailyMaintenanceWindow': dailyMaintenanceWindow.toJson(),
+        if (maintenanceExclusions != null)
+          'maintenanceExclusions': maintenanceExclusions
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (recurringWindow != null)
+          'recurringWindow': recurringWindow.toJson(),
+      };
 }
 
 /// The authentication information for accessing the master endpoint.
@@ -7039,28 +6646,16 @@ class MasterAuth {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clientCertificate != null) {
-      _json['clientCertificate'] = clientCertificate;
-    }
-    if (clientCertificateConfig != null) {
-      _json['clientCertificateConfig'] = clientCertificateConfig.toJson();
-    }
-    if (clientKey != null) {
-      _json['clientKey'] = clientKey;
-    }
-    if (clusterCaCertificate != null) {
-      _json['clusterCaCertificate'] = clusterCaCertificate;
-    }
-    if (password != null) {
-      _json['password'] = password;
-    }
-    if (username != null) {
-      _json['username'] = username;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clientCertificate != null) 'clientCertificate': clientCertificate,
+        if (clientCertificateConfig != null)
+          'clientCertificateConfig': clientCertificateConfig.toJson(),
+        if (clientKey != null) 'clientKey': clientKey,
+        if (clusterCaCertificate != null)
+          'clusterCaCertificate': clusterCaCertificate,
+        if (password != null) 'password': password,
+        if (username != null) 'username': username,
+      };
 }
 
 /// Configuration options for the master authorized networks feature.
@@ -7090,16 +6685,11 @@ class MasterAuthorizedNetworksConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cidrBlocks != null) {
-      _json['cidrBlocks'] = cidrBlocks.map((value) => value.toJson()).toList();
-    }
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cidrBlocks != null)
+          'cidrBlocks': cidrBlocks.map((value) => value.toJson()).toList(),
+        if (enabled != null) 'enabled': enabled,
+      };
 }
 
 /// Constraints applied to pods.
@@ -7115,13 +6705,9 @@ class MaxPodsConstraint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maxPodsPerNode != null) {
-      _json['maxPodsPerNode'] = maxPodsPerNode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maxPodsPerNode != null) 'maxPodsPerNode': maxPodsPerNode,
+      };
 }
 
 /// Progress metric is (string, int|float|string) pair.
@@ -7157,22 +6743,12 @@ class Metric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (doubleValue != null) {
-      _json['doubleValue'] = doubleValue;
-    }
-    if (intValue != null) {
-      _json['intValue'] = intValue;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (stringValue != null) {
-      _json['stringValue'] = stringValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (doubleValue != null) 'doubleValue': doubleValue,
+        if (intValue != null) 'intValue': intValue,
+        if (name != null) 'name': name,
+        if (stringValue != null) 'stringValue': stringValue,
+      };
 }
 
 /// NetworkConfig reports the relative names of network & subnetwork.
@@ -7244,25 +6820,16 @@ class NetworkConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (defaultSnatStatus != null) {
-      _json['defaultSnatStatus'] = defaultSnatStatus.toJson();
-    }
-    if (enableIntraNodeVisibility != null) {
-      _json['enableIntraNodeVisibility'] = enableIntraNodeVisibility;
-    }
-    if (network != null) {
-      _json['network'] = network;
-    }
-    if (privateIpv6GoogleAccess != null) {
-      _json['privateIpv6GoogleAccess'] = privateIpv6GoogleAccess;
-    }
-    if (subnetwork != null) {
-      _json['subnetwork'] = subnetwork;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (defaultSnatStatus != null)
+          'defaultSnatStatus': defaultSnatStatus.toJson(),
+        if (enableIntraNodeVisibility != null)
+          'enableIntraNodeVisibility': enableIntraNodeVisibility,
+        if (network != null) 'network': network,
+        if (privateIpv6GoogleAccess != null)
+          'privateIpv6GoogleAccess': privateIpv6GoogleAccess,
+        if (subnetwork != null) 'subnetwork': subnetwork,
+      };
 }
 
 /// Configuration options for the NetworkPolicy feature.
@@ -7289,16 +6856,10 @@ class NetworkPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    if (provider != null) {
-      _json['provider'] = provider;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enabled != null) 'enabled': enabled,
+        if (provider != null) 'provider': provider,
+      };
 }
 
 /// Configuration for NetworkPolicy.
@@ -7317,13 +6878,9 @@ class NetworkPolicyConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (disabled != null) {
-      _json['disabled'] = disabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (disabled != null) 'disabled': disabled,
+      };
 }
 
 /// Parameters that describe the nodes in a cluster.
@@ -7564,71 +7121,33 @@ class NodeConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accelerators != null) {
-      _json['accelerators'] =
-          accelerators.map((value) => value.toJson()).toList();
-    }
-    if (bootDiskKmsKey != null) {
-      _json['bootDiskKmsKey'] = bootDiskKmsKey;
-    }
-    if (diskSizeGb != null) {
-      _json['diskSizeGb'] = diskSizeGb;
-    }
-    if (diskType != null) {
-      _json['diskType'] = diskType;
-    }
-    if (imageType != null) {
-      _json['imageType'] = imageType;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (localSsdCount != null) {
-      _json['localSsdCount'] = localSsdCount;
-    }
-    if (machineType != null) {
-      _json['machineType'] = machineType;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (minCpuPlatform != null) {
-      _json['minCpuPlatform'] = minCpuPlatform;
-    }
-    if (nodeGroup != null) {
-      _json['nodeGroup'] = nodeGroup;
-    }
-    if (oauthScopes != null) {
-      _json['oauthScopes'] = oauthScopes;
-    }
-    if (preemptible != null) {
-      _json['preemptible'] = preemptible;
-    }
-    if (reservationAffinity != null) {
-      _json['reservationAffinity'] = reservationAffinity.toJson();
-    }
-    if (sandboxConfig != null) {
-      _json['sandboxConfig'] = sandboxConfig.toJson();
-    }
-    if (serviceAccount != null) {
-      _json['serviceAccount'] = serviceAccount;
-    }
-    if (shieldedInstanceConfig != null) {
-      _json['shieldedInstanceConfig'] = shieldedInstanceConfig.toJson();
-    }
-    if (tags != null) {
-      _json['tags'] = tags;
-    }
-    if (taints != null) {
-      _json['taints'] = taints.map((value) => value.toJson()).toList();
-    }
-    if (workloadMetadataConfig != null) {
-      _json['workloadMetadataConfig'] = workloadMetadataConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accelerators != null)
+          'accelerators': accelerators.map((value) => value.toJson()).toList(),
+        if (bootDiskKmsKey != null) 'bootDiskKmsKey': bootDiskKmsKey,
+        if (diskSizeGb != null) 'diskSizeGb': diskSizeGb,
+        if (diskType != null) 'diskType': diskType,
+        if (imageType != null) 'imageType': imageType,
+        if (labels != null) 'labels': labels,
+        if (localSsdCount != null) 'localSsdCount': localSsdCount,
+        if (machineType != null) 'machineType': machineType,
+        if (metadata != null) 'metadata': metadata,
+        if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform,
+        if (nodeGroup != null) 'nodeGroup': nodeGroup,
+        if (oauthScopes != null) 'oauthScopes': oauthScopes,
+        if (preemptible != null) 'preemptible': preemptible,
+        if (reservationAffinity != null)
+          'reservationAffinity': reservationAffinity.toJson(),
+        if (sandboxConfig != null) 'sandboxConfig': sandboxConfig.toJson(),
+        if (serviceAccount != null) 'serviceAccount': serviceAccount,
+        if (shieldedInstanceConfig != null)
+          'shieldedInstanceConfig': shieldedInstanceConfig.toJson(),
+        if (tags != null) 'tags': tags,
+        if (taints != null)
+          'taints': taints.map((value) => value.toJson()).toList(),
+        if (workloadMetadataConfig != null)
+          'workloadMetadataConfig': workloadMetadataConfig.toJson(),
+      };
 }
 
 /// NodeManagement defines the set of node management services turned on for the
@@ -7667,19 +7186,11 @@ class NodeManagement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (autoRepair != null) {
-      _json['autoRepair'] = autoRepair;
-    }
-    if (autoUpgrade != null) {
-      _json['autoUpgrade'] = autoUpgrade;
-    }
-    if (upgradeOptions != null) {
-      _json['upgradeOptions'] = upgradeOptions.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (autoRepair != null) 'autoRepair': autoRepair,
+        if (autoUpgrade != null) 'autoUpgrade': autoUpgrade,
+        if (upgradeOptions != null) 'upgradeOptions': upgradeOptions.toJson(),
+      };
 }
 
 /// NodePool contains the name and configuration for a cluster's node pool.
@@ -7844,55 +7355,26 @@ class NodePool {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (autoscaling != null) {
-      _json['autoscaling'] = autoscaling.toJson();
-    }
-    if (conditions != null) {
-      _json['conditions'] = conditions.map((value) => value.toJson()).toList();
-    }
-    if (config != null) {
-      _json['config'] = config.toJson();
-    }
-    if (initialNodeCount != null) {
-      _json['initialNodeCount'] = initialNodeCount;
-    }
-    if (instanceGroupUrls != null) {
-      _json['instanceGroupUrls'] = instanceGroupUrls;
-    }
-    if (locations != null) {
-      _json['locations'] = locations;
-    }
-    if (management != null) {
-      _json['management'] = management.toJson();
-    }
-    if (maxPodsConstraint != null) {
-      _json['maxPodsConstraint'] = maxPodsConstraint.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (podIpv4CidrSize != null) {
-      _json['podIpv4CidrSize'] = podIpv4CidrSize;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (statusMessage != null) {
-      _json['statusMessage'] = statusMessage;
-    }
-    if (upgradeSettings != null) {
-      _json['upgradeSettings'] = upgradeSettings.toJson();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (autoscaling != null) 'autoscaling': autoscaling.toJson(),
+        if (conditions != null)
+          'conditions': conditions.map((value) => value.toJson()).toList(),
+        if (config != null) 'config': config.toJson(),
+        if (initialNodeCount != null) 'initialNodeCount': initialNodeCount,
+        if (instanceGroupUrls != null) 'instanceGroupUrls': instanceGroupUrls,
+        if (locations != null) 'locations': locations,
+        if (management != null) 'management': management.toJson(),
+        if (maxPodsConstraint != null)
+          'maxPodsConstraint': maxPodsConstraint.toJson(),
+        if (name != null) 'name': name,
+        if (podIpv4CidrSize != null) 'podIpv4CidrSize': podIpv4CidrSize,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (status != null) 'status': status,
+        if (statusMessage != null) 'statusMessage': statusMessage,
+        if (upgradeSettings != null)
+          'upgradeSettings': upgradeSettings.toJson(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// NodePoolAutoscaling contains information required by cluster autoscaler to
@@ -7932,22 +7414,12 @@ class NodePoolAutoscaling {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (autoprovisioned != null) {
-      _json['autoprovisioned'] = autoprovisioned;
-    }
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    if (maxNodeCount != null) {
-      _json['maxNodeCount'] = maxNodeCount;
-    }
-    if (minNodeCount != null) {
-      _json['minNodeCount'] = minNodeCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (autoprovisioned != null) 'autoprovisioned': autoprovisioned,
+        if (enabled != null) 'enabled': enabled,
+        if (maxNodeCount != null) 'maxNodeCount': maxNodeCount,
+        if (minNodeCount != null) 'minNodeCount': minNodeCount,
+      };
 }
 
 /// Kubernetes taint is comprised of three fields: key, value, and effect.
@@ -7985,19 +7457,11 @@ class NodeTaint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (effect != null) {
-      _json['effect'] = effect;
-    }
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (effect != null) 'effect': effect,
+        if (key != null) 'key': key,
+        if (value != null) 'value': value,
+      };
 }
 
 /// NotificationConfig is the configuration of notifications.
@@ -8014,13 +7478,9 @@ class NotificationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pubsub != null) {
-      _json['pubsub'] = pubsub.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pubsub != null) 'pubsub': pubsub.toJson(),
+      };
 }
 
 /// This operation resource represents operations that may have happened or are
@@ -8168,54 +7628,26 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterConditions != null) {
-      _json['clusterConditions'] =
-          clusterConditions.map((value) => value.toJson()).toList();
-    }
-    if (detail != null) {
-      _json['detail'] = detail;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (nodepoolConditions != null) {
-      _json['nodepoolConditions'] =
-          nodepoolConditions.map((value) => value.toJson()).toList();
-    }
-    if (operationType != null) {
-      _json['operationType'] = operationType;
-    }
-    if (progress != null) {
-      _json['progress'] = progress.toJson();
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (statusMessage != null) {
-      _json['statusMessage'] = statusMessage;
-    }
-    if (targetLink != null) {
-      _json['targetLink'] = targetLink;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterConditions != null)
+          'clusterConditions':
+              clusterConditions.map((value) => value.toJson()).toList(),
+        if (detail != null) 'detail': detail,
+        if (endTime != null) 'endTime': endTime,
+        if (location != null) 'location': location,
+        if (name != null) 'name': name,
+        if (nodepoolConditions != null)
+          'nodepoolConditions':
+              nodepoolConditions.map((value) => value.toJson()).toList(),
+        if (operationType != null) 'operationType': operationType,
+        if (progress != null) 'progress': progress.toJson(),
+        if (selfLink != null) 'selfLink': selfLink,
+        if (startTime != null) 'startTime': startTime,
+        if (status != null) 'status': status,
+        if (statusMessage != null) 'statusMessage': statusMessage,
+        if (targetLink != null) 'targetLink': targetLink,
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// Information about operation (or operation stage) progress.
@@ -8268,22 +7700,14 @@ class OperationProgress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metrics != null) {
-      _json['metrics'] = metrics.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (stages != null) {
-      _json['stages'] = stages.map((value) => value.toJson()).toList();
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metrics != null)
+          'metrics': metrics.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (stages != null)
+          'stages': stages.map((value) => value.toJson()).toList(),
+        if (status != null) 'status': status,
+      };
 }
 
 /// Configuration options for private clusters.
@@ -8351,31 +7775,19 @@ class PrivateClusterConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enablePrivateEndpoint != null) {
-      _json['enablePrivateEndpoint'] = enablePrivateEndpoint;
-    }
-    if (enablePrivateNodes != null) {
-      _json['enablePrivateNodes'] = enablePrivateNodes;
-    }
-    if (masterGlobalAccessConfig != null) {
-      _json['masterGlobalAccessConfig'] = masterGlobalAccessConfig.toJson();
-    }
-    if (masterIpv4CidrBlock != null) {
-      _json['masterIpv4CidrBlock'] = masterIpv4CidrBlock;
-    }
-    if (peeringName != null) {
-      _json['peeringName'] = peeringName;
-    }
-    if (privateEndpoint != null) {
-      _json['privateEndpoint'] = privateEndpoint;
-    }
-    if (publicEndpoint != null) {
-      _json['publicEndpoint'] = publicEndpoint;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enablePrivateEndpoint != null)
+          'enablePrivateEndpoint': enablePrivateEndpoint,
+        if (enablePrivateNodes != null)
+          'enablePrivateNodes': enablePrivateNodes,
+        if (masterGlobalAccessConfig != null)
+          'masterGlobalAccessConfig': masterGlobalAccessConfig.toJson(),
+        if (masterIpv4CidrBlock != null)
+          'masterIpv4CidrBlock': masterIpv4CidrBlock,
+        if (peeringName != null) 'peeringName': peeringName,
+        if (privateEndpoint != null) 'privateEndpoint': privateEndpoint,
+        if (publicEndpoint != null) 'publicEndpoint': publicEndpoint,
+      };
 }
 
 /// Configuration for controlling master global access settings.
@@ -8391,13 +7803,9 @@ class PrivateClusterMasterGlobalAccessConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enabled != null) 'enabled': enabled,
+      };
 }
 
 /// Pub/Sub specific notification config.
@@ -8421,16 +7829,10 @@ class PubSub {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    if (topic != null) {
-      _json['topic'] = topic;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enabled != null) 'enabled': enabled,
+        if (topic != null) 'topic': topic,
+      };
 }
 
 /// Represents an arbitrary window of time that recurs.
@@ -8470,16 +7872,10 @@ class RecurringTimeWindow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (recurrence != null) {
-      _json['recurrence'] = recurrence;
-    }
-    if (window != null) {
-      _json['window'] = window.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (recurrence != null) 'recurrence': recurrence,
+        if (window != null) 'window': window.toJson(),
+      };
 }
 
 /// ReleaseChannel indicates which release channel a cluster is subscribed to.
@@ -8510,13 +7906,9 @@ class ReleaseChannel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channel != null) {
-      _json['channel'] = channel;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (channel != null) 'channel': channel,
+      };
 }
 
 /// ReleaseChannelConfig exposes configuration for a release channel.
@@ -8557,19 +7949,11 @@ class ReleaseChannelConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channel != null) {
-      _json['channel'] = channel;
-    }
-    if (defaultVersion != null) {
-      _json['defaultVersion'] = defaultVersion;
-    }
-    if (validVersions != null) {
-      _json['validVersions'] = validVersions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (channel != null) 'channel': channel,
+        if (defaultVersion != null) 'defaultVersion': defaultVersion,
+        if (validVersions != null) 'validVersions': validVersions,
+      };
 }
 
 /// [ReservationAffinity](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
@@ -8611,19 +7995,12 @@ class ReservationAffinity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (consumeReservationType != null) {
-      _json['consumeReservationType'] = consumeReservationType;
-    }
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (values != null) {
-      _json['values'] = values;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (consumeReservationType != null)
+          'consumeReservationType': consumeReservationType,
+        if (key != null) 'key': key,
+        if (values != null) 'values': values,
+      };
 }
 
 /// Contains information about amount of some resource in the cluster.
@@ -8653,19 +8030,11 @@ class ResourceLimit {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maximum != null) {
-      _json['maximum'] = maximum;
-    }
-    if (minimum != null) {
-      _json['minimum'] = minimum;
-    }
-    if (resourceType != null) {
-      _json['resourceType'] = resourceType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maximum != null) 'maximum': maximum,
+        if (minimum != null) 'minimum': minimum,
+        if (resourceType != null) 'resourceType': resourceType,
+      };
 }
 
 /// Configuration for exporting cluster resource usages.
@@ -8700,19 +8069,14 @@ class ResourceUsageExportConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bigqueryDestination != null) {
-      _json['bigqueryDestination'] = bigqueryDestination.toJson();
-    }
-    if (consumptionMeteringConfig != null) {
-      _json['consumptionMeteringConfig'] = consumptionMeteringConfig.toJson();
-    }
-    if (enableNetworkEgressMetering != null) {
-      _json['enableNetworkEgressMetering'] = enableNetworkEgressMetering;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bigqueryDestination != null)
+          'bigqueryDestination': bigqueryDestination.toJson(),
+        if (consumptionMeteringConfig != null)
+          'consumptionMeteringConfig': consumptionMeteringConfig.toJson(),
+        if (enableNetworkEgressMetering != null)
+          'enableNetworkEgressMetering': enableNetworkEgressMetering,
+      };
 }
 
 /// RollbackNodePoolUpgradeRequest rollbacks the previously Aborted or Failed
@@ -8778,25 +8142,13 @@ class RollbackNodePoolUpgradeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterId != null) {
-      _json['clusterId'] = clusterId;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (nodePoolId != null) {
-      _json['nodePoolId'] = nodePoolId;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterId != null) 'clusterId': clusterId,
+        if (name != null) 'name': name,
+        if (nodePoolId != null) 'nodePoolId': nodePoolId,
+        if (projectId != null) 'projectId': projectId,
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// SandboxConfig contains configurations of the sandbox to use for the node.
@@ -8815,13 +8167,9 @@ class SandboxConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+      };
 }
 
 /// Kubernetes Engine service configuration.
@@ -8876,28 +8224,17 @@ class ServerConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channels != null) {
-      _json['channels'] = channels.map((value) => value.toJson()).toList();
-    }
-    if (defaultClusterVersion != null) {
-      _json['defaultClusterVersion'] = defaultClusterVersion;
-    }
-    if (defaultImageType != null) {
-      _json['defaultImageType'] = defaultImageType;
-    }
-    if (validImageTypes != null) {
-      _json['validImageTypes'] = validImageTypes;
-    }
-    if (validMasterVersions != null) {
-      _json['validMasterVersions'] = validMasterVersions;
-    }
-    if (validNodeVersions != null) {
-      _json['validNodeVersions'] = validNodeVersions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (channels != null)
+          'channels': channels.map((value) => value.toJson()).toList(),
+        if (defaultClusterVersion != null)
+          'defaultClusterVersion': defaultClusterVersion,
+        if (defaultImageType != null) 'defaultImageType': defaultImageType,
+        if (validImageTypes != null) 'validImageTypes': validImageTypes,
+        if (validMasterVersions != null)
+          'validMasterVersions': validMasterVersions,
+        if (validNodeVersions != null) 'validNodeVersions': validNodeVersions,
+      };
 }
 
 /// SetAddonsConfigRequest sets the addons associated with the cluster.
@@ -8958,25 +8295,13 @@ class SetAddonsConfigRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (addonsConfig != null) {
-      _json['addonsConfig'] = addonsConfig.toJson();
-    }
-    if (clusterId != null) {
-      _json['clusterId'] = clusterId;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (addonsConfig != null) 'addonsConfig': addonsConfig.toJson(),
+        if (clusterId != null) 'clusterId': clusterId,
+        if (name != null) 'name': name,
+        if (projectId != null) 'projectId': projectId,
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// SetLabelsRequest sets the Google Cloud Platform labels on a Google Container
@@ -9058,28 +8383,14 @@ class SetLabelsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterId != null) {
-      _json['clusterId'] = clusterId;
-    }
-    if (labelFingerprint != null) {
-      _json['labelFingerprint'] = labelFingerprint;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (resourceLabels != null) {
-      _json['resourceLabels'] = resourceLabels;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterId != null) 'clusterId': clusterId,
+        if (labelFingerprint != null) 'labelFingerprint': labelFingerprint,
+        if (name != null) 'name': name,
+        if (projectId != null) 'projectId': projectId,
+        if (resourceLabels != null) 'resourceLabels': resourceLabels,
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// SetLegacyAbacRequest enables or disables the ABAC authorization mechanism
@@ -9140,25 +8451,13 @@ class SetLegacyAbacRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterId != null) {
-      _json['clusterId'] = clusterId;
-    }
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterId != null) 'clusterId': clusterId,
+        if (enabled != null) 'enabled': enabled,
+        if (name != null) 'name': name,
+        if (projectId != null) 'projectId': projectId,
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// SetLocationsRequest sets the locations of the cluster.
@@ -9226,25 +8525,13 @@ class SetLocationsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterId != null) {
-      _json['clusterId'] = clusterId;
-    }
-    if (locations != null) {
-      _json['locations'] = locations;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterId != null) 'clusterId': clusterId,
+        if (locations != null) 'locations': locations,
+        if (name != null) 'name': name,
+        if (projectId != null) 'projectId': projectId,
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// SetLoggingServiceRequest sets the logging service of a cluster.
@@ -9311,25 +8598,13 @@ class SetLoggingServiceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterId != null) {
-      _json['clusterId'] = clusterId;
-    }
-    if (loggingService != null) {
-      _json['loggingService'] = loggingService;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterId != null) 'clusterId': clusterId,
+        if (loggingService != null) 'loggingService': loggingService,
+        if (name != null) 'name': name,
+        if (projectId != null) 'projectId': projectId,
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// SetMaintenancePolicyRequest sets the maintenance policy for a cluster.
@@ -9386,25 +8661,14 @@ class SetMaintenancePolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterId != null) {
-      _json['clusterId'] = clusterId;
-    }
-    if (maintenancePolicy != null) {
-      _json['maintenancePolicy'] = maintenancePolicy.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterId != null) 'clusterId': clusterId,
+        if (maintenancePolicy != null)
+          'maintenancePolicy': maintenancePolicy.toJson(),
+        if (name != null) 'name': name,
+        if (projectId != null) 'projectId': projectId,
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// SetMasterAuthRequest updates the admin password of a cluster.
@@ -9480,28 +8744,14 @@ class SetMasterAuthRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (action != null) {
-      _json['action'] = action;
-    }
-    if (clusterId != null) {
-      _json['clusterId'] = clusterId;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (update != null) {
-      _json['update'] = update.toJson();
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (action != null) 'action': action,
+        if (clusterId != null) 'clusterId': clusterId,
+        if (name != null) 'name': name,
+        if (projectId != null) 'projectId': projectId,
+        if (update != null) 'update': update.toJson(),
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// SetMonitoringServiceRequest sets the monitoring service of a cluster.
@@ -9568,25 +8818,13 @@ class SetMonitoringServiceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterId != null) {
-      _json['clusterId'] = clusterId;
-    }
-    if (monitoringService != null) {
-      _json['monitoringService'] = monitoringService;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterId != null) 'clusterId': clusterId,
+        if (monitoringService != null) 'monitoringService': monitoringService,
+        if (name != null) 'name': name,
+        if (projectId != null) 'projectId': projectId,
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// SetNetworkPolicyRequest enables/disables network policy for a cluster.
@@ -9647,25 +8885,13 @@ class SetNetworkPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterId != null) {
-      _json['clusterId'] = clusterId;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (networkPolicy != null) {
-      _json['networkPolicy'] = networkPolicy.toJson();
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterId != null) 'clusterId': clusterId,
+        if (name != null) 'name': name,
+        if (networkPolicy != null) 'networkPolicy': networkPolicy.toJson(),
+        if (projectId != null) 'projectId': projectId,
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// SetNodePoolAutoscalingRequest sets the autoscaler settings of a node pool.
@@ -9737,28 +8963,14 @@ class SetNodePoolAutoscalingRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (autoscaling != null) {
-      _json['autoscaling'] = autoscaling.toJson();
-    }
-    if (clusterId != null) {
-      _json['clusterId'] = clusterId;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (nodePoolId != null) {
-      _json['nodePoolId'] = nodePoolId;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (autoscaling != null) 'autoscaling': autoscaling.toJson(),
+        if (clusterId != null) 'clusterId': clusterId,
+        if (name != null) 'name': name,
+        if (nodePoolId != null) 'nodePoolId': nodePoolId,
+        if (projectId != null) 'projectId': projectId,
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// SetNodePoolManagementRequest sets the node management properties of a node
@@ -9831,28 +9043,14 @@ class SetNodePoolManagementRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterId != null) {
-      _json['clusterId'] = clusterId;
-    }
-    if (management != null) {
-      _json['management'] = management.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (nodePoolId != null) {
-      _json['nodePoolId'] = nodePoolId;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterId != null) 'clusterId': clusterId,
+        if (management != null) 'management': management.toJson(),
+        if (name != null) 'name': name,
+        if (nodePoolId != null) 'nodePoolId': nodePoolId,
+        if (projectId != null) 'projectId': projectId,
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// SetNodePoolSizeRequest sets the size of a node pool.
@@ -9923,28 +9121,14 @@ class SetNodePoolSizeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterId != null) {
-      _json['clusterId'] = clusterId;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (nodeCount != null) {
-      _json['nodeCount'] = nodeCount;
-    }
-    if (nodePoolId != null) {
-      _json['nodePoolId'] = nodePoolId;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterId != null) 'clusterId': clusterId,
+        if (name != null) 'name': name,
+        if (nodeCount != null) 'nodeCount': nodeCount,
+        if (nodePoolId != null) 'nodePoolId': nodePoolId,
+        if (projectId != null) 'projectId': projectId,
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// A set of Shielded Instance options.
@@ -9976,16 +9160,11 @@ class ShieldedInstanceConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enableIntegrityMonitoring != null) {
-      _json['enableIntegrityMonitoring'] = enableIntegrityMonitoring;
-    }
-    if (enableSecureBoot != null) {
-      _json['enableSecureBoot'] = enableSecureBoot;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enableIntegrityMonitoring != null)
+          'enableIntegrityMonitoring': enableIntegrityMonitoring,
+        if (enableSecureBoot != null) 'enableSecureBoot': enableSecureBoot,
+      };
 }
 
 /// Configuration of Shielded Nodes feature.
@@ -10001,13 +9180,9 @@ class ShieldedNodes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enabled != null) 'enabled': enabled,
+      };
 }
 
 /// StartIPRotationRequest creates a new IP for the cluster and then performs a
@@ -10066,25 +9241,13 @@ class StartIPRotationRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterId != null) {
-      _json['clusterId'] = clusterId;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (rotateCredentials != null) {
-      _json['rotateCredentials'] = rotateCredentials;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterId != null) 'clusterId': clusterId,
+        if (name != null) 'name': name,
+        if (projectId != null) 'projectId': projectId,
+        if (rotateCredentials != null) 'rotateCredentials': rotateCredentials,
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// StatusCondition describes why a cluster or a node pool has a certain status
@@ -10118,16 +9281,10 @@ class StatusCondition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Represents an arbitrary window of time.
@@ -10151,16 +9308,10 @@ class TimeWindow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// UpdateClusterRequest updates the settings of a cluster.
@@ -10220,25 +9371,13 @@ class UpdateClusterRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterId != null) {
-      _json['clusterId'] = clusterId;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (update != null) {
-      _json['update'] = update.toJson();
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterId != null) 'clusterId': clusterId,
+        if (name != null) 'name': name,
+        if (projectId != null) 'projectId': projectId,
+        if (update != null) 'update': update.toJson(),
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// UpdateMasterRequest updates the master of the cluster.
@@ -10304,25 +9443,13 @@ class UpdateMasterRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterId != null) {
-      _json['clusterId'] = clusterId;
-    }
-    if (masterVersion != null) {
-      _json['masterVersion'] = masterVersion;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterId != null) 'clusterId': clusterId,
+        if (masterVersion != null) 'masterVersion': masterVersion,
+        if (name != null) 'name': name,
+        if (projectId != null) 'projectId': projectId,
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// UpdateNodePoolRequests update a node pool's image and/or version.
@@ -10437,40 +9564,20 @@ class UpdateNodePoolRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterId != null) {
-      _json['clusterId'] = clusterId;
-    }
-    if (imageType != null) {
-      _json['imageType'] = imageType;
-    }
-    if (locations != null) {
-      _json['locations'] = locations;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (nodePoolId != null) {
-      _json['nodePoolId'] = nodePoolId;
-    }
-    if (nodeVersion != null) {
-      _json['nodeVersion'] = nodeVersion;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (upgradeSettings != null) {
-      _json['upgradeSettings'] = upgradeSettings.toJson();
-    }
-    if (workloadMetadataConfig != null) {
-      _json['workloadMetadataConfig'] = workloadMetadataConfig.toJson();
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterId != null) 'clusterId': clusterId,
+        if (imageType != null) 'imageType': imageType,
+        if (locations != null) 'locations': locations,
+        if (name != null) 'name': name,
+        if (nodePoolId != null) 'nodePoolId': nodePoolId,
+        if (nodeVersion != null) 'nodeVersion': nodeVersion,
+        if (projectId != null) 'projectId': projectId,
+        if (upgradeSettings != null)
+          'upgradeSettings': upgradeSettings.toJson(),
+        if (workloadMetadataConfig != null)
+          'workloadMetadataConfig': workloadMetadataConfig.toJson(),
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// UpgradeEvent is a notification sent to customers by the cluster server when
@@ -10524,28 +9631,15 @@ class UpgradeEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (currentVersion != null) {
-      _json['currentVersion'] = currentVersion;
-    }
-    if (operation != null) {
-      _json['operation'] = operation;
-    }
-    if (operationStartTime != null) {
-      _json['operationStartTime'] = operationStartTime;
-    }
-    if (resource != null) {
-      _json['resource'] = resource;
-    }
-    if (resourceType != null) {
-      _json['resourceType'] = resourceType;
-    }
-    if (targetVersion != null) {
-      _json['targetVersion'] = targetVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (currentVersion != null) 'currentVersion': currentVersion,
+        if (operation != null) 'operation': operation,
+        if (operationStartTime != null)
+          'operationStartTime': operationStartTime,
+        if (resource != null) 'resource': resource,
+        if (resourceType != null) 'resourceType': resourceType,
+        if (targetVersion != null) 'targetVersion': targetVersion,
+      };
 }
 
 /// These upgrade settings control the level of parallelism and the level of
@@ -10586,16 +9680,10 @@ class UpgradeSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maxSurge != null) {
-      _json['maxSurge'] = maxSurge;
-    }
-    if (maxUnavailable != null) {
-      _json['maxUnavailable'] = maxUnavailable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maxSurge != null) 'maxSurge': maxSurge,
+        if (maxUnavailable != null) 'maxUnavailable': maxUnavailable,
+      };
 }
 
 /// UsableSubnetwork resource returns the subnetwork name, its associated
@@ -10648,26 +9736,15 @@ class UsableSubnetwork {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ipCidrRange != null) {
-      _json['ipCidrRange'] = ipCidrRange;
-    }
-    if (network != null) {
-      _json['network'] = network;
-    }
-    if (secondaryIpRanges != null) {
-      _json['secondaryIpRanges'] =
-          secondaryIpRanges.map((value) => value.toJson()).toList();
-    }
-    if (statusMessage != null) {
-      _json['statusMessage'] = statusMessage;
-    }
-    if (subnetwork != null) {
-      _json['subnetwork'] = subnetwork;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ipCidrRange != null) 'ipCidrRange': ipCidrRange,
+        if (network != null) 'network': network,
+        if (secondaryIpRanges != null)
+          'secondaryIpRanges':
+              secondaryIpRanges.map((value) => value.toJson()).toList(),
+        if (statusMessage != null) 'statusMessage': statusMessage,
+        if (subnetwork != null) 'subnetwork': subnetwork,
+      };
 }
 
 /// Secondary IP range of a usable subnetwork.
@@ -10707,19 +9784,11 @@ class UsableSubnetworkSecondaryRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ipCidrRange != null) {
-      _json['ipCidrRange'] = ipCidrRange;
-    }
-    if (rangeName != null) {
-      _json['rangeName'] = rangeName;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ipCidrRange != null) 'ipCidrRange': ipCidrRange,
+        if (rangeName != null) 'rangeName': rangeName,
+        if (status != null) 'status': status,
+      };
 }
 
 /// VerticalPodAutoscaling contains global, per-cluster information required by
@@ -10737,13 +9806,9 @@ class VerticalPodAutoscaling {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enabled != null) 'enabled': enabled,
+      };
 }
 
 /// Configuration for the use of Kubernetes Service Accounts in GCP IAM
@@ -10760,13 +9825,9 @@ class WorkloadIdentityConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (workloadPool != null) {
-      _json['workloadPool'] = workloadPool;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (workloadPool != null) 'workloadPool': workloadPool,
+      };
 }
 
 /// WorkloadMetadataConfig defines the metadata configuration to expose to
@@ -10792,11 +9853,7 @@ class WorkloadMetadataConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (mode != null) {
-      _json['mode'] = mode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (mode != null) 'mode': mode,
+      };
 }

@@ -1318,13 +1318,9 @@ class NestedResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nestedResult != null) {
-      _json['nestedResult'] = nestedResult;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nestedResult != null) 'nestedResult': nestedResult,
+      };
 }
 
 class ToyAgeRequest {
@@ -1338,13 +1334,9 @@ class ToyAgeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (age != null) {
-      _json['age'] = age;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (age != null) 'age': age,
+      };
 }
 
 class ToyMapResponse {
@@ -1369,17 +1361,12 @@ class ToyMapResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (mapResult != null) {
-      _json['mapResult'] =
-          mapResult.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (result != null) {
-      _json['result'] = result;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (mapResult != null)
+          'mapResult':
+              mapResult.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (result != null) 'result': result,
+      };
 }
 
 class ToyRequest {
@@ -1397,16 +1384,10 @@ class ToyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (age != null) {
-      _json['age'] = age;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (age != null) 'age': age,
+        if (name != null) 'name': name,
+      };
 }
 
 class ToyResourceResponse {
@@ -1420,13 +1401,9 @@ class ToyResourceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (result != null) {
-      _json['result'] = result;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (result != null) 'result': result,
+      };
 }
 
 class ToyResponse {
@@ -1440,11 +1417,7 @@ class ToyResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (result != null) {
-      _json['result'] = result;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (result != null) 'result': result,
+      };
 }

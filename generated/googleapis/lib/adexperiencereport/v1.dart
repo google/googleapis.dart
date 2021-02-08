@@ -217,31 +217,15 @@ class PlatformSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (betterAdsStatus != null) {
-      _json['betterAdsStatus'] = betterAdsStatus;
-    }
-    if (enforcementTime != null) {
-      _json['enforcementTime'] = enforcementTime;
-    }
-    if (filterStatus != null) {
-      _json['filterStatus'] = filterStatus;
-    }
-    if (lastChangeTime != null) {
-      _json['lastChangeTime'] = lastChangeTime;
-    }
-    if (region != null) {
-      _json['region'] = region;
-    }
-    if (reportUrl != null) {
-      _json['reportUrl'] = reportUrl;
-    }
-    if (underReview != null) {
-      _json['underReview'] = underReview;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (betterAdsStatus != null) 'betterAdsStatus': betterAdsStatus,
+        if (enforcementTime != null) 'enforcementTime': enforcementTime,
+        if (filterStatus != null) 'filterStatus': filterStatus,
+        if (lastChangeTime != null) 'lastChangeTime': lastChangeTime,
+        if (region != null) 'region': region,
+        if (reportUrl != null) 'reportUrl': reportUrl,
+        if (underReview != null) 'underReview': underReview,
+      };
 }
 
 /// Response message for GetSiteSummary.
@@ -271,19 +255,11 @@ class SiteSummaryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (desktopSummary != null) {
-      _json['desktopSummary'] = desktopSummary.toJson();
-    }
-    if (mobileSummary != null) {
-      _json['mobileSummary'] = mobileSummary.toJson();
-    }
-    if (reviewedSite != null) {
-      _json['reviewedSite'] = reviewedSite;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (desktopSummary != null) 'desktopSummary': desktopSummary.toJson(),
+        if (mobileSummary != null) 'mobileSummary': mobileSummary.toJson(),
+        if (reviewedSite != null) 'reviewedSite': reviewedSite,
+      };
 }
 
 /// Response message for ListViolatingSites.
@@ -302,12 +278,9 @@ class ViolatingSitesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (violatingSites != null) {
-      _json['violatingSites'] =
-          violatingSites.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (violatingSites != null)
+          'violatingSites':
+              violatingSites.map((value) => value.toJson()).toList(),
+      };
 }

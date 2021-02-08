@@ -125,19 +125,11 @@ class AmpUrl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ampUrl != null) {
-      _json['ampUrl'] = ampUrl;
-    }
-    if (cdnAmpUrl != null) {
-      _json['cdnAmpUrl'] = cdnAmpUrl;
-    }
-    if (originalUrl != null) {
-      _json['originalUrl'] = originalUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ampUrl != null) 'ampUrl': ampUrl,
+        if (cdnAmpUrl != null) 'cdnAmpUrl': cdnAmpUrl,
+        if (originalUrl != null) 'originalUrl': originalUrl,
+      };
 }
 
 /// AMP URL Error resource for a requested URL that couldn't be found.
@@ -179,19 +171,11 @@ class AmpUrlError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errorCode != null) {
-      _json['errorCode'] = errorCode;
-    }
-    if (errorMessage != null) {
-      _json['errorMessage'] = errorMessage;
-    }
-    if (originalUrl != null) {
-      _json['originalUrl'] = originalUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errorCode != null) 'errorCode': errorCode,
+        if (errorMessage != null) 'errorMessage': errorMessage,
+        if (originalUrl != null) 'originalUrl': originalUrl,
+      };
 }
 
 /// AMP URL request for a batch of URLs.
@@ -228,16 +212,10 @@ class BatchGetAmpUrlsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (lookupStrategy != null) {
-      _json['lookupStrategy'] = lookupStrategy;
-    }
-    if (urls != null) {
-      _json['urls'] = urls;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (lookupStrategy != null) 'lookupStrategy': lookupStrategy,
+        if (urls != null) 'urls': urls,
+      };
 }
 
 /// Batch AMP URL response.
@@ -269,14 +247,10 @@ class BatchGetAmpUrlsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ampUrls != null) {
-      _json['ampUrls'] = ampUrls.map((value) => value.toJson()).toList();
-    }
-    if (urlErrors != null) {
-      _json['urlErrors'] = urlErrors.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ampUrls != null)
+          'ampUrls': ampUrls.map((value) => value.toJson()).toList(),
+        if (urlErrors != null)
+          'urlErrors': urlErrors.map((value) => value.toJson()).toList(),
+      };
 }

@@ -2607,13 +2607,9 @@ class Addressable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (url != null) 'url': url,
+      };
 }
 
 /// Specifies the audit configuration for a service.
@@ -2657,17 +2653,12 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditLogConfigs != null) {
-      _json['auditLogConfigs'] =
-          auditLogConfigs.map((value) => value.toJson()).toList();
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditLogConfigs != null)
+          'auditLogConfigs':
+              auditLogConfigs.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service,
+      };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -2704,16 +2695,10 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exemptedMembers != null) {
-      _json['exemptedMembers'] = exemptedMembers;
-    }
-    if (logType != null) {
-      _json['logType'] = logType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
+        if (logType != null) 'logType': logType,
+      };
 }
 
 /// A domain that a user has been authorized to administer.
@@ -2743,16 +2728,10 @@ class AuthorizedDomain {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Associates `members` with a `role`.
@@ -2821,19 +2800,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
@@ -2872,19 +2843,12 @@ class ConfigMapEnvSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (localObjectReference != null) {
-      _json['localObjectReference'] = localObjectReference.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (optional != null) {
-      _json['optional'] = optional;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (localObjectReference != null)
+          'localObjectReference': localObjectReference.toJson(),
+        if (name != null) 'name': name,
+        if (optional != null) 'optional': optional,
+      };
 }
 
 /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
@@ -2926,22 +2890,13 @@ class ConfigMapKeySelector {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (localObjectReference != null) {
-      _json['localObjectReference'] = localObjectReference.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (optional != null) {
-      _json['optional'] = optional;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (localObjectReference != null)
+          'localObjectReference': localObjectReference.toJson(),
+        if (name != null) 'name': name,
+        if (optional != null) 'optional': optional,
+      };
 }
 
 /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
@@ -2999,22 +2954,13 @@ class ConfigMapVolumeSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (defaultMode != null) {
-      _json['defaultMode'] = defaultMode;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (optional != null) {
-      _json['optional'] = optional;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (defaultMode != null) 'defaultMode': defaultMode,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (optional != null) 'optional': optional,
+      };
 }
 
 /// Configuration represents the "floating HEAD" of a linear history of
@@ -3066,25 +3012,13 @@ class Configuration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiVersion != null) {
-      _json['apiVersion'] = apiVersion;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (spec != null) {
-      _json['spec'] = spec.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion,
+        if (kind != null) 'kind': kind,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (spec != null) 'spec': spec.toJson(),
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 /// ConfigurationSpec holds the desired state of the Configuration (from the
@@ -3103,13 +3037,9 @@ class ConfigurationSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (template != null) {
-      _json['template'] = template.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (template != null) 'template': template.toJson(),
+      };
 }
 
 /// ConfigurationStatus communicates the observed state of the Configuration
@@ -3161,22 +3091,16 @@ class ConfigurationStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (conditions != null) {
-      _json['conditions'] = conditions.map((value) => value.toJson()).toList();
-    }
-    if (latestCreatedRevisionName != null) {
-      _json['latestCreatedRevisionName'] = latestCreatedRevisionName;
-    }
-    if (latestReadyRevisionName != null) {
-      _json['latestReadyRevisionName'] = latestReadyRevisionName;
-    }
-    if (observedGeneration != null) {
-      _json['observedGeneration'] = observedGeneration;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (conditions != null)
+          'conditions': conditions.map((value) => value.toJson()).toList(),
+        if (latestCreatedRevisionName != null)
+          'latestCreatedRevisionName': latestCreatedRevisionName,
+        if (latestReadyRevisionName != null)
+          'latestReadyRevisionName': latestReadyRevisionName,
+        if (observedGeneration != null)
+          'observedGeneration': observedGeneration,
+      };
 }
 
 /// A single application container.
@@ -3374,59 +3298,30 @@ class Container {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (args != null) {
-      _json['args'] = args;
-    }
-    if (command != null) {
-      _json['command'] = command;
-    }
-    if (env != null) {
-      _json['env'] = env.map((value) => value.toJson()).toList();
-    }
-    if (envFrom != null) {
-      _json['envFrom'] = envFrom.map((value) => value.toJson()).toList();
-    }
-    if (image != null) {
-      _json['image'] = image;
-    }
-    if (imagePullPolicy != null) {
-      _json['imagePullPolicy'] = imagePullPolicy;
-    }
-    if (livenessProbe != null) {
-      _json['livenessProbe'] = livenessProbe.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (ports != null) {
-      _json['ports'] = ports.map((value) => value.toJson()).toList();
-    }
-    if (readinessProbe != null) {
-      _json['readinessProbe'] = readinessProbe.toJson();
-    }
-    if (resources != null) {
-      _json['resources'] = resources.toJson();
-    }
-    if (securityContext != null) {
-      _json['securityContext'] = securityContext.toJson();
-    }
-    if (terminationMessagePath != null) {
-      _json['terminationMessagePath'] = terminationMessagePath;
-    }
-    if (terminationMessagePolicy != null) {
-      _json['terminationMessagePolicy'] = terminationMessagePolicy;
-    }
-    if (volumeMounts != null) {
-      _json['volumeMounts'] =
-          volumeMounts.map((value) => value.toJson()).toList();
-    }
-    if (workingDir != null) {
-      _json['workingDir'] = workingDir;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (args != null) 'args': args,
+        if (command != null) 'command': command,
+        if (env != null) 'env': env.map((value) => value.toJson()).toList(),
+        if (envFrom != null)
+          'envFrom': envFrom.map((value) => value.toJson()).toList(),
+        if (image != null) 'image': image,
+        if (imagePullPolicy != null) 'imagePullPolicy': imagePullPolicy,
+        if (livenessProbe != null) 'livenessProbe': livenessProbe.toJson(),
+        if (name != null) 'name': name,
+        if (ports != null)
+          'ports': ports.map((value) => value.toJson()).toList(),
+        if (readinessProbe != null) 'readinessProbe': readinessProbe.toJson(),
+        if (resources != null) 'resources': resources.toJson(),
+        if (securityContext != null)
+          'securityContext': securityContext.toJson(),
+        if (terminationMessagePath != null)
+          'terminationMessagePath': terminationMessagePath,
+        if (terminationMessagePolicy != null)
+          'terminationMessagePolicy': terminationMessagePolicy,
+        if (volumeMounts != null)
+          'volumeMounts': volumeMounts.map((value) => value.toJson()).toList(),
+        if (workingDir != null) 'workingDir': workingDir,
+      };
 }
 
 /// ContainerPort represents a network port in a single container.
@@ -3462,19 +3357,11 @@ class ContainerPort {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (containerPort != null) {
-      _json['containerPort'] = containerPort;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (protocol != null) {
-      _json['protocol'] = protocol;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (containerPort != null) 'containerPort': containerPort,
+        if (name != null) 'name': name,
+        if (protocol != null) 'protocol': protocol,
+      };
 }
 
 /// Resource to hold the state and status of a user's domain mapping.
@@ -3519,25 +3406,13 @@ class DomainMapping {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiVersion != null) {
-      _json['apiVersion'] = apiVersion;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (spec != null) {
-      _json['spec'] = spec.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion,
+        if (kind != null) 'kind': kind,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (spec != null) 'spec': spec.toJson(),
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 /// The desired state of the Domain Mapping.
@@ -3577,19 +3452,11 @@ class DomainMappingSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (certificateMode != null) {
-      _json['certificateMode'] = certificateMode;
-    }
-    if (forceOverride != null) {
-      _json['forceOverride'] = forceOverride;
-    }
-    if (routeName != null) {
-      _json['routeName'] = routeName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (certificateMode != null) 'certificateMode': certificateMode,
+        if (forceOverride != null) 'forceOverride': forceOverride,
+        if (routeName != null) 'routeName': routeName,
+      };
 }
 
 /// The current state of the Domain Mapping.
@@ -3648,26 +3515,17 @@ class DomainMappingStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (conditions != null) {
-      _json['conditions'] = conditions.map((value) => value.toJson()).toList();
-    }
-    if (mappedRouteName != null) {
-      _json['mappedRouteName'] = mappedRouteName;
-    }
-    if (observedGeneration != null) {
-      _json['observedGeneration'] = observedGeneration;
-    }
-    if (resourceRecords != null) {
-      _json['resourceRecords'] =
-          resourceRecords.map((value) => value.toJson()).toList();
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (conditions != null)
+          'conditions': conditions.map((value) => value.toJson()).toList(),
+        if (mappedRouteName != null) 'mappedRouteName': mappedRouteName,
+        if (observedGeneration != null)
+          'observedGeneration': observedGeneration,
+        if (resourceRecords != null)
+          'resourceRecords':
+              resourceRecords.map((value) => value.toJson()).toList(),
+        if (url != null) 'url': url,
+      };
 }
 
 /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
@@ -3703,19 +3561,11 @@ class EnvFromSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (configMapRef != null) {
-      _json['configMapRef'] = configMapRef.toJson();
-    }
-    if (prefix != null) {
-      _json['prefix'] = prefix;
-    }
-    if (secretRef != null) {
-      _json['secretRef'] = secretRef.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (configMapRef != null) 'configMapRef': configMapRef.toJson(),
+        if (prefix != null) 'prefix': prefix,
+        if (secretRef != null) 'secretRef': secretRef.toJson(),
+      };
 }
 
 /// EnvVar represents an environment variable present in a Container.
@@ -3756,19 +3606,11 @@ class EnvVar {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    if (valueFrom != null) {
-      _json['valueFrom'] = valueFrom.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (value != null) 'value': value,
+        if (valueFrom != null) 'valueFrom': valueFrom.toJson(),
+      };
 }
 
 /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
@@ -3795,16 +3637,11 @@ class EnvVarSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (configMapKeyRef != null) {
-      _json['configMapKeyRef'] = configMapKeyRef.toJson();
-    }
-    if (secretKeyRef != null) {
-      _json['secretKeyRef'] = secretKeyRef.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (configMapKeyRef != null)
+          'configMapKeyRef': configMapKeyRef.toJson(),
+        if (secretKeyRef != null) 'secretKeyRef': secretKeyRef.toJson(),
+      };
 }
 
 /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
@@ -3831,13 +3668,9 @@ class ExecAction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (command != null) {
-      _json['command'] = command;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (command != null) 'command': command,
+      };
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -3901,22 +3734,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Condition defines a generic condition for a Resource
@@ -3975,28 +3798,15 @@ class GoogleCloudRunV1Condition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (lastTransitionTime != null) {
-      _json['lastTransitionTime'] = lastTransitionTime;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    if (reason != null) {
-      _json['reason'] = reason;
-    }
-    if (severity != null) {
-      _json['severity'] = severity;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (lastTransitionTime != null)
+          'lastTransitionTime': lastTransitionTime,
+        if (message != null) 'message': message,
+        if (reason != null) 'reason': reason,
+        if (severity != null) 'severity': severity,
+        if (status != null) 'status': status,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
@@ -4044,23 +3854,13 @@ class HTTPGetAction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (host != null) {
-      _json['host'] = host;
-    }
-    if (httpHeaders != null) {
-      _json['httpHeaders'] =
-          httpHeaders.map((value) => value.toJson()).toList();
-    }
-    if (path != null) {
-      _json['path'] = path;
-    }
-    if (scheme != null) {
-      _json['scheme'] = scheme;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (host != null) 'host': host,
+        if (httpHeaders != null)
+          'httpHeaders': httpHeaders.map((value) => value.toJson()).toList(),
+        if (path != null) 'path': path,
+        if (scheme != null) 'scheme': scheme,
+      };
 }
 
 /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
@@ -4085,16 +3885,10 @@ class HTTPHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Maps
@@ -4134,19 +3928,11 @@ class KeyToPath {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (mode != null) {
-      _json['mode'] = mode;
-    }
-    if (path != null) {
-      _json['path'] = path;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (mode != null) 'mode': mode,
+        if (path != null) 'path': path,
+      };
 }
 
 /// A list of Authorized Domains.
@@ -4171,16 +3957,11 @@ class ListAuthorizedDomainsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (domains != null) {
-      _json['domains'] = domains.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (domains != null)
+          'domains': domains.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// ListConfigurationsResponse is a list of Configuration resources.
@@ -4226,25 +4007,14 @@ class ListConfigurationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiVersion != null) {
-      _json['apiVersion'] = apiVersion;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (unreachable != null) {
-      _json['unreachable'] = unreachable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (unreachable != null) 'unreachable': unreachable,
+      };
 }
 
 /// ListDomainMappingsResponse is a list of DomainMapping resources.
@@ -4290,25 +4060,14 @@ class ListDomainMappingsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiVersion != null) {
-      _json['apiVersion'] = apiVersion;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (unreachable != null) {
-      _json['unreachable'] = unreachable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (unreachable != null) 'unreachable': unreachable,
+      };
 }
 
 /// The response message for Locations.ListLocations.
@@ -4333,16 +4092,11 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// ListMeta describes metadata that synthetic resources must have, including
@@ -4389,19 +4143,11 @@ class ListMeta {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (continue_ != null) {
-      _json['continue'] = continue_;
-    }
-    if (resourceVersion != null) {
-      _json['resourceVersion'] = resourceVersion;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (continue_ != null) 'continue': continue_,
+        if (resourceVersion != null) 'resourceVersion': resourceVersion,
+        if (selfLink != null) 'selfLink': selfLink,
+      };
 }
 
 /// ListRevisionsResponse is a list of Revision resources.
@@ -4447,25 +4193,14 @@ class ListRevisionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiVersion != null) {
-      _json['apiVersion'] = apiVersion;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (unreachable != null) {
-      _json['unreachable'] = unreachable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (unreachable != null) 'unreachable': unreachable,
+      };
 }
 
 /// ListRoutesResponse is a list of Route resources.
@@ -4511,25 +4246,14 @@ class ListRoutesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiVersion != null) {
-      _json['apiVersion'] = apiVersion;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (unreachable != null) {
-      _json['unreachable'] = unreachable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (unreachable != null) 'unreachable': unreachable,
+      };
 }
 
 /// A list of Service resources.
@@ -4575,25 +4299,14 @@ class ListServicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiVersion != null) {
-      _json['apiVersion'] = apiVersion;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (unreachable != null) {
-      _json['unreachable'] = unreachable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (unreachable != null) 'unreachable': unreachable,
+      };
 }
 
 /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
@@ -4615,13 +4328,9 @@ class LocalObjectReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+      };
 }
 
 /// A resource that represents Google Cloud Platform location.
@@ -4686,25 +4395,13 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (labels != null) 'labels': labels,
+        if (locationId != null) 'locationId': locationId,
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+      };
 }
 
 /// k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all
@@ -4923,56 +4620,26 @@ class ObjectMeta {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotations != null) {
-      _json['annotations'] = annotations;
-    }
-    if (clusterName != null) {
-      _json['clusterName'] = clusterName;
-    }
-    if (creationTimestamp != null) {
-      _json['creationTimestamp'] = creationTimestamp;
-    }
-    if (deletionGracePeriodSeconds != null) {
-      _json['deletionGracePeriodSeconds'] = deletionGracePeriodSeconds;
-    }
-    if (deletionTimestamp != null) {
-      _json['deletionTimestamp'] = deletionTimestamp;
-    }
-    if (finalizers != null) {
-      _json['finalizers'] = finalizers;
-    }
-    if (generateName != null) {
-      _json['generateName'] = generateName;
-    }
-    if (generation != null) {
-      _json['generation'] = generation;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (namespace != null) {
-      _json['namespace'] = namespace;
-    }
-    if (ownerReferences != null) {
-      _json['ownerReferences'] =
-          ownerReferences.map((value) => value.toJson()).toList();
-    }
-    if (resourceVersion != null) {
-      _json['resourceVersion'] = resourceVersion;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (uid != null) {
-      _json['uid'] = uid;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotations != null) 'annotations': annotations,
+        if (clusterName != null) 'clusterName': clusterName,
+        if (creationTimestamp != null) 'creationTimestamp': creationTimestamp,
+        if (deletionGracePeriodSeconds != null)
+          'deletionGracePeriodSeconds': deletionGracePeriodSeconds,
+        if (deletionTimestamp != null) 'deletionTimestamp': deletionTimestamp,
+        if (finalizers != null) 'finalizers': finalizers,
+        if (generateName != null) 'generateName': generateName,
+        if (generation != null) 'generation': generation,
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+        if (namespace != null) 'namespace': namespace,
+        if (ownerReferences != null)
+          'ownerReferences':
+              ownerReferences.map((value) => value.toJson()).toList(),
+        if (resourceVersion != null) 'resourceVersion': resourceVersion,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (uid != null) 'uid': uid,
+      };
 }
 
 /// OwnerReference contains enough information to let you identify an owning
@@ -5037,28 +4704,15 @@ class OwnerReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiVersion != null) {
-      _json['apiVersion'] = apiVersion;
-    }
-    if (blockOwnerDeletion != null) {
-      _json['blockOwnerDeletion'] = blockOwnerDeletion;
-    }
-    if (controller != null) {
-      _json['controller'] = controller;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (uid != null) {
-      _json['uid'] = uid;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion,
+        if (blockOwnerDeletion != null)
+          'blockOwnerDeletion': blockOwnerDeletion,
+        if (controller != null) 'controller': controller,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+        if (uid != null) 'uid': uid,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -5165,23 +4819,14 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditConfigs != null) {
-      _json['auditConfigs'] =
-          auditConfigs.map((value) => value.toJson()).toList();
-    }
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditConfigs != null)
+          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Probe
@@ -5274,34 +4919,17 @@ class Probe {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exec != null) {
-      _json['exec'] = exec.toJson();
-    }
-    if (failureThreshold != null) {
-      _json['failureThreshold'] = failureThreshold;
-    }
-    if (httpGet != null) {
-      _json['httpGet'] = httpGet.toJson();
-    }
-    if (initialDelaySeconds != null) {
-      _json['initialDelaySeconds'] = initialDelaySeconds;
-    }
-    if (periodSeconds != null) {
-      _json['periodSeconds'] = periodSeconds;
-    }
-    if (successThreshold != null) {
-      _json['successThreshold'] = successThreshold;
-    }
-    if (tcpSocket != null) {
-      _json['tcpSocket'] = tcpSocket.toJson();
-    }
-    if (timeoutSeconds != null) {
-      _json['timeoutSeconds'] = timeoutSeconds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exec != null) 'exec': exec.toJson(),
+        if (failureThreshold != null) 'failureThreshold': failureThreshold,
+        if (httpGet != null) 'httpGet': httpGet.toJson(),
+        if (initialDelaySeconds != null)
+          'initialDelaySeconds': initialDelaySeconds,
+        if (periodSeconds != null) 'periodSeconds': periodSeconds,
+        if (successThreshold != null) 'successThreshold': successThreshold,
+        if (tcpSocket != null) 'tcpSocket': tcpSocket.toJson(),
+        if (timeoutSeconds != null) 'timeoutSeconds': timeoutSeconds,
+      };
 }
 
 /// A DNS resource record.
@@ -5341,19 +4969,11 @@ class ResourceRecord {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (rrdata != null) {
-      _json['rrdata'] = rrdata;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (rrdata != null) 'rrdata': rrdata,
+        if (type != null) 'type': type,
+      };
 }
 
 /// ResourceRequirements describes the compute resource requirements.
@@ -5401,16 +5021,10 @@ class ResourceRequirements {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (limits != null) {
-      _json['limits'] = limits;
-    }
-    if (requests != null) {
-      _json['requests'] = requests;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (limits != null) 'limits': limits,
+        if (requests != null) 'requests': requests,
+      };
 }
 
 /// Revision is an immutable snapshot of code and configuration.
@@ -5459,25 +5073,13 @@ class Revision {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiVersion != null) {
-      _json['apiVersion'] = apiVersion;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (spec != null) {
-      _json['spec'] = spec.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion,
+        if (kind != null) 'kind': kind,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (spec != null) 'spec': spec.toJson(),
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 /// RevisionSpec holds the desired state of the Revision (from the client).
@@ -5544,25 +5146,17 @@ class RevisionSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (containerConcurrency != null) {
-      _json['containerConcurrency'] = containerConcurrency;
-    }
-    if (containers != null) {
-      _json['containers'] = containers.map((value) => value.toJson()).toList();
-    }
-    if (serviceAccountName != null) {
-      _json['serviceAccountName'] = serviceAccountName;
-    }
-    if (timeoutSeconds != null) {
-      _json['timeoutSeconds'] = timeoutSeconds;
-    }
-    if (volumes != null) {
-      _json['volumes'] = volumes.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (containerConcurrency != null)
+          'containerConcurrency': containerConcurrency,
+        if (containers != null)
+          'containers': containers.map((value) => value.toJson()).toList(),
+        if (serviceAccountName != null)
+          'serviceAccountName': serviceAccountName,
+        if (timeoutSeconds != null) 'timeoutSeconds': timeoutSeconds,
+        if (volumes != null)
+          'volumes': volumes.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// RevisionStatus communicates the observed state of the Revision (from the
@@ -5628,25 +5222,15 @@ class RevisionStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (conditions != null) {
-      _json['conditions'] = conditions.map((value) => value.toJson()).toList();
-    }
-    if (imageDigest != null) {
-      _json['imageDigest'] = imageDigest;
-    }
-    if (logUrl != null) {
-      _json['logUrl'] = logUrl;
-    }
-    if (observedGeneration != null) {
-      _json['observedGeneration'] = observedGeneration;
-    }
-    if (serviceName != null) {
-      _json['serviceName'] = serviceName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (conditions != null)
+          'conditions': conditions.map((value) => value.toJson()).toList(),
+        if (imageDigest != null) 'imageDigest': imageDigest,
+        if (logUrl != null) 'logUrl': logUrl,
+        if (observedGeneration != null)
+          'observedGeneration': observedGeneration,
+        if (serviceName != null) 'serviceName': serviceName,
+      };
 }
 
 /// RevisionTemplateSpec describes the data a revision should have when created
@@ -5684,16 +5268,10 @@ class RevisionTemplate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (spec != null) {
-      _json['spec'] = spec.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (spec != null) 'spec': spec.toJson(),
+      };
 }
 
 /// Route is responsible for configuring ingress over a collection of Revisions.
@@ -5746,25 +5324,13 @@ class Route {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiVersion != null) {
-      _json['apiVersion'] = apiVersion;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (spec != null) {
-      _json['spec'] = spec.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion,
+        if (kind != null) 'kind': kind,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (spec != null) 'spec': spec.toJson(),
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 /// RouteSpec holds the desired state of the Route (from the client).
@@ -5786,13 +5352,10 @@ class RouteSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (traffic != null) {
-      _json['traffic'] = traffic.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (traffic != null)
+          'traffic': traffic.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// RouteStatus communicates the observed state of the Route (from the
@@ -5860,25 +5423,16 @@ class RouteStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (address != null) {
-      _json['address'] = address.toJson();
-    }
-    if (conditions != null) {
-      _json['conditions'] = conditions.map((value) => value.toJson()).toList();
-    }
-    if (observedGeneration != null) {
-      _json['observedGeneration'] = observedGeneration;
-    }
-    if (traffic != null) {
-      _json['traffic'] = traffic.map((value) => value.toJson()).toList();
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (address != null) 'address': address.toJson(),
+        if (conditions != null)
+          'conditions': conditions.map((value) => value.toJson()).toList(),
+        if (observedGeneration != null)
+          'observedGeneration': observedGeneration,
+        if (traffic != null)
+          'traffic': traffic.map((value) => value.toJson()).toList(),
+        if (url != null) 'url': url,
+      };
 }
 
 /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
@@ -5916,19 +5470,12 @@ class SecretEnvSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (localObjectReference != null) {
-      _json['localObjectReference'] = localObjectReference.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (optional != null) {
-      _json['optional'] = optional;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (localObjectReference != null)
+          'localObjectReference': localObjectReference.toJson(),
+        if (name != null) 'name': name,
+        if (optional != null) 'optional': optional,
+      };
 }
 
 /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
@@ -5972,22 +5519,13 @@ class SecretKeySelector {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (localObjectReference != null) {
-      _json['localObjectReference'] = localObjectReference.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (optional != null) {
-      _json['optional'] = optional;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (localObjectReference != null)
+          'localObjectReference': localObjectReference.toJson(),
+        if (name != null) 'name': name,
+        if (optional != null) 'optional': optional,
+      };
 }
 
 /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The
@@ -6045,22 +5583,13 @@ class SecretVolumeSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (defaultMode != null) {
-      _json['defaultMode'] = defaultMode;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (optional != null) {
-      _json['optional'] = optional;
-    }
-    if (secretName != null) {
-      _json['secretName'] = secretName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (defaultMode != null) 'defaultMode': defaultMode,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (optional != null) 'optional': optional,
+        if (secretName != null) 'secretName': secretName,
+      };
 }
 
 /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
@@ -6087,13 +5616,9 @@ class SecurityContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (runAsUser != null) {
-      _json['runAsUser'] = runAsUser;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (runAsUser != null) 'runAsUser': runAsUser,
+      };
 }
 
 /// Service acts as a top-level container that manages a set of Routes and
@@ -6148,25 +5673,13 @@ class Service {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiVersion != null) {
-      _json['apiVersion'] = apiVersion;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (spec != null) {
-      _json['spec'] = spec.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion,
+        if (kind != null) 'kind': kind,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (spec != null) 'spec': spec.toJson(),
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 /// ServiceSpec holds the desired state of the Route (from the client), which is
@@ -6195,16 +5708,11 @@ class ServiceSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (template != null) {
-      _json['template'] = template.toJson();
-    }
-    if (traffic != null) {
-      _json['traffic'] = traffic.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (template != null) 'template': template.toJson(),
+        if (traffic != null)
+          'traffic': traffic.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The current state of the Service.
@@ -6298,31 +5806,20 @@ class ServiceStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (address != null) {
-      _json['address'] = address.toJson();
-    }
-    if (conditions != null) {
-      _json['conditions'] = conditions.map((value) => value.toJson()).toList();
-    }
-    if (latestCreatedRevisionName != null) {
-      _json['latestCreatedRevisionName'] = latestCreatedRevisionName;
-    }
-    if (latestReadyRevisionName != null) {
-      _json['latestReadyRevisionName'] = latestReadyRevisionName;
-    }
-    if (observedGeneration != null) {
-      _json['observedGeneration'] = observedGeneration;
-    }
-    if (traffic != null) {
-      _json['traffic'] = traffic.map((value) => value.toJson()).toList();
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (address != null) 'address': address.toJson(),
+        if (conditions != null)
+          'conditions': conditions.map((value) => value.toJson()).toList(),
+        if (latestCreatedRevisionName != null)
+          'latestCreatedRevisionName': latestCreatedRevisionName,
+        if (latestReadyRevisionName != null)
+          'latestReadyRevisionName': latestReadyRevisionName,
+        if (observedGeneration != null)
+          'observedGeneration': observedGeneration,
+        if (traffic != null)
+          'traffic': traffic.map((value) => value.toJson()).toList(),
+        if (url != null) 'url': url,
+      };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -6352,16 +5849,10 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// Status is a return value for calls that don't return other objects
@@ -6429,28 +5920,14 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details.toJson();
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (reason != null) {
-      _json['reason'] = reason;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details.toJson(),
+        if (message != null) 'message': message,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (reason != null) 'reason': reason,
+        if (status != null) 'status': status,
+      };
 }
 
 /// StatusCause provides more information about an api.Status failure, including
@@ -6490,19 +5967,11 @@ class StatusCause {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (field != null) {
-      _json['field'] = field;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    if (reason != null) {
-      _json['reason'] = reason;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (field != null) 'field': field,
+        if (message != null) 'message': message,
+        if (reason != null) 'reason': reason,
+      };
 }
 
 /// StatusDetails is a set of additional properties that MAY be set by the
@@ -6578,28 +6047,15 @@ class StatusDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (causes != null) {
-      _json['causes'] = causes.map((value) => value.toJson()).toList();
-    }
-    if (group != null) {
-      _json['group'] = group;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (retryAfterSeconds != null) {
-      _json['retryAfterSeconds'] = retryAfterSeconds;
-    }
-    if (uid != null) {
-      _json['uid'] = uid;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (causes != null)
+          'causes': causes.map((value) => value.toJson()).toList(),
+        if (group != null) 'group': group,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+        if (retryAfterSeconds != null) 'retryAfterSeconds': retryAfterSeconds,
+        if (uid != null) 'uid': uid,
+      };
 }
 
 /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
@@ -6628,16 +6084,10 @@ class TCPSocketAction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (host != null) {
-      _json['host'] = host;
-    }
-    if (port != null) {
-      _json['port'] = port;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (host != null) 'host': host,
+        if (port != null) 'port': port,
+      };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -6659,13 +6109,9 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -6684,13 +6130,9 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// TrafficTarget holds a single entry of the routing table for a Route.
@@ -6765,28 +6207,14 @@ class TrafficTarget {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (configurationName != null) {
-      _json['configurationName'] = configurationName;
-    }
-    if (latestRevision != null) {
-      _json['latestRevision'] = latestRevision;
-    }
-    if (percent != null) {
-      _json['percent'] = percent;
-    }
-    if (revisionName != null) {
-      _json['revisionName'] = revisionName;
-    }
-    if (tag != null) {
-      _json['tag'] = tag;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (configurationName != null) 'configurationName': configurationName,
+        if (latestRevision != null) 'latestRevision': latestRevision,
+        if (percent != null) 'percent': percent,
+        if (revisionName != null) 'revisionName': revisionName,
+        if (tag != null) 'tag': tag,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
@@ -6818,19 +6246,11 @@ class Volume {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (configMap != null) {
-      _json['configMap'] = configMap.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (secret != null) {
-      _json['secret'] = secret.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (configMap != null) 'configMap': configMap.toJson(),
+        if (name != null) 'name': name,
+        if (secret != null) 'secret': secret.toJson(),
+      };
 }
 
 /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
@@ -6876,20 +6296,10 @@ class VolumeMount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (mountPath != null) {
-      _json['mountPath'] = mountPath;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (readOnly != null) {
-      _json['readOnly'] = readOnly;
-    }
-    if (subPath != null) {
-      _json['subPath'] = subPath;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (mountPath != null) 'mountPath': mountPath,
+        if (name != null) 'name': name,
+        if (readOnly != null) 'readOnly': readOnly,
+        if (subPath != null) 'subPath': subPath,
+      };
 }

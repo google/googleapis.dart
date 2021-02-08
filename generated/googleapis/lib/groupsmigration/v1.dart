@@ -141,14 +141,8 @@ class Groups {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (responseCode != null) {
-      _json['responseCode'] = responseCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (responseCode != null) 'responseCode': responseCode,
+      };
 }

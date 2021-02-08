@@ -809,19 +809,11 @@ class Authentication {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customAccount != null) {
-      _json['customAccount'] = customAccount.toJson();
-    }
-    if (googleAccount != null) {
-      _json['googleAccount'] = googleAccount.toJson();
-    }
-    if (iapCredential != null) {
-      _json['iapCredential'] = iapCredential.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customAccount != null) 'customAccount': customAccount.toJson(),
+        if (googleAccount != null) 'googleAccount': googleAccount.toJson(),
+        if (iapCredential != null) 'iapCredential': iapCredential.toJson(),
+      };
 }
 
 /// A CrawledUrl resource represents a URL that was crawled during a ScanRun.
@@ -859,19 +851,11 @@ class CrawledUrl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (body != null) {
-      _json['body'] = body;
-    }
-    if (httpMethod != null) {
-      _json['httpMethod'] = httpMethod;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (body != null) 'body': body,
+        if (httpMethod != null) 'httpMethod': httpMethod,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Describes authentication configuration that uses a custom account.
@@ -908,19 +892,11 @@ class CustomAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (loginUrl != null) {
-      _json['loginUrl'] = loginUrl;
-    }
-    if (password != null) {
-      _json['password'] = password;
-    }
-    if (username != null) {
-      _json['username'] = username;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (loginUrl != null) 'loginUrl': loginUrl,
+        if (password != null) 'password': password,
+        if (username != null) 'username': username,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -937,10 +913,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A Finding resource represents a vulnerability instance identified during a
@@ -1113,61 +1086,29 @@ class Finding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (body != null) {
-      _json['body'] = body;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (finalUrl != null) {
-      _json['finalUrl'] = finalUrl;
-    }
-    if (findingType != null) {
-      _json['findingType'] = findingType;
-    }
-    if (form != null) {
-      _json['form'] = form.toJson();
-    }
-    if (frameUrl != null) {
-      _json['frameUrl'] = frameUrl;
-    }
-    if (fuzzedUrl != null) {
-      _json['fuzzedUrl'] = fuzzedUrl;
-    }
-    if (httpMethod != null) {
-      _json['httpMethod'] = httpMethod;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (outdatedLibrary != null) {
-      _json['outdatedLibrary'] = outdatedLibrary.toJson();
-    }
-    if (reproductionUrl != null) {
-      _json['reproductionUrl'] = reproductionUrl;
-    }
-    if (severity != null) {
-      _json['severity'] = severity;
-    }
-    if (trackingId != null) {
-      _json['trackingId'] = trackingId;
-    }
-    if (violatingResource != null) {
-      _json['violatingResource'] = violatingResource.toJson();
-    }
-    if (vulnerableHeaders != null) {
-      _json['vulnerableHeaders'] = vulnerableHeaders.toJson();
-    }
-    if (vulnerableParameters != null) {
-      _json['vulnerableParameters'] = vulnerableParameters.toJson();
-    }
-    if (xss != null) {
-      _json['xss'] = xss.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (body != null) 'body': body,
+        if (description != null) 'description': description,
+        if (finalUrl != null) 'finalUrl': finalUrl,
+        if (findingType != null) 'findingType': findingType,
+        if (form != null) 'form': form.toJson(),
+        if (frameUrl != null) 'frameUrl': frameUrl,
+        if (fuzzedUrl != null) 'fuzzedUrl': fuzzedUrl,
+        if (httpMethod != null) 'httpMethod': httpMethod,
+        if (name != null) 'name': name,
+        if (outdatedLibrary != null)
+          'outdatedLibrary': outdatedLibrary.toJson(),
+        if (reproductionUrl != null) 'reproductionUrl': reproductionUrl,
+        if (severity != null) 'severity': severity,
+        if (trackingId != null) 'trackingId': trackingId,
+        if (violatingResource != null)
+          'violatingResource': violatingResource.toJson(),
+        if (vulnerableHeaders != null)
+          'vulnerableHeaders': vulnerableHeaders.toJson(),
+        if (vulnerableParameters != null)
+          'vulnerableParameters': vulnerableParameters.toJson(),
+        if (xss != null) 'xss': xss.toJson(),
+      };
 }
 
 /// A FindingTypeStats resource represents stats regarding a specific
@@ -1194,16 +1135,10 @@ class FindingTypeStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (findingCount != null) {
-      _json['findingCount'] = findingCount;
-    }
-    if (findingType != null) {
-      _json['findingType'] = findingType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (findingCount != null) 'findingCount': findingCount,
+        if (findingType != null) 'findingType': findingType,
+      };
 }
 
 /// ! Information about a vulnerability with an HTML.
@@ -1227,16 +1162,10 @@ class Form {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actionUri != null) {
-      _json['actionUri'] = actionUri;
-    }
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actionUri != null) 'actionUri': actionUri,
+        if (fields != null) 'fields': fields,
+      };
 }
 
 /// Describes authentication configuration that uses a Google account.
@@ -1265,16 +1194,10 @@ class GoogleAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (password != null) {
-      _json['password'] = password;
-    }
-    if (username != null) {
-      _json['username'] = username;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (password != null) 'password': password,
+        if (username != null) 'username': username,
+      };
 }
 
 /// Describes a HTTP Header.
@@ -1296,16 +1219,10 @@ class Header {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Describes authentication configuration for Identity-Aware-Proxy (IAP).
@@ -1324,13 +1241,10 @@ class IapCredential {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (iapTestServiceAccountInfo != null) {
-      _json['iapTestServiceAccountInfo'] = iapTestServiceAccountInfo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (iapTestServiceAccountInfo != null)
+          'iapTestServiceAccountInfo': iapTestServiceAccountInfo.toJson(),
+      };
 }
 
 /// Describes authentication configuration when Web-Security-Scanner service
@@ -1350,13 +1264,10 @@ class IapTestServiceAccountInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (targetAudienceClientId != null) {
-      _json['targetAudienceClientId'] = targetAudienceClientId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (targetAudienceClientId != null)
+          'targetAudienceClientId': targetAudienceClientId,
+      };
 }
 
 /// Response for the `ListCrawledUrls` method.
@@ -1382,17 +1293,11 @@ class ListCrawledUrlsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (crawledUrls != null) {
-      _json['crawledUrls'] =
-          crawledUrls.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (crawledUrls != null)
+          'crawledUrls': crawledUrls.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response for the `ListFindingTypeStats` method.
@@ -1411,14 +1316,11 @@ class ListFindingTypeStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (findingTypeStats != null) {
-      _json['findingTypeStats'] =
-          findingTypeStats.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (findingTypeStats != null)
+          'findingTypeStats':
+              findingTypeStats.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response for the `ListFindings` method.
@@ -1444,16 +1346,11 @@ class ListFindingsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (findings != null) {
-      _json['findings'] = findings.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (findings != null)
+          'findings': findings.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response for the `ListScanConfigs` method.
@@ -1479,17 +1376,11 @@ class ListScanConfigsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (scanConfigs != null) {
-      _json['scanConfigs'] =
-          scanConfigs.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (scanConfigs != null)
+          'scanConfigs': scanConfigs.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response for the `ListScanRuns` method.
@@ -1515,16 +1406,11 @@ class ListScanRunsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (scanRuns != null) {
-      _json['scanRuns'] = scanRuns.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (scanRuns != null)
+          'scanRuns': scanRuns.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Information reported for an outdated library.
@@ -1554,19 +1440,11 @@ class OutdatedLibrary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (learnMoreUrls != null) {
-      _json['learnMoreUrls'] = learnMoreUrls;
-    }
-    if (libraryName != null) {
-      _json['libraryName'] = libraryName;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (learnMoreUrls != null) 'learnMoreUrls': learnMoreUrls,
+        if (libraryName != null) 'libraryName': libraryName,
+        if (version != null) 'version': version,
+      };
 }
 
 /// A ScanConfig resource contains the configurations to launch a scan.
@@ -1691,46 +1569,21 @@ class ScanConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (authentication != null) {
-      _json['authentication'] = authentication.toJson();
-    }
-    if (blacklistPatterns != null) {
-      _json['blacklistPatterns'] = blacklistPatterns;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (exportToSecurityCommandCenter != null) {
-      _json['exportToSecurityCommandCenter'] = exportToSecurityCommandCenter;
-    }
-    if (managedScan != null) {
-      _json['managedScan'] = managedScan;
-    }
-    if (maxQps != null) {
-      _json['maxQps'] = maxQps;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (riskLevel != null) {
-      _json['riskLevel'] = riskLevel;
-    }
-    if (schedule != null) {
-      _json['schedule'] = schedule.toJson();
-    }
-    if (startingUrls != null) {
-      _json['startingUrls'] = startingUrls;
-    }
-    if (staticIpScan != null) {
-      _json['staticIpScan'] = staticIpScan;
-    }
-    if (userAgent != null) {
-      _json['userAgent'] = userAgent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (authentication != null) 'authentication': authentication.toJson(),
+        if (blacklistPatterns != null) 'blacklistPatterns': blacklistPatterns,
+        if (displayName != null) 'displayName': displayName,
+        if (exportToSecurityCommandCenter != null)
+          'exportToSecurityCommandCenter': exportToSecurityCommandCenter,
+        if (managedScan != null) 'managedScan': managedScan,
+        if (maxQps != null) 'maxQps': maxQps,
+        if (name != null) 'name': name,
+        if (riskLevel != null) 'riskLevel': riskLevel,
+        if (schedule != null) 'schedule': schedule.toJson(),
+        if (startingUrls != null) 'startingUrls': startingUrls,
+        if (staticIpScan != null) 'staticIpScan': staticIpScan,
+        if (userAgent != null) 'userAgent': userAgent,
+      };
 }
 
 /// Defines a custom error message used by CreateScanConfig and UpdateScanConfig
@@ -1844,16 +1697,10 @@ class ScanConfigError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (fieldName != null) {
-      _json['fieldName'] = fieldName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (fieldName != null) 'fieldName': fieldName,
+      };
 }
 
 /// A ScanRun is a output-only resource representing an actual run of the scan.
@@ -1988,44 +1835,22 @@ class ScanRun {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (errorTrace != null) {
-      _json['errorTrace'] = errorTrace.toJson();
-    }
-    if (executionState != null) {
-      _json['executionState'] = executionState;
-    }
-    if (hasVulnerabilities != null) {
-      _json['hasVulnerabilities'] = hasVulnerabilities;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (progressPercent != null) {
-      _json['progressPercent'] = progressPercent;
-    }
-    if (resultState != null) {
-      _json['resultState'] = resultState;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (urlsCrawledCount != null) {
-      _json['urlsCrawledCount'] = urlsCrawledCount;
-    }
-    if (urlsTestedCount != null) {
-      _json['urlsTestedCount'] = urlsTestedCount;
-    }
-    if (warningTraces != null) {
-      _json['warningTraces'] =
-          warningTraces.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (errorTrace != null) 'errorTrace': errorTrace.toJson(),
+        if (executionState != null) 'executionState': executionState,
+        if (hasVulnerabilities != null)
+          'hasVulnerabilities': hasVulnerabilities,
+        if (name != null) 'name': name,
+        if (progressPercent != null) 'progressPercent': progressPercent,
+        if (resultState != null) 'resultState': resultState,
+        if (startTime != null) 'startTime': startTime,
+        if (urlsCrawledCount != null) 'urlsCrawledCount': urlsCrawledCount,
+        if (urlsTestedCount != null) 'urlsTestedCount': urlsTestedCount,
+        if (warningTraces != null)
+          'warningTraces':
+              warningTraces.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Defines an error trace message for a ScanRun.
@@ -2086,19 +1911,13 @@ class ScanRunErrorTrace {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (mostCommonHttpErrorCode != null) {
-      _json['mostCommonHttpErrorCode'] = mostCommonHttpErrorCode;
-    }
-    if (scanConfigError != null) {
-      _json['scanConfigError'] = scanConfigError.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (mostCommonHttpErrorCode != null)
+          'mostCommonHttpErrorCode': mostCommonHttpErrorCode,
+        if (scanConfigError != null)
+          'scanConfigError': scanConfigError.toJson(),
+      };
 }
 
 /// Defines a warning trace message for ScanRun.
@@ -2135,13 +1954,9 @@ class ScanRunWarningTrace {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+      };
 }
 
 /// Scan schedule configuration.
@@ -2169,16 +1984,11 @@ class Schedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (intervalDurationDays != null) {
-      _json['intervalDurationDays'] = intervalDurationDays;
-    }
-    if (scheduleTime != null) {
-      _json['scheduleTime'] = scheduleTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (intervalDurationDays != null)
+          'intervalDurationDays': intervalDurationDays,
+        if (scheduleTime != null) 'scheduleTime': scheduleTime,
+      };
 }
 
 /// Request for the `StartScanRun` method.
@@ -2189,10 +1999,7 @@ class StartScanRunRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Request for the `StopScanRun` method.
@@ -2203,10 +2010,7 @@ class StopScanRunRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Information regarding any resource causing the vulnerability such as
@@ -2229,16 +2033,10 @@ class ViolatingResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentType != null) {
-      _json['contentType'] = contentType;
-    }
-    if (resourceUrl != null) {
-      _json['resourceUrl'] = resourceUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentType != null) 'contentType': contentType,
+        if (resourceUrl != null) 'resourceUrl': resourceUrl,
+      };
 }
 
 /// Information about vulnerable or missing HTTP Headers.
@@ -2266,17 +2064,13 @@ class VulnerableHeaders {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (headers != null) {
-      _json['headers'] = headers.map((value) => value.toJson()).toList();
-    }
-    if (missingHeaders != null) {
-      _json['missingHeaders'] =
-          missingHeaders.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (headers != null)
+          'headers': headers.map((value) => value.toJson()).toList(),
+        if (missingHeaders != null)
+          'missingHeaders':
+              missingHeaders.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Information about vulnerable request parameters.
@@ -2294,13 +2088,9 @@ class VulnerableParameters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (parameterNames != null) {
-      _json['parameterNames'] = parameterNames;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (parameterNames != null) 'parameterNames': parameterNames,
+      };
 }
 
 /// Information reported for an XSS.
@@ -2359,20 +2149,11 @@ class Xss {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attackVector != null) {
-      _json['attackVector'] = attackVector;
-    }
-    if (errorMessage != null) {
-      _json['errorMessage'] = errorMessage;
-    }
-    if (stackTraces != null) {
-      _json['stackTraces'] = stackTraces;
-    }
-    if (storedXssSeedingUrl != null) {
-      _json['storedXssSeedingUrl'] = storedXssSeedingUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attackVector != null) 'attackVector': attackVector,
+        if (errorMessage != null) 'errorMessage': errorMessage,
+        if (stackTraces != null) 'stackTraces': stackTraces,
+        if (storedXssSeedingUrl != null)
+          'storedXssSeedingUrl': storedXssSeedingUrl,
+      };
 }

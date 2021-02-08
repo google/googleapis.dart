@@ -505,25 +505,13 @@ class DatabaseInstance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (databaseUrl != null) {
-      _json['databaseUrl'] = databaseUrl;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (project != null) {
-      _json['project'] = project;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (databaseUrl != null) 'databaseUrl': databaseUrl,
+        if (name != null) 'name': name,
+        if (project != null) 'project': project,
+        if (state != null) 'state': state,
+        if (type != null) 'type': type,
+      };
 }
 
 /// The request sent to the DisableDatabaseInstance method.
@@ -534,10 +522,7 @@ class DisableDatabaseInstanceRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The response from the ListDatabaseInstances method.
@@ -568,16 +553,11 @@ class ListDatabaseInstancesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (instances != null) {
-      _json['instances'] = instances.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (instances != null)
+          'instances': instances.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The request sent to the ReenableDatabaseInstance method.
@@ -588,8 +568,5 @@ class ReenableDatabaseInstanceRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }

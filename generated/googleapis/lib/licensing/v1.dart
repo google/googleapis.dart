@@ -543,10 +543,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Representation of a license assignment.
@@ -617,34 +614,16 @@ class LicenseAssignment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etags != null) {
-      _json['etags'] = etags;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (productId != null) {
-      _json['productId'] = productId;
-    }
-    if (productName != null) {
-      _json['productName'] = productName;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (skuId != null) {
-      _json['skuId'] = skuId;
-    }
-    if (skuName != null) {
-      _json['skuName'] = skuName;
-    }
-    if (userId != null) {
-      _json['userId'] = userId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etags != null) 'etags': etags,
+        if (kind != null) 'kind': kind,
+        if (productId != null) 'productId': productId,
+        if (productName != null) 'productName': productName,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (skuId != null) 'skuId': skuId,
+        if (skuName != null) 'skuName': skuName,
+        if (userId != null) 'userId': userId,
+      };
 }
 
 /// Representation of a license assignment.
@@ -660,13 +639,9 @@ class LicenseAssignmentInsert {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (userId != null) {
-      _json['userId'] = userId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (userId != null) 'userId': userId,
+      };
 }
 
 class LicenseAssignmentList {
@@ -706,20 +681,11 @@ class LicenseAssignmentList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }

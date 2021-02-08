@@ -5808,43 +5808,23 @@ class GoogleCloudDialogflowCxV3Agent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (avatarUri != null) {
-      _json['avatarUri'] = avatarUri;
-    }
-    if (defaultLanguageCode != null) {
-      _json['defaultLanguageCode'] = defaultLanguageCode;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (enableSpellCorrection != null) {
-      _json['enableSpellCorrection'] = enableSpellCorrection;
-    }
-    if (enableStackdriverLogging != null) {
-      _json['enableStackdriverLogging'] = enableStackdriverLogging;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (securitySettings != null) {
-      _json['securitySettings'] = securitySettings;
-    }
-    if (speechToTextSettings != null) {
-      _json['speechToTextSettings'] = speechToTextSettings.toJson();
-    }
-    if (startFlow != null) {
-      _json['startFlow'] = startFlow;
-    }
-    if (timeZone != null) {
-      _json['timeZone'] = timeZone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (avatarUri != null) 'avatarUri': avatarUri,
+        if (defaultLanguageCode != null)
+          'defaultLanguageCode': defaultLanguageCode,
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (enableSpellCorrection != null)
+          'enableSpellCorrection': enableSpellCorrection,
+        if (enableStackdriverLogging != null)
+          'enableStackdriverLogging': enableStackdriverLogging,
+        if (name != null) 'name': name,
+        if (securitySettings != null) 'securitySettings': securitySettings,
+        if (speechToTextSettings != null)
+          'speechToTextSettings': speechToTextSettings.toJson(),
+        if (startFlow != null) 'startFlow': startFlow,
+        if (timeZone != null) 'timeZone': timeZone,
+      };
 }
 
 /// The response message for Agents.GetAgentValidationResult.
@@ -5873,17 +5853,12 @@ class GoogleCloudDialogflowCxV3AgentValidationResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (flowValidationResults != null) {
-      _json['flowValidationResults'] =
-          flowValidationResults.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (flowValidationResults != null)
+          'flowValidationResults':
+              flowValidationResults.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+      };
 }
 
 /// Represents the natural speech audio to be processed.
@@ -5920,16 +5895,10 @@ class GoogleCloudDialogflowCxV3AudioInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audio != null) {
-      _json['audio'] = audio;
-    }
-    if (config != null) {
-      _json['config'] = config.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audio != null) 'audio': audio,
+        if (config != null) 'config': config.toJson(),
+      };
 }
 
 /// The request message for TestCases.BatchDeleteTestCases.
@@ -5950,13 +5919,9 @@ class GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (names != null) {
-      _json['names'] = names;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (names != null) 'names': names,
+      };
 }
 
 /// Metadata returned for the TestCases.BatchRunTestCases long running
@@ -5977,13 +5942,10 @@ class GoogleCloudDialogflowCxV3BatchRunTestCasesMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errors != null) {
-      _json['errors'] = errors.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errors != null)
+          'errors': errors.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The request message for TestCases.BatchRunTestCases.
@@ -6013,16 +5975,10 @@ class GoogleCloudDialogflowCxV3BatchRunTestCasesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (environment != null) {
-      _json['environment'] = environment;
-    }
-    if (testCases != null) {
-      _json['testCases'] = testCases;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (environment != null) 'environment': environment,
+        if (testCases != null) 'testCases': testCases,
+      };
 }
 
 /// The response message for TestCases.BatchRunTestCases.
@@ -6044,13 +6000,10 @@ class GoogleCloudDialogflowCxV3BatchRunTestCasesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (results != null) {
-      _json['results'] = results.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response message for TestCases.CalculateCoverage.
@@ -6082,19 +6035,12 @@ class GoogleCloudDialogflowCxV3CalculateCoverageResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (agent != null) {
-      _json['agent'] = agent;
-    }
-    if (intentCoverage != null) {
-      _json['intentCoverage'] = intentCoverage.toJson();
-    }
-    if (transitionCoverage != null) {
-      _json['transitionCoverage'] = transitionCoverage.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (agent != null) 'agent': agent,
+        if (intentCoverage != null) 'intentCoverage': intentCoverage.toJson(),
+        if (transitionCoverage != null)
+          'transitionCoverage': transitionCoverage.toJson(),
+      };
 }
 
 /// One interaction between a human and virtual agent.
@@ -6123,16 +6069,11 @@ class GoogleCloudDialogflowCxV3ConversationTurn {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (userInput != null) {
-      _json['userInput'] = userInput.toJson();
-    }
-    if (virtualAgentOutput != null) {
-      _json['virtualAgentOutput'] = virtualAgentOutput.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (userInput != null) 'userInput': userInput.toJson(),
+        if (virtualAgentOutput != null)
+          'virtualAgentOutput': virtualAgentOutput.toJson(),
+      };
 }
 
 /// The input from the human user.
@@ -6175,19 +6116,12 @@ class GoogleCloudDialogflowCxV3ConversationTurnUserInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (injectedParameters != null) {
-      _json['injectedParameters'] = injectedParameters;
-    }
-    if (input != null) {
-      _json['input'] = input.toJson();
-    }
-    if (isWebhookEnabled != null) {
-      _json['isWebhookEnabled'] = isWebhookEnabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (injectedParameters != null)
+          'injectedParameters': injectedParameters,
+        if (input != null) 'input': input.toJson(),
+        if (isWebhookEnabled != null) 'isWebhookEnabled': isWebhookEnabled,
+      };
 }
 
 /// The output from the virtual agent.
@@ -6284,33 +6218,19 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (currentPage != null) {
-      _json['currentPage'] = currentPage.toJson();
-    }
-    if (diagnosticInfo != null) {
-      _json['diagnosticInfo'] = diagnosticInfo;
-    }
-    if (differences != null) {
-      _json['differences'] =
-          differences.map((value) => value.toJson()).toList();
-    }
-    if (sessionParameters != null) {
-      _json['sessionParameters'] = sessionParameters;
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    if (textResponses != null) {
-      _json['textResponses'] =
-          textResponses.map((value) => value.toJson()).toList();
-    }
-    if (triggeredIntent != null) {
-      _json['triggeredIntent'] = triggeredIntent.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (currentPage != null) 'currentPage': currentPage.toJson(),
+        if (diagnosticInfo != null) 'diagnosticInfo': diagnosticInfo,
+        if (differences != null)
+          'differences': differences.map((value) => value.toJson()).toList(),
+        if (sessionParameters != null) 'sessionParameters': sessionParameters,
+        if (status != null) 'status': status.toJson(),
+        if (textResponses != null)
+          'textResponses':
+              textResponses.map((value) => value.toJson()).toList(),
+        if (triggeredIntent != null)
+          'triggeredIntent': triggeredIntent.toJson(),
+      };
 }
 
 /// Metadata for CreateDocument operation.
@@ -6329,13 +6249,10 @@ class GoogleCloudDialogflowCxV3CreateDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (genericMetadata != null) {
-      _json['genericMetadata'] = genericMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (genericMetadata != null)
+          'genericMetadata': genericMetadata.toJson(),
+      };
 }
 
 /// Metadata associated with the long running operation for
@@ -6355,13 +6272,9 @@ class GoogleCloudDialogflowCxV3CreateVersionOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (version != null) 'version': version,
+      };
 }
 
 /// Metadata for DeleteDocument operation.
@@ -6380,13 +6293,10 @@ class GoogleCloudDialogflowCxV3DeleteDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (genericMetadata != null) {
-      _json['genericMetadata'] = genericMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (genericMetadata != null)
+          'genericMetadata': genericMetadata.toJson(),
+      };
 }
 
 /// The request to detect user's intent.
@@ -6419,19 +6329,12 @@ class GoogleCloudDialogflowCxV3DetectIntentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (outputAudioConfig != null) {
-      _json['outputAudioConfig'] = outputAudioConfig.toJson();
-    }
-    if (queryInput != null) {
-      _json['queryInput'] = queryInput.toJson();
-    }
-    if (queryParams != null) {
-      _json['queryParams'] = queryParams.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (outputAudioConfig != null)
+          'outputAudioConfig': outputAudioConfig.toJson(),
+        if (queryInput != null) 'queryInput': queryInput.toJson(),
+        if (queryParams != null) 'queryParams': queryParams.toJson(),
+      };
 }
 
 /// The message returned from the DetectIntent method.
@@ -6487,22 +6390,13 @@ class GoogleCloudDialogflowCxV3DetectIntentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (outputAudio != null) {
-      _json['outputAudio'] = outputAudio;
-    }
-    if (outputAudioConfig != null) {
-      _json['outputAudioConfig'] = outputAudioConfig.toJson();
-    }
-    if (queryResult != null) {
-      _json['queryResult'] = queryResult.toJson();
-    }
-    if (responseId != null) {
-      _json['responseId'] = responseId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (outputAudio != null) 'outputAudio': outputAudio,
+        if (outputAudioConfig != null)
+          'outputAudioConfig': outputAudioConfig.toJson(),
+        if (queryResult != null) 'queryResult': queryResult.toJson(),
+        if (responseId != null) 'responseId': responseId,
+      };
 }
 
 /// Represents the input for dtmf event.
@@ -6524,16 +6418,10 @@ class GoogleCloudDialogflowCxV3DtmfInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (digits != null) {
-      _json['digits'] = digits;
-    }
-    if (finishDigit != null) {
-      _json['finishDigit'] = finishDigit;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (digits != null) 'digits': digits,
+        if (finishDigit != null) 'finishDigit': finishDigit,
+      };
 }
 
 /// Entities are extracted from user input and represent parameters that are
@@ -6647,35 +6535,20 @@ class GoogleCloudDialogflowCxV3EntityType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (autoExpansionMode != null) {
-      _json['autoExpansionMode'] = autoExpansionMode;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (enableFuzzyExtraction != null) {
-      _json['enableFuzzyExtraction'] = enableFuzzyExtraction;
-    }
-    if (entities != null) {
-      _json['entities'] = entities.map((value) => value.toJson()).toList();
-    }
-    if (excludedPhrases != null) {
-      _json['excludedPhrases'] =
-          excludedPhrases.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (redact != null) {
-      _json['redact'] = redact;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (autoExpansionMode != null) 'autoExpansionMode': autoExpansionMode,
+        if (displayName != null) 'displayName': displayName,
+        if (enableFuzzyExtraction != null)
+          'enableFuzzyExtraction': enableFuzzyExtraction,
+        if (entities != null)
+          'entities': entities.map((value) => value.toJson()).toList(),
+        if (excludedPhrases != null)
+          'excludedPhrases':
+              excludedPhrases.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+        if (redact != null) 'redact': redact,
+      };
 }
 
 /// An **entity entry** for an associated entity type.
@@ -6713,16 +6586,10 @@ class GoogleCloudDialogflowCxV3EntityTypeEntity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (synonyms != null) {
-      _json['synonyms'] = synonyms;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (synonyms != null) 'synonyms': synonyms,
+        if (value != null) 'value': value,
+      };
 }
 
 /// An excluded entity phrase that should not be matched.
@@ -6740,13 +6607,9 @@ class GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (value != null) 'value': value,
+      };
 }
 
 /// Represents an environment for an agent.
@@ -6814,26 +6677,15 @@ class GoogleCloudDialogflowCxV3Environment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    if (versionConfigs != null) {
-      _json['versionConfigs'] =
-          versionConfigs.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (updateTime != null) 'updateTime': updateTime,
+        if (versionConfigs != null)
+          'versionConfigs':
+              versionConfigs.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Configuration for the version.
@@ -6851,13 +6703,9 @@ class GoogleCloudDialogflowCxV3EnvironmentVersionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (version != null) 'version': version,
+      };
 }
 
 /// An event handler specifies an event that can be handled during a session.
@@ -6917,25 +6765,14 @@ class GoogleCloudDialogflowCxV3EventHandler {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (event != null) {
-      _json['event'] = event;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (targetFlow != null) {
-      _json['targetFlow'] = targetFlow;
-    }
-    if (targetPage != null) {
-      _json['targetPage'] = targetPage;
-    }
-    if (triggerFulfillment != null) {
-      _json['triggerFulfillment'] = triggerFulfillment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (event != null) 'event': event,
+        if (name != null) 'name': name,
+        if (targetFlow != null) 'targetFlow': targetFlow,
+        if (targetPage != null) 'targetPage': targetPage,
+        if (triggerFulfillment != null)
+          'triggerFulfillment': triggerFulfillment.toJson(),
+      };
 }
 
 /// Represents the event to trigger.
@@ -6951,13 +6788,9 @@ class GoogleCloudDialogflowCxV3EventInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (event != null) {
-      _json['event'] = event;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (event != null) 'event': event,
+      };
 }
 
 /// Represents an experiment in an environment.
@@ -7060,47 +6893,22 @@ class GoogleCloudDialogflowCxV3Experiment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (definition != null) {
-      _json['definition'] = definition.toJson();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (experimentLength != null) {
-      _json['experimentLength'] = experimentLength;
-    }
-    if (lastUpdateTime != null) {
-      _json['lastUpdateTime'] = lastUpdateTime;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (result != null) {
-      _json['result'] = result.toJson();
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (variantsHistory != null) {
-      _json['variantsHistory'] =
-          variantsHistory.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (definition != null) 'definition': definition.toJson(),
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (endTime != null) 'endTime': endTime,
+        if (experimentLength != null) 'experimentLength': experimentLength,
+        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime,
+        if (name != null) 'name': name,
+        if (result != null) 'result': result.toJson(),
+        if (startTime != null) 'startTime': startTime,
+        if (state != null) 'state': state,
+        if (variantsHistory != null)
+          'variantsHistory':
+              variantsHistory.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Definition of the experiment.
@@ -7128,16 +6936,11 @@ class GoogleCloudDialogflowCxV3ExperimentDefinition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition;
-    }
-    if (versionVariants != null) {
-      _json['versionVariants'] = versionVariants.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition,
+        if (versionVariants != null)
+          'versionVariants': versionVariants.toJson(),
+      };
 }
 
 /// The inference result which includes an objective metric to optimize and the
@@ -7168,17 +6971,12 @@ class GoogleCloudDialogflowCxV3ExperimentResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (lastUpdateTime != null) {
-      _json['lastUpdateTime'] = lastUpdateTime;
-    }
-    if (versionMetrics != null) {
-      _json['versionMetrics'] =
-          versionMetrics.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime,
+        if (versionMetrics != null)
+          'versionMetrics':
+              versionMetrics.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A confidence interval is a range of possible values for the experiment
@@ -7216,22 +7014,12 @@ class GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidenceLevel != null) {
-      _json['confidenceLevel'] = confidenceLevel;
-    }
-    if (lowerBound != null) {
-      _json['lowerBound'] = lowerBound;
-    }
-    if (ratio != null) {
-      _json['ratio'] = ratio;
-    }
-    if (upperBound != null) {
-      _json['upperBound'] = upperBound;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidenceLevel != null) 'confidenceLevel': confidenceLevel,
+        if (lowerBound != null) 'lowerBound': lowerBound,
+        if (ratio != null) 'ratio': ratio,
+        if (upperBound != null) 'upperBound': upperBound,
+      };
 }
 
 /// Metric and corresponding confidence intervals.
@@ -7296,25 +7084,14 @@ class GoogleCloudDialogflowCxV3ExperimentResultMetric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidenceInterval != null) {
-      _json['confidenceInterval'] = confidenceInterval.toJson();
-    }
-    if (count != null) {
-      _json['count'] = count;
-    }
-    if (countType != null) {
-      _json['countType'] = countType;
-    }
-    if (ratio != null) {
-      _json['ratio'] = ratio;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidenceInterval != null)
+          'confidenceInterval': confidenceInterval.toJson(),
+        if (count != null) 'count': count,
+        if (countType != null) 'countType': countType,
+        if (ratio != null) 'ratio': ratio,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Version variant and associated metrics.
@@ -7350,19 +7127,12 @@ class GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metrics != null) {
-      _json['metrics'] = metrics.map((value) => value.toJson()).toList();
-    }
-    if (sessionCount != null) {
-      _json['sessionCount'] = sessionCount;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metrics != null)
+          'metrics': metrics.map((value) => value.toJson()).toList(),
+        if (sessionCount != null) 'sessionCount': sessionCount,
+        if (version != null) 'version': version,
+      };
 }
 
 /// The request message for Agents.ExportAgent.
@@ -7384,13 +7154,9 @@ class GoogleCloudDialogflowCxV3ExportAgentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (agentUri != null) {
-      _json['agentUri'] = agentUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (agentUri != null) 'agentUri': agentUri,
+      };
 }
 
 /// The response message for Agents.ExportAgent.
@@ -7422,16 +7188,10 @@ class GoogleCloudDialogflowCxV3ExportAgentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (agentContent != null) {
-      _json['agentContent'] = agentContent;
-    }
-    if (agentUri != null) {
-      _json['agentUri'] = agentUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (agentContent != null) 'agentContent': agentContent,
+        if (agentUri != null) 'agentUri': agentUri,
+      };
 }
 
 /// Metadata returned for the TestCases.ExportTestCases long running operation.
@@ -7442,10 +7202,7 @@ class GoogleCloudDialogflowCxV3ExportTestCasesMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The request message for TestCases.ExportTestCases.
@@ -7488,19 +7245,11 @@ class GoogleCloudDialogflowCxV3ExportTestCasesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataFormat != null) {
-      _json['dataFormat'] = dataFormat;
-    }
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    if (gcsUri != null) {
-      _json['gcsUri'] = gcsUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataFormat != null) 'dataFormat': dataFormat,
+        if (filter != null) 'filter': filter,
+        if (gcsUri != null) 'gcsUri': gcsUri,
+      };
 }
 
 /// The response message for TestCases.ExportTestCases.
@@ -7531,16 +7280,10 @@ class GoogleCloudDialogflowCxV3ExportTestCasesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (gcsUri != null) {
-      _json['gcsUri'] = gcsUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (gcsUri != null) 'gcsUri': gcsUri,
+      };
 }
 
 /// Flows represents the conversation flows when you build your chatbot agent.
@@ -7631,30 +7374,18 @@ class GoogleCloudDialogflowCxV3Flow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (eventHandlers != null) {
-      _json['eventHandlers'] =
-          eventHandlers.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (nluSettings != null) {
-      _json['nluSettings'] = nluSettings.toJson();
-    }
-    if (transitionRoutes != null) {
-      _json['transitionRoutes'] =
-          transitionRoutes.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (eventHandlers != null)
+          'eventHandlers':
+              eventHandlers.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (nluSettings != null) 'nluSettings': nluSettings.toJson(),
+        if (transitionRoutes != null)
+          'transitionRoutes':
+              transitionRoutes.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response message for Flows.GetFlowValidationResult.
@@ -7688,20 +7419,13 @@ class GoogleCloudDialogflowCxV3FlowValidationResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    if (validationMessages != null) {
-      _json['validationMessages'] =
-          validationMessages.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (updateTime != null) 'updateTime': updateTime,
+        if (validationMessages != null)
+          'validationMessages':
+              validationMessages.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A form is a data model that groups related parameters that can be collected
@@ -7727,13 +7451,10 @@ class GoogleCloudDialogflowCxV3Form {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (parameters != null) {
-      _json['parameters'] = parameters.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (parameters != null)
+          'parameters': parameters.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents a form parameter.
@@ -7812,31 +7533,15 @@ class GoogleCloudDialogflowCxV3FormParameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (defaultValue != null) {
-      _json['defaultValue'] = defaultValue;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (entityType != null) {
-      _json['entityType'] = entityType;
-    }
-    if (fillBehavior != null) {
-      _json['fillBehavior'] = fillBehavior.toJson();
-    }
-    if (isList != null) {
-      _json['isList'] = isList;
-    }
-    if (redact != null) {
-      _json['redact'] = redact;
-    }
-    if (required != null) {
-      _json['required'] = required;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (defaultValue != null) 'defaultValue': defaultValue,
+        if (displayName != null) 'displayName': displayName,
+        if (entityType != null) 'entityType': entityType,
+        if (fillBehavior != null) 'fillBehavior': fillBehavior.toJson(),
+        if (isList != null) 'isList': isList,
+        if (redact != null) 'redact': redact,
+        if (required != null) 'required': required,
+      };
 }
 
 /// Configuration for how the filling of a parameter should be handled.
@@ -7888,17 +7593,13 @@ class GoogleCloudDialogflowCxV3FormParameterFillBehavior {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (initialPromptFulfillment != null) {
-      _json['initialPromptFulfillment'] = initialPromptFulfillment.toJson();
-    }
-    if (repromptEventHandlers != null) {
-      _json['repromptEventHandlers'] =
-          repromptEventHandlers.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (initialPromptFulfillment != null)
+          'initialPromptFulfillment': initialPromptFulfillment.toJson(),
+        if (repromptEventHandlers != null)
+          'repromptEventHandlers':
+              repromptEventHandlers.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request of FulfillIntent
@@ -7930,19 +7631,13 @@ class GoogleCloudDialogflowCxV3FulfillIntentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (match != null) {
-      _json['match'] = match.toJson();
-    }
-    if (matchIntentRequest != null) {
-      _json['matchIntentRequest'] = matchIntentRequest.toJson();
-    }
-    if (outputAudioConfig != null) {
-      _json['outputAudioConfig'] = outputAudioConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (match != null) 'match': match.toJson(),
+        if (matchIntentRequest != null)
+          'matchIntentRequest': matchIntentRequest.toJson(),
+        if (outputAudioConfig != null)
+          'outputAudioConfig': outputAudioConfig.toJson(),
+      };
 }
 
 /// Response of FulfillIntent
@@ -7998,22 +7693,13 @@ class GoogleCloudDialogflowCxV3FulfillIntentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (outputAudio != null) {
-      _json['outputAudio'] = outputAudio;
-    }
-    if (outputAudioConfig != null) {
-      _json['outputAudioConfig'] = outputAudioConfig.toJson();
-    }
-    if (queryResult != null) {
-      _json['queryResult'] = queryResult.toJson();
-    }
-    if (responseId != null) {
-      _json['responseId'] = responseId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (outputAudio != null) 'outputAudio': outputAudio,
+        if (outputAudioConfig != null)
+          'outputAudioConfig': outputAudioConfig.toJson(),
+        if (queryResult != null) 'queryResult': queryResult.toJson(),
+        if (responseId != null) 'responseId': responseId,
+      };
 }
 
 /// A fulfillment can do one or more of the following actions at the same time:
@@ -8079,27 +7765,18 @@ class GoogleCloudDialogflowCxV3Fulfillment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (conditionalCases != null) {
-      _json['conditionalCases'] =
-          conditionalCases.map((value) => value.toJson()).toList();
-    }
-    if (messages != null) {
-      _json['messages'] = messages.map((value) => value.toJson()).toList();
-    }
-    if (setParameterActions != null) {
-      _json['setParameterActions'] =
-          setParameterActions.map((value) => value.toJson()).toList();
-    }
-    if (tag != null) {
-      _json['tag'] = tag;
-    }
-    if (webhook != null) {
-      _json['webhook'] = webhook;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (conditionalCases != null)
+          'conditionalCases':
+              conditionalCases.map((value) => value.toJson()).toList(),
+        if (messages != null)
+          'messages': messages.map((value) => value.toJson()).toList(),
+        if (setParameterActions != null)
+          'setParameterActions':
+              setParameterActions.map((value) => value.toJson()).toList(),
+        if (tag != null) 'tag': tag,
+        if (webhook != null) 'webhook': webhook,
+      };
 }
 
 /// A list of cascading if-else conditions.
@@ -8124,13 +7801,10 @@ class GoogleCloudDialogflowCxV3FulfillmentConditionalCases {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cases != null) {
-      _json['cases'] = cases.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cases != null)
+          'cases': cases.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Each case has a Boolean condition.
@@ -8166,17 +7840,11 @@ class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (caseContent != null) {
-      _json['caseContent'] =
-          caseContent.map((value) => value.toJson()).toList();
-    }
-    if (condition != null) {
-      _json['condition'] = condition;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (caseContent != null)
+          'caseContent': caseContent.map((value) => value.toJson()).toList(),
+        if (condition != null) 'condition': condition,
+      };
 }
 
 /// The list of messages or conditional cases to activate for this case.
@@ -8202,16 +7870,11 @@ class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (additionalCases != null) {
-      _json['additionalCases'] = additionalCases.toJson();
-    }
-    if (message != null) {
-      _json['message'] = message.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (additionalCases != null)
+          'additionalCases': additionalCases.toJson(),
+        if (message != null) 'message': message.toJson(),
+      };
 }
 
 /// Setting a parameter value.
@@ -8239,16 +7902,10 @@ class GoogleCloudDialogflowCxV3FulfillmentSetParameterAction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (parameter != null) {
-      _json['parameter'] = parameter;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (parameter != null) 'parameter': parameter,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Metadata in google::longrunning::Operation for Knowledge operations.
@@ -8272,13 +7929,9 @@ class GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (state != null) 'state': state,
+      };
 }
 
 /// Metadata for ImportDocuments operation.
@@ -8297,13 +7950,10 @@ class GoogleCloudDialogflowCxV3ImportDocumentsOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (genericMetadata != null) {
-      _json['genericMetadata'] = genericMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (genericMetadata != null)
+          'genericMetadata': genericMetadata.toJson(),
+      };
 }
 
 /// Response message for Documents.ImportDocuments.
@@ -8322,13 +7972,10 @@ class GoogleCloudDialogflowCxV3ImportDocumentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (warnings != null) {
-      _json['warnings'] = warnings.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (warnings != null)
+          'warnings': warnings.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Metadata returned for the TestCases.ImportTestCases long running operation.
@@ -8348,13 +7995,10 @@ class GoogleCloudDialogflowCxV3ImportTestCasesMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errors != null) {
-      _json['errors'] = errors.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errors != null)
+          'errors': errors.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The request message for TestCases.ImportTestCases.
@@ -8385,16 +8029,10 @@ class GoogleCloudDialogflowCxV3ImportTestCasesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (gcsUri != null) {
-      _json['gcsUri'] = gcsUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (gcsUri != null) 'gcsUri': gcsUri,
+      };
 }
 
 /// The response message for TestCases.ImportTestCases.
@@ -8414,13 +8052,9 @@ class GoogleCloudDialogflowCxV3ImportTestCasesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (names != null) {
-      _json['names'] = names;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (names != null) 'names': names,
+      };
 }
 
 /// Instructs the speech recognizer on how to process the audio content.
@@ -8566,31 +8200,15 @@ class GoogleCloudDialogflowCxV3InputAudioConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audioEncoding != null) {
-      _json['audioEncoding'] = audioEncoding;
-    }
-    if (enableWordInfo != null) {
-      _json['enableWordInfo'] = enableWordInfo;
-    }
-    if (model != null) {
-      _json['model'] = model;
-    }
-    if (modelVariant != null) {
-      _json['modelVariant'] = modelVariant;
-    }
-    if (phraseHints != null) {
-      _json['phraseHints'] = phraseHints;
-    }
-    if (sampleRateHertz != null) {
-      _json['sampleRateHertz'] = sampleRateHertz;
-    }
-    if (singleUtterance != null) {
-      _json['singleUtterance'] = singleUtterance;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audioEncoding != null) 'audioEncoding': audioEncoding,
+        if (enableWordInfo != null) 'enableWordInfo': enableWordInfo,
+        if (model != null) 'model': model,
+        if (modelVariant != null) 'modelVariant': modelVariant,
+        if (phraseHints != null) 'phraseHints': phraseHints,
+        if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz,
+        if (singleUtterance != null) 'singleUtterance': singleUtterance,
+      };
 }
 
 /// An intent represents a user's intent to interact with a conversational
@@ -8702,35 +8320,19 @@ class GoogleCloudDialogflowCxV3Intent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (isFallback != null) {
-      _json['isFallback'] = isFallback;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parameters != null) {
-      _json['parameters'] = parameters.map((value) => value.toJson()).toList();
-    }
-    if (priority != null) {
-      _json['priority'] = priority;
-    }
-    if (trainingPhrases != null) {
-      _json['trainingPhrases'] =
-          trainingPhrases.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (isFallback != null) 'isFallback': isFallback,
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+        if (parameters != null)
+          'parameters': parameters.map((value) => value.toJson()).toList(),
+        if (priority != null) 'priority': priority,
+        if (trainingPhrases != null)
+          'trainingPhrases':
+              trainingPhrases.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Intent coverage represents the percentage of all possible intents in the
@@ -8757,16 +8359,11 @@ class GoogleCloudDialogflowCxV3IntentCoverage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (coverageScore != null) {
-      _json['coverageScore'] = coverageScore;
-    }
-    if (intents != null) {
-      _json['intents'] = intents.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (coverageScore != null) 'coverageScore': coverageScore,
+        if (intents != null)
+          'intents': intents.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The agent's intent.
@@ -8789,16 +8386,10 @@ class GoogleCloudDialogflowCxV3IntentCoverageIntent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (covered != null) {
-      _json['covered'] = covered;
-    }
-    if (intent != null) {
-      _json['intent'] = intent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (covered != null) 'covered': covered,
+        if (intent != null) 'intent': intent,
+      };
 }
 
 /// Represents the intent to trigger programmatically rather than as a result of
@@ -8819,13 +8410,9 @@ class GoogleCloudDialogflowCxV3IntentInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (intent != null) {
-      _json['intent'] = intent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (intent != null) 'intent': intent,
+      };
 }
 
 /// Represents an intent parameter.
@@ -8875,22 +8462,12 @@ class GoogleCloudDialogflowCxV3IntentParameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entityType != null) {
-      _json['entityType'] = entityType;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (isList != null) {
-      _json['isList'] = isList;
-    }
-    if (redact != null) {
-      _json['redact'] = redact;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entityType != null) 'entityType': entityType,
+        if (id != null) 'id': id,
+        if (isList != null) 'isList': isList,
+        if (redact != null) 'redact': redact,
+      };
 }
 
 /// Represents an example that the agent is trained on to identify the intent.
@@ -8938,19 +8515,12 @@ class GoogleCloudDialogflowCxV3IntentTrainingPhrase {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (parts != null) {
-      _json['parts'] = parts.map((value) => value.toJson()).toList();
-    }
-    if (repeatCount != null) {
-      _json['repeatCount'] = repeatCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (parts != null)
+          'parts': parts.map((value) => value.toJson()).toList(),
+        if (repeatCount != null) 'repeatCount': repeatCount,
+      };
 }
 
 /// Represents a part of a training phrase.
@@ -8976,16 +8546,10 @@ class GoogleCloudDialogflowCxV3IntentTrainingPhrasePart {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (parameterId != null) {
-      _json['parameterId'] = parameterId;
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (parameterId != null) 'parameterId': parameterId,
+        if (text != null) 'text': text,
+      };
 }
 
 /// The response message for Agents.ListAgents.
@@ -9015,16 +8579,11 @@ class GoogleCloudDialogflowCxV3ListAgentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (agents != null) {
-      _json['agents'] = agents.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (agents != null)
+          'agents': agents.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for EntityTypes.ListEntityTypes.
@@ -9054,17 +8613,11 @@ class GoogleCloudDialogflowCxV3ListEntityTypesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entityTypes != null) {
-      _json['entityTypes'] =
-          entityTypes.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entityTypes != null)
+          'entityTypes': entityTypes.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Environments.ListEnvironments.
@@ -9095,17 +8648,11 @@ class GoogleCloudDialogflowCxV3ListEnvironmentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (environments != null) {
-      _json['environments'] =
-          environments.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (environments != null)
+          'environments': environments.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Experiments.ListExperiments.
@@ -9136,17 +8683,11 @@ class GoogleCloudDialogflowCxV3ListExperimentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (experiments != null) {
-      _json['experiments'] =
-          experiments.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (experiments != null)
+          'experiments': experiments.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Flows.ListFlows.
@@ -9176,16 +8717,11 @@ class GoogleCloudDialogflowCxV3ListFlowsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (flows != null) {
-      _json['flows'] = flows.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (flows != null)
+          'flows': flows.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Intents.ListIntents.
@@ -9215,16 +8751,11 @@ class GoogleCloudDialogflowCxV3ListIntentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (intents != null) {
-      _json['intents'] = intents.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (intents != null)
+          'intents': intents.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Pages.ListPages.
@@ -9254,16 +8785,11 @@ class GoogleCloudDialogflowCxV3ListPagesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (pages != null) {
-      _json['pages'] = pages.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (pages != null)
+          'pages': pages.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response message for SecuritySettings.ListSecuritySettings.
@@ -9291,17 +8817,12 @@ class GoogleCloudDialogflowCxV3ListSecuritySettingsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (securitySettings != null) {
-      _json['securitySettings'] =
-          securitySettings.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (securitySettings != null)
+          'securitySettings':
+              securitySettings.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response message for SessionEntityTypes.ListSessionEntityTypes.
@@ -9332,17 +8853,12 @@ class GoogleCloudDialogflowCxV3ListSessionEntityTypesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (sessionEntityTypes != null) {
-      _json['sessionEntityTypes'] =
-          sessionEntityTypes.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (sessionEntityTypes != null)
+          'sessionEntityTypes':
+              sessionEntityTypes.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response message for TestCases.ListTestCaseResults.
@@ -9370,17 +8886,12 @@ class GoogleCloudDialogflowCxV3ListTestCaseResultsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (testCaseResults != null) {
-      _json['testCaseResults'] =
-          testCaseResults.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (testCaseResults != null)
+          'testCaseResults':
+              testCaseResults.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response message for TestCases.ListTestCases.
@@ -9410,16 +8921,11 @@ class GoogleCloudDialogflowCxV3ListTestCasesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (testCases != null) {
-      _json['testCases'] = testCases.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (testCases != null)
+          'testCases': testCases.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response message for TransitionRouteGroups.ListTransitionRouteGroups.
@@ -9452,17 +8958,12 @@ class GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (transitionRouteGroups != null) {
-      _json['transitionRouteGroups'] =
-          transitionRouteGroups.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (transitionRouteGroups != null)
+          'transitionRouteGroups':
+              transitionRouteGroups.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response message for Versions.ListVersions.
@@ -9493,16 +8994,11 @@ class GoogleCloudDialogflowCxV3ListVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (versions != null) {
-      _json['versions'] = versions.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (versions != null)
+          'versions': versions.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response message for Webhooks.ListWebhooks.
@@ -9532,16 +9028,11 @@ class GoogleCloudDialogflowCxV3ListWebhooksResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (webhooks != null) {
-      _json['webhooks'] = webhooks.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (webhooks != null)
+          'webhooks': webhooks.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The request message for Versions.LoadVersion.
@@ -9563,13 +9054,10 @@ class GoogleCloudDialogflowCxV3LoadVersionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowOverrideAgentResources != null) {
-      _json['allowOverrideAgentResources'] = allowOverrideAgentResources;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowOverrideAgentResources != null)
+          'allowOverrideAgentResources': allowOverrideAgentResources,
+      };
 }
 
 /// The response message for Environments.LookupEnvironmentHistory.
@@ -9599,17 +9087,11 @@ class GoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (environments != null) {
-      _json['environments'] =
-          environments.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (environments != null)
+          'environments': environments.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Represents one match result of MatchIntent.
@@ -9697,28 +9179,14 @@ class GoogleCloudDialogflowCxV3Match {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (event != null) {
-      _json['event'] = event;
-    }
-    if (intent != null) {
-      _json['intent'] = intent.toJson();
-    }
-    if (matchType != null) {
-      _json['matchType'] = matchType;
-    }
-    if (parameters != null) {
-      _json['parameters'] = parameters;
-    }
-    if (resolvedInput != null) {
-      _json['resolvedInput'] = resolvedInput;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (event != null) 'event': event,
+        if (intent != null) 'intent': intent.toJson(),
+        if (matchType != null) 'matchType': matchType,
+        if (parameters != null) 'parameters': parameters,
+        if (resolvedInput != null) 'resolvedInput': resolvedInput,
+      };
 }
 
 /// Request of MatchIntent.
@@ -9744,16 +9212,10 @@ class GoogleCloudDialogflowCxV3MatchIntentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (queryInput != null) {
-      _json['queryInput'] = queryInput.toJson();
-    }
-    if (queryParams != null) {
-      _json['queryParams'] = queryParams.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (queryInput != null) 'queryInput': queryInput.toJson(),
+        if (queryParams != null) 'queryParams': queryParams.toJson(),
+      };
 }
 
 /// Response of MatchIntent.
@@ -9812,28 +9274,15 @@ class GoogleCloudDialogflowCxV3MatchIntentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (currentPage != null) {
-      _json['currentPage'] = currentPage.toJson();
-    }
-    if (matches != null) {
-      _json['matches'] = matches.map((value) => value.toJson()).toList();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    if (transcript != null) {
-      _json['transcript'] = transcript;
-    }
-    if (triggerEvent != null) {
-      _json['triggerEvent'] = triggerEvent;
-    }
-    if (triggerIntent != null) {
-      _json['triggerIntent'] = triggerIntent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (currentPage != null) 'currentPage': currentPage.toJson(),
+        if (matches != null)
+          'matches': matches.map((value) => value.toJson()).toList(),
+        if (text != null) 'text': text,
+        if (transcript != null) 'transcript': transcript,
+        if (triggerEvent != null) 'triggerEvent': triggerEvent,
+        if (triggerIntent != null) 'triggerIntent': triggerIntent,
+      };
 }
 
 /// Settings related to NLU.
@@ -9882,19 +9331,12 @@ class GoogleCloudDialogflowCxV3NluSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (classificationThreshold != null) {
-      _json['classificationThreshold'] = classificationThreshold;
-    }
-    if (modelTrainingMode != null) {
-      _json['modelTrainingMode'] = modelTrainingMode;
-    }
-    if (modelType != null) {
-      _json['modelType'] = modelType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (classificationThreshold != null)
+          'classificationThreshold': classificationThreshold,
+        if (modelTrainingMode != null) 'modelTrainingMode': modelTrainingMode,
+        if (modelType != null) 'modelType': modelType,
+      };
 }
 
 /// Instructs the speech synthesizer how to generate the output audio content.
@@ -9950,19 +9392,12 @@ class GoogleCloudDialogflowCxV3OutputAudioConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audioEncoding != null) {
-      _json['audioEncoding'] = audioEncoding;
-    }
-    if (sampleRateHertz != null) {
-      _json['sampleRateHertz'] = sampleRateHertz;
-    }
-    if (synthesizeSpeechConfig != null) {
-      _json['synthesizeSpeechConfig'] = synthesizeSpeechConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audioEncoding != null) 'audioEncoding': audioEncoding,
+        if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz,
+        if (synthesizeSpeechConfig != null)
+          'synthesizeSpeechConfig': synthesizeSpeechConfig.toJson(),
+      };
 }
 
 /// A Dialogflow CX conversation (session) can be described and visualized as a
@@ -10064,33 +9499,21 @@ class GoogleCloudDialogflowCxV3Page {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (entryFulfillment != null) {
-      _json['entryFulfillment'] = entryFulfillment.toJson();
-    }
-    if (eventHandlers != null) {
-      _json['eventHandlers'] =
-          eventHandlers.map((value) => value.toJson()).toList();
-    }
-    if (form != null) {
-      _json['form'] = form.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (transitionRouteGroups != null) {
-      _json['transitionRouteGroups'] = transitionRouteGroups;
-    }
-    if (transitionRoutes != null) {
-      _json['transitionRoutes'] =
-          transitionRoutes.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (entryFulfillment != null)
+          'entryFulfillment': entryFulfillment.toJson(),
+        if (eventHandlers != null)
+          'eventHandlers':
+              eventHandlers.map((value) => value.toJson()).toList(),
+        if (form != null) 'form': form.toJson(),
+        if (name != null) 'name': name,
+        if (transitionRouteGroups != null)
+          'transitionRouteGroups': transitionRouteGroups,
+        if (transitionRoutes != null)
+          'transitionRoutes':
+              transitionRoutes.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents page information communicated to and from the webhook.
@@ -10118,16 +9541,10 @@ class GoogleCloudDialogflowCxV3PageInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (currentPage != null) {
-      _json['currentPage'] = currentPage;
-    }
-    if (formInfo != null) {
-      _json['formInfo'] = formInfo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (currentPage != null) 'currentPage': currentPage,
+        if (formInfo != null) 'formInfo': formInfo.toJson(),
+      };
 }
 
 /// Represents form information.
@@ -10151,14 +9568,11 @@ class GoogleCloudDialogflowCxV3PageInfoFormInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (parameterInfo != null) {
-      _json['parameterInfo'] =
-          parameterInfo.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (parameterInfo != null)
+          'parameterInfo':
+              parameterInfo.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents parameter information.
@@ -10227,25 +9641,13 @@ class GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (justCollected != null) {
-      _json['justCollected'] = justCollected;
-    }
-    if (required != null) {
-      _json['required'] = required;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (justCollected != null) 'justCollected': justCollected,
+        if (required != null) 'required': required,
+        if (state != null) 'state': state,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Represents the query input.
@@ -10307,28 +9709,14 @@ class GoogleCloudDialogflowCxV3QueryInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audio != null) {
-      _json['audio'] = audio.toJson();
-    }
-    if (dtmf != null) {
-      _json['dtmf'] = dtmf.toJson();
-    }
-    if (event != null) {
-      _json['event'] = event.toJson();
-    }
-    if (intent != null) {
-      _json['intent'] = intent.toJson();
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (text != null) {
-      _json['text'] = text.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audio != null) 'audio': audio.toJson(),
+        if (dtmf != null) 'dtmf': dtmf.toJson(),
+        if (event != null) 'event': event.toJson(),
+        if (intent != null) 'intent': intent.toJson(),
+        if (languageCode != null) 'languageCode': languageCode,
+        if (text != null) 'text': text.toJson(),
+      };
 }
 
 /// Represents the parameters of a conversational query.
@@ -10444,32 +9832,18 @@ class GoogleCloudDialogflowCxV3QueryParameters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (analyzeQueryTextSentiment != null) {
-      _json['analyzeQueryTextSentiment'] = analyzeQueryTextSentiment;
-    }
-    if (geoLocation != null) {
-      _json['geoLocation'] = geoLocation.toJson();
-    }
-    if (parameters != null) {
-      _json['parameters'] = parameters;
-    }
-    if (payload != null) {
-      _json['payload'] = payload;
-    }
-    if (sessionEntityTypes != null) {
-      _json['sessionEntityTypes'] =
-          sessionEntityTypes.map((value) => value.toJson()).toList();
-    }
-    if (timeZone != null) {
-      _json['timeZone'] = timeZone;
-    }
-    if (webhookHeaders != null) {
-      _json['webhookHeaders'] = webhookHeaders;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (analyzeQueryTextSentiment != null)
+          'analyzeQueryTextSentiment': analyzeQueryTextSentiment,
+        if (geoLocation != null) 'geoLocation': geoLocation.toJson(),
+        if (parameters != null) 'parameters': parameters,
+        if (payload != null) 'payload': payload,
+        if (sessionEntityTypes != null)
+          'sessionEntityTypes':
+              sessionEntityTypes.map((value) => value.toJson()).toList(),
+        if (timeZone != null) 'timeZone': timeZone,
+        if (webhookHeaders != null) 'webhookHeaders': webhookHeaders,
+      };
 }
 
 /// Represents the result of a conversational query.
@@ -10656,57 +10030,29 @@ class GoogleCloudDialogflowCxV3QueryResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (currentPage != null) {
-      _json['currentPage'] = currentPage.toJson();
-    }
-    if (diagnosticInfo != null) {
-      _json['diagnosticInfo'] = diagnosticInfo;
-    }
-    if (intent != null) {
-      _json['intent'] = intent.toJson();
-    }
-    if (intentDetectionConfidence != null) {
-      _json['intentDetectionConfidence'] = intentDetectionConfidence;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (match != null) {
-      _json['match'] = match.toJson();
-    }
-    if (parameters != null) {
-      _json['parameters'] = parameters;
-    }
-    if (responseMessages != null) {
-      _json['responseMessages'] =
-          responseMessages.map((value) => value.toJson()).toList();
-    }
-    if (sentimentAnalysisResult != null) {
-      _json['sentimentAnalysisResult'] = sentimentAnalysisResult.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    if (transcript != null) {
-      _json['transcript'] = transcript;
-    }
-    if (triggerEvent != null) {
-      _json['triggerEvent'] = triggerEvent;
-    }
-    if (triggerIntent != null) {
-      _json['triggerIntent'] = triggerIntent;
-    }
-    if (webhookPayloads != null) {
-      _json['webhookPayloads'] = webhookPayloads;
-    }
-    if (webhookStatuses != null) {
-      _json['webhookStatuses'] =
-          webhookStatuses.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (currentPage != null) 'currentPage': currentPage.toJson(),
+        if (diagnosticInfo != null) 'diagnosticInfo': diagnosticInfo,
+        if (intent != null) 'intent': intent.toJson(),
+        if (intentDetectionConfidence != null)
+          'intentDetectionConfidence': intentDetectionConfidence,
+        if (languageCode != null) 'languageCode': languageCode,
+        if (match != null) 'match': match.toJson(),
+        if (parameters != null) 'parameters': parameters,
+        if (responseMessages != null)
+          'responseMessages':
+              responseMessages.map((value) => value.toJson()).toList(),
+        if (sentimentAnalysisResult != null)
+          'sentimentAnalysisResult': sentimentAnalysisResult.toJson(),
+        if (text != null) 'text': text,
+        if (transcript != null) 'transcript': transcript,
+        if (triggerEvent != null) 'triggerEvent': triggerEvent,
+        if (triggerIntent != null) 'triggerIntent': triggerIntent,
+        if (webhookPayloads != null) 'webhookPayloads': webhookPayloads,
+        if (webhookStatuses != null)
+          'webhookStatuses':
+              webhookStatuses.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Metadata for ReloadDocument operation.
@@ -10725,13 +10071,10 @@ class GoogleCloudDialogflowCxV3ReloadDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (genericMetadata != null) {
-      _json['genericMetadata'] = genericMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (genericMetadata != null)
+          'genericMetadata': genericMetadata.toJson(),
+      };
 }
 
 /// Resource name and display name.
@@ -10753,16 +10096,10 @@ class GoogleCloudDialogflowCxV3ResourceName {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Represents a response message that can be returned by a conversational
@@ -10874,34 +10211,19 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (conversationSuccess != null) {
-      _json['conversationSuccess'] = conversationSuccess.toJson();
-    }
-    if (endInteraction != null) {
-      _json['endInteraction'] = endInteraction.toJson();
-    }
-    if (liveAgentHandoff != null) {
-      _json['liveAgentHandoff'] = liveAgentHandoff.toJson();
-    }
-    if (mixedAudio != null) {
-      _json['mixedAudio'] = mixedAudio.toJson();
-    }
-    if (outputAudioText != null) {
-      _json['outputAudioText'] = outputAudioText.toJson();
-    }
-    if (payload != null) {
-      _json['payload'] = payload;
-    }
-    if (playAudio != null) {
-      _json['playAudio'] = playAudio.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (conversationSuccess != null)
+          'conversationSuccess': conversationSuccess.toJson(),
+        if (endInteraction != null) 'endInteraction': endInteraction.toJson(),
+        if (liveAgentHandoff != null)
+          'liveAgentHandoff': liveAgentHandoff.toJson(),
+        if (mixedAudio != null) 'mixedAudio': mixedAudio.toJson(),
+        if (outputAudioText != null)
+          'outputAudioText': outputAudioText.toJson(),
+        if (payload != null) 'payload': payload,
+        if (playAudio != null) 'playAudio': playAudio.toJson(),
+        if (text != null) 'text': text.toJson(),
+      };
 }
 
 /// Indicates that the conversation succeeded, i.e., the bot handled the issue
@@ -10939,13 +10261,9 @@ class GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metadata != null) 'metadata': metadata,
+      };
 }
 
 /// Indicates that interaction with the Dialogflow agent has ended.
@@ -10959,10 +10277,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageEndInteraction {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Indicates that the conversation should be handed off to a live agent.
@@ -10997,13 +10312,9 @@ class GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metadata != null) 'metadata': metadata,
+      };
 }
 
 /// Represents an audio message that is composed of both segments synthesized
@@ -11029,13 +10340,10 @@ class GoogleCloudDialogflowCxV3ResponseMessageMixedAudio {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (segments != null) {
-      _json['segments'] = segments.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (segments != null)
+          'segments': segments.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents one segment of audio.
@@ -11077,19 +10385,12 @@ class GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowPlaybackInterruption != null) {
-      _json['allowPlaybackInterruption'] = allowPlaybackInterruption;
-    }
-    if (audio != null) {
-      _json['audio'] = audio;
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowPlaybackInterruption != null)
+          'allowPlaybackInterruption': allowPlaybackInterruption,
+        if (audio != null) 'audio': audio,
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// A text or ssml response that is preferentially used for TTS output audio
@@ -11125,19 +10426,12 @@ class GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowPlaybackInterruption != null) {
-      _json['allowPlaybackInterruption'] = allowPlaybackInterruption;
-    }
-    if (ssml != null) {
-      _json['ssml'] = ssml;
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowPlaybackInterruption != null)
+          'allowPlaybackInterruption': allowPlaybackInterruption,
+        if (ssml != null) 'ssml': ssml,
+        if (text != null) 'text': text,
+      };
 }
 
 /// Specifies an audio clip to be played by the client as part of the response.
@@ -11168,16 +10462,11 @@ class GoogleCloudDialogflowCxV3ResponseMessagePlayAudio {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowPlaybackInterruption != null) {
-      _json['allowPlaybackInterruption'] = allowPlaybackInterruption;
-    }
-    if (audioUri != null) {
-      _json['audioUri'] = audioUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowPlaybackInterruption != null)
+          'allowPlaybackInterruption': allowPlaybackInterruption,
+        if (audioUri != null) 'audioUri': audioUri,
+      };
 }
 
 /// The text response message.
@@ -11207,16 +10496,11 @@ class GoogleCloudDialogflowCxV3ResponseMessageText {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowPlaybackInterruption != null) {
-      _json['allowPlaybackInterruption'] = allowPlaybackInterruption;
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowPlaybackInterruption != null)
+          'allowPlaybackInterruption': allowPlaybackInterruption,
+        if (text != null) 'text': text,
+      };
 }
 
 /// The request message for Agents.RestoreAgent.
@@ -11248,16 +10532,10 @@ class GoogleCloudDialogflowCxV3RestoreAgentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (agentContent != null) {
-      _json['agentContent'] = agentContent;
-    }
-    if (agentUri != null) {
-      _json['agentUri'] = agentUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (agentContent != null) 'agentContent': agentContent,
+        if (agentUri != null) 'agentUri': agentUri,
+      };
 }
 
 /// Metadata returned for the TestCases.RunTestCase long running operation.
@@ -11268,10 +10546,7 @@ class GoogleCloudDialogflowCxV3RunTestCaseMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The request message for TestCases.RunTestCase.
@@ -11301,16 +10576,10 @@ class GoogleCloudDialogflowCxV3RunTestCaseRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (environment != null) {
-      _json['environment'] = environment;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (environment != null) 'environment': environment,
+        if (name != null) 'name': name,
+      };
 }
 
 /// The response message for TestCases.RunTestCase.
@@ -11327,13 +10596,9 @@ class GoogleCloudDialogflowCxV3RunTestCaseResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (result != null) {
-      _json['result'] = result.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (result != null) 'result': result.toJson(),
+      };
 }
 
 /// Represents the settings related to security issues, such as data redaction
@@ -11419,31 +10684,16 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (inspectTemplate != null) {
-      _json['inspectTemplate'] = inspectTemplate;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (purgeDataTypes != null) {
-      _json['purgeDataTypes'] = purgeDataTypes;
-    }
-    if (redactionScope != null) {
-      _json['redactionScope'] = redactionScope;
-    }
-    if (redactionStrategy != null) {
-      _json['redactionStrategy'] = redactionStrategy;
-    }
-    if (retentionWindowDays != null) {
-      _json['retentionWindowDays'] = retentionWindowDays;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (inspectTemplate != null) 'inspectTemplate': inspectTemplate,
+        if (name != null) 'name': name,
+        if (purgeDataTypes != null) 'purgeDataTypes': purgeDataTypes,
+        if (redactionScope != null) 'redactionScope': redactionScope,
+        if (redactionStrategy != null) 'redactionStrategy': redactionStrategy,
+        if (retentionWindowDays != null)
+          'retentionWindowDays': retentionWindowDays,
+      };
 }
 
 /// The result of sentiment analysis.
@@ -11472,16 +10722,10 @@ class GoogleCloudDialogflowCxV3SentimentAnalysisResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (magnitude != null) {
-      _json['magnitude'] = magnitude;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (magnitude != null) 'magnitude': magnitude,
+        if (score != null) 'score': score,
+      };
 }
 
 /// Session entity types are referred to as **User** entity types and are
@@ -11547,19 +10791,13 @@ class GoogleCloudDialogflowCxV3SessionEntityType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entities != null) {
-      _json['entities'] = entities.map((value) => value.toJson()).toList();
-    }
-    if (entityOverrideMode != null) {
-      _json['entityOverrideMode'] = entityOverrideMode;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entities != null)
+          'entities': entities.map((value) => value.toJson()).toList(),
+        if (entityOverrideMode != null)
+          'entityOverrideMode': entityOverrideMode,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Represents session information communicated to and from the webhook.
@@ -11603,16 +10841,10 @@ class GoogleCloudDialogflowCxV3SessionInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (parameters != null) {
-      _json['parameters'] = parameters;
-    }
-    if (session != null) {
-      _json['session'] = session;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (parameters != null) 'parameters': parameters,
+        if (session != null) 'session': session,
+      };
 }
 
 /// Settings related to speech recognition.
@@ -11628,13 +10860,10 @@ class GoogleCloudDialogflowCxV3SpeechToTextSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enableSpeechAdaptation != null) {
-      _json['enableSpeechAdaptation'] = enableSpeechAdaptation;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enableSpeechAdaptation != null)
+          'enableSpeechAdaptation': enableSpeechAdaptation,
+      };
 }
 
 /// The request message for Experiments.StartExperiment.
@@ -11645,10 +10874,7 @@ class GoogleCloudDialogflowCxV3StartExperimentRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The request message for Experiments.StopExperiment.
@@ -11659,10 +10885,7 @@ class GoogleCloudDialogflowCxV3StopExperimentRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Configuration of how speech should be synthesized.
@@ -11733,25 +10956,13 @@ class GoogleCloudDialogflowCxV3SynthesizeSpeechConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (effectsProfileId != null) {
-      _json['effectsProfileId'] = effectsProfileId;
-    }
-    if (pitch != null) {
-      _json['pitch'] = pitch;
-    }
-    if (speakingRate != null) {
-      _json['speakingRate'] = speakingRate;
-    }
-    if (voice != null) {
-      _json['voice'] = voice.toJson();
-    }
-    if (volumeGainDb != null) {
-      _json['volumeGainDb'] = volumeGainDb;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (effectsProfileId != null) 'effectsProfileId': effectsProfileId,
+        if (pitch != null) 'pitch': pitch,
+        if (speakingRate != null) 'speakingRate': speakingRate,
+        if (voice != null) 'voice': voice.toJson(),
+        if (volumeGainDb != null) 'volumeGainDb': volumeGainDb,
+      };
 }
 
 /// Represents a test case.
@@ -11837,35 +11048,18 @@ class GoogleCloudDialogflowCxV3TestCase {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (creationTime != null) {
-      _json['creationTime'] = creationTime;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (lastTestResult != null) {
-      _json['lastTestResult'] = lastTestResult.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (notes != null) {
-      _json['notes'] = notes;
-    }
-    if (tags != null) {
-      _json['tags'] = tags;
-    }
-    if (testCaseConversationTurns != null) {
-      _json['testCaseConversationTurns'] =
-          testCaseConversationTurns.map((value) => value.toJson()).toList();
-    }
-    if (testConfig != null) {
-      _json['testConfig'] = testConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (creationTime != null) 'creationTime': creationTime,
+        if (displayName != null) 'displayName': displayName,
+        if (lastTestResult != null) 'lastTestResult': lastTestResult.toJson(),
+        if (name != null) 'name': name,
+        if (notes != null) 'notes': notes,
+        if (tags != null) 'tags': tags,
+        if (testCaseConversationTurns != null)
+          'testCaseConversationTurns':
+              testCaseConversationTurns.map((value) => value.toJson()).toList(),
+        if (testConfig != null) 'testConfig': testConfig.toJson(),
+      };
 }
 
 /// Error info for importing a test.
@@ -11889,16 +11083,10 @@ class GoogleCloudDialogflowCxV3TestCaseError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    if (testCase != null) {
-      _json['testCase'] = testCase.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (status != null) 'status': status.toJson(),
+        if (testCase != null) 'testCase': testCase.toJson(),
+      };
 }
 
 /// Represents a result from running a test case in an agent environment.
@@ -11951,26 +11139,15 @@ class GoogleCloudDialogflowCxV3TestCaseResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (conversationTurns != null) {
-      _json['conversationTurns'] =
-          conversationTurns.map((value) => value.toJson()).toList();
-    }
-    if (environment != null) {
-      _json['environment'] = environment;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (testResult != null) {
-      _json['testResult'] = testResult;
-    }
-    if (testTime != null) {
-      _json['testTime'] = testTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (conversationTurns != null)
+          'conversationTurns':
+              conversationTurns.map((value) => value.toJson()).toList(),
+        if (environment != null) 'environment': environment,
+        if (name != null) 'name': name,
+        if (testResult != null) 'testResult': testResult,
+        if (testTime != null) 'testTime': testTime,
+      };
 }
 
 /// Represents configurations for a test case.
@@ -11997,16 +11174,11 @@ class GoogleCloudDialogflowCxV3TestConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (flow != null) {
-      _json['flow'] = flow;
-    }
-    if (trackingParameters != null) {
-      _json['trackingParameters'] = trackingParameters;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (flow != null) 'flow': flow,
+        if (trackingParameters != null)
+          'trackingParameters': trackingParameters,
+      };
 }
 
 /// Error info for running a test.
@@ -12035,19 +11207,11 @@ class GoogleCloudDialogflowCxV3TestError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    if (testCase != null) {
-      _json['testCase'] = testCase;
-    }
-    if (testTime != null) {
-      _json['testTime'] = testTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (status != null) 'status': status.toJson(),
+        if (testCase != null) 'testCase': testCase,
+        if (testTime != null) 'testTime': testTime,
+      };
 }
 
 /// The description of differences between original and replayed agent output.
@@ -12075,16 +11239,10 @@ class GoogleCloudDialogflowCxV3TestRunDifference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Represents the natural language text to be processed.
@@ -12104,13 +11262,9 @@ class GoogleCloudDialogflowCxV3TextInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (text != null) 'text': text,
+      };
 }
 
 /// The request message for Flows.TrainFlow.
@@ -12121,10 +11275,7 @@ class GoogleCloudDialogflowCxV3TrainFlowRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Transition coverage represents the percentage of all possible transitions
@@ -12151,17 +11302,11 @@ class GoogleCloudDialogflowCxV3TransitionCoverage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (coverageScore != null) {
-      _json['coverageScore'] = coverageScore;
-    }
-    if (transitions != null) {
-      _json['transitions'] =
-          transitions.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (coverageScore != null) 'coverageScore': coverageScore,
+        if (transitions != null)
+          'transitions': transitions.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A transition in the agent's graph.
@@ -12217,28 +11362,15 @@ class GoogleCloudDialogflowCxV3TransitionCoverageTransition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (covered != null) {
-      _json['covered'] = covered;
-    }
-    if (eventHandler != null) {
-      _json['eventHandler'] = eventHandler.toJson();
-    }
-    if (index != null) {
-      _json['index'] = index;
-    }
-    if (source != null) {
-      _json['source'] = source.toJson();
-    }
-    if (target != null) {
-      _json['target'] = target.toJson();
-    }
-    if (transitionRoute != null) {
-      _json['transitionRoute'] = transitionRoute.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (covered != null) 'covered': covered,
+        if (eventHandler != null) 'eventHandler': eventHandler.toJson(),
+        if (index != null) 'index': index,
+        if (source != null) 'source': source.toJson(),
+        if (target != null) 'target': target.toJson(),
+        if (transitionRoute != null)
+          'transitionRoute': transitionRoute.toJson(),
+      };
 }
 
 /// The source or target of a transition.
@@ -12267,16 +11399,10 @@ class GoogleCloudDialogflowCxV3TransitionCoverageTransitionNode {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (flow != null) {
-      _json['flow'] = flow.toJson();
-    }
-    if (page != null) {
-      _json['page'] = page.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (flow != null) 'flow': flow.toJson(),
+        if (page != null) 'page': page.toJson(),
+      };
 }
 
 /// A transition route specifies a intent that can be matched and/or a data
@@ -12352,28 +11478,15 @@ class GoogleCloudDialogflowCxV3TransitionRoute {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition;
-    }
-    if (intent != null) {
-      _json['intent'] = intent;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (targetFlow != null) {
-      _json['targetFlow'] = targetFlow;
-    }
-    if (targetPage != null) {
-      _json['targetPage'] = targetPage;
-    }
-    if (triggerFulfillment != null) {
-      _json['triggerFulfillment'] = triggerFulfillment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition,
+        if (intent != null) 'intent': intent,
+        if (name != null) 'name': name,
+        if (targetFlow != null) 'targetFlow': targetFlow,
+        if (targetPage != null) 'targetPage': targetPage,
+        if (triggerFulfillment != null)
+          'triggerFulfillment': triggerFulfillment.toJson(),
+      };
 }
 
 /// An TransitionRouteGroup represents a group of `TransitionRoutes` to be used
@@ -12415,20 +11528,13 @@ class GoogleCloudDialogflowCxV3TransitionRouteGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (transitionRoutes != null) {
-      _json['transitionRoutes'] =
-          transitionRoutes.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (transitionRoutes != null)
+          'transitionRoutes':
+              transitionRoutes.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Metadata for UpdateDocument operation.
@@ -12447,13 +11553,10 @@ class GoogleCloudDialogflowCxV3UpdateDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (genericMetadata != null) {
-      _json['genericMetadata'] = genericMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (genericMetadata != null)
+          'genericMetadata': genericMetadata.toJson(),
+      };
 }
 
 /// The request message for Agents.ValidateAgent.
@@ -12469,13 +11572,9 @@ class GoogleCloudDialogflowCxV3ValidateAgentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// The request message for Flows.ValidateFlow.
@@ -12491,13 +11590,9 @@ class GoogleCloudDialogflowCxV3ValidateFlowRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// Agent/flow validation message.
@@ -12563,26 +11658,15 @@ class GoogleCloudDialogflowCxV3ValidationMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detail != null) {
-      _json['detail'] = detail;
-    }
-    if (resourceNames != null) {
-      _json['resourceNames'] =
-          resourceNames.map((value) => value.toJson()).toList();
-    }
-    if (resourceType != null) {
-      _json['resourceType'] = resourceType;
-    }
-    if (resources != null) {
-      _json['resources'] = resources;
-    }
-    if (severity != null) {
-      _json['severity'] = severity;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detail != null) 'detail': detail,
+        if (resourceNames != null)
+          'resourceNames':
+              resourceNames.map((value) => value.toJson()).toList(),
+        if (resourceType != null) 'resourceType': resourceType,
+        if (resources != null) 'resources': resources,
+        if (severity != null) 'severity': severity,
+      };
 }
 
 /// The history of variants update.
@@ -12605,16 +11689,11 @@ class GoogleCloudDialogflowCxV3VariantsHistory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    if (versionVariants != null) {
-      _json['versionVariants'] = versionVariants.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (updateTime != null) 'updateTime': updateTime,
+        if (versionVariants != null)
+          'versionVariants': versionVariants.toJson(),
+      };
 }
 
 /// Represents a version of a flow.
@@ -12684,28 +11763,14 @@ class GoogleCloudDialogflowCxV3Version {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (nluSettings != null) {
-      _json['nluSettings'] = nluSettings.toJson();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (nluSettings != null) 'nluSettings': nluSettings.toJson(),
+        if (state != null) 'state': state,
+      };
 }
 
 /// A list of flow version variants.
@@ -12725,13 +11790,10 @@ class GoogleCloudDialogflowCxV3VersionVariants {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (variants != null) {
-      _json['variants'] = variants.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (variants != null)
+          'variants': variants.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A single flow version with specified traffic allocation.
@@ -12763,19 +11825,11 @@ class GoogleCloudDialogflowCxV3VersionVariantsVariant {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (isControlGroup != null) {
-      _json['isControlGroup'] = isControlGroup;
-    }
-    if (trafficAllocation != null) {
-      _json['trafficAllocation'] = trafficAllocation;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (isControlGroup != null) 'isControlGroup': isControlGroup,
+        if (trafficAllocation != null) 'trafficAllocation': trafficAllocation,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Description of which voice to use for speech synthesis.
@@ -12818,16 +11872,10 @@ class GoogleCloudDialogflowCxV3VoiceSelectionParams {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (ssmlGender != null) {
-      _json['ssmlGender'] = ssmlGender;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (ssmlGender != null) 'ssmlGender': ssmlGender,
+      };
 }
 
 /// Webhooks host the developer's business logic.
@@ -12884,25 +11932,14 @@ class GoogleCloudDialogflowCxV3Webhook {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (disabled != null) {
-      _json['disabled'] = disabled;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (genericWebService != null) {
-      _json['genericWebService'] = genericWebService.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (timeout != null) {
-      _json['timeout'] = timeout;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (disabled != null) 'disabled': disabled,
+        if (displayName != null) 'displayName': displayName,
+        if (genericWebService != null)
+          'genericWebService': genericWebService.toJson(),
+        if (name != null) 'name': name,
+        if (timeout != null) 'timeout': timeout,
+      };
 }
 
 /// Represents configuration for a generic web service.
@@ -12947,22 +11984,12 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (password != null) {
-      _json['password'] = password;
-    }
-    if (requestHeaders != null) {
-      _json['requestHeaders'] = requestHeaders;
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    if (username != null) {
-      _json['username'] = username;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (password != null) 'password': password,
+        if (requestHeaders != null) 'requestHeaders': requestHeaders,
+        if (uri != null) 'uri': uri,
+        if (username != null) 'username': username,
+      };
 }
 
 /// The request message for a webhook call.
@@ -13040,31 +12067,18 @@ class GoogleCloudDialogflowCxV3WebhookRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detectIntentResponseId != null) {
-      _json['detectIntentResponseId'] = detectIntentResponseId;
-    }
-    if (fulfillmentInfo != null) {
-      _json['fulfillmentInfo'] = fulfillmentInfo.toJson();
-    }
-    if (intentInfo != null) {
-      _json['intentInfo'] = intentInfo.toJson();
-    }
-    if (messages != null) {
-      _json['messages'] = messages.map((value) => value.toJson()).toList();
-    }
-    if (pageInfo != null) {
-      _json['pageInfo'] = pageInfo.toJson();
-    }
-    if (payload != null) {
-      _json['payload'] = payload;
-    }
-    if (sessionInfo != null) {
-      _json['sessionInfo'] = sessionInfo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detectIntentResponseId != null)
+          'detectIntentResponseId': detectIntentResponseId,
+        if (fulfillmentInfo != null)
+          'fulfillmentInfo': fulfillmentInfo.toJson(),
+        if (intentInfo != null) 'intentInfo': intentInfo.toJson(),
+        if (messages != null)
+          'messages': messages.map((value) => value.toJson()).toList(),
+        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+        if (payload != null) 'payload': payload,
+        if (sessionInfo != null) 'sessionInfo': sessionInfo.toJson(),
+      };
 }
 
 /// Represents fulfillment information communicated to the webhook.
@@ -13083,13 +12097,9 @@ class GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (tag != null) {
-      _json['tag'] = tag;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (tag != null) 'tag': tag,
+      };
 }
 
 /// Represents intent information communicated to the webhook.
@@ -13143,23 +12153,14 @@ class GoogleCloudDialogflowCxV3WebhookRequestIntentInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (lastMatchedIntent != null) {
-      _json['lastMatchedIntent'] = lastMatchedIntent;
-    }
-    if (parameters != null) {
-      _json['parameters'] =
-          parameters.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (displayName != null) 'displayName': displayName,
+        if (lastMatchedIntent != null) 'lastMatchedIntent': lastMatchedIntent,
+        if (parameters != null)
+          'parameters':
+              parameters.map((key, item) => core.MapEntry(key, item.toJson())),
+      };
 }
 
 /// Represents a value for an intent parameter.
@@ -13189,16 +12190,10 @@ class GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (originalValue != null) {
-      _json['originalValue'] = originalValue;
-    }
-    if (resolvedValue != null) {
-      _json['resolvedValue'] = resolvedValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (originalValue != null) 'originalValue': originalValue,
+        if (resolvedValue != null) 'resolvedValue': resolvedValue,
+      };
 }
 
 /// The response message for a webhook call.
@@ -13272,28 +12267,15 @@ class GoogleCloudDialogflowCxV3WebhookResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fulfillmentResponse != null) {
-      _json['fulfillmentResponse'] = fulfillmentResponse.toJson();
-    }
-    if (pageInfo != null) {
-      _json['pageInfo'] = pageInfo.toJson();
-    }
-    if (payload != null) {
-      _json['payload'] = payload;
-    }
-    if (sessionInfo != null) {
-      _json['sessionInfo'] = sessionInfo.toJson();
-    }
-    if (targetFlow != null) {
-      _json['targetFlow'] = targetFlow;
-    }
-    if (targetPage != null) {
-      _json['targetPage'] = targetPage;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fulfillmentResponse != null)
+          'fulfillmentResponse': fulfillmentResponse.toJson(),
+        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+        if (payload != null) 'payload': payload,
+        if (sessionInfo != null) 'sessionInfo': sessionInfo.toJson(),
+        if (targetFlow != null) 'targetFlow': targetFlow,
+        if (targetPage != null) 'targetPage': targetPage,
+      };
 }
 
 /// Represents a fulfillment response to the user.
@@ -13326,16 +12308,11 @@ class GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (mergeBehavior != null) {
-      _json['mergeBehavior'] = mergeBehavior;
-    }
-    if (messages != null) {
-      _json['messages'] = messages.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (mergeBehavior != null) 'mergeBehavior': mergeBehavior,
+        if (messages != null)
+          'messages': messages.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents the natural speech audio to be processed.
@@ -13372,16 +12349,10 @@ class GoogleCloudDialogflowCxV3beta1AudioInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audio != null) {
-      _json['audio'] = audio;
-    }
-    if (config != null) {
-      _json['config'] = config.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audio != null) 'audio': audio,
+        if (config != null) 'config': config.toJson(),
+      };
 }
 
 /// Metadata returned for the TestCases.BatchRunTestCases long running
@@ -13403,13 +12374,10 @@ class GoogleCloudDialogflowCxV3beta1BatchRunTestCasesMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errors != null) {
-      _json['errors'] = errors.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errors != null)
+          'errors': errors.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response message for TestCases.BatchRunTestCases.
@@ -13432,13 +12400,10 @@ class GoogleCloudDialogflowCxV3beta1BatchRunTestCasesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (results != null) {
-      _json['results'] = results.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// One interaction between a human and virtual agent.
@@ -13468,16 +12433,11 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurn {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (userInput != null) {
-      _json['userInput'] = userInput.toJson();
-    }
-    if (virtualAgentOutput != null) {
-      _json['virtualAgentOutput'] = virtualAgentOutput.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (userInput != null) 'userInput': userInput.toJson(),
+        if (virtualAgentOutput != null)
+          'virtualAgentOutput': virtualAgentOutput.toJson(),
+      };
 }
 
 /// The input from the human user.
@@ -13521,19 +12481,12 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (injectedParameters != null) {
-      _json['injectedParameters'] = injectedParameters;
-    }
-    if (input != null) {
-      _json['input'] = input.toJson();
-    }
-    if (isWebhookEnabled != null) {
-      _json['isWebhookEnabled'] = isWebhookEnabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (injectedParameters != null)
+          'injectedParameters': injectedParameters,
+        if (input != null) 'input': input.toJson(),
+        if (isWebhookEnabled != null) 'isWebhookEnabled': isWebhookEnabled,
+      };
 }
 
 /// The output from the virtual agent.
@@ -13630,33 +12583,19 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (currentPage != null) {
-      _json['currentPage'] = currentPage.toJson();
-    }
-    if (diagnosticInfo != null) {
-      _json['diagnosticInfo'] = diagnosticInfo;
-    }
-    if (differences != null) {
-      _json['differences'] =
-          differences.map((value) => value.toJson()).toList();
-    }
-    if (sessionParameters != null) {
-      _json['sessionParameters'] = sessionParameters;
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    if (textResponses != null) {
-      _json['textResponses'] =
-          textResponses.map((value) => value.toJson()).toList();
-    }
-    if (triggeredIntent != null) {
-      _json['triggeredIntent'] = triggeredIntent.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (currentPage != null) 'currentPage': currentPage.toJson(),
+        if (diagnosticInfo != null) 'diagnosticInfo': diagnosticInfo,
+        if (differences != null)
+          'differences': differences.map((value) => value.toJson()).toList(),
+        if (sessionParameters != null) 'sessionParameters': sessionParameters,
+        if (status != null) 'status': status.toJson(),
+        if (textResponses != null)
+          'textResponses':
+              textResponses.map((value) => value.toJson()).toList(),
+        if (triggeredIntent != null)
+          'triggeredIntent': triggeredIntent.toJson(),
+      };
 }
 
 /// Metadata for CreateDocument operation.
@@ -13677,13 +12616,10 @@ class GoogleCloudDialogflowCxV3beta1CreateDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (genericMetadata != null) {
-      _json['genericMetadata'] = genericMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (genericMetadata != null)
+          'genericMetadata': genericMetadata.toJson(),
+      };
 }
 
 /// Metadata associated with the long running operation for
@@ -13703,13 +12639,9 @@ class GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (version != null) 'version': version,
+      };
 }
 
 /// Metadata for DeleteDocument operation.
@@ -13730,13 +12662,10 @@ class GoogleCloudDialogflowCxV3beta1DeleteDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (genericMetadata != null) {
-      _json['genericMetadata'] = genericMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (genericMetadata != null)
+          'genericMetadata': genericMetadata.toJson(),
+      };
 }
 
 /// Represents the input for dtmf event.
@@ -13758,16 +12687,10 @@ class GoogleCloudDialogflowCxV3beta1DtmfInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (digits != null) {
-      _json['digits'] = digits;
-    }
-    if (finishDigit != null) {
-      _json['finishDigit'] = finishDigit;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (digits != null) 'digits': digits,
+        if (finishDigit != null) 'finishDigit': finishDigit,
+      };
 }
 
 /// An event handler specifies an event that can be handled during a session.
@@ -13827,25 +12750,14 @@ class GoogleCloudDialogflowCxV3beta1EventHandler {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (event != null) {
-      _json['event'] = event;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (targetFlow != null) {
-      _json['targetFlow'] = targetFlow;
-    }
-    if (targetPage != null) {
-      _json['targetPage'] = targetPage;
-    }
-    if (triggerFulfillment != null) {
-      _json['triggerFulfillment'] = triggerFulfillment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (event != null) 'event': event,
+        if (name != null) 'name': name,
+        if (targetFlow != null) 'targetFlow': targetFlow,
+        if (targetPage != null) 'targetPage': targetPage,
+        if (triggerFulfillment != null)
+          'triggerFulfillment': triggerFulfillment.toJson(),
+      };
 }
 
 /// Represents the event to trigger.
@@ -13861,13 +12773,9 @@ class GoogleCloudDialogflowCxV3beta1EventInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (event != null) {
-      _json['event'] = event;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (event != null) 'event': event,
+      };
 }
 
 /// The response message for Agents.ExportAgent.
@@ -13899,16 +12807,10 @@ class GoogleCloudDialogflowCxV3beta1ExportAgentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (agentContent != null) {
-      _json['agentContent'] = agentContent;
-    }
-    if (agentUri != null) {
-      _json['agentUri'] = agentUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (agentContent != null) 'agentContent': agentContent,
+        if (agentUri != null) 'agentUri': agentUri,
+      };
 }
 
 /// Metadata returned for the TestCases.ExportTestCases long running operation.
@@ -13919,10 +12821,7 @@ class GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The response message for TestCases.ExportTestCases.
@@ -13954,16 +12853,10 @@ class GoogleCloudDialogflowCxV3beta1ExportTestCasesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (gcsUri != null) {
-      _json['gcsUri'] = gcsUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (gcsUri != null) 'gcsUri': gcsUri,
+      };
 }
 
 /// A form is a data model that groups related parameters that can be collected
@@ -13989,13 +12882,10 @@ class GoogleCloudDialogflowCxV3beta1Form {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (parameters != null) {
-      _json['parameters'] = parameters.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (parameters != null)
+          'parameters': parameters.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents a form parameter.
@@ -14074,31 +12964,15 @@ class GoogleCloudDialogflowCxV3beta1FormParameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (defaultValue != null) {
-      _json['defaultValue'] = defaultValue;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (entityType != null) {
-      _json['entityType'] = entityType;
-    }
-    if (fillBehavior != null) {
-      _json['fillBehavior'] = fillBehavior.toJson();
-    }
-    if (isList != null) {
-      _json['isList'] = isList;
-    }
-    if (redact != null) {
-      _json['redact'] = redact;
-    }
-    if (required != null) {
-      _json['required'] = required;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (defaultValue != null) 'defaultValue': defaultValue,
+        if (displayName != null) 'displayName': displayName,
+        if (entityType != null) 'entityType': entityType,
+        if (fillBehavior != null) 'fillBehavior': fillBehavior.toJson(),
+        if (isList != null) 'isList': isList,
+        if (redact != null) 'redact': redact,
+        if (required != null) 'required': required,
+      };
 }
 
 /// Configuration for how the filling of a parameter should be handled.
@@ -14152,17 +13026,13 @@ class GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (initialPromptFulfillment != null) {
-      _json['initialPromptFulfillment'] = initialPromptFulfillment.toJson();
-    }
-    if (repromptEventHandlers != null) {
-      _json['repromptEventHandlers'] =
-          repromptEventHandlers.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (initialPromptFulfillment != null)
+          'initialPromptFulfillment': initialPromptFulfillment.toJson(),
+        if (repromptEventHandlers != null)
+          'repromptEventHandlers':
+              repromptEventHandlers.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A fulfillment can do one or more of the following actions at the same time:
@@ -14230,27 +13100,18 @@ class GoogleCloudDialogflowCxV3beta1Fulfillment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (conditionalCases != null) {
-      _json['conditionalCases'] =
-          conditionalCases.map((value) => value.toJson()).toList();
-    }
-    if (messages != null) {
-      _json['messages'] = messages.map((value) => value.toJson()).toList();
-    }
-    if (setParameterActions != null) {
-      _json['setParameterActions'] =
-          setParameterActions.map((value) => value.toJson()).toList();
-    }
-    if (tag != null) {
-      _json['tag'] = tag;
-    }
-    if (webhook != null) {
-      _json['webhook'] = webhook;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (conditionalCases != null)
+          'conditionalCases':
+              conditionalCases.map((value) => value.toJson()).toList(),
+        if (messages != null)
+          'messages': messages.map((value) => value.toJson()).toList(),
+        if (setParameterActions != null)
+          'setParameterActions':
+              setParameterActions.map((value) => value.toJson()).toList(),
+        if (tag != null) 'tag': tag,
+        if (webhook != null) 'webhook': webhook,
+      };
 }
 
 /// A list of cascading if-else conditions.
@@ -14276,13 +13137,10 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cases != null) {
-      _json['cases'] = cases.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cases != null)
+          'cases': cases.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Each case has a Boolean condition.
@@ -14319,17 +13177,11 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (caseContent != null) {
-      _json['caseContent'] =
-          caseContent.map((value) => value.toJson()).toList();
-    }
-    if (condition != null) {
-      _json['condition'] = condition;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (caseContent != null)
+          'caseContent': caseContent.map((value) => value.toJson()).toList(),
+        if (condition != null) 'condition': condition,
+      };
 }
 
 /// The list of messages or conditional cases to activate for this case.
@@ -14355,16 +13207,11 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (additionalCases != null) {
-      _json['additionalCases'] = additionalCases.toJson();
-    }
-    if (message != null) {
-      _json['message'] = message.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (additionalCases != null)
+          'additionalCases': additionalCases.toJson(),
+        if (message != null) 'message': message.toJson(),
+      };
 }
 
 /// Setting a parameter value.
@@ -14392,16 +13239,10 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (parameter != null) {
-      _json['parameter'] = parameter;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (parameter != null) 'parameter': parameter,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Metadata in google::longrunning::Operation for Knowledge operations.
@@ -14425,13 +13266,9 @@ class GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (state != null) 'state': state,
+      };
 }
 
 /// Metadata for ImportDocuments operation.
@@ -14452,13 +13289,10 @@ class GoogleCloudDialogflowCxV3beta1ImportDocumentsOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (genericMetadata != null) {
-      _json['genericMetadata'] = genericMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (genericMetadata != null)
+          'genericMetadata': genericMetadata.toJson(),
+      };
 }
 
 /// Response message for Documents.ImportDocuments.
@@ -14478,13 +13312,10 @@ class GoogleCloudDialogflowCxV3beta1ImportDocumentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (warnings != null) {
-      _json['warnings'] = warnings.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (warnings != null)
+          'warnings': warnings.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Metadata returned for the TestCases.ImportTestCases long running operation.
@@ -14505,13 +13336,10 @@ class GoogleCloudDialogflowCxV3beta1ImportTestCasesMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errors != null) {
-      _json['errors'] = errors.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errors != null)
+          'errors': errors.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response message for TestCases.ImportTestCases.
@@ -14532,13 +13360,9 @@ class GoogleCloudDialogflowCxV3beta1ImportTestCasesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (names != null) {
-      _json['names'] = names;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (names != null) 'names': names,
+      };
 }
 
 /// Instructs the speech recognizer on how to process the audio content.
@@ -14684,31 +13508,15 @@ class GoogleCloudDialogflowCxV3beta1InputAudioConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audioEncoding != null) {
-      _json['audioEncoding'] = audioEncoding;
-    }
-    if (enableWordInfo != null) {
-      _json['enableWordInfo'] = enableWordInfo;
-    }
-    if (model != null) {
-      _json['model'] = model;
-    }
-    if (modelVariant != null) {
-      _json['modelVariant'] = modelVariant;
-    }
-    if (phraseHints != null) {
-      _json['phraseHints'] = phraseHints;
-    }
-    if (sampleRateHertz != null) {
-      _json['sampleRateHertz'] = sampleRateHertz;
-    }
-    if (singleUtterance != null) {
-      _json['singleUtterance'] = singleUtterance;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audioEncoding != null) 'audioEncoding': audioEncoding,
+        if (enableWordInfo != null) 'enableWordInfo': enableWordInfo,
+        if (model != null) 'model': model,
+        if (modelVariant != null) 'modelVariant': modelVariant,
+        if (phraseHints != null) 'phraseHints': phraseHints,
+        if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz,
+        if (singleUtterance != null) 'singleUtterance': singleUtterance,
+      };
 }
 
 /// An intent represents a user's intent to interact with a conversational
@@ -14820,35 +13628,19 @@ class GoogleCloudDialogflowCxV3beta1Intent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (isFallback != null) {
-      _json['isFallback'] = isFallback;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parameters != null) {
-      _json['parameters'] = parameters.map((value) => value.toJson()).toList();
-    }
-    if (priority != null) {
-      _json['priority'] = priority;
-    }
-    if (trainingPhrases != null) {
-      _json['trainingPhrases'] =
-          trainingPhrases.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (isFallback != null) 'isFallback': isFallback,
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+        if (parameters != null)
+          'parameters': parameters.map((value) => value.toJson()).toList(),
+        if (priority != null) 'priority': priority,
+        if (trainingPhrases != null)
+          'trainingPhrases':
+              trainingPhrases.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents the intent to trigger programmatically rather than as a result of
@@ -14869,13 +13661,9 @@ class GoogleCloudDialogflowCxV3beta1IntentInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (intent != null) {
-      _json['intent'] = intent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (intent != null) 'intent': intent,
+      };
 }
 
 /// Represents an intent parameter.
@@ -14925,22 +13713,12 @@ class GoogleCloudDialogflowCxV3beta1IntentParameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entityType != null) {
-      _json['entityType'] = entityType;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (isList != null) {
-      _json['isList'] = isList;
-    }
-    if (redact != null) {
-      _json['redact'] = redact;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entityType != null) 'entityType': entityType,
+        if (id != null) 'id': id,
+        if (isList != null) 'isList': isList,
+        if (redact != null) 'redact': redact,
+      };
 }
 
 /// Represents an example that the agent is trained on to identify the intent.
@@ -14988,19 +13766,12 @@ class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (parts != null) {
-      _json['parts'] = parts.map((value) => value.toJson()).toList();
-    }
-    if (repeatCount != null) {
-      _json['repeatCount'] = repeatCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (parts != null)
+          'parts': parts.map((value) => value.toJson()).toList(),
+        if (repeatCount != null) 'repeatCount': repeatCount,
+      };
 }
 
 /// Represents a part of a training phrase.
@@ -15027,16 +13798,10 @@ class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (parameterId != null) {
-      _json['parameterId'] = parameterId;
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (parameterId != null) 'parameterId': parameterId,
+        if (text != null) 'text': text,
+      };
 }
 
 /// A Dialogflow CX conversation (session) can be described and visualized as a
@@ -15138,33 +13903,21 @@ class GoogleCloudDialogflowCxV3beta1Page {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (entryFulfillment != null) {
-      _json['entryFulfillment'] = entryFulfillment.toJson();
-    }
-    if (eventHandlers != null) {
-      _json['eventHandlers'] =
-          eventHandlers.map((value) => value.toJson()).toList();
-    }
-    if (form != null) {
-      _json['form'] = form.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (transitionRouteGroups != null) {
-      _json['transitionRouteGroups'] = transitionRouteGroups;
-    }
-    if (transitionRoutes != null) {
-      _json['transitionRoutes'] =
-          transitionRoutes.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (entryFulfillment != null)
+          'entryFulfillment': entryFulfillment.toJson(),
+        if (eventHandlers != null)
+          'eventHandlers':
+              eventHandlers.map((value) => value.toJson()).toList(),
+        if (form != null) 'form': form.toJson(),
+        if (name != null) 'name': name,
+        if (transitionRouteGroups != null)
+          'transitionRouteGroups': transitionRouteGroups,
+        if (transitionRoutes != null)
+          'transitionRoutes':
+              transitionRoutes.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents page information communicated to and from the webhook.
@@ -15192,16 +13945,10 @@ class GoogleCloudDialogflowCxV3beta1PageInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (currentPage != null) {
-      _json['currentPage'] = currentPage;
-    }
-    if (formInfo != null) {
-      _json['formInfo'] = formInfo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (currentPage != null) 'currentPage': currentPage,
+        if (formInfo != null) 'formInfo': formInfo.toJson(),
+      };
 }
 
 /// Represents form information.
@@ -15226,14 +13973,11 @@ class GoogleCloudDialogflowCxV3beta1PageInfoFormInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (parameterInfo != null) {
-      _json['parameterInfo'] =
-          parameterInfo.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (parameterInfo != null)
+          'parameterInfo':
+              parameterInfo.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents parameter information.
@@ -15302,25 +14046,13 @@ class GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (justCollected != null) {
-      _json['justCollected'] = justCollected;
-    }
-    if (required != null) {
-      _json['required'] = required;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (justCollected != null) 'justCollected': justCollected,
+        if (required != null) 'required': required,
+        if (state != null) 'state': state,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Represents the query input.
@@ -15382,28 +14114,14 @@ class GoogleCloudDialogflowCxV3beta1QueryInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audio != null) {
-      _json['audio'] = audio.toJson();
-    }
-    if (dtmf != null) {
-      _json['dtmf'] = dtmf.toJson();
-    }
-    if (event != null) {
-      _json['event'] = event.toJson();
-    }
-    if (intent != null) {
-      _json['intent'] = intent.toJson();
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (text != null) {
-      _json['text'] = text.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audio != null) 'audio': audio.toJson(),
+        if (dtmf != null) 'dtmf': dtmf.toJson(),
+        if (event != null) 'event': event.toJson(),
+        if (intent != null) 'intent': intent.toJson(),
+        if (languageCode != null) 'languageCode': languageCode,
+        if (text != null) 'text': text.toJson(),
+      };
 }
 
 /// Metadata for ReloadDocument operation.
@@ -15424,13 +14142,10 @@ class GoogleCloudDialogflowCxV3beta1ReloadDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (genericMetadata != null) {
-      _json['genericMetadata'] = genericMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (genericMetadata != null)
+          'genericMetadata': genericMetadata.toJson(),
+      };
 }
 
 /// Represents a response message that can be returned by a conversational
@@ -15546,34 +14261,19 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (conversationSuccess != null) {
-      _json['conversationSuccess'] = conversationSuccess.toJson();
-    }
-    if (endInteraction != null) {
-      _json['endInteraction'] = endInteraction.toJson();
-    }
-    if (liveAgentHandoff != null) {
-      _json['liveAgentHandoff'] = liveAgentHandoff.toJson();
-    }
-    if (mixedAudio != null) {
-      _json['mixedAudio'] = mixedAudio.toJson();
-    }
-    if (outputAudioText != null) {
-      _json['outputAudioText'] = outputAudioText.toJson();
-    }
-    if (payload != null) {
-      _json['payload'] = payload;
-    }
-    if (playAudio != null) {
-      _json['playAudio'] = playAudio.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (conversationSuccess != null)
+          'conversationSuccess': conversationSuccess.toJson(),
+        if (endInteraction != null) 'endInteraction': endInteraction.toJson(),
+        if (liveAgentHandoff != null)
+          'liveAgentHandoff': liveAgentHandoff.toJson(),
+        if (mixedAudio != null) 'mixedAudio': mixedAudio.toJson(),
+        if (outputAudioText != null)
+          'outputAudioText': outputAudioText.toJson(),
+        if (payload != null) 'payload': payload,
+        if (playAudio != null) 'playAudio': playAudio.toJson(),
+        if (text != null) 'text': text.toJson(),
+      };
 }
 
 /// Indicates that the conversation succeeded, i.e., the bot handled the issue
@@ -15611,13 +14311,9 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metadata != null) 'metadata': metadata,
+      };
 }
 
 /// Indicates that interaction with the Dialogflow agent has ended.
@@ -15631,10 +14327,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Indicates that the conversation should be handed off to a live agent.
@@ -15669,13 +14362,9 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metadata != null) 'metadata': metadata,
+      };
 }
 
 /// Represents an audio message that is composed of both segments synthesized
@@ -15703,13 +14392,10 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (segments != null) {
-      _json['segments'] = segments.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (segments != null)
+          'segments': segments.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents one segment of audio.
@@ -15751,19 +14437,12 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowPlaybackInterruption != null) {
-      _json['allowPlaybackInterruption'] = allowPlaybackInterruption;
-    }
-    if (audio != null) {
-      _json['audio'] = audio;
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowPlaybackInterruption != null)
+          'allowPlaybackInterruption': allowPlaybackInterruption,
+        if (audio != null) 'audio': audio,
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// A text or ssml response that is preferentially used for TTS output audio
@@ -15799,19 +14478,12 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowPlaybackInterruption != null) {
-      _json['allowPlaybackInterruption'] = allowPlaybackInterruption;
-    }
-    if (ssml != null) {
-      _json['ssml'] = ssml;
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowPlaybackInterruption != null)
+          'allowPlaybackInterruption': allowPlaybackInterruption,
+        if (ssml != null) 'ssml': ssml,
+        if (text != null) 'text': text,
+      };
 }
 
 /// Specifies an audio clip to be played by the client as part of the response.
@@ -15843,16 +14515,11 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowPlaybackInterruption != null) {
-      _json['allowPlaybackInterruption'] = allowPlaybackInterruption;
-    }
-    if (audioUri != null) {
-      _json['audioUri'] = audioUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowPlaybackInterruption != null)
+          'allowPlaybackInterruption': allowPlaybackInterruption,
+        if (audioUri != null) 'audioUri': audioUri,
+      };
 }
 
 /// The text response message.
@@ -15882,16 +14549,11 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageText {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowPlaybackInterruption != null) {
-      _json['allowPlaybackInterruption'] = allowPlaybackInterruption;
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowPlaybackInterruption != null)
+          'allowPlaybackInterruption': allowPlaybackInterruption,
+        if (text != null) 'text': text,
+      };
 }
 
 /// Metadata returned for the TestCases.RunTestCase long running operation.
@@ -15902,10 +14564,7 @@ class GoogleCloudDialogflowCxV3beta1RunTestCaseMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The response message for TestCases.RunTestCase.
@@ -15922,13 +14581,9 @@ class GoogleCloudDialogflowCxV3beta1RunTestCaseResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (result != null) {
-      _json['result'] = result.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (result != null) 'result': result.toJson(),
+      };
 }
 
 /// Represents session information communicated to and from the webhook.
@@ -15972,16 +14627,10 @@ class GoogleCloudDialogflowCxV3beta1SessionInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (parameters != null) {
-      _json['parameters'] = parameters;
-    }
-    if (session != null) {
-      _json['session'] = session;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (parameters != null) 'parameters': parameters,
+        if (session != null) 'session': session,
+      };
 }
 
 /// Represents a test case.
@@ -16067,35 +14716,18 @@ class GoogleCloudDialogflowCxV3beta1TestCase {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (creationTime != null) {
-      _json['creationTime'] = creationTime;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (lastTestResult != null) {
-      _json['lastTestResult'] = lastTestResult.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (notes != null) {
-      _json['notes'] = notes;
-    }
-    if (tags != null) {
-      _json['tags'] = tags;
-    }
-    if (testCaseConversationTurns != null) {
-      _json['testCaseConversationTurns'] =
-          testCaseConversationTurns.map((value) => value.toJson()).toList();
-    }
-    if (testConfig != null) {
-      _json['testConfig'] = testConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (creationTime != null) 'creationTime': creationTime,
+        if (displayName != null) 'displayName': displayName,
+        if (lastTestResult != null) 'lastTestResult': lastTestResult.toJson(),
+        if (name != null) 'name': name,
+        if (notes != null) 'notes': notes,
+        if (tags != null) 'tags': tags,
+        if (testCaseConversationTurns != null)
+          'testCaseConversationTurns':
+              testCaseConversationTurns.map((value) => value.toJson()).toList(),
+        if (testConfig != null) 'testConfig': testConfig.toJson(),
+      };
 }
 
 /// Error info for importing a test.
@@ -16119,16 +14751,10 @@ class GoogleCloudDialogflowCxV3beta1TestCaseError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    if (testCase != null) {
-      _json['testCase'] = testCase.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (status != null) 'status': status.toJson(),
+        if (testCase != null) 'testCase': testCase.toJson(),
+      };
 }
 
 /// Represents a result from running a test case in an agent environment.
@@ -16181,26 +14807,15 @@ class GoogleCloudDialogflowCxV3beta1TestCaseResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (conversationTurns != null) {
-      _json['conversationTurns'] =
-          conversationTurns.map((value) => value.toJson()).toList();
-    }
-    if (environment != null) {
-      _json['environment'] = environment;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (testResult != null) {
-      _json['testResult'] = testResult;
-    }
-    if (testTime != null) {
-      _json['testTime'] = testTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (conversationTurns != null)
+          'conversationTurns':
+              conversationTurns.map((value) => value.toJson()).toList(),
+        if (environment != null) 'environment': environment,
+        if (name != null) 'name': name,
+        if (testResult != null) 'testResult': testResult,
+        if (testTime != null) 'testTime': testTime,
+      };
 }
 
 /// Represents configurations for a test case.
@@ -16227,16 +14842,11 @@ class GoogleCloudDialogflowCxV3beta1TestConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (flow != null) {
-      _json['flow'] = flow;
-    }
-    if (trackingParameters != null) {
-      _json['trackingParameters'] = trackingParameters;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (flow != null) 'flow': flow,
+        if (trackingParameters != null)
+          'trackingParameters': trackingParameters,
+      };
 }
 
 /// Error info for running a test.
@@ -16265,19 +14875,11 @@ class GoogleCloudDialogflowCxV3beta1TestError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    if (testCase != null) {
-      _json['testCase'] = testCase;
-    }
-    if (testTime != null) {
-      _json['testTime'] = testTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (status != null) 'status': status.toJson(),
+        if (testCase != null) 'testCase': testCase,
+        if (testTime != null) 'testTime': testTime,
+      };
 }
 
 /// The description of differences between original and replayed agent output.
@@ -16305,16 +14907,10 @@ class GoogleCloudDialogflowCxV3beta1TestRunDifference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Represents the natural language text to be processed.
@@ -16334,13 +14930,9 @@ class GoogleCloudDialogflowCxV3beta1TextInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (text != null) 'text': text,
+      };
 }
 
 /// A transition route specifies a intent that can be matched and/or a data
@@ -16416,28 +15008,15 @@ class GoogleCloudDialogflowCxV3beta1TransitionRoute {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition;
-    }
-    if (intent != null) {
-      _json['intent'] = intent;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (targetFlow != null) {
-      _json['targetFlow'] = targetFlow;
-    }
-    if (targetPage != null) {
-      _json['targetPage'] = targetPage;
-    }
-    if (triggerFulfillment != null) {
-      _json['triggerFulfillment'] = triggerFulfillment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition,
+        if (intent != null) 'intent': intent,
+        if (name != null) 'name': name,
+        if (targetFlow != null) 'targetFlow': targetFlow,
+        if (targetPage != null) 'targetPage': targetPage,
+        if (triggerFulfillment != null)
+          'triggerFulfillment': triggerFulfillment.toJson(),
+      };
 }
 
 /// Metadata for UpdateDocument operation.
@@ -16458,13 +15037,10 @@ class GoogleCloudDialogflowCxV3beta1UpdateDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (genericMetadata != null) {
-      _json['genericMetadata'] = genericMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (genericMetadata != null)
+          'genericMetadata': genericMetadata.toJson(),
+      };
 }
 
 /// The request message for a webhook call.
@@ -16543,31 +15119,18 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detectIntentResponseId != null) {
-      _json['detectIntentResponseId'] = detectIntentResponseId;
-    }
-    if (fulfillmentInfo != null) {
-      _json['fulfillmentInfo'] = fulfillmentInfo.toJson();
-    }
-    if (intentInfo != null) {
-      _json['intentInfo'] = intentInfo.toJson();
-    }
-    if (messages != null) {
-      _json['messages'] = messages.map((value) => value.toJson()).toList();
-    }
-    if (pageInfo != null) {
-      _json['pageInfo'] = pageInfo.toJson();
-    }
-    if (payload != null) {
-      _json['payload'] = payload;
-    }
-    if (sessionInfo != null) {
-      _json['sessionInfo'] = sessionInfo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detectIntentResponseId != null)
+          'detectIntentResponseId': detectIntentResponseId,
+        if (fulfillmentInfo != null)
+          'fulfillmentInfo': fulfillmentInfo.toJson(),
+        if (intentInfo != null) 'intentInfo': intentInfo.toJson(),
+        if (messages != null)
+          'messages': messages.map((value) => value.toJson()).toList(),
+        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+        if (payload != null) 'payload': payload,
+        if (sessionInfo != null) 'sessionInfo': sessionInfo.toJson(),
+      };
 }
 
 /// Represents fulfillment information communicated to the webhook.
@@ -16586,13 +15149,9 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (tag != null) {
-      _json['tag'] = tag;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (tag != null) 'tag': tag,
+      };
 }
 
 /// Represents intent information communicated to the webhook.
@@ -16647,23 +15206,14 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (lastMatchedIntent != null) {
-      _json['lastMatchedIntent'] = lastMatchedIntent;
-    }
-    if (parameters != null) {
-      _json['parameters'] =
-          parameters.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (displayName != null) 'displayName': displayName,
+        if (lastMatchedIntent != null) 'lastMatchedIntent': lastMatchedIntent,
+        if (parameters != null)
+          'parameters':
+              parameters.map((key, item) => core.MapEntry(key, item.toJson())),
+      };
 }
 
 /// Represents a value for an intent parameter.
@@ -16693,16 +15243,10 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (originalValue != null) {
-      _json['originalValue'] = originalValue;
-    }
-    if (resolvedValue != null) {
-      _json['resolvedValue'] = resolvedValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (originalValue != null) 'originalValue': originalValue,
+        if (resolvedValue != null) 'resolvedValue': resolvedValue,
+      };
 }
 
 /// The response message for a webhook call.
@@ -16776,28 +15320,15 @@ class GoogleCloudDialogflowCxV3beta1WebhookResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fulfillmentResponse != null) {
-      _json['fulfillmentResponse'] = fulfillmentResponse.toJson();
-    }
-    if (pageInfo != null) {
-      _json['pageInfo'] = pageInfo.toJson();
-    }
-    if (payload != null) {
-      _json['payload'] = payload;
-    }
-    if (sessionInfo != null) {
-      _json['sessionInfo'] = sessionInfo.toJson();
-    }
-    if (targetFlow != null) {
-      _json['targetFlow'] = targetFlow;
-    }
-    if (targetPage != null) {
-      _json['targetPage'] = targetPage;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fulfillmentResponse != null)
+          'fulfillmentResponse': fulfillmentResponse.toJson(),
+        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+        if (payload != null) 'payload': payload,
+        if (sessionInfo != null) 'sessionInfo': sessionInfo.toJson(),
+        if (targetFlow != null) 'targetFlow': targetFlow,
+        if (targetPage != null) 'targetPage': targetPage,
+      };
 }
 
 /// Represents a fulfillment response to the user.
@@ -16830,16 +15361,11 @@ class GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (mergeBehavior != null) {
-      _json['mergeBehavior'] = mergeBehavior;
-    }
-    if (messages != null) {
-      _json['messages'] = messages.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (mergeBehavior != null) 'mergeBehavior': mergeBehavior,
+        if (messages != null)
+          'messages': messages.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents a part of a message possibly annotated with an entity.
@@ -16883,19 +15409,11 @@ class GoogleCloudDialogflowV2AnnotatedMessagePart {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entityType != null) {
-      _json['entityType'] = entityType;
-    }
-    if (formattedValue != null) {
-      _json['formattedValue'] = formattedValue;
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entityType != null) 'entityType': entityType,
+        if (formattedValue != null) 'formattedValue': formattedValue,
+        if (text != null) 'text': text,
+      };
 }
 
 /// The response message for EntityTypes.BatchUpdateEntityTypes.
@@ -16916,14 +15434,10 @@ class GoogleCloudDialogflowV2BatchUpdateEntityTypesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entityTypes != null) {
-      _json['entityTypes'] =
-          entityTypes.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entityTypes != null)
+          'entityTypes': entityTypes.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response message for Intents.BatchUpdateIntents.
@@ -16943,13 +15457,10 @@ class GoogleCloudDialogflowV2BatchUpdateIntentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (intents != null) {
-      _json['intents'] = intents.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (intents != null)
+          'intents': intents.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Dialogflow contexts are similar to natural language context.
@@ -17029,19 +15540,11 @@ class GoogleCloudDialogflowV2Context {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (lifespanCount != null) {
-      _json['lifespanCount'] = lifespanCount;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parameters != null) {
-      _json['parameters'] = parameters;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (lifespanCount != null) 'lifespanCount': lifespanCount,
+        if (name != null) 'name': name,
+        if (parameters != null) 'parameters': parameters,
+      };
 }
 
 /// Represents a notification sent to Pub/Sub subscribers for conversation
@@ -17101,22 +15604,13 @@ class GoogleCloudDialogflowV2ConversationEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (conversation != null) {
-      _json['conversation'] = conversation;
-    }
-    if (errorStatus != null) {
-      _json['errorStatus'] = errorStatus.toJson();
-    }
-    if (newMessagePayload != null) {
-      _json['newMessagePayload'] = newMessagePayload.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (conversation != null) 'conversation': conversation,
+        if (errorStatus != null) 'errorStatus': errorStatus.toJson(),
+        if (newMessagePayload != null)
+          'newMessagePayload': newMessagePayload.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// Each intent parameter has a type, called the entity type, which dictates
@@ -17203,28 +15697,16 @@ class GoogleCloudDialogflowV2EntityType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (autoExpansionMode != null) {
-      _json['autoExpansionMode'] = autoExpansionMode;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (enableFuzzyExtraction != null) {
-      _json['enableFuzzyExtraction'] = enableFuzzyExtraction;
-    }
-    if (entities != null) {
-      _json['entities'] = entities.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (autoExpansionMode != null) 'autoExpansionMode': autoExpansionMode,
+        if (displayName != null) 'displayName': displayName,
+        if (enableFuzzyExtraction != null)
+          'enableFuzzyExtraction': enableFuzzyExtraction,
+        if (entities != null)
+          'entities': entities.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+      };
 }
 
 /// An **entity entry** for an associated entity type.
@@ -17262,16 +15744,10 @@ class GoogleCloudDialogflowV2EntityTypeEntity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (synonyms != null) {
-      _json['synonyms'] = synonyms;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (synonyms != null) 'synonyms': synonyms,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Events allow for matching intents by event name instead of the natural
@@ -17332,19 +15808,11 @@ class GoogleCloudDialogflowV2EventInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parameters != null) {
-      _json['parameters'] = parameters;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode,
+        if (name != null) 'name': name,
+        if (parameters != null) 'parameters': parameters,
+      };
 }
 
 /// The response message for Agents.ExportAgent.
@@ -17376,16 +15844,10 @@ class GoogleCloudDialogflowV2ExportAgentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (agentContent != null) {
-      _json['agentContent'] = agentContent;
-    }
-    if (agentUri != null) {
-      _json['agentUri'] = agentUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (agentContent != null) 'agentContent': agentContent,
+        if (agentUri != null) 'agentUri': agentUri,
+      };
 }
 
 /// An intent categorizes an end-user's intention for one conversation turn.
@@ -17618,67 +16080,37 @@ class GoogleCloudDialogflowV2Intent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (action != null) {
-      _json['action'] = action;
-    }
-    if (defaultResponsePlatforms != null) {
-      _json['defaultResponsePlatforms'] = defaultResponsePlatforms;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (events != null) {
-      _json['events'] = events;
-    }
-    if (followupIntentInfo != null) {
-      _json['followupIntentInfo'] =
-          followupIntentInfo.map((value) => value.toJson()).toList();
-    }
-    if (inputContextNames != null) {
-      _json['inputContextNames'] = inputContextNames;
-    }
-    if (isFallback != null) {
-      _json['isFallback'] = isFallback;
-    }
-    if (messages != null) {
-      _json['messages'] = messages.map((value) => value.toJson()).toList();
-    }
-    if (mlDisabled != null) {
-      _json['mlDisabled'] = mlDisabled;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (outputContexts != null) {
-      _json['outputContexts'] =
-          outputContexts.map((value) => value.toJson()).toList();
-    }
-    if (parameters != null) {
-      _json['parameters'] = parameters.map((value) => value.toJson()).toList();
-    }
-    if (parentFollowupIntentName != null) {
-      _json['parentFollowupIntentName'] = parentFollowupIntentName;
-    }
-    if (priority != null) {
-      _json['priority'] = priority;
-    }
-    if (resetContexts != null) {
-      _json['resetContexts'] = resetContexts;
-    }
-    if (rootFollowupIntentName != null) {
-      _json['rootFollowupIntentName'] = rootFollowupIntentName;
-    }
-    if (trainingPhrases != null) {
-      _json['trainingPhrases'] =
-          trainingPhrases.map((value) => value.toJson()).toList();
-    }
-    if (webhookState != null) {
-      _json['webhookState'] = webhookState;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (action != null) 'action': action,
+        if (defaultResponsePlatforms != null)
+          'defaultResponsePlatforms': defaultResponsePlatforms,
+        if (displayName != null) 'displayName': displayName,
+        if (events != null) 'events': events,
+        if (followupIntentInfo != null)
+          'followupIntentInfo':
+              followupIntentInfo.map((value) => value.toJson()).toList(),
+        if (inputContextNames != null) 'inputContextNames': inputContextNames,
+        if (isFallback != null) 'isFallback': isFallback,
+        if (messages != null)
+          'messages': messages.map((value) => value.toJson()).toList(),
+        if (mlDisabled != null) 'mlDisabled': mlDisabled,
+        if (name != null) 'name': name,
+        if (outputContexts != null)
+          'outputContexts':
+              outputContexts.map((value) => value.toJson()).toList(),
+        if (parameters != null)
+          'parameters': parameters.map((value) => value.toJson()).toList(),
+        if (parentFollowupIntentName != null)
+          'parentFollowupIntentName': parentFollowupIntentName,
+        if (priority != null) 'priority': priority,
+        if (resetContexts != null) 'resetContexts': resetContexts,
+        if (rootFollowupIntentName != null)
+          'rootFollowupIntentName': rootFollowupIntentName,
+        if (trainingPhrases != null)
+          'trainingPhrases':
+              trainingPhrases.map((value) => value.toJson()).toList(),
+        if (webhookState != null) 'webhookState': webhookState,
+      };
 }
 
 /// Represents a single followup intent in the chain.
@@ -17705,16 +16137,12 @@ class GoogleCloudDialogflowV2IntentFollowupIntentInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (followupIntentName != null) {
-      _json['followupIntentName'] = followupIntentName;
-    }
-    if (parentFollowupIntentName != null) {
-      _json['parentFollowupIntentName'] = parentFollowupIntentName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (followupIntentName != null)
+          'followupIntentName': followupIntentName,
+        if (parentFollowupIntentName != null)
+          'parentFollowupIntentName': parentFollowupIntentName,
+      };
 }
 
 /// A rich response message.
@@ -17860,55 +16288,26 @@ class GoogleCloudDialogflowV2IntentMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicCard != null) {
-      _json['basicCard'] = basicCard.toJson();
-    }
-    if (browseCarouselCard != null) {
-      _json['browseCarouselCard'] = browseCarouselCard.toJson();
-    }
-    if (card != null) {
-      _json['card'] = card.toJson();
-    }
-    if (carouselSelect != null) {
-      _json['carouselSelect'] = carouselSelect.toJson();
-    }
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    if (linkOutSuggestion != null) {
-      _json['linkOutSuggestion'] = linkOutSuggestion.toJson();
-    }
-    if (listSelect != null) {
-      _json['listSelect'] = listSelect.toJson();
-    }
-    if (mediaContent != null) {
-      _json['mediaContent'] = mediaContent.toJson();
-    }
-    if (payload != null) {
-      _json['payload'] = payload;
-    }
-    if (platform != null) {
-      _json['platform'] = platform;
-    }
-    if (quickReplies != null) {
-      _json['quickReplies'] = quickReplies.toJson();
-    }
-    if (simpleResponses != null) {
-      _json['simpleResponses'] = simpleResponses.toJson();
-    }
-    if (suggestions != null) {
-      _json['suggestions'] = suggestions.toJson();
-    }
-    if (tableCard != null) {
-      _json['tableCard'] = tableCard.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicCard != null) 'basicCard': basicCard.toJson(),
+        if (browseCarouselCard != null)
+          'browseCarouselCard': browseCarouselCard.toJson(),
+        if (card != null) 'card': card.toJson(),
+        if (carouselSelect != null) 'carouselSelect': carouselSelect.toJson(),
+        if (image != null) 'image': image.toJson(),
+        if (linkOutSuggestion != null)
+          'linkOutSuggestion': linkOutSuggestion.toJson(),
+        if (listSelect != null) 'listSelect': listSelect.toJson(),
+        if (mediaContent != null) 'mediaContent': mediaContent.toJson(),
+        if (payload != null) 'payload': payload,
+        if (platform != null) 'platform': platform,
+        if (quickReplies != null) 'quickReplies': quickReplies.toJson(),
+        if (simpleResponses != null)
+          'simpleResponses': simpleResponses.toJson(),
+        if (suggestions != null) 'suggestions': suggestions.toJson(),
+        if (tableCard != null) 'tableCard': tableCard.toJson(),
+        if (text != null) 'text': text.toJson(),
+      };
 }
 
 /// The basic card message.
@@ -17965,25 +16364,14 @@ class GoogleCloudDialogflowV2IntentMessageBasicCard {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (buttons != null) {
-      _json['buttons'] = buttons.map((value) => value.toJson()).toList();
-    }
-    if (formattedText != null) {
-      _json['formattedText'] = formattedText;
-    }
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    if (subtitle != null) {
-      _json['subtitle'] = subtitle;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (buttons != null)
+          'buttons': buttons.map((value) => value.toJson()).toList(),
+        if (formattedText != null) 'formattedText': formattedText,
+        if (image != null) 'image': image.toJson(),
+        if (subtitle != null) 'subtitle': subtitle,
+        if (title != null) 'title': title,
+      };
 }
 
 /// The button object that appears at the bottom of a card.
@@ -18013,16 +16401,10 @@ class GoogleCloudDialogflowV2IntentMessageBasicCardButton {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (openUriAction != null) {
-      _json['openUriAction'] = openUriAction.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (openUriAction != null) 'openUriAction': openUriAction.toJson(),
+        if (title != null) 'title': title,
+      };
 }
 
 /// Opens the given URI.
@@ -18041,13 +16423,9 @@ class GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// Browse Carousel Card for Actions on Google.
@@ -18102,16 +16480,12 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (imageDisplayOptions != null) {
-      _json['imageDisplayOptions'] = imageDisplayOptions;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (imageDisplayOptions != null)
+          'imageDisplayOptions': imageDisplayOptions,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Browsing carousel tile
@@ -18173,25 +16547,13 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (footer != null) {
-      _json['footer'] = footer;
-    }
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    if (openUriAction != null) {
-      _json['openUriAction'] = openUriAction.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (footer != null) 'footer': footer,
+        if (image != null) 'image': image.toJson(),
+        if (openUriAction != null) 'openUriAction': openUriAction.toJson(),
+        if (title != null) 'title': title,
+      };
 }
 
 /// Actions on Google action to open a given url.
@@ -18225,16 +16587,10 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (url != null) {
-      _json['url'] = url;
-    }
-    if (urlTypeHint != null) {
-      _json['urlTypeHint'] = urlTypeHint;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (url != null) 'url': url,
+        if (urlTypeHint != null) 'urlTypeHint': urlTypeHint,
+      };
 }
 
 /// The card response message.
@@ -18280,22 +16636,13 @@ class GoogleCloudDialogflowV2IntentMessageCard {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (buttons != null) {
-      _json['buttons'] = buttons.map((value) => value.toJson()).toList();
-    }
-    if (imageUri != null) {
-      _json['imageUri'] = imageUri;
-    }
-    if (subtitle != null) {
-      _json['subtitle'] = subtitle;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (buttons != null)
+          'buttons': buttons.map((value) => value.toJson()).toList(),
+        if (imageUri != null) 'imageUri': imageUri,
+        if (subtitle != null) 'subtitle': subtitle,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Contains information about a button.
@@ -18321,16 +16668,10 @@ class GoogleCloudDialogflowV2IntentMessageCardButton {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (postback != null) {
-      _json['postback'] = postback;
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (postback != null) 'postback': postback,
+        if (text != null) 'text': text,
+      };
 }
 
 /// The card for presenting a carousel of options to select from.
@@ -18352,13 +16693,10 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelect {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// An item in the carousel.
@@ -18403,22 +16741,12 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelectItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    if (info != null) {
-      _json['info'] = info.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (image != null) 'image': image.toJson(),
+        if (info != null) 'info': info.toJson(),
+        if (title != null) 'title': title,
+      };
 }
 
 /// Column properties for TableCard.
@@ -18451,16 +16779,11 @@ class GoogleCloudDialogflowV2IntentMessageColumnProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (header != null) {
-      _json['header'] = header;
-    }
-    if (horizontalAlignment != null) {
-      _json['horizontalAlignment'] = horizontalAlignment;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (header != null) 'header': header,
+        if (horizontalAlignment != null)
+          'horizontalAlignment': horizontalAlignment,
+      };
 }
 
 /// The image response message.
@@ -18487,16 +16810,10 @@ class GoogleCloudDialogflowV2IntentMessageImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessibilityText != null) {
-      _json['accessibilityText'] = accessibilityText;
-    }
-    if (imageUri != null) {
-      _json['imageUri'] = imageUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessibilityText != null) 'accessibilityText': accessibilityText,
+        if (imageUri != null) 'imageUri': imageUri,
+      };
 }
 
 /// The suggestion chip message that allows the user to jump out to the app or
@@ -18524,16 +16841,10 @@ class GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (destinationName != null) {
-      _json['destinationName'] = destinationName;
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (destinationName != null) 'destinationName': destinationName,
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// The card for presenting a list of options to select from.
@@ -18571,19 +16882,12 @@ class GoogleCloudDialogflowV2IntentMessageListSelect {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (subtitle != null) {
-      _json['subtitle'] = subtitle;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (subtitle != null) 'subtitle': subtitle,
+        if (title != null) 'title': title,
+      };
 }
 
 /// An item in the list.
@@ -18627,22 +16931,12 @@ class GoogleCloudDialogflowV2IntentMessageListSelectItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    if (info != null) {
-      _json['info'] = info.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (image != null) 'image': image.toJson(),
+        if (info != null) 'info': info.toJson(),
+        if (title != null) 'title': title,
+      };
 }
 
 /// The media content card for Actions on Google.
@@ -18677,17 +16971,11 @@ class GoogleCloudDialogflowV2IntentMessageMediaContent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (mediaObjects != null) {
-      _json['mediaObjects'] =
-          mediaObjects.map((value) => value.toJson()).toList();
-    }
-    if (mediaType != null) {
-      _json['mediaType'] = mediaType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (mediaObjects != null)
+          'mediaObjects': mediaObjects.map((value) => value.toJson()).toList(),
+        if (mediaType != null) 'mediaType': mediaType,
+      };
 }
 
 /// Response media object for media content card.
@@ -18740,25 +17028,13 @@ class GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentUrl != null) {
-      _json['contentUrl'] = contentUrl;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (icon != null) {
-      _json['icon'] = icon.toJson();
-    }
-    if (largeImage != null) {
-      _json['largeImage'] = largeImage.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentUrl != null) 'contentUrl': contentUrl,
+        if (description != null) 'description': description,
+        if (icon != null) 'icon': icon.toJson(),
+        if (largeImage != null) 'largeImage': largeImage.toJson(),
+        if (name != null) 'name': name,
+      };
 }
 
 /// The quick replies response message.
@@ -18786,16 +17062,10 @@ class GoogleCloudDialogflowV2IntentMessageQuickReplies {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (quickReplies != null) {
-      _json['quickReplies'] = quickReplies;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (quickReplies != null) 'quickReplies': quickReplies,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Additional info about the select item for when it is triggered in a dialog.
@@ -18824,16 +17094,10 @@ class GoogleCloudDialogflowV2IntentMessageSelectItemInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (synonyms != null) {
-      _json['synonyms'] = synonyms;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (synonyms != null) 'synonyms': synonyms,
+      };
 }
 
 /// The simple response message containing speech or text.
@@ -18868,19 +17132,11 @@ class GoogleCloudDialogflowV2IntentMessageSimpleResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayText != null) {
-      _json['displayText'] = displayText;
-    }
-    if (ssml != null) {
-      _json['ssml'] = ssml;
-    }
-    if (textToSpeech != null) {
-      _json['textToSpeech'] = textToSpeech;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayText != null) 'displayText': displayText,
+        if (ssml != null) 'ssml': ssml,
+        if (textToSpeech != null) 'textToSpeech': textToSpeech,
+      };
 }
 
 /// The collection of simple response candidates.
@@ -18906,14 +17162,11 @@ class GoogleCloudDialogflowV2IntentMessageSimpleResponses {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (simpleResponses != null) {
-      _json['simpleResponses'] =
-          simpleResponses.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (simpleResponses != null)
+          'simpleResponses':
+              simpleResponses.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The suggestion chip message that the user can tap to quickly post a reply to
@@ -18932,13 +17185,9 @@ class GoogleCloudDialogflowV2IntentMessageSuggestion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (title != null) 'title': title,
+      };
 }
 
 /// The collection of suggestions.
@@ -18960,14 +17209,10 @@ class GoogleCloudDialogflowV2IntentMessageSuggestions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (suggestions != null) {
-      _json['suggestions'] =
-          suggestions.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (suggestions != null)
+          'suggestions': suggestions.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Table card for Actions on Google.
@@ -19039,29 +17284,17 @@ class GoogleCloudDialogflowV2IntentMessageTableCard {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (buttons != null) {
-      _json['buttons'] = buttons.map((value) => value.toJson()).toList();
-    }
-    if (columnProperties != null) {
-      _json['columnProperties'] =
-          columnProperties.map((value) => value.toJson()).toList();
-    }
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    if (rows != null) {
-      _json['rows'] = rows.map((value) => value.toJson()).toList();
-    }
-    if (subtitle != null) {
-      _json['subtitle'] = subtitle;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (buttons != null)
+          'buttons': buttons.map((value) => value.toJson()).toList(),
+        if (columnProperties != null)
+          'columnProperties':
+              columnProperties.map((value) => value.toJson()).toList(),
+        if (image != null) 'image': image.toJson(),
+        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+        if (subtitle != null) 'subtitle': subtitle,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Cell of TableCardRow.
@@ -19079,13 +17312,9 @@ class GoogleCloudDialogflowV2IntentMessageTableCardCell {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (text != null) 'text': text,
+      };
 }
 
 /// Row of TableCard.
@@ -19115,16 +17344,11 @@ class GoogleCloudDialogflowV2IntentMessageTableCardRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cells != null) {
-      _json['cells'] = cells.map((value) => value.toJson()).toList();
-    }
-    if (dividerAfter != null) {
-      _json['dividerAfter'] = dividerAfter;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cells != null)
+          'cells': cells.map((value) => value.toJson()).toList(),
+        if (dividerAfter != null) 'dividerAfter': dividerAfter,
+      };
 }
 
 /// The text response message.
@@ -19144,13 +17368,9 @@ class GoogleCloudDialogflowV2IntentMessageText {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (text != null) 'text': text,
+      };
 }
 
 /// Represents intent parameters.
@@ -19239,34 +17459,17 @@ class GoogleCloudDialogflowV2IntentParameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (defaultValue != null) {
-      _json['defaultValue'] = defaultValue;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (entityTypeDisplayName != null) {
-      _json['entityTypeDisplayName'] = entityTypeDisplayName;
-    }
-    if (isList != null) {
-      _json['isList'] = isList;
-    }
-    if (mandatory != null) {
-      _json['mandatory'] = mandatory;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (prompts != null) {
-      _json['prompts'] = prompts;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (defaultValue != null) 'defaultValue': defaultValue,
+        if (displayName != null) 'displayName': displayName,
+        if (entityTypeDisplayName != null)
+          'entityTypeDisplayName': entityTypeDisplayName,
+        if (isList != null) 'isList': isList,
+        if (mandatory != null) 'mandatory': mandatory,
+        if (name != null) 'name': name,
+        if (prompts != null) 'prompts': prompts,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Represents an example that the agent is trained on.
@@ -19336,22 +17539,13 @@ class GoogleCloudDialogflowV2IntentTrainingPhrase {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parts != null) {
-      _json['parts'] = parts.map((value) => value.toJson()).toList();
-    }
-    if (timesAddedCount != null) {
-      _json['timesAddedCount'] = timesAddedCount;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (parts != null)
+          'parts': parts.map((value) => value.toJson()).toList(),
+        if (timesAddedCount != null) 'timesAddedCount': timesAddedCount,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Represents a part of a training phrase.
@@ -19402,22 +17596,12 @@ class GoogleCloudDialogflowV2IntentTrainingPhrasePart {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alias != null) {
-      _json['alias'] = alias;
-    }
-    if (entityType != null) {
-      _json['entityType'] = entityType;
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    if (userDefined != null) {
-      _json['userDefined'] = userDefined;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alias != null) 'alias': alias,
+        if (entityType != null) 'entityType': entityType,
+        if (text != null) 'text': text,
+        if (userDefined != null) 'userDefined': userDefined,
+      };
 }
 
 /// Represents a message posted into a conversation.
@@ -19494,31 +17678,16 @@ class GoogleCloudDialogflowV2Message {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (messageAnnotation != null) {
-      _json['messageAnnotation'] = messageAnnotation.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (participant != null) {
-      _json['participant'] = participant;
-    }
-    if (participantRole != null) {
-      _json['participantRole'] = participantRole;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (createTime != null) 'createTime': createTime,
+        if (languageCode != null) 'languageCode': languageCode,
+        if (messageAnnotation != null)
+          'messageAnnotation': messageAnnotation.toJson(),
+        if (name != null) 'name': name,
+        if (participant != null) 'participant': participant,
+        if (participantRole != null) 'participantRole': participantRole,
+      };
 }
 
 /// Represents the result of annotation for the message.
@@ -19548,16 +17717,11 @@ class GoogleCloudDialogflowV2MessageAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (containEntities != null) {
-      _json['containEntities'] = containEntities;
-    }
-    if (parts != null) {
-      _json['parts'] = parts.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (containEntities != null) 'containEntities': containEntities,
+        if (parts != null)
+          'parts': parts.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents the contents of the original request that was passed to the
@@ -19612,19 +17776,11 @@ class GoogleCloudDialogflowV2OriginalDetectIntentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (payload != null) {
-      _json['payload'] = payload;
-    }
-    if (source != null) {
-      _json['source'] = source;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (payload != null) 'payload': payload,
+        if (source != null) 'source': source,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Represents the result of conversational query or event processing.
@@ -19822,57 +17978,31 @@ class GoogleCloudDialogflowV2QueryResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (action != null) {
-      _json['action'] = action;
-    }
-    if (allRequiredParamsPresent != null) {
-      _json['allRequiredParamsPresent'] = allRequiredParamsPresent;
-    }
-    if (diagnosticInfo != null) {
-      _json['diagnosticInfo'] = diagnosticInfo;
-    }
-    if (fulfillmentMessages != null) {
-      _json['fulfillmentMessages'] =
-          fulfillmentMessages.map((value) => value.toJson()).toList();
-    }
-    if (fulfillmentText != null) {
-      _json['fulfillmentText'] = fulfillmentText;
-    }
-    if (intent != null) {
-      _json['intent'] = intent.toJson();
-    }
-    if (intentDetectionConfidence != null) {
-      _json['intentDetectionConfidence'] = intentDetectionConfidence;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (outputContexts != null) {
-      _json['outputContexts'] =
-          outputContexts.map((value) => value.toJson()).toList();
-    }
-    if (parameters != null) {
-      _json['parameters'] = parameters;
-    }
-    if (queryText != null) {
-      _json['queryText'] = queryText;
-    }
-    if (sentimentAnalysisResult != null) {
-      _json['sentimentAnalysisResult'] = sentimentAnalysisResult.toJson();
-    }
-    if (speechRecognitionConfidence != null) {
-      _json['speechRecognitionConfidence'] = speechRecognitionConfidence;
-    }
-    if (webhookPayload != null) {
-      _json['webhookPayload'] = webhookPayload;
-    }
-    if (webhookSource != null) {
-      _json['webhookSource'] = webhookSource;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (action != null) 'action': action,
+        if (allRequiredParamsPresent != null)
+          'allRequiredParamsPresent': allRequiredParamsPresent,
+        if (diagnosticInfo != null) 'diagnosticInfo': diagnosticInfo,
+        if (fulfillmentMessages != null)
+          'fulfillmentMessages':
+              fulfillmentMessages.map((value) => value.toJson()).toList(),
+        if (fulfillmentText != null) 'fulfillmentText': fulfillmentText,
+        if (intent != null) 'intent': intent.toJson(),
+        if (intentDetectionConfidence != null)
+          'intentDetectionConfidence': intentDetectionConfidence,
+        if (languageCode != null) 'languageCode': languageCode,
+        if (outputContexts != null)
+          'outputContexts':
+              outputContexts.map((value) => value.toJson()).toList(),
+        if (parameters != null) 'parameters': parameters,
+        if (queryText != null) 'queryText': queryText,
+        if (sentimentAnalysisResult != null)
+          'sentimentAnalysisResult': sentimentAnalysisResult.toJson(),
+        if (speechRecognitionConfidence != null)
+          'speechRecognitionConfidence': speechRecognitionConfidence,
+        if (webhookPayload != null) 'webhookPayload': webhookPayload,
+        if (webhookSource != null) 'webhookSource': webhookSource,
+      };
 }
 
 /// The sentiment, such as positive/negative feeling or association, for a unit
@@ -19898,16 +18028,10 @@ class GoogleCloudDialogflowV2Sentiment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (magnitude != null) {
-      _json['magnitude'] = magnitude;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (magnitude != null) 'magnitude': magnitude,
+        if (score != null) 'score': score,
+      };
 }
 
 /// The result of sentiment analysis.
@@ -19933,13 +18057,10 @@ class GoogleCloudDialogflowV2SentimentAnalysisResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (queryTextSentiment != null) {
-      _json['queryTextSentiment'] = queryTextSentiment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (queryTextSentiment != null)
+          'queryTextSentiment': queryTextSentiment.toJson(),
+      };
 }
 
 /// A session represents a conversation between a Dialogflow agent and an
@@ -20006,19 +18127,13 @@ class GoogleCloudDialogflowV2SessionEntityType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entities != null) {
-      _json['entities'] = entities.map((value) => value.toJson()).toList();
-    }
-    if (entityOverrideMode != null) {
-      _json['entityOverrideMode'] = entityOverrideMode;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entities != null)
+          'entities': entities.map((value) => value.toJson()).toList(),
+        if (entityOverrideMode != null)
+          'entityOverrideMode': entityOverrideMode,
+        if (name != null) 'name': name,
+      };
 }
 
 /// The request message for a webhook call.
@@ -20068,23 +18183,13 @@ class GoogleCloudDialogflowV2WebhookRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (originalDetectIntentRequest != null) {
-      _json['originalDetectIntentRequest'] =
-          originalDetectIntentRequest.toJson();
-    }
-    if (queryResult != null) {
-      _json['queryResult'] = queryResult.toJson();
-    }
-    if (responseId != null) {
-      _json['responseId'] = responseId;
-    }
-    if (session != null) {
-      _json['session'] = session;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (originalDetectIntentRequest != null)
+          'originalDetectIntentRequest': originalDetectIntentRequest.toJson(),
+        if (queryResult != null) 'queryResult': queryResult.toJson(),
+        if (responseId != null) 'responseId': responseId,
+        if (session != null) 'session': session,
+      };
 }
 
 /// The response message for a webhook call.
@@ -20212,34 +18317,22 @@ class GoogleCloudDialogflowV2WebhookResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (followupEventInput != null) {
-      _json['followupEventInput'] = followupEventInput.toJson();
-    }
-    if (fulfillmentMessages != null) {
-      _json['fulfillmentMessages'] =
-          fulfillmentMessages.map((value) => value.toJson()).toList();
-    }
-    if (fulfillmentText != null) {
-      _json['fulfillmentText'] = fulfillmentText;
-    }
-    if (outputContexts != null) {
-      _json['outputContexts'] =
-          outputContexts.map((value) => value.toJson()).toList();
-    }
-    if (payload != null) {
-      _json['payload'] = payload;
-    }
-    if (sessionEntityTypes != null) {
-      _json['sessionEntityTypes'] =
-          sessionEntityTypes.map((value) => value.toJson()).toList();
-    }
-    if (source != null) {
-      _json['source'] = source;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (followupEventInput != null)
+          'followupEventInput': followupEventInput.toJson(),
+        if (fulfillmentMessages != null)
+          'fulfillmentMessages':
+              fulfillmentMessages.map((value) => value.toJson()).toList(),
+        if (fulfillmentText != null) 'fulfillmentText': fulfillmentText,
+        if (outputContexts != null)
+          'outputContexts':
+              outputContexts.map((value) => value.toJson()).toList(),
+        if (payload != null) 'payload': payload,
+        if (sessionEntityTypes != null)
+          'sessionEntityTypes':
+              sessionEntityTypes.map((value) => value.toJson()).toList(),
+        if (source != null) 'source': source,
+      };
 }
 
 /// The response message for EntityTypes.BatchUpdateEntityTypes.
@@ -20260,14 +18353,10 @@ class GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entityTypes != null) {
-      _json['entityTypes'] =
-          entityTypes.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entityTypes != null)
+          'entityTypes': entityTypes.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response message for Intents.BatchUpdateIntents.
@@ -20288,13 +18377,10 @@ class GoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (intents != null) {
-      _json['intents'] = intents.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (intents != null)
+          'intents': intents.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Dialogflow contexts are similar to natural language context.
@@ -20376,19 +18462,11 @@ class GoogleCloudDialogflowV2beta1Context {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (lifespanCount != null) {
-      _json['lifespanCount'] = lifespanCount;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parameters != null) {
-      _json['parameters'] = parameters;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (lifespanCount != null) 'lifespanCount': lifespanCount,
+        if (name != null) 'name': name,
+        if (parameters != null) 'parameters': parameters,
+      };
 }
 
 /// Each intent parameter has a type, called the entity type, which dictates
@@ -20475,28 +18553,16 @@ class GoogleCloudDialogflowV2beta1EntityType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (autoExpansionMode != null) {
-      _json['autoExpansionMode'] = autoExpansionMode;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (enableFuzzyExtraction != null) {
-      _json['enableFuzzyExtraction'] = enableFuzzyExtraction;
-    }
-    if (entities != null) {
-      _json['entities'] = entities.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (autoExpansionMode != null) 'autoExpansionMode': autoExpansionMode,
+        if (displayName != null) 'displayName': displayName,
+        if (enableFuzzyExtraction != null)
+          'enableFuzzyExtraction': enableFuzzyExtraction,
+        if (entities != null)
+          'entities': entities.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+      };
 }
 
 /// An **entity entry** for an associated entity type.
@@ -20534,16 +18600,10 @@ class GoogleCloudDialogflowV2beta1EntityTypeEntity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (synonyms != null) {
-      _json['synonyms'] = synonyms;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (synonyms != null) 'synonyms': synonyms,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Events allow for matching intents by event name instead of the natural
@@ -20604,19 +18664,11 @@ class GoogleCloudDialogflowV2beta1EventInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parameters != null) {
-      _json['parameters'] = parameters;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode,
+        if (name != null) 'name': name,
+        if (parameters != null) 'parameters': parameters,
+      };
 }
 
 /// The response message for Agents.ExportAgent.
@@ -20648,16 +18700,10 @@ class GoogleCloudDialogflowV2beta1ExportAgentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (agentContent != null) {
-      _json['agentContent'] = agentContent;
-    }
-    if (agentUri != null) {
-      _json['agentUri'] = agentUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (agentContent != null) 'agentContent': agentContent,
+        if (agentUri != null) 'agentUri': agentUri,
+      };
 }
 
 /// An intent categorizes an end-user's intention for one conversation turn.
@@ -20926,73 +18972,39 @@ class GoogleCloudDialogflowV2beta1Intent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (action != null) {
-      _json['action'] = action;
-    }
-    if (defaultResponsePlatforms != null) {
-      _json['defaultResponsePlatforms'] = defaultResponsePlatforms;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (endInteraction != null) {
-      _json['endInteraction'] = endInteraction;
-    }
-    if (events != null) {
-      _json['events'] = events;
-    }
-    if (followupIntentInfo != null) {
-      _json['followupIntentInfo'] =
-          followupIntentInfo.map((value) => value.toJson()).toList();
-    }
-    if (inputContextNames != null) {
-      _json['inputContextNames'] = inputContextNames;
-    }
-    if (isFallback != null) {
-      _json['isFallback'] = isFallback;
-    }
-    if (messages != null) {
-      _json['messages'] = messages.map((value) => value.toJson()).toList();
-    }
-    if (mlDisabled != null) {
-      _json['mlDisabled'] = mlDisabled;
-    }
-    if (mlEnabled != null) {
-      _json['mlEnabled'] = mlEnabled;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (outputContexts != null) {
-      _json['outputContexts'] =
-          outputContexts.map((value) => value.toJson()).toList();
-    }
-    if (parameters != null) {
-      _json['parameters'] = parameters.map((value) => value.toJson()).toList();
-    }
-    if (parentFollowupIntentName != null) {
-      _json['parentFollowupIntentName'] = parentFollowupIntentName;
-    }
-    if (priority != null) {
-      _json['priority'] = priority;
-    }
-    if (resetContexts != null) {
-      _json['resetContexts'] = resetContexts;
-    }
-    if (rootFollowupIntentName != null) {
-      _json['rootFollowupIntentName'] = rootFollowupIntentName;
-    }
-    if (trainingPhrases != null) {
-      _json['trainingPhrases'] =
-          trainingPhrases.map((value) => value.toJson()).toList();
-    }
-    if (webhookState != null) {
-      _json['webhookState'] = webhookState;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (action != null) 'action': action,
+        if (defaultResponsePlatforms != null)
+          'defaultResponsePlatforms': defaultResponsePlatforms,
+        if (displayName != null) 'displayName': displayName,
+        if (endInteraction != null) 'endInteraction': endInteraction,
+        if (events != null) 'events': events,
+        if (followupIntentInfo != null)
+          'followupIntentInfo':
+              followupIntentInfo.map((value) => value.toJson()).toList(),
+        if (inputContextNames != null) 'inputContextNames': inputContextNames,
+        if (isFallback != null) 'isFallback': isFallback,
+        if (messages != null)
+          'messages': messages.map((value) => value.toJson()).toList(),
+        if (mlDisabled != null) 'mlDisabled': mlDisabled,
+        if (mlEnabled != null) 'mlEnabled': mlEnabled,
+        if (name != null) 'name': name,
+        if (outputContexts != null)
+          'outputContexts':
+              outputContexts.map((value) => value.toJson()).toList(),
+        if (parameters != null)
+          'parameters': parameters.map((value) => value.toJson()).toList(),
+        if (parentFollowupIntentName != null)
+          'parentFollowupIntentName': parentFollowupIntentName,
+        if (priority != null) 'priority': priority,
+        if (resetContexts != null) 'resetContexts': resetContexts,
+        if (rootFollowupIntentName != null)
+          'rootFollowupIntentName': rootFollowupIntentName,
+        if (trainingPhrases != null)
+          'trainingPhrases':
+              trainingPhrases.map((value) => value.toJson()).toList(),
+        if (webhookState != null) 'webhookState': webhookState,
+      };
 }
 
 /// Represents a single followup intent in the chain.
@@ -21020,16 +19032,12 @@ class GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (followupIntentName != null) {
-      _json['followupIntentName'] = followupIntentName;
-    }
-    if (parentFollowupIntentName != null) {
-      _json['parentFollowupIntentName'] = parentFollowupIntentName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (followupIntentName != null)
+          'followupIntentName': followupIntentName,
+        if (parentFollowupIntentName != null)
+          'parentFollowupIntentName': parentFollowupIntentName,
+      };
 }
 
 /// Corresponds to the `Response` field in the Dialogflow console.
@@ -21235,73 +19243,37 @@ class GoogleCloudDialogflowV2beta1IntentMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicCard != null) {
-      _json['basicCard'] = basicCard.toJson();
-    }
-    if (browseCarouselCard != null) {
-      _json['browseCarouselCard'] = browseCarouselCard.toJson();
-    }
-    if (card != null) {
-      _json['card'] = card.toJson();
-    }
-    if (carouselSelect != null) {
-      _json['carouselSelect'] = carouselSelect.toJson();
-    }
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    if (linkOutSuggestion != null) {
-      _json['linkOutSuggestion'] = linkOutSuggestion.toJson();
-    }
-    if (listSelect != null) {
-      _json['listSelect'] = listSelect.toJson();
-    }
-    if (mediaContent != null) {
-      _json['mediaContent'] = mediaContent.toJson();
-    }
-    if (payload != null) {
-      _json['payload'] = payload;
-    }
-    if (platform != null) {
-      _json['platform'] = platform;
-    }
-    if (quickReplies != null) {
-      _json['quickReplies'] = quickReplies.toJson();
-    }
-    if (rbmCarouselRichCard != null) {
-      _json['rbmCarouselRichCard'] = rbmCarouselRichCard.toJson();
-    }
-    if (rbmStandaloneRichCard != null) {
-      _json['rbmStandaloneRichCard'] = rbmStandaloneRichCard.toJson();
-    }
-    if (rbmText != null) {
-      _json['rbmText'] = rbmText.toJson();
-    }
-    if (simpleResponses != null) {
-      _json['simpleResponses'] = simpleResponses.toJson();
-    }
-    if (suggestions != null) {
-      _json['suggestions'] = suggestions.toJson();
-    }
-    if (tableCard != null) {
-      _json['tableCard'] = tableCard.toJson();
-    }
-    if (telephonyPlayAudio != null) {
-      _json['telephonyPlayAudio'] = telephonyPlayAudio.toJson();
-    }
-    if (telephonySynthesizeSpeech != null) {
-      _json['telephonySynthesizeSpeech'] = telephonySynthesizeSpeech.toJson();
-    }
-    if (telephonyTransferCall != null) {
-      _json['telephonyTransferCall'] = telephonyTransferCall.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicCard != null) 'basicCard': basicCard.toJson(),
+        if (browseCarouselCard != null)
+          'browseCarouselCard': browseCarouselCard.toJson(),
+        if (card != null) 'card': card.toJson(),
+        if (carouselSelect != null) 'carouselSelect': carouselSelect.toJson(),
+        if (image != null) 'image': image.toJson(),
+        if (linkOutSuggestion != null)
+          'linkOutSuggestion': linkOutSuggestion.toJson(),
+        if (listSelect != null) 'listSelect': listSelect.toJson(),
+        if (mediaContent != null) 'mediaContent': mediaContent.toJson(),
+        if (payload != null) 'payload': payload,
+        if (platform != null) 'platform': platform,
+        if (quickReplies != null) 'quickReplies': quickReplies.toJson(),
+        if (rbmCarouselRichCard != null)
+          'rbmCarouselRichCard': rbmCarouselRichCard.toJson(),
+        if (rbmStandaloneRichCard != null)
+          'rbmStandaloneRichCard': rbmStandaloneRichCard.toJson(),
+        if (rbmText != null) 'rbmText': rbmText.toJson(),
+        if (simpleResponses != null)
+          'simpleResponses': simpleResponses.toJson(),
+        if (suggestions != null) 'suggestions': suggestions.toJson(),
+        if (tableCard != null) 'tableCard': tableCard.toJson(),
+        if (telephonyPlayAudio != null)
+          'telephonyPlayAudio': telephonyPlayAudio.toJson(),
+        if (telephonySynthesizeSpeech != null)
+          'telephonySynthesizeSpeech': telephonySynthesizeSpeech.toJson(),
+        if (telephonyTransferCall != null)
+          'telephonyTransferCall': telephonyTransferCall.toJson(),
+        if (text != null) 'text': text.toJson(),
+      };
 }
 
 /// The basic card message.
@@ -21359,25 +19331,14 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCard {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (buttons != null) {
-      _json['buttons'] = buttons.map((value) => value.toJson()).toList();
-    }
-    if (formattedText != null) {
-      _json['formattedText'] = formattedText;
-    }
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    if (subtitle != null) {
-      _json['subtitle'] = subtitle;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (buttons != null)
+          'buttons': buttons.map((value) => value.toJson()).toList(),
+        if (formattedText != null) 'formattedText': formattedText,
+        if (image != null) 'image': image.toJson(),
+        if (subtitle != null) 'subtitle': subtitle,
+        if (title != null) 'title': title,
+      };
 }
 
 /// The button object that appears at the bottom of a card.
@@ -21408,16 +19369,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (openUriAction != null) {
-      _json['openUriAction'] = openUriAction.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (openUriAction != null) 'openUriAction': openUriAction.toJson(),
+        if (title != null) 'title': title,
+      };
 }
 
 /// Opens the given URI.
@@ -21436,13 +19391,9 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// Browse Carousel Card for Actions on Google.
@@ -21497,16 +19448,12 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (imageDisplayOptions != null) {
-      _json['imageDisplayOptions'] = imageDisplayOptions;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (imageDisplayOptions != null)
+          'imageDisplayOptions': imageDisplayOptions,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Browsing carousel tile
@@ -21568,25 +19515,13 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselC
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (footer != null) {
-      _json['footer'] = footer;
-    }
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    if (openUriAction != null) {
-      _json['openUriAction'] = openUriAction.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (footer != null) 'footer': footer,
+        if (image != null) 'image': image.toJson(),
+        if (openUriAction != null) 'openUriAction': openUriAction.toJson(),
+        if (title != null) 'title': title,
+      };
 }
 
 /// Actions on Google action to open a given url.
@@ -21620,16 +19555,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselC
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (url != null) {
-      _json['url'] = url;
-    }
-    if (urlTypeHint != null) {
-      _json['urlTypeHint'] = urlTypeHint;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (url != null) 'url': url,
+        if (urlTypeHint != null) 'urlTypeHint': urlTypeHint,
+      };
 }
 
 /// The card response message.
@@ -21675,22 +19604,13 @@ class GoogleCloudDialogflowV2beta1IntentMessageCard {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (buttons != null) {
-      _json['buttons'] = buttons.map((value) => value.toJson()).toList();
-    }
-    if (imageUri != null) {
-      _json['imageUri'] = imageUri;
-    }
-    if (subtitle != null) {
-      _json['subtitle'] = subtitle;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (buttons != null)
+          'buttons': buttons.map((value) => value.toJson()).toList(),
+        if (imageUri != null) 'imageUri': imageUri,
+        if (subtitle != null) 'subtitle': subtitle,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Contains information about a button.
@@ -21718,16 +19638,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageCardButton {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (postback != null) {
-      _json['postback'] = postback;
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (postback != null) 'postback': postback,
+        if (text != null) 'text': text,
+      };
 }
 
 /// The card for presenting a carousel of options to select from.
@@ -21751,13 +19665,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// An item in the carousel.
@@ -21802,22 +19713,12 @@ class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    if (info != null) {
-      _json['info'] = info.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (image != null) 'image': image.toJson(),
+        if (info != null) 'info': info.toJson(),
+        if (title != null) 'title': title,
+      };
 }
 
 /// Column properties for TableCard.
@@ -21850,16 +19751,11 @@ class GoogleCloudDialogflowV2beta1IntentMessageColumnProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (header != null) {
-      _json['header'] = header;
-    }
-    if (horizontalAlignment != null) {
-      _json['horizontalAlignment'] = horizontalAlignment;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (header != null) 'header': header,
+        if (horizontalAlignment != null)
+          'horizontalAlignment': horizontalAlignment,
+      };
 }
 
 /// The image response message.
@@ -21886,16 +19782,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessibilityText != null) {
-      _json['accessibilityText'] = accessibilityText;
-    }
-    if (imageUri != null) {
-      _json['imageUri'] = imageUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessibilityText != null) 'accessibilityText': accessibilityText,
+        if (imageUri != null) 'imageUri': imageUri,
+      };
 }
 
 /// The suggestion chip message that allows the user to jump out to the app or
@@ -21923,16 +19813,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (destinationName != null) {
-      _json['destinationName'] = destinationName;
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (destinationName != null) 'destinationName': destinationName,
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// The card for presenting a list of options to select from.
@@ -21970,19 +19854,12 @@ class GoogleCloudDialogflowV2beta1IntentMessageListSelect {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (subtitle != null) {
-      _json['subtitle'] = subtitle;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (subtitle != null) 'subtitle': subtitle,
+        if (title != null) 'title': title,
+      };
 }
 
 /// An item in the list.
@@ -22027,22 +19904,12 @@ class GoogleCloudDialogflowV2beta1IntentMessageListSelectItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    if (info != null) {
-      _json['info'] = info.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (image != null) 'image': image.toJson(),
+        if (info != null) 'info': info.toJson(),
+        if (title != null) 'title': title,
+      };
 }
 
 /// The media content card for Actions on Google.
@@ -22079,17 +19946,11 @@ class GoogleCloudDialogflowV2beta1IntentMessageMediaContent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (mediaObjects != null) {
-      _json['mediaObjects'] =
-          mediaObjects.map((value) => value.toJson()).toList();
-    }
-    if (mediaType != null) {
-      _json['mediaType'] = mediaType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (mediaObjects != null)
+          'mediaObjects': mediaObjects.map((value) => value.toJson()).toList(),
+        if (mediaType != null) 'mediaType': mediaType,
+      };
 }
 
 /// Response media object for media content card.
@@ -22142,25 +20003,13 @@ class GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentUrl != null) {
-      _json['contentUrl'] = contentUrl;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (icon != null) {
-      _json['icon'] = icon.toJson();
-    }
-    if (largeImage != null) {
-      _json['largeImage'] = largeImage.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentUrl != null) 'contentUrl': contentUrl,
+        if (description != null) 'description': description,
+        if (icon != null) 'icon': icon.toJson(),
+        if (largeImage != null) 'largeImage': largeImage.toJson(),
+        if (name != null) 'name': name,
+      };
 }
 
 /// The quick replies response message.
@@ -22189,16 +20038,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageQuickReplies {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (quickReplies != null) {
-      _json['quickReplies'] = quickReplies;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (quickReplies != null) 'quickReplies': quickReplies,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Rich Business Messaging (RBM) Card content
@@ -22252,23 +20095,13 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (media != null) {
-      _json['media'] = media.toJson();
-    }
-    if (suggestions != null) {
-      _json['suggestions'] =
-          suggestions.map((value) => value.toJson()).toList();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (media != null) 'media': media.toJson(),
+        if (suggestions != null)
+          'suggestions': suggestions.map((value) => value.toJson()).toList(),
+        if (title != null) 'title': title,
+      };
 }
 
 /// Rich Business Messaging (RBM) Media displayed in Cards The following
@@ -22324,19 +20157,11 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fileUri != null) {
-      _json['fileUri'] = fileUri;
-    }
-    if (height != null) {
-      _json['height'] = height;
-    }
-    if (thumbnailUri != null) {
-      _json['thumbnailUri'] = thumbnailUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fileUri != null) 'fileUri': fileUri,
+        if (height != null) 'height': height,
+        if (thumbnailUri != null) 'thumbnailUri': thumbnailUri,
+      };
 }
 
 /// Carousel Rich Business Messaging (RBM) rich card.
@@ -22378,17 +20203,11 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cardContents != null) {
-      _json['cardContents'] =
-          cardContents.map((value) => value.toJson()).toList();
-    }
-    if (cardWidth != null) {
-      _json['cardWidth'] = cardWidth;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cardContents != null)
+          'cardContents': cardContents.map((value) => value.toJson()).toList(),
+        if (cardWidth != null) 'cardWidth': cardWidth,
+      };
 }
 
 /// Standalone Rich Business Messaging (RBM) rich card.
@@ -22438,19 +20257,12 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cardContent != null) {
-      _json['cardContent'] = cardContent.toJson();
-    }
-    if (cardOrientation != null) {
-      _json['cardOrientation'] = cardOrientation;
-    }
-    if (thumbnailImageAlignment != null) {
-      _json['thumbnailImageAlignment'] = thumbnailImageAlignment;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cardContent != null) 'cardContent': cardContent.toJson(),
+        if (cardOrientation != null) 'cardOrientation': cardOrientation,
+        if (thumbnailImageAlignment != null)
+          'thumbnailImageAlignment': thumbnailImageAlignment,
+      };
 }
 
 /// Rich Business Messaging (RBM) suggested client-side action that the user can
@@ -22507,25 +20319,13 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dial != null) {
-      _json['dial'] = dial.toJson();
-    }
-    if (openUrl != null) {
-      _json['openUrl'] = openUrl.toJson();
-    }
-    if (postbackData != null) {
-      _json['postbackData'] = postbackData;
-    }
-    if (shareLocation != null) {
-      _json['shareLocation'] = shareLocation.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dial != null) 'dial': dial.toJson(),
+        if (openUrl != null) 'openUrl': openUrl.toJson(),
+        if (postbackData != null) 'postbackData': postbackData,
+        if (shareLocation != null) 'shareLocation': shareLocation.toJson(),
+        if (text != null) 'text': text,
+      };
 }
 
 /// Opens the user's default dialer app with the specified phone number but does
@@ -22548,13 +20348,9 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedAct
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (phoneNumber != null) {
-      _json['phoneNumber'] = phoneNumber;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (phoneNumber != null) 'phoneNumber': phoneNumber,
+      };
 }
 
 /// Opens the user's default web browser app to the specified uri If the user
@@ -22576,13 +20372,9 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedAct
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// Opens the device's location chooser so the user can pick a location to send
@@ -22594,10 +20386,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedAct
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Rich Business Messaging (RBM) suggested reply that the user can click
@@ -22625,16 +20414,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (postbackData != null) {
-      _json['postbackData'] = postbackData;
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (postbackData != null) 'postbackData': postbackData,
+        if (text != null) 'text': text,
+      };
 }
 
 /// Rich Business Messaging (RBM) suggestion.
@@ -22664,16 +20447,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (action != null) {
-      _json['action'] = action.toJson();
-    }
-    if (reply != null) {
-      _json['reply'] = reply.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (action != null) 'action': action.toJson(),
+        if (reply != null) 'reply': reply.toJson(),
+      };
 }
 
 /// Rich Business Messaging (RBM) text response with suggestions.
@@ -22704,17 +20481,12 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmText {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (rbmSuggestion != null) {
-      _json['rbmSuggestion'] =
-          rbmSuggestion.map((value) => value.toJson()).toList();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (rbmSuggestion != null)
+          'rbmSuggestion':
+              rbmSuggestion.map((value) => value.toJson()).toList(),
+        if (text != null) 'text': text,
+      };
 }
 
 /// Additional info about the select item for when it is triggered in a dialog.
@@ -22744,16 +20516,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (synonyms != null) {
-      _json['synonyms'] = synonyms;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (synonyms != null) 'synonyms': synonyms,
+      };
 }
 
 /// The simple response message containing speech or text.
@@ -22789,19 +20555,11 @@ class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayText != null) {
-      _json['displayText'] = displayText;
-    }
-    if (ssml != null) {
-      _json['ssml'] = ssml;
-    }
-    if (textToSpeech != null) {
-      _json['textToSpeech'] = textToSpeech;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayText != null) 'displayText': displayText,
+        if (ssml != null) 'ssml': ssml,
+        if (textToSpeech != null) 'textToSpeech': textToSpeech,
+      };
 }
 
 /// The collection of simple response candidates.
@@ -22829,14 +20587,11 @@ class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (simpleResponses != null) {
-      _json['simpleResponses'] =
-          simpleResponses.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (simpleResponses != null)
+          'simpleResponses':
+              simpleResponses.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The suggestion chip message that the user can tap to quickly post a reply to
@@ -22855,13 +20610,9 @@ class GoogleCloudDialogflowV2beta1IntentMessageSuggestion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (title != null) 'title': title,
+      };
 }
 
 /// The collection of suggestions.
@@ -22884,14 +20635,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageSuggestions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (suggestions != null) {
-      _json['suggestions'] =
-          suggestions.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (suggestions != null)
+          'suggestions': suggestions.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Table card for Actions on Google.
@@ -22965,29 +20712,17 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCard {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (buttons != null) {
-      _json['buttons'] = buttons.map((value) => value.toJson()).toList();
-    }
-    if (columnProperties != null) {
-      _json['columnProperties'] =
-          columnProperties.map((value) => value.toJson()).toList();
-    }
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    if (rows != null) {
-      _json['rows'] = rows.map((value) => value.toJson()).toList();
-    }
-    if (subtitle != null) {
-      _json['subtitle'] = subtitle;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (buttons != null)
+          'buttons': buttons.map((value) => value.toJson()).toList(),
+        if (columnProperties != null)
+          'columnProperties':
+              columnProperties.map((value) => value.toJson()).toList(),
+        if (image != null) 'image': image.toJson(),
+        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+        if (subtitle != null) 'subtitle': subtitle,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Cell of TableCardRow.
@@ -23006,13 +20741,9 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCardCell {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (text != null) 'text': text,
+      };
 }
 
 /// Row of TableCard.
@@ -23043,16 +20774,11 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCardRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cells != null) {
-      _json['cells'] = cells.map((value) => value.toJson()).toList();
-    }
-    if (dividerAfter != null) {
-      _json['dividerAfter'] = dividerAfter;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cells != null)
+          'cells': cells.map((value) => value.toJson()).toList(),
+        if (dividerAfter != null) 'dividerAfter': dividerAfter,
+      };
 }
 
 /// Plays audio from a file in Telephony Gateway.
@@ -23081,13 +20807,9 @@ class GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audioUri != null) {
-      _json['audioUri'] = audioUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audioUri != null) 'audioUri': audioUri,
+      };
 }
 
 /// Synthesizes speech and plays back the synthesized audio to the caller in
@@ -23118,16 +20840,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ssml != null) {
-      _json['ssml'] = ssml;
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ssml != null) 'ssml': ssml,
+        if (text != null) 'text': text,
+      };
 }
 
 /// Transfers the call in Telephony Gateway.
@@ -23149,13 +20865,9 @@ class GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (phoneNumber != null) {
-      _json['phoneNumber'] = phoneNumber;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (phoneNumber != null) 'phoneNumber': phoneNumber,
+      };
 }
 
 /// The text response message.
@@ -23175,13 +20887,9 @@ class GoogleCloudDialogflowV2beta1IntentMessageText {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (text != null) 'text': text,
+      };
 }
 
 /// Represents intent parameters.
@@ -23270,34 +20978,17 @@ class GoogleCloudDialogflowV2beta1IntentParameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (defaultValue != null) {
-      _json['defaultValue'] = defaultValue;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (entityTypeDisplayName != null) {
-      _json['entityTypeDisplayName'] = entityTypeDisplayName;
-    }
-    if (isList != null) {
-      _json['isList'] = isList;
-    }
-    if (mandatory != null) {
-      _json['mandatory'] = mandatory;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (prompts != null) {
-      _json['prompts'] = prompts;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (defaultValue != null) 'defaultValue': defaultValue,
+        if (displayName != null) 'displayName': displayName,
+        if (entityTypeDisplayName != null)
+          'entityTypeDisplayName': entityTypeDisplayName,
+        if (isList != null) 'isList': isList,
+        if (mandatory != null) 'mandatory': mandatory,
+        if (name != null) 'name': name,
+        if (prompts != null) 'prompts': prompts,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Represents an example that the agent is trained on.
@@ -23367,22 +21058,13 @@ class GoogleCloudDialogflowV2beta1IntentTrainingPhrase {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parts != null) {
-      _json['parts'] = parts.map((value) => value.toJson()).toList();
-    }
-    if (timesAddedCount != null) {
-      _json['timesAddedCount'] = timesAddedCount;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (parts != null)
+          'parts': parts.map((value) => value.toJson()).toList(),
+        if (timesAddedCount != null) 'timesAddedCount': timesAddedCount,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Represents a part of a training phrase.
@@ -23434,22 +21116,12 @@ class GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alias != null) {
-      _json['alias'] = alias;
-    }
-    if (entityType != null) {
-      _json['entityType'] = entityType;
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    if (userDefined != null) {
-      _json['userDefined'] = userDefined;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alias != null) 'alias': alias,
+        if (entityType != null) 'entityType': entityType,
+        if (text != null) 'text': text,
+        if (userDefined != null) 'userDefined': userDefined,
+      };
 }
 
 /// Represents the result of querying a Knowledge base.
@@ -23469,13 +21141,10 @@ class GoogleCloudDialogflowV2beta1KnowledgeAnswers {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (answers != null) {
-      _json['answers'] = answers.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (answers != null)
+          'answers': answers.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// An answer from Knowledge Connector.
@@ -23537,25 +21206,14 @@ class GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (answer != null) {
-      _json['answer'] = answer;
-    }
-    if (faqQuestion != null) {
-      _json['faqQuestion'] = faqQuestion;
-    }
-    if (matchConfidence != null) {
-      _json['matchConfidence'] = matchConfidence;
-    }
-    if (matchConfidenceLevel != null) {
-      _json['matchConfidenceLevel'] = matchConfidenceLevel;
-    }
-    if (source != null) {
-      _json['source'] = source;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (answer != null) 'answer': answer,
+        if (faqQuestion != null) 'faqQuestion': faqQuestion,
+        if (matchConfidence != null) 'matchConfidence': matchConfidence,
+        if (matchConfidenceLevel != null)
+          'matchConfidenceLevel': matchConfidenceLevel,
+        if (source != null) 'source': source,
+      };
 }
 
 /// Metadata in google::longrunning::Operation for Knowledge operations.
@@ -23579,13 +21237,9 @@ class GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (state != null) 'state': state,
+      };
 }
 
 /// Represents the contents of the original request that was passed to the
@@ -23641,19 +21295,11 @@ class GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (payload != null) {
-      _json['payload'] = payload;
-    }
-    if (source != null) {
-      _json['source'] = source;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (payload != null) 'payload': payload,
+        if (source != null) 'source': source,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Represents the result of conversational query or event processing.
@@ -23859,60 +21505,33 @@ class GoogleCloudDialogflowV2beta1QueryResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (action != null) {
-      _json['action'] = action;
-    }
-    if (allRequiredParamsPresent != null) {
-      _json['allRequiredParamsPresent'] = allRequiredParamsPresent;
-    }
-    if (diagnosticInfo != null) {
-      _json['diagnosticInfo'] = diagnosticInfo;
-    }
-    if (fulfillmentMessages != null) {
-      _json['fulfillmentMessages'] =
-          fulfillmentMessages.map((value) => value.toJson()).toList();
-    }
-    if (fulfillmentText != null) {
-      _json['fulfillmentText'] = fulfillmentText;
-    }
-    if (intent != null) {
-      _json['intent'] = intent.toJson();
-    }
-    if (intentDetectionConfidence != null) {
-      _json['intentDetectionConfidence'] = intentDetectionConfidence;
-    }
-    if (knowledgeAnswers != null) {
-      _json['knowledgeAnswers'] = knowledgeAnswers.toJson();
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (outputContexts != null) {
-      _json['outputContexts'] =
-          outputContexts.map((value) => value.toJson()).toList();
-    }
-    if (parameters != null) {
-      _json['parameters'] = parameters;
-    }
-    if (queryText != null) {
-      _json['queryText'] = queryText;
-    }
-    if (sentimentAnalysisResult != null) {
-      _json['sentimentAnalysisResult'] = sentimentAnalysisResult.toJson();
-    }
-    if (speechRecognitionConfidence != null) {
-      _json['speechRecognitionConfidence'] = speechRecognitionConfidence;
-    }
-    if (webhookPayload != null) {
-      _json['webhookPayload'] = webhookPayload;
-    }
-    if (webhookSource != null) {
-      _json['webhookSource'] = webhookSource;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (action != null) 'action': action,
+        if (allRequiredParamsPresent != null)
+          'allRequiredParamsPresent': allRequiredParamsPresent,
+        if (diagnosticInfo != null) 'diagnosticInfo': diagnosticInfo,
+        if (fulfillmentMessages != null)
+          'fulfillmentMessages':
+              fulfillmentMessages.map((value) => value.toJson()).toList(),
+        if (fulfillmentText != null) 'fulfillmentText': fulfillmentText,
+        if (intent != null) 'intent': intent.toJson(),
+        if (intentDetectionConfidence != null)
+          'intentDetectionConfidence': intentDetectionConfidence,
+        if (knowledgeAnswers != null)
+          'knowledgeAnswers': knowledgeAnswers.toJson(),
+        if (languageCode != null) 'languageCode': languageCode,
+        if (outputContexts != null)
+          'outputContexts':
+              outputContexts.map((value) => value.toJson()).toList(),
+        if (parameters != null) 'parameters': parameters,
+        if (queryText != null) 'queryText': queryText,
+        if (sentimentAnalysisResult != null)
+          'sentimentAnalysisResult': sentimentAnalysisResult.toJson(),
+        if (speechRecognitionConfidence != null)
+          'speechRecognitionConfidence': speechRecognitionConfidence,
+        if (webhookPayload != null) 'webhookPayload': webhookPayload,
+        if (webhookSource != null) 'webhookSource': webhookSource,
+      };
 }
 
 /// The sentiment, such as positive/negative feeling or association, for a unit
@@ -23938,16 +21557,10 @@ class GoogleCloudDialogflowV2beta1Sentiment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (magnitude != null) {
-      _json['magnitude'] = magnitude;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (magnitude != null) 'magnitude': magnitude,
+        if (score != null) 'score': score,
+      };
 }
 
 /// The result of sentiment analysis.
@@ -23973,13 +21586,10 @@ class GoogleCloudDialogflowV2beta1SentimentAnalysisResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (queryTextSentiment != null) {
-      _json['queryTextSentiment'] = queryTextSentiment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (queryTextSentiment != null)
+          'queryTextSentiment': queryTextSentiment.toJson(),
+      };
 }
 
 /// A session represents a conversation between a Dialogflow agent and an
@@ -24049,19 +21659,13 @@ class GoogleCloudDialogflowV2beta1SessionEntityType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entities != null) {
-      _json['entities'] = entities.map((value) => value.toJson()).toList();
-    }
-    if (entityOverrideMode != null) {
-      _json['entityOverrideMode'] = entityOverrideMode;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entities != null)
+          'entities': entities.map((value) => value.toJson()).toList(),
+        if (entityOverrideMode != null)
+          'entityOverrideMode': entityOverrideMode,
+        if (name != null) 'name': name,
+      };
 }
 
 /// The request message for a webhook call.
@@ -24123,27 +21727,16 @@ class GoogleCloudDialogflowV2beta1WebhookRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alternativeQueryResults != null) {
-      _json['alternativeQueryResults'] =
-          alternativeQueryResults.map((value) => value.toJson()).toList();
-    }
-    if (originalDetectIntentRequest != null) {
-      _json['originalDetectIntentRequest'] =
-          originalDetectIntentRequest.toJson();
-    }
-    if (queryResult != null) {
-      _json['queryResult'] = queryResult.toJson();
-    }
-    if (responseId != null) {
-      _json['responseId'] = responseId;
-    }
-    if (session != null) {
-      _json['session'] = session;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alternativeQueryResults != null)
+          'alternativeQueryResults':
+              alternativeQueryResults.map((value) => value.toJson()).toList(),
+        if (originalDetectIntentRequest != null)
+          'originalDetectIntentRequest': originalDetectIntentRequest.toJson(),
+        if (queryResult != null) 'queryResult': queryResult.toJson(),
+        if (responseId != null) 'responseId': responseId,
+        if (session != null) 'session': session,
+      };
 }
 
 /// The response message for a webhook call.
@@ -24283,37 +21876,23 @@ class GoogleCloudDialogflowV2beta1WebhookResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endInteraction != null) {
-      _json['endInteraction'] = endInteraction;
-    }
-    if (followupEventInput != null) {
-      _json['followupEventInput'] = followupEventInput.toJson();
-    }
-    if (fulfillmentMessages != null) {
-      _json['fulfillmentMessages'] =
-          fulfillmentMessages.map((value) => value.toJson()).toList();
-    }
-    if (fulfillmentText != null) {
-      _json['fulfillmentText'] = fulfillmentText;
-    }
-    if (outputContexts != null) {
-      _json['outputContexts'] =
-          outputContexts.map((value) => value.toJson()).toList();
-    }
-    if (payload != null) {
-      _json['payload'] = payload;
-    }
-    if (sessionEntityTypes != null) {
-      _json['sessionEntityTypes'] =
-          sessionEntityTypes.map((value) => value.toJson()).toList();
-    }
-    if (source != null) {
-      _json['source'] = source;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endInteraction != null) 'endInteraction': endInteraction,
+        if (followupEventInput != null)
+          'followupEventInput': followupEventInput.toJson(),
+        if (fulfillmentMessages != null)
+          'fulfillmentMessages':
+              fulfillmentMessages.map((value) => value.toJson()).toList(),
+        if (fulfillmentText != null) 'fulfillmentText': fulfillmentText,
+        if (outputContexts != null)
+          'outputContexts':
+              outputContexts.map((value) => value.toJson()).toList(),
+        if (payload != null) 'payload': payload,
+        if (sessionEntityTypes != null)
+          'sessionEntityTypes':
+              sessionEntityTypes.map((value) => value.toJson()).toList(),
+        if (source != null) 'source': source,
+      };
 }
 
 /// Metadata for CreateDocument operation.
@@ -24334,13 +21913,10 @@ class GoogleCloudDialogflowV3alpha1CreateDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (genericMetadata != null) {
-      _json['genericMetadata'] = genericMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (genericMetadata != null)
+          'genericMetadata': genericMetadata.toJson(),
+      };
 }
 
 /// Metadata for DeleteDocument operation.
@@ -24361,13 +21937,10 @@ class GoogleCloudDialogflowV3alpha1DeleteDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (genericMetadata != null) {
-      _json['genericMetadata'] = genericMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (genericMetadata != null)
+          'genericMetadata': genericMetadata.toJson(),
+      };
 }
 
 /// Metadata in google::longrunning::Operation for Knowledge operations.
@@ -24391,13 +21964,9 @@ class GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (state != null) 'state': state,
+      };
 }
 
 /// Metadata for ImportDocuments operation.
@@ -24418,13 +21987,10 @@ class GoogleCloudDialogflowV3alpha1ImportDocumentsOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (genericMetadata != null) {
-      _json['genericMetadata'] = genericMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (genericMetadata != null)
+          'genericMetadata': genericMetadata.toJson(),
+      };
 }
 
 /// Response message for Documents.ImportDocuments.
@@ -24444,13 +22010,10 @@ class GoogleCloudDialogflowV3alpha1ImportDocumentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (warnings != null) {
-      _json['warnings'] = warnings.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (warnings != null)
+          'warnings': warnings.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Metadata for ReloadDocument operation.
@@ -24471,13 +22034,10 @@ class GoogleCloudDialogflowV3alpha1ReloadDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (genericMetadata != null) {
-      _json['genericMetadata'] = genericMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (genericMetadata != null)
+          'genericMetadata': genericMetadata.toJson(),
+      };
 }
 
 /// Metadata for UpdateDocument operation.
@@ -24498,13 +22058,10 @@ class GoogleCloudDialogflowV3alpha1UpdateDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (genericMetadata != null) {
-      _json['genericMetadata'] = genericMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (genericMetadata != null)
+          'genericMetadata': genericMetadata.toJson(),
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -24530,16 +22087,11 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -24618,25 +22170,13 @@ class GoogleLongrunningOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -24653,10 +22193,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -24706,19 +22243,11 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// An object that represents a latitude/longitude pair.
@@ -24748,14 +22277,8 @@ class GoogleTypeLatLng {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (latitude != null) {
-      _json['latitude'] = latitude;
-    }
-    if (longitude != null) {
-      _json['longitude'] = longitude;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (latitude != null) 'latitude': latitude,
+        if (longitude != null) 'longitude': longitude,
+      };
 }

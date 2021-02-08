@@ -239,22 +239,12 @@ class Api {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operation != null) {
-      _json['operation'] = operation;
-    }
-    if (protocol != null) {
-      _json['protocol'] = protocol;
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (operation != null) 'operation': operation,
+        if (protocol != null) 'protocol': protocol,
+        if (service != null) 'service': service,
+        if (version != null) 'version': version,
+      };
 }
 
 /// This message defines the standard attribute vocabulary for Google APIs.
@@ -354,34 +344,16 @@ class AttributeContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (api != null) {
-      _json['api'] = api.toJson();
-    }
-    if (destination != null) {
-      _json['destination'] = destination.toJson();
-    }
-    if (extensions != null) {
-      _json['extensions'] = extensions;
-    }
-    if (origin != null) {
-      _json['origin'] = origin.toJson();
-    }
-    if (request != null) {
-      _json['request'] = request.toJson();
-    }
-    if (resource != null) {
-      _json['resource'] = resource.toJson();
-    }
-    if (response != null) {
-      _json['response'] = response.toJson();
-    }
-    if (source != null) {
-      _json['source'] = source.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (api != null) 'api': api.toJson(),
+        if (destination != null) 'destination': destination.toJson(),
+        if (extensions != null) 'extensions': extensions,
+        if (origin != null) 'origin': origin.toJson(),
+        if (request != null) 'request': request.toJson(),
+        if (resource != null) 'resource': resource.toJson(),
+        if (response != null) 'response': response.toJson(),
+        if (source != null) 'source': source.toJson(),
+      };
 }
 
 /// Common audit log format for Google Cloud Platform API operations.
@@ -568,53 +540,28 @@ class AuditLog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (authenticationInfo != null) {
-      _json['authenticationInfo'] = authenticationInfo.toJson();
-    }
-    if (authorizationInfo != null) {
-      _json['authorizationInfo'] =
-          authorizationInfo.map((value) => value.toJson()).toList();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (methodName != null) {
-      _json['methodName'] = methodName;
-    }
-    if (numResponseItems != null) {
-      _json['numResponseItems'] = numResponseItems;
-    }
-    if (request != null) {
-      _json['request'] = request;
-    }
-    if (requestMetadata != null) {
-      _json['requestMetadata'] = requestMetadata.toJson();
-    }
-    if (resourceLocation != null) {
-      _json['resourceLocation'] = resourceLocation.toJson();
-    }
-    if (resourceName != null) {
-      _json['resourceName'] = resourceName;
-    }
-    if (resourceOriginalState != null) {
-      _json['resourceOriginalState'] = resourceOriginalState;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    if (serviceData != null) {
-      _json['serviceData'] = serviceData;
-    }
-    if (serviceName != null) {
-      _json['serviceName'] = serviceName;
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (authenticationInfo != null)
+          'authenticationInfo': authenticationInfo.toJson(),
+        if (authorizationInfo != null)
+          'authorizationInfo':
+              authorizationInfo.map((value) => value.toJson()).toList(),
+        if (metadata != null) 'metadata': metadata,
+        if (methodName != null) 'methodName': methodName,
+        if (numResponseItems != null) 'numResponseItems': numResponseItems,
+        if (request != null) 'request': request,
+        if (requestMetadata != null)
+          'requestMetadata': requestMetadata.toJson(),
+        if (resourceLocation != null)
+          'resourceLocation': resourceLocation.toJson(),
+        if (resourceName != null) 'resourceName': resourceName,
+        if (resourceOriginalState != null)
+          'resourceOriginalState': resourceOriginalState,
+        if (response != null) 'response': response,
+        if (serviceData != null) 'serviceData': serviceData,
+        if (serviceName != null) 'serviceName': serviceName,
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 /// This message defines request authentication attributes.
@@ -705,25 +652,13 @@ class Auth {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessLevels != null) {
-      _json['accessLevels'] = accessLevels;
-    }
-    if (audiences != null) {
-      _json['audiences'] = audiences;
-    }
-    if (claims != null) {
-      _json['claims'] = claims;
-    }
-    if (presenter != null) {
-      _json['presenter'] = presenter;
-    }
-    if (principal != null) {
-      _json['principal'] = principal;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessLevels != null) 'accessLevels': accessLevels,
+        if (audiences != null) 'audiences': audiences,
+        if (claims != null) 'claims': claims,
+        if (presenter != null) 'presenter': presenter,
+        if (principal != null) 'principal': principal,
+      };
 }
 
 /// Authentication information for the operation.
@@ -808,29 +743,19 @@ class AuthenticationInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (authoritySelector != null) {
-      _json['authoritySelector'] = authoritySelector;
-    }
-    if (principalEmail != null) {
-      _json['principalEmail'] = principalEmail;
-    }
-    if (principalSubject != null) {
-      _json['principalSubject'] = principalSubject;
-    }
-    if (serviceAccountDelegationInfo != null) {
-      _json['serviceAccountDelegationInfo'] =
-          serviceAccountDelegationInfo.map((value) => value.toJson()).toList();
-    }
-    if (serviceAccountKeyName != null) {
-      _json['serviceAccountKeyName'] = serviceAccountKeyName;
-    }
-    if (thirdPartyPrincipal != null) {
-      _json['thirdPartyPrincipal'] = thirdPartyPrincipal;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (authoritySelector != null) 'authoritySelector': authoritySelector,
+        if (principalEmail != null) 'principalEmail': principalEmail,
+        if (principalSubject != null) 'principalSubject': principalSubject,
+        if (serviceAccountDelegationInfo != null)
+          'serviceAccountDelegationInfo': serviceAccountDelegationInfo
+              .map((value) => value.toJson())
+              .toList(),
+        if (serviceAccountKeyName != null)
+          'serviceAccountKeyName': serviceAccountKeyName,
+        if (thirdPartyPrincipal != null)
+          'thirdPartyPrincipal': thirdPartyPrincipal,
+      };
 }
 
 /// Authorization information for the operation.
@@ -873,22 +798,13 @@ class AuthorizationInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (granted != null) {
-      _json['granted'] = granted;
-    }
-    if (permission != null) {
-      _json['permission'] = permission;
-    }
-    if (resource != null) {
-      _json['resource'] = resource;
-    }
-    if (resourceAttributes != null) {
-      _json['resourceAttributes'] = resourceAttributes.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (granted != null) 'granted': granted,
+        if (permission != null) 'permission': permission,
+        if (resource != null) 'resource': resource,
+        if (resourceAttributes != null)
+          'resourceAttributes': resourceAttributes.toJson(),
+      };
 }
 
 /// Request message for the Check method.
@@ -932,22 +848,13 @@ class CheckRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributes != null) {
-      _json['attributes'] = attributes.toJson();
-    }
-    if (flags != null) {
-      _json['flags'] = flags;
-    }
-    if (resources != null) {
-      _json['resources'] = resources.map((value) => value.toJson()).toList();
-    }
-    if (serviceConfigId != null) {
-      _json['serviceConfigId'] = serviceConfigId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributes != null) 'attributes': attributes.toJson(),
+        if (flags != null) 'flags': flags,
+        if (resources != null)
+          'resources': resources.map((value) => value.toJson()).toList(),
+        if (serviceConfigId != null) 'serviceConfigId': serviceConfigId,
+      };
 }
 
 /// Response message for the Check method.
@@ -979,16 +886,10 @@ class CheckResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (headers != null) {
-      _json['headers'] = headers;
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (headers != null) 'headers': headers,
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 /// First party identity principal.
@@ -1024,16 +925,10 @@ class FirstPartyPrincipal {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (principalEmail != null) {
-      _json['principalEmail'] = principalEmail;
-    }
-    if (serviceMetadata != null) {
-      _json['serviceMetadata'] = serviceMetadata;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (principalEmail != null) 'principalEmail': principalEmail,
+        if (serviceMetadata != null) 'serviceMetadata': serviceMetadata,
+      };
 }
 
 /// This message defines attributes for a node that handles a network request.
@@ -1090,25 +985,13 @@ class Peer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ip != null) {
-      _json['ip'] = ip;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (port != null) {
-      _json['port'] = port;
-    }
-    if (principal != null) {
-      _json['principal'] = principal;
-    }
-    if (regionCode != null) {
-      _json['regionCode'] = regionCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ip != null) 'ip': ip,
+        if (labels != null) 'labels': labels,
+        if (port != null) 'port': port,
+        if (principal != null) 'principal': principal,
+        if (regionCode != null) 'regionCode': regionCode,
+      };
 }
 
 /// Request message for the Report method.
@@ -1140,16 +1023,11 @@ class ReportRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    if (serviceConfigId != null) {
-      _json['serviceConfigId'] = serviceConfigId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+        if (serviceConfigId != null) 'serviceConfigId': serviceConfigId,
+      };
 }
 
 /// Response message for the Report method.
@@ -1162,10 +1040,7 @@ class ReportResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// This message defines attributes for an HTTP request.
@@ -1282,46 +1157,20 @@ class Request {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auth != null) {
-      _json['auth'] = auth.toJson();
-    }
-    if (headers != null) {
-      _json['headers'] = headers;
-    }
-    if (host != null) {
-      _json['host'] = host;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (method != null) {
-      _json['method'] = method;
-    }
-    if (path != null) {
-      _json['path'] = path;
-    }
-    if (protocol != null) {
-      _json['protocol'] = protocol;
-    }
-    if (query != null) {
-      _json['query'] = query;
-    }
-    if (reason != null) {
-      _json['reason'] = reason;
-    }
-    if (scheme != null) {
-      _json['scheme'] = scheme;
-    }
-    if (size != null) {
-      _json['size'] = size;
-    }
-    if (time != null) {
-      _json['time'] = time;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auth != null) 'auth': auth.toJson(),
+        if (headers != null) 'headers': headers,
+        if (host != null) 'host': host,
+        if (id != null) 'id': id,
+        if (method != null) 'method': method,
+        if (path != null) 'path': path,
+        if (protocol != null) 'protocol': protocol,
+        if (query != null) 'query': query,
+        if (reason != null) 'reason': reason,
+        if (scheme != null) 'scheme': scheme,
+        if (size != null) 'size': size,
+        if (time != null) 'time': time,
+      };
 }
 
 /// Metadata about the request.
@@ -1395,25 +1244,16 @@ class RequestMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (callerIp != null) {
-      _json['callerIp'] = callerIp;
-    }
-    if (callerNetwork != null) {
-      _json['callerNetwork'] = callerNetwork;
-    }
-    if (callerSuppliedUserAgent != null) {
-      _json['callerSuppliedUserAgent'] = callerSuppliedUserAgent;
-    }
-    if (destinationAttributes != null) {
-      _json['destinationAttributes'] = destinationAttributes.toJson();
-    }
-    if (requestAttributes != null) {
-      _json['requestAttributes'] = requestAttributes.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (callerIp != null) 'callerIp': callerIp,
+        if (callerNetwork != null) 'callerNetwork': callerNetwork,
+        if (callerSuppliedUserAgent != null)
+          'callerSuppliedUserAgent': callerSuppliedUserAgent,
+        if (destinationAttributes != null)
+          'destinationAttributes': destinationAttributes.toJson(),
+        if (requestAttributes != null)
+          'requestAttributes': requestAttributes.toJson(),
+      };
 }
 
 /// This message defines core attributes for a resource.
@@ -1570,46 +1410,20 @@ class Resource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotations != null) {
-      _json['annotations'] = annotations;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (deleteTime != null) {
-      _json['deleteTime'] = deleteTime;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (uid != null) {
-      _json['uid'] = uid;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotations != null) 'annotations': annotations,
+        if (createTime != null) 'createTime': createTime,
+        if (deleteTime != null) 'deleteTime': deleteTime,
+        if (displayName != null) 'displayName': displayName,
+        if (etag != null) 'etag': etag,
+        if (labels != null) 'labels': labels,
+        if (location != null) 'location': location,
+        if (name != null) 'name': name,
+        if (service != null) 'service': service,
+        if (type != null) 'type': type,
+        if (uid != null) 'uid': uid,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Describes a resource referenced in the request.
@@ -1639,19 +1453,11 @@ class ResourceInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (permission != null) {
-      _json['permission'] = permission;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (permission != null) 'permission': permission,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Location information about a resource.
@@ -1685,16 +1491,10 @@ class ResourceLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (currentLocations != null) {
-      _json['currentLocations'] = currentLocations;
-    }
-    if (originalLocations != null) {
-      _json['originalLocations'] = originalLocations;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (currentLocations != null) 'currentLocations': currentLocations,
+        if (originalLocations != null) 'originalLocations': originalLocations,
+      };
 }
 
 /// This message defines attributes for a typical network response.
@@ -1743,22 +1543,12 @@ class Response {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (headers != null) {
-      _json['headers'] = headers;
-    }
-    if (size != null) {
-      _json['size'] = size;
-    }
-    if (time != null) {
-      _json['time'] = time;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (headers != null) 'headers': headers,
+        if (size != null) 'size': size,
+        if (time != null) 'time': time,
+      };
 }
 
 /// Identity delegation history of an authenticated service account.
@@ -1790,19 +1580,13 @@ class ServiceAccountDelegationInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (firstPartyPrincipal != null) {
-      _json['firstPartyPrincipal'] = firstPartyPrincipal.toJson();
-    }
-    if (principalSubject != null) {
-      _json['principalSubject'] = principalSubject;
-    }
-    if (thirdPartyPrincipal != null) {
-      _json['thirdPartyPrincipal'] = thirdPartyPrincipal.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (firstPartyPrincipal != null)
+          'firstPartyPrincipal': firstPartyPrincipal.toJson(),
+        if (principalSubject != null) 'principalSubject': principalSubject,
+        if (thirdPartyPrincipal != null)
+          'thirdPartyPrincipal': thirdPartyPrincipal.toJson(),
+      };
 }
 
 /// The context of a span, attached to Exemplars in Distribution values during
@@ -1829,13 +1613,9 @@ class SpanContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (spanName != null) {
-      _json['spanName'] = spanName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (spanName != null) 'spanName': spanName,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -1885,19 +1665,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Third party identity principal.
@@ -1923,11 +1695,7 @@ class ThirdPartyPrincipal {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (thirdPartyClaims != null) {
-      _json['thirdPartyClaims'] = thirdPartyClaims;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (thirdPartyClaims != null) 'thirdPartyClaims': thirdPartyClaims,
+      };
 }

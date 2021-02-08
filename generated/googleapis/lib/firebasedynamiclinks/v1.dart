@@ -326,16 +326,12 @@ class AnalyticsInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (googlePlayAnalytics != null) {
-      _json['googlePlayAnalytics'] = googlePlayAnalytics.toJson();
-    }
-    if (itunesConnectAnalytics != null) {
-      _json['itunesConnectAnalytics'] = itunesConnectAnalytics.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (googlePlayAnalytics != null)
+          'googlePlayAnalytics': googlePlayAnalytics.toJson(),
+        if (itunesConnectAnalytics != null)
+          'itunesConnectAnalytics': itunesConnectAnalytics.toJson(),
+      };
 }
 
 /// Android related attributes to the Dynamic Link.
@@ -373,22 +369,15 @@ class AndroidInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (androidFallbackLink != null) {
-      _json['androidFallbackLink'] = androidFallbackLink;
-    }
-    if (androidLink != null) {
-      _json['androidLink'] = androidLink;
-    }
-    if (androidMinPackageVersionCode != null) {
-      _json['androidMinPackageVersionCode'] = androidMinPackageVersionCode;
-    }
-    if (androidPackageName != null) {
-      _json['androidPackageName'] = androidPackageName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (androidFallbackLink != null)
+          'androidFallbackLink': androidFallbackLink,
+        if (androidLink != null) 'androidLink': androidLink,
+        if (androidMinPackageVersionCode != null)
+          'androidMinPackageVersionCode': androidMinPackageVersionCode,
+        if (androidPackageName != null)
+          'androidPackageName': androidPackageName,
+      };
 }
 
 /// Request to create a managed Short Dynamic Link.
@@ -444,25 +433,14 @@ class CreateManagedShortLinkRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dynamicLinkInfo != null) {
-      _json['dynamicLinkInfo'] = dynamicLinkInfo.toJson();
-    }
-    if (longDynamicLink != null) {
-      _json['longDynamicLink'] = longDynamicLink;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (sdkVersion != null) {
-      _json['sdkVersion'] = sdkVersion;
-    }
-    if (suffix != null) {
-      _json['suffix'] = suffix.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dynamicLinkInfo != null)
+          'dynamicLinkInfo': dynamicLinkInfo.toJson(),
+        if (longDynamicLink != null) 'longDynamicLink': longDynamicLink,
+        if (name != null) 'name': name,
+        if (sdkVersion != null) 'sdkVersion': sdkVersion,
+        if (suffix != null) 'suffix': suffix.toJson(),
+      };
 }
 
 /// Response to create a short Dynamic Link.
@@ -498,19 +476,13 @@ class CreateManagedShortLinkResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (managedShortLink != null) {
-      _json['managedShortLink'] = managedShortLink.toJson();
-    }
-    if (previewLink != null) {
-      _json['previewLink'] = previewLink;
-    }
-    if (warning != null) {
-      _json['warning'] = warning.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (managedShortLink != null)
+          'managedShortLink': managedShortLink.toJson(),
+        if (previewLink != null) 'previewLink': previewLink,
+        if (warning != null)
+          'warning': warning.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request to create a short Dynamic Link.
@@ -556,22 +528,13 @@ class CreateShortDynamicLinkRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dynamicLinkInfo != null) {
-      _json['dynamicLinkInfo'] = dynamicLinkInfo.toJson();
-    }
-    if (longDynamicLink != null) {
-      _json['longDynamicLink'] = longDynamicLink;
-    }
-    if (sdkVersion != null) {
-      _json['sdkVersion'] = sdkVersion;
-    }
-    if (suffix != null) {
-      _json['suffix'] = suffix.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dynamicLinkInfo != null)
+          'dynamicLinkInfo': dynamicLinkInfo.toJson(),
+        if (longDynamicLink != null) 'longDynamicLink': longDynamicLink,
+        if (sdkVersion != null) 'sdkVersion': sdkVersion,
+        if (suffix != null) 'suffix': suffix.toJson(),
+      };
 }
 
 /// Response to create a short Dynamic Link.
@@ -606,19 +569,12 @@ class CreateShortDynamicLinkResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (previewLink != null) {
-      _json['previewLink'] = previewLink;
-    }
-    if (shortLink != null) {
-      _json['shortLink'] = shortLink;
-    }
-    if (warning != null) {
-      _json['warning'] = warning.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (previewLink != null) 'previewLink': previewLink,
+        if (shortLink != null) 'shortLink': shortLink,
+        if (warning != null)
+          'warning': warning.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Desktop related attributes to the Dynamic Link.
@@ -634,13 +590,10 @@ class DesktopInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (desktopFallbackLink != null) {
-      _json['desktopFallbackLink'] = desktopFallbackLink;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (desktopFallbackLink != null)
+          'desktopFallbackLink': desktopFallbackLink,
+      };
 }
 
 /// Signals associated with the device making the request.
@@ -697,31 +650,18 @@ class DeviceInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceModelName != null) {
-      _json['deviceModelName'] = deviceModelName;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (languageCodeFromWebview != null) {
-      _json['languageCodeFromWebview'] = languageCodeFromWebview;
-    }
-    if (languageCodeRaw != null) {
-      _json['languageCodeRaw'] = languageCodeRaw;
-    }
-    if (screenResolutionHeight != null) {
-      _json['screenResolutionHeight'] = screenResolutionHeight;
-    }
-    if (screenResolutionWidth != null) {
-      _json['screenResolutionWidth'] = screenResolutionWidth;
-    }
-    if (timezone != null) {
-      _json['timezone'] = timezone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceModelName != null) 'deviceModelName': deviceModelName,
+        if (languageCode != null) 'languageCode': languageCode,
+        if (languageCodeFromWebview != null)
+          'languageCodeFromWebview': languageCodeFromWebview,
+        if (languageCodeRaw != null) 'languageCodeRaw': languageCodeRaw,
+        if (screenResolutionHeight != null)
+          'screenResolutionHeight': screenResolutionHeight,
+        if (screenResolutionWidth != null)
+          'screenResolutionWidth': screenResolutionWidth,
+        if (timezone != null) 'timezone': timezone,
+      };
 }
 
 /// Dynamic Link event stat.
@@ -768,19 +708,11 @@ class DynamicLinkEventStat {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (count != null) {
-      _json['count'] = count;
-    }
-    if (event != null) {
-      _json['event'] = event;
-    }
-    if (platform != null) {
-      _json['platform'] = platform;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (count != null) 'count': count,
+        if (event != null) 'event': event,
+        if (platform != null) 'platform': platform,
+      };
 }
 
 /// Information about a Dynamic Link.
@@ -877,37 +809,18 @@ class DynamicLinkInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (analyticsInfo != null) {
-      _json['analyticsInfo'] = analyticsInfo.toJson();
-    }
-    if (androidInfo != null) {
-      _json['androidInfo'] = androidInfo.toJson();
-    }
-    if (desktopInfo != null) {
-      _json['desktopInfo'] = desktopInfo.toJson();
-    }
-    if (domainUriPrefix != null) {
-      _json['domainUriPrefix'] = domainUriPrefix;
-    }
-    if (dynamicLinkDomain != null) {
-      _json['dynamicLinkDomain'] = dynamicLinkDomain;
-    }
-    if (iosInfo != null) {
-      _json['iosInfo'] = iosInfo.toJson();
-    }
-    if (link != null) {
-      _json['link'] = link;
-    }
-    if (navigationInfo != null) {
-      _json['navigationInfo'] = navigationInfo.toJson();
-    }
-    if (socialMetaTagInfo != null) {
-      _json['socialMetaTagInfo'] = socialMetaTagInfo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (analyticsInfo != null) 'analyticsInfo': analyticsInfo.toJson(),
+        if (androidInfo != null) 'androidInfo': androidInfo.toJson(),
+        if (desktopInfo != null) 'desktopInfo': desktopInfo.toJson(),
+        if (domainUriPrefix != null) 'domainUriPrefix': domainUriPrefix,
+        if (dynamicLinkDomain != null) 'dynamicLinkDomain': dynamicLinkDomain,
+        if (iosInfo != null) 'iosInfo': iosInfo.toJson(),
+        if (link != null) 'link': link,
+        if (navigationInfo != null) 'navigationInfo': navigationInfo.toJson(),
+        if (socialMetaTagInfo != null)
+          'socialMetaTagInfo': socialMetaTagInfo.toJson(),
+      };
 }
 
 /// Analytics stats of a Dynamic Link for a given timeframe.
@@ -926,14 +839,11 @@ class DynamicLinkStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (linkEventStats != null) {
-      _json['linkEventStats'] =
-          linkEventStats.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (linkEventStats != null)
+          'linkEventStats':
+              linkEventStats.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Dynamic Links warning messages.
@@ -1006,19 +916,12 @@ class DynamicLinkWarning {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (warningCode != null) {
-      _json['warningCode'] = warningCode;
-    }
-    if (warningDocumentLink != null) {
-      _json['warningDocumentLink'] = warningDocumentLink;
-    }
-    if (warningMessage != null) {
-      _json['warningMessage'] = warningMessage;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (warningCode != null) 'warningCode': warningCode,
+        if (warningDocumentLink != null)
+          'warningDocumentLink': warningDocumentLink,
+        if (warningMessage != null) 'warningMessage': warningMessage,
+      };
 }
 
 /// Request for iSDK to execute strong match flow for post-install attribution.
@@ -1109,34 +1012,18 @@ class GetIosPostInstallAttributionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appInstallationTime != null) {
-      _json['appInstallationTime'] = appInstallationTime;
-    }
-    if (bundleId != null) {
-      _json['bundleId'] = bundleId;
-    }
-    if (device != null) {
-      _json['device'] = device.toJson();
-    }
-    if (iosVersion != null) {
-      _json['iosVersion'] = iosVersion;
-    }
-    if (retrievalMethod != null) {
-      _json['retrievalMethod'] = retrievalMethod;
-    }
-    if (sdkVersion != null) {
-      _json['sdkVersion'] = sdkVersion;
-    }
-    if (uniqueMatchLinkToCheck != null) {
-      _json['uniqueMatchLinkToCheck'] = uniqueMatchLinkToCheck;
-    }
-    if (visualStyle != null) {
-      _json['visualStyle'] = visualStyle;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appInstallationTime != null)
+          'appInstallationTime': appInstallationTime,
+        if (bundleId != null) 'bundleId': bundleId,
+        if (device != null) 'device': device.toJson(),
+        if (iosVersion != null) 'iosVersion': iosVersion,
+        if (retrievalMethod != null) 'retrievalMethod': retrievalMethod,
+        if (sdkVersion != null) 'sdkVersion': sdkVersion,
+        if (uniqueMatchLinkToCheck != null)
+          'uniqueMatchLinkToCheck': uniqueMatchLinkToCheck,
+        if (visualStyle != null) 'visualStyle': visualStyle,
+      };
 }
 
 /// Response for iSDK to execute strong match flow for post-install attribution.
@@ -1279,58 +1166,27 @@ class GetIosPostInstallAttributionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appMinimumVersion != null) {
-      _json['appMinimumVersion'] = appMinimumVersion;
-    }
-    if (attributionConfidence != null) {
-      _json['attributionConfidence'] = attributionConfidence;
-    }
-    if (deepLink != null) {
-      _json['deepLink'] = deepLink;
-    }
-    if (externalBrowserDestinationLink != null) {
-      _json['externalBrowserDestinationLink'] = externalBrowserDestinationLink;
-    }
-    if (fallbackLink != null) {
-      _json['fallbackLink'] = fallbackLink;
-    }
-    if (invitationId != null) {
-      _json['invitationId'] = invitationId;
-    }
-    if (isStrongMatchExecutable != null) {
-      _json['isStrongMatchExecutable'] = isStrongMatchExecutable;
-    }
-    if (matchMessage != null) {
-      _json['matchMessage'] = matchMessage;
-    }
-    if (requestIpVersion != null) {
-      _json['requestIpVersion'] = requestIpVersion;
-    }
-    if (requestedLink != null) {
-      _json['requestedLink'] = requestedLink;
-    }
-    if (resolvedLink != null) {
-      _json['resolvedLink'] = resolvedLink;
-    }
-    if (utmCampaign != null) {
-      _json['utmCampaign'] = utmCampaign;
-    }
-    if (utmContent != null) {
-      _json['utmContent'] = utmContent;
-    }
-    if (utmMedium != null) {
-      _json['utmMedium'] = utmMedium;
-    }
-    if (utmSource != null) {
-      _json['utmSource'] = utmSource;
-    }
-    if (utmTerm != null) {
-      _json['utmTerm'] = utmTerm;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appMinimumVersion != null) 'appMinimumVersion': appMinimumVersion,
+        if (attributionConfidence != null)
+          'attributionConfidence': attributionConfidence,
+        if (deepLink != null) 'deepLink': deepLink,
+        if (externalBrowserDestinationLink != null)
+          'externalBrowserDestinationLink': externalBrowserDestinationLink,
+        if (fallbackLink != null) 'fallbackLink': fallbackLink,
+        if (invitationId != null) 'invitationId': invitationId,
+        if (isStrongMatchExecutable != null)
+          'isStrongMatchExecutable': isStrongMatchExecutable,
+        if (matchMessage != null) 'matchMessage': matchMessage,
+        if (requestIpVersion != null) 'requestIpVersion': requestIpVersion,
+        if (requestedLink != null) 'requestedLink': requestedLink,
+        if (resolvedLink != null) 'resolvedLink': resolvedLink,
+        if (utmCampaign != null) 'utmCampaign': utmCampaign,
+        if (utmContent != null) 'utmContent': utmContent,
+        if (utmMedium != null) 'utmMedium': utmMedium,
+        if (utmSource != null) 'utmSource': utmSource,
+        if (utmTerm != null) 'utmTerm': utmTerm,
+      };
 }
 
 /// Request for iSDK to get reopen attribution for app universal link open
@@ -1366,19 +1222,11 @@ class GetIosReopenAttributionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bundleId != null) {
-      _json['bundleId'] = bundleId;
-    }
-    if (requestedLink != null) {
-      _json['requestedLink'] = requestedLink;
-    }
-    if (sdkVersion != null) {
-      _json['sdkVersion'] = sdkVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bundleId != null) 'bundleId': bundleId,
+        if (requestedLink != null) 'requestedLink': requestedLink,
+        if (sdkVersion != null) 'sdkVersion': sdkVersion,
+      };
 }
 
 /// Response for iSDK to get reopen attribution for app universal link open
@@ -1450,37 +1298,17 @@ class GetIosReopenAttributionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deepLink != null) {
-      _json['deepLink'] = deepLink;
-    }
-    if (invitationId != null) {
-      _json['invitationId'] = invitationId;
-    }
-    if (iosMinAppVersion != null) {
-      _json['iosMinAppVersion'] = iosMinAppVersion;
-    }
-    if (resolvedLink != null) {
-      _json['resolvedLink'] = resolvedLink;
-    }
-    if (utmCampaign != null) {
-      _json['utmCampaign'] = utmCampaign;
-    }
-    if (utmContent != null) {
-      _json['utmContent'] = utmContent;
-    }
-    if (utmMedium != null) {
-      _json['utmMedium'] = utmMedium;
-    }
-    if (utmSource != null) {
-      _json['utmSource'] = utmSource;
-    }
-    if (utmTerm != null) {
-      _json['utmTerm'] = utmTerm;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deepLink != null) 'deepLink': deepLink,
+        if (invitationId != null) 'invitationId': invitationId,
+        if (iosMinAppVersion != null) 'iosMinAppVersion': iosMinAppVersion,
+        if (resolvedLink != null) 'resolvedLink': resolvedLink,
+        if (utmCampaign != null) 'utmCampaign': utmCampaign,
+        if (utmContent != null) 'utmContent': utmContent,
+        if (utmMedium != null) 'utmMedium': utmMedium,
+        if (utmSource != null) 'utmSource': utmSource,
+        if (utmTerm != null) 'utmTerm': utmTerm,
+      };
 }
 
 /// Parameters for Google Play Campaign Measurements.
@@ -1535,28 +1363,14 @@ class GooglePlayAnalytics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gclid != null) {
-      _json['gclid'] = gclid;
-    }
-    if (utmCampaign != null) {
-      _json['utmCampaign'] = utmCampaign;
-    }
-    if (utmContent != null) {
-      _json['utmContent'] = utmContent;
-    }
-    if (utmMedium != null) {
-      _json['utmMedium'] = utmMedium;
-    }
-    if (utmSource != null) {
-      _json['utmSource'] = utmSource;
-    }
-    if (utmTerm != null) {
-      _json['utmTerm'] = utmTerm;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gclid != null) 'gclid': gclid,
+        if (utmCampaign != null) 'utmCampaign': utmCampaign,
+        if (utmContent != null) 'utmContent': utmContent,
+        if (utmMedium != null) 'utmMedium': utmMedium,
+        if (utmSource != null) 'utmSource': utmSource,
+        if (utmTerm != null) 'utmTerm': utmTerm,
+      };
 }
 
 /// Parameters for iTunes Connect App Analytics.
@@ -1592,22 +1406,12 @@ class ITunesConnectAnalytics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (at != null) {
-      _json['at'] = at;
-    }
-    if (ct != null) {
-      _json['ct'] = ct;
-    }
-    if (mt != null) {
-      _json['mt'] = mt;
-    }
-    if (pt != null) {
-      _json['pt'] = pt;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (at != null) 'at': at,
+        if (ct != null) 'ct': ct,
+        if (mt != null) 'mt': mt,
+        if (pt != null) 'pt': pt,
+      };
 }
 
 /// iOS related attributes to the Dynamic Link..
@@ -1662,31 +1466,16 @@ class IosInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (iosAppStoreId != null) {
-      _json['iosAppStoreId'] = iosAppStoreId;
-    }
-    if (iosBundleId != null) {
-      _json['iosBundleId'] = iosBundleId;
-    }
-    if (iosCustomScheme != null) {
-      _json['iosCustomScheme'] = iosCustomScheme;
-    }
-    if (iosFallbackLink != null) {
-      _json['iosFallbackLink'] = iosFallbackLink;
-    }
-    if (iosIpadBundleId != null) {
-      _json['iosIpadBundleId'] = iosIpadBundleId;
-    }
-    if (iosIpadFallbackLink != null) {
-      _json['iosIpadFallbackLink'] = iosIpadFallbackLink;
-    }
-    if (iosMinimumVersion != null) {
-      _json['iosMinimumVersion'] = iosMinimumVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (iosAppStoreId != null) 'iosAppStoreId': iosAppStoreId,
+        if (iosBundleId != null) 'iosBundleId': iosBundleId,
+        if (iosCustomScheme != null) 'iosCustomScheme': iosCustomScheme,
+        if (iosFallbackLink != null) 'iosFallbackLink': iosFallbackLink,
+        if (iosIpadBundleId != null) 'iosIpadBundleId': iosIpadBundleId,
+        if (iosIpadFallbackLink != null)
+          'iosIpadFallbackLink': iosIpadFallbackLink,
+        if (iosMinimumVersion != null) 'iosMinimumVersion': iosMinimumVersion,
+      };
 }
 
 /// Managed Short Link.
@@ -1746,28 +1535,14 @@ class ManagedShortLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (creationTime != null) {
-      _json['creationTime'] = creationTime;
-    }
-    if (flaggedAttribute != null) {
-      _json['flaggedAttribute'] = flaggedAttribute;
-    }
-    if (info != null) {
-      _json['info'] = info.toJson();
-    }
-    if (link != null) {
-      _json['link'] = link;
-    }
-    if (linkName != null) {
-      _json['linkName'] = linkName;
-    }
-    if (visibility != null) {
-      _json['visibility'] = visibility;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (creationTime != null) 'creationTime': creationTime,
+        if (flaggedAttribute != null) 'flaggedAttribute': flaggedAttribute,
+        if (info != null) 'info': info.toJson(),
+        if (link != null) 'link': link,
+        if (linkName != null) 'linkName': linkName,
+        if (visibility != null) 'visibility': visibility,
+      };
 }
 
 /// Information of navigation behavior.
@@ -1784,13 +1559,10 @@ class NavigationInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enableForcedRedirect != null) {
-      _json['enableForcedRedirect'] = enableForcedRedirect;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enableForcedRedirect != null)
+          'enableForcedRedirect': enableForcedRedirect,
+      };
 }
 
 /// Parameters for social meta tag params.
@@ -1826,19 +1598,11 @@ class SocialMetaTagInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (socialDescription != null) {
-      _json['socialDescription'] = socialDescription;
-    }
-    if (socialImageLink != null) {
-      _json['socialImageLink'] = socialImageLink;
-    }
-    if (socialTitle != null) {
-      _json['socialTitle'] = socialTitle;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (socialDescription != null) 'socialDescription': socialDescription,
+        if (socialImageLink != null) 'socialImageLink': socialImageLink,
+        if (socialTitle != null) 'socialTitle': socialTitle,
+      };
 }
 
 /// Short Dynamic Link suffix.
@@ -1874,14 +1638,8 @@ class Suffix {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customSuffix != null) {
-      _json['customSuffix'] = customSuffix;
-    }
-    if (option != null) {
-      _json['option'] = option;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customSuffix != null) 'customSuffix': customSuffix,
+        if (option != null) 'option': option,
+      };
 }

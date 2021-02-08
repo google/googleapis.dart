@@ -1585,25 +1585,13 @@ class AccessLevel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basic != null) {
-      _json['basic'] = basic.toJson();
-    }
-    if (custom != null) {
-      _json['custom'] = custom.toJson();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basic != null) 'basic': basic.toJson(),
+        if (custom != null) 'custom': custom.toJson(),
+        if (description != null) 'description': description,
+        if (name != null) 'name': name,
+        if (title != null) 'title': title,
+      };
 }
 
 /// `AccessPolicy` is a container for `AccessLevels` (which define the necessary
@@ -1661,22 +1649,12 @@ class AccessPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (name != null) 'name': name,
+        if (parent != null) 'parent': parent,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Identification for an API Operation.
@@ -1710,17 +1688,12 @@ class ApiOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (methodSelectors != null) {
-      _json['methodSelectors'] =
-          methodSelectors.map((value) => value.toJson()).toList();
-    }
-    if (serviceName != null) {
-      _json['serviceName'] = serviceName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (methodSelectors != null)
+          'methodSelectors':
+              methodSelectors.map((value) => value.toJson()).toList(),
+        if (serviceName != null) 'serviceName': serviceName,
+      };
 }
 
 /// `BasicLevel` is an `AccessLevel` using a set of recommended features.
@@ -1757,16 +1730,11 @@ class BasicLevel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (combiningFunction != null) {
-      _json['combiningFunction'] = combiningFunction;
-    }
-    if (conditions != null) {
-      _json['conditions'] = conditions.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (combiningFunction != null) 'combiningFunction': combiningFunction,
+        if (conditions != null)
+          'conditions': conditions.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -1777,10 +1745,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A request to commit dry-run specs in all Service Perimeters belonging to an
@@ -1806,13 +1771,9 @@ class CommitServicePerimetersRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+      };
 }
 
 /// A response to CommitServicePerimetersRequest.
@@ -1833,14 +1794,11 @@ class CommitServicePerimetersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (servicePerimeters != null) {
-      _json['servicePerimeters'] =
-          servicePerimeters.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (servicePerimeters != null)
+          'servicePerimeters':
+              servicePerimeters.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A condition necessary for an `AccessLevel` to be granted.
@@ -1927,28 +1885,15 @@ class Condition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (devicePolicy != null) {
-      _json['devicePolicy'] = devicePolicy.toJson();
-    }
-    if (ipSubnetworks != null) {
-      _json['ipSubnetworks'] = ipSubnetworks;
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (negate != null) {
-      _json['negate'] = negate;
-    }
-    if (regions != null) {
-      _json['regions'] = regions;
-    }
-    if (requiredAccessLevels != null) {
-      _json['requiredAccessLevels'] = requiredAccessLevels;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (devicePolicy != null) 'devicePolicy': devicePolicy.toJson(),
+        if (ipSubnetworks != null) 'ipSubnetworks': ipSubnetworks,
+        if (members != null) 'members': members,
+        if (negate != null) 'negate': negate,
+        if (regions != null) 'regions': regions,
+        if (requiredAccessLevels != null)
+          'requiredAccessLevels': requiredAccessLevels,
+      };
 }
 
 /// `CustomLevel` is an `AccessLevel` using the Cloud Common Expression Language
@@ -1970,13 +1915,9 @@ class CustomLevel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (expr != null) {
-      _json['expr'] = expr.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (expr != null) 'expr': expr.toJson(),
+      };
 }
 
 /// `DevicePolicy` specifies device specific restrictions necessary to acquire a
@@ -2044,29 +1985,19 @@ class DevicePolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowedDeviceManagementLevels != null) {
-      _json['allowedDeviceManagementLevels'] = allowedDeviceManagementLevels;
-    }
-    if (allowedEncryptionStatuses != null) {
-      _json['allowedEncryptionStatuses'] = allowedEncryptionStatuses;
-    }
-    if (osConstraints != null) {
-      _json['osConstraints'] =
-          osConstraints.map((value) => value.toJson()).toList();
-    }
-    if (requireAdminApproval != null) {
-      _json['requireAdminApproval'] = requireAdminApproval;
-    }
-    if (requireCorpOwned != null) {
-      _json['requireCorpOwned'] = requireCorpOwned;
-    }
-    if (requireScreenlock != null) {
-      _json['requireScreenlock'] = requireScreenlock;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowedDeviceManagementLevels != null)
+          'allowedDeviceManagementLevels': allowedDeviceManagementLevels,
+        if (allowedEncryptionStatuses != null)
+          'allowedEncryptionStatuses': allowedEncryptionStatuses,
+        if (osConstraints != null)
+          'osConstraints':
+              osConstraints.map((value) => value.toJson()).toList(),
+        if (requireAdminApproval != null)
+          'requireAdminApproval': requireAdminApproval,
+        if (requireCorpOwned != null) 'requireCorpOwned': requireCorpOwned,
+        if (requireScreenlock != null) 'requireScreenlock': requireScreenlock,
+      };
 }
 
 /// Defines the conditions under which an EgressPolicy matches a request.
@@ -2111,16 +2042,10 @@ class EgressFrom {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (identities != null) {
-      _json['identities'] = identities;
-    }
-    if (identityType != null) {
-      _json['identityType'] = identityType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (identities != null) 'identities': identities,
+        if (identityType != null) 'identityType': identityType,
+      };
 }
 
 /// Policy for egress from perimeter.
@@ -2159,16 +2084,10 @@ class EgressPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (egressFrom != null) {
-      _json['egressFrom'] = egressFrom.toJson();
-    }
-    if (egressTo != null) {
-      _json['egressTo'] = egressTo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (egressFrom != null) 'egressFrom': egressFrom.toJson(),
+        if (egressTo != null) 'egressTo': egressTo.toJson(),
+      };
 }
 
 /// Defines the conditions under which an EgressPolicy matches a request.
@@ -2208,16 +2127,11 @@ class EgressTo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    if (resources != null) {
-      _json['resources'] = resources;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2234,10 +2148,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -2301,22 +2212,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Restricts access to Cloud Console and Google Cloud APIs for a set of users
@@ -2369,19 +2270,11 @@ class GcpUserAccessBinding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessLevels != null) {
-      _json['accessLevels'] = accessLevels;
-    }
-    if (groupKey != null) {
-      _json['groupKey'] = groupKey;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessLevels != null) 'accessLevels': accessLevels,
+        if (groupKey != null) 'groupKey': groupKey,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Defines the conditions under which an IngressPolicy matches a request.
@@ -2431,19 +2324,12 @@ class IngressFrom {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (identities != null) {
-      _json['identities'] = identities;
-    }
-    if (identityType != null) {
-      _json['identityType'] = identityType;
-    }
-    if (sources != null) {
-      _json['sources'] = sources.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (identities != null) 'identities': identities,
+        if (identityType != null) 'identityType': identityType,
+        if (sources != null)
+          'sources': sources.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Policy for ingress into ServicePerimeter.
@@ -2480,16 +2366,10 @@ class IngressPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ingressFrom != null) {
-      _json['ingressFrom'] = ingressFrom.toJson();
-    }
-    if (ingressTo != null) {
-      _json['ingressTo'] = ingressTo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ingressFrom != null) 'ingressFrom': ingressFrom.toJson(),
+        if (ingressTo != null) 'ingressTo': ingressTo.toJson(),
+      };
 }
 
 /// The source that IngressPolicy authorizes access from.
@@ -2525,16 +2405,10 @@ class IngressSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessLevel != null) {
-      _json['accessLevel'] = accessLevel;
-    }
-    if (resource != null) {
-      _json['resource'] = resource;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessLevel != null) 'accessLevel': accessLevel,
+        if (resource != null) 'resource': resource,
+      };
 }
 
 /// Defines the conditions under which an IngressPolicy matches a request.
@@ -2572,16 +2446,11 @@ class IngressTo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    if (resources != null) {
-      _json['resources'] = resources;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources,
+      };
 }
 
 /// A response to `ListAccessLevelsRequest`.
@@ -2608,17 +2477,11 @@ class ListAccessLevelsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessLevels != null) {
-      _json['accessLevels'] =
-          accessLevels.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessLevels != null)
+          'accessLevels': accessLevels.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// A response to `ListAccessPoliciesRequest`.
@@ -2645,17 +2508,12 @@ class ListAccessPoliciesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessPolicies != null) {
-      _json['accessPolicies'] =
-          accessPolicies.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessPolicies != null)
+          'accessPolicies':
+              accessPolicies.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response of ListGcpUserAccessBindings.
@@ -2682,17 +2540,12 @@ class ListGcpUserAccessBindingsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcpUserAccessBindings != null) {
-      _json['gcpUserAccessBindings'] =
-          gcpUserAccessBindings.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcpUserAccessBindings != null)
+          'gcpUserAccessBindings':
+              gcpUserAccessBindings.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -2717,16 +2570,11 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A response to `ListServicePerimetersRequest`.
@@ -2753,17 +2601,12 @@ class ListServicePerimetersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (servicePerimeters != null) {
-      _json['servicePerimeters'] =
-          servicePerimeters.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (servicePerimeters != null)
+          'servicePerimeters':
+              servicePerimeters.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// An allowed method or permission of a service specified in ApiOperation.
@@ -2790,16 +2633,10 @@ class MethodSelector {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (method != null) {
-      _json['method'] = method;
-    }
-    if (permission != null) {
-      _json['permission'] = permission;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (method != null) 'method': method,
+        if (permission != null) 'permission': permission,
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -2878,25 +2715,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// A restriction on the OS type and version of devices making requests.
@@ -2942,19 +2767,12 @@ class OsConstraint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (minimumVersion != null) {
-      _json['minimumVersion'] = minimumVersion;
-    }
-    if (osType != null) {
-      _json['osType'] = osType;
-    }
-    if (requireVerifiedChromeOs != null) {
-      _json['requireVerifiedChromeOs'] = requireVerifiedChromeOs;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (minimumVersion != null) 'minimumVersion': minimumVersion,
+        if (osType != null) 'osType': osType,
+        if (requireVerifiedChromeOs != null)
+          'requireVerifiedChromeOs': requireVerifiedChromeOs,
+      };
 }
 
 /// A request to replace all existing Access Levels in an Access Policy with the
@@ -2994,17 +2812,11 @@ class ReplaceAccessLevelsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessLevels != null) {
-      _json['accessLevels'] =
-          accessLevels.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessLevels != null)
+          'accessLevels': accessLevels.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+      };
 }
 
 /// A response to ReplaceAccessLevelsRequest.
@@ -3025,14 +2837,10 @@ class ReplaceAccessLevelsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessLevels != null) {
-      _json['accessLevels'] =
-          accessLevels.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessLevels != null)
+          'accessLevels': accessLevels.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A request to replace all existing Service Perimeters in an Access Policy
@@ -3072,17 +2880,12 @@ class ReplaceServicePerimetersRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (servicePerimeters != null) {
-      _json['servicePerimeters'] =
-          servicePerimeters.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (servicePerimeters != null)
+          'servicePerimeters':
+              servicePerimeters.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A response to ReplaceServicePerimetersRequest.
@@ -3103,14 +2906,11 @@ class ReplaceServicePerimetersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (servicePerimeters != null) {
-      _json['servicePerimeters'] =
-          servicePerimeters.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (servicePerimeters != null)
+          'servicePerimeters':
+              servicePerimeters.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// `ServicePerimeter` describes a set of Google Cloud resources which can
@@ -3212,31 +3012,16 @@ class ServicePerimeter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (perimeterType != null) {
-      _json['perimeterType'] = perimeterType;
-    }
-    if (spec != null) {
-      _json['spec'] = spec.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (useExplicitDryRunSpec != null) {
-      _json['useExplicitDryRunSpec'] = useExplicitDryRunSpec;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (name != null) 'name': name,
+        if (perimeterType != null) 'perimeterType': perimeterType,
+        if (spec != null) 'spec': spec.toJson(),
+        if (status != null) 'status': status.toJson(),
+        if (title != null) 'title': title,
+        if (useExplicitDryRunSpec != null)
+          'useExplicitDryRunSpec': useExplicitDryRunSpec,
+      };
 }
 
 /// `ServicePerimeterConfig` specifies a set of Google Cloud resources that
@@ -3321,30 +3106,20 @@ class ServicePerimeterConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessLevels != null) {
-      _json['accessLevels'] = accessLevels;
-    }
-    if (egressPolicies != null) {
-      _json['egressPolicies'] =
-          egressPolicies.map((value) => value.toJson()).toList();
-    }
-    if (ingressPolicies != null) {
-      _json['ingressPolicies'] =
-          ingressPolicies.map((value) => value.toJson()).toList();
-    }
-    if (resources != null) {
-      _json['resources'] = resources;
-    }
-    if (restrictedServices != null) {
-      _json['restrictedServices'] = restrictedServices;
-    }
-    if (vpcAccessibleServices != null) {
-      _json['vpcAccessibleServices'] = vpcAccessibleServices.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessLevels != null) 'accessLevels': accessLevels,
+        if (egressPolicies != null)
+          'egressPolicies':
+              egressPolicies.map((value) => value.toJson()).toList(),
+        if (ingressPolicies != null)
+          'ingressPolicies':
+              ingressPolicies.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources,
+        if (restrictedServices != null)
+          'restrictedServices': restrictedServices,
+        if (vpcAccessibleServices != null)
+          'vpcAccessibleServices': vpcAccessibleServices.toJson(),
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -3394,19 +3169,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Specifies how APIs are allowed to communicate within the Service Perimeter.
@@ -3436,14 +3203,8 @@ class VpcAccessibleServices {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowedServices != null) {
-      _json['allowedServices'] = allowedServices;
-    }
-    if (enableRestriction != null) {
-      _json['enableRestriction'] = enableRestriction;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowedServices != null) 'allowedServices': allowedServices,
+        if (enableRestriction != null) 'enableRestriction': enableRestriction,
+      };
 }

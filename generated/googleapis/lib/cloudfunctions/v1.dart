@@ -894,17 +894,12 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditLogConfigs != null) {
-      _json['auditLogConfigs'] =
-          auditLogConfigs.map((value) => value.toJson()).toList();
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditLogConfigs != null)
+          'auditLogConfigs':
+              auditLogConfigs.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service,
+      };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -941,16 +936,10 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exemptedMembers != null) {
-      _json['exemptedMembers'] = exemptedMembers;
-    }
-    if (logType != null) {
-      _json['logType'] = logType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
+        if (logType != null) 'logType': logType,
+      };
 }
 
 /// Associates `members` with a `role`.
@@ -1019,19 +1008,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// Request for the `CallFunction` method.
@@ -1049,13 +1030,9 @@ class CallFunctionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (data != null) {
-      _json['data'] = data;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (data != null) 'data': data,
+      };
 }
 
 /// Response of `CallFunction` method.
@@ -1088,19 +1065,11 @@ class CallFunctionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (error != null) {
-      _json['error'] = error;
-    }
-    if (executionId != null) {
-      _json['executionId'] = executionId;
-    }
-    if (result != null) {
-      _json['result'] = result;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (error != null) 'error': error,
+        if (executionId != null) 'executionId': executionId,
+        if (result != null) 'result': result,
+      };
 }
 
 /// Describes a Cloud Function that contains user computation executed in
@@ -1392,88 +1361,39 @@ class CloudFunction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (availableMemoryMb != null) {
-      _json['availableMemoryMb'] = availableMemoryMb;
-    }
-    if (buildEnvironmentVariables != null) {
-      _json['buildEnvironmentVariables'] = buildEnvironmentVariables;
-    }
-    if (buildId != null) {
-      _json['buildId'] = buildId;
-    }
-    if (buildWorkerPool != null) {
-      _json['buildWorkerPool'] = buildWorkerPool;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (entryPoint != null) {
-      _json['entryPoint'] = entryPoint;
-    }
-    if (environmentVariables != null) {
-      _json['environmentVariables'] = environmentVariables;
-    }
-    if (eventTrigger != null) {
-      _json['eventTrigger'] = eventTrigger.toJson();
-    }
-    if (httpsTrigger != null) {
-      _json['httpsTrigger'] = httpsTrigger.toJson();
-    }
-    if (ingressSettings != null) {
-      _json['ingressSettings'] = ingressSettings;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (maxInstances != null) {
-      _json['maxInstances'] = maxInstances;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (network != null) {
-      _json['network'] = network;
-    }
-    if (runtime != null) {
-      _json['runtime'] = runtime;
-    }
-    if (serviceAccountEmail != null) {
-      _json['serviceAccountEmail'] = serviceAccountEmail;
-    }
-    if (sourceArchiveUrl != null) {
-      _json['sourceArchiveUrl'] = sourceArchiveUrl;
-    }
-    if (sourceRepository != null) {
-      _json['sourceRepository'] = sourceRepository.toJson();
-    }
-    if (sourceToken != null) {
-      _json['sourceToken'] = sourceToken;
-    }
-    if (sourceUploadUrl != null) {
-      _json['sourceUploadUrl'] = sourceUploadUrl;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (timeout != null) {
-      _json['timeout'] = timeout;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    if (versionId != null) {
-      _json['versionId'] = versionId;
-    }
-    if (vpcConnector != null) {
-      _json['vpcConnector'] = vpcConnector;
-    }
-    if (vpcConnectorEgressSettings != null) {
-      _json['vpcConnectorEgressSettings'] = vpcConnectorEgressSettings;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (availableMemoryMb != null) 'availableMemoryMb': availableMemoryMb,
+        if (buildEnvironmentVariables != null)
+          'buildEnvironmentVariables': buildEnvironmentVariables,
+        if (buildId != null) 'buildId': buildId,
+        if (buildWorkerPool != null) 'buildWorkerPool': buildWorkerPool,
+        if (description != null) 'description': description,
+        if (entryPoint != null) 'entryPoint': entryPoint,
+        if (environmentVariables != null)
+          'environmentVariables': environmentVariables,
+        if (eventTrigger != null) 'eventTrigger': eventTrigger.toJson(),
+        if (httpsTrigger != null) 'httpsTrigger': httpsTrigger.toJson(),
+        if (ingressSettings != null) 'ingressSettings': ingressSettings,
+        if (labels != null) 'labels': labels,
+        if (maxInstances != null) 'maxInstances': maxInstances,
+        if (name != null) 'name': name,
+        if (network != null) 'network': network,
+        if (runtime != null) 'runtime': runtime,
+        if (serviceAccountEmail != null)
+          'serviceAccountEmail': serviceAccountEmail,
+        if (sourceArchiveUrl != null) 'sourceArchiveUrl': sourceArchiveUrl,
+        if (sourceRepository != null)
+          'sourceRepository': sourceRepository.toJson(),
+        if (sourceToken != null) 'sourceToken': sourceToken,
+        if (sourceUploadUrl != null) 'sourceUploadUrl': sourceUploadUrl,
+        if (status != null) 'status': status,
+        if (timeout != null) 'timeout': timeout,
+        if (updateTime != null) 'updateTime': updateTime,
+        if (versionId != null) 'versionId': versionId,
+        if (vpcConnector != null) 'vpcConnector': vpcConnector,
+        if (vpcConnectorEgressSettings != null)
+          'vpcConnectorEgressSettings': vpcConnectorEgressSettings,
+      };
 }
 
 /// Describes EventTrigger, used to request events be sent from another service.
@@ -1537,22 +1457,12 @@ class EventTrigger {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (eventType != null) {
-      _json['eventType'] = eventType;
-    }
-    if (failurePolicy != null) {
-      _json['failurePolicy'] = failurePolicy.toJson();
-    }
-    if (resource != null) {
-      _json['resource'] = resource;
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (eventType != null) 'eventType': eventType,
+        if (failurePolicy != null) 'failurePolicy': failurePolicy.toJson(),
+        if (resource != null) 'resource': resource,
+        if (service != null) 'service': service,
+      };
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1616,22 +1526,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Describes the policy in case of function's execution failure.
@@ -1650,13 +1550,9 @@ class FailurePolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (retry != null) {
-      _json['retry'] = retry.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (retry != null) 'retry': retry.toJson(),
+      };
 }
 
 /// Request of `GenerateDownloadUrl` method.
@@ -1674,13 +1570,9 @@ class GenerateDownloadUrlRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (versionId != null) {
-      _json['versionId'] = versionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (versionId != null) 'versionId': versionId,
+      };
 }
 
 /// Response of `GenerateDownloadUrl` method.
@@ -1697,13 +1589,9 @@ class GenerateDownloadUrlResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (downloadUrl != null) {
-      _json['downloadUrl'] = downloadUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (downloadUrl != null) 'downloadUrl': downloadUrl,
+      };
 }
 
 /// Request of `GenerateSourceUploadUrl` method.
@@ -1714,10 +1602,7 @@ class GenerateUploadUrlRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Response of `GenerateSourceUploadUrl` method.
@@ -1736,13 +1621,9 @@ class GenerateUploadUrlResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uploadUrl != null) {
-      _json['uploadUrl'] = uploadUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uploadUrl != null) 'uploadUrl': uploadUrl,
+      };
 }
 
 /// Describes HttpsTrigger, could be used to connect web hooks to function.
@@ -1774,16 +1655,10 @@ class HttpsTrigger {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (securityLevel != null) {
-      _json['securityLevel'] = securityLevel;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (securityLevel != null) 'securityLevel': securityLevel,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Response for the `ListFunctions` method.
@@ -1820,19 +1695,12 @@ class ListFunctionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (functions != null) {
-      _json['functions'] = functions.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (unreachable != null) {
-      _json['unreachable'] = unreachable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (functions != null)
+          'functions': functions.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (unreachable != null) 'unreachable': unreachable,
+      };
 }
 
 /// The response message for Locations.ListLocations.
@@ -1857,16 +1725,11 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -1891,16 +1754,11 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A resource that represents Google Cloud Platform location.
@@ -1965,25 +1823,13 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (labels != null) 'labels': labels,
+        if (locationId != null) 'locationId': locationId,
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -2062,25 +1908,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// Metadata describing an Operation
@@ -2154,31 +1988,15 @@ class OperationMetadataV1 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (buildId != null) {
-      _json['buildId'] = buildId;
-    }
-    if (request != null) {
-      _json['request'] = request;
-    }
-    if (sourceToken != null) {
-      _json['sourceToken'] = sourceToken;
-    }
-    if (target != null) {
-      _json['target'] = target;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    if (versionId != null) {
-      _json['versionId'] = versionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (buildId != null) 'buildId': buildId,
+        if (request != null) 'request': request,
+        if (sourceToken != null) 'sourceToken': sourceToken,
+        if (target != null) 'target': target,
+        if (type != null) 'type': type,
+        if (updateTime != null) 'updateTime': updateTime,
+        if (versionId != null) 'versionId': versionId,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -2285,23 +2103,14 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditConfigs != null) {
-      _json['auditConfigs'] =
-          auditConfigs.map((value) => value.toJson()).toList();
-    }
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditConfigs != null)
+          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Describes the retry policy in case of function's execution failure.
@@ -2316,10 +2125,7 @@ class Retry {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -2349,16 +2155,10 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// Describes SourceRepository, used to represent parameters related to source
@@ -2397,16 +2197,10 @@ class SourceRepository {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deployedUrl != null) {
-      _json['deployedUrl'] = deployedUrl;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deployedUrl != null) 'deployedUrl': deployedUrl,
+        if (url != null) 'url': url,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -2456,19 +2250,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -2490,13 +2276,9 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -2515,11 +2297,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }

@@ -310,56 +310,25 @@ class Activity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (activityTime != null) {
-      _json['activityTime'] = activityTime;
-    }
-    if (activityType != null) {
-      _json['activityType'] = activityType;
-    }
-    if (appview != null) {
-      _json['appview'] = appview.toJson();
-    }
-    if (campaign != null) {
-      _json['campaign'] = campaign;
-    }
-    if (channelGrouping != null) {
-      _json['channelGrouping'] = channelGrouping;
-    }
-    if (customDimension != null) {
-      _json['customDimension'] =
-          customDimension.map((value) => value.toJson()).toList();
-    }
-    if (ecommerce != null) {
-      _json['ecommerce'] = ecommerce.toJson();
-    }
-    if (event != null) {
-      _json['event'] = event.toJson();
-    }
-    if (goals != null) {
-      _json['goals'] = goals.toJson();
-    }
-    if (hostname != null) {
-      _json['hostname'] = hostname;
-    }
-    if (keyword != null) {
-      _json['keyword'] = keyword;
-    }
-    if (landingPagePath != null) {
-      _json['landingPagePath'] = landingPagePath;
-    }
-    if (medium != null) {
-      _json['medium'] = medium;
-    }
-    if (pageview != null) {
-      _json['pageview'] = pageview.toJson();
-    }
-    if (source != null) {
-      _json['source'] = source;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (activityTime != null) 'activityTime': activityTime,
+        if (activityType != null) 'activityType': activityType,
+        if (appview != null) 'appview': appview.toJson(),
+        if (campaign != null) 'campaign': campaign,
+        if (channelGrouping != null) 'channelGrouping': channelGrouping,
+        if (customDimension != null)
+          'customDimension':
+              customDimension.map((value) => value.toJson()).toList(),
+        if (ecommerce != null) 'ecommerce': ecommerce.toJson(),
+        if (event != null) 'event': event.toJson(),
+        if (goals != null) 'goals': goals.toJson(),
+        if (hostname != null) 'hostname': hostname,
+        if (keyword != null) 'keyword': keyword,
+        if (landingPagePath != null) 'landingPagePath': landingPagePath,
+        if (medium != null) 'medium': medium,
+        if (pageview != null) 'pageview': pageview.toJson(),
+        if (source != null) 'source': source,
+      };
 }
 
 /// Defines a cohort.
@@ -412,19 +381,11 @@ class Cohort {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dateRange != null) {
-      _json['dateRange'] = dateRange.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dateRange != null) 'dateRange': dateRange.toJson(),
+        if (name != null) 'name': name,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Defines a cohort group.
@@ -474,16 +435,11 @@ class CohortGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cohorts != null) {
-      _json['cohorts'] = cohorts.map((value) => value.toJson()).toList();
-    }
-    if (lifetimeValue != null) {
-      _json['lifetimeValue'] = lifetimeValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cohorts != null)
+          'cohorts': cohorts.map((value) => value.toJson()).toList(),
+        if (lifetimeValue != null) 'lifetimeValue': lifetimeValue,
+      };
 }
 
 /// Column headers.
@@ -508,16 +464,10 @@ class ColumnHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensions != null) {
-      _json['dimensions'] = dimensions;
-    }
-    if (metricHeader != null) {
-      _json['metricHeader'] = metricHeader.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensions != null) 'dimensions': dimensions,
+        if (metricHeader != null) 'metricHeader': metricHeader.toJson(),
+      };
 }
 
 /// Custom dimension.
@@ -542,16 +492,10 @@ class CustomDimension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (index != null) {
-      _json['index'] = index;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (index != null) 'index': index,
+        if (value != null) 'value': value,
+      };
 }
 
 /// A contiguous set of days: startDate, startDate + 1 day, ..., endDate.
@@ -576,16 +520,10 @@ class DateRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endDate != null) {
-      _json['endDate'] = endDate;
-    }
-    if (startDate != null) {
-      _json['startDate'] = startDate;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endDate != null) 'endDate': endDate,
+        if (startDate != null) 'startDate': startDate,
+      };
 }
 
 /// Used to return a list of metrics for a single DateRange / dimension
@@ -613,17 +551,12 @@ class DateRangeValues {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pivotValueRegions != null) {
-      _json['pivotValueRegions'] =
-          pivotValueRegions.map((value) => value.toJson()).toList();
-    }
-    if (values != null) {
-      _json['values'] = values;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pivotValueRegions != null)
+          'pivotValueRegions':
+              pivotValueRegions.map((value) => value.toJson()).toList(),
+        if (values != null) 'values': values,
+      };
 }
 
 /// [Dimensions](https://support.google.com/analytics/answer/1033861) are
@@ -672,16 +605,10 @@ class Dimension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (histogramBuckets != null) {
-      _json['histogramBuckets'] = histogramBuckets;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (histogramBuckets != null) 'histogramBuckets': histogramBuckets,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Dimension filter specifies the filtering options on a dimension.
@@ -763,25 +690,13 @@ class DimensionFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (caseSensitive != null) {
-      _json['caseSensitive'] = caseSensitive;
-    }
-    if (dimensionName != null) {
-      _json['dimensionName'] = dimensionName;
-    }
-    if (expressions != null) {
-      _json['expressions'] = expressions;
-    }
-    if (not != null) {
-      _json['not'] = not;
-    }
-    if (operator != null) {
-      _json['operator'] = operator;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (caseSensitive != null) 'caseSensitive': caseSensitive,
+        if (dimensionName != null) 'dimensionName': dimensionName,
+        if (expressions != null) 'expressions': expressions,
+        if (not != null) 'not': not,
+        if (operator != null) 'operator': operator,
+      };
 }
 
 /// A group of dimension filters.
@@ -816,16 +731,11 @@ class DimensionFilterClause {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filters != null) {
-      _json['filters'] = filters.map((value) => value.toJson()).toList();
-    }
-    if (operator != null) {
-      _json['operator'] = operator;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filters != null)
+          'filters': filters.map((value) => value.toJson()).toList(),
+        if (operator != null) 'operator': operator,
+      };
 }
 
 /// Dynamic segment definition for defining the segment within the request.
@@ -857,19 +767,11 @@ class DynamicSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (sessionSegment != null) {
-      _json['sessionSegment'] = sessionSegment.toJson();
-    }
-    if (userSegment != null) {
-      _json['userSegment'] = userSegment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (sessionSegment != null) 'sessionSegment': sessionSegment.toJson(),
+        if (userSegment != null) 'userSegment': userSegment.toJson(),
+      };
 }
 
 /// E-commerce details associated with the user activity.
@@ -923,22 +825,13 @@ class EcommerceData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actionType != null) {
-      _json['actionType'] = actionType;
-    }
-    if (ecommerceType != null) {
-      _json['ecommerceType'] = ecommerceType;
-    }
-    if (products != null) {
-      _json['products'] = products.map((value) => value.toJson()).toList();
-    }
-    if (transaction != null) {
-      _json['transaction'] = transaction.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actionType != null) 'actionType': actionType,
+        if (ecommerceType != null) 'ecommerceType': ecommerceType,
+        if (products != null)
+          'products': products.map((value) => value.toJson()).toList(),
+        if (transaction != null) 'transaction': transaction.toJson(),
+      };
 }
 
 /// Represents all the details pertaining to an event.
@@ -982,25 +875,13 @@ class EventData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (eventAction != null) {
-      _json['eventAction'] = eventAction;
-    }
-    if (eventCategory != null) {
-      _json['eventCategory'] = eventCategory;
-    }
-    if (eventCount != null) {
-      _json['eventCount'] = eventCount;
-    }
-    if (eventLabel != null) {
-      _json['eventLabel'] = eventLabel;
-    }
-    if (eventValue != null) {
-      _json['eventValue'] = eventValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (eventAction != null) 'eventAction': eventAction,
+        if (eventCategory != null) 'eventCategory': eventCategory,
+        if (eventCount != null) 'eventCount': eventCount,
+        if (eventLabel != null) 'eventLabel': eventLabel,
+        if (eventValue != null) 'eventValue': eventValue,
+      };
 }
 
 /// The batch request containing multiple report request.
@@ -1037,17 +918,12 @@ class GetReportsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (reportRequests != null) {
-      _json['reportRequests'] =
-          reportRequests.map((value) => value.toJson()).toList();
-    }
-    if (useResourceQuotas != null) {
-      _json['useResourceQuotas'] = useResourceQuotas;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (reportRequests != null)
+          'reportRequests':
+              reportRequests.map((value) => value.toJson()).toList(),
+        if (useResourceQuotas != null) 'useResourceQuotas': useResourceQuotas,
+      };
 }
 
 /// The main response class which holds the reports from the Reporting API
@@ -1083,19 +959,13 @@ class GetReportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (queryCost != null) {
-      _json['queryCost'] = queryCost;
-    }
-    if (reports != null) {
-      _json['reports'] = reports.map((value) => value.toJson()).toList();
-    }
-    if (resourceQuotasRemaining != null) {
-      _json['resourceQuotasRemaining'] = resourceQuotasRemaining.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (queryCost != null) 'queryCost': queryCost,
+        if (reports != null)
+          'reports': reports.map((value) => value.toJson()).toList(),
+        if (resourceQuotasRemaining != null)
+          'resourceQuotasRemaining': resourceQuotasRemaining.toJson(),
+      };
 }
 
 /// Represents all the details pertaining to a goal.
@@ -1153,34 +1023,17 @@ class GoalData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (goalCompletionLocation != null) {
-      _json['goalCompletionLocation'] = goalCompletionLocation;
-    }
-    if (goalCompletions != null) {
-      _json['goalCompletions'] = goalCompletions;
-    }
-    if (goalIndex != null) {
-      _json['goalIndex'] = goalIndex;
-    }
-    if (goalName != null) {
-      _json['goalName'] = goalName;
-    }
-    if (goalPreviousStep1 != null) {
-      _json['goalPreviousStep1'] = goalPreviousStep1;
-    }
-    if (goalPreviousStep2 != null) {
-      _json['goalPreviousStep2'] = goalPreviousStep2;
-    }
-    if (goalPreviousStep3 != null) {
-      _json['goalPreviousStep3'] = goalPreviousStep3;
-    }
-    if (goalValue != null) {
-      _json['goalValue'] = goalValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (goalCompletionLocation != null)
+          'goalCompletionLocation': goalCompletionLocation,
+        if (goalCompletions != null) 'goalCompletions': goalCompletions,
+        if (goalIndex != null) 'goalIndex': goalIndex,
+        if (goalName != null) 'goalName': goalName,
+        if (goalPreviousStep1 != null) 'goalPreviousStep1': goalPreviousStep1,
+        if (goalPreviousStep2 != null) 'goalPreviousStep2': goalPreviousStep2,
+        if (goalPreviousStep3 != null) 'goalPreviousStep3': goalPreviousStep3,
+        if (goalValue != null) 'goalValue': goalValue,
+      };
 }
 
 /// Represents a set of goals that were reached in an activity.
@@ -1199,13 +1052,10 @@ class GoalSetData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (goals != null) {
-      _json['goals'] = goals.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (goals != null)
+          'goals': goals.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// [Metrics](https://support.google.com/analytics/answer/1033861) are the
@@ -1259,19 +1109,11 @@ class Metric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alias != null) {
-      _json['alias'] = alias;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (formattingType != null) {
-      _json['formattingType'] = formattingType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alias != null) 'alias': alias,
+        if (expression != null) 'expression': expression,
+        if (formattingType != null) 'formattingType': formattingType,
+      };
 }
 
 /// MetricFilter specifies the filter on a metric.
@@ -1326,22 +1168,12 @@ class MetricFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (comparisonValue != null) {
-      _json['comparisonValue'] = comparisonValue;
-    }
-    if (metricName != null) {
-      _json['metricName'] = metricName;
-    }
-    if (not != null) {
-      _json['not'] = not;
-    }
-    if (operator != null) {
-      _json['operator'] = operator;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (comparisonValue != null) 'comparisonValue': comparisonValue,
+        if (metricName != null) 'metricName': metricName,
+        if (not != null) 'not': not,
+        if (operator != null) 'operator': operator,
+      };
 }
 
 /// Represents a group of metric filters.
@@ -1376,16 +1208,11 @@ class MetricFilterClause {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filters != null) {
-      _json['filters'] = filters.map((value) => value.toJson()).toList();
-    }
-    if (operator != null) {
-      _json['operator'] = operator;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filters != null)
+          'filters': filters.map((value) => value.toJson()).toList(),
+        if (operator != null) 'operator': operator,
+      };
 }
 
 /// The headers for the metrics.
@@ -1413,18 +1240,13 @@ class MetricHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metricHeaderEntries != null) {
-      _json['metricHeaderEntries'] =
-          metricHeaderEntries.map((value) => value.toJson()).toList();
-    }
-    if (pivotHeaders != null) {
-      _json['pivotHeaders'] =
-          pivotHeaders.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metricHeaderEntries != null)
+          'metricHeaderEntries':
+              metricHeaderEntries.map((value) => value.toJson()).toList(),
+        if (pivotHeaders != null)
+          'pivotHeaders': pivotHeaders.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Header for the metrics.
@@ -1453,16 +1275,10 @@ class MetricHeaderEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (type != null) 'type': type,
+      };
 }
 
 /// A list of segment filters in the `OR` group are combined with the logical OR
@@ -1482,14 +1298,11 @@ class OrFiltersForSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (segmentFilterClauses != null) {
-      _json['segmentFilterClauses'] =
-          segmentFilterClauses.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (segmentFilterClauses != null)
+          'segmentFilterClauses':
+              segmentFilterClauses.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Specifies the sorting options.
@@ -1547,19 +1360,11 @@ class OrderBy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fieldName != null) {
-      _json['fieldName'] = fieldName;
-    }
-    if (orderType != null) {
-      _json['orderType'] = orderType;
-    }
-    if (sortOrder != null) {
-      _json['sortOrder'] = sortOrder;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fieldName != null) 'fieldName': fieldName,
+        if (orderType != null) 'orderType': orderType,
+        if (sortOrder != null) 'sortOrder': sortOrder,
+      };
 }
 
 /// Represents details collected when the visitor views a page.
@@ -1581,16 +1386,10 @@ class PageviewData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pagePath != null) {
-      _json['pagePath'] = pagePath;
-    }
-    if (pageTitle != null) {
-      _json['pageTitle'] = pageTitle;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pagePath != null) 'pagePath': pagePath,
+        if (pageTitle != null) 'pageTitle': pageTitle,
+      };
 }
 
 /// The Pivot describes the pivot section in the request.
@@ -1669,26 +1468,17 @@ class Pivot {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensionFilterClauses != null) {
-      _json['dimensionFilterClauses'] =
-          dimensionFilterClauses.map((value) => value.toJson()).toList();
-    }
-    if (dimensions != null) {
-      _json['dimensions'] = dimensions.map((value) => value.toJson()).toList();
-    }
-    if (maxGroupCount != null) {
-      _json['maxGroupCount'] = maxGroupCount;
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics.map((value) => value.toJson()).toList();
-    }
-    if (startGroup != null) {
-      _json['startGroup'] = startGroup;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensionFilterClauses != null)
+          'dimensionFilterClauses':
+              dimensionFilterClauses.map((value) => value.toJson()).toList(),
+        if (dimensions != null)
+          'dimensions': dimensions.map((value) => value.toJson()).toList(),
+        if (maxGroupCount != null) 'maxGroupCount': maxGroupCount,
+        if (metrics != null)
+          'metrics': metrics.map((value) => value.toJson()).toList(),
+        if (startGroup != null) 'startGroup': startGroup,
+      };
 }
 
 /// The headers for each of the pivot sections defined in the request.
@@ -1713,17 +1503,13 @@ class PivotHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pivotHeaderEntries != null) {
-      _json['pivotHeaderEntries'] =
-          pivotHeaderEntries.map((value) => value.toJson()).toList();
-    }
-    if (totalPivotGroupsCount != null) {
-      _json['totalPivotGroupsCount'] = totalPivotGroupsCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pivotHeaderEntries != null)
+          'pivotHeaderEntries':
+              pivotHeaderEntries.map((value) => value.toJson()).toList(),
+        if (totalPivotGroupsCount != null)
+          'totalPivotGroupsCount': totalPivotGroupsCount,
+      };
 }
 
 /// The headers for the each of the metric column corresponding to the metrics
@@ -1757,19 +1543,11 @@ class PivotHeaderEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensionNames != null) {
-      _json['dimensionNames'] = dimensionNames;
-    }
-    if (dimensionValues != null) {
-      _json['dimensionValues'] = dimensionValues;
-    }
-    if (metric != null) {
-      _json['metric'] = metric.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensionNames != null) 'dimensionNames': dimensionNames,
+        if (dimensionValues != null) 'dimensionValues': dimensionValues,
+        if (metric != null) 'metric': metric.toJson(),
+      };
 }
 
 /// The metric values in the pivot region.
@@ -1787,13 +1565,9 @@ class PivotValueRegion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (values != null) {
-      _json['values'] = values;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (values != null) 'values': values,
+      };
 }
 
 /// Details of the products in an e-commerce transaction.
@@ -1828,22 +1602,12 @@ class ProductData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (itemRevenue != null) {
-      _json['itemRevenue'] = itemRevenue;
-    }
-    if (productName != null) {
-      _json['productName'] = productName;
-    }
-    if (productQuantity != null) {
-      _json['productQuantity'] = productQuantity;
-    }
-    if (productSku != null) {
-      _json['productSku'] = productSku;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (itemRevenue != null) 'itemRevenue': itemRevenue,
+        if (productName != null) 'productName': productName,
+        if (productQuantity != null) 'productQuantity': productQuantity,
+        if (productSku != null) 'productSku': productSku,
+      };
 }
 
 /// The data response corresponding to the request.
@@ -1873,19 +1637,11 @@ class Report {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columnHeader != null) {
-      _json['columnHeader'] = columnHeader.toJson();
-    }
-    if (data != null) {
-      _json['data'] = data.toJson();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columnHeader != null) 'columnHeader': columnHeader.toJson(),
+        if (data != null) 'data': data.toJson(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The data part of the report.
@@ -1998,37 +1754,21 @@ class ReportData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataLastRefreshed != null) {
-      _json['dataLastRefreshed'] = dataLastRefreshed;
-    }
-    if (isDataGolden != null) {
-      _json['isDataGolden'] = isDataGolden;
-    }
-    if (maximums != null) {
-      _json['maximums'] = maximums.map((value) => value.toJson()).toList();
-    }
-    if (minimums != null) {
-      _json['minimums'] = minimums.map((value) => value.toJson()).toList();
-    }
-    if (rowCount != null) {
-      _json['rowCount'] = rowCount;
-    }
-    if (rows != null) {
-      _json['rows'] = rows.map((value) => value.toJson()).toList();
-    }
-    if (samplesReadCounts != null) {
-      _json['samplesReadCounts'] = samplesReadCounts;
-    }
-    if (samplingSpaceSizes != null) {
-      _json['samplingSpaceSizes'] = samplingSpaceSizes;
-    }
-    if (totals != null) {
-      _json['totals'] = totals.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataLastRefreshed != null) 'dataLastRefreshed': dataLastRefreshed,
+        if (isDataGolden != null) 'isDataGolden': isDataGolden,
+        if (maximums != null)
+          'maximums': maximums.map((value) => value.toJson()).toList(),
+        if (minimums != null)
+          'minimums': minimums.map((value) => value.toJson()).toList(),
+        if (rowCount != null) 'rowCount': rowCount,
+        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+        if (samplesReadCounts != null) 'samplesReadCounts': samplesReadCounts,
+        if (samplingSpaceSizes != null)
+          'samplingSpaceSizes': samplingSpaceSizes,
+        if (totals != null)
+          'totals': totals.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The main request class which specifies the Reporting API request.
@@ -2252,63 +1992,35 @@ class ReportRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cohortGroup != null) {
-      _json['cohortGroup'] = cohortGroup.toJson();
-    }
-    if (dateRanges != null) {
-      _json['dateRanges'] = dateRanges.map((value) => value.toJson()).toList();
-    }
-    if (dimensionFilterClauses != null) {
-      _json['dimensionFilterClauses'] =
-          dimensionFilterClauses.map((value) => value.toJson()).toList();
-    }
-    if (dimensions != null) {
-      _json['dimensions'] = dimensions.map((value) => value.toJson()).toList();
-    }
-    if (filtersExpression != null) {
-      _json['filtersExpression'] = filtersExpression;
-    }
-    if (hideTotals != null) {
-      _json['hideTotals'] = hideTotals;
-    }
-    if (hideValueRanges != null) {
-      _json['hideValueRanges'] = hideValueRanges;
-    }
-    if (includeEmptyRows != null) {
-      _json['includeEmptyRows'] = includeEmptyRows;
-    }
-    if (metricFilterClauses != null) {
-      _json['metricFilterClauses'] =
-          metricFilterClauses.map((value) => value.toJson()).toList();
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics.map((value) => value.toJson()).toList();
-    }
-    if (orderBys != null) {
-      _json['orderBys'] = orderBys.map((value) => value.toJson()).toList();
-    }
-    if (pageSize != null) {
-      _json['pageSize'] = pageSize;
-    }
-    if (pageToken != null) {
-      _json['pageToken'] = pageToken;
-    }
-    if (pivots != null) {
-      _json['pivots'] = pivots.map((value) => value.toJson()).toList();
-    }
-    if (samplingLevel != null) {
-      _json['samplingLevel'] = samplingLevel;
-    }
-    if (segments != null) {
-      _json['segments'] = segments.map((value) => value.toJson()).toList();
-    }
-    if (viewId != null) {
-      _json['viewId'] = viewId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cohortGroup != null) 'cohortGroup': cohortGroup.toJson(),
+        if (dateRanges != null)
+          'dateRanges': dateRanges.map((value) => value.toJson()).toList(),
+        if (dimensionFilterClauses != null)
+          'dimensionFilterClauses':
+              dimensionFilterClauses.map((value) => value.toJson()).toList(),
+        if (dimensions != null)
+          'dimensions': dimensions.map((value) => value.toJson()).toList(),
+        if (filtersExpression != null) 'filtersExpression': filtersExpression,
+        if (hideTotals != null) 'hideTotals': hideTotals,
+        if (hideValueRanges != null) 'hideValueRanges': hideValueRanges,
+        if (includeEmptyRows != null) 'includeEmptyRows': includeEmptyRows,
+        if (metricFilterClauses != null)
+          'metricFilterClauses':
+              metricFilterClauses.map((value) => value.toJson()).toList(),
+        if (metrics != null)
+          'metrics': metrics.map((value) => value.toJson()).toList(),
+        if (orderBys != null)
+          'orderBys': orderBys.map((value) => value.toJson()).toList(),
+        if (pageSize != null) 'pageSize': pageSize,
+        if (pageToken != null) 'pageToken': pageToken,
+        if (pivots != null)
+          'pivots': pivots.map((value) => value.toJson()).toList(),
+        if (samplingLevel != null) 'samplingLevel': samplingLevel,
+        if (segments != null)
+          'segments': segments.map((value) => value.toJson()).toList(),
+        if (viewId != null) 'viewId': viewId,
+      };
 }
 
 /// A row in the report.
@@ -2335,16 +2047,11 @@ class ReportRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensions != null) {
-      _json['dimensions'] = dimensions;
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensions != null) 'dimensions': dimensions,
+        if (metrics != null)
+          'metrics': metrics.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The resource quota tokens remaining for the property after the request is
@@ -2369,16 +2076,12 @@ class ResourceQuotasRemaining {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dailyQuotaTokensRemaining != null) {
-      _json['dailyQuotaTokensRemaining'] = dailyQuotaTokensRemaining;
-    }
-    if (hourlyQuotaTokensRemaining != null) {
-      _json['hourlyQuotaTokensRemaining'] = hourlyQuotaTokensRemaining;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dailyQuotaTokensRemaining != null)
+          'dailyQuotaTokensRemaining': dailyQuotaTokensRemaining,
+        if (hourlyQuotaTokensRemaining != null)
+          'hourlyQuotaTokensRemaining': hourlyQuotaTokensRemaining,
+      };
 }
 
 class ScreenviewData {
@@ -2415,22 +2118,13 @@ class ScreenviewData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appName != null) {
-      _json['appName'] = appName;
-    }
-    if (mobileDeviceBranding != null) {
-      _json['mobileDeviceBranding'] = mobileDeviceBranding;
-    }
-    if (mobileDeviceModel != null) {
-      _json['mobileDeviceModel'] = mobileDeviceModel;
-    }
-    if (screenName != null) {
-      _json['screenName'] = screenName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appName != null) 'appName': appName,
+        if (mobileDeviceBranding != null)
+          'mobileDeviceBranding': mobileDeviceBranding,
+        if (mobileDeviceModel != null) 'mobileDeviceModel': mobileDeviceModel,
+        if (screenName != null) 'screenName': screenName,
+      };
 }
 
 /// The request to fetch User Report from Reporting API `userActivity:get` call.
@@ -2506,28 +2200,14 @@ class SearchUserActivityRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (activityTypes != null) {
-      _json['activityTypes'] = activityTypes;
-    }
-    if (dateRange != null) {
-      _json['dateRange'] = dateRange.toJson();
-    }
-    if (pageSize != null) {
-      _json['pageSize'] = pageSize;
-    }
-    if (pageToken != null) {
-      _json['pageToken'] = pageToken;
-    }
-    if (user != null) {
-      _json['user'] = user.toJson();
-    }
-    if (viewId != null) {
-      _json['viewId'] = viewId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (activityTypes != null) 'activityTypes': activityTypes,
+        if (dateRange != null) 'dateRange': dateRange.toJson(),
+        if (pageSize != null) 'pageSize': pageSize,
+        if (pageToken != null) 'pageToken': pageToken,
+        if (user != null) 'user': user.toJson(),
+        if (viewId != null) 'viewId': viewId,
+      };
 }
 
 /// The response from `userActivity:get` call.
@@ -2572,22 +2252,13 @@ class SearchUserActivityResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (sampleRate != null) {
-      _json['sampleRate'] = sampleRate;
-    }
-    if (sessions != null) {
-      _json['sessions'] = sessions.map((value) => value.toJson()).toList();
-    }
-    if (totalRows != null) {
-      _json['totalRows'] = totalRows;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (sampleRate != null) 'sampleRate': sampleRate,
+        if (sessions != null)
+          'sessions': sessions.map((value) => value.toJson()).toList(),
+        if (totalRows != null) 'totalRows': totalRows,
+      };
 }
 
 /// The segment definition, if the report needs to be segmented.
@@ -2613,16 +2284,10 @@ class Segment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dynamicSegment != null) {
-      _json['dynamicSegment'] = dynamicSegment.toJson();
-    }
-    if (segmentId != null) {
-      _json['segmentId'] = segmentId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dynamicSegment != null) 'dynamicSegment': dynamicSegment.toJson(),
+        if (segmentId != null) 'segmentId': segmentId,
+      };
 }
 
 /// SegmentDefinition defines the segment to be a set of SegmentFilters which
@@ -2643,14 +2308,11 @@ class SegmentDefinition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (segmentFilters != null) {
-      _json['segmentFilters'] =
-          segmentFilters.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (segmentFilters != null)
+          'segmentFilters':
+              segmentFilters.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Dimension filter specifies the filtering options on a dimension.
@@ -2725,28 +2387,16 @@ class SegmentDimensionFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (caseSensitive != null) {
-      _json['caseSensitive'] = caseSensitive;
-    }
-    if (dimensionName != null) {
-      _json['dimensionName'] = dimensionName;
-    }
-    if (expressions != null) {
-      _json['expressions'] = expressions;
-    }
-    if (maxComparisonValue != null) {
-      _json['maxComparisonValue'] = maxComparisonValue;
-    }
-    if (minComparisonValue != null) {
-      _json['minComparisonValue'] = minComparisonValue;
-    }
-    if (operator != null) {
-      _json['operator'] = operator;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (caseSensitive != null) 'caseSensitive': caseSensitive,
+        if (dimensionName != null) 'dimensionName': dimensionName,
+        if (expressions != null) 'expressions': expressions,
+        if (maxComparisonValue != null)
+          'maxComparisonValue': maxComparisonValue,
+        if (minComparisonValue != null)
+          'minComparisonValue': minComparisonValue,
+        if (operator != null) 'operator': operator,
+      };
 }
 
 /// SegmentFilter defines the segment to be either a simple or a sequence
@@ -2791,19 +2441,12 @@ class SegmentFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (not != null) {
-      _json['not'] = not;
-    }
-    if (sequenceSegment != null) {
-      _json['sequenceSegment'] = sequenceSegment.toJson();
-    }
-    if (simpleSegment != null) {
-      _json['simpleSegment'] = simpleSegment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (not != null) 'not': not,
+        if (sequenceSegment != null)
+          'sequenceSegment': sequenceSegment.toJson(),
+        if (simpleSegment != null) 'simpleSegment': simpleSegment.toJson(),
+      };
 }
 
 /// Filter Clause to be used in a segment definition, can be wither a metric or
@@ -2834,19 +2477,12 @@ class SegmentFilterClause {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensionFilter != null) {
-      _json['dimensionFilter'] = dimensionFilter.toJson();
-    }
-    if (metricFilter != null) {
-      _json['metricFilter'] = metricFilter.toJson();
-    }
-    if (not != null) {
-      _json['not'] = not;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensionFilter != null)
+          'dimensionFilter': dimensionFilter.toJson(),
+        if (metricFilter != null) 'metricFilter': metricFilter.toJson(),
+        if (not != null) 'not': not,
+      };
 }
 
 /// Metric filter to be used in a segment filter clause.
@@ -2914,25 +2550,14 @@ class SegmentMetricFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (comparisonValue != null) {
-      _json['comparisonValue'] = comparisonValue;
-    }
-    if (maxComparisonValue != null) {
-      _json['maxComparisonValue'] = maxComparisonValue;
-    }
-    if (metricName != null) {
-      _json['metricName'] = metricName;
-    }
-    if (operator != null) {
-      _json['operator'] = operator;
-    }
-    if (scope != null) {
-      _json['scope'] = scope;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (comparisonValue != null) 'comparisonValue': comparisonValue,
+        if (maxComparisonValue != null)
+          'maxComparisonValue': maxComparisonValue,
+        if (metricName != null) 'metricName': metricName,
+        if (operator != null) 'operator': operator,
+        if (scope != null) 'scope': scope,
+      };
 }
 
 /// A segment sequence definition.
@@ -2966,17 +2591,12 @@ class SegmentSequenceStep {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (matchType != null) {
-      _json['matchType'] = matchType;
-    }
-    if (orFiltersForSegment != null) {
-      _json['orFiltersForSegment'] =
-          orFiltersForSegment.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (matchType != null) 'matchType': matchType,
+        if (orFiltersForSegment != null)
+          'orFiltersForSegment':
+              orFiltersForSegment.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Sequence conditions consist of one or more steps, where each step is defined
@@ -3006,17 +2626,13 @@ class SequenceSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (firstStepShouldMatchFirstHit != null) {
-      _json['firstStepShouldMatchFirstHit'] = firstStepShouldMatchFirstHit;
-    }
-    if (segmentSequenceSteps != null) {
-      _json['segmentSequenceSteps'] =
-          segmentSequenceSteps.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (firstStepShouldMatchFirstHit != null)
+          'firstStepShouldMatchFirstHit': firstStepShouldMatchFirstHit,
+        if (segmentSequenceSteps != null)
+          'segmentSequenceSteps':
+              segmentSequenceSteps.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A Simple segment conditions consist of one or more dimension/metric
@@ -3037,14 +2653,11 @@ class SimpleSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (orFiltersForSegment != null) {
-      _json['orFiltersForSegment'] =
-          orFiltersForSegment.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (orFiltersForSegment != null)
+          'orFiltersForSegment':
+              orFiltersForSegment.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents details collected when the visitor performs a transaction on the
@@ -3081,22 +2694,14 @@ class TransactionData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (transactionId != null) {
-      _json['transactionId'] = transactionId;
-    }
-    if (transactionRevenue != null) {
-      _json['transactionRevenue'] = transactionRevenue;
-    }
-    if (transactionShipping != null) {
-      _json['transactionShipping'] = transactionShipping;
-    }
-    if (transactionTax != null) {
-      _json['transactionTax'] = transactionTax;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (transactionId != null) 'transactionId': transactionId,
+        if (transactionRevenue != null)
+          'transactionRevenue': transactionRevenue,
+        if (transactionShipping != null)
+          'transactionShipping': transactionShipping,
+        if (transactionTax != null) 'transactionTax': transactionTax,
+      };
 }
 
 /// Contains information to identify a particular user uniquely.
@@ -3127,16 +2732,10 @@ class User {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (userId != null) {
-      _json['userId'] = userId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+        if (userId != null) 'userId': userId,
+      };
 }
 
 /// This represents a user session performed on a specific device at a certain
@@ -3190,26 +2789,13 @@ class UserActivitySession {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (activities != null) {
-      _json['activities'] = activities.map((value) => value.toJson()).toList();
-    }
-    if (dataSource != null) {
-      _json['dataSource'] = dataSource;
-    }
-    if (deviceCategory != null) {
-      _json['deviceCategory'] = deviceCategory;
-    }
-    if (platform != null) {
-      _json['platform'] = platform;
-    }
-    if (sessionDate != null) {
-      _json['sessionDate'] = sessionDate;
-    }
-    if (sessionId != null) {
-      _json['sessionId'] = sessionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (activities != null)
+          'activities': activities.map((value) => value.toJson()).toList(),
+        if (dataSource != null) 'dataSource': dataSource,
+        if (deviceCategory != null) 'deviceCategory': deviceCategory,
+        if (platform != null) 'platform': platform,
+        if (sessionDate != null) 'sessionDate': sessionDate,
+        if (sessionId != null) 'sessionId': sessionId,
+      };
 }

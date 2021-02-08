@@ -148,25 +148,13 @@ class Action {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actor != null) {
-      _json['actor'] = actor.toJson();
-    }
-    if (detail != null) {
-      _json['detail'] = detail.toJson();
-    }
-    if (target != null) {
-      _json['target'] = target.toJson();
-    }
-    if (timeRange != null) {
-      _json['timeRange'] = timeRange.toJson();
-    }
-    if (timestamp != null) {
-      _json['timestamp'] = timestamp;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actor != null) 'actor': actor.toJson(),
+        if (detail != null) 'detail': detail.toJson(),
+        if (target != null) 'target': target.toJson(),
+        if (timeRange != null) 'timeRange': timeRange.toJson(),
+        if (timestamp != null) 'timestamp': timestamp,
+      };
 }
 
 /// Data describing the type and additional information of an action.
@@ -253,43 +241,20 @@ class ActionDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (comment != null) {
-      _json['comment'] = comment.toJson();
-    }
-    if (create != null) {
-      _json['create'] = create.toJson();
-    }
-    if (delete != null) {
-      _json['delete'] = delete.toJson();
-    }
-    if (dlpChange != null) {
-      _json['dlpChange'] = dlpChange.toJson();
-    }
-    if (edit != null) {
-      _json['edit'] = edit.toJson();
-    }
-    if (move != null) {
-      _json['move'] = move.toJson();
-    }
-    if (permissionChange != null) {
-      _json['permissionChange'] = permissionChange.toJson();
-    }
-    if (reference != null) {
-      _json['reference'] = reference.toJson();
-    }
-    if (rename != null) {
-      _json['rename'] = rename.toJson();
-    }
-    if (restore != null) {
-      _json['restore'] = restore.toJson();
-    }
-    if (settingsChange != null) {
-      _json['settingsChange'] = settingsChange.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (comment != null) 'comment': comment.toJson(),
+        if (create != null) 'create': create.toJson(),
+        if (delete != null) 'delete': delete.toJson(),
+        if (dlpChange != null) 'dlpChange': dlpChange.toJson(),
+        if (edit != null) 'edit': edit.toJson(),
+        if (move != null) 'move': move.toJson(),
+        if (permissionChange != null)
+          'permissionChange': permissionChange.toJson(),
+        if (reference != null) 'reference': reference.toJson(),
+        if (rename != null) 'rename': rename.toJson(),
+        if (restore != null) 'restore': restore.toJson(),
+        if (settingsChange != null) 'settingsChange': settingsChange.toJson(),
+      };
 }
 
 /// The actor of a Drive activity.
@@ -334,25 +299,13 @@ class Actor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (administrator != null) {
-      _json['administrator'] = administrator.toJson();
-    }
-    if (anonymous != null) {
-      _json['anonymous'] = anonymous.toJson();
-    }
-    if (impersonation != null) {
-      _json['impersonation'] = impersonation.toJson();
-    }
-    if (system != null) {
-      _json['system'] = system.toJson();
-    }
-    if (user != null) {
-      _json['user'] = user.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (administrator != null) 'administrator': administrator.toJson(),
+        if (anonymous != null) 'anonymous': anonymous.toJson(),
+        if (impersonation != null) 'impersonation': impersonation.toJson(),
+        if (system != null) 'system': system.toJson(),
+        if (user != null) 'user': user.toJson(),
+      };
 }
 
 /// Empty message representing an administrator.
@@ -363,10 +316,7 @@ class Administrator {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Empty message representing an anonymous user or indicating the authenticated
@@ -378,10 +328,7 @@ class AnonymousUser {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Represents any user (including a logged out user).
@@ -392,10 +339,7 @@ class Anyone {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Activity in applications other than Drive.
@@ -415,13 +359,9 @@ class ApplicationReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+      };
 }
 
 /// A comment with an assignment.
@@ -453,16 +393,10 @@ class Assignment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assignedUser != null) {
-      _json['assignedUser'] = assignedUser.toJson();
-    }
-    if (subtype != null) {
-      _json['subtype'] = subtype;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assignedUser != null) 'assignedUser': assignedUser.toJson(),
+        if (subtype != null) 'subtype': subtype,
+      };
 }
 
 /// A change about comments on an object.
@@ -502,23 +436,14 @@ class Comment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assignment != null) {
-      _json['assignment'] = assignment.toJson();
-    }
-    if (mentionedUsers != null) {
-      _json['mentionedUsers'] =
-          mentionedUsers.map((value) => value.toJson()).toList();
-    }
-    if (post != null) {
-      _json['post'] = post.toJson();
-    }
-    if (suggestion != null) {
-      _json['suggestion'] = suggestion.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assignment != null) 'assignment': assignment.toJson(),
+        if (mentionedUsers != null)
+          'mentionedUsers':
+              mentionedUsers.map((value) => value.toJson()).toList(),
+        if (post != null) 'post': post.toJson(),
+        if (suggestion != null) 'suggestion': suggestion.toJson(),
+      };
 }
 
 /// How the individual activities are consolidated.
@@ -547,16 +472,10 @@ class ConsolidationStrategy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (legacy != null) {
-      _json['legacy'] = legacy.toJson();
-    }
-    if (none != null) {
-      _json['none'] = none.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (legacy != null) 'legacy': legacy.toJson(),
+        if (none != null) 'none': none.toJson(),
+      };
 }
 
 /// An object was created by copying an existing object.
@@ -573,13 +492,9 @@ class Copy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (originalObject != null) {
-      _json['originalObject'] = originalObject.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (originalObject != null) 'originalObject': originalObject.toJson(),
+      };
 }
 
 /// An object was created.
@@ -612,19 +527,11 @@ class Create {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (copy != null) {
-      _json['copy'] = copy.toJson();
-    }
-    if (new_ != null) {
-      _json['new'] = new_.toJson();
-    }
-    if (upload != null) {
-      _json['upload'] = upload.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (copy != null) 'copy': copy.toJson(),
+        if (new_ != null) 'new': new_.toJson(),
+        if (upload != null) 'upload': upload.toJson(),
+      };
 }
 
 /// A change in the object's data leak prevention status.
@@ -646,13 +553,9 @@ class DataLeakPreventionChange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+      };
 }
 
 /// An object was deleted.
@@ -672,13 +575,9 @@ class Delete {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+      };
 }
 
 /// A user whose account has since been deleted.
@@ -689,10 +588,7 @@ class DeletedUser {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Information about a domain.
@@ -714,16 +610,10 @@ class Domain {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (legacyId != null) {
-      _json['legacyId'] = legacyId;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (legacyId != null) 'legacyId': legacyId,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Information about a shared drive.
@@ -755,19 +645,11 @@ class Drive {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (root != null) {
-      _json['root'] = root.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (root != null) 'root': root.toJson(),
+        if (title != null) 'title': title,
+      };
 }
 
 /// A single Drive activity comprising one or more Actions by one or more Actors
@@ -838,28 +720,18 @@ class DriveActivity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actions != null) {
-      _json['actions'] = actions.map((value) => value.toJson()).toList();
-    }
-    if (actors != null) {
-      _json['actors'] = actors.map((value) => value.toJson()).toList();
-    }
-    if (primaryActionDetail != null) {
-      _json['primaryActionDetail'] = primaryActionDetail.toJson();
-    }
-    if (targets != null) {
-      _json['targets'] = targets.map((value) => value.toJson()).toList();
-    }
-    if (timeRange != null) {
-      _json['timeRange'] = timeRange.toJson();
-    }
-    if (timestamp != null) {
-      _json['timestamp'] = timestamp;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actions != null)
+          'actions': actions.map((value) => value.toJson()).toList(),
+        if (actors != null)
+          'actors': actors.map((value) => value.toJson()).toList(),
+        if (primaryActionDetail != null)
+          'primaryActionDetail': primaryActionDetail.toJson(),
+        if (targets != null)
+          'targets': targets.map((value) => value.toJson()).toList(),
+        if (timeRange != null) 'timeRange': timeRange.toJson(),
+        if (timestamp != null) 'timestamp': timestamp,
+      };
 }
 
 /// A Drive item which is a file.
@@ -870,10 +742,7 @@ class DriveFile {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A Drive item which is a folder.
@@ -894,13 +763,9 @@ class DriveFolder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+      };
 }
 
 /// A Drive item, such as a file or folder.
@@ -969,34 +834,16 @@ class DriveItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (driveFile != null) {
-      _json['driveFile'] = driveFile.toJson();
-    }
-    if (driveFolder != null) {
-      _json['driveFolder'] = driveFolder.toJson();
-    }
-    if (file != null) {
-      _json['file'] = file.toJson();
-    }
-    if (folder != null) {
-      _json['folder'] = folder.toJson();
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (owner != null) {
-      _json['owner'] = owner.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (driveFile != null) 'driveFile': driveFile.toJson(),
+        if (driveFolder != null) 'driveFolder': driveFolder.toJson(),
+        if (file != null) 'file': file.toJson(),
+        if (folder != null) 'folder': folder.toJson(),
+        if (mimeType != null) 'mimeType': mimeType,
+        if (name != null) 'name': name,
+        if (owner != null) 'owner': owner.toJson(),
+        if (title != null) 'title': title,
+      };
 }
 
 /// A lightweight reference to a Drive item, such as a file or folder.
@@ -1050,28 +897,14 @@ class DriveItemReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (driveFile != null) {
-      _json['driveFile'] = driveFile.toJson();
-    }
-    if (driveFolder != null) {
-      _json['driveFolder'] = driveFolder.toJson();
-    }
-    if (file != null) {
-      _json['file'] = file.toJson();
-    }
-    if (folder != null) {
-      _json['folder'] = folder.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (driveFile != null) 'driveFile': driveFile.toJson(),
+        if (driveFolder != null) 'driveFolder': driveFolder.toJson(),
+        if (file != null) 'file': file.toJson(),
+        if (folder != null) 'folder': folder.toJson(),
+        if (name != null) 'name': name,
+        if (title != null) 'title': title,
+      };
 }
 
 /// A lightweight reference to a shared drive.
@@ -1096,16 +929,10 @@ class DriveReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (title != null) 'title': title,
+      };
 }
 
 /// An empty message indicating an object was edited.
@@ -1116,10 +943,7 @@ class Edit {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// This item is deprecated; please see `DriveFile` instead.
@@ -1130,10 +954,7 @@ class File {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A comment on a file.
@@ -1176,22 +997,13 @@ class FileComment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (legacyCommentId != null) {
-      _json['legacyCommentId'] = legacyCommentId;
-    }
-    if (legacyDiscussionId != null) {
-      _json['legacyDiscussionId'] = legacyDiscussionId;
-    }
-    if (linkToDiscussion != null) {
-      _json['linkToDiscussion'] = linkToDiscussion;
-    }
-    if (parent != null) {
-      _json['parent'] = parent.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (legacyCommentId != null) 'legacyCommentId': legacyCommentId,
+        if (legacyDiscussionId != null)
+          'legacyDiscussionId': legacyDiscussionId,
+        if (linkToDiscussion != null) 'linkToDiscussion': linkToDiscussion,
+        if (parent != null) 'parent': parent.toJson(),
+      };
 }
 
 /// This item is deprecated; please see `DriveFolder` instead.
@@ -1216,13 +1028,9 @@ class Folder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+      };
 }
 
 /// Information about a group.
@@ -1244,16 +1052,10 @@ class Group {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (email != null) 'email': email,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Information about an impersonation, where an admin acts on behalf of an end
@@ -1273,13 +1075,10 @@ class Impersonation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (impersonatedUser != null) {
-      _json['impersonatedUser'] = impersonatedUser.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (impersonatedUser != null)
+          'impersonatedUser': impersonatedUser.toJson(),
+      };
 }
 
 /// A known user.
@@ -1305,16 +1104,10 @@ class KnownUser {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (isCurrentUser != null) {
-      _json['isCurrentUser'] = isCurrentUser;
-    }
-    if (personName != null) {
-      _json['personName'] = personName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (isCurrentUser != null) 'isCurrentUser': isCurrentUser,
+        if (personName != null) 'personName': personName,
+      };
 }
 
 /// A strategy which consolidates activities using the grouping rules from the
@@ -1331,10 +1124,7 @@ class Legacy {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// An object was moved.
@@ -1362,18 +1152,13 @@ class Move {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (addedParents != null) {
-      _json['addedParents'] =
-          addedParents.map((value) => value.toJson()).toList();
-    }
-    if (removedParents != null) {
-      _json['removedParents'] =
-          removedParents.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (addedParents != null)
+          'addedParents': addedParents.map((value) => value.toJson()).toList(),
+        if (removedParents != null)
+          'removedParents':
+              removedParents.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// An object was created from scratch.
@@ -1384,10 +1169,7 @@ class New {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A strategy which does no consolidation of individual activities.
@@ -1398,10 +1180,7 @@ class NoConsolidation {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Information about the owner of a Drive item.
@@ -1439,22 +1218,12 @@ class Owner {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (domain != null) {
-      _json['domain'] = domain.toJson();
-    }
-    if (drive != null) {
-      _json['drive'] = drive.toJson();
-    }
-    if (teamDrive != null) {
-      _json['teamDrive'] = teamDrive.toJson();
-    }
-    if (user != null) {
-      _json['user'] = user.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (domain != null) 'domain': domain.toJson(),
+        if (drive != null) 'drive': drive.toJson(),
+        if (teamDrive != null) 'teamDrive': teamDrive.toJson(),
+        if (user != null) 'user': user.toJson(),
+      };
 }
 
 /// The permission setting of an object.
@@ -1523,28 +1292,14 @@ class Permission {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowDiscovery != null) {
-      _json['allowDiscovery'] = allowDiscovery;
-    }
-    if (anyone != null) {
-      _json['anyone'] = anyone.toJson();
-    }
-    if (domain != null) {
-      _json['domain'] = domain.toJson();
-    }
-    if (group != null) {
-      _json['group'] = group.toJson();
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    if (user != null) {
-      _json['user'] = user.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowDiscovery != null) 'allowDiscovery': allowDiscovery,
+        if (anyone != null) 'anyone': anyone.toJson(),
+        if (domain != null) 'domain': domain.toJson(),
+        if (group != null) 'group': group.toJson(),
+        if (role != null) 'role': role,
+        if (user != null) 'user': user.toJson(),
+      };
 }
 
 /// A change of the permission setting on an item.
@@ -1572,18 +1327,14 @@ class PermissionChange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (addedPermissions != null) {
-      _json['addedPermissions'] =
-          addedPermissions.map((value) => value.toJson()).toList();
-    }
-    if (removedPermissions != null) {
-      _json['removedPermissions'] =
-          removedPermissions.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (addedPermissions != null)
+          'addedPermissions':
+              addedPermissions.map((value) => value.toJson()).toList(),
+        if (removedPermissions != null)
+          'removedPermissions':
+              removedPermissions.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A regular posted comment.
@@ -1607,13 +1358,9 @@ class Post {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (subtype != null) {
-      _json['subtype'] = subtype;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (subtype != null) 'subtype': subtype,
+      };
 }
 
 /// The request message for querying Drive activity.
@@ -1685,28 +1432,15 @@ class QueryDriveActivityRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ancestorName != null) {
-      _json['ancestorName'] = ancestorName;
-    }
-    if (consolidationStrategy != null) {
-      _json['consolidationStrategy'] = consolidationStrategy.toJson();
-    }
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    if (itemName != null) {
-      _json['itemName'] = itemName;
-    }
-    if (pageSize != null) {
-      _json['pageSize'] = pageSize;
-    }
-    if (pageToken != null) {
-      _json['pageToken'] = pageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ancestorName != null) 'ancestorName': ancestorName,
+        if (consolidationStrategy != null)
+          'consolidationStrategy': consolidationStrategy.toJson(),
+        if (filter != null) 'filter': filter,
+        if (itemName != null) 'itemName': itemName,
+        if (pageSize != null) 'pageSize': pageSize,
+        if (pageToken != null) 'pageToken': pageToken,
+      };
 }
 
 /// Response message for querying Drive activity.
@@ -1732,16 +1466,11 @@ class QueryDriveActivityResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (activities != null) {
-      _json['activities'] = activities.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (activities != null)
+          'activities': activities.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// An object was renamed.
@@ -1763,16 +1492,10 @@ class Rename {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (newTitle != null) {
-      _json['newTitle'] = newTitle;
-    }
-    if (oldTitle != null) {
-      _json['oldTitle'] = oldTitle;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (newTitle != null) 'newTitle': newTitle,
+        if (oldTitle != null) 'oldTitle': oldTitle,
+      };
 }
 
 /// A deleted object was restored.
@@ -1791,13 +1514,9 @@ class Restore {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+      };
 }
 
 /// Information about restriction policy changes to a feature.
@@ -1834,16 +1553,10 @@ class RestrictionChange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (feature != null) {
-      _json['feature'] = feature;
-    }
-    if (newRestriction != null) {
-      _json['newRestriction'] = newRestriction;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (feature != null) 'feature': feature,
+        if (newRestriction != null) 'newRestriction': newRestriction,
+      };
 }
 
 /// Information about settings changes.
@@ -1862,14 +1575,11 @@ class SettingsChange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (restrictionChanges != null) {
-      _json['restrictionChanges'] =
-          restrictionChanges.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (restrictionChanges != null)
+          'restrictionChanges':
+              restrictionChanges.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A suggestion.
@@ -1895,13 +1605,9 @@ class Suggestion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (subtype != null) {
-      _json['subtype'] = subtype;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (subtype != null) 'subtype': subtype,
+      };
 }
 
 /// Event triggered by system operations instead of end users.
@@ -1923,13 +1629,9 @@ class SystemEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+      };
 }
 
 /// Information about the target of activity.
@@ -1967,22 +1669,12 @@ class Target {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (drive != null) {
-      _json['drive'] = drive.toJson();
-    }
-    if (driveItem != null) {
-      _json['driveItem'] = driveItem.toJson();
-    }
-    if (fileComment != null) {
-      _json['fileComment'] = fileComment.toJson();
-    }
-    if (teamDrive != null) {
-      _json['teamDrive'] = teamDrive.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (drive != null) 'drive': drive.toJson(),
+        if (driveItem != null) 'driveItem': driveItem.toJson(),
+        if (fileComment != null) 'fileComment': fileComment.toJson(),
+        if (teamDrive != null) 'teamDrive': teamDrive.toJson(),
+      };
 }
 
 /// A lightweight reference to the target of activity.
@@ -2013,19 +1705,11 @@ class TargetReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (drive != null) {
-      _json['drive'] = drive.toJson();
-    }
-    if (driveItem != null) {
-      _json['driveItem'] = driveItem.toJson();
-    }
-    if (teamDrive != null) {
-      _json['teamDrive'] = teamDrive.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (drive != null) 'drive': drive.toJson(),
+        if (driveItem != null) 'driveItem': driveItem.toJson(),
+        if (teamDrive != null) 'teamDrive': teamDrive.toJson(),
+      };
 }
 
 /// This item is deprecated; please see `Drive` instead.
@@ -2054,19 +1738,11 @@ class TeamDrive {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (root != null) {
-      _json['root'] = root.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (root != null) 'root': root.toJson(),
+        if (title != null) 'title': title,
+      };
 }
 
 /// This item is deprecated; please see `DriveReference` instead.
@@ -2088,16 +1764,10 @@ class TeamDriveReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Information about time ranges.
@@ -2119,16 +1789,10 @@ class TimeRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// A user about whom nothing is currently known.
@@ -2139,10 +1803,7 @@ class UnknownUser {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// An object was uploaded into Drive.
@@ -2153,10 +1814,7 @@ class Upload {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Information about an end user.
@@ -2187,17 +1845,9 @@ class User {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deletedUser != null) {
-      _json['deletedUser'] = deletedUser.toJson();
-    }
-    if (knownUser != null) {
-      _json['knownUser'] = knownUser.toJson();
-    }
-    if (unknownUser != null) {
-      _json['unknownUser'] = unknownUser.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deletedUser != null) 'deletedUser': deletedUser.toJson(),
+        if (knownUser != null) 'knownUser': knownUser.toJson(),
+        if (unknownUser != null) 'unknownUser': unknownUser.toJson(),
+      };
 }

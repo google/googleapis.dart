@@ -2552,31 +2552,15 @@ class AggregateClassificationMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accuracy != null) {
-      _json['accuracy'] = accuracy;
-    }
-    if (f1Score != null) {
-      _json['f1Score'] = f1Score;
-    }
-    if (logLoss != null) {
-      _json['logLoss'] = logLoss;
-    }
-    if (precision != null) {
-      _json['precision'] = precision;
-    }
-    if (recall != null) {
-      _json['recall'] = recall;
-    }
-    if (rocAuc != null) {
-      _json['rocAuc'] = rocAuc;
-    }
-    if (threshold != null) {
-      _json['threshold'] = threshold;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accuracy != null) 'accuracy': accuracy,
+        if (f1Score != null) 'f1Score': f1Score,
+        if (logLoss != null) 'logLoss': logLoss,
+        if (precision != null) 'precision': precision,
+        if (recall != null) 'recall': recall,
+        if (rocAuc != null) 'rocAuc': rocAuc,
+        if (threshold != null) 'threshold': threshold,
+      };
 }
 
 /// Input/output argument of a function or a stored procedure.
@@ -2632,22 +2616,12 @@ class Argument {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (argumentKind != null) {
-      _json['argumentKind'] = argumentKind;
-    }
-    if (dataType != null) {
-      _json['dataType'] = dataType.toJson();
-    }
-    if (mode != null) {
-      _json['mode'] = mode;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (argumentKind != null) 'argumentKind': argumentKind,
+        if (dataType != null) 'dataType': dataType.toJson(),
+        if (mode != null) 'mode': mode,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Arima coefficients.
@@ -2682,19 +2656,14 @@ class ArimaCoefficients {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (autoRegressiveCoefficients != null) {
-      _json['autoRegressiveCoefficients'] = autoRegressiveCoefficients;
-    }
-    if (interceptCoefficient != null) {
-      _json['interceptCoefficient'] = interceptCoefficient;
-    }
-    if (movingAverageCoefficients != null) {
-      _json['movingAverageCoefficients'] = movingAverageCoefficients;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (autoRegressiveCoefficients != null)
+          'autoRegressiveCoefficients': autoRegressiveCoefficients,
+        if (interceptCoefficient != null)
+          'interceptCoefficient': interceptCoefficient,
+        if (movingAverageCoefficients != null)
+          'movingAverageCoefficients': movingAverageCoefficients,
+      };
 }
 
 /// ARIMA model fitting metrics.
@@ -2722,19 +2691,11 @@ class ArimaFittingMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aic != null) {
-      _json['aic'] = aic;
-    }
-    if (logLikelihood != null) {
-      _json['logLikelihood'] = logLikelihood;
-    }
-    if (variance != null) {
-      _json['variance'] = variance;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aic != null) 'aic': aic,
+        if (logLikelihood != null) 'logLikelihood': logLikelihood,
+        if (variance != null) 'variance': variance,
+      };
 }
 
 /// Model evaluation metrics for ARIMA forecasting models.
@@ -2803,33 +2764,22 @@ class ArimaForecastingMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (arimaFittingMetrics != null) {
-      _json['arimaFittingMetrics'] =
-          arimaFittingMetrics.map((value) => value.toJson()).toList();
-    }
-    if (arimaSingleModelForecastingMetrics != null) {
-      _json['arimaSingleModelForecastingMetrics'] =
-          arimaSingleModelForecastingMetrics
-              .map((value) => value.toJson())
-              .toList();
-    }
-    if (hasDrift != null) {
-      _json['hasDrift'] = hasDrift;
-    }
-    if (nonSeasonalOrder != null) {
-      _json['nonSeasonalOrder'] =
-          nonSeasonalOrder.map((value) => value.toJson()).toList();
-    }
-    if (seasonalPeriods != null) {
-      _json['seasonalPeriods'] = seasonalPeriods;
-    }
-    if (timeSeriesId != null) {
-      _json['timeSeriesId'] = timeSeriesId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (arimaFittingMetrics != null)
+          'arimaFittingMetrics':
+              arimaFittingMetrics.map((value) => value.toJson()).toList(),
+        if (arimaSingleModelForecastingMetrics != null)
+          'arimaSingleModelForecastingMetrics':
+              arimaSingleModelForecastingMetrics
+                  .map((value) => value.toJson())
+                  .toList(),
+        if (hasDrift != null) 'hasDrift': hasDrift,
+        if (nonSeasonalOrder != null)
+          'nonSeasonalOrder':
+              nonSeasonalOrder.map((value) => value.toJson()).toList(),
+        if (seasonalPeriods != null) 'seasonalPeriods': seasonalPeriods,
+        if (timeSeriesId != null) 'timeSeriesId': timeSeriesId,
+      };
 }
 
 /// Arima model information.
@@ -2884,28 +2834,17 @@ class ArimaModelInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (arimaCoefficients != null) {
-      _json['arimaCoefficients'] = arimaCoefficients.toJson();
-    }
-    if (arimaFittingMetrics != null) {
-      _json['arimaFittingMetrics'] = arimaFittingMetrics.toJson();
-    }
-    if (hasDrift != null) {
-      _json['hasDrift'] = hasDrift;
-    }
-    if (nonSeasonalOrder != null) {
-      _json['nonSeasonalOrder'] = nonSeasonalOrder.toJson();
-    }
-    if (seasonalPeriods != null) {
-      _json['seasonalPeriods'] = seasonalPeriods;
-    }
-    if (timeSeriesId != null) {
-      _json['timeSeriesId'] = timeSeriesId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (arimaCoefficients != null)
+          'arimaCoefficients': arimaCoefficients.toJson(),
+        if (arimaFittingMetrics != null)
+          'arimaFittingMetrics': arimaFittingMetrics.toJson(),
+        if (hasDrift != null) 'hasDrift': hasDrift,
+        if (nonSeasonalOrder != null)
+          'nonSeasonalOrder': nonSeasonalOrder.toJson(),
+        if (seasonalPeriods != null) 'seasonalPeriods': seasonalPeriods,
+        if (timeSeriesId != null) 'timeSeriesId': timeSeriesId,
+      };
 }
 
 /// Arima order, can be used for both non-seasonal and seasonal parts.
@@ -2933,19 +2872,11 @@ class ArimaOrder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (d != null) {
-      _json['d'] = d;
-    }
-    if (p != null) {
-      _json['p'] = p;
-    }
-    if (q != null) {
-      _json['q'] = q;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (d != null) 'd': d,
+        if (p != null) 'p': p,
+        if (q != null) 'q': q,
+      };
 }
 
 /// (Auto-)arima fitting result.
@@ -2980,17 +2911,12 @@ class ArimaResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (arimaModelInfo != null) {
-      _json['arimaModelInfo'] =
-          arimaModelInfo.map((value) => value.toJson()).toList();
-    }
-    if (seasonalPeriods != null) {
-      _json['seasonalPeriods'] = seasonalPeriods;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (arimaModelInfo != null)
+          'arimaModelInfo':
+              arimaModelInfo.map((value) => value.toJson()).toList(),
+        if (seasonalPeriods != null) 'seasonalPeriods': seasonalPeriods,
+      };
 }
 
 /// Model evaluation metrics for a single ARIMA forecasting model.
@@ -3038,25 +2964,15 @@ class ArimaSingleModelForecastingMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (arimaFittingMetrics != null) {
-      _json['arimaFittingMetrics'] = arimaFittingMetrics.toJson();
-    }
-    if (hasDrift != null) {
-      _json['hasDrift'] = hasDrift;
-    }
-    if (nonSeasonalOrder != null) {
-      _json['nonSeasonalOrder'] = nonSeasonalOrder.toJson();
-    }
-    if (seasonalPeriods != null) {
-      _json['seasonalPeriods'] = seasonalPeriods;
-    }
-    if (timeSeriesId != null) {
-      _json['timeSeriesId'] = timeSeriesId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (arimaFittingMetrics != null)
+          'arimaFittingMetrics': arimaFittingMetrics.toJson(),
+        if (hasDrift != null) 'hasDrift': hasDrift,
+        if (nonSeasonalOrder != null)
+          'nonSeasonalOrder': nonSeasonalOrder.toJson(),
+        if (seasonalPeriods != null) 'seasonalPeriods': seasonalPeriods,
+        if (timeSeriesId != null) 'timeSeriesId': timeSeriesId,
+      };
 }
 
 /// Specifies the audit configuration for a service.
@@ -3100,17 +3016,12 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditLogConfigs != null) {
-      _json['auditLogConfigs'] =
-          auditLogConfigs.map((value) => value.toJson()).toList();
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditLogConfigs != null)
+          'auditLogConfigs':
+              auditLogConfigs.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service,
+      };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -3147,16 +3058,10 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exemptedMembers != null) {
-      _json['exemptedMembers'] = exemptedMembers;
-    }
-    if (logType != null) {
-      _json['logType'] = logType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
+        if (logType != null) 'logType': logType,
+      };
 }
 
 class BigQueryModelTraining {
@@ -3183,16 +3088,11 @@ class BigQueryModelTraining {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (currentIteration != null) {
-      _json['currentIteration'] = currentIteration;
-    }
-    if (expectedTotalIterations != null) {
-      _json['expectedTotalIterations'] = expectedTotalIterations;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (currentIteration != null) 'currentIteration': currentIteration,
+        if (expectedTotalIterations != null)
+          'expectedTotalIterations': expectedTotalIterations,
+      };
 }
 
 class BigtableColumn {
@@ -3280,28 +3180,14 @@ class BigtableColumn {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (encoding != null) {
-      _json['encoding'] = encoding;
-    }
-    if (fieldName != null) {
-      _json['fieldName'] = fieldName;
-    }
-    if (onlyReadLatest != null) {
-      _json['onlyReadLatest'] = onlyReadLatest;
-    }
-    if (qualifierEncoded != null) {
-      _json['qualifierEncoded'] = qualifierEncoded;
-    }
-    if (qualifierString != null) {
-      _json['qualifierString'] = qualifierString;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (encoding != null) 'encoding': encoding,
+        if (fieldName != null) 'fieldName': fieldName,
+        if (onlyReadLatest != null) 'onlyReadLatest': onlyReadLatest,
+        if (qualifierEncoded != null) 'qualifierEncoded': qualifierEncoded,
+        if (qualifierString != null) 'qualifierString': qualifierString,
+        if (type != null) 'type': type,
+      };
 }
 
 class BigtableColumnFamily {
@@ -3372,25 +3258,14 @@ class BigtableColumnFamily {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columns != null) {
-      _json['columns'] = columns.map((value) => value.toJson()).toList();
-    }
-    if (encoding != null) {
-      _json['encoding'] = encoding;
-    }
-    if (familyId != null) {
-      _json['familyId'] = familyId;
-    }
-    if (onlyReadLatest != null) {
-      _json['onlyReadLatest'] = onlyReadLatest;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columns != null)
+          'columns': columns.map((value) => value.toJson()).toList(),
+        if (encoding != null) 'encoding': encoding,
+        if (familyId != null) 'familyId': familyId,
+        if (onlyReadLatest != null) 'onlyReadLatest': onlyReadLatest,
+        if (type != null) 'type': type,
+      };
 }
 
 class BigtableOptions {
@@ -3443,21 +3318,15 @@ class BigtableOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columnFamilies != null) {
-      _json['columnFamilies'] =
-          columnFamilies.map((value) => value.toJson()).toList();
-    }
-    if (ignoreUnspecifiedColumnFamilies != null) {
-      _json['ignoreUnspecifiedColumnFamilies'] =
-          ignoreUnspecifiedColumnFamilies;
-    }
-    if (readRowkeyAsString != null) {
-      _json['readRowkeyAsString'] = readRowkeyAsString;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columnFamilies != null)
+          'columnFamilies':
+              columnFamilies.map((value) => value.toJson()).toList(),
+        if (ignoreUnspecifiedColumnFamilies != null)
+          'ignoreUnspecifiedColumnFamilies': ignoreUnspecifiedColumnFamilies,
+        if (readRowkeyAsString != null)
+          'readRowkeyAsString': readRowkeyAsString,
+      };
 }
 
 /// Evaluation metrics for binary classification/classifier models.
@@ -3497,24 +3366,16 @@ class BinaryClassificationMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aggregateClassificationMetrics != null) {
-      _json['aggregateClassificationMetrics'] =
-          aggregateClassificationMetrics.toJson();
-    }
-    if (binaryConfusionMatrixList != null) {
-      _json['binaryConfusionMatrixList'] =
-          binaryConfusionMatrixList.map((value) => value.toJson()).toList();
-    }
-    if (negativeLabel != null) {
-      _json['negativeLabel'] = negativeLabel;
-    }
-    if (positiveLabel != null) {
-      _json['positiveLabel'] = positiveLabel;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aggregateClassificationMetrics != null)
+          'aggregateClassificationMetrics':
+              aggregateClassificationMetrics.toJson(),
+        if (binaryConfusionMatrixList != null)
+          'binaryConfusionMatrixList':
+              binaryConfusionMatrixList.map((value) => value.toJson()).toList(),
+        if (negativeLabel != null) 'negativeLabel': negativeLabel,
+        if (positiveLabel != null) 'positiveLabel': positiveLabel,
+      };
 }
 
 /// Confusion matrix for binary classification models.
@@ -3581,37 +3442,18 @@ class BinaryConfusionMatrix {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accuracy != null) {
-      _json['accuracy'] = accuracy;
-    }
-    if (f1Score != null) {
-      _json['f1Score'] = f1Score;
-    }
-    if (falseNegatives != null) {
-      _json['falseNegatives'] = falseNegatives;
-    }
-    if (falsePositives != null) {
-      _json['falsePositives'] = falsePositives;
-    }
-    if (positiveClassThreshold != null) {
-      _json['positiveClassThreshold'] = positiveClassThreshold;
-    }
-    if (precision != null) {
-      _json['precision'] = precision;
-    }
-    if (recall != null) {
-      _json['recall'] = recall;
-    }
-    if (trueNegatives != null) {
-      _json['trueNegatives'] = trueNegatives;
-    }
-    if (truePositives != null) {
-      _json['truePositives'] = truePositives;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accuracy != null) 'accuracy': accuracy,
+        if (f1Score != null) 'f1Score': f1Score,
+        if (falseNegatives != null) 'falseNegatives': falseNegatives,
+        if (falsePositives != null) 'falsePositives': falsePositives,
+        if (positiveClassThreshold != null)
+          'positiveClassThreshold': positiveClassThreshold,
+        if (precision != null) 'precision': precision,
+        if (recall != null) 'recall': recall,
+        if (trueNegatives != null) 'trueNegatives': trueNegatives,
+        if (truePositives != null) 'truePositives': truePositives,
+      };
 }
 
 /// Associates `members` with a `role`.
@@ -3680,19 +3522,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 class BqmlIterationResult {
@@ -3743,25 +3577,13 @@ class BqmlIterationResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (durationMs != null) {
-      _json['durationMs'] = durationMs;
-    }
-    if (evalLoss != null) {
-      _json['evalLoss'] = evalLoss;
-    }
-    if (index != null) {
-      _json['index'] = index;
-    }
-    if (learnRate != null) {
-      _json['learnRate'] = learnRate;
-    }
-    if (trainingLoss != null) {
-      _json['trainingLoss'] = trainingLoss;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (durationMs != null) 'durationMs': durationMs,
+        if (evalLoss != null) 'evalLoss': evalLoss,
+        if (index != null) 'index': index,
+        if (learnRate != null) 'learnRate': learnRate,
+        if (trainingLoss != null) 'trainingLoss': trainingLoss,
+      };
 }
 
 /// \[Output-only, Beta\] Training options used by this training run.
@@ -3814,37 +3636,18 @@ class BqmlTrainingRunTrainingOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (earlyStop != null) {
-      _json['earlyStop'] = earlyStop;
-    }
-    if (l1Reg != null) {
-      _json['l1Reg'] = l1Reg;
-    }
-    if (l2Reg != null) {
-      _json['l2Reg'] = l2Reg;
-    }
-    if (learnRate != null) {
-      _json['learnRate'] = learnRate;
-    }
-    if (learnRateStrategy != null) {
-      _json['learnRateStrategy'] = learnRateStrategy;
-    }
-    if (lineSearchInitLearnRate != null) {
-      _json['lineSearchInitLearnRate'] = lineSearchInitLearnRate;
-    }
-    if (maxIteration != null) {
-      _json['maxIteration'] = maxIteration;
-    }
-    if (minRelProgress != null) {
-      _json['minRelProgress'] = minRelProgress;
-    }
-    if (warmStart != null) {
-      _json['warmStart'] = warmStart;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (earlyStop != null) 'earlyStop': earlyStop,
+        if (l1Reg != null) 'l1Reg': l1Reg,
+        if (l2Reg != null) 'l2Reg': l2Reg,
+        if (learnRate != null) 'learnRate': learnRate,
+        if (learnRateStrategy != null) 'learnRateStrategy': learnRateStrategy,
+        if (lineSearchInitLearnRate != null)
+          'lineSearchInitLearnRate': lineSearchInitLearnRate,
+        if (maxIteration != null) 'maxIteration': maxIteration,
+        if (minRelProgress != null) 'minRelProgress': minRelProgress,
+        if (warmStart != null) 'warmStart': warmStart,
+      };
 }
 
 class BqmlTrainingRun {
@@ -3892,23 +3695,15 @@ class BqmlTrainingRun {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (iterationResults != null) {
-      _json['iterationResults'] =
-          iterationResults.map((value) => value.toJson()).toList();
-    }
-    if (startTime != null) {
-      _json['startTime'] = (startTime).toIso8601String();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (trainingOptions != null) {
-      _json['trainingOptions'] = trainingOptions.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (iterationResults != null)
+          'iterationResults':
+              iterationResults.map((value) => value.toJson()).toList(),
+        if (startTime != null) 'startTime': (startTime).toIso8601String(),
+        if (state != null) 'state': state,
+        if (trainingOptions != null)
+          'trainingOptions': trainingOptions.toJson(),
+      };
 }
 
 /// Representative value of a categorical feature.
@@ -3931,14 +3726,11 @@ class CategoricalValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (categoryCounts != null) {
-      _json['categoryCounts'] =
-          categoryCounts.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (categoryCounts != null)
+          'categoryCounts':
+              categoryCounts.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents the count of a single category within the cluster.
@@ -3960,16 +3752,10 @@ class CategoryCount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (category != null) {
-      _json['category'] = category;
-    }
-    if (count != null) {
-      _json['count'] = count;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (category != null) 'category': category,
+        if (count != null) 'count': count,
+      };
 }
 
 /// Message containing the information about one cluster.
@@ -4000,20 +3786,13 @@ class Cluster {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (centroidId != null) {
-      _json['centroidId'] = centroidId;
-    }
-    if (count != null) {
-      _json['count'] = count;
-    }
-    if (featureValues != null) {
-      _json['featureValues'] =
-          featureValues.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (centroidId != null) 'centroidId': centroidId,
+        if (count != null) 'count': count,
+        if (featureValues != null)
+          'featureValues':
+              featureValues.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Information about a single cluster for clustering model.
@@ -4042,19 +3821,11 @@ class ClusterInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (centroidId != null) {
-      _json['centroidId'] = centroidId;
-    }
-    if (clusterRadius != null) {
-      _json['clusterRadius'] = clusterRadius;
-    }
-    if (clusterSize != null) {
-      _json['clusterSize'] = clusterSize;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (centroidId != null) 'centroidId': centroidId,
+        if (clusterRadius != null) 'clusterRadius': clusterRadius,
+        if (clusterSize != null) 'clusterSize': clusterSize,
+      };
 }
 
 class Clustering {
@@ -4076,13 +3847,9 @@ class Clustering {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fields != null) 'fields': fields,
+      };
 }
 
 /// Evaluation metrics for clustering models.
@@ -4114,19 +3881,14 @@ class ClusteringMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusters != null) {
-      _json['clusters'] = clusters.map((value) => value.toJson()).toList();
-    }
-    if (daviesBouldinIndex != null) {
-      _json['daviesBouldinIndex'] = daviesBouldinIndex;
-    }
-    if (meanSquaredDistance != null) {
-      _json['meanSquaredDistance'] = meanSquaredDistance;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusters != null)
+          'clusters': clusters.map((value) => value.toJson()).toList(),
+        if (daviesBouldinIndex != null)
+          'daviesBouldinIndex': daviesBouldinIndex,
+        if (meanSquaredDistance != null)
+          'meanSquaredDistance': meanSquaredDistance,
+      };
 }
 
 /// Confusion matrix for multi-class classification models.
@@ -4153,16 +3915,11 @@ class ConfusionMatrix {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidenceThreshold != null) {
-      _json['confidenceThreshold'] = confidenceThreshold;
-    }
-    if (rows != null) {
-      _json['rows'] = rows.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidenceThreshold != null)
+          'confidenceThreshold': confidenceThreshold,
+        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+      };
 }
 
 class ConnectionProperty {
@@ -4187,16 +3944,10 @@ class ConnectionProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (value != null) 'value': value,
+      };
 }
 
 class CsvOptions {
@@ -4290,28 +4041,15 @@ class CsvOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowJaggedRows != null) {
-      _json['allowJaggedRows'] = allowJaggedRows;
-    }
-    if (allowQuotedNewlines != null) {
-      _json['allowQuotedNewlines'] = allowQuotedNewlines;
-    }
-    if (encoding != null) {
-      _json['encoding'] = encoding;
-    }
-    if (fieldDelimiter != null) {
-      _json['fieldDelimiter'] = fieldDelimiter;
-    }
-    if (quote != null) {
-      _json['quote'] = quote;
-    }
-    if (skipLeadingRows != null) {
-      _json['skipLeadingRows'] = skipLeadingRows;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowJaggedRows != null) 'allowJaggedRows': allowJaggedRows,
+        if (allowQuotedNewlines != null)
+          'allowQuotedNewlines': allowQuotedNewlines,
+        if (encoding != null) 'encoding': encoding,
+        if (fieldDelimiter != null) 'fieldDelimiter': fieldDelimiter,
+        if (quote != null) 'quote': quote,
+        if (skipLeadingRows != null) 'skipLeadingRows': skipLeadingRows,
+      };
 }
 
 /// Data split result.
@@ -4338,16 +4076,11 @@ class DataSplitResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (evaluationTable != null) {
-      _json['evaluationTable'] = evaluationTable.toJson();
-    }
-    if (trainingTable != null) {
-      _json['trainingTable'] = trainingTable.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (evaluationTable != null)
+          'evaluationTable': evaluationTable.toJson(),
+        if (trainingTable != null) 'trainingTable': trainingTable.toJson(),
+      };
 }
 
 class DatasetAccess {
@@ -4441,34 +4174,16 @@ class DatasetAccess {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (domain != null) {
-      _json['domain'] = domain;
-    }
-    if (groupByEmail != null) {
-      _json['groupByEmail'] = groupByEmail;
-    }
-    if (iamMember != null) {
-      _json['iamMember'] = iamMember;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    if (routine != null) {
-      _json['routine'] = routine.toJson();
-    }
-    if (specialGroup != null) {
-      _json['specialGroup'] = specialGroup;
-    }
-    if (userByEmail != null) {
-      _json['userByEmail'] = userByEmail;
-    }
-    if (view != null) {
-      _json['view'] = view.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (domain != null) 'domain': domain,
+        if (groupByEmail != null) 'groupByEmail': groupByEmail,
+        if (iamMember != null) 'iamMember': iamMember,
+        if (role != null) 'role': role,
+        if (routine != null) 'routine': routine.toJson(),
+        if (specialGroup != null) 'specialGroup': specialGroup,
+        if (userByEmail != null) 'userByEmail': userByEmail,
+        if (view != null) 'view': view.toJson(),
+      };
 }
 
 class Dataset {
@@ -4644,59 +4359,30 @@ class Dataset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (access != null) {
-      _json['access'] = access.map((value) => value.toJson()).toList();
-    }
-    if (creationTime != null) {
-      _json['creationTime'] = creationTime;
-    }
-    if (datasetReference != null) {
-      _json['datasetReference'] = datasetReference.toJson();
-    }
-    if (defaultEncryptionConfiguration != null) {
-      _json['defaultEncryptionConfiguration'] =
-          defaultEncryptionConfiguration.toJson();
-    }
-    if (defaultPartitionExpirationMs != null) {
-      _json['defaultPartitionExpirationMs'] = defaultPartitionExpirationMs;
-    }
-    if (defaultTableExpirationMs != null) {
-      _json['defaultTableExpirationMs'] = defaultTableExpirationMs;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (friendlyName != null) {
-      _json['friendlyName'] = friendlyName;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (lastModifiedTime != null) {
-      _json['lastModifiedTime'] = lastModifiedTime;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (satisfiesPZS != null) {
-      _json['satisfiesPZS'] = satisfiesPZS;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (access != null)
+          'access': access.map((value) => value.toJson()).toList(),
+        if (creationTime != null) 'creationTime': creationTime,
+        if (datasetReference != null)
+          'datasetReference': datasetReference.toJson(),
+        if (defaultEncryptionConfiguration != null)
+          'defaultEncryptionConfiguration':
+              defaultEncryptionConfiguration.toJson(),
+        if (defaultPartitionExpirationMs != null)
+          'defaultPartitionExpirationMs': defaultPartitionExpirationMs,
+        if (defaultTableExpirationMs != null)
+          'defaultTableExpirationMs': defaultTableExpirationMs,
+        if (description != null) 'description': description,
+        if (etag != null) 'etag': etag,
+        if (friendlyName != null) 'friendlyName': friendlyName,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (labels != null) 'labels': labels,
+        if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime,
+        if (location != null) 'location': location,
+        if (satisfiesPZS != null) 'satisfiesPZS': satisfiesPZS,
+        if (selfLink != null) 'selfLink': selfLink,
+      };
 }
 
 class DatasetListDatasets {
@@ -4755,28 +4441,15 @@ class DatasetListDatasets {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (datasetReference != null) {
-      _json['datasetReference'] = datasetReference.toJson();
-    }
-    if (friendlyName != null) {
-      _json['friendlyName'] = friendlyName;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (datasetReference != null)
+          'datasetReference': datasetReference.toJson(),
+        if (friendlyName != null) 'friendlyName': friendlyName,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (labels != null) 'labels': labels,
+        if (location != null) 'location': location,
+      };
 }
 
 class DatasetList {
@@ -4823,22 +4496,13 @@ class DatasetList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (datasets != null) {
-      _json['datasets'] = datasets.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (datasets != null)
+          'datasets': datasets.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class DatasetReference {
@@ -4866,16 +4530,10 @@ class DatasetReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (datasetId != null) {
-      _json['datasetId'] = datasetId;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (datasetId != null) 'datasetId': datasetId,
+        if (projectId != null) 'projectId': projectId,
+      };
 }
 
 class DestinationTableProperties {
@@ -4927,19 +4585,11 @@ class DestinationTableProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (friendlyName != null) {
-      _json['friendlyName'] = friendlyName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (friendlyName != null) 'friendlyName': friendlyName,
+        if (labels != null) 'labels': labels,
+      };
 }
 
 /// Model evaluation metrics for dimensionality reduction models.
@@ -4957,13 +4607,10 @@ class DimensionalityReductionMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (totalExplainedVarianceRatio != null) {
-      _json['totalExplainedVarianceRatio'] = totalExplainedVarianceRatio;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (totalExplainedVarianceRatio != null)
+          'totalExplainedVarianceRatio': totalExplainedVarianceRatio,
+      };
 }
 
 class EncryptionConfiguration {
@@ -4984,13 +4631,9 @@ class EncryptionConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kmsKeyName != null) {
-      _json['kmsKeyName'] = kmsKeyName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
+      };
 }
 
 /// A single entry in the confusion matrix.
@@ -5015,16 +4658,10 @@ class Entry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (itemCount != null) {
-      _json['itemCount'] = itemCount;
-    }
-    if (predictedLabel != null) {
-      _json['predictedLabel'] = predictedLabel;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (itemCount != null) 'itemCount': itemCount,
+        if (predictedLabel != null) 'predictedLabel': predictedLabel,
+      };
 }
 
 class ErrorProto {
@@ -5059,22 +4696,12 @@ class ErrorProto {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (debugInfo != null) {
-      _json['debugInfo'] = debugInfo;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    if (reason != null) {
-      _json['reason'] = reason;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (debugInfo != null) 'debugInfo': debugInfo,
+        if (location != null) 'location': location,
+        if (message != null) 'message': message,
+        if (reason != null) 'reason': reason,
+      };
 }
 
 /// Evaluation metrics of a model.
@@ -5144,34 +4771,23 @@ class EvaluationMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (arimaForecastingMetrics != null) {
-      _json['arimaForecastingMetrics'] = arimaForecastingMetrics.toJson();
-    }
-    if (binaryClassificationMetrics != null) {
-      _json['binaryClassificationMetrics'] =
-          binaryClassificationMetrics.toJson();
-    }
-    if (clusteringMetrics != null) {
-      _json['clusteringMetrics'] = clusteringMetrics.toJson();
-    }
-    if (dimensionalityReductionMetrics != null) {
-      _json['dimensionalityReductionMetrics'] =
-          dimensionalityReductionMetrics.toJson();
-    }
-    if (multiClassClassificationMetrics != null) {
-      _json['multiClassClassificationMetrics'] =
-          multiClassClassificationMetrics.toJson();
-    }
-    if (rankingMetrics != null) {
-      _json['rankingMetrics'] = rankingMetrics.toJson();
-    }
-    if (regressionMetrics != null) {
-      _json['regressionMetrics'] = regressionMetrics.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (arimaForecastingMetrics != null)
+          'arimaForecastingMetrics': arimaForecastingMetrics.toJson(),
+        if (binaryClassificationMetrics != null)
+          'binaryClassificationMetrics': binaryClassificationMetrics.toJson(),
+        if (clusteringMetrics != null)
+          'clusteringMetrics': clusteringMetrics.toJson(),
+        if (dimensionalityReductionMetrics != null)
+          'dimensionalityReductionMetrics':
+              dimensionalityReductionMetrics.toJson(),
+        if (multiClassClassificationMetrics != null)
+          'multiClassClassificationMetrics':
+              multiClassClassificationMetrics.toJson(),
+        if (rankingMetrics != null) 'rankingMetrics': rankingMetrics.toJson(),
+        if (regressionMetrics != null)
+          'regressionMetrics': regressionMetrics.toJson(),
+      };
 }
 
 class ExplainQueryStage {
@@ -5367,100 +4983,42 @@ class ExplainQueryStage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (completedParallelInputs != null) {
-      _json['completedParallelInputs'] = completedParallelInputs;
-    }
-    if (computeMsAvg != null) {
-      _json['computeMsAvg'] = computeMsAvg;
-    }
-    if (computeMsMax != null) {
-      _json['computeMsMax'] = computeMsMax;
-    }
-    if (computeRatioAvg != null) {
-      _json['computeRatioAvg'] = computeRatioAvg;
-    }
-    if (computeRatioMax != null) {
-      _json['computeRatioMax'] = computeRatioMax;
-    }
-    if (endMs != null) {
-      _json['endMs'] = endMs;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (inputStages != null) {
-      _json['inputStages'] = inputStages;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parallelInputs != null) {
-      _json['parallelInputs'] = parallelInputs;
-    }
-    if (readMsAvg != null) {
-      _json['readMsAvg'] = readMsAvg;
-    }
-    if (readMsMax != null) {
-      _json['readMsMax'] = readMsMax;
-    }
-    if (readRatioAvg != null) {
-      _json['readRatioAvg'] = readRatioAvg;
-    }
-    if (readRatioMax != null) {
-      _json['readRatioMax'] = readRatioMax;
-    }
-    if (recordsRead != null) {
-      _json['recordsRead'] = recordsRead;
-    }
-    if (recordsWritten != null) {
-      _json['recordsWritten'] = recordsWritten;
-    }
-    if (shuffleOutputBytes != null) {
-      _json['shuffleOutputBytes'] = shuffleOutputBytes;
-    }
-    if (shuffleOutputBytesSpilled != null) {
-      _json['shuffleOutputBytesSpilled'] = shuffleOutputBytesSpilled;
-    }
-    if (slotMs != null) {
-      _json['slotMs'] = slotMs;
-    }
-    if (startMs != null) {
-      _json['startMs'] = startMs;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (steps != null) {
-      _json['steps'] = steps.map((value) => value.toJson()).toList();
-    }
-    if (waitMsAvg != null) {
-      _json['waitMsAvg'] = waitMsAvg;
-    }
-    if (waitMsMax != null) {
-      _json['waitMsMax'] = waitMsMax;
-    }
-    if (waitRatioAvg != null) {
-      _json['waitRatioAvg'] = waitRatioAvg;
-    }
-    if (waitRatioMax != null) {
-      _json['waitRatioMax'] = waitRatioMax;
-    }
-    if (writeMsAvg != null) {
-      _json['writeMsAvg'] = writeMsAvg;
-    }
-    if (writeMsMax != null) {
-      _json['writeMsMax'] = writeMsMax;
-    }
-    if (writeRatioAvg != null) {
-      _json['writeRatioAvg'] = writeRatioAvg;
-    }
-    if (writeRatioMax != null) {
-      _json['writeRatioMax'] = writeRatioMax;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (completedParallelInputs != null)
+          'completedParallelInputs': completedParallelInputs,
+        if (computeMsAvg != null) 'computeMsAvg': computeMsAvg,
+        if (computeMsMax != null) 'computeMsMax': computeMsMax,
+        if (computeRatioAvg != null) 'computeRatioAvg': computeRatioAvg,
+        if (computeRatioMax != null) 'computeRatioMax': computeRatioMax,
+        if (endMs != null) 'endMs': endMs,
+        if (id != null) 'id': id,
+        if (inputStages != null) 'inputStages': inputStages,
+        if (name != null) 'name': name,
+        if (parallelInputs != null) 'parallelInputs': parallelInputs,
+        if (readMsAvg != null) 'readMsAvg': readMsAvg,
+        if (readMsMax != null) 'readMsMax': readMsMax,
+        if (readRatioAvg != null) 'readRatioAvg': readRatioAvg,
+        if (readRatioMax != null) 'readRatioMax': readRatioMax,
+        if (recordsRead != null) 'recordsRead': recordsRead,
+        if (recordsWritten != null) 'recordsWritten': recordsWritten,
+        if (shuffleOutputBytes != null)
+          'shuffleOutputBytes': shuffleOutputBytes,
+        if (shuffleOutputBytesSpilled != null)
+          'shuffleOutputBytesSpilled': shuffleOutputBytesSpilled,
+        if (slotMs != null) 'slotMs': slotMs,
+        if (startMs != null) 'startMs': startMs,
+        if (status != null) 'status': status,
+        if (steps != null)
+          'steps': steps.map((value) => value.toJson()).toList(),
+        if (waitMsAvg != null) 'waitMsAvg': waitMsAvg,
+        if (waitMsMax != null) 'waitMsMax': waitMsMax,
+        if (waitRatioAvg != null) 'waitRatioAvg': waitRatioAvg,
+        if (waitRatioMax != null) 'waitRatioMax': waitRatioMax,
+        if (writeMsAvg != null) 'writeMsAvg': writeMsAvg,
+        if (writeMsMax != null) 'writeMsMax': writeMsMax,
+        if (writeRatioAvg != null) 'writeRatioAvg': writeRatioAvg,
+        if (writeRatioMax != null) 'writeRatioMax': writeRatioMax,
+      };
 }
 
 class ExplainQueryStep {
@@ -5483,16 +5041,10 @@ class ExplainQueryStep {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (substeps != null) {
-      _json['substeps'] = substeps;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (substeps != null) 'substeps': substeps,
+      };
 }
 
 /// Explanation for a single feature.
@@ -5517,16 +5069,10 @@ class Explanation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attribution != null) {
-      _json['attribution'] = attribution;
-    }
-    if (featureName != null) {
-      _json['featureName'] = featureName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attribution != null) 'attribution': attribution,
+        if (featureName != null) 'featureName': featureName,
+      };
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -5590,22 +5136,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 class ExternalDataConfiguration {
@@ -5751,46 +5287,24 @@ class ExternalDataConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (autodetect != null) {
-      _json['autodetect'] = autodetect;
-    }
-    if (bigtableOptions != null) {
-      _json['bigtableOptions'] = bigtableOptions.toJson();
-    }
-    if (compression != null) {
-      _json['compression'] = compression;
-    }
-    if (connectionId != null) {
-      _json['connectionId'] = connectionId;
-    }
-    if (csvOptions != null) {
-      _json['csvOptions'] = csvOptions.toJson();
-    }
-    if (googleSheetsOptions != null) {
-      _json['googleSheetsOptions'] = googleSheetsOptions.toJson();
-    }
-    if (hivePartitioningOptions != null) {
-      _json['hivePartitioningOptions'] = hivePartitioningOptions.toJson();
-    }
-    if (ignoreUnknownValues != null) {
-      _json['ignoreUnknownValues'] = ignoreUnknownValues;
-    }
-    if (maxBadRecords != null) {
-      _json['maxBadRecords'] = maxBadRecords;
-    }
-    if (schema != null) {
-      _json['schema'] = schema.toJson();
-    }
-    if (sourceFormat != null) {
-      _json['sourceFormat'] = sourceFormat;
-    }
-    if (sourceUris != null) {
-      _json['sourceUris'] = sourceUris;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (autodetect != null) 'autodetect': autodetect,
+        if (bigtableOptions != null)
+          'bigtableOptions': bigtableOptions.toJson(),
+        if (compression != null) 'compression': compression,
+        if (connectionId != null) 'connectionId': connectionId,
+        if (csvOptions != null) 'csvOptions': csvOptions.toJson(),
+        if (googleSheetsOptions != null)
+          'googleSheetsOptions': googleSheetsOptions.toJson(),
+        if (hivePartitioningOptions != null)
+          'hivePartitioningOptions': hivePartitioningOptions.toJson(),
+        if (ignoreUnknownValues != null)
+          'ignoreUnknownValues': ignoreUnknownValues,
+        if (maxBadRecords != null) 'maxBadRecords': maxBadRecords,
+        if (schema != null) 'schema': schema.toJson(),
+        if (sourceFormat != null) 'sourceFormat': sourceFormat,
+        if (sourceUris != null) 'sourceUris': sourceUris,
+      };
 }
 
 /// Representative value of a single feature within the cluster.
@@ -5821,19 +5335,12 @@ class FeatureValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (categoricalValue != null) {
-      _json['categoricalValue'] = categoricalValue.toJson();
-    }
-    if (featureColumn != null) {
-      _json['featureColumn'] = featureColumn;
-    }
-    if (numericalValue != null) {
-      _json['numericalValue'] = numericalValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (categoricalValue != null)
+          'categoricalValue': categoricalValue.toJson(),
+        if (featureColumn != null) 'featureColumn': featureColumn,
+        if (numericalValue != null) 'numericalValue': numericalValue,
+      };
 }
 
 /// Request message for `GetIamPolicy` method.
@@ -5851,13 +5358,9 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (options != null) {
-      _json['options'] = options.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (options != null) 'options': options.toJson(),
+      };
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
@@ -5882,13 +5385,10 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (requestedPolicyVersion != null) {
-      _json['requestedPolicyVersion'] = requestedPolicyVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (requestedPolicyVersion != null)
+          'requestedPolicyVersion': requestedPolicyVersion,
+      };
 }
 
 class GetQueryResultsResponse {
@@ -6002,46 +5502,23 @@ class GetQueryResultsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cacheHit != null) {
-      _json['cacheHit'] = cacheHit;
-    }
-    if (errors != null) {
-      _json['errors'] = errors.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (jobComplete != null) {
-      _json['jobComplete'] = jobComplete;
-    }
-    if (jobReference != null) {
-      _json['jobReference'] = jobReference.toJson();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (numDmlAffectedRows != null) {
-      _json['numDmlAffectedRows'] = numDmlAffectedRows;
-    }
-    if (pageToken != null) {
-      _json['pageToken'] = pageToken;
-    }
-    if (rows != null) {
-      _json['rows'] = rows.map((value) => value.toJson()).toList();
-    }
-    if (schema != null) {
-      _json['schema'] = schema.toJson();
-    }
-    if (totalBytesProcessed != null) {
-      _json['totalBytesProcessed'] = totalBytesProcessed;
-    }
-    if (totalRows != null) {
-      _json['totalRows'] = totalRows;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cacheHit != null) 'cacheHit': cacheHit,
+        if (errors != null)
+          'errors': errors.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (jobComplete != null) 'jobComplete': jobComplete,
+        if (jobReference != null) 'jobReference': jobReference.toJson(),
+        if (kind != null) 'kind': kind,
+        if (numDmlAffectedRows != null)
+          'numDmlAffectedRows': numDmlAffectedRows,
+        if (pageToken != null) 'pageToken': pageToken,
+        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+        if (schema != null) 'schema': schema.toJson(),
+        if (totalBytesProcessed != null)
+          'totalBytesProcessed': totalBytesProcessed,
+        if (totalRows != null) 'totalRows': totalRows,
+      };
 }
 
 class GetServiceAccountResponse {
@@ -6062,16 +5539,10 @@ class GetServiceAccountResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (email != null) 'email': email,
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// Global explanations containing the top most important features after
@@ -6102,17 +5573,11 @@ class GlobalExplanation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (classLabel != null) {
-      _json['classLabel'] = classLabel;
-    }
-    if (explanations != null) {
-      _json['explanations'] =
-          explanations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (classLabel != null) 'classLabel': classLabel,
+        if (explanations != null)
+          'explanations': explanations.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GoogleSheetsOptions {
@@ -6153,16 +5618,10 @@ class GoogleSheetsOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (range != null) {
-      _json['range'] = range;
-    }
-    if (skipLeadingRows != null) {
-      _json['skipLeadingRows'] = skipLeadingRows;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (range != null) 'range': range,
+        if (skipLeadingRows != null) 'skipLeadingRows': skipLeadingRows,
+      };
 }
 
 class HivePartitioningOptions {
@@ -6217,19 +5676,12 @@ class HivePartitioningOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (mode != null) {
-      _json['mode'] = mode;
-    }
-    if (requirePartitionFilter != null) {
-      _json['requirePartitionFilter'] = requirePartitionFilter;
-    }
-    if (sourceUriPrefix != null) {
-      _json['sourceUriPrefix'] = sourceUriPrefix;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (mode != null) 'mode': mode,
+        if (requirePartitionFilter != null)
+          'requirePartitionFilter': requirePartitionFilter,
+        if (sourceUriPrefix != null) 'sourceUriPrefix': sourceUriPrefix,
+      };
 }
 
 /// Information about a single iteration of the training run.
@@ -6294,36 +5746,19 @@ class IterationResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (arimaResult != null) {
-      _json['arimaResult'] = arimaResult.toJson();
-    }
-    if (clusterInfos != null) {
-      _json['clusterInfos'] =
-          clusterInfos.map((value) => value.toJson()).toList();
-    }
-    if (durationMs != null) {
-      _json['durationMs'] = durationMs;
-    }
-    if (evalLoss != null) {
-      _json['evalLoss'] = evalLoss;
-    }
-    if (index != null) {
-      _json['index'] = index;
-    }
-    if (learnRate != null) {
-      _json['learnRate'] = learnRate;
-    }
-    if (principalComponentInfos != null) {
-      _json['principalComponentInfos'] =
-          principalComponentInfos.map((value) => value.toJson()).toList();
-    }
-    if (trainingLoss != null) {
-      _json['trainingLoss'] = trainingLoss;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (arimaResult != null) 'arimaResult': arimaResult.toJson(),
+        if (clusterInfos != null)
+          'clusterInfos': clusterInfos.map((value) => value.toJson()).toList(),
+        if (durationMs != null) 'durationMs': durationMs,
+        if (evalLoss != null) 'evalLoss': evalLoss,
+        if (index != null) 'index': index,
+        if (learnRate != null) 'learnRate': learnRate,
+        if (principalComponentInfos != null)
+          'principalComponentInfos':
+              principalComponentInfos.map((value) => value.toJson()).toList(),
+        if (trainingLoss != null) 'trainingLoss': trainingLoss,
+      };
 }
 
 class Job {
@@ -6398,37 +5833,17 @@ class Job {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (configuration != null) {
-      _json['configuration'] = configuration.toJson();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (jobReference != null) {
-      _json['jobReference'] = jobReference.toJson();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (statistics != null) {
-      _json['statistics'] = statistics.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    if (userEmail != null) {
-      _json['user_email'] = userEmail;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (configuration != null) 'configuration': configuration.toJson(),
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (jobReference != null) 'jobReference': jobReference.toJson(),
+        if (kind != null) 'kind': kind,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (statistics != null) 'statistics': statistics.toJson(),
+        if (status != null) 'status': status.toJson(),
+        if (userEmail != null) 'user_email': userEmail,
+      };
 }
 
 class JobCancelResponse {
@@ -6449,16 +5864,10 @@ class JobCancelResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (job != null) {
-      _json['job'] = job.toJson();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (job != null) 'job': job.toJson(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 class JobConfiguration {
@@ -6543,34 +5952,16 @@ class JobConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (copy != null) {
-      _json['copy'] = copy.toJson();
-    }
-    if (dryRun != null) {
-      _json['dryRun'] = dryRun;
-    }
-    if (extract != null) {
-      _json['extract'] = extract.toJson();
-    }
-    if (jobTimeoutMs != null) {
-      _json['jobTimeoutMs'] = jobTimeoutMs;
-    }
-    if (jobType != null) {
-      _json['jobType'] = jobType;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (load != null) {
-      _json['load'] = load.toJson();
-    }
-    if (query != null) {
-      _json['query'] = query.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (copy != null) 'copy': copy.toJson(),
+        if (dryRun != null) 'dryRun': dryRun,
+        if (extract != null) 'extract': extract.toJson(),
+        if (jobTimeoutMs != null) 'jobTimeoutMs': jobTimeoutMs,
+        if (jobType != null) 'jobType': jobType,
+        if (labels != null) 'labels': labels,
+        if (load != null) 'load': load.toJson(),
+        if (query != null) 'query': query.toJson(),
+      };
 }
 
 class JobConfigurationExtract {
@@ -6670,37 +6061,18 @@ class JobConfigurationExtract {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (compression != null) {
-      _json['compression'] = compression;
-    }
-    if (destinationFormat != null) {
-      _json['destinationFormat'] = destinationFormat;
-    }
-    if (destinationUri != null) {
-      _json['destinationUri'] = destinationUri;
-    }
-    if (destinationUris != null) {
-      _json['destinationUris'] = destinationUris;
-    }
-    if (fieldDelimiter != null) {
-      _json['fieldDelimiter'] = fieldDelimiter;
-    }
-    if (printHeader != null) {
-      _json['printHeader'] = printHeader;
-    }
-    if (sourceModel != null) {
-      _json['sourceModel'] = sourceModel.toJson();
-    }
-    if (sourceTable != null) {
-      _json['sourceTable'] = sourceTable.toJson();
-    }
-    if (useAvroLogicalTypes != null) {
-      _json['useAvroLogicalTypes'] = useAvroLogicalTypes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (compression != null) 'compression': compression,
+        if (destinationFormat != null) 'destinationFormat': destinationFormat,
+        if (destinationUri != null) 'destinationUri': destinationUri,
+        if (destinationUris != null) 'destinationUris': destinationUris,
+        if (fieldDelimiter != null) 'fieldDelimiter': fieldDelimiter,
+        if (printHeader != null) 'printHeader': printHeader,
+        if (sourceModel != null) 'sourceModel': sourceModel.toJson(),
+        if (sourceTable != null) 'sourceTable': sourceTable.toJson(),
+        if (useAvroLogicalTypes != null)
+          'useAvroLogicalTypes': useAvroLogicalTypes,
+      };
 }
 
 class JobConfigurationLoad {
@@ -7079,98 +6451,50 @@ class JobConfigurationLoad {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowJaggedRows != null) {
-      _json['allowJaggedRows'] = allowJaggedRows;
-    }
-    if (allowQuotedNewlines != null) {
-      _json['allowQuotedNewlines'] = allowQuotedNewlines;
-    }
-    if (autodetect != null) {
-      _json['autodetect'] = autodetect;
-    }
-    if (clustering != null) {
-      _json['clustering'] = clustering.toJson();
-    }
-    if (createDisposition != null) {
-      _json['createDisposition'] = createDisposition;
-    }
-    if (decimalTargetTypes != null) {
-      _json['decimalTargetTypes'] = decimalTargetTypes;
-    }
-    if (destinationEncryptionConfiguration != null) {
-      _json['destinationEncryptionConfiguration'] =
-          destinationEncryptionConfiguration.toJson();
-    }
-    if (destinationTable != null) {
-      _json['destinationTable'] = destinationTable.toJson();
-    }
-    if (destinationTableProperties != null) {
-      _json['destinationTableProperties'] = destinationTableProperties.toJson();
-    }
-    if (encoding != null) {
-      _json['encoding'] = encoding;
-    }
-    if (fieldDelimiter != null) {
-      _json['fieldDelimiter'] = fieldDelimiter;
-    }
-    if (hivePartitioningOptions != null) {
-      _json['hivePartitioningOptions'] = hivePartitioningOptions.toJson();
-    }
-    if (ignoreUnknownValues != null) {
-      _json['ignoreUnknownValues'] = ignoreUnknownValues;
-    }
-    if (jsonExtension != null) {
-      _json['jsonExtension'] = jsonExtension;
-    }
-    if (maxBadRecords != null) {
-      _json['maxBadRecords'] = maxBadRecords;
-    }
-    if (nullMarker != null) {
-      _json['nullMarker'] = nullMarker;
-    }
-    if (projectionFields != null) {
-      _json['projectionFields'] = projectionFields;
-    }
-    if (quote != null) {
-      _json['quote'] = quote;
-    }
-    if (rangePartitioning != null) {
-      _json['rangePartitioning'] = rangePartitioning.toJson();
-    }
-    if (schema != null) {
-      _json['schema'] = schema.toJson();
-    }
-    if (schemaInline != null) {
-      _json['schemaInline'] = schemaInline;
-    }
-    if (schemaInlineFormat != null) {
-      _json['schemaInlineFormat'] = schemaInlineFormat;
-    }
-    if (schemaUpdateOptions != null) {
-      _json['schemaUpdateOptions'] = schemaUpdateOptions;
-    }
-    if (skipLeadingRows != null) {
-      _json['skipLeadingRows'] = skipLeadingRows;
-    }
-    if (sourceFormat != null) {
-      _json['sourceFormat'] = sourceFormat;
-    }
-    if (sourceUris != null) {
-      _json['sourceUris'] = sourceUris;
-    }
-    if (timePartitioning != null) {
-      _json['timePartitioning'] = timePartitioning.toJson();
-    }
-    if (useAvroLogicalTypes != null) {
-      _json['useAvroLogicalTypes'] = useAvroLogicalTypes;
-    }
-    if (writeDisposition != null) {
-      _json['writeDisposition'] = writeDisposition;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowJaggedRows != null) 'allowJaggedRows': allowJaggedRows,
+        if (allowQuotedNewlines != null)
+          'allowQuotedNewlines': allowQuotedNewlines,
+        if (autodetect != null) 'autodetect': autodetect,
+        if (clustering != null) 'clustering': clustering.toJson(),
+        if (createDisposition != null) 'createDisposition': createDisposition,
+        if (decimalTargetTypes != null)
+          'decimalTargetTypes': decimalTargetTypes,
+        if (destinationEncryptionConfiguration != null)
+          'destinationEncryptionConfiguration':
+              destinationEncryptionConfiguration.toJson(),
+        if (destinationTable != null)
+          'destinationTable': destinationTable.toJson(),
+        if (destinationTableProperties != null)
+          'destinationTableProperties': destinationTableProperties.toJson(),
+        if (encoding != null) 'encoding': encoding,
+        if (fieldDelimiter != null) 'fieldDelimiter': fieldDelimiter,
+        if (hivePartitioningOptions != null)
+          'hivePartitioningOptions': hivePartitioningOptions.toJson(),
+        if (ignoreUnknownValues != null)
+          'ignoreUnknownValues': ignoreUnknownValues,
+        if (jsonExtension != null) 'jsonExtension': jsonExtension,
+        if (maxBadRecords != null) 'maxBadRecords': maxBadRecords,
+        if (nullMarker != null) 'nullMarker': nullMarker,
+        if (projectionFields != null) 'projectionFields': projectionFields,
+        if (quote != null) 'quote': quote,
+        if (rangePartitioning != null)
+          'rangePartitioning': rangePartitioning.toJson(),
+        if (schema != null) 'schema': schema.toJson(),
+        if (schemaInline != null) 'schemaInline': schemaInline,
+        if (schemaInlineFormat != null)
+          'schemaInlineFormat': schemaInlineFormat,
+        if (schemaUpdateOptions != null)
+          'schemaUpdateOptions': schemaUpdateOptions,
+        if (skipLeadingRows != null) 'skipLeadingRows': skipLeadingRows,
+        if (sourceFormat != null) 'sourceFormat': sourceFormat,
+        if (sourceUris != null) 'sourceUris': sourceUris,
+        if (timePartitioning != null)
+          'timePartitioning': timePartitioning.toJson(),
+        if (useAvroLogicalTypes != null)
+          'useAvroLogicalTypes': useAvroLogicalTypes,
+        if (writeDisposition != null) 'writeDisposition': writeDisposition,
+      };
 }
 
 class JobConfigurationQuery {
@@ -7450,84 +6774,48 @@ class JobConfigurationQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowLargeResults != null) {
-      _json['allowLargeResults'] = allowLargeResults;
-    }
-    if (clustering != null) {
-      _json['clustering'] = clustering.toJson();
-    }
-    if (connectionProperties != null) {
-      _json['connectionProperties'] =
-          connectionProperties.map((value) => value.toJson()).toList();
-    }
-    if (createDisposition != null) {
-      _json['createDisposition'] = createDisposition;
-    }
-    if (defaultDataset != null) {
-      _json['defaultDataset'] = defaultDataset.toJson();
-    }
-    if (destinationEncryptionConfiguration != null) {
-      _json['destinationEncryptionConfiguration'] =
-          destinationEncryptionConfiguration.toJson();
-    }
-    if (destinationTable != null) {
-      _json['destinationTable'] = destinationTable.toJson();
-    }
-    if (flattenResults != null) {
-      _json['flattenResults'] = flattenResults;
-    }
-    if (maximumBillingTier != null) {
-      _json['maximumBillingTier'] = maximumBillingTier;
-    }
-    if (maximumBytesBilled != null) {
-      _json['maximumBytesBilled'] = maximumBytesBilled;
-    }
-    if (parameterMode != null) {
-      _json['parameterMode'] = parameterMode;
-    }
-    if (preserveNulls != null) {
-      _json['preserveNulls'] = preserveNulls;
-    }
-    if (priority != null) {
-      _json['priority'] = priority;
-    }
-    if (query != null) {
-      _json['query'] = query;
-    }
-    if (queryParameters != null) {
-      _json['queryParameters'] =
-          queryParameters.map((value) => value.toJson()).toList();
-    }
-    if (rangePartitioning != null) {
-      _json['rangePartitioning'] = rangePartitioning.toJson();
-    }
-    if (schemaUpdateOptions != null) {
-      _json['schemaUpdateOptions'] = schemaUpdateOptions;
-    }
-    if (tableDefinitions != null) {
-      _json['tableDefinitions'] = tableDefinitions
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (timePartitioning != null) {
-      _json['timePartitioning'] = timePartitioning.toJson();
-    }
-    if (useLegacySql != null) {
-      _json['useLegacySql'] = useLegacySql;
-    }
-    if (useQueryCache != null) {
-      _json['useQueryCache'] = useQueryCache;
-    }
-    if (userDefinedFunctionResources != null) {
-      _json['userDefinedFunctionResources'] =
-          userDefinedFunctionResources.map((value) => value.toJson()).toList();
-    }
-    if (writeDisposition != null) {
-      _json['writeDisposition'] = writeDisposition;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowLargeResults != null) 'allowLargeResults': allowLargeResults,
+        if (clustering != null) 'clustering': clustering.toJson(),
+        if (connectionProperties != null)
+          'connectionProperties':
+              connectionProperties.map((value) => value.toJson()).toList(),
+        if (createDisposition != null) 'createDisposition': createDisposition,
+        if (defaultDataset != null) 'defaultDataset': defaultDataset.toJson(),
+        if (destinationEncryptionConfiguration != null)
+          'destinationEncryptionConfiguration':
+              destinationEncryptionConfiguration.toJson(),
+        if (destinationTable != null)
+          'destinationTable': destinationTable.toJson(),
+        if (flattenResults != null) 'flattenResults': flattenResults,
+        if (maximumBillingTier != null)
+          'maximumBillingTier': maximumBillingTier,
+        if (maximumBytesBilled != null)
+          'maximumBytesBilled': maximumBytesBilled,
+        if (parameterMode != null) 'parameterMode': parameterMode,
+        if (preserveNulls != null) 'preserveNulls': preserveNulls,
+        if (priority != null) 'priority': priority,
+        if (query != null) 'query': query,
+        if (queryParameters != null)
+          'queryParameters':
+              queryParameters.map((value) => value.toJson()).toList(),
+        if (rangePartitioning != null)
+          'rangePartitioning': rangePartitioning.toJson(),
+        if (schemaUpdateOptions != null)
+          'schemaUpdateOptions': schemaUpdateOptions,
+        if (tableDefinitions != null)
+          'tableDefinitions': tableDefinitions
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (timePartitioning != null)
+          'timePartitioning': timePartitioning.toJson(),
+        if (useLegacySql != null) 'useLegacySql': useLegacySql,
+        if (useQueryCache != null) 'useQueryCache': useQueryCache,
+        if (userDefinedFunctionResources != null)
+          'userDefinedFunctionResources': userDefinedFunctionResources
+              .map((value) => value.toJson())
+              .toList(),
+        if (writeDisposition != null) 'writeDisposition': writeDisposition,
+      };
 }
 
 class JobConfigurationTableCopy {
@@ -7622,36 +6910,21 @@ class JobConfigurationTableCopy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createDisposition != null) {
-      _json['createDisposition'] = createDisposition;
-    }
-    if (destinationEncryptionConfiguration != null) {
-      _json['destinationEncryptionConfiguration'] =
-          destinationEncryptionConfiguration.toJson();
-    }
-    if (destinationExpirationTime != null) {
-      _json['destinationExpirationTime'] = destinationExpirationTime;
-    }
-    if (destinationTable != null) {
-      _json['destinationTable'] = destinationTable.toJson();
-    }
-    if (operationType != null) {
-      _json['operationType'] = operationType;
-    }
-    if (sourceTable != null) {
-      _json['sourceTable'] = sourceTable.toJson();
-    }
-    if (sourceTables != null) {
-      _json['sourceTables'] =
-          sourceTables.map((value) => value.toJson()).toList();
-    }
-    if (writeDisposition != null) {
-      _json['writeDisposition'] = writeDisposition;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createDisposition != null) 'createDisposition': createDisposition,
+        if (destinationEncryptionConfiguration != null)
+          'destinationEncryptionConfiguration':
+              destinationEncryptionConfiguration.toJson(),
+        if (destinationExpirationTime != null)
+          'destinationExpirationTime': destinationExpirationTime,
+        if (destinationTable != null)
+          'destinationTable': destinationTable.toJson(),
+        if (operationType != null) 'operationType': operationType,
+        if (sourceTable != null) 'sourceTable': sourceTable.toJson(),
+        if (sourceTables != null)
+          'sourceTables': sourceTables.map((value) => value.toJson()).toList(),
+        if (writeDisposition != null) 'writeDisposition': writeDisposition,
+      };
 }
 
 class JobListJobs {
@@ -7723,37 +6996,17 @@ class JobListJobs {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (configuration != null) {
-      _json['configuration'] = configuration.toJson();
-    }
-    if (errorResult != null) {
-      _json['errorResult'] = errorResult.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (jobReference != null) {
-      _json['jobReference'] = jobReference.toJson();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (statistics != null) {
-      _json['statistics'] = statistics.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    if (userEmail != null) {
-      _json['user_email'] = userEmail;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (configuration != null) 'configuration': configuration.toJson(),
+        if (errorResult != null) 'errorResult': errorResult.toJson(),
+        if (id != null) 'id': id,
+        if (jobReference != null) 'jobReference': jobReference.toJson(),
+        if (kind != null) 'kind': kind,
+        if (state != null) 'state': state,
+        if (statistics != null) 'statistics': statistics.toJson(),
+        if (status != null) 'status': status.toJson(),
+        if (userEmail != null) 'user_email': userEmail,
+      };
 }
 
 class JobList {
@@ -7789,22 +7042,12 @@ class JobList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (jobs != null) {
-      _json['jobs'] = jobs.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (jobs != null) 'jobs': jobs.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class JobReference {
@@ -7841,19 +7084,11 @@ class JobReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (jobId != null) {
-      _json['jobId'] = jobId;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (jobId != null) 'jobId': jobId,
+        if (location != null) 'location': location,
+        if (projectId != null) 'projectId': projectId,
+      };
 }
 
 class JobStatisticsReservationUsage {
@@ -7875,16 +7110,10 @@ class JobStatisticsReservationUsage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (slotMs != null) {
-      _json['slotMs'] = slotMs;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (slotMs != null) 'slotMs': slotMs,
+      };
 }
 
 class JobStatistics {
@@ -8026,62 +7255,31 @@ class JobStatistics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (completionRatio != null) {
-      _json['completionRatio'] = completionRatio;
-    }
-    if (creationTime != null) {
-      _json['creationTime'] = creationTime;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (extract != null) {
-      _json['extract'] = extract.toJson();
-    }
-    if (load != null) {
-      _json['load'] = load.toJson();
-    }
-    if (numChildJobs != null) {
-      _json['numChildJobs'] = numChildJobs;
-    }
-    if (parentJobId != null) {
-      _json['parentJobId'] = parentJobId;
-    }
-    if (query != null) {
-      _json['query'] = query.toJson();
-    }
-    if (quotaDeferments != null) {
-      _json['quotaDeferments'] = quotaDeferments;
-    }
-    if (reservationUsage != null) {
-      _json['reservationUsage'] =
-          reservationUsage.map((value) => value.toJson()).toList();
-    }
-    if (reservationId != null) {
-      _json['reservation_id'] = reservationId;
-    }
-    if (rowLevelSecurityStatistics != null) {
-      _json['rowLevelSecurityStatistics'] = rowLevelSecurityStatistics.toJson();
-    }
-    if (scriptStatistics != null) {
-      _json['scriptStatistics'] = scriptStatistics.toJson();
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (totalBytesProcessed != null) {
-      _json['totalBytesProcessed'] = totalBytesProcessed;
-    }
-    if (totalSlotMs != null) {
-      _json['totalSlotMs'] = totalSlotMs;
-    }
-    if (transactionInfoTemplate != null) {
-      _json['transactionInfoTemplate'] = transactionInfoTemplate.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (completionRatio != null) 'completionRatio': completionRatio,
+        if (creationTime != null) 'creationTime': creationTime,
+        if (endTime != null) 'endTime': endTime,
+        if (extract != null) 'extract': extract.toJson(),
+        if (load != null) 'load': load.toJson(),
+        if (numChildJobs != null) 'numChildJobs': numChildJobs,
+        if (parentJobId != null) 'parentJobId': parentJobId,
+        if (query != null) 'query': query.toJson(),
+        if (quotaDeferments != null) 'quotaDeferments': quotaDeferments,
+        if (reservationUsage != null)
+          'reservationUsage':
+              reservationUsage.map((value) => value.toJson()).toList(),
+        if (reservationId != null) 'reservation_id': reservationId,
+        if (rowLevelSecurityStatistics != null)
+          'rowLevelSecurityStatistics': rowLevelSecurityStatistics.toJson(),
+        if (scriptStatistics != null)
+          'scriptStatistics': scriptStatistics.toJson(),
+        if (startTime != null) 'startTime': startTime,
+        if (totalBytesProcessed != null)
+          'totalBytesProcessed': totalBytesProcessed,
+        if (totalSlotMs != null) 'totalSlotMs': totalSlotMs,
+        if (transactionInfoTemplate != null)
+          'transactionInfoTemplate': transactionInfoTemplate.toJson(),
+      };
 }
 
 class JobStatistics2ReservationUsage {
@@ -8103,16 +7301,10 @@ class JobStatistics2ReservationUsage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (slotMs != null) {
-      _json['slotMs'] = slotMs;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (slotMs != null) 'slotMs': slotMs,
+      };
 }
 
 class JobStatistics2 {
@@ -8355,91 +7547,55 @@ class JobStatistics2 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (billingTier != null) {
-      _json['billingTier'] = billingTier;
-    }
-    if (cacheHit != null) {
-      _json['cacheHit'] = cacheHit;
-    }
-    if (ddlAffectedRowAccessPolicyCount != null) {
-      _json['ddlAffectedRowAccessPolicyCount'] =
-          ddlAffectedRowAccessPolicyCount;
-    }
-    if (ddlOperationPerformed != null) {
-      _json['ddlOperationPerformed'] = ddlOperationPerformed;
-    }
-    if (ddlTargetRoutine != null) {
-      _json['ddlTargetRoutine'] = ddlTargetRoutine.toJson();
-    }
-    if (ddlTargetRowAccessPolicy != null) {
-      _json['ddlTargetRowAccessPolicy'] = ddlTargetRowAccessPolicy.toJson();
-    }
-    if (ddlTargetTable != null) {
-      _json['ddlTargetTable'] = ddlTargetTable.toJson();
-    }
-    if (estimatedBytesProcessed != null) {
-      _json['estimatedBytesProcessed'] = estimatedBytesProcessed;
-    }
-    if (modelTraining != null) {
-      _json['modelTraining'] = modelTraining.toJson();
-    }
-    if (modelTrainingCurrentIteration != null) {
-      _json['modelTrainingCurrentIteration'] = modelTrainingCurrentIteration;
-    }
-    if (modelTrainingExpectedTotalIteration != null) {
-      _json['modelTrainingExpectedTotalIteration'] =
-          modelTrainingExpectedTotalIteration;
-    }
-    if (numDmlAffectedRows != null) {
-      _json['numDmlAffectedRows'] = numDmlAffectedRows;
-    }
-    if (queryPlan != null) {
-      _json['queryPlan'] = queryPlan.map((value) => value.toJson()).toList();
-    }
-    if (referencedRoutines != null) {
-      _json['referencedRoutines'] =
-          referencedRoutines.map((value) => value.toJson()).toList();
-    }
-    if (referencedTables != null) {
-      _json['referencedTables'] =
-          referencedTables.map((value) => value.toJson()).toList();
-    }
-    if (reservationUsage != null) {
-      _json['reservationUsage'] =
-          reservationUsage.map((value) => value.toJson()).toList();
-    }
-    if (schema != null) {
-      _json['schema'] = schema.toJson();
-    }
-    if (statementType != null) {
-      _json['statementType'] = statementType;
-    }
-    if (timeline != null) {
-      _json['timeline'] = timeline.map((value) => value.toJson()).toList();
-    }
-    if (totalBytesBilled != null) {
-      _json['totalBytesBilled'] = totalBytesBilled;
-    }
-    if (totalBytesProcessed != null) {
-      _json['totalBytesProcessed'] = totalBytesProcessed;
-    }
-    if (totalBytesProcessedAccuracy != null) {
-      _json['totalBytesProcessedAccuracy'] = totalBytesProcessedAccuracy;
-    }
-    if (totalPartitionsProcessed != null) {
-      _json['totalPartitionsProcessed'] = totalPartitionsProcessed;
-    }
-    if (totalSlotMs != null) {
-      _json['totalSlotMs'] = totalSlotMs;
-    }
-    if (undeclaredQueryParameters != null) {
-      _json['undeclaredQueryParameters'] =
-          undeclaredQueryParameters.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (billingTier != null) 'billingTier': billingTier,
+        if (cacheHit != null) 'cacheHit': cacheHit,
+        if (ddlAffectedRowAccessPolicyCount != null)
+          'ddlAffectedRowAccessPolicyCount': ddlAffectedRowAccessPolicyCount,
+        if (ddlOperationPerformed != null)
+          'ddlOperationPerformed': ddlOperationPerformed,
+        if (ddlTargetRoutine != null)
+          'ddlTargetRoutine': ddlTargetRoutine.toJson(),
+        if (ddlTargetRowAccessPolicy != null)
+          'ddlTargetRowAccessPolicy': ddlTargetRowAccessPolicy.toJson(),
+        if (ddlTargetTable != null) 'ddlTargetTable': ddlTargetTable.toJson(),
+        if (estimatedBytesProcessed != null)
+          'estimatedBytesProcessed': estimatedBytesProcessed,
+        if (modelTraining != null) 'modelTraining': modelTraining.toJson(),
+        if (modelTrainingCurrentIteration != null)
+          'modelTrainingCurrentIteration': modelTrainingCurrentIteration,
+        if (modelTrainingExpectedTotalIteration != null)
+          'modelTrainingExpectedTotalIteration':
+              modelTrainingExpectedTotalIteration,
+        if (numDmlAffectedRows != null)
+          'numDmlAffectedRows': numDmlAffectedRows,
+        if (queryPlan != null)
+          'queryPlan': queryPlan.map((value) => value.toJson()).toList(),
+        if (referencedRoutines != null)
+          'referencedRoutines':
+              referencedRoutines.map((value) => value.toJson()).toList(),
+        if (referencedTables != null)
+          'referencedTables':
+              referencedTables.map((value) => value.toJson()).toList(),
+        if (reservationUsage != null)
+          'reservationUsage':
+              reservationUsage.map((value) => value.toJson()).toList(),
+        if (schema != null) 'schema': schema.toJson(),
+        if (statementType != null) 'statementType': statementType,
+        if (timeline != null)
+          'timeline': timeline.map((value) => value.toJson()).toList(),
+        if (totalBytesBilled != null) 'totalBytesBilled': totalBytesBilled,
+        if (totalBytesProcessed != null)
+          'totalBytesProcessed': totalBytesProcessed,
+        if (totalBytesProcessedAccuracy != null)
+          'totalBytesProcessedAccuracy': totalBytesProcessedAccuracy,
+        if (totalPartitionsProcessed != null)
+          'totalPartitionsProcessed': totalPartitionsProcessed,
+        if (totalSlotMs != null) 'totalSlotMs': totalSlotMs,
+        if (undeclaredQueryParameters != null)
+          'undeclaredQueryParameters':
+              undeclaredQueryParameters.map((value) => value.toJson()).toList(),
+      };
 }
 
 class JobStatistics3 {
@@ -8488,25 +7644,13 @@ class JobStatistics3 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (badRecords != null) {
-      _json['badRecords'] = badRecords;
-    }
-    if (inputFileBytes != null) {
-      _json['inputFileBytes'] = inputFileBytes;
-    }
-    if (inputFiles != null) {
-      _json['inputFiles'] = inputFiles;
-    }
-    if (outputBytes != null) {
-      _json['outputBytes'] = outputBytes;
-    }
-    if (outputRows != null) {
-      _json['outputRows'] = outputRows;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (badRecords != null) 'badRecords': badRecords,
+        if (inputFileBytes != null) 'inputFileBytes': inputFileBytes,
+        if (inputFiles != null) 'inputFiles': inputFiles,
+        if (outputBytes != null) 'outputBytes': outputBytes,
+        if (outputRows != null) 'outputRows': outputRows,
+      };
 }
 
 class JobStatistics4 {
@@ -8536,16 +7680,11 @@ class JobStatistics4 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (destinationUriFileCounts != null) {
-      _json['destinationUriFileCounts'] = destinationUriFileCounts;
-    }
-    if (inputBytes != null) {
-      _json['inputBytes'] = inputBytes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (destinationUriFileCounts != null)
+          'destinationUriFileCounts': destinationUriFileCounts,
+        if (inputBytes != null) 'inputBytes': inputBytes,
+      };
 }
 
 class JobStatus {
@@ -8583,19 +7722,12 @@ class JobStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errorResult != null) {
-      _json['errorResult'] = errorResult.toJson();
-    }
-    if (errors != null) {
-      _json['errors'] = errors.map((value) => value.toJson()).toList();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errorResult != null) 'errorResult': errorResult.toJson(),
+        if (errors != null)
+          'errors': errors.map((value) => value.toJson()).toList(),
+        if (state != null) 'state': state,
+      };
 }
 
 /// Represents a single JSON object.
@@ -8657,16 +7789,11 @@ class ListModelsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (models != null) {
-      _json['models'] = models.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (models != null)
+          'models': models.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class ListRoutinesResponse {
@@ -8694,16 +7821,11 @@ class ListRoutinesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (routines != null) {
-      _json['routines'] = routines.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (routines != null)
+          'routines': routines.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for the ListRowAccessPolicies method.
@@ -8728,17 +7850,12 @@ class ListRowAccessPoliciesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (rowAccessPolicies != null) {
-      _json['rowAccessPolicies'] =
-          rowAccessPolicies.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (rowAccessPolicies != null)
+          'rowAccessPolicies':
+              rowAccessPolicies.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// BigQuery-specific metadata about a location.
@@ -8760,13 +7877,9 @@ class LocationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (legacyLocationId != null) {
-      _json['legacyLocationId'] = legacyLocationId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (legacyLocationId != null) 'legacyLocationId': legacyLocationId,
+      };
 }
 
 class MaterializedViewDefinition {
@@ -8812,22 +7925,12 @@ class MaterializedViewDefinition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enableRefresh != null) {
-      _json['enableRefresh'] = enableRefresh;
-    }
-    if (lastRefreshTime != null) {
-      _json['lastRefreshTime'] = lastRefreshTime;
-    }
-    if (query != null) {
-      _json['query'] = query;
-    }
-    if (refreshIntervalMs != null) {
-      _json['refreshIntervalMs'] = refreshIntervalMs;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enableRefresh != null) 'enableRefresh': enableRefresh,
+        if (lastRefreshTime != null) 'lastRefreshTime': lastRefreshTime,
+        if (query != null) 'query': query,
+        if (refreshIntervalMs != null) 'refreshIntervalMs': refreshIntervalMs,
+      };
 }
 
 class Model {
@@ -8995,55 +8098,27 @@ class Model {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (creationTime != null) {
-      _json['creationTime'] = creationTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (encryptionConfiguration != null) {
-      _json['encryptionConfiguration'] = encryptionConfiguration.toJson();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (expirationTime != null) {
-      _json['expirationTime'] = expirationTime;
-    }
-    if (featureColumns != null) {
-      _json['featureColumns'] =
-          featureColumns.map((value) => value.toJson()).toList();
-    }
-    if (friendlyName != null) {
-      _json['friendlyName'] = friendlyName;
-    }
-    if (labelColumns != null) {
-      _json['labelColumns'] =
-          labelColumns.map((value) => value.toJson()).toList();
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (lastModifiedTime != null) {
-      _json['lastModifiedTime'] = lastModifiedTime;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (modelReference != null) {
-      _json['modelReference'] = modelReference.toJson();
-    }
-    if (modelType != null) {
-      _json['modelType'] = modelType;
-    }
-    if (trainingRuns != null) {
-      _json['trainingRuns'] =
-          trainingRuns.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (creationTime != null) 'creationTime': creationTime,
+        if (description != null) 'description': description,
+        if (encryptionConfiguration != null)
+          'encryptionConfiguration': encryptionConfiguration.toJson(),
+        if (etag != null) 'etag': etag,
+        if (expirationTime != null) 'expirationTime': expirationTime,
+        if (featureColumns != null)
+          'featureColumns':
+              featureColumns.map((value) => value.toJson()).toList(),
+        if (friendlyName != null) 'friendlyName': friendlyName,
+        if (labelColumns != null)
+          'labelColumns': labelColumns.map((value) => value.toJson()).toList(),
+        if (labels != null) 'labels': labels,
+        if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime,
+        if (location != null) 'location': location,
+        if (modelReference != null) 'modelReference': modelReference.toJson(),
+        if (modelType != null) 'modelType': modelType,
+        if (trainingRuns != null)
+          'trainingRuns': trainingRuns.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// \[Output-only, Beta\] Model options used for the first training run.
@@ -9071,19 +8146,11 @@ class ModelDefinitionModelOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (lossType != null) {
-      _json['lossType'] = lossType;
-    }
-    if (modelType != null) {
-      _json['modelType'] = modelType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (labels != null) 'labels': labels,
+        if (lossType != null) 'lossType': lossType,
+        if (modelType != null) 'modelType': modelType,
+      };
 }
 
 class ModelDefinition {
@@ -9114,17 +8181,11 @@ class ModelDefinition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (modelOptions != null) {
-      _json['modelOptions'] = modelOptions.toJson();
-    }
-    if (trainingRuns != null) {
-      _json['trainingRuns'] =
-          trainingRuns.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (modelOptions != null) 'modelOptions': modelOptions.toJson(),
+        if (trainingRuns != null)
+          'trainingRuns': trainingRuns.map((value) => value.toJson()).toList(),
+      };
 }
 
 class ModelReference {
@@ -9160,19 +8221,11 @@ class ModelReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (datasetId != null) {
-      _json['datasetId'] = datasetId;
-    }
-    if (modelId != null) {
-      _json['modelId'] = modelId;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (datasetId != null) 'datasetId': datasetId,
+        if (modelId != null) 'modelId': modelId,
+        if (projectId != null) 'projectId': projectId,
+      };
 }
 
 /// Evaluation metrics for multi-class classification/classifier models.
@@ -9199,18 +8252,14 @@ class MultiClassClassificationMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aggregateClassificationMetrics != null) {
-      _json['aggregateClassificationMetrics'] =
-          aggregateClassificationMetrics.toJson();
-    }
-    if (confusionMatrixList != null) {
-      _json['confusionMatrixList'] =
-          confusionMatrixList.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aggregateClassificationMetrics != null)
+          'aggregateClassificationMetrics':
+              aggregateClassificationMetrics.toJson(),
+        if (confusionMatrixList != null)
+          'confusionMatrixList':
+              confusionMatrixList.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -9317,23 +8366,14 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditConfigs != null) {
-      _json['auditConfigs'] =
-          auditConfigs.map((value) => value.toJson()).toList();
-    }
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditConfigs != null)
+          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Principal component infos, used only for eigen decomposition based models,
@@ -9374,23 +8414,15 @@ class PrincipalComponentInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cumulativeExplainedVarianceRatio != null) {
-      _json['cumulativeExplainedVarianceRatio'] =
-          cumulativeExplainedVarianceRatio;
-    }
-    if (explainedVariance != null) {
-      _json['explainedVariance'] = explainedVariance;
-    }
-    if (explainedVarianceRatio != null) {
-      _json['explainedVarianceRatio'] = explainedVarianceRatio;
-    }
-    if (principalComponentId != null) {
-      _json['principalComponentId'] = principalComponentId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cumulativeExplainedVarianceRatio != null)
+          'cumulativeExplainedVarianceRatio': cumulativeExplainedVarianceRatio,
+        if (explainedVariance != null) 'explainedVariance': explainedVariance,
+        if (explainedVarianceRatio != null)
+          'explainedVarianceRatio': explainedVarianceRatio,
+        if (principalComponentId != null)
+          'principalComponentId': principalComponentId,
+      };
 }
 
 class ProjectListProjects {
@@ -9430,25 +8462,14 @@ class ProjectListProjects {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (friendlyName != null) {
-      _json['friendlyName'] = friendlyName;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (numericId != null) {
-      _json['numericId'] = numericId;
-    }
-    if (projectReference != null) {
-      _json['projectReference'] = projectReference.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (friendlyName != null) 'friendlyName': friendlyName,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (numericId != null) 'numericId': numericId,
+        if (projectReference != null)
+          'projectReference': projectReference.toJson(),
+      };
 }
 
 class ProjectList {
@@ -9490,25 +8511,14 @@ class ProjectList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (projects != null) {
-      _json['projects'] = projects.map((value) => value.toJson()).toList();
-    }
-    if (totalItems != null) {
-      _json['totalItems'] = totalItems;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (projects != null)
+          'projects': projects.map((value) => value.toJson()).toList(),
+        if (totalItems != null) 'totalItems': totalItems,
+      };
 }
 
 class ProjectReference {
@@ -9527,13 +8537,9 @@ class ProjectReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (projectId != null) 'projectId': projectId,
+      };
 }
 
 class QueryParameter {
@@ -9570,19 +8576,11 @@ class QueryParameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parameterType != null) {
-      _json['parameterType'] = parameterType.toJson();
-    }
-    if (parameterValue != null) {
-      _json['parameterValue'] = parameterValue.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (parameterType != null) 'parameterType': parameterType.toJson(),
+        if (parameterValue != null) 'parameterValue': parameterValue.toJson(),
+      };
 }
 
 class QueryParameterTypeStructTypes {
@@ -9616,19 +8614,11 @@ class QueryParameterTypeStructTypes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (type != null) {
-      _json['type'] = type.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (name != null) 'name': name,
+        if (type != null) 'type': type.toJson(),
+      };
 }
 
 class QueryParameterType {
@@ -9666,20 +8656,12 @@ class QueryParameterType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (arrayType != null) {
-      _json['arrayType'] = arrayType.toJson();
-    }
-    if (structTypes != null) {
-      _json['structTypes'] =
-          structTypes.map((value) => value.toJson()).toList();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (arrayType != null) 'arrayType': arrayType.toJson(),
+        if (structTypes != null)
+          'structTypes': structTypes.map((value) => value.toJson()).toList(),
+        if (type != null) 'type': type,
+      };
 }
 
 class QueryParameterValue {
@@ -9722,21 +8704,14 @@ class QueryParameterValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (arrayValues != null) {
-      _json['arrayValues'] =
-          arrayValues.map((value) => value.toJson()).toList();
-    }
-    if (structValues != null) {
-      _json['structValues'] =
-          structValues.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (arrayValues != null)
+          'arrayValues': arrayValues.map((value) => value.toJson()).toList(),
+        if (structValues != null)
+          'structValues': structValues
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (value != null) 'value': value,
+      };
 }
 
 class QueryRequest {
@@ -9938,60 +8913,29 @@ class QueryRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (connectionProperties != null) {
-      _json['connectionProperties'] =
-          connectionProperties.map((value) => value.toJson()).toList();
-    }
-    if (defaultDataset != null) {
-      _json['defaultDataset'] = defaultDataset.toJson();
-    }
-    if (dryRun != null) {
-      _json['dryRun'] = dryRun;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (maxResults != null) {
-      _json['maxResults'] = maxResults;
-    }
-    if (maximumBytesBilled != null) {
-      _json['maximumBytesBilled'] = maximumBytesBilled;
-    }
-    if (parameterMode != null) {
-      _json['parameterMode'] = parameterMode;
-    }
-    if (preserveNulls != null) {
-      _json['preserveNulls'] = preserveNulls;
-    }
-    if (query != null) {
-      _json['query'] = query;
-    }
-    if (queryParameters != null) {
-      _json['queryParameters'] =
-          queryParameters.map((value) => value.toJson()).toList();
-    }
-    if (requestId != null) {
-      _json['requestId'] = requestId;
-    }
-    if (timeoutMs != null) {
-      _json['timeoutMs'] = timeoutMs;
-    }
-    if (useLegacySql != null) {
-      _json['useLegacySql'] = useLegacySql;
-    }
-    if (useQueryCache != null) {
-      _json['useQueryCache'] = useQueryCache;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (connectionProperties != null)
+          'connectionProperties':
+              connectionProperties.map((value) => value.toJson()).toList(),
+        if (defaultDataset != null) 'defaultDataset': defaultDataset.toJson(),
+        if (dryRun != null) 'dryRun': dryRun,
+        if (kind != null) 'kind': kind,
+        if (labels != null) 'labels': labels,
+        if (location != null) 'location': location,
+        if (maxResults != null) 'maxResults': maxResults,
+        if (maximumBytesBilled != null)
+          'maximumBytesBilled': maximumBytesBilled,
+        if (parameterMode != null) 'parameterMode': parameterMode,
+        if (preserveNulls != null) 'preserveNulls': preserveNulls,
+        if (query != null) 'query': query,
+        if (queryParameters != null)
+          'queryParameters':
+              queryParameters.map((value) => value.toJson()).toList(),
+        if (requestId != null) 'requestId': requestId,
+        if (timeoutMs != null) 'timeoutMs': timeoutMs,
+        if (useLegacySql != null) 'useLegacySql': useLegacySql,
+        if (useQueryCache != null) 'useQueryCache': useQueryCache,
+      };
 }
 
 class QueryResponse {
@@ -10099,43 +9043,22 @@ class QueryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cacheHit != null) {
-      _json['cacheHit'] = cacheHit;
-    }
-    if (errors != null) {
-      _json['errors'] = errors.map((value) => value.toJson()).toList();
-    }
-    if (jobComplete != null) {
-      _json['jobComplete'] = jobComplete;
-    }
-    if (jobReference != null) {
-      _json['jobReference'] = jobReference.toJson();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (numDmlAffectedRows != null) {
-      _json['numDmlAffectedRows'] = numDmlAffectedRows;
-    }
-    if (pageToken != null) {
-      _json['pageToken'] = pageToken;
-    }
-    if (rows != null) {
-      _json['rows'] = rows.map((value) => value.toJson()).toList();
-    }
-    if (schema != null) {
-      _json['schema'] = schema.toJson();
-    }
-    if (totalBytesProcessed != null) {
-      _json['totalBytesProcessed'] = totalBytesProcessed;
-    }
-    if (totalRows != null) {
-      _json['totalRows'] = totalRows;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cacheHit != null) 'cacheHit': cacheHit,
+        if (errors != null)
+          'errors': errors.map((value) => value.toJson()).toList(),
+        if (jobComplete != null) 'jobComplete': jobComplete,
+        if (jobReference != null) 'jobReference': jobReference.toJson(),
+        if (kind != null) 'kind': kind,
+        if (numDmlAffectedRows != null)
+          'numDmlAffectedRows': numDmlAffectedRows,
+        if (pageToken != null) 'pageToken': pageToken,
+        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+        if (schema != null) 'schema': schema.toJson(),
+        if (totalBytesProcessed != null)
+          'totalBytesProcessed': totalBytesProcessed,
+        if (totalRows != null) 'totalRows': totalRows,
+      };
 }
 
 class QueryTimelineSample {
@@ -10177,25 +9100,13 @@ class QueryTimelineSample {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (activeUnits != null) {
-      _json['activeUnits'] = activeUnits;
-    }
-    if (completedUnits != null) {
-      _json['completedUnits'] = completedUnits;
-    }
-    if (elapsedMs != null) {
-      _json['elapsedMs'] = elapsedMs;
-    }
-    if (pendingUnits != null) {
-      _json['pendingUnits'] = pendingUnits;
-    }
-    if (totalSlotMs != null) {
-      _json['totalSlotMs'] = totalSlotMs;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (activeUnits != null) 'activeUnits': activeUnits,
+        if (completedUnits != null) 'completedUnits': completedUnits,
+        if (elapsedMs != null) 'elapsedMs': elapsedMs,
+        if (pendingUnits != null) 'pendingUnits': pendingUnits,
+        if (totalSlotMs != null) 'totalSlotMs': totalSlotMs,
+      };
 }
 
 /// \[TrustedTester\] \[Required\] Defines the ranges for range partitioning.
@@ -10223,19 +9134,11 @@ class RangePartitioningRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (end != null) {
-      _json['end'] = end;
-    }
-    if (interval != null) {
-      _json['interval'] = interval;
-    }
-    if (start != null) {
-      _json['start'] = start;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (end != null) 'end': end,
+        if (interval != null) 'interval': interval,
+        if (start != null) 'start': start,
+      };
 }
 
 class RangePartitioning {
@@ -10260,16 +9163,10 @@ class RangePartitioning {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (field != null) {
-      _json['field'] = field;
-    }
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (field != null) 'field': field,
+        if (range != null) 'range': range.toJson(),
+      };
 }
 
 /// Evaluation metrics used by weighted-ALS models specified by
@@ -10313,23 +9210,15 @@ class RankingMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (averageRank != null) {
-      _json['averageRank'] = averageRank;
-    }
-    if (meanAveragePrecision != null) {
-      _json['meanAveragePrecision'] = meanAveragePrecision;
-    }
-    if (meanSquaredError != null) {
-      _json['meanSquaredError'] = meanSquaredError;
-    }
-    if (normalizedDiscountedCumulativeGain != null) {
-      _json['normalizedDiscountedCumulativeGain'] =
-          normalizedDiscountedCumulativeGain;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (averageRank != null) 'averageRank': averageRank,
+        if (meanAveragePrecision != null)
+          'meanAveragePrecision': meanAveragePrecision,
+        if (meanSquaredError != null) 'meanSquaredError': meanSquaredError,
+        if (normalizedDiscountedCumulativeGain != null)
+          'normalizedDiscountedCumulativeGain':
+              normalizedDiscountedCumulativeGain,
+      };
 }
 
 /// Evaluation metrics for regression and explicit feedback type matrix
@@ -10374,25 +9263,15 @@ class RegressionMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (meanAbsoluteError != null) {
-      _json['meanAbsoluteError'] = meanAbsoluteError;
-    }
-    if (meanSquaredError != null) {
-      _json['meanSquaredError'] = meanSquaredError;
-    }
-    if (meanSquaredLogError != null) {
-      _json['meanSquaredLogError'] = meanSquaredLogError;
-    }
-    if (medianAbsoluteError != null) {
-      _json['medianAbsoluteError'] = medianAbsoluteError;
-    }
-    if (rSquared != null) {
-      _json['rSquared'] = rSquared;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (meanAbsoluteError != null) 'meanAbsoluteError': meanAbsoluteError,
+        if (meanSquaredError != null) 'meanSquaredError': meanSquaredError,
+        if (meanSquaredLogError != null)
+          'meanSquaredLogError': meanSquaredLogError,
+        if (medianAbsoluteError != null)
+          'medianAbsoluteError': medianAbsoluteError,
+        if (rSquared != null) 'rSquared': rSquared,
+      };
 }
 
 /// A user-defined function or a stored procedure.
@@ -10543,46 +9422,22 @@ class Routine {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (arguments != null) {
-      _json['arguments'] = arguments.map((value) => value.toJson()).toList();
-    }
-    if (creationTime != null) {
-      _json['creationTime'] = creationTime;
-    }
-    if (definitionBody != null) {
-      _json['definitionBody'] = definitionBody;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (determinismLevel != null) {
-      _json['determinismLevel'] = determinismLevel;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (importedLibraries != null) {
-      _json['importedLibraries'] = importedLibraries;
-    }
-    if (language != null) {
-      _json['language'] = language;
-    }
-    if (lastModifiedTime != null) {
-      _json['lastModifiedTime'] = lastModifiedTime;
-    }
-    if (returnType != null) {
-      _json['returnType'] = returnType.toJson();
-    }
-    if (routineReference != null) {
-      _json['routineReference'] = routineReference.toJson();
-    }
-    if (routineType != null) {
-      _json['routineType'] = routineType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (arguments != null)
+          'arguments': arguments.map((value) => value.toJson()).toList(),
+        if (creationTime != null) 'creationTime': creationTime,
+        if (definitionBody != null) 'definitionBody': definitionBody,
+        if (description != null) 'description': description,
+        if (determinismLevel != null) 'determinismLevel': determinismLevel,
+        if (etag != null) 'etag': etag,
+        if (importedLibraries != null) 'importedLibraries': importedLibraries,
+        if (language != null) 'language': language,
+        if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime,
+        if (returnType != null) 'returnType': returnType.toJson(),
+        if (routineReference != null)
+          'routineReference': routineReference.toJson(),
+        if (routineType != null) 'routineType': routineType,
+      };
 }
 
 class RoutineReference {
@@ -10618,19 +9473,11 @@ class RoutineReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (datasetId != null) {
-      _json['datasetId'] = datasetId;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (routineId != null) {
-      _json['routineId'] = routineId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (datasetId != null) 'datasetId': datasetId,
+        if (projectId != null) 'projectId': projectId,
+        if (routineId != null) 'routineId': routineId,
+      };
 }
 
 /// A single row in the confusion matrix.
@@ -10655,16 +9502,11 @@ class Row {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actualLabel != null) {
-      _json['actualLabel'] = actualLabel;
-    }
-    if (entries != null) {
-      _json['entries'] = entries.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actualLabel != null) 'actualLabel': actualLabel,
+        if (entries != null)
+          'entries': entries.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents access on a subset of rows on the specified table, defined by its
@@ -10727,25 +9569,14 @@ class RowAccessPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (creationTime != null) {
-      _json['creationTime'] = creationTime;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (filterPredicate != null) {
-      _json['filterPredicate'] = filterPredicate;
-    }
-    if (lastModifiedTime != null) {
-      _json['lastModifiedTime'] = lastModifiedTime;
-    }
-    if (rowAccessPolicyReference != null) {
-      _json['rowAccessPolicyReference'] = rowAccessPolicyReference.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (creationTime != null) 'creationTime': creationTime,
+        if (etag != null) 'etag': etag,
+        if (filterPredicate != null) 'filterPredicate': filterPredicate,
+        if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime,
+        if (rowAccessPolicyReference != null)
+          'rowAccessPolicyReference': rowAccessPolicyReference.toJson(),
+      };
 }
 
 class RowAccessPolicyReference {
@@ -10789,22 +9620,12 @@ class RowAccessPolicyReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (datasetId != null) {
-      _json['datasetId'] = datasetId;
-    }
-    if (policyId != null) {
-      _json['policyId'] = policyId;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (tableId != null) {
-      _json['tableId'] = tableId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (datasetId != null) 'datasetId': datasetId,
+        if (policyId != null) 'policyId': policyId,
+        if (projectId != null) 'projectId': projectId,
+        if (tableId != null) 'tableId': tableId,
+      };
 }
 
 class RowLevelSecurityStatistics {
@@ -10820,13 +9641,10 @@ class RowLevelSecurityStatistics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (rowLevelSecurityApplied != null) {
-      _json['rowLevelSecurityApplied'] = rowLevelSecurityApplied;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (rowLevelSecurityApplied != null)
+          'rowLevelSecurityApplied': rowLevelSecurityApplied,
+      };
 }
 
 class ScriptStackFrame {
@@ -10872,28 +9690,14 @@ class ScriptStackFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endColumn != null) {
-      _json['endColumn'] = endColumn;
-    }
-    if (endLine != null) {
-      _json['endLine'] = endLine;
-    }
-    if (procedureId != null) {
-      _json['procedureId'] = procedureId;
-    }
-    if (startColumn != null) {
-      _json['startColumn'] = startColumn;
-    }
-    if (startLine != null) {
-      _json['startLine'] = startLine;
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endColumn != null) 'endColumn': endColumn,
+        if (endLine != null) 'endLine': endLine,
+        if (procedureId != null) 'procedureId': procedureId,
+        if (startColumn != null) 'startColumn': startColumn,
+        if (startLine != null) 'startLine': startLine,
+        if (text != null) 'text': text,
+      };
 }
 
 class ScriptStatistics {
@@ -10920,17 +9724,11 @@ class ScriptStatistics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (evaluationKind != null) {
-      _json['evaluationKind'] = evaluationKind;
-    }
-    if (stackFrames != null) {
-      _json['stackFrames'] =
-          stackFrames.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (evaluationKind != null) 'evaluationKind': evaluationKind,
+        if (stackFrames != null)
+          'stackFrames': stackFrames.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -10960,16 +9758,10 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 class SnapshotDefinition {
@@ -10995,16 +9787,12 @@ class SnapshotDefinition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (baseTableReference != null) {
-      _json['baseTableReference'] = baseTableReference.toJson();
-    }
-    if (snapshotTime != null) {
-      _json['snapshotTime'] = (snapshotTime).toIso8601String();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (baseTableReference != null)
+          'baseTableReference': baseTableReference.toJson(),
+        if (snapshotTime != null)
+          'snapshotTime': (snapshotTime).toIso8601String(),
+      };
 }
 
 /// The type of a variable, e.g., a function argument.
@@ -11063,19 +9851,12 @@ class StandardSqlDataType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (arrayElementType != null) {
-      _json['arrayElementType'] = arrayElementType.toJson();
-    }
-    if (structType != null) {
-      _json['structType'] = structType.toJson();
-    }
-    if (typeKind != null) {
-      _json['typeKind'] = typeKind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (arrayElementType != null)
+          'arrayElementType': arrayElementType.toJson(),
+        if (structType != null) 'structType': structType.toJson(),
+        if (typeKind != null) 'typeKind': typeKind,
+      };
 }
 
 /// A field or a column.
@@ -11108,16 +9889,10 @@ class StandardSqlField {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (type != null) {
-      _json['type'] = type.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (type != null) 'type': type.toJson(),
+      };
 }
 
 class StandardSqlStructType {
@@ -11134,13 +9909,10 @@ class StandardSqlStructType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fields != null) {
-      _json['fields'] = fields.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fields != null)
+          'fields': fields.map((value) => value.toJson()).toList(),
+      };
 }
 
 class Streamingbuffer {
@@ -11171,19 +9943,11 @@ class Streamingbuffer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (estimatedBytes != null) {
-      _json['estimatedBytes'] = estimatedBytes;
-    }
-    if (estimatedRows != null) {
-      _json['estimatedRows'] = estimatedRows;
-    }
-    if (oldestEntryTime != null) {
-      _json['oldestEntryTime'] = oldestEntryTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (estimatedBytes != null) 'estimatedBytes': estimatedBytes,
+        if (estimatedRows != null) 'estimatedRows': estimatedRows,
+        if (oldestEntryTime != null) 'oldestEntryTime': oldestEntryTime,
+      };
 }
 
 class Table {
@@ -11455,97 +10219,45 @@ class Table {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clustering != null) {
-      _json['clustering'] = clustering.toJson();
-    }
-    if (creationTime != null) {
-      _json['creationTime'] = creationTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (encryptionConfiguration != null) {
-      _json['encryptionConfiguration'] = encryptionConfiguration.toJson();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (expirationTime != null) {
-      _json['expirationTime'] = expirationTime;
-    }
-    if (externalDataConfiguration != null) {
-      _json['externalDataConfiguration'] = externalDataConfiguration.toJson();
-    }
-    if (friendlyName != null) {
-      _json['friendlyName'] = friendlyName;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (lastModifiedTime != null) {
-      _json['lastModifiedTime'] = lastModifiedTime;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (materializedView != null) {
-      _json['materializedView'] = materializedView.toJson();
-    }
-    if (model != null) {
-      _json['model'] = model.toJson();
-    }
-    if (numBytes != null) {
-      _json['numBytes'] = numBytes;
-    }
-    if (numLongTermBytes != null) {
-      _json['numLongTermBytes'] = numLongTermBytes;
-    }
-    if (numPhysicalBytes != null) {
-      _json['numPhysicalBytes'] = numPhysicalBytes;
-    }
-    if (numRows != null) {
-      _json['numRows'] = numRows;
-    }
-    if (rangePartitioning != null) {
-      _json['rangePartitioning'] = rangePartitioning.toJson();
-    }
-    if (requirePartitionFilter != null) {
-      _json['requirePartitionFilter'] = requirePartitionFilter;
-    }
-    if (schema != null) {
-      _json['schema'] = schema.toJson();
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (snapshotDefinition != null) {
-      _json['snapshotDefinition'] = snapshotDefinition.toJson();
-    }
-    if (streamingBuffer != null) {
-      _json['streamingBuffer'] = streamingBuffer.toJson();
-    }
-    if (tableReference != null) {
-      _json['tableReference'] = tableReference.toJson();
-    }
-    if (timePartitioning != null) {
-      _json['timePartitioning'] = timePartitioning.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (view != null) {
-      _json['view'] = view.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clustering != null) 'clustering': clustering.toJson(),
+        if (creationTime != null) 'creationTime': creationTime,
+        if (description != null) 'description': description,
+        if (encryptionConfiguration != null)
+          'encryptionConfiguration': encryptionConfiguration.toJson(),
+        if (etag != null) 'etag': etag,
+        if (expirationTime != null) 'expirationTime': expirationTime,
+        if (externalDataConfiguration != null)
+          'externalDataConfiguration': externalDataConfiguration.toJson(),
+        if (friendlyName != null) 'friendlyName': friendlyName,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (labels != null) 'labels': labels,
+        if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime,
+        if (location != null) 'location': location,
+        if (materializedView != null)
+          'materializedView': materializedView.toJson(),
+        if (model != null) 'model': model.toJson(),
+        if (numBytes != null) 'numBytes': numBytes,
+        if (numLongTermBytes != null) 'numLongTermBytes': numLongTermBytes,
+        if (numPhysicalBytes != null) 'numPhysicalBytes': numPhysicalBytes,
+        if (numRows != null) 'numRows': numRows,
+        if (rangePartitioning != null)
+          'rangePartitioning': rangePartitioning.toJson(),
+        if (requirePartitionFilter != null)
+          'requirePartitionFilter': requirePartitionFilter,
+        if (schema != null) 'schema': schema.toJson(),
+        if (selfLink != null) 'selfLink': selfLink,
+        if (snapshotDefinition != null)
+          'snapshotDefinition': snapshotDefinition.toJson(),
+        if (streamingBuffer != null)
+          'streamingBuffer': streamingBuffer.toJson(),
+        if (tableReference != null) 'tableReference': tableReference.toJson(),
+        if (timePartitioning != null)
+          'timePartitioning': timePartitioning.toJson(),
+        if (type != null) 'type': type,
+        if (view != null) 'view': view.toJson(),
+      };
 }
 
 class TableCell {
@@ -11563,13 +10275,9 @@ class TableCell {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (v != null) {
-      _json['v'] = v;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (v != null) 'v': v,
+      };
 }
 
 class TableDataInsertAllRequestRows {
@@ -11601,16 +10309,10 @@ class TableDataInsertAllRequestRows {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (insertId != null) {
-      _json['insertId'] = insertId;
-    }
-    if (json != null) {
-      _json['json'] = json;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (insertId != null) 'insertId': insertId,
+        if (json != null) 'json': json,
+      };
 }
 
 class TableDataInsertAllRequest {
@@ -11669,25 +10371,14 @@ class TableDataInsertAllRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ignoreUnknownValues != null) {
-      _json['ignoreUnknownValues'] = ignoreUnknownValues;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (rows != null) {
-      _json['rows'] = rows.map((value) => value.toJson()).toList();
-    }
-    if (skipInvalidRows != null) {
-      _json['skipInvalidRows'] = skipInvalidRows;
-    }
-    if (templateSuffix != null) {
-      _json['templateSuffix'] = templateSuffix;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ignoreUnknownValues != null)
+          'ignoreUnknownValues': ignoreUnknownValues,
+        if (kind != null) 'kind': kind,
+        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+        if (skipInvalidRows != null) 'skipInvalidRows': skipInvalidRows,
+        if (templateSuffix != null) 'templateSuffix': templateSuffix,
+      };
 }
 
 class TableDataInsertAllResponseInsertErrors {
@@ -11711,16 +10402,11 @@ class TableDataInsertAllResponseInsertErrors {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errors != null) {
-      _json['errors'] = errors.map((value) => value.toJson()).toList();
-    }
-    if (index != null) {
-      _json['index'] = index;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errors != null)
+          'errors': errors.map((value) => value.toJson()).toList(),
+        if (index != null) 'index': index,
+      };
 }
 
 class TableDataInsertAllResponse {
@@ -11745,17 +10431,11 @@ class TableDataInsertAllResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (insertErrors != null) {
-      _json['insertErrors'] =
-          insertErrors.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (insertErrors != null)
+          'insertErrors': insertErrors.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 class TableDataList {
@@ -11800,25 +10480,13 @@ class TableDataList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (pageToken != null) {
-      _json['pageToken'] = pageToken;
-    }
-    if (rows != null) {
-      _json['rows'] = rows.map((value) => value.toJson()).toList();
-    }
-    if (totalRows != null) {
-      _json['totalRows'] = totalRows;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (kind != null) 'kind': kind,
+        if (pageToken != null) 'pageToken': pageToken,
+        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+        if (totalRows != null) 'totalRows': totalRows,
+      };
 }
 
 /// The categories attached to this field, used for field-level access control.
@@ -11841,13 +10509,9 @@ class TableFieldSchemaCategories {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (names != null) {
-      _json['names'] = names;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (names != null) 'names': names,
+      };
 }
 
 class TableFieldSchemaPolicyTags {
@@ -11867,13 +10531,9 @@ class TableFieldSchemaPolicyTags {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (names != null) {
-      _json['names'] = names;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (names != null) 'names': names,
+      };
 }
 
 class TableFieldSchema {
@@ -11955,31 +10615,16 @@ class TableFieldSchema {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (categories != null) {
-      _json['categories'] = categories.toJson();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (fields != null) {
-      _json['fields'] = fields.map((value) => value.toJson()).toList();
-    }
-    if (mode != null) {
-      _json['mode'] = mode;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (policyTags != null) {
-      _json['policyTags'] = policyTags.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (categories != null) 'categories': categories.toJson(),
+        if (description != null) 'description': description,
+        if (fields != null)
+          'fields': fields.map((value) => value.toJson()).toList(),
+        if (mode != null) 'mode': mode,
+        if (name != null) 'name': name,
+        if (policyTags != null) 'policyTags': policyTags.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// Additional details for a view.
@@ -11995,13 +10640,9 @@ class TableListTablesView {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (useLegacySql != null) {
-      _json['useLegacySql'] = useLegacySql;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (useLegacySql != null) 'useLegacySql': useLegacySql,
+      };
 }
 
 class TableListTables {
@@ -12102,46 +10743,22 @@ class TableListTables {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clustering != null) {
-      _json['clustering'] = clustering.toJson();
-    }
-    if (creationTime != null) {
-      _json['creationTime'] = creationTime;
-    }
-    if (expirationTime != null) {
-      _json['expirationTime'] = expirationTime;
-    }
-    if (friendlyName != null) {
-      _json['friendlyName'] = friendlyName;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (rangePartitioning != null) {
-      _json['rangePartitioning'] = rangePartitioning.toJson();
-    }
-    if (tableReference != null) {
-      _json['tableReference'] = tableReference.toJson();
-    }
-    if (timePartitioning != null) {
-      _json['timePartitioning'] = timePartitioning.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (view != null) {
-      _json['view'] = view.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clustering != null) 'clustering': clustering.toJson(),
+        if (creationTime != null) 'creationTime': creationTime,
+        if (expirationTime != null) 'expirationTime': expirationTime,
+        if (friendlyName != null) 'friendlyName': friendlyName,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (labels != null) 'labels': labels,
+        if (rangePartitioning != null)
+          'rangePartitioning': rangePartitioning.toJson(),
+        if (tableReference != null) 'tableReference': tableReference.toJson(),
+        if (timePartitioning != null)
+          'timePartitioning': timePartitioning.toJson(),
+        if (type != null) 'type': type,
+        if (view != null) 'view': view.toJson(),
+      };
 }
 
 class TableList {
@@ -12183,25 +10800,14 @@ class TableList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (tables != null) {
-      _json['tables'] = tables.map((value) => value.toJson()).toList();
-    }
-    if (totalItems != null) {
-      _json['totalItems'] = totalItems;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (tables != null)
+          'tables': tables.map((value) => value.toJson()).toList(),
+        if (totalItems != null) 'totalItems': totalItems,
+      };
 }
 
 class TableReference {
@@ -12237,19 +10843,11 @@ class TableReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (datasetId != null) {
-      _json['datasetId'] = datasetId;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (tableId != null) {
-      _json['tableId'] = tableId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (datasetId != null) 'datasetId': datasetId,
+        if (projectId != null) 'projectId': projectId,
+        if (tableId != null) 'tableId': tableId,
+      };
 }
 
 class TableRow {
@@ -12268,13 +10866,9 @@ class TableRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (f != null) {
-      _json['f'] = f.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (f != null) 'f': f.map((value) => value.toJson()).toList(),
+      };
 }
 
 class TableSchema {
@@ -12292,13 +10886,10 @@ class TableSchema {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fields != null) {
-      _json['fields'] = fields.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fields != null)
+          'fields': fields.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -12320,13 +10911,9 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -12345,13 +10932,9 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 class TimePartitioning {
@@ -12399,22 +10982,13 @@ class TimePartitioning {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (expirationMs != null) {
-      _json['expirationMs'] = expirationMs;
-    }
-    if (field != null) {
-      _json['field'] = field;
-    }
-    if (requirePartitionFilter != null) {
-      _json['requirePartitionFilter'] = requirePartitionFilter;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (expirationMs != null) 'expirationMs': expirationMs,
+        if (field != null) 'field': field,
+        if (requirePartitionFilter != null)
+          'requirePartitionFilter': requirePartitionFilter,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Options used in model training.
@@ -12858,139 +11432,61 @@ class TrainingOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (autoArima != null) {
-      _json['autoArima'] = autoArima;
-    }
-    if (autoArimaMaxOrder != null) {
-      _json['autoArimaMaxOrder'] = autoArimaMaxOrder;
-    }
-    if (batchSize != null) {
-      _json['batchSize'] = batchSize;
-    }
-    if (dataFrequency != null) {
-      _json['dataFrequency'] = dataFrequency;
-    }
-    if (dataSplitColumn != null) {
-      _json['dataSplitColumn'] = dataSplitColumn;
-    }
-    if (dataSplitEvalFraction != null) {
-      _json['dataSplitEvalFraction'] = dataSplitEvalFraction;
-    }
-    if (dataSplitMethod != null) {
-      _json['dataSplitMethod'] = dataSplitMethod;
-    }
-    if (distanceType != null) {
-      _json['distanceType'] = distanceType;
-    }
-    if (dropout != null) {
-      _json['dropout'] = dropout;
-    }
-    if (earlyStop != null) {
-      _json['earlyStop'] = earlyStop;
-    }
-    if (feedbackType != null) {
-      _json['feedbackType'] = feedbackType;
-    }
-    if (hiddenUnits != null) {
-      _json['hiddenUnits'] = hiddenUnits;
-    }
-    if (holidayRegion != null) {
-      _json['holidayRegion'] = holidayRegion;
-    }
-    if (horizon != null) {
-      _json['horizon'] = horizon;
-    }
-    if (includeDrift != null) {
-      _json['includeDrift'] = includeDrift;
-    }
-    if (initialLearnRate != null) {
-      _json['initialLearnRate'] = initialLearnRate;
-    }
-    if (inputLabelColumns != null) {
-      _json['inputLabelColumns'] = inputLabelColumns;
-    }
-    if (itemColumn != null) {
-      _json['itemColumn'] = itemColumn;
-    }
-    if (kmeansInitializationColumn != null) {
-      _json['kmeansInitializationColumn'] = kmeansInitializationColumn;
-    }
-    if (kmeansInitializationMethod != null) {
-      _json['kmeansInitializationMethod'] = kmeansInitializationMethod;
-    }
-    if (l1Regularization != null) {
-      _json['l1Regularization'] = l1Regularization;
-    }
-    if (l2Regularization != null) {
-      _json['l2Regularization'] = l2Regularization;
-    }
-    if (labelClassWeights != null) {
-      _json['labelClassWeights'] = labelClassWeights;
-    }
-    if (learnRate != null) {
-      _json['learnRate'] = learnRate;
-    }
-    if (learnRateStrategy != null) {
-      _json['learnRateStrategy'] = learnRateStrategy;
-    }
-    if (lossType != null) {
-      _json['lossType'] = lossType;
-    }
-    if (maxIterations != null) {
-      _json['maxIterations'] = maxIterations;
-    }
-    if (maxTreeDepth != null) {
-      _json['maxTreeDepth'] = maxTreeDepth;
-    }
-    if (minRelativeProgress != null) {
-      _json['minRelativeProgress'] = minRelativeProgress;
-    }
-    if (minSplitLoss != null) {
-      _json['minSplitLoss'] = minSplitLoss;
-    }
-    if (modelUri != null) {
-      _json['modelUri'] = modelUri;
-    }
-    if (nonSeasonalOrder != null) {
-      _json['nonSeasonalOrder'] = nonSeasonalOrder.toJson();
-    }
-    if (numClusters != null) {
-      _json['numClusters'] = numClusters;
-    }
-    if (numFactors != null) {
-      _json['numFactors'] = numFactors;
-    }
-    if (optimizationStrategy != null) {
-      _json['optimizationStrategy'] = optimizationStrategy;
-    }
-    if (preserveInputStructs != null) {
-      _json['preserveInputStructs'] = preserveInputStructs;
-    }
-    if (subsample != null) {
-      _json['subsample'] = subsample;
-    }
-    if (timeSeriesDataColumn != null) {
-      _json['timeSeriesDataColumn'] = timeSeriesDataColumn;
-    }
-    if (timeSeriesIdColumn != null) {
-      _json['timeSeriesIdColumn'] = timeSeriesIdColumn;
-    }
-    if (timeSeriesTimestampColumn != null) {
-      _json['timeSeriesTimestampColumn'] = timeSeriesTimestampColumn;
-    }
-    if (userColumn != null) {
-      _json['userColumn'] = userColumn;
-    }
-    if (walsAlpha != null) {
-      _json['walsAlpha'] = walsAlpha;
-    }
-    if (warmStart != null) {
-      _json['warmStart'] = warmStart;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (autoArima != null) 'autoArima': autoArima,
+        if (autoArimaMaxOrder != null) 'autoArimaMaxOrder': autoArimaMaxOrder,
+        if (batchSize != null) 'batchSize': batchSize,
+        if (dataFrequency != null) 'dataFrequency': dataFrequency,
+        if (dataSplitColumn != null) 'dataSplitColumn': dataSplitColumn,
+        if (dataSplitEvalFraction != null)
+          'dataSplitEvalFraction': dataSplitEvalFraction,
+        if (dataSplitMethod != null) 'dataSplitMethod': dataSplitMethod,
+        if (distanceType != null) 'distanceType': distanceType,
+        if (dropout != null) 'dropout': dropout,
+        if (earlyStop != null) 'earlyStop': earlyStop,
+        if (feedbackType != null) 'feedbackType': feedbackType,
+        if (hiddenUnits != null) 'hiddenUnits': hiddenUnits,
+        if (holidayRegion != null) 'holidayRegion': holidayRegion,
+        if (horizon != null) 'horizon': horizon,
+        if (includeDrift != null) 'includeDrift': includeDrift,
+        if (initialLearnRate != null) 'initialLearnRate': initialLearnRate,
+        if (inputLabelColumns != null) 'inputLabelColumns': inputLabelColumns,
+        if (itemColumn != null) 'itemColumn': itemColumn,
+        if (kmeansInitializationColumn != null)
+          'kmeansInitializationColumn': kmeansInitializationColumn,
+        if (kmeansInitializationMethod != null)
+          'kmeansInitializationMethod': kmeansInitializationMethod,
+        if (l1Regularization != null) 'l1Regularization': l1Regularization,
+        if (l2Regularization != null) 'l2Regularization': l2Regularization,
+        if (labelClassWeights != null) 'labelClassWeights': labelClassWeights,
+        if (learnRate != null) 'learnRate': learnRate,
+        if (learnRateStrategy != null) 'learnRateStrategy': learnRateStrategy,
+        if (lossType != null) 'lossType': lossType,
+        if (maxIterations != null) 'maxIterations': maxIterations,
+        if (maxTreeDepth != null) 'maxTreeDepth': maxTreeDepth,
+        if (minRelativeProgress != null)
+          'minRelativeProgress': minRelativeProgress,
+        if (minSplitLoss != null) 'minSplitLoss': minSplitLoss,
+        if (modelUri != null) 'modelUri': modelUri,
+        if (nonSeasonalOrder != null)
+          'nonSeasonalOrder': nonSeasonalOrder.toJson(),
+        if (numClusters != null) 'numClusters': numClusters,
+        if (numFactors != null) 'numFactors': numFactors,
+        if (optimizationStrategy != null)
+          'optimizationStrategy': optimizationStrategy,
+        if (preserveInputStructs != null)
+          'preserveInputStructs': preserveInputStructs,
+        if (subsample != null) 'subsample': subsample,
+        if (timeSeriesDataColumn != null)
+          'timeSeriesDataColumn': timeSeriesDataColumn,
+        if (timeSeriesIdColumn != null)
+          'timeSeriesIdColumn': timeSeriesIdColumn,
+        if (timeSeriesTimestampColumn != null)
+          'timeSeriesTimestampColumn': timeSeriesTimestampColumn,
+        if (userColumn != null) 'userColumn': userColumn,
+        if (walsAlpha != null) 'walsAlpha': walsAlpha,
+        if (warmStart != null) 'warmStart': warmStart,
+      };
 }
 
 /// Information about a single training query run for the model.
@@ -13052,29 +11548,20 @@ class TrainingRun {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataSplitResult != null) {
-      _json['dataSplitResult'] = dataSplitResult.toJson();
-    }
-    if (evaluationMetrics != null) {
-      _json['evaluationMetrics'] = evaluationMetrics.toJson();
-    }
-    if (globalExplanations != null) {
-      _json['globalExplanations'] =
-          globalExplanations.map((value) => value.toJson()).toList();
-    }
-    if (results != null) {
-      _json['results'] = results.map((value) => value.toJson()).toList();
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (trainingOptions != null) {
-      _json['trainingOptions'] = trainingOptions.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataSplitResult != null)
+          'dataSplitResult': dataSplitResult.toJson(),
+        if (evaluationMetrics != null)
+          'evaluationMetrics': evaluationMetrics.toJson(),
+        if (globalExplanations != null)
+          'globalExplanations':
+              globalExplanations.map((value) => value.toJson()).toList(),
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+        if (startTime != null) 'startTime': startTime,
+        if (trainingOptions != null)
+          'trainingOptions': trainingOptions.toJson(),
+      };
 }
 
 class TransactionInfo {
@@ -13089,13 +11576,9 @@ class TransactionInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (transactionId != null) {
-      _json['transactionId'] = transactionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (transactionId != null) 'transactionId': transactionId,
+      };
 }
 
 /// This is used for defining User Defined Function (UDF) resources only when
@@ -13128,16 +11611,10 @@ class UserDefinedFunctionResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (inlineCode != null) {
-      _json['inlineCode'] = inlineCode;
-    }
-    if (resourceUri != null) {
-      _json['resourceUri'] = resourceUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (inlineCode != null) 'inlineCode': inlineCode,
+        if (resourceUri != null) 'resourceUri': resourceUri,
+      };
 }
 
 class ViewDefinition {
@@ -13175,18 +11652,12 @@ class ViewDefinition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (query != null) {
-      _json['query'] = query;
-    }
-    if (useLegacySql != null) {
-      _json['useLegacySql'] = useLegacySql;
-    }
-    if (userDefinedFunctionResources != null) {
-      _json['userDefinedFunctionResources'] =
-          userDefinedFunctionResources.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (query != null) 'query': query,
+        if (useLegacySql != null) 'useLegacySql': useLegacySql,
+        if (userDefinedFunctionResources != null)
+          'userDefinedFunctionResources': userDefinedFunctionResources
+              .map((value) => value.toJson())
+              .toList(),
+      };
 }

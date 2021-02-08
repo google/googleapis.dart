@@ -1035,196 +1035,111 @@ class Groups {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowExternalMembers != null) {
-      _json['allowExternalMembers'] = allowExternalMembers;
-    }
-    if (allowGoogleCommunication != null) {
-      _json['allowGoogleCommunication'] = allowGoogleCommunication;
-    }
-    if (allowWebPosting != null) {
-      _json['allowWebPosting'] = allowWebPosting;
-    }
-    if (archiveOnly != null) {
-      _json['archiveOnly'] = archiveOnly;
-    }
-    if (customFooterText != null) {
-      _json['customFooterText'] = customFooterText;
-    }
-    if (customReplyTo != null) {
-      _json['customReplyTo'] = customReplyTo;
-    }
-    if (customRolesEnabledForSettingsToBeMerged != null) {
-      _json['customRolesEnabledForSettingsToBeMerged'] =
-          customRolesEnabledForSettingsToBeMerged;
-    }
-    if (defaultMessageDenyNotificationText != null) {
-      _json['defaultMessageDenyNotificationText'] =
-          defaultMessageDenyNotificationText;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (enableCollaborativeInbox != null) {
-      _json['enableCollaborativeInbox'] = enableCollaborativeInbox;
-    }
-    if (favoriteRepliesOnTop != null) {
-      _json['favoriteRepliesOnTop'] = favoriteRepliesOnTop;
-    }
-    if (includeCustomFooter != null) {
-      _json['includeCustomFooter'] = includeCustomFooter;
-    }
-    if (includeInGlobalAddressList != null) {
-      _json['includeInGlobalAddressList'] = includeInGlobalAddressList;
-    }
-    if (isArchived != null) {
-      _json['isArchived'] = isArchived;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (maxMessageBytes != null) {
-      _json['maxMessageBytes'] = maxMessageBytes;
-    }
-    if (membersCanPostAsTheGroup != null) {
-      _json['membersCanPostAsTheGroup'] = membersCanPostAsTheGroup;
-    }
-    if (messageDisplayFont != null) {
-      _json['messageDisplayFont'] = messageDisplayFont;
-    }
-    if (messageModerationLevel != null) {
-      _json['messageModerationLevel'] = messageModerationLevel;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (primaryLanguage != null) {
-      _json['primaryLanguage'] = primaryLanguage;
-    }
-    if (replyTo != null) {
-      _json['replyTo'] = replyTo;
-    }
-    if (sendMessageDenyNotification != null) {
-      _json['sendMessageDenyNotification'] = sendMessageDenyNotification;
-    }
-    if (showInGroupDirectory != null) {
-      _json['showInGroupDirectory'] = showInGroupDirectory;
-    }
-    if (spamModerationLevel != null) {
-      _json['spamModerationLevel'] = spamModerationLevel;
-    }
-    if (whoCanAdd != null) {
-      _json['whoCanAdd'] = whoCanAdd;
-    }
-    if (whoCanAddReferences != null) {
-      _json['whoCanAddReferences'] = whoCanAddReferences;
-    }
-    if (whoCanApproveMembers != null) {
-      _json['whoCanApproveMembers'] = whoCanApproveMembers;
-    }
-    if (whoCanApproveMessages != null) {
-      _json['whoCanApproveMessages'] = whoCanApproveMessages;
-    }
-    if (whoCanAssignTopics != null) {
-      _json['whoCanAssignTopics'] = whoCanAssignTopics;
-    }
-    if (whoCanAssistContent != null) {
-      _json['whoCanAssistContent'] = whoCanAssistContent;
-    }
-    if (whoCanBanUsers != null) {
-      _json['whoCanBanUsers'] = whoCanBanUsers;
-    }
-    if (whoCanContactOwner != null) {
-      _json['whoCanContactOwner'] = whoCanContactOwner;
-    }
-    if (whoCanDeleteAnyPost != null) {
-      _json['whoCanDeleteAnyPost'] = whoCanDeleteAnyPost;
-    }
-    if (whoCanDeleteTopics != null) {
-      _json['whoCanDeleteTopics'] = whoCanDeleteTopics;
-    }
-    if (whoCanDiscoverGroup != null) {
-      _json['whoCanDiscoverGroup'] = whoCanDiscoverGroup;
-    }
-    if (whoCanEnterFreeFormTags != null) {
-      _json['whoCanEnterFreeFormTags'] = whoCanEnterFreeFormTags;
-    }
-    if (whoCanHideAbuse != null) {
-      _json['whoCanHideAbuse'] = whoCanHideAbuse;
-    }
-    if (whoCanInvite != null) {
-      _json['whoCanInvite'] = whoCanInvite;
-    }
-    if (whoCanJoin != null) {
-      _json['whoCanJoin'] = whoCanJoin;
-    }
-    if (whoCanLeaveGroup != null) {
-      _json['whoCanLeaveGroup'] = whoCanLeaveGroup;
-    }
-    if (whoCanLockTopics != null) {
-      _json['whoCanLockTopics'] = whoCanLockTopics;
-    }
-    if (whoCanMakeTopicsSticky != null) {
-      _json['whoCanMakeTopicsSticky'] = whoCanMakeTopicsSticky;
-    }
-    if (whoCanMarkDuplicate != null) {
-      _json['whoCanMarkDuplicate'] = whoCanMarkDuplicate;
-    }
-    if (whoCanMarkFavoriteReplyOnAnyTopic != null) {
-      _json['whoCanMarkFavoriteReplyOnAnyTopic'] =
-          whoCanMarkFavoriteReplyOnAnyTopic;
-    }
-    if (whoCanMarkFavoriteReplyOnOwnTopic != null) {
-      _json['whoCanMarkFavoriteReplyOnOwnTopic'] =
-          whoCanMarkFavoriteReplyOnOwnTopic;
-    }
-    if (whoCanMarkNoResponseNeeded != null) {
-      _json['whoCanMarkNoResponseNeeded'] = whoCanMarkNoResponseNeeded;
-    }
-    if (whoCanModerateContent != null) {
-      _json['whoCanModerateContent'] = whoCanModerateContent;
-    }
-    if (whoCanModerateMembers != null) {
-      _json['whoCanModerateMembers'] = whoCanModerateMembers;
-    }
-    if (whoCanModifyMembers != null) {
-      _json['whoCanModifyMembers'] = whoCanModifyMembers;
-    }
-    if (whoCanModifyTagsAndCategories != null) {
-      _json['whoCanModifyTagsAndCategories'] = whoCanModifyTagsAndCategories;
-    }
-    if (whoCanMoveTopicsIn != null) {
-      _json['whoCanMoveTopicsIn'] = whoCanMoveTopicsIn;
-    }
-    if (whoCanMoveTopicsOut != null) {
-      _json['whoCanMoveTopicsOut'] = whoCanMoveTopicsOut;
-    }
-    if (whoCanPostAnnouncements != null) {
-      _json['whoCanPostAnnouncements'] = whoCanPostAnnouncements;
-    }
-    if (whoCanPostMessage != null) {
-      _json['whoCanPostMessage'] = whoCanPostMessage;
-    }
-    if (whoCanTakeTopics != null) {
-      _json['whoCanTakeTopics'] = whoCanTakeTopics;
-    }
-    if (whoCanUnassignTopic != null) {
-      _json['whoCanUnassignTopic'] = whoCanUnassignTopic;
-    }
-    if (whoCanUnmarkFavoriteReplyOnAnyTopic != null) {
-      _json['whoCanUnmarkFavoriteReplyOnAnyTopic'] =
-          whoCanUnmarkFavoriteReplyOnAnyTopic;
-    }
-    if (whoCanViewGroup != null) {
-      _json['whoCanViewGroup'] = whoCanViewGroup;
-    }
-    if (whoCanViewMembership != null) {
-      _json['whoCanViewMembership'] = whoCanViewMembership;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowExternalMembers != null)
+          'allowExternalMembers': allowExternalMembers,
+        if (allowGoogleCommunication != null)
+          'allowGoogleCommunication': allowGoogleCommunication,
+        if (allowWebPosting != null) 'allowWebPosting': allowWebPosting,
+        if (archiveOnly != null) 'archiveOnly': archiveOnly,
+        if (customFooterText != null) 'customFooterText': customFooterText,
+        if (customReplyTo != null) 'customReplyTo': customReplyTo,
+        if (customRolesEnabledForSettingsToBeMerged != null)
+          'customRolesEnabledForSettingsToBeMerged':
+              customRolesEnabledForSettingsToBeMerged,
+        if (defaultMessageDenyNotificationText != null)
+          'defaultMessageDenyNotificationText':
+              defaultMessageDenyNotificationText,
+        if (description != null) 'description': description,
+        if (email != null) 'email': email,
+        if (enableCollaborativeInbox != null)
+          'enableCollaborativeInbox': enableCollaborativeInbox,
+        if (favoriteRepliesOnTop != null)
+          'favoriteRepliesOnTop': favoriteRepliesOnTop,
+        if (includeCustomFooter != null)
+          'includeCustomFooter': includeCustomFooter,
+        if (includeInGlobalAddressList != null)
+          'includeInGlobalAddressList': includeInGlobalAddressList,
+        if (isArchived != null) 'isArchived': isArchived,
+        if (kind != null) 'kind': kind,
+        if (maxMessageBytes != null) 'maxMessageBytes': maxMessageBytes,
+        if (membersCanPostAsTheGroup != null)
+          'membersCanPostAsTheGroup': membersCanPostAsTheGroup,
+        if (messageDisplayFont != null)
+          'messageDisplayFont': messageDisplayFont,
+        if (messageModerationLevel != null)
+          'messageModerationLevel': messageModerationLevel,
+        if (name != null) 'name': name,
+        if (primaryLanguage != null) 'primaryLanguage': primaryLanguage,
+        if (replyTo != null) 'replyTo': replyTo,
+        if (sendMessageDenyNotification != null)
+          'sendMessageDenyNotification': sendMessageDenyNotification,
+        if (showInGroupDirectory != null)
+          'showInGroupDirectory': showInGroupDirectory,
+        if (spamModerationLevel != null)
+          'spamModerationLevel': spamModerationLevel,
+        if (whoCanAdd != null) 'whoCanAdd': whoCanAdd,
+        if (whoCanAddReferences != null)
+          'whoCanAddReferences': whoCanAddReferences,
+        if (whoCanApproveMembers != null)
+          'whoCanApproveMembers': whoCanApproveMembers,
+        if (whoCanApproveMessages != null)
+          'whoCanApproveMessages': whoCanApproveMessages,
+        if (whoCanAssignTopics != null)
+          'whoCanAssignTopics': whoCanAssignTopics,
+        if (whoCanAssistContent != null)
+          'whoCanAssistContent': whoCanAssistContent,
+        if (whoCanBanUsers != null) 'whoCanBanUsers': whoCanBanUsers,
+        if (whoCanContactOwner != null)
+          'whoCanContactOwner': whoCanContactOwner,
+        if (whoCanDeleteAnyPost != null)
+          'whoCanDeleteAnyPost': whoCanDeleteAnyPost,
+        if (whoCanDeleteTopics != null)
+          'whoCanDeleteTopics': whoCanDeleteTopics,
+        if (whoCanDiscoverGroup != null)
+          'whoCanDiscoverGroup': whoCanDiscoverGroup,
+        if (whoCanEnterFreeFormTags != null)
+          'whoCanEnterFreeFormTags': whoCanEnterFreeFormTags,
+        if (whoCanHideAbuse != null) 'whoCanHideAbuse': whoCanHideAbuse,
+        if (whoCanInvite != null) 'whoCanInvite': whoCanInvite,
+        if (whoCanJoin != null) 'whoCanJoin': whoCanJoin,
+        if (whoCanLeaveGroup != null) 'whoCanLeaveGroup': whoCanLeaveGroup,
+        if (whoCanLockTopics != null) 'whoCanLockTopics': whoCanLockTopics,
+        if (whoCanMakeTopicsSticky != null)
+          'whoCanMakeTopicsSticky': whoCanMakeTopicsSticky,
+        if (whoCanMarkDuplicate != null)
+          'whoCanMarkDuplicate': whoCanMarkDuplicate,
+        if (whoCanMarkFavoriteReplyOnAnyTopic != null)
+          'whoCanMarkFavoriteReplyOnAnyTopic':
+              whoCanMarkFavoriteReplyOnAnyTopic,
+        if (whoCanMarkFavoriteReplyOnOwnTopic != null)
+          'whoCanMarkFavoriteReplyOnOwnTopic':
+              whoCanMarkFavoriteReplyOnOwnTopic,
+        if (whoCanMarkNoResponseNeeded != null)
+          'whoCanMarkNoResponseNeeded': whoCanMarkNoResponseNeeded,
+        if (whoCanModerateContent != null)
+          'whoCanModerateContent': whoCanModerateContent,
+        if (whoCanModerateMembers != null)
+          'whoCanModerateMembers': whoCanModerateMembers,
+        if (whoCanModifyMembers != null)
+          'whoCanModifyMembers': whoCanModifyMembers,
+        if (whoCanModifyTagsAndCategories != null)
+          'whoCanModifyTagsAndCategories': whoCanModifyTagsAndCategories,
+        if (whoCanMoveTopicsIn != null)
+          'whoCanMoveTopicsIn': whoCanMoveTopicsIn,
+        if (whoCanMoveTopicsOut != null)
+          'whoCanMoveTopicsOut': whoCanMoveTopicsOut,
+        if (whoCanPostAnnouncements != null)
+          'whoCanPostAnnouncements': whoCanPostAnnouncements,
+        if (whoCanPostMessage != null) 'whoCanPostMessage': whoCanPostMessage,
+        if (whoCanTakeTopics != null) 'whoCanTakeTopics': whoCanTakeTopics,
+        if (whoCanUnassignTopic != null)
+          'whoCanUnassignTopic': whoCanUnassignTopic,
+        if (whoCanUnmarkFavoriteReplyOnAnyTopic != null)
+          'whoCanUnmarkFavoriteReplyOnAnyTopic':
+              whoCanUnmarkFavoriteReplyOnAnyTopic,
+        if (whoCanViewGroup != null) 'whoCanViewGroup': whoCanViewGroup,
+        if (whoCanViewMembership != null)
+          'whoCanViewMembership': whoCanViewMembership,
+      };
 }

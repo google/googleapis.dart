@@ -3187,28 +3187,14 @@ class GoogleAnalyticsAdminV1alphaAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (deleted != null) {
-      _json['deleted'] = deleted;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (regionCode != null) {
-      _json['regionCode'] = regionCode;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (deleted != null) 'deleted': deleted,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (regionCode != null) 'regionCode': regionCode,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// A virtual resource representing an overview of an account and all its child
@@ -3250,23 +3236,14 @@ class GoogleAnalyticsAdminV1alphaAccountSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (account != null) {
-      _json['account'] = account;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (propertySummaries != null) {
-      _json['propertySummaries'] =
-          propertySummaries.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (account != null) 'account': account,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (propertySummaries != null)
+          'propertySummaries':
+              propertySummaries.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A resource message representing a Google Analytics Android app stream.
@@ -3331,28 +3308,14 @@ class GoogleAnalyticsAdminV1alphaAndroidAppDataStream {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (firebaseAppId != null) {
-      _json['firebaseAppId'] = firebaseAppId;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (packageName != null) {
-      _json['packageName'] = packageName;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (displayName != null) 'displayName': displayName,
+        if (firebaseAppId != null) 'firebaseAppId': firebaseAppId,
+        if (name != null) 'name': name,
+        if (packageName != null) 'packageName': packageName,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Read-only resource used to summarize a principal's effective roles.
@@ -3396,22 +3359,12 @@ class GoogleAnalyticsAdminV1alphaAuditUserLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (directRoles != null) {
-      _json['directRoles'] = directRoles;
-    }
-    if (effectiveRoles != null) {
-      _json['effectiveRoles'] = effectiveRoles;
-    }
-    if (emailAddress != null) {
-      _json['emailAddress'] = emailAddress;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (directRoles != null) 'directRoles': directRoles,
+        if (effectiveRoles != null) 'effectiveRoles': effectiveRoles,
+        if (emailAddress != null) 'emailAddress': emailAddress,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Request message for AuditUserLinks RPC.
@@ -3441,16 +3394,10 @@ class GoogleAnalyticsAdminV1alphaAuditUserLinksRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pageSize != null) {
-      _json['pageSize'] = pageSize;
-    }
-    if (pageToken != null) {
-      _json['pageToken'] = pageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pageSize != null) 'pageSize': pageSize,
+        if (pageToken != null) 'pageToken': pageToken,
+      };
 }
 
 /// Response message for AuditUserLinks RPC.
@@ -3480,16 +3427,11 @@ class GoogleAnalyticsAdminV1alphaAuditUserLinksResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (userLinks != null) {
-      _json['userLinks'] = userLinks.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (userLinks != null)
+          'userLinks': userLinks.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request message for BatchCreateUserLinks RPC.
@@ -3526,16 +3468,11 @@ class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (notifyNewUsers != null) {
-      _json['notifyNewUsers'] = notifyNewUsers;
-    }
-    if (requests != null) {
-      _json['requests'] = requests.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (notifyNewUsers != null) 'notifyNewUsers': notifyNewUsers,
+        if (requests != null)
+          'requests': requests.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for BatchCreateUserLinks RPC.
@@ -3556,13 +3493,10 @@ class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (userLinks != null) {
-      _json['userLinks'] = userLinks.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (userLinks != null)
+          'userLinks': userLinks.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request message for BatchDeleteUserLinks RPC.
@@ -3587,13 +3521,10 @@ class GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (requests != null) {
-      _json['requests'] = requests.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (requests != null)
+          'requests': requests.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for BatchGetUserLinks RPC.
@@ -3614,13 +3545,10 @@ class GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (userLinks != null) {
-      _json['userLinks'] = userLinks.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (userLinks != null)
+          'userLinks': userLinks.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request message for BatchUpdateUserLinks RPC.
@@ -3645,13 +3573,10 @@ class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (requests != null) {
-      _json['requests'] = requests.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (requests != null)
+          'requests': requests.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for BatchUpdateUserLinks RPC.
@@ -3672,13 +3597,10 @@ class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (userLinks != null) {
-      _json['userLinks'] = userLinks.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (userLinks != null)
+          'userLinks': userLinks.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request message for CreateUserLink RPC.
@@ -3721,19 +3643,11 @@ class GoogleAnalyticsAdminV1alphaCreateUserLinkRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (notifyNewUser != null) {
-      _json['notifyNewUser'] = notifyNewUser;
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    if (userLink != null) {
-      _json['userLink'] = userLink.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (notifyNewUser != null) 'notifyNewUser': notifyNewUser,
+        if (parent != null) 'parent': parent,
+        if (userLink != null) 'userLink': userLink.toJson(),
+      };
 }
 
 /// A resource message representing data sharing settings of a Google Analytics
@@ -3795,32 +3709,20 @@ class GoogleAnalyticsAdminV1alphaDataSharingSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (sharingWithGoogleAnySalesEnabled != null) {
-      _json['sharingWithGoogleAnySalesEnabled'] =
-          sharingWithGoogleAnySalesEnabled;
-    }
-    if (sharingWithGoogleAssignedSalesEnabled != null) {
-      _json['sharingWithGoogleAssignedSalesEnabled'] =
-          sharingWithGoogleAssignedSalesEnabled;
-    }
-    if (sharingWithGoogleProductsEnabled != null) {
-      _json['sharingWithGoogleProductsEnabled'] =
-          sharingWithGoogleProductsEnabled;
-    }
-    if (sharingWithGoogleSupportEnabled != null) {
-      _json['sharingWithGoogleSupportEnabled'] =
-          sharingWithGoogleSupportEnabled;
-    }
-    if (sharingWithOthersEnabled != null) {
-      _json['sharingWithOthersEnabled'] = sharingWithOthersEnabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (sharingWithGoogleAnySalesEnabled != null)
+          'sharingWithGoogleAnySalesEnabled': sharingWithGoogleAnySalesEnabled,
+        if (sharingWithGoogleAssignedSalesEnabled != null)
+          'sharingWithGoogleAssignedSalesEnabled':
+              sharingWithGoogleAssignedSalesEnabled,
+        if (sharingWithGoogleProductsEnabled != null)
+          'sharingWithGoogleProductsEnabled': sharingWithGoogleProductsEnabled,
+        if (sharingWithGoogleSupportEnabled != null)
+          'sharingWithGoogleSupportEnabled': sharingWithGoogleSupportEnabled,
+        if (sharingWithOthersEnabled != null)
+          'sharingWithOthersEnabled': sharingWithOthersEnabled,
+      };
 }
 
 /// Request message for DeleteUserLink RPC.
@@ -3838,13 +3740,9 @@ class GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+      };
 }
 
 /// Singleton resource under a WebDataStream, configuring measurement of
@@ -3956,46 +3854,25 @@ class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fileDownloadsEnabled != null) {
-      _json['fileDownloadsEnabled'] = fileDownloadsEnabled;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (outboundClicksEnabled != null) {
-      _json['outboundClicksEnabled'] = outboundClicksEnabled;
-    }
-    if (pageChangesEnabled != null) {
-      _json['pageChangesEnabled'] = pageChangesEnabled;
-    }
-    if (pageLoadsEnabled != null) {
-      _json['pageLoadsEnabled'] = pageLoadsEnabled;
-    }
-    if (pageViewsEnabled != null) {
-      _json['pageViewsEnabled'] = pageViewsEnabled;
-    }
-    if (scrollsEnabled != null) {
-      _json['scrollsEnabled'] = scrollsEnabled;
-    }
-    if (searchQueryParameter != null) {
-      _json['searchQueryParameter'] = searchQueryParameter;
-    }
-    if (siteSearchEnabled != null) {
-      _json['siteSearchEnabled'] = siteSearchEnabled;
-    }
-    if (streamEnabled != null) {
-      _json['streamEnabled'] = streamEnabled;
-    }
-    if (uriQueryParameter != null) {
-      _json['uriQueryParameter'] = uriQueryParameter;
-    }
-    if (videoEngagementEnabled != null) {
-      _json['videoEngagementEnabled'] = videoEngagementEnabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fileDownloadsEnabled != null)
+          'fileDownloadsEnabled': fileDownloadsEnabled,
+        if (name != null) 'name': name,
+        if (outboundClicksEnabled != null)
+          'outboundClicksEnabled': outboundClicksEnabled,
+        if (pageChangesEnabled != null)
+          'pageChangesEnabled': pageChangesEnabled,
+        if (pageLoadsEnabled != null) 'pageLoadsEnabled': pageLoadsEnabled,
+        if (pageViewsEnabled != null) 'pageViewsEnabled': pageViewsEnabled,
+        if (scrollsEnabled != null) 'scrollsEnabled': scrollsEnabled,
+        if (searchQueryParameter != null)
+          'searchQueryParameter': searchQueryParameter,
+        if (siteSearchEnabled != null) 'siteSearchEnabled': siteSearchEnabled,
+        if (streamEnabled != null) 'streamEnabled': streamEnabled,
+        if (uriQueryParameter != null) 'uriQueryParameter': uriQueryParameter,
+        if (videoEngagementEnabled != null)
+          'videoEngagementEnabled': videoEngagementEnabled,
+      };
 }
 
 /// A link between an GA4 property and a Firebase project.
@@ -4051,22 +3928,12 @@ class GoogleAnalyticsAdminV1alphaFirebaseLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (maximumUserAccess != null) {
-      _json['maximumUserAccess'] = maximumUserAccess;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (project != null) {
-      _json['project'] = project;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (maximumUserAccess != null) 'maximumUserAccess': maximumUserAccess,
+        if (name != null) 'name': name,
+        if (project != null) 'project': project,
+      };
 }
 
 /// Read-only resource with the tag for sending data from a website to a
@@ -4096,16 +3963,10 @@ class GoogleAnalyticsAdminV1alphaGlobalSiteTag {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (snippet != null) 'snippet': snippet,
+      };
 }
 
 /// A link between an GA4 property and a Google Ads account.
@@ -4177,31 +4038,16 @@ class GoogleAnalyticsAdminV1alphaGoogleAdsLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adsPersonalizationEnabled != null) {
-      _json['adsPersonalizationEnabled'] = adsPersonalizationEnabled;
-    }
-    if (canManageClients != null) {
-      _json['canManageClients'] = canManageClients;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (customerId != null) {
-      _json['customerId'] = customerId;
-    }
-    if (emailAddress != null) {
-      _json['emailAddress'] = emailAddress;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adsPersonalizationEnabled != null)
+          'adsPersonalizationEnabled': adsPersonalizationEnabled,
+        if (canManageClients != null) 'canManageClients': canManageClients,
+        if (createTime != null) 'createTime': createTime,
+        if (customerId != null) 'customerId': customerId,
+        if (emailAddress != null) 'emailAddress': emailAddress,
+        if (name != null) 'name': name,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// A resource message representing a Google Analytics IOS app stream.
@@ -4264,28 +4110,14 @@ class GoogleAnalyticsAdminV1alphaIosAppDataStream {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bundleId != null) {
-      _json['bundleId'] = bundleId;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (firebaseAppId != null) {
-      _json['firebaseAppId'] = firebaseAppId;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bundleId != null) 'bundleId': bundleId,
+        if (createTime != null) 'createTime': createTime,
+        if (displayName != null) 'displayName': displayName,
+        if (firebaseAppId != null) 'firebaseAppId': firebaseAppId,
+        if (name != null) 'name': name,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Response message for ListAccountSummaries RPC.
@@ -4314,17 +4146,12 @@ class GoogleAnalyticsAdminV1alphaListAccountSummariesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountSummaries != null) {
-      _json['accountSummaries'] =
-          accountSummaries.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountSummaries != null)
+          'accountSummaries':
+              accountSummaries.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Request message for ListAccounts RPC.
@@ -4352,16 +4179,11 @@ class GoogleAnalyticsAdminV1alphaListAccountsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accounts != null) {
-      _json['accounts'] = accounts.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accounts != null)
+          'accounts': accounts.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Request message for ListAndroidDataStreams RPC.
@@ -4392,17 +4214,12 @@ class GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (androidAppDataStreams != null) {
-      _json['androidAppDataStreams'] =
-          androidAppDataStreams.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (androidAppDataStreams != null)
+          'androidAppDataStreams':
+              androidAppDataStreams.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message for ListFirebaseLinks RPC
@@ -4435,17 +4252,12 @@ class GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (firebaseLinks != null) {
-      _json['firebaseLinks'] =
-          firebaseLinks.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (firebaseLinks != null)
+          'firebaseLinks':
+              firebaseLinks.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message for ListGoogleAdsLinks RPC.
@@ -4474,17 +4286,12 @@ class GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (googleAdsLinks != null) {
-      _json['googleAdsLinks'] =
-          googleAdsLinks.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (googleAdsLinks != null)
+          'googleAdsLinks':
+              googleAdsLinks.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Request message for ListIosAppDataStreams RPC.
@@ -4514,17 +4321,12 @@ class GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (iosAppDataStreams != null) {
-      _json['iosAppDataStreams'] =
-          iosAppDataStreams.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (iosAppDataStreams != null)
+          'iosAppDataStreams':
+              iosAppDataStreams.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message for ListProperties RPC.
@@ -4553,16 +4355,11 @@ class GoogleAnalyticsAdminV1alphaListPropertiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (properties != null) {
-      _json['properties'] = properties.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (properties != null)
+          'properties': properties.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for ListUserLinks RPC.
@@ -4592,16 +4389,11 @@ class GoogleAnalyticsAdminV1alphaListUserLinksResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (userLinks != null) {
-      _json['userLinks'] = userLinks.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (userLinks != null)
+          'userLinks': userLinks.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request message for ListWebDataStreams RPC.
@@ -4631,17 +4423,12 @@ class GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (webDataStreams != null) {
-      _json['webDataStreams'] =
-          webDataStreams.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (webDataStreams != null)
+          'webDataStreams':
+              webDataStreams.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A resource message representing a Google Analytics GA4 property.
@@ -4764,37 +4551,17 @@ class GoogleAnalyticsAdminV1alphaProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (currencyCode != null) {
-      _json['currencyCode'] = currencyCode;
-    }
-    if (deleted != null) {
-      _json['deleted'] = deleted;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (industryCategory != null) {
-      _json['industryCategory'] = industryCategory;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    if (timeZone != null) {
-      _json['timeZone'] = timeZone;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (currencyCode != null) 'currencyCode': currencyCode,
+        if (deleted != null) 'deleted': deleted,
+        if (displayName != null) 'displayName': displayName,
+        if (industryCategory != null) 'industryCategory': industryCategory,
+        if (name != null) 'name': name,
+        if (parent != null) 'parent': parent,
+        if (timeZone != null) 'timeZone': timeZone,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// A virtual resource representing metadata for an GA4 property.
@@ -4817,16 +4584,10 @@ class GoogleAnalyticsAdminV1alphaPropertySummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (property != null) {
-      _json['property'] = property;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (property != null) 'property': property,
+      };
 }
 
 /// Request message for ProvisionAccountTicket RPC.
@@ -4852,16 +4613,10 @@ class GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (account != null) {
-      _json['account'] = account.toJson();
-    }
-    if (redirectUri != null) {
-      _json['redirectUri'] = redirectUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (account != null) 'account': account.toJson(),
+        if (redirectUri != null) 'redirectUri': redirectUri,
+      };
 }
 
 /// Response message for ProvisionAccountTicket RPC.
@@ -4878,13 +4633,9 @@ class GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountTicketId != null) {
-      _json['accountTicketId'] = accountTicketId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountTicketId != null) 'accountTicketId': accountTicketId,
+      };
 }
 
 /// Request message for UpdateUserLink RPC.
@@ -4903,13 +4654,9 @@ class GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (userLink != null) {
-      _json['userLink'] = userLink.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (userLink != null) 'userLink': userLink.toJson(),
+      };
 }
 
 /// A resource message representing a user's permissions on an Account or
@@ -4946,19 +4693,11 @@ class GoogleAnalyticsAdminV1alphaUserLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (directRoles != null) {
-      _json['directRoles'] = directRoles;
-    }
-    if (emailAddress != null) {
-      _json['emailAddress'] = emailAddress;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (directRoles != null) 'directRoles': directRoles,
+        if (emailAddress != null) 'emailAddress': emailAddress,
+        if (name != null) 'name': name,
+      };
 }
 
 /// A resource message representing a Google Analytics web stream.
@@ -5035,31 +4774,15 @@ class GoogleAnalyticsAdminV1alphaWebDataStream {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (defaultUri != null) {
-      _json['defaultUri'] = defaultUri;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (firebaseAppId != null) {
-      _json['firebaseAppId'] = firebaseAppId;
-    }
-    if (measurementId != null) {
-      _json['measurementId'] = measurementId;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (defaultUri != null) 'defaultUri': defaultUri,
+        if (displayName != null) 'displayName': displayName,
+        if (firebaseAppId != null) 'firebaseAppId': firebaseAppId,
+        if (measurementId != null) 'measurementId': measurementId,
+        if (name != null) 'name': name,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -5076,8 +4799,5 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }

@@ -2908,22 +2908,12 @@ class Account {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (fingerprint != null) {
-      _json['fingerprint'] = fingerprint;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (shareData != null) {
-      _json['shareData'] = shareData;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (fingerprint != null) 'fingerprint': fingerprint,
+        if (name != null) 'name': name,
+        if (shareData != null) 'shareData': shareData,
+      };
 }
 
 /// Defines the Google Tag Manager Account access permissions.
@@ -2945,13 +2935,9 @@ class AccountAccess {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permission != null) {
-      _json['permission'] = permission;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permission != null) 'permission': permission,
+      };
 }
 
 /// Represents a predicate.
@@ -3001,16 +2987,11 @@ class Condition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (parameter != null) {
-      _json['parameter'] = parameter.map((value) => value.toJson()).toList();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (parameter != null)
+          'parameter': parameter.map((value) => value.toJson()).toList(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// Represents a Google Tag Manager Container.
@@ -3122,43 +3103,20 @@ class Container {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (containerId != null) {
-      _json['containerId'] = containerId;
-    }
-    if (domainName != null) {
-      _json['domainName'] = domainName;
-    }
-    if (enabledBuiltInVariable != null) {
-      _json['enabledBuiltInVariable'] = enabledBuiltInVariable;
-    }
-    if (fingerprint != null) {
-      _json['fingerprint'] = fingerprint;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (notes != null) {
-      _json['notes'] = notes;
-    }
-    if (publicId != null) {
-      _json['publicId'] = publicId;
-    }
-    if (timeZoneCountryId != null) {
-      _json['timeZoneCountryId'] = timeZoneCountryId;
-    }
-    if (timeZoneId != null) {
-      _json['timeZoneId'] = timeZoneId;
-    }
-    if (usageContext != null) {
-      _json['usageContext'] = usageContext;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (containerId != null) 'containerId': containerId,
+        if (domainName != null) 'domainName': domainName,
+        if (enabledBuiltInVariable != null)
+          'enabledBuiltInVariable': enabledBuiltInVariable,
+        if (fingerprint != null) 'fingerprint': fingerprint,
+        if (name != null) 'name': name,
+        if (notes != null) 'notes': notes,
+        if (publicId != null) 'publicId': publicId,
+        if (timeZoneCountryId != null) 'timeZoneCountryId': timeZoneCountryId,
+        if (timeZoneId != null) 'timeZoneId': timeZoneId,
+        if (usageContext != null) 'usageContext': usageContext,
+      };
 }
 
 /// Defines the Google Tag Manager Container access permissions.
@@ -3189,16 +3147,10 @@ class ContainerAccess {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (containerId != null) {
-      _json['containerId'] = containerId;
-    }
-    if (permission != null) {
-      _json['permission'] = permission;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (containerId != null) 'containerId': containerId,
+        if (permission != null) 'permission': permission,
+      };
 }
 
 /// Represents a Google Tag Manager Container Version.
@@ -3317,52 +3269,27 @@ class ContainerVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (container != null) {
-      _json['container'] = container.toJson();
-    }
-    if (containerId != null) {
-      _json['containerId'] = containerId;
-    }
-    if (containerVersionId != null) {
-      _json['containerVersionId'] = containerVersionId;
-    }
-    if (deleted != null) {
-      _json['deleted'] = deleted;
-    }
-    if (fingerprint != null) {
-      _json['fingerprint'] = fingerprint;
-    }
-    if (folder != null) {
-      _json['folder'] = folder.map((value) => value.toJson()).toList();
-    }
-    if (macro != null) {
-      _json['macro'] = macro.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (notes != null) {
-      _json['notes'] = notes;
-    }
-    if (rule != null) {
-      _json['rule'] = rule.map((value) => value.toJson()).toList();
-    }
-    if (tag != null) {
-      _json['tag'] = tag.map((value) => value.toJson()).toList();
-    }
-    if (trigger != null) {
-      _json['trigger'] = trigger.map((value) => value.toJson()).toList();
-    }
-    if (variable != null) {
-      _json['variable'] = variable.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (container != null) 'container': container.toJson(),
+        if (containerId != null) 'containerId': containerId,
+        if (containerVersionId != null)
+          'containerVersionId': containerVersionId,
+        if (deleted != null) 'deleted': deleted,
+        if (fingerprint != null) 'fingerprint': fingerprint,
+        if (folder != null)
+          'folder': folder.map((value) => value.toJson()).toList(),
+        if (macro != null)
+          'macro': macro.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (notes != null) 'notes': notes,
+        if (rule != null) 'rule': rule.map((value) => value.toJson()).toList(),
+        if (tag != null) 'tag': tag.map((value) => value.toJson()).toList(),
+        if (trigger != null)
+          'trigger': trigger.map((value) => value.toJson()).toList(),
+        if (variable != null)
+          'variable': variable.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents a Google Tag Manager Container Version Header.
@@ -3432,40 +3359,19 @@ class ContainerVersionHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (containerId != null) {
-      _json['containerId'] = containerId;
-    }
-    if (containerVersionId != null) {
-      _json['containerVersionId'] = containerVersionId;
-    }
-    if (deleted != null) {
-      _json['deleted'] = deleted;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (numMacros != null) {
-      _json['numMacros'] = numMacros;
-    }
-    if (numRules != null) {
-      _json['numRules'] = numRules;
-    }
-    if (numTags != null) {
-      _json['numTags'] = numTags;
-    }
-    if (numTriggers != null) {
-      _json['numTriggers'] = numTriggers;
-    }
-    if (numVariables != null) {
-      _json['numVariables'] = numVariables;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (containerId != null) 'containerId': containerId,
+        if (containerVersionId != null)
+          'containerVersionId': containerVersionId,
+        if (deleted != null) 'deleted': deleted,
+        if (name != null) 'name': name,
+        if (numMacros != null) 'numMacros': numMacros,
+        if (numRules != null) 'numRules': numRules,
+        if (numTags != null) 'numTags': numTags,
+        if (numTriggers != null) 'numTriggers': numTriggers,
+        if (numVariables != null) 'numVariables': numVariables,
+      };
 }
 
 /// Options for new container versions.
@@ -3494,19 +3400,11 @@ class CreateContainerVersionRequestVersionOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (notes != null) {
-      _json['notes'] = notes;
-    }
-    if (quickPreview != null) {
-      _json['quickPreview'] = quickPreview;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (notes != null) 'notes': notes,
+        if (quickPreview != null) 'quickPreview': quickPreview,
+      };
 }
 
 /// Create container versions response.
@@ -3529,16 +3427,11 @@ class CreateContainerVersionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (compilerError != null) {
-      _json['compilerError'] = compilerError;
-    }
-    if (containerVersion != null) {
-      _json['containerVersion'] = containerVersion.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (compilerError != null) 'compilerError': compilerError,
+        if (containerVersion != null)
+          'containerVersion': containerVersion.toJson(),
+      };
 }
 
 /// Represents a Google Tag Manager Environment.
@@ -3647,46 +3540,22 @@ class Environment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (authorizationCode != null) {
-      _json['authorizationCode'] = authorizationCode;
-    }
-    if (authorizationTimestampMs != null) {
-      _json['authorizationTimestampMs'] = authorizationTimestampMs;
-    }
-    if (containerId != null) {
-      _json['containerId'] = containerId;
-    }
-    if (containerVersionId != null) {
-      _json['containerVersionId'] = containerVersionId;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (enableDebug != null) {
-      _json['enableDebug'] = enableDebug;
-    }
-    if (environmentId != null) {
-      _json['environmentId'] = environmentId;
-    }
-    if (fingerprint != null) {
-      _json['fingerprint'] = fingerprint;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (authorizationCode != null) 'authorizationCode': authorizationCode,
+        if (authorizationTimestampMs != null)
+          'authorizationTimestampMs': authorizationTimestampMs,
+        if (containerId != null) 'containerId': containerId,
+        if (containerVersionId != null)
+          'containerVersionId': containerVersionId,
+        if (description != null) 'description': description,
+        if (enableDebug != null) 'enableDebug': enableDebug,
+        if (environmentId != null) 'environmentId': environmentId,
+        if (fingerprint != null) 'fingerprint': fingerprint,
+        if (name != null) 'name': name,
+        if (type != null) 'type': type,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Represents a Google Tag Manager Folder.
@@ -3731,25 +3600,13 @@ class Folder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (containerId != null) {
-      _json['containerId'] = containerId;
-    }
-    if (fingerprint != null) {
-      _json['fingerprint'] = fingerprint;
-    }
-    if (folderId != null) {
-      _json['folderId'] = folderId;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (containerId != null) 'containerId': containerId,
+        if (fingerprint != null) 'fingerprint': fingerprint,
+        if (folderId != null) 'folderId': folderId,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Represents a Google Tag Manager Folder's contents.
@@ -3786,19 +3643,13 @@ class FolderEntities {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (tag != null) {
-      _json['tag'] = tag.map((value) => value.toJson()).toList();
-    }
-    if (trigger != null) {
-      _json['trigger'] = trigger.map((value) => value.toJson()).toList();
-    }
-    if (variable != null) {
-      _json['variable'] = variable.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (tag != null) 'tag': tag.map((value) => value.toJson()).toList(),
+        if (trigger != null)
+          'trigger': trigger.map((value) => value.toJson()).toList(),
+        if (variable != null)
+          'variable': variable.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// List AccountUsers Response.
@@ -3817,13 +3668,10 @@ class ListAccountUsersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (userAccess != null) {
-      _json['userAccess'] = userAccess.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (userAccess != null)
+          'userAccess': userAccess.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// List Accounts Response.
@@ -3842,13 +3690,10 @@ class ListAccountsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accounts != null) {
-      _json['accounts'] = accounts.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accounts != null)
+          'accounts': accounts.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// List container versions response.
@@ -3877,18 +3722,14 @@ class ListContainerVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (containerVersion != null) {
-      _json['containerVersion'] =
-          containerVersion.map((value) => value.toJson()).toList();
-    }
-    if (containerVersionHeader != null) {
-      _json['containerVersionHeader'] =
-          containerVersionHeader.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (containerVersion != null)
+          'containerVersion':
+              containerVersion.map((value) => value.toJson()).toList(),
+        if (containerVersionHeader != null)
+          'containerVersionHeader':
+              containerVersionHeader.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// List Containers Response.
@@ -3907,13 +3748,10 @@ class ListContainersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (containers != null) {
-      _json['containers'] = containers.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (containers != null)
+          'containers': containers.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// List Environments Response.
@@ -3932,14 +3770,10 @@ class ListEnvironmentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (environments != null) {
-      _json['environments'] =
-          environments.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (environments != null)
+          'environments': environments.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// List Folders Response.
@@ -3958,13 +3792,10 @@ class ListFoldersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (folders != null) {
-      _json['folders'] = folders.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (folders != null)
+          'folders': folders.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// List Tags Response.
@@ -3983,13 +3814,9 @@ class ListTagsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (tags != null) {
-      _json['tags'] = tags.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (tags != null) 'tags': tags.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// List triggers response.
@@ -4008,13 +3835,10 @@ class ListTriggersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (triggers != null) {
-      _json['triggers'] = triggers.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (triggers != null)
+          'triggers': triggers.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// List Variables Response.
@@ -4033,13 +3857,10 @@ class ListVariablesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (variables != null) {
-      _json['variables'] = variables.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (variables != null)
+          'variables': variables.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents a Google Tag Manager Macro.
@@ -4166,49 +3987,22 @@ class Macro {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (containerId != null) {
-      _json['containerId'] = containerId;
-    }
-    if (disablingRuleId != null) {
-      _json['disablingRuleId'] = disablingRuleId;
-    }
-    if (enablingRuleId != null) {
-      _json['enablingRuleId'] = enablingRuleId;
-    }
-    if (fingerprint != null) {
-      _json['fingerprint'] = fingerprint;
-    }
-    if (macroId != null) {
-      _json['macroId'] = macroId;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (notes != null) {
-      _json['notes'] = notes;
-    }
-    if (parameter != null) {
-      _json['parameter'] = parameter.map((value) => value.toJson()).toList();
-    }
-    if (parentFolderId != null) {
-      _json['parentFolderId'] = parentFolderId;
-    }
-    if (scheduleEndMs != null) {
-      _json['scheduleEndMs'] = scheduleEndMs;
-    }
-    if (scheduleStartMs != null) {
-      _json['scheduleStartMs'] = scheduleStartMs;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (containerId != null) 'containerId': containerId,
+        if (disablingRuleId != null) 'disablingRuleId': disablingRuleId,
+        if (enablingRuleId != null) 'enablingRuleId': enablingRuleId,
+        if (fingerprint != null) 'fingerprint': fingerprint,
+        if (macroId != null) 'macroId': macroId,
+        if (name != null) 'name': name,
+        if (notes != null) 'notes': notes,
+        if (parameter != null)
+          'parameter': parameter.map((value) => value.toJson()).toList(),
+        if (parentFolderId != null) 'parentFolderId': parentFolderId,
+        if (scheduleEndMs != null) 'scheduleEndMs': scheduleEndMs,
+        if (scheduleStartMs != null) 'scheduleStartMs': scheduleStartMs,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Represents a Google Tag Manager Parameter.
@@ -4307,25 +4101,13 @@ class Parameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (list != null) {
-      _json['list'] = list.map((value) => value.toJson()).toList();
-    }
-    if (map != null) {
-      _json['map'] = map.map((value) => value.toJson()).toList();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (list != null) 'list': list.map((value) => value.toJson()).toList(),
+        if (map != null) 'map': map.map((value) => value.toJson()).toList(),
+        if (type != null) 'type': type,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Publish container version response.
@@ -4348,16 +4130,11 @@ class PublishContainerVersionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (compilerError != null) {
-      _json['compilerError'] = compilerError;
-    }
-    if (containerVersion != null) {
-      _json['containerVersion'] = containerVersion.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (compilerError != null) 'compilerError': compilerError,
+        if (containerVersion != null)
+          'containerVersion': containerVersion.toJson(),
+      };
 }
 
 /// Represents a Google Tag Manager Rule.
@@ -4423,31 +4200,16 @@ class Rule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (condition != null) {
-      _json['condition'] = condition.map((value) => value.toJson()).toList();
-    }
-    if (containerId != null) {
-      _json['containerId'] = containerId;
-    }
-    if (fingerprint != null) {
-      _json['fingerprint'] = fingerprint;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (notes != null) {
-      _json['notes'] = notes;
-    }
-    if (ruleId != null) {
-      _json['ruleId'] = ruleId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (condition != null)
+          'condition': condition.map((value) => value.toJson()).toList(),
+        if (containerId != null) 'containerId': containerId,
+        if (fingerprint != null) 'fingerprint': fingerprint,
+        if (name != null) 'name': name,
+        if (notes != null) 'notes': notes,
+        if (ruleId != null) 'ruleId': ruleId,
+      };
 }
 
 class SetupTag {
@@ -4471,16 +4233,11 @@ class SetupTag {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (stopOnSetupFailure != null) {
-      _json['stopOnSetupFailure'] = stopOnSetupFailure;
-    }
-    if (tagName != null) {
-      _json['tagName'] = tagName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (stopOnSetupFailure != null)
+          'stopOnSetupFailure': stopOnSetupFailure,
+        if (tagName != null) 'tagName': tagName,
+      };
 }
 
 /// Represents a Google Tag Manager Tag.
@@ -4695,74 +4452,32 @@ class Tag {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (blockingRuleId != null) {
-      _json['blockingRuleId'] = blockingRuleId;
-    }
-    if (blockingTriggerId != null) {
-      _json['blockingTriggerId'] = blockingTriggerId;
-    }
-    if (containerId != null) {
-      _json['containerId'] = containerId;
-    }
-    if (fingerprint != null) {
-      _json['fingerprint'] = fingerprint;
-    }
-    if (firingRuleId != null) {
-      _json['firingRuleId'] = firingRuleId;
-    }
-    if (firingTriggerId != null) {
-      _json['firingTriggerId'] = firingTriggerId;
-    }
-    if (liveOnly != null) {
-      _json['liveOnly'] = liveOnly;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (notes != null) {
-      _json['notes'] = notes;
-    }
-    if (parameter != null) {
-      _json['parameter'] = parameter.map((value) => value.toJson()).toList();
-    }
-    if (parentFolderId != null) {
-      _json['parentFolderId'] = parentFolderId;
-    }
-    if (paused != null) {
-      _json['paused'] = paused;
-    }
-    if (priority != null) {
-      _json['priority'] = priority.toJson();
-    }
-    if (scheduleEndMs != null) {
-      _json['scheduleEndMs'] = scheduleEndMs;
-    }
-    if (scheduleStartMs != null) {
-      _json['scheduleStartMs'] = scheduleStartMs;
-    }
-    if (setupTag != null) {
-      _json['setupTag'] = setupTag.map((value) => value.toJson()).toList();
-    }
-    if (tagFiringOption != null) {
-      _json['tagFiringOption'] = tagFiringOption;
-    }
-    if (tagId != null) {
-      _json['tagId'] = tagId;
-    }
-    if (teardownTag != null) {
-      _json['teardownTag'] =
-          teardownTag.map((value) => value.toJson()).toList();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (blockingRuleId != null) 'blockingRuleId': blockingRuleId,
+        if (blockingTriggerId != null) 'blockingTriggerId': blockingTriggerId,
+        if (containerId != null) 'containerId': containerId,
+        if (fingerprint != null) 'fingerprint': fingerprint,
+        if (firingRuleId != null) 'firingRuleId': firingRuleId,
+        if (firingTriggerId != null) 'firingTriggerId': firingTriggerId,
+        if (liveOnly != null) 'liveOnly': liveOnly,
+        if (name != null) 'name': name,
+        if (notes != null) 'notes': notes,
+        if (parameter != null)
+          'parameter': parameter.map((value) => value.toJson()).toList(),
+        if (parentFolderId != null) 'parentFolderId': parentFolderId,
+        if (paused != null) 'paused': paused,
+        if (priority != null) 'priority': priority.toJson(),
+        if (scheduleEndMs != null) 'scheduleEndMs': scheduleEndMs,
+        if (scheduleStartMs != null) 'scheduleStartMs': scheduleStartMs,
+        if (setupTag != null)
+          'setupTag': setupTag.map((value) => value.toJson()).toList(),
+        if (tagFiringOption != null) 'tagFiringOption': tagFiringOption,
+        if (tagId != null) 'tagId': tagId,
+        if (teardownTag != null)
+          'teardownTag': teardownTag.map((value) => value.toJson()).toList(),
+        if (type != null) 'type': type,
+      };
 }
 
 class TeardownTag {
@@ -4786,16 +4501,11 @@ class TeardownTag {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (stopTeardownOnFailure != null) {
-      _json['stopTeardownOnFailure'] = stopTeardownOnFailure;
-    }
-    if (tagName != null) {
-      _json['tagName'] = tagName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (stopTeardownOnFailure != null)
+          'stopTeardownOnFailure': stopTeardownOnFailure,
+        if (tagName != null) 'tagName': tagName,
+      };
 }
 
 /// Represents a Google Tag Manager Trigger
@@ -5127,99 +4837,56 @@ class Trigger {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (autoEventFilter != null) {
-      _json['autoEventFilter'] =
-          autoEventFilter.map((value) => value.toJson()).toList();
-    }
-    if (checkValidation != null) {
-      _json['checkValidation'] = checkValidation.toJson();
-    }
-    if (containerId != null) {
-      _json['containerId'] = containerId;
-    }
-    if (continuousTimeMinMilliseconds != null) {
-      _json['continuousTimeMinMilliseconds'] =
-          continuousTimeMinMilliseconds.toJson();
-    }
-    if (customEventFilter != null) {
-      _json['customEventFilter'] =
-          customEventFilter.map((value) => value.toJson()).toList();
-    }
-    if (eventName != null) {
-      _json['eventName'] = eventName.toJson();
-    }
-    if (filter != null) {
-      _json['filter'] = filter.map((value) => value.toJson()).toList();
-    }
-    if (fingerprint != null) {
-      _json['fingerprint'] = fingerprint;
-    }
-    if (horizontalScrollPercentageList != null) {
-      _json['horizontalScrollPercentageList'] =
-          horizontalScrollPercentageList.toJson();
-    }
-    if (interval != null) {
-      _json['interval'] = interval.toJson();
-    }
-    if (intervalSeconds != null) {
-      _json['intervalSeconds'] = intervalSeconds.toJson();
-    }
-    if (limit != null) {
-      _json['limit'] = limit.toJson();
-    }
-    if (maxTimerLengthSeconds != null) {
-      _json['maxTimerLengthSeconds'] = maxTimerLengthSeconds.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parameter != null) {
-      _json['parameter'] = parameter.map((value) => value.toJson()).toList();
-    }
-    if (parentFolderId != null) {
-      _json['parentFolderId'] = parentFolderId;
-    }
-    if (selector != null) {
-      _json['selector'] = selector.toJson();
-    }
-    if (totalTimeMinMilliseconds != null) {
-      _json['totalTimeMinMilliseconds'] = totalTimeMinMilliseconds.toJson();
-    }
-    if (triggerId != null) {
-      _json['triggerId'] = triggerId;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (uniqueTriggerId != null) {
-      _json['uniqueTriggerId'] = uniqueTriggerId.toJson();
-    }
-    if (verticalScrollPercentageList != null) {
-      _json['verticalScrollPercentageList'] =
-          verticalScrollPercentageList.toJson();
-    }
-    if (visibilitySelector != null) {
-      _json['visibilitySelector'] = visibilitySelector.toJson();
-    }
-    if (visiblePercentageMax != null) {
-      _json['visiblePercentageMax'] = visiblePercentageMax.toJson();
-    }
-    if (visiblePercentageMin != null) {
-      _json['visiblePercentageMin'] = visiblePercentageMin.toJson();
-    }
-    if (waitForTags != null) {
-      _json['waitForTags'] = waitForTags.toJson();
-    }
-    if (waitForTagsTimeout != null) {
-      _json['waitForTagsTimeout'] = waitForTagsTimeout.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (autoEventFilter != null)
+          'autoEventFilter':
+              autoEventFilter.map((value) => value.toJson()).toList(),
+        if (checkValidation != null)
+          'checkValidation': checkValidation.toJson(),
+        if (containerId != null) 'containerId': containerId,
+        if (continuousTimeMinMilliseconds != null)
+          'continuousTimeMinMilliseconds':
+              continuousTimeMinMilliseconds.toJson(),
+        if (customEventFilter != null)
+          'customEventFilter':
+              customEventFilter.map((value) => value.toJson()).toList(),
+        if (eventName != null) 'eventName': eventName.toJson(),
+        if (filter != null)
+          'filter': filter.map((value) => value.toJson()).toList(),
+        if (fingerprint != null) 'fingerprint': fingerprint,
+        if (horizontalScrollPercentageList != null)
+          'horizontalScrollPercentageList':
+              horizontalScrollPercentageList.toJson(),
+        if (interval != null) 'interval': interval.toJson(),
+        if (intervalSeconds != null)
+          'intervalSeconds': intervalSeconds.toJson(),
+        if (limit != null) 'limit': limit.toJson(),
+        if (maxTimerLengthSeconds != null)
+          'maxTimerLengthSeconds': maxTimerLengthSeconds.toJson(),
+        if (name != null) 'name': name,
+        if (parameter != null)
+          'parameter': parameter.map((value) => value.toJson()).toList(),
+        if (parentFolderId != null) 'parentFolderId': parentFolderId,
+        if (selector != null) 'selector': selector.toJson(),
+        if (totalTimeMinMilliseconds != null)
+          'totalTimeMinMilliseconds': totalTimeMinMilliseconds.toJson(),
+        if (triggerId != null) 'triggerId': triggerId,
+        if (type != null) 'type': type,
+        if (uniqueTriggerId != null)
+          'uniqueTriggerId': uniqueTriggerId.toJson(),
+        if (verticalScrollPercentageList != null)
+          'verticalScrollPercentageList': verticalScrollPercentageList.toJson(),
+        if (visibilitySelector != null)
+          'visibilitySelector': visibilitySelector.toJson(),
+        if (visiblePercentageMax != null)
+          'visiblePercentageMax': visiblePercentageMax.toJson(),
+        if (visiblePercentageMin != null)
+          'visiblePercentageMin': visiblePercentageMin.toJson(),
+        if (waitForTags != null) 'waitForTags': waitForTags.toJson(),
+        if (waitForTagsTimeout != null)
+          'waitForTagsTimeout': waitForTagsTimeout.toJson(),
+      };
 }
 
 /// Represents a user's permissions to an account and its container.
@@ -5271,26 +4938,15 @@ class UserAccess {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountAccess != null) {
-      _json['accountAccess'] = accountAccess.toJson();
-    }
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (containerAccess != null) {
-      _json['containerAccess'] =
-          containerAccess.map((value) => value.toJson()).toList();
-    }
-    if (emailAddress != null) {
-      _json['emailAddress'] = emailAddress;
-    }
-    if (permissionId != null) {
-      _json['permissionId'] = permissionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountAccess != null) 'accountAccess': accountAccess.toJson(),
+        if (accountId != null) 'accountId': accountId,
+        if (containerAccess != null)
+          'containerAccess':
+              containerAccess.map((value) => value.toJson()).toList(),
+        if (emailAddress != null) 'emailAddress': emailAddress,
+        if (permissionId != null) 'permissionId': permissionId,
+      };
 }
 
 /// Represents a Google Tag Manager Variable.
@@ -5417,47 +5073,21 @@ class Variable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (containerId != null) {
-      _json['containerId'] = containerId;
-    }
-    if (disablingTriggerId != null) {
-      _json['disablingTriggerId'] = disablingTriggerId;
-    }
-    if (enablingTriggerId != null) {
-      _json['enablingTriggerId'] = enablingTriggerId;
-    }
-    if (fingerprint != null) {
-      _json['fingerprint'] = fingerprint;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (notes != null) {
-      _json['notes'] = notes;
-    }
-    if (parameter != null) {
-      _json['parameter'] = parameter.map((value) => value.toJson()).toList();
-    }
-    if (parentFolderId != null) {
-      _json['parentFolderId'] = parentFolderId;
-    }
-    if (scheduleEndMs != null) {
-      _json['scheduleEndMs'] = scheduleEndMs;
-    }
-    if (scheduleStartMs != null) {
-      _json['scheduleStartMs'] = scheduleStartMs;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (variableId != null) {
-      _json['variableId'] = variableId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (containerId != null) 'containerId': containerId,
+        if (disablingTriggerId != null)
+          'disablingTriggerId': disablingTriggerId,
+        if (enablingTriggerId != null) 'enablingTriggerId': enablingTriggerId,
+        if (fingerprint != null) 'fingerprint': fingerprint,
+        if (name != null) 'name': name,
+        if (notes != null) 'notes': notes,
+        if (parameter != null)
+          'parameter': parameter.map((value) => value.toJson()).toList(),
+        if (parentFolderId != null) 'parentFolderId': parentFolderId,
+        if (scheduleEndMs != null) 'scheduleEndMs': scheduleEndMs,
+        if (scheduleStartMs != null) 'scheduleStartMs': scheduleStartMs,
+        if (type != null) 'type': type,
+        if (variableId != null) 'variableId': variableId,
+      };
 }

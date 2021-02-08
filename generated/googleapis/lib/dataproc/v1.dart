@@ -4043,16 +4043,11 @@ class AcceleratorConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (acceleratorCount != null) {
-      _json['acceleratorCount'] = acceleratorCount;
-    }
-    if (acceleratorTypeUri != null) {
-      _json['acceleratorTypeUri'] = acceleratorTypeUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (acceleratorCount != null) 'acceleratorCount': acceleratorCount,
+        if (acceleratorTypeUri != null)
+          'acceleratorTypeUri': acceleratorTypeUri,
+      };
 }
 
 /// Autoscaling Policy config associated with the cluster.
@@ -4076,13 +4071,9 @@ class AutoscalingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policyUri != null) {
-      _json['policyUri'] = policyUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policyUri != null) 'policyUri': policyUri,
+      };
 }
 
 /// Describes an autoscaling policy for Dataproc cluster autoscaler.
@@ -4145,25 +4136,14 @@ class AutoscalingPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicAlgorithm != null) {
-      _json['basicAlgorithm'] = basicAlgorithm.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (secondaryWorkerConfig != null) {
-      _json['secondaryWorkerConfig'] = secondaryWorkerConfig.toJson();
-    }
-    if (workerConfig != null) {
-      _json['workerConfig'] = workerConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicAlgorithm != null) 'basicAlgorithm': basicAlgorithm.toJson(),
+        if (id != null) 'id': id,
+        if (name != null) 'name': name,
+        if (secondaryWorkerConfig != null)
+          'secondaryWorkerConfig': secondaryWorkerConfig.toJson(),
+        if (workerConfig != null) 'workerConfig': workerConfig.toJson(),
+      };
 }
 
 /// Basic algorithm for autoscaling.
@@ -4193,16 +4173,10 @@ class BasicAutoscalingAlgorithm {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cooldownPeriod != null) {
-      _json['cooldownPeriod'] = cooldownPeriod;
-    }
-    if (yarnConfig != null) {
-      _json['yarnConfig'] = yarnConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cooldownPeriod != null) 'cooldownPeriod': cooldownPeriod,
+        if (yarnConfig != null) 'yarnConfig': yarnConfig.toJson(),
+      };
 }
 
 /// Basic autoscaling configurations for YARN.
@@ -4287,25 +4261,16 @@ class BasicYarnAutoscalingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gracefulDecommissionTimeout != null) {
-      _json['gracefulDecommissionTimeout'] = gracefulDecommissionTimeout;
-    }
-    if (scaleDownFactor != null) {
-      _json['scaleDownFactor'] = scaleDownFactor;
-    }
-    if (scaleDownMinWorkerFraction != null) {
-      _json['scaleDownMinWorkerFraction'] = scaleDownMinWorkerFraction;
-    }
-    if (scaleUpFactor != null) {
-      _json['scaleUpFactor'] = scaleUpFactor;
-    }
-    if (scaleUpMinWorkerFraction != null) {
-      _json['scaleUpMinWorkerFraction'] = scaleUpMinWorkerFraction;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gracefulDecommissionTimeout != null)
+          'gracefulDecommissionTimeout': gracefulDecommissionTimeout,
+        if (scaleDownFactor != null) 'scaleDownFactor': scaleDownFactor,
+        if (scaleDownMinWorkerFraction != null)
+          'scaleDownMinWorkerFraction': scaleDownMinWorkerFraction,
+        if (scaleUpFactor != null) 'scaleUpFactor': scaleUpFactor,
+        if (scaleUpMinWorkerFraction != null)
+          'scaleUpMinWorkerFraction': scaleUpMinWorkerFraction,
+      };
 }
 
 /// Associates members with a role.
@@ -4375,19 +4340,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// A request to cancel a job.
@@ -4398,10 +4355,7 @@ class CancelJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Describes the identifying information, config, and status of a cluster of
@@ -4505,35 +4459,18 @@ class Cluster {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterName != null) {
-      _json['clusterName'] = clusterName;
-    }
-    if (clusterUuid != null) {
-      _json['clusterUuid'] = clusterUuid;
-    }
-    if (config != null) {
-      _json['config'] = config.toJson();
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics.toJson();
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    if (statusHistory != null) {
-      _json['statusHistory'] =
-          statusHistory.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterName != null) 'clusterName': clusterName,
+        if (clusterUuid != null) 'clusterUuid': clusterUuid,
+        if (config != null) 'config': config.toJson(),
+        if (labels != null) 'labels': labels,
+        if (metrics != null) 'metrics': metrics.toJson(),
+        if (projectId != null) 'projectId': projectId,
+        if (status != null) 'status': status.toJson(),
+        if (statusHistory != null)
+          'statusHistory':
+              statusHistory.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The cluster config.
@@ -4701,53 +4638,30 @@ class ClusterConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (autoscalingConfig != null) {
-      _json['autoscalingConfig'] = autoscalingConfig.toJson();
-    }
-    if (configBucket != null) {
-      _json['configBucket'] = configBucket;
-    }
-    if (encryptionConfig != null) {
-      _json['encryptionConfig'] = encryptionConfig.toJson();
-    }
-    if (endpointConfig != null) {
-      _json['endpointConfig'] = endpointConfig.toJson();
-    }
-    if (gceClusterConfig != null) {
-      _json['gceClusterConfig'] = gceClusterConfig.toJson();
-    }
-    if (initializationActions != null) {
-      _json['initializationActions'] =
-          initializationActions.map((value) => value.toJson()).toList();
-    }
-    if (lifecycleConfig != null) {
-      _json['lifecycleConfig'] = lifecycleConfig.toJson();
-    }
-    if (masterConfig != null) {
-      _json['masterConfig'] = masterConfig.toJson();
-    }
-    if (metastoreConfig != null) {
-      _json['metastoreConfig'] = metastoreConfig.toJson();
-    }
-    if (secondaryWorkerConfig != null) {
-      _json['secondaryWorkerConfig'] = secondaryWorkerConfig.toJson();
-    }
-    if (securityConfig != null) {
-      _json['securityConfig'] = securityConfig.toJson();
-    }
-    if (softwareConfig != null) {
-      _json['softwareConfig'] = softwareConfig.toJson();
-    }
-    if (tempBucket != null) {
-      _json['tempBucket'] = tempBucket;
-    }
-    if (workerConfig != null) {
-      _json['workerConfig'] = workerConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (autoscalingConfig != null)
+          'autoscalingConfig': autoscalingConfig.toJson(),
+        if (configBucket != null) 'configBucket': configBucket,
+        if (encryptionConfig != null)
+          'encryptionConfig': encryptionConfig.toJson(),
+        if (endpointConfig != null) 'endpointConfig': endpointConfig.toJson(),
+        if (gceClusterConfig != null)
+          'gceClusterConfig': gceClusterConfig.toJson(),
+        if (initializationActions != null)
+          'initializationActions':
+              initializationActions.map((value) => value.toJson()).toList(),
+        if (lifecycleConfig != null)
+          'lifecycleConfig': lifecycleConfig.toJson(),
+        if (masterConfig != null) 'masterConfig': masterConfig.toJson(),
+        if (metastoreConfig != null)
+          'metastoreConfig': metastoreConfig.toJson(),
+        if (secondaryWorkerConfig != null)
+          'secondaryWorkerConfig': secondaryWorkerConfig.toJson(),
+        if (securityConfig != null) 'securityConfig': securityConfig.toJson(),
+        if (softwareConfig != null) 'softwareConfig': softwareConfig.toJson(),
+        if (tempBucket != null) 'tempBucket': tempBucket,
+        if (workerConfig != null) 'workerConfig': workerConfig.toJson(),
+      };
 }
 
 /// Contains cluster daemon metrics, such as HDFS and YARN stats.Beta Feature:
@@ -4786,16 +4700,10 @@ class ClusterMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hdfsMetrics != null) {
-      _json['hdfsMetrics'] = hdfsMetrics;
-    }
-    if (yarnMetrics != null) {
-      _json['yarnMetrics'] = yarnMetrics;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hdfsMetrics != null) 'hdfsMetrics': hdfsMetrics,
+        if (yarnMetrics != null) 'yarnMetrics': yarnMetrics,
+      };
 }
 
 /// The cluster operation triggered by a workflow.
@@ -4829,19 +4737,11 @@ class ClusterOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error;
-    }
-    if (operationId != null) {
-      _json['operationId'] = operationId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error,
+        if (operationId != null) 'operationId': operationId,
+      };
 }
 
 /// Metadata describing the operation.
@@ -4928,35 +4828,18 @@ class ClusterOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterName != null) {
-      _json['clusterName'] = clusterName;
-    }
-    if (clusterUuid != null) {
-      _json['clusterUuid'] = clusterUuid;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (operationType != null) {
-      _json['operationType'] = operationType;
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    if (statusHistory != null) {
-      _json['statusHistory'] =
-          statusHistory.map((value) => value.toJson()).toList();
-    }
-    if (warnings != null) {
-      _json['warnings'] = warnings;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterName != null) 'clusterName': clusterName,
+        if (clusterUuid != null) 'clusterUuid': clusterUuid,
+        if (description != null) 'description': description,
+        if (labels != null) 'labels': labels,
+        if (operationType != null) 'operationType': operationType,
+        if (status != null) 'status': status.toJson(),
+        if (statusHistory != null)
+          'statusHistory':
+              statusHistory.map((value) => value.toJson()).toList(),
+        if (warnings != null) 'warnings': warnings,
+      };
 }
 
 /// The status of the operation.
@@ -5003,22 +4886,12 @@ class ClusterOperationStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (innerState != null) {
-      _json['innerState'] = innerState;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (stateStartTime != null) {
-      _json['stateStartTime'] = stateStartTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (details != null) 'details': details,
+        if (innerState != null) 'innerState': innerState,
+        if (state != null) 'state': state,
+        if (stateStartTime != null) 'stateStartTime': stateStartTime,
+      };
 }
 
 /// A selector that chooses target cluster for jobs based on metadata.
@@ -5056,16 +4929,10 @@ class ClusterSelector {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterLabels != null) {
-      _json['clusterLabels'] = clusterLabels;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterLabels != null) 'clusterLabels': clusterLabels,
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// The status of a cluster and its instances.
@@ -5125,22 +4992,12 @@ class ClusterStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detail != null) {
-      _json['detail'] = detail;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (stateStartTime != null) {
-      _json['stateStartTime'] = stateStartTime;
-    }
-    if (substate != null) {
-      _json['substate'] = substate;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detail != null) 'detail': detail,
+        if (state != null) 'state': state,
+        if (stateStartTime != null) 'stateStartTime': stateStartTime,
+        if (substate != null) 'substate': substate,
+      };
 }
 
 /// A request to collect cluster diagnostic information.
@@ -5151,10 +5008,7 @@ class DiagnoseClusterRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The location of diagnostic output.
@@ -5175,13 +5029,9 @@ class DiagnoseClusterResults {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (outputUri != null) {
-      _json['outputUri'] = outputUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (outputUri != null) 'outputUri': outputUri,
+      };
 }
 
 /// Specifies the config of disk options for a group of VM instances.
@@ -5225,19 +5075,11 @@ class DiskConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bootDiskSizeGb != null) {
-      _json['bootDiskSizeGb'] = bootDiskSizeGb;
-    }
-    if (bootDiskType != null) {
-      _json['bootDiskType'] = bootDiskType;
-    }
-    if (numLocalSsds != null) {
-      _json['numLocalSsds'] = numLocalSsds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb,
+        if (bootDiskType != null) 'bootDiskType': bootDiskType,
+        if (numLocalSsds != null) 'numLocalSsds': numLocalSsds,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -5254,10 +5096,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Encryption settings for the cluster.
@@ -5276,13 +5115,9 @@ class EncryptionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcePdKmsKeyName != null) {
-      _json['gcePdKmsKeyName'] = gcePdKmsKeyName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcePdKmsKeyName != null) 'gcePdKmsKeyName': gcePdKmsKeyName,
+      };
 }
 
 /// Endpoint config for this cluster
@@ -5319,16 +5154,11 @@ class EndpointConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enableHttpPortAccess != null) {
-      _json['enableHttpPortAccess'] = enableHttpPortAccess;
-    }
-    if (httpPorts != null) {
-      _json['httpPorts'] = httpPorts;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enableHttpPortAccess != null)
+          'enableHttpPortAccess': enableHttpPortAccess,
+        if (httpPorts != null) 'httpPorts': httpPorts,
+      };
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -5392,22 +5222,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Common config settings for resources of Compute Engine cluster instances,
@@ -5584,46 +5404,25 @@ class GceClusterConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (internalIpOnly != null) {
-      _json['internalIpOnly'] = internalIpOnly;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (networkUri != null) {
-      _json['networkUri'] = networkUri;
-    }
-    if (nodeGroupAffinity != null) {
-      _json['nodeGroupAffinity'] = nodeGroupAffinity.toJson();
-    }
-    if (privateIpv6GoogleAccess != null) {
-      _json['privateIpv6GoogleAccess'] = privateIpv6GoogleAccess;
-    }
-    if (reservationAffinity != null) {
-      _json['reservationAffinity'] = reservationAffinity.toJson();
-    }
-    if (serviceAccount != null) {
-      _json['serviceAccount'] = serviceAccount;
-    }
-    if (serviceAccountScopes != null) {
-      _json['serviceAccountScopes'] = serviceAccountScopes;
-    }
-    if (shieldedInstanceConfig != null) {
-      _json['shieldedInstanceConfig'] = shieldedInstanceConfig.toJson();
-    }
-    if (subnetworkUri != null) {
-      _json['subnetworkUri'] = subnetworkUri;
-    }
-    if (tags != null) {
-      _json['tags'] = tags;
-    }
-    if (zoneUri != null) {
-      _json['zoneUri'] = zoneUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (internalIpOnly != null) 'internalIpOnly': internalIpOnly,
+        if (metadata != null) 'metadata': metadata,
+        if (networkUri != null) 'networkUri': networkUri,
+        if (nodeGroupAffinity != null)
+          'nodeGroupAffinity': nodeGroupAffinity.toJson(),
+        if (privateIpv6GoogleAccess != null)
+          'privateIpv6GoogleAccess': privateIpv6GoogleAccess,
+        if (reservationAffinity != null)
+          'reservationAffinity': reservationAffinity.toJson(),
+        if (serviceAccount != null) 'serviceAccount': serviceAccount,
+        if (serviceAccountScopes != null)
+          'serviceAccountScopes': serviceAccountScopes,
+        if (shieldedInstanceConfig != null)
+          'shieldedInstanceConfig': shieldedInstanceConfig.toJson(),
+        if (subnetworkUri != null) 'subnetworkUri': subnetworkUri,
+        if (tags != null) 'tags': tags,
+        if (zoneUri != null) 'zoneUri': zoneUri,
+      };
 }
 
 /// Request message for GetIamPolicy method.
@@ -5641,13 +5440,9 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (options != null) {
-      _json['options'] = options.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (options != null) 'options': options.toJson(),
+      };
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
@@ -5672,13 +5467,10 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (requestedPolicyVersion != null) {
-      _json['requestedPolicyVersion'] = requestedPolicyVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (requestedPolicyVersion != null)
+          'requestedPolicyVersion': requestedPolicyVersion,
+      };
 }
 
 /// A Dataproc job for running Apache Hadoop MapReduce
@@ -5789,34 +5581,16 @@ class HadoopJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (archiveUris != null) {
-      _json['archiveUris'] = archiveUris;
-    }
-    if (args != null) {
-      _json['args'] = args;
-    }
-    if (fileUris != null) {
-      _json['fileUris'] = fileUris;
-    }
-    if (jarFileUris != null) {
-      _json['jarFileUris'] = jarFileUris;
-    }
-    if (loggingConfig != null) {
-      _json['loggingConfig'] = loggingConfig.toJson();
-    }
-    if (mainClass != null) {
-      _json['mainClass'] = mainClass;
-    }
-    if (mainJarFileUri != null) {
-      _json['mainJarFileUri'] = mainJarFileUri;
-    }
-    if (properties != null) {
-      _json['properties'] = properties;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (archiveUris != null) 'archiveUris': archiveUris,
+        if (args != null) 'args': args,
+        if (fileUris != null) 'fileUris': fileUris,
+        if (jarFileUris != null) 'jarFileUris': jarFileUris,
+        if (loggingConfig != null) 'loggingConfig': loggingConfig.toJson(),
+        if (mainClass != null) 'mainClass': mainClass,
+        if (mainJarFileUri != null) 'mainJarFileUri': mainJarFileUri,
+        if (properties != null) 'properties': properties,
+      };
 }
 
 /// A Dataproc job for running Apache Hive (https://hive.apache.org/) queries on
@@ -5899,28 +5673,14 @@ class HiveJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (continueOnFailure != null) {
-      _json['continueOnFailure'] = continueOnFailure;
-    }
-    if (jarFileUris != null) {
-      _json['jarFileUris'] = jarFileUris;
-    }
-    if (properties != null) {
-      _json['properties'] = properties;
-    }
-    if (queryFileUri != null) {
-      _json['queryFileUri'] = queryFileUri;
-    }
-    if (queryList != null) {
-      _json['queryList'] = queryList.toJson();
-    }
-    if (scriptVariables != null) {
-      _json['scriptVariables'] = scriptVariables;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (continueOnFailure != null) 'continueOnFailure': continueOnFailure,
+        if (jarFileUris != null) 'jarFileUris': jarFileUris,
+        if (properties != null) 'properties': properties,
+        if (queryFileUri != null) 'queryFileUri': queryFileUri,
+        if (queryList != null) 'queryList': queryList.toJson(),
+        if (scriptVariables != null) 'scriptVariables': scriptVariables,
+      };
 }
 
 /// A request to inject credentials into a cluster.
@@ -5949,16 +5709,11 @@ class InjectCredentialsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterUuid != null) {
-      _json['clusterUuid'] = clusterUuid;
-    }
-    if (credentialsCiphertext != null) {
-      _json['credentialsCiphertext'] = credentialsCiphertext;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterUuid != null) 'clusterUuid': clusterUuid,
+        if (credentialsCiphertext != null)
+          'credentialsCiphertext': credentialsCiphertext,
+      };
 }
 
 /// Configuration for the size bounds of an instance group, including its
@@ -6016,19 +5771,11 @@ class InstanceGroupAutoscalingPolicyConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maxInstances != null) {
-      _json['maxInstances'] = maxInstances;
-    }
-    if (minInstances != null) {
-      _json['minInstances'] = minInstances;
-    }
-    if (weight != null) {
-      _json['weight'] = weight;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maxInstances != null) 'maxInstances': maxInstances,
+        if (minInstances != null) 'minInstances': minInstances,
+        if (weight != null) 'weight': weight,
+      };
 }
 
 /// The config settings for Compute Engine resources in an instance group, such
@@ -6180,45 +5927,23 @@ class InstanceGroupConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accelerators != null) {
-      _json['accelerators'] =
-          accelerators.map((value) => value.toJson()).toList();
-    }
-    if (diskConfig != null) {
-      _json['diskConfig'] = diskConfig.toJson();
-    }
-    if (imageUri != null) {
-      _json['imageUri'] = imageUri;
-    }
-    if (instanceNames != null) {
-      _json['instanceNames'] = instanceNames;
-    }
-    if (instanceReferences != null) {
-      _json['instanceReferences'] =
-          instanceReferences.map((value) => value.toJson()).toList();
-    }
-    if (isPreemptible != null) {
-      _json['isPreemptible'] = isPreemptible;
-    }
-    if (machineTypeUri != null) {
-      _json['machineTypeUri'] = machineTypeUri;
-    }
-    if (managedGroupConfig != null) {
-      _json['managedGroupConfig'] = managedGroupConfig.toJson();
-    }
-    if (minCpuPlatform != null) {
-      _json['minCpuPlatform'] = minCpuPlatform;
-    }
-    if (numInstances != null) {
-      _json['numInstances'] = numInstances;
-    }
-    if (preemptibility != null) {
-      _json['preemptibility'] = preemptibility;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accelerators != null)
+          'accelerators': accelerators.map((value) => value.toJson()).toList(),
+        if (diskConfig != null) 'diskConfig': diskConfig.toJson(),
+        if (imageUri != null) 'imageUri': imageUri,
+        if (instanceNames != null) 'instanceNames': instanceNames,
+        if (instanceReferences != null)
+          'instanceReferences':
+              instanceReferences.map((value) => value.toJson()).toList(),
+        if (isPreemptible != null) 'isPreemptible': isPreemptible,
+        if (machineTypeUri != null) 'machineTypeUri': machineTypeUri,
+        if (managedGroupConfig != null)
+          'managedGroupConfig': managedGroupConfig.toJson(),
+        if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform,
+        if (numInstances != null) 'numInstances': numInstances,
+        if (preemptibility != null) 'preemptibility': preemptibility,
+      };
 }
 
 /// A reference to a Compute Engine instance.
@@ -6246,19 +5971,11 @@ class InstanceReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (instanceId != null) {
-      _json['instanceId'] = instanceId;
-    }
-    if (instanceName != null) {
-      _json['instanceName'] = instanceName;
-    }
-    if (publicKey != null) {
-      _json['publicKey'] = publicKey;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (instanceId != null) 'instanceId': instanceId,
+        if (instanceName != null) 'instanceName': instanceName,
+        if (publicKey != null) 'publicKey': publicKey,
+      };
 }
 
 /// A request to instantiate a workflow template.
@@ -6313,19 +6030,11 @@ class InstantiateWorkflowTemplateRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (parameters != null) {
-      _json['parameters'] = parameters;
-    }
-    if (requestId != null) {
-      _json['requestId'] = requestId;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (parameters != null) 'parameters': parameters,
+        if (requestId != null) 'requestId': requestId,
+        if (version != null) 'version': version,
+      };
 }
 
 /// A Dataproc job resource.
@@ -6538,69 +6247,33 @@ class Job {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (driverControlFilesUri != null) {
-      _json['driverControlFilesUri'] = driverControlFilesUri;
-    }
-    if (driverOutputResourceUri != null) {
-      _json['driverOutputResourceUri'] = driverOutputResourceUri;
-    }
-    if (hadoopJob != null) {
-      _json['hadoopJob'] = hadoopJob.toJson();
-    }
-    if (hiveJob != null) {
-      _json['hiveJob'] = hiveJob.toJson();
-    }
-    if (jobUuid != null) {
-      _json['jobUuid'] = jobUuid;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (pigJob != null) {
-      _json['pigJob'] = pigJob.toJson();
-    }
-    if (placement != null) {
-      _json['placement'] = placement.toJson();
-    }
-    if (prestoJob != null) {
-      _json['prestoJob'] = prestoJob.toJson();
-    }
-    if (pysparkJob != null) {
-      _json['pysparkJob'] = pysparkJob.toJson();
-    }
-    if (reference != null) {
-      _json['reference'] = reference.toJson();
-    }
-    if (scheduling != null) {
-      _json['scheduling'] = scheduling.toJson();
-    }
-    if (sparkJob != null) {
-      _json['sparkJob'] = sparkJob.toJson();
-    }
-    if (sparkRJob != null) {
-      _json['sparkRJob'] = sparkRJob.toJson();
-    }
-    if (sparkSqlJob != null) {
-      _json['sparkSqlJob'] = sparkSqlJob.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    if (statusHistory != null) {
-      _json['statusHistory'] =
-          statusHistory.map((value) => value.toJson()).toList();
-    }
-    if (yarnApplications != null) {
-      _json['yarnApplications'] =
-          yarnApplications.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (driverControlFilesUri != null)
+          'driverControlFilesUri': driverControlFilesUri,
+        if (driverOutputResourceUri != null)
+          'driverOutputResourceUri': driverOutputResourceUri,
+        if (hadoopJob != null) 'hadoopJob': hadoopJob.toJson(),
+        if (hiveJob != null) 'hiveJob': hiveJob.toJson(),
+        if (jobUuid != null) 'jobUuid': jobUuid,
+        if (labels != null) 'labels': labels,
+        if (pigJob != null) 'pigJob': pigJob.toJson(),
+        if (placement != null) 'placement': placement.toJson(),
+        if (prestoJob != null) 'prestoJob': prestoJob.toJson(),
+        if (pysparkJob != null) 'pysparkJob': pysparkJob.toJson(),
+        if (reference != null) 'reference': reference.toJson(),
+        if (scheduling != null) 'scheduling': scheduling.toJson(),
+        if (sparkJob != null) 'sparkJob': sparkJob.toJson(),
+        if (sparkRJob != null) 'sparkRJob': sparkRJob.toJson(),
+        if (sparkSqlJob != null) 'sparkSqlJob': sparkSqlJob.toJson(),
+        if (status != null) 'status': status.toJson(),
+        if (statusHistory != null)
+          'statusHistory':
+              statusHistory.map((value) => value.toJson()).toList(),
+        if (yarnApplications != null)
+          'yarnApplications':
+              yarnApplications.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Job Operation metadata.
@@ -6643,22 +6316,12 @@ class JobMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (jobId != null) {
-      _json['jobId'] = jobId;
-    }
-    if (operationType != null) {
-      _json['operationType'] = operationType;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (jobId != null) 'jobId': jobId,
+        if (operationType != null) 'operationType': operationType,
+        if (startTime != null) 'startTime': startTime,
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 /// Dataproc job config.
@@ -6685,16 +6348,10 @@ class JobPlacement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterName != null) {
-      _json['clusterName'] = clusterName;
-    }
-    if (clusterUuid != null) {
-      _json['clusterUuid'] = clusterUuid;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterName != null) 'clusterName': clusterName,
+        if (clusterUuid != null) 'clusterUuid': clusterUuid,
+      };
 }
 
 /// Encapsulates the full scoping used to reference a job.
@@ -6726,16 +6383,10 @@ class JobReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (jobId != null) {
-      _json['jobId'] = jobId;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (jobId != null) 'jobId': jobId,
+        if (projectId != null) 'projectId': projectId,
+      };
 }
 
 /// Job scheduling options.
@@ -6767,16 +6418,11 @@ class JobScheduling {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maxFailuresPerHour != null) {
-      _json['maxFailuresPerHour'] = maxFailuresPerHour;
-    }
-    if (maxFailuresTotal != null) {
-      _json['maxFailuresTotal'] = maxFailuresTotal;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maxFailuresPerHour != null)
+          'maxFailuresPerHour': maxFailuresPerHour,
+        if (maxFailuresTotal != null) 'maxFailuresTotal': maxFailuresTotal,
+      };
 }
 
 /// Dataproc job status.
@@ -6845,22 +6491,12 @@ class JobStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (stateStartTime != null) {
-      _json['stateStartTime'] = stateStartTime;
-    }
-    if (substate != null) {
-      _json['substate'] = substate;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (details != null) 'details': details,
+        if (state != null) 'state': state,
+        if (stateStartTime != null) 'stateStartTime': stateStartTime,
+        if (substate != null) 'substate': substate,
+      };
 }
 
 /// Specifies Kerberos related configuration.
@@ -7019,56 +6655,30 @@ class KerberosConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (crossRealmTrustAdminServer != null) {
-      _json['crossRealmTrustAdminServer'] = crossRealmTrustAdminServer;
-    }
-    if (crossRealmTrustKdc != null) {
-      _json['crossRealmTrustKdc'] = crossRealmTrustKdc;
-    }
-    if (crossRealmTrustRealm != null) {
-      _json['crossRealmTrustRealm'] = crossRealmTrustRealm;
-    }
-    if (crossRealmTrustSharedPasswordUri != null) {
-      _json['crossRealmTrustSharedPasswordUri'] =
-          crossRealmTrustSharedPasswordUri;
-    }
-    if (enableKerberos != null) {
-      _json['enableKerberos'] = enableKerberos;
-    }
-    if (kdcDbKeyUri != null) {
-      _json['kdcDbKeyUri'] = kdcDbKeyUri;
-    }
-    if (keyPasswordUri != null) {
-      _json['keyPasswordUri'] = keyPasswordUri;
-    }
-    if (keystorePasswordUri != null) {
-      _json['keystorePasswordUri'] = keystorePasswordUri;
-    }
-    if (keystoreUri != null) {
-      _json['keystoreUri'] = keystoreUri;
-    }
-    if (kmsKeyUri != null) {
-      _json['kmsKeyUri'] = kmsKeyUri;
-    }
-    if (realm != null) {
-      _json['realm'] = realm;
-    }
-    if (rootPrincipalPasswordUri != null) {
-      _json['rootPrincipalPasswordUri'] = rootPrincipalPasswordUri;
-    }
-    if (tgtLifetimeHours != null) {
-      _json['tgtLifetimeHours'] = tgtLifetimeHours;
-    }
-    if (truststorePasswordUri != null) {
-      _json['truststorePasswordUri'] = truststorePasswordUri;
-    }
-    if (truststoreUri != null) {
-      _json['truststoreUri'] = truststoreUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (crossRealmTrustAdminServer != null)
+          'crossRealmTrustAdminServer': crossRealmTrustAdminServer,
+        if (crossRealmTrustKdc != null)
+          'crossRealmTrustKdc': crossRealmTrustKdc,
+        if (crossRealmTrustRealm != null)
+          'crossRealmTrustRealm': crossRealmTrustRealm,
+        if (crossRealmTrustSharedPasswordUri != null)
+          'crossRealmTrustSharedPasswordUri': crossRealmTrustSharedPasswordUri,
+        if (enableKerberos != null) 'enableKerberos': enableKerberos,
+        if (kdcDbKeyUri != null) 'kdcDbKeyUri': kdcDbKeyUri,
+        if (keyPasswordUri != null) 'keyPasswordUri': keyPasswordUri,
+        if (keystorePasswordUri != null)
+          'keystorePasswordUri': keystorePasswordUri,
+        if (keystoreUri != null) 'keystoreUri': keystoreUri,
+        if (kmsKeyUri != null) 'kmsKeyUri': kmsKeyUri,
+        if (realm != null) 'realm': realm,
+        if (rootPrincipalPasswordUri != null)
+          'rootPrincipalPasswordUri': rootPrincipalPasswordUri,
+        if (tgtLifetimeHours != null) 'tgtLifetimeHours': tgtLifetimeHours,
+        if (truststorePasswordUri != null)
+          'truststorePasswordUri': truststorePasswordUri,
+        if (truststoreUri != null) 'truststoreUri': truststoreUri,
+      };
 }
 
 /// Specifies the cluster auto-delete schedule configuration.
@@ -7126,22 +6736,12 @@ class LifecycleConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (autoDeleteTime != null) {
-      _json['autoDeleteTime'] = autoDeleteTime;
-    }
-    if (autoDeleteTtl != null) {
-      _json['autoDeleteTtl'] = autoDeleteTtl;
-    }
-    if (idleDeleteTtl != null) {
-      _json['idleDeleteTtl'] = idleDeleteTtl;
-    }
-    if (idleStartTime != null) {
-      _json['idleStartTime'] = idleStartTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (autoDeleteTime != null) 'autoDeleteTime': autoDeleteTime,
+        if (autoDeleteTtl != null) 'autoDeleteTtl': autoDeleteTtl,
+        if (idleDeleteTtl != null) 'idleDeleteTtl': idleDeleteTtl,
+        if (idleStartTime != null) 'idleStartTime': idleStartTime,
+      };
 }
 
 /// A response to a request to list autoscaling policies in a project.
@@ -7170,16 +6770,11 @@ class ListAutoscalingPoliciesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (policies != null) {
-      _json['policies'] = policies.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (policies != null)
+          'policies': policies.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The list of all clusters in a project.
@@ -7211,16 +6806,11 @@ class ListClustersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusters != null) {
-      _json['clusters'] = clusters.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusters != null)
+          'clusters': clusters.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// A list of jobs in a project.
@@ -7252,16 +6842,10 @@ class ListJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (jobs != null) {
-      _json['jobs'] = jobs.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (jobs != null) 'jobs': jobs.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -7286,16 +6870,11 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A response to a request to list workflow templates in a project.
@@ -7327,16 +6906,11 @@ class ListWorkflowTemplatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (templates != null) {
-      _json['templates'] = templates.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (templates != null)
+          'templates': templates.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The runtime logging config of the job.
@@ -7362,13 +6936,9 @@ class LoggingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (driverLogLevels != null) {
-      _json['driverLogLevels'] = driverLogLevels;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (driverLogLevels != null) 'driverLogLevels': driverLogLevels,
+      };
 }
 
 /// Cluster that is managed by the workflow.
@@ -7419,19 +6989,11 @@ class ManagedCluster {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterName != null) {
-      _json['clusterName'] = clusterName;
-    }
-    if (config != null) {
-      _json['config'] = config.toJson();
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterName != null) 'clusterName': clusterName,
+        if (config != null) 'config': config.toJson(),
+        if (labels != null) 'labels': labels,
+      };
 }
 
 /// Specifies the resources used to actively manage an instance group.
@@ -7458,16 +7020,12 @@ class ManagedGroupConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (instanceGroupManagerName != null) {
-      _json['instanceGroupManagerName'] = instanceGroupManagerName;
-    }
-    if (instanceTemplateName != null) {
-      _json['instanceTemplateName'] = instanceTemplateName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (instanceGroupManagerName != null)
+          'instanceGroupManagerName': instanceGroupManagerName,
+        if (instanceTemplateName != null)
+          'instanceTemplateName': instanceTemplateName,
+      };
 }
 
 /// Specifies a Metastore configuration.
@@ -7487,13 +7045,10 @@ class MetastoreConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataprocMetastoreService != null) {
-      _json['dataprocMetastoreService'] = dataprocMetastoreService;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataprocMetastoreService != null)
+          'dataprocMetastoreService': dataprocMetastoreService,
+      };
 }
 
 /// Node Group Affinity for clusters using sole-tenant node groups.
@@ -7519,13 +7074,9 @@ class NodeGroupAffinity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nodeGroupUri != null) {
-      _json['nodeGroupUri'] = nodeGroupUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nodeGroupUri != null) 'nodeGroupUri': nodeGroupUri,
+      };
 }
 
 /// Specifies an executable to run on a fully configured node and a timeout
@@ -7558,16 +7109,10 @@ class NodeInitializationAction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (executableFile != null) {
-      _json['executableFile'] = executableFile;
-    }
-    if (executionTimeout != null) {
-      _json['executionTimeout'] = executionTimeout;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (executableFile != null) 'executableFile': executableFile,
+        if (executionTimeout != null) 'executionTimeout': executionTimeout,
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -7646,25 +7191,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// A job executed by the workflow.
@@ -7801,46 +7334,21 @@ class OrderedJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hadoopJob != null) {
-      _json['hadoopJob'] = hadoopJob.toJson();
-    }
-    if (hiveJob != null) {
-      _json['hiveJob'] = hiveJob.toJson();
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (pigJob != null) {
-      _json['pigJob'] = pigJob.toJson();
-    }
-    if (prerequisiteStepIds != null) {
-      _json['prerequisiteStepIds'] = prerequisiteStepIds;
-    }
-    if (prestoJob != null) {
-      _json['prestoJob'] = prestoJob.toJson();
-    }
-    if (pysparkJob != null) {
-      _json['pysparkJob'] = pysparkJob.toJson();
-    }
-    if (scheduling != null) {
-      _json['scheduling'] = scheduling.toJson();
-    }
-    if (sparkJob != null) {
-      _json['sparkJob'] = sparkJob.toJson();
-    }
-    if (sparkRJob != null) {
-      _json['sparkRJob'] = sparkRJob.toJson();
-    }
-    if (sparkSqlJob != null) {
-      _json['sparkSqlJob'] = sparkSqlJob.toJson();
-    }
-    if (stepId != null) {
-      _json['stepId'] = stepId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hadoopJob != null) 'hadoopJob': hadoopJob.toJson(),
+        if (hiveJob != null) 'hiveJob': hiveJob.toJson(),
+        if (labels != null) 'labels': labels,
+        if (pigJob != null) 'pigJob': pigJob.toJson(),
+        if (prerequisiteStepIds != null)
+          'prerequisiteStepIds': prerequisiteStepIds,
+        if (prestoJob != null) 'prestoJob': prestoJob.toJson(),
+        if (pysparkJob != null) 'pysparkJob': pysparkJob.toJson(),
+        if (scheduling != null) 'scheduling': scheduling.toJson(),
+        if (sparkJob != null) 'sparkJob': sparkJob.toJson(),
+        if (sparkRJob != null) 'sparkRJob': sparkRJob.toJson(),
+        if (sparkSqlJob != null) 'sparkSqlJob': sparkSqlJob.toJson(),
+        if (stepId != null) 'stepId': stepId,
+      };
 }
 
 /// Configuration for parameter validation.
@@ -7864,16 +7372,10 @@ class ParameterValidation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (regex != null) {
-      _json['regex'] = regex.toJson();
-    }
-    if (values != null) {
-      _json['values'] = values.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (regex != null) 'regex': regex.toJson(),
+        if (values != null) 'values': values.toJson(),
+      };
 }
 
 /// A Dataproc job for running Apache Pig (https://pig.apache.org/) queries on
@@ -7965,31 +7467,15 @@ class PigJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (continueOnFailure != null) {
-      _json['continueOnFailure'] = continueOnFailure;
-    }
-    if (jarFileUris != null) {
-      _json['jarFileUris'] = jarFileUris;
-    }
-    if (loggingConfig != null) {
-      _json['loggingConfig'] = loggingConfig.toJson();
-    }
-    if (properties != null) {
-      _json['properties'] = properties;
-    }
-    if (queryFileUri != null) {
-      _json['queryFileUri'] = queryFileUri;
-    }
-    if (queryList != null) {
-      _json['queryList'] = queryList.toJson();
-    }
-    if (scriptVariables != null) {
-      _json['scriptVariables'] = scriptVariables;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (continueOnFailure != null) 'continueOnFailure': continueOnFailure,
+        if (jarFileUris != null) 'jarFileUris': jarFileUris,
+        if (loggingConfig != null) 'loggingConfig': loggingConfig.toJson(),
+        if (properties != null) 'properties': properties,
+        if (queryFileUri != null) 'queryFileUri': queryFileUri,
+        if (queryList != null) 'queryList': queryList.toJson(),
+        if (scriptVariables != null) 'scriptVariables': scriptVariables,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -8085,19 +7571,12 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// A Dataproc job for running Presto (https://prestosql.io/) queries.
@@ -8183,31 +7662,15 @@ class PrestoJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clientTags != null) {
-      _json['clientTags'] = clientTags;
-    }
-    if (continueOnFailure != null) {
-      _json['continueOnFailure'] = continueOnFailure;
-    }
-    if (loggingConfig != null) {
-      _json['loggingConfig'] = loggingConfig.toJson();
-    }
-    if (outputFormat != null) {
-      _json['outputFormat'] = outputFormat;
-    }
-    if (properties != null) {
-      _json['properties'] = properties;
-    }
-    if (queryFileUri != null) {
-      _json['queryFileUri'] = queryFileUri;
-    }
-    if (queryList != null) {
-      _json['queryList'] = queryList.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clientTags != null) 'clientTags': clientTags,
+        if (continueOnFailure != null) 'continueOnFailure': continueOnFailure,
+        if (loggingConfig != null) 'loggingConfig': loggingConfig.toJson(),
+        if (outputFormat != null) 'outputFormat': outputFormat,
+        if (properties != null) 'properties': properties,
+        if (queryFileUri != null) 'queryFileUri': queryFileUri,
+        if (queryList != null) 'queryList': queryList.toJson(),
+      };
 }
 
 /// A Dataproc job for running Apache PySpark
@@ -8319,34 +7782,16 @@ class PySparkJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (archiveUris != null) {
-      _json['archiveUris'] = archiveUris;
-    }
-    if (args != null) {
-      _json['args'] = args;
-    }
-    if (fileUris != null) {
-      _json['fileUris'] = fileUris;
-    }
-    if (jarFileUris != null) {
-      _json['jarFileUris'] = jarFileUris;
-    }
-    if (loggingConfig != null) {
-      _json['loggingConfig'] = loggingConfig.toJson();
-    }
-    if (mainPythonFileUri != null) {
-      _json['mainPythonFileUri'] = mainPythonFileUri;
-    }
-    if (properties != null) {
-      _json['properties'] = properties;
-    }
-    if (pythonFileUris != null) {
-      _json['pythonFileUris'] = pythonFileUris;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (archiveUris != null) 'archiveUris': archiveUris,
+        if (args != null) 'args': args,
+        if (fileUris != null) 'fileUris': fileUris,
+        if (jarFileUris != null) 'jarFileUris': jarFileUris,
+        if (loggingConfig != null) 'loggingConfig': loggingConfig.toJson(),
+        if (mainPythonFileUri != null) 'mainPythonFileUri': mainPythonFileUri,
+        if (properties != null) 'properties': properties,
+        if (pythonFileUris != null) 'pythonFileUris': pythonFileUris,
+      };
 }
 
 /// A list of queries to run on a cluster.
@@ -8372,13 +7817,9 @@ class QueryList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (queries != null) {
-      _json['queries'] = queries;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (queries != null) 'queries': queries,
+      };
 }
 
 /// Validation based on regular expressions.
@@ -8401,13 +7842,9 @@ class RegexValidation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (regexes != null) {
-      _json['regexes'] = regexes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (regexes != null) 'regexes': regexes,
+      };
 }
 
 /// Reservation Affinity for consuming Zonal reservation.
@@ -8449,19 +7886,12 @@ class ReservationAffinity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (consumeReservationType != null) {
-      _json['consumeReservationType'] = consumeReservationType;
-    }
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (values != null) {
-      _json['values'] = values;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (consumeReservationType != null)
+          'consumeReservationType': consumeReservationType,
+        if (key != null) 'key': key,
+        if (values != null) 'values': values,
+      };
 }
 
 /// Security related configuration, including Kerberos.
@@ -8478,13 +7908,9 @@ class SecurityConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kerberosConfig != null) {
-      _json['kerberosConfig'] = kerberosConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kerberosConfig != null) 'kerberosConfig': kerberosConfig.toJson(),
+      };
 }
 
 /// Request message for SetIamPolicy method.
@@ -8505,13 +7931,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+      };
 }
 
 /// Shielded Instance Config for clusters using Compute Engine Shielded VMs
@@ -8547,19 +7969,12 @@ class ShieldedInstanceConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enableIntegrityMonitoring != null) {
-      _json['enableIntegrityMonitoring'] = enableIntegrityMonitoring;
-    }
-    if (enableSecureBoot != null) {
-      _json['enableSecureBoot'] = enableSecureBoot;
-    }
-    if (enableVtpm != null) {
-      _json['enableVtpm'] = enableVtpm;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enableIntegrityMonitoring != null)
+          'enableIntegrityMonitoring': enableIntegrityMonitoring,
+        if (enableSecureBoot != null) 'enableSecureBoot': enableSecureBoot,
+        if (enableVtpm != null) 'enableVtpm': enableVtpm,
+      };
 }
 
 /// Specifies the selection and config of software inside the cluster.
@@ -8617,19 +8032,12 @@ class SoftwareConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (imageVersion != null) {
-      _json['imageVersion'] = imageVersion;
-    }
-    if (optionalComponents != null) {
-      _json['optionalComponents'] = optionalComponents;
-    }
-    if (properties != null) {
-      _json['properties'] = properties;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (imageVersion != null) 'imageVersion': imageVersion,
+        if (optionalComponents != null)
+          'optionalComponents': optionalComponents,
+        if (properties != null) 'properties': properties,
+      };
 }
 
 /// A Dataproc job for running Apache Spark (http://spark.apache.org/)
@@ -8733,34 +8141,16 @@ class SparkJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (archiveUris != null) {
-      _json['archiveUris'] = archiveUris;
-    }
-    if (args != null) {
-      _json['args'] = args;
-    }
-    if (fileUris != null) {
-      _json['fileUris'] = fileUris;
-    }
-    if (jarFileUris != null) {
-      _json['jarFileUris'] = jarFileUris;
-    }
-    if (loggingConfig != null) {
-      _json['loggingConfig'] = loggingConfig.toJson();
-    }
-    if (mainClass != null) {
-      _json['mainClass'] = mainClass;
-    }
-    if (mainJarFileUri != null) {
-      _json['mainJarFileUri'] = mainJarFileUri;
-    }
-    if (properties != null) {
-      _json['properties'] = properties;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (archiveUris != null) 'archiveUris': archiveUris,
+        if (args != null) 'args': args,
+        if (fileUris != null) 'fileUris': fileUris,
+        if (jarFileUris != null) 'jarFileUris': jarFileUris,
+        if (loggingConfig != null) 'loggingConfig': loggingConfig.toJson(),
+        if (mainClass != null) 'mainClass': mainClass,
+        if (mainJarFileUri != null) 'mainJarFileUri': mainJarFileUri,
+        if (properties != null) 'properties': properties,
+      };
 }
 
 /// A Dataproc job for running Apache SparkR
@@ -8848,28 +8238,14 @@ class SparkRJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (archiveUris != null) {
-      _json['archiveUris'] = archiveUris;
-    }
-    if (args != null) {
-      _json['args'] = args;
-    }
-    if (fileUris != null) {
-      _json['fileUris'] = fileUris;
-    }
-    if (loggingConfig != null) {
-      _json['loggingConfig'] = loggingConfig.toJson();
-    }
-    if (mainRFileUri != null) {
-      _json['mainRFileUri'] = mainRFileUri;
-    }
-    if (properties != null) {
-      _json['properties'] = properties;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (archiveUris != null) 'archiveUris': archiveUris,
+        if (args != null) 'args': args,
+        if (fileUris != null) 'fileUris': fileUris,
+        if (loggingConfig != null) 'loggingConfig': loggingConfig.toJson(),
+        if (mainRFileUri != null) 'mainRFileUri': mainRFileUri,
+        if (properties != null) 'properties': properties,
+      };
 }
 
 /// A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/)
@@ -8947,28 +8323,14 @@ class SparkSqlJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (jarFileUris != null) {
-      _json['jarFileUris'] = jarFileUris;
-    }
-    if (loggingConfig != null) {
-      _json['loggingConfig'] = loggingConfig.toJson();
-    }
-    if (properties != null) {
-      _json['properties'] = properties;
-    }
-    if (queryFileUri != null) {
-      _json['queryFileUri'] = queryFileUri;
-    }
-    if (queryList != null) {
-      _json['queryList'] = queryList.toJson();
-    }
-    if (scriptVariables != null) {
-      _json['scriptVariables'] = scriptVariables;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (jarFileUris != null) 'jarFileUris': jarFileUris,
+        if (loggingConfig != null) 'loggingConfig': loggingConfig.toJson(),
+        if (properties != null) 'properties': properties,
+        if (queryFileUri != null) 'queryFileUri': queryFileUri,
+        if (queryList != null) 'queryList': queryList.toJson(),
+        if (scriptVariables != null) 'scriptVariables': scriptVariables,
+      };
 }
 
 /// A request to start a cluster.
@@ -9004,16 +8366,10 @@ class StartClusterRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterUuid != null) {
-      _json['clusterUuid'] = clusterUuid;
-    }
-    if (requestId != null) {
-      _json['requestId'] = requestId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterUuid != null) 'clusterUuid': clusterUuid,
+        if (requestId != null) 'requestId': requestId,
+      };
 }
 
 /// The Status type defines a logical error model that is suitable for different
@@ -9063,19 +8419,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// A request to stop a cluster.
@@ -9111,16 +8459,10 @@ class StopClusterRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterUuid != null) {
-      _json['clusterUuid'] = clusterUuid;
-    }
-    if (requestId != null) {
-      _json['requestId'] = requestId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterUuid != null) 'clusterUuid': clusterUuid,
+        if (requestId != null) 'requestId': requestId,
+      };
 }
 
 /// A request to submit a job.
@@ -9155,16 +8497,10 @@ class SubmitJobRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (job != null) {
-      _json['job'] = job.toJson();
-    }
-    if (requestId != null) {
-      _json['requestId'] = requestId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (job != null) 'job': job.toJson(),
+        if (requestId != null) 'requestId': requestId,
+      };
 }
 
 /// A configurable parameter that replaces one or more fields in the template.
@@ -9246,22 +8582,12 @@ class TemplateParameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (validation != null) {
-      _json['validation'] = validation.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (fields != null) 'fields': fields,
+        if (name != null) 'name': name,
+        if (validation != null) 'validation': validation.toJson(),
+      };
 }
 
 /// Request message for TestIamPermissions method.
@@ -9283,13 +8609,9 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for TestIamPermissions method.
@@ -9307,13 +8629,9 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Validation based on a list of allowed values.
@@ -9333,13 +8651,9 @@ class ValueValidation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (values != null) {
-      _json['values'] = values;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (values != null) 'values': values,
+      };
 }
 
 /// The workflow graph.
@@ -9360,13 +8674,10 @@ class WorkflowGraph {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nodes != null) {
-      _json['nodes'] = nodes.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nodes != null)
+          'nodes': nodes.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A Dataproc workflow template resource.
@@ -9511,52 +8822,22 @@ class WorkflowMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterName != null) {
-      _json['clusterName'] = clusterName;
-    }
-    if (clusterUuid != null) {
-      _json['clusterUuid'] = clusterUuid;
-    }
-    if (createCluster != null) {
-      _json['createCluster'] = createCluster.toJson();
-    }
-    if (dagEndTime != null) {
-      _json['dagEndTime'] = dagEndTime;
-    }
-    if (dagStartTime != null) {
-      _json['dagStartTime'] = dagStartTime;
-    }
-    if (dagTimeout != null) {
-      _json['dagTimeout'] = dagTimeout;
-    }
-    if (deleteCluster != null) {
-      _json['deleteCluster'] = deleteCluster.toJson();
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (graph != null) {
-      _json['graph'] = graph.toJson();
-    }
-    if (parameters != null) {
-      _json['parameters'] = parameters;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (template != null) {
-      _json['template'] = template;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterName != null) 'clusterName': clusterName,
+        if (clusterUuid != null) 'clusterUuid': clusterUuid,
+        if (createCluster != null) 'createCluster': createCluster.toJson(),
+        if (dagEndTime != null) 'dagEndTime': dagEndTime,
+        if (dagStartTime != null) 'dagStartTime': dagStartTime,
+        if (dagTimeout != null) 'dagTimeout': dagTimeout,
+        if (deleteCluster != null) 'deleteCluster': deleteCluster.toJson(),
+        if (endTime != null) 'endTime': endTime,
+        if (graph != null) 'graph': graph.toJson(),
+        if (parameters != null) 'parameters': parameters,
+        if (startTime != null) 'startTime': startTime,
+        if (state != null) 'state': state,
+        if (template != null) 'template': template,
+        if (version != null) 'version': version,
+      };
 }
 
 /// The workflow node.
@@ -9616,25 +8897,14 @@ class WorkflowNode {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (error != null) {
-      _json['error'] = error;
-    }
-    if (jobId != null) {
-      _json['jobId'] = jobId;
-    }
-    if (prerequisiteStepIds != null) {
-      _json['prerequisiteStepIds'] = prerequisiteStepIds;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (stepId != null) {
-      _json['stepId'] = stepId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (error != null) 'error': error,
+        if (jobId != null) 'jobId': jobId,
+        if (prerequisiteStepIds != null)
+          'prerequisiteStepIds': prerequisiteStepIds,
+        if (state != null) 'state': state,
+        if (stepId != null) 'stepId': stepId,
+      };
 }
 
 /// A Dataproc workflow template resource.
@@ -9766,40 +9036,19 @@ class WorkflowTemplate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (dagTimeout != null) {
-      _json['dagTimeout'] = dagTimeout;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (jobs != null) {
-      _json['jobs'] = jobs.map((value) => value.toJson()).toList();
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parameters != null) {
-      _json['parameters'] = parameters.map((value) => value.toJson()).toList();
-    }
-    if (placement != null) {
-      _json['placement'] = placement.toJson();
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (dagTimeout != null) 'dagTimeout': dagTimeout,
+        if (id != null) 'id': id,
+        if (jobs != null) 'jobs': jobs.map((value) => value.toJson()).toList(),
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+        if (parameters != null)
+          'parameters': parameters.map((value) => value.toJson()).toList(),
+        if (placement != null) 'placement': placement.toJson(),
+        if (updateTime != null) 'updateTime': updateTime,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Specifies workflow execution target.Either managed_cluster or
@@ -9827,16 +9076,11 @@ class WorkflowTemplatePlacement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterSelector != null) {
-      _json['clusterSelector'] = clusterSelector.toJson();
-    }
-    if (managedCluster != null) {
-      _json['managedCluster'] = managedCluster.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterSelector != null)
+          'clusterSelector': clusterSelector.toJson(),
+        if (managedCluster != null) 'managedCluster': managedCluster.toJson(),
+      };
 }
 
 /// A YARN application created by a job.
@@ -9897,20 +9141,10 @@ class YarnApplication {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (progress != null) {
-      _json['progress'] = progress;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (trackingUrl != null) {
-      _json['trackingUrl'] = trackingUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (progress != null) 'progress': progress,
+        if (state != null) 'state': state,
+        if (trackingUrl != null) 'trackingUrl': trackingUrl,
+      };
 }

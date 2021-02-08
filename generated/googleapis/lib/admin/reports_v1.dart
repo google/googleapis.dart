@@ -1061,22 +1061,13 @@ class Activities {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// User doing the action.
@@ -1117,22 +1108,12 @@ class ActivityActor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (callerType != null) {
-      _json['callerType'] = callerType;
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (profileId != null) {
-      _json['profileId'] = profileId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (callerType != null) 'callerType': callerType,
+        if (email != null) 'email': email,
+        if (key != null) 'key': key,
+        if (profileId != null) 'profileId': profileId,
+      };
 }
 
 /// Nested parameter value pairs associated with this parameter.
@@ -1155,13 +1136,10 @@ class ActivityEventsParametersMessageValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (parameter != null) {
-      _json['parameter'] = parameter.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (parameter != null)
+          'parameter': parameter.map((value) => value.toJson()).toList(),
+      };
 }
 
 class ActivityEventsParametersMultiMessageValue {
@@ -1179,13 +1157,10 @@ class ActivityEventsParametersMultiMessageValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (parameter != null) {
-      _json['parameter'] = parameter.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (parameter != null)
+          'parameter': parameter.map((value) => value.toJson()).toList(),
+      };
 }
 
 class ActivityEventsParameters {
@@ -1255,35 +1230,18 @@ class ActivityEventsParameters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boolValue != null) {
-      _json['boolValue'] = boolValue;
-    }
-    if (intValue != null) {
-      _json['intValue'] = intValue;
-    }
-    if (messageValue != null) {
-      _json['messageValue'] = messageValue.toJson();
-    }
-    if (multiIntValue != null) {
-      _json['multiIntValue'] = multiIntValue;
-    }
-    if (multiMessageValue != null) {
-      _json['multiMessageValue'] =
-          multiMessageValue.map((value) => value.toJson()).toList();
-    }
-    if (multiValue != null) {
-      _json['multiValue'] = multiValue;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue,
+        if (intValue != null) 'intValue': intValue,
+        if (messageValue != null) 'messageValue': messageValue.toJson(),
+        if (multiIntValue != null) 'multiIntValue': multiIntValue,
+        if (multiMessageValue != null)
+          'multiMessageValue':
+              multiMessageValue.map((value) => value.toJson()).toList(),
+        if (multiValue != null) 'multiValue': multiValue,
+        if (name != null) 'name': name,
+        if (value != null) 'value': value,
+      };
 }
 
 class ActivityEvents {
@@ -1333,19 +1291,12 @@ class ActivityEvents {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parameters != null) {
-      _json['parameters'] = parameters.map((value) => value.toJson()).toList();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (parameters != null)
+          'parameters': parameters.map((value) => value.toJson()).toList(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// Unique identifier for each activity record.
@@ -1384,22 +1335,12 @@ class ActivityId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (applicationName != null) {
-      _json['applicationName'] = applicationName;
-    }
-    if (customerId != null) {
-      _json['customerId'] = customerId;
-    }
-    if (time != null) {
-      _json['time'] = (time).toIso8601String();
-    }
-    if (uniqueQualifier != null) {
-      _json['uniqueQualifier'] = uniqueQualifier;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (applicationName != null) 'applicationName': applicationName,
+        if (customerId != null) 'customerId': customerId,
+        if (time != null) 'time': (time).toIso8601String(),
+        if (uniqueQualifier != null) 'uniqueQualifier': uniqueQualifier,
+      };
 }
 
 /// JSON template for the activity resource.
@@ -1466,31 +1407,16 @@ class Activity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actor != null) {
-      _json['actor'] = actor.toJson();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (events != null) {
-      _json['events'] = events.map((value) => value.toJson()).toList();
-    }
-    if (id != null) {
-      _json['id'] = id.toJson();
-    }
-    if (ipAddress != null) {
-      _json['ipAddress'] = ipAddress;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (ownerDomain != null) {
-      _json['ownerDomain'] = ownerDomain;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actor != null) 'actor': actor.toJson(),
+        if (etag != null) 'etag': etag,
+        if (events != null)
+          'events': events.map((value) => value.toJson()).toList(),
+        if (id != null) 'id': id.toJson(),
+        if (ipAddress != null) 'ipAddress': ipAddress,
+        if (kind != null) 'kind': kind,
+        if (ownerDomain != null) 'ownerDomain': ownerDomain,
+      };
 }
 
 /// A notification channel used to watch for resource changes.
@@ -1581,40 +1507,18 @@ class Channel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (address != null) {
-      _json['address'] = address;
-    }
-    if (expiration != null) {
-      _json['expiration'] = expiration;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (params != null) {
-      _json['params'] = params;
-    }
-    if (payload != null) {
-      _json['payload'] = payload;
-    }
-    if (resourceId != null) {
-      _json['resourceId'] = resourceId;
-    }
-    if (resourceUri != null) {
-      _json['resourceUri'] = resourceUri;
-    }
-    if (token != null) {
-      _json['token'] = token;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (address != null) 'address': address,
+        if (expiration != null) 'expiration': expiration,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (params != null) 'params': params,
+        if (payload != null) 'payload': payload,
+        if (resourceId != null) 'resourceId': resourceId,
+        if (resourceUri != null) 'resourceUri': resourceUri,
+        if (token != null) 'token': token,
+        if (type != null) 'type': type,
+      };
 }
 
 /// JSON template for a parameter used in various reports.
@@ -1672,31 +1576,15 @@ class NestedParameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boolValue != null) {
-      _json['boolValue'] = boolValue;
-    }
-    if (intValue != null) {
-      _json['intValue'] = intValue;
-    }
-    if (multiBoolValue != null) {
-      _json['multiBoolValue'] = multiBoolValue;
-    }
-    if (multiIntValue != null) {
-      _json['multiIntValue'] = multiIntValue;
-    }
-    if (multiValue != null) {
-      _json['multiValue'] = multiValue;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue,
+        if (intValue != null) 'intValue': intValue,
+        if (multiBoolValue != null) 'multiBoolValue': multiBoolValue,
+        if (multiIntValue != null) 'multiIntValue': multiIntValue,
+        if (multiValue != null) 'multiValue': multiValue,
+        if (name != null) 'name': name,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Information about the type of the item.
@@ -1755,25 +1643,13 @@ class UsageReportEntity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customerId != null) {
-      _json['customerId'] = customerId;
-    }
-    if (entityId != null) {
-      _json['entityId'] = entityId;
-    }
-    if (profileId != null) {
-      _json['profileId'] = profileId;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (userEmail != null) {
-      _json['userEmail'] = userEmail;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customerId != null) 'customerId': customerId,
+        if (entityId != null) 'entityId': entityId,
+        if (profileId != null) 'profileId': profileId,
+        if (type != null) 'type': type,
+        if (userEmail != null) 'userEmail': userEmail,
+      };
 }
 
 class UsageReportParameters {
@@ -1842,28 +1718,15 @@ class UsageReportParameters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boolValue != null) {
-      _json['boolValue'] = boolValue;
-    }
-    if (datetimeValue != null) {
-      _json['datetimeValue'] = (datetimeValue).toIso8601String();
-    }
-    if (intValue != null) {
-      _json['intValue'] = intValue;
-    }
-    if (msgValue != null) {
-      _json['msgValue'] = msgValue;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (stringValue != null) {
-      _json['stringValue'] = stringValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue,
+        if (datetimeValue != null)
+          'datetimeValue': (datetimeValue).toIso8601String(),
+        if (intValue != null) 'intValue': intValue,
+        if (msgValue != null) 'msgValue': msgValue,
+        if (name != null) 'name': name,
+        if (stringValue != null) 'stringValue': stringValue,
+      };
 }
 
 /// JSON template for a usage report.
@@ -1919,25 +1782,14 @@ class UsageReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (date != null) {
-      _json['date'] = date;
-    }
-    if (entity != null) {
-      _json['entity'] = entity.toJson();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (parameters != null) {
-      _json['parameters'] = parameters.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (date != null) 'date': date,
+        if (entity != null) 'entity': entity.toJson(),
+        if (etag != null) 'etag': etag,
+        if (kind != null) 'kind': kind,
+        if (parameters != null)
+          'parameters': parameters.map((value) => value.toJson()).toList(),
+      };
 }
 
 class UsageReportsWarningsData {
@@ -1960,16 +1812,10 @@ class UsageReportsWarningsData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (value != null) 'value': value,
+      };
 }
 
 class UsageReportsWarnings {
@@ -2008,19 +1854,11 @@ class UsageReportsWarnings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (data != null) {
-      _json['data'] = data.map((value) => value.toJson()).toList();
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (data != null) 'data': data.map((value) => value.toJson()).toList(),
+        if (message != null) 'message': message,
+      };
 }
 
 class UsageReports {
@@ -2071,24 +1909,13 @@ class UsageReports {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (usageReports != null) {
-      _json['usageReports'] =
-          usageReports.map((value) => value.toJson()).toList();
-    }
-    if (warnings != null) {
-      _json['warnings'] = warnings.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (usageReports != null)
+          'usageReports': usageReports.map((value) => value.toJson()).toList(),
+        if (warnings != null)
+          'warnings': warnings.map((value) => value.toJson()).toList(),
+      };
 }

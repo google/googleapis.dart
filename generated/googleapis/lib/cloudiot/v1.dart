@@ -1512,16 +1512,10 @@ class BindDeviceToGatewayRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceId != null) {
-      _json['deviceId'] = deviceId;
-    }
-    if (gatewayId != null) {
-      _json['gatewayId'] = gatewayId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId,
+        if (gatewayId != null) 'gatewayId': gatewayId,
+      };
 }
 
 /// Response for `BindDeviceToGateway`.
@@ -1532,10 +1526,7 @@ class BindDeviceToGatewayResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Associates `members` with a `role`.
@@ -1604,19 +1595,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// The device resource.
@@ -1825,62 +1808,28 @@ class Device {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blocked != null) {
-      _json['blocked'] = blocked;
-    }
-    if (config != null) {
-      _json['config'] = config.toJson();
-    }
-    if (credentials != null) {
-      _json['credentials'] =
-          credentials.map((value) => value.toJson()).toList();
-    }
-    if (gatewayConfig != null) {
-      _json['gatewayConfig'] = gatewayConfig.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (lastConfigAckTime != null) {
-      _json['lastConfigAckTime'] = lastConfigAckTime;
-    }
-    if (lastConfigSendTime != null) {
-      _json['lastConfigSendTime'] = lastConfigSendTime;
-    }
-    if (lastErrorStatus != null) {
-      _json['lastErrorStatus'] = lastErrorStatus.toJson();
-    }
-    if (lastErrorTime != null) {
-      _json['lastErrorTime'] = lastErrorTime;
-    }
-    if (lastEventTime != null) {
-      _json['lastEventTime'] = lastEventTime;
-    }
-    if (lastHeartbeatTime != null) {
-      _json['lastHeartbeatTime'] = lastHeartbeatTime;
-    }
-    if (lastStateTime != null) {
-      _json['lastStateTime'] = lastStateTime;
-    }
-    if (logLevel != null) {
-      _json['logLevel'] = logLevel;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (numId != null) {
-      _json['numId'] = numId;
-    }
-    if (state != null) {
-      _json['state'] = state.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blocked != null) 'blocked': blocked,
+        if (config != null) 'config': config.toJson(),
+        if (credentials != null)
+          'credentials': credentials.map((value) => value.toJson()).toList(),
+        if (gatewayConfig != null) 'gatewayConfig': gatewayConfig.toJson(),
+        if (id != null) 'id': id,
+        if (lastConfigAckTime != null) 'lastConfigAckTime': lastConfigAckTime,
+        if (lastConfigSendTime != null)
+          'lastConfigSendTime': lastConfigSendTime,
+        if (lastErrorStatus != null)
+          'lastErrorStatus': lastErrorStatus.toJson(),
+        if (lastErrorTime != null) 'lastErrorTime': lastErrorTime,
+        if (lastEventTime != null) 'lastEventTime': lastEventTime,
+        if (lastHeartbeatTime != null) 'lastHeartbeatTime': lastHeartbeatTime,
+        if (lastStateTime != null) 'lastStateTime': lastStateTime,
+        if (logLevel != null) 'logLevel': logLevel,
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (numId != null) 'numId': numId,
+        if (state != null) 'state': state.toJson(),
+      };
 }
 
 /// The device configuration.
@@ -1946,22 +1895,12 @@ class DeviceConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (binaryData != null) {
-      _json['binaryData'] = binaryData;
-    }
-    if (cloudUpdateTime != null) {
-      _json['cloudUpdateTime'] = cloudUpdateTime;
-    }
-    if (deviceAckTime != null) {
-      _json['deviceAckTime'] = deviceAckTime;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (binaryData != null) 'binaryData': binaryData,
+        if (cloudUpdateTime != null) 'cloudUpdateTime': cloudUpdateTime,
+        if (deviceAckTime != null) 'deviceAckTime': deviceAckTime,
+        if (version != null) 'version': version,
+      };
 }
 
 /// A server-stored device credential used for authentication.
@@ -1999,16 +1938,10 @@ class DeviceCredential {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (expirationTime != null) {
-      _json['expirationTime'] = expirationTime;
-    }
-    if (publicKey != null) {
-      _json['publicKey'] = publicKey.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (expirationTime != null) 'expirationTime': expirationTime,
+        if (publicKey != null) 'publicKey': publicKey.toJson(),
+      };
 }
 
 /// A container for a group of devices.
@@ -2120,36 +2053,20 @@ class DeviceRegistry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (credentials != null) {
-      _json['credentials'] =
-          credentials.map((value) => value.toJson()).toList();
-    }
-    if (eventNotificationConfigs != null) {
-      _json['eventNotificationConfigs'] =
-          eventNotificationConfigs.map((value) => value.toJson()).toList();
-    }
-    if (httpConfig != null) {
-      _json['httpConfig'] = httpConfig.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (logLevel != null) {
-      _json['logLevel'] = logLevel;
-    }
-    if (mqttConfig != null) {
-      _json['mqttConfig'] = mqttConfig.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (stateNotificationConfig != null) {
-      _json['stateNotificationConfig'] = stateNotificationConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (credentials != null)
+          'credentials': credentials.map((value) => value.toJson()).toList(),
+        if (eventNotificationConfigs != null)
+          'eventNotificationConfigs':
+              eventNotificationConfigs.map((value) => value.toJson()).toList(),
+        if (httpConfig != null) 'httpConfig': httpConfig.toJson(),
+        if (id != null) 'id': id,
+        if (logLevel != null) 'logLevel': logLevel,
+        if (mqttConfig != null) 'mqttConfig': mqttConfig.toJson(),
+        if (name != null) 'name': name,
+        if (stateNotificationConfig != null)
+          'stateNotificationConfig': stateNotificationConfig.toJson(),
+      };
 }
 
 /// The device state, as reported by the device.
@@ -2180,16 +2097,10 @@ class DeviceState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (binaryData != null) {
-      _json['binaryData'] = binaryData;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (binaryData != null) 'binaryData': binaryData,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2206,10 +2117,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The configuration for forwarding telemetry events.
@@ -2238,16 +2146,10 @@ class EventNotificationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pubsubTopicName != null) {
-      _json['pubsubTopicName'] = pubsubTopicName;
-    }
-    if (subfolderMatches != null) {
-      _json['subfolderMatches'] = subfolderMatches;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pubsubTopicName != null) 'pubsubTopicName': pubsubTopicName,
+        if (subfolderMatches != null) 'subfolderMatches': subfolderMatches,
+      };
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -2311,22 +2213,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Gateway-related configuration and state.
@@ -2381,22 +2273,14 @@ class GatewayConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gatewayAuthMethod != null) {
-      _json['gatewayAuthMethod'] = gatewayAuthMethod;
-    }
-    if (gatewayType != null) {
-      _json['gatewayType'] = gatewayType;
-    }
-    if (lastAccessedGatewayId != null) {
-      _json['lastAccessedGatewayId'] = lastAccessedGatewayId;
-    }
-    if (lastAccessedGatewayTime != null) {
-      _json['lastAccessedGatewayTime'] = lastAccessedGatewayTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gatewayAuthMethod != null) 'gatewayAuthMethod': gatewayAuthMethod,
+        if (gatewayType != null) 'gatewayType': gatewayType,
+        if (lastAccessedGatewayId != null)
+          'lastAccessedGatewayId': lastAccessedGatewayId,
+        if (lastAccessedGatewayTime != null)
+          'lastAccessedGatewayTime': lastAccessedGatewayTime,
+      };
 }
 
 /// Request message for `GetIamPolicy` method.
@@ -2414,13 +2298,9 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (options != null) {
-      _json['options'] = options.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (options != null) 'options': options.toJson(),
+      };
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
@@ -2445,13 +2325,10 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (requestedPolicyVersion != null) {
-      _json['requestedPolicyVersion'] = requestedPolicyVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (requestedPolicyVersion != null)
+          'requestedPolicyVersion': requestedPolicyVersion,
+      };
 }
 
 /// The configuration of the HTTP bridge for a device registry.
@@ -2475,13 +2352,9 @@ class HttpConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (httpEnabledState != null) {
-      _json['httpEnabledState'] = httpEnabledState;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (httpEnabledState != null) 'httpEnabledState': httpEnabledState,
+      };
 }
 
 /// Response for `ListDeviceConfigVersions`.
@@ -2503,14 +2376,11 @@ class ListDeviceConfigVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceConfigs != null) {
-      _json['deviceConfigs'] =
-          deviceConfigs.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceConfigs != null)
+          'deviceConfigs':
+              deviceConfigs.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response for `ListDeviceRegistries`.
@@ -2537,17 +2407,12 @@ class ListDeviceRegistriesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceRegistries != null) {
-      _json['deviceRegistries'] =
-          deviceRegistries.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceRegistries != null)
+          'deviceRegistries':
+              deviceRegistries.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response for `ListDeviceStates`.
@@ -2569,14 +2434,10 @@ class ListDeviceStatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceStates != null) {
-      _json['deviceStates'] =
-          deviceStates.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceStates != null)
+          'deviceStates': deviceStates.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response for `ListDevices`.
@@ -2602,16 +2463,11 @@ class ListDevicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (devices != null) {
-      _json['devices'] = devices.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (devices != null)
+          'devices': devices.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Request for `ModifyCloudToDeviceConfig`.
@@ -2648,16 +2504,10 @@ class ModifyCloudToDeviceConfigRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (binaryData != null) {
-      _json['binaryData'] = binaryData;
-    }
-    if (versionToUpdate != null) {
-      _json['versionToUpdate'] = versionToUpdate;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (binaryData != null) 'binaryData': binaryData,
+        if (versionToUpdate != null) 'versionToUpdate': versionToUpdate,
+      };
 }
 
 /// The configuration of MQTT for a device registry.
@@ -2680,13 +2530,9 @@ class MqttConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (mqttEnabledState != null) {
-      _json['mqttEnabledState'] = mqttEnabledState;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (mqttEnabledState != null) 'mqttEnabledState': mqttEnabledState,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -2784,19 +2630,12 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// A public key certificate format and data.
@@ -2835,19 +2674,11 @@ class PublicKeyCertificate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (certificate != null) {
-      _json['certificate'] = certificate;
-    }
-    if (format != null) {
-      _json['format'] = format;
-    }
-    if (x509Details != null) {
-      _json['x509Details'] = x509Details.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (certificate != null) 'certificate': certificate,
+        if (format != null) 'format': format,
+        if (x509Details != null) 'x509Details': x509Details.toJson(),
+      };
 }
 
 /// A public key format and data.
@@ -2890,16 +2721,10 @@ class PublicKeyCredential {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (format != null) {
-      _json['format'] = format;
-    }
-    if (key != null) {
-      _json['key'] = key;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (format != null) 'format': format,
+        if (key != null) 'key': key,
+      };
 }
 
 /// A server-stored registry credential used to validate device credentials.
@@ -2916,13 +2741,10 @@ class RegistryCredential {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (publicKeyCertificate != null) {
-      _json['publicKeyCertificate'] = publicKeyCertificate.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (publicKeyCertificate != null)
+          'publicKeyCertificate': publicKeyCertificate.toJson(),
+      };
 }
 
 /// Request for `SendCommandToDevice`.
@@ -2959,16 +2781,10 @@ class SendCommandToDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (binaryData != null) {
-      _json['binaryData'] = binaryData;
-    }
-    if (subfolder != null) {
-      _json['subfolder'] = subfolder;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (binaryData != null) 'binaryData': binaryData,
+        if (subfolder != null) 'subfolder': subfolder,
+      };
 }
 
 /// Response for `SendCommandToDevice`.
@@ -2979,10 +2795,7 @@ class SendCommandToDeviceResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -3003,13 +2816,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+      };
 }
 
 /// The configuration for notification of new states received from the device.
@@ -3027,13 +2836,9 @@ class StateNotificationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pubsubTopicName != null) {
-      _json['pubsubTopicName'] = pubsubTopicName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pubsubTopicName != null) 'pubsubTopicName': pubsubTopicName,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -3083,19 +2888,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -3117,13 +2914,9 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -3142,13 +2935,9 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Request for `UnbindDeviceFromGateway`.
@@ -3178,16 +2967,10 @@ class UnbindDeviceFromGatewayRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceId != null) {
-      _json['deviceId'] = deviceId;
-    }
-    if (gatewayId != null) {
-      _json['gatewayId'] = gatewayId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId,
+        if (gatewayId != null) 'gatewayId': gatewayId,
+      };
 }
 
 /// Response for `UnbindDeviceFromGateway`.
@@ -3198,10 +2981,7 @@ class UnbindDeviceFromGatewayResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Details of an X.509 certificate.
@@ -3249,26 +3029,13 @@ class X509CertificateDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (expiryTime != null) {
-      _json['expiryTime'] = expiryTime;
-    }
-    if (issuer != null) {
-      _json['issuer'] = issuer;
-    }
-    if (publicKeyType != null) {
-      _json['publicKeyType'] = publicKeyType;
-    }
-    if (signatureAlgorithm != null) {
-      _json['signatureAlgorithm'] = signatureAlgorithm;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (subject != null) {
-      _json['subject'] = subject;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (expiryTime != null) 'expiryTime': expiryTime,
+        if (issuer != null) 'issuer': issuer,
+        if (publicKeyType != null) 'publicKeyType': publicKeyType,
+        if (signatureAlgorithm != null)
+          'signatureAlgorithm': signatureAlgorithm,
+        if (startTime != null) 'startTime': startTime,
+        if (subject != null) 'subject': subject,
+      };
 }

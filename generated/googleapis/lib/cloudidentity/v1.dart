@@ -2211,13 +2211,9 @@ class CheckTransitiveMembershipResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hasMembership != null) {
-      _json['hasMembership'] = hasMembership;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hasMembership != null) 'hasMembership': hasMembership,
+      };
 }
 
 /// Dynamic group metadata like queries and status.
@@ -2248,16 +2244,11 @@ class DynamicGroupMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (queries != null) {
-      _json['queries'] = queries.map((value) => value.toJson()).toList();
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (queries != null)
+          'queries': queries.map((value) => value.toJson()).toList(),
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 /// Defines a query on a resource.
@@ -2288,16 +2279,10 @@ class DynamicGroupQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (query != null) {
-      _json['query'] = query;
-    }
-    if (resourceType != null) {
-      _json['resourceType'] = resourceType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (query != null) 'query': query,
+        if (resourceType != null) 'resourceType': resourceType,
+      };
 }
 
 /// The current status of a dynamic group along with timestamp.
@@ -2329,16 +2314,10 @@ class DynamicGroupStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (statusTime != null) {
-      _json['statusTime'] = statusTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (status != null) 'status': status,
+        if (statusTime != null) 'statusTime': statusTime,
+      };
 }
 
 /// A unique identifier for an entity in the Cloud Identity Groups API.
@@ -2375,16 +2354,10 @@ class EntityKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (namespace != null) {
-      _json['namespace'] = namespace;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (namespace != null) 'namespace': namespace,
+      };
 }
 
 /// The `MembershipRole` expiry details.
@@ -2400,13 +2373,9 @@ class ExpiryDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (expireTime != null) {
-      _json['expireTime'] = expireTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (expireTime != null) 'expireTime': expireTime,
+      };
 }
 
 /// The response message for MembershipsService.GetMembershipGraph.
@@ -2438,17 +2407,13 @@ class GetMembershipGraphResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adjacencyList != null) {
-      _json['adjacencyList'] =
-          adjacencyList.map((value) => value.toJson()).toList();
-    }
-    if (groups != null) {
-      _json['groups'] = groups.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adjacencyList != null)
+          'adjacencyList':
+              adjacencyList.map((value) => value.toJson()).toList(),
+        if (groups != null)
+          'groups': groups.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Resource representing the Android specific attributes of a Device.
@@ -2495,22 +2460,16 @@ class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enabledUnknownSources != null) {
-      _json['enabledUnknownSources'] = enabledUnknownSources;
-    }
-    if (ownerProfileAccount != null) {
-      _json['ownerProfileAccount'] = ownerProfileAccount;
-    }
-    if (ownershipPrivilege != null) {
-      _json['ownershipPrivilege'] = ownershipPrivilege;
-    }
-    if (supportsWorkProfile != null) {
-      _json['supportsWorkProfile'] = supportsWorkProfile;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enabledUnknownSources != null)
+          'enabledUnknownSources': enabledUnknownSources,
+        if (ownerProfileAccount != null)
+          'ownerProfileAccount': ownerProfileAccount,
+        if (ownershipPrivilege != null)
+          'ownershipPrivilege': ownershipPrivilege,
+        if (supportsWorkProfile != null)
+          'supportsWorkProfile': supportsWorkProfile,
+      };
 }
 
 /// Request message for approving the device to access user data.
@@ -2535,13 +2494,9 @@ class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customer != null) {
-      _json['customer'] = customer;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customer != null) 'customer': customer,
+      };
 }
 
 /// Response message for approving the device to access user data.
@@ -2559,13 +2514,9 @@ class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceUser != null) {
-      _json['deviceUser'] = deviceUser.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceUser != null) 'deviceUser': deviceUser.toJson(),
+      };
 }
 
 /// Request message for blocking account on device.
@@ -2590,13 +2541,9 @@ class GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customer != null) {
-      _json['customer'] = customer;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customer != null) 'customer': customer,
+      };
 }
 
 /// Response message for blocking the device from accessing user data.
@@ -2614,13 +2561,9 @@ class GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceUser != null) {
-      _json['deviceUser'] = deviceUser.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceUser != null) 'deviceUser': deviceUser.toJson(),
+      };
 }
 
 /// Request message for cancelling an unfinished device wipe.
@@ -2645,13 +2588,9 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customer != null) {
-      _json['customer'] = customer;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customer != null) 'customer': customer,
+      };
 }
 
 /// Response message for cancelling an unfinished device wipe.
@@ -2671,13 +2610,9 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (device != null) {
-      _json['device'] = device.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (device != null) 'device': device.toJson(),
+      };
 }
 
 /// Request message for cancelling an unfinished user account wipe.
@@ -2702,13 +2637,9 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customer != null) {
-      _json['customer'] = customer;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customer != null) 'customer': customer,
+      };
 }
 
 /// Response message for cancelling an unfinished user account wipe.
@@ -2726,13 +2657,9 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceUser != null) {
-      _json['deviceUser'] = deviceUser.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceUser != null) 'deviceUser': deviceUser.toJson(),
+      };
 }
 
 /// Represents the state associated with an API client calling the Devices API.
@@ -2885,47 +2812,22 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assetTags != null) {
-      _json['assetTags'] = assetTags;
-    }
-    if (complianceState != null) {
-      _json['complianceState'] = complianceState;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (customId != null) {
-      _json['customId'] = customId;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (healthScore != null) {
-      _json['healthScore'] = healthScore;
-    }
-    if (keyValuePairs != null) {
-      _json['keyValuePairs'] =
-          keyValuePairs.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (lastUpdateTime != null) {
-      _json['lastUpdateTime'] = lastUpdateTime;
-    }
-    if (managed != null) {
-      _json['managed'] = managed;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (ownerType != null) {
-      _json['ownerType'] = ownerType;
-    }
-    if (scoreReason != null) {
-      _json['scoreReason'] = scoreReason;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assetTags != null) 'assetTags': assetTags,
+        if (complianceState != null) 'complianceState': complianceState,
+        if (createTime != null) 'createTime': createTime,
+        if (customId != null) 'customId': customId,
+        if (etag != null) 'etag': etag,
+        if (healthScore != null) 'healthScore': healthScore,
+        if (keyValuePairs != null)
+          'keyValuePairs': keyValuePairs
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime,
+        if (managed != null) 'managed': managed,
+        if (name != null) 'name': name,
+        if (ownerType != null) 'ownerType': ownerType,
+        if (scoreReason != null) 'scoreReason': scoreReason,
+      };
 }
 
 /// Additional custom attribute values may be one of these types
@@ -2954,19 +2856,11 @@ class GoogleAppsCloudidentityDevicesV1CustomAttributeValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boolValue != null) {
-      _json['boolValue'] = boolValue;
-    }
-    if (numberValue != null) {
-      _json['numberValue'] = numberValue;
-    }
-    if (stringValue != null) {
-      _json['stringValue'] = stringValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue,
+        if (numberValue != null) 'numberValue': numberValue,
+        if (stringValue != null) 'stringValue': stringValue,
+      };
 }
 
 ///  A Device within the Cloud Identity Devices API.
@@ -3259,94 +3153,39 @@ class GoogleAppsCloudidentityDevicesV1Device {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (androidSpecificAttributes != null) {
-      _json['androidSpecificAttributes'] = androidSpecificAttributes.toJson();
-    }
-    if (assetTag != null) {
-      _json['assetTag'] = assetTag;
-    }
-    if (basebandVersion != null) {
-      _json['basebandVersion'] = basebandVersion;
-    }
-    if (bootloaderVersion != null) {
-      _json['bootloaderVersion'] = bootloaderVersion;
-    }
-    if (brand != null) {
-      _json['brand'] = brand;
-    }
-    if (buildNumber != null) {
-      _json['buildNumber'] = buildNumber;
-    }
-    if (compromisedState != null) {
-      _json['compromisedState'] = compromisedState;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (deviceType != null) {
-      _json['deviceType'] = deviceType;
-    }
-    if (enabledDeveloperOptions != null) {
-      _json['enabledDeveloperOptions'] = enabledDeveloperOptions;
-    }
-    if (enabledUsbDebugging != null) {
-      _json['enabledUsbDebugging'] = enabledUsbDebugging;
-    }
-    if (encryptionState != null) {
-      _json['encryptionState'] = encryptionState;
-    }
-    if (imei != null) {
-      _json['imei'] = imei;
-    }
-    if (kernelVersion != null) {
-      _json['kernelVersion'] = kernelVersion;
-    }
-    if (lastSyncTime != null) {
-      _json['lastSyncTime'] = lastSyncTime;
-    }
-    if (managementState != null) {
-      _json['managementState'] = managementState;
-    }
-    if (manufacturer != null) {
-      _json['manufacturer'] = manufacturer;
-    }
-    if (meid != null) {
-      _json['meid'] = meid;
-    }
-    if (model != null) {
-      _json['model'] = model;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (networkOperator != null) {
-      _json['networkOperator'] = networkOperator;
-    }
-    if (osVersion != null) {
-      _json['osVersion'] = osVersion;
-    }
-    if (otherAccounts != null) {
-      _json['otherAccounts'] = otherAccounts;
-    }
-    if (ownerType != null) {
-      _json['ownerType'] = ownerType;
-    }
-    if (releaseVersion != null) {
-      _json['releaseVersion'] = releaseVersion;
-    }
-    if (securityPatchTime != null) {
-      _json['securityPatchTime'] = securityPatchTime;
-    }
-    if (serialNumber != null) {
-      _json['serialNumber'] = serialNumber;
-    }
-    if (wifiMacAddresses != null) {
-      _json['wifiMacAddresses'] = wifiMacAddresses;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (androidSpecificAttributes != null)
+          'androidSpecificAttributes': androidSpecificAttributes.toJson(),
+        if (assetTag != null) 'assetTag': assetTag,
+        if (basebandVersion != null) 'basebandVersion': basebandVersion,
+        if (bootloaderVersion != null) 'bootloaderVersion': bootloaderVersion,
+        if (brand != null) 'brand': brand,
+        if (buildNumber != null) 'buildNumber': buildNumber,
+        if (compromisedState != null) 'compromisedState': compromisedState,
+        if (createTime != null) 'createTime': createTime,
+        if (deviceType != null) 'deviceType': deviceType,
+        if (enabledDeveloperOptions != null)
+          'enabledDeveloperOptions': enabledDeveloperOptions,
+        if (enabledUsbDebugging != null)
+          'enabledUsbDebugging': enabledUsbDebugging,
+        if (encryptionState != null) 'encryptionState': encryptionState,
+        if (imei != null) 'imei': imei,
+        if (kernelVersion != null) 'kernelVersion': kernelVersion,
+        if (lastSyncTime != null) 'lastSyncTime': lastSyncTime,
+        if (managementState != null) 'managementState': managementState,
+        if (manufacturer != null) 'manufacturer': manufacturer,
+        if (meid != null) 'meid': meid,
+        if (model != null) 'model': model,
+        if (name != null) 'name': name,
+        if (networkOperator != null) 'networkOperator': networkOperator,
+        if (osVersion != null) 'osVersion': osVersion,
+        if (otherAccounts != null) 'otherAccounts': otherAccounts,
+        if (ownerType != null) 'ownerType': ownerType,
+        if (releaseVersion != null) 'releaseVersion': releaseVersion,
+        if (securityPatchTime != null) 'securityPatchTime': securityPatchTime,
+        if (serialNumber != null) 'serialNumber': serialNumber,
+        if (wifiMacAddresses != null) 'wifiMacAddresses': wifiMacAddresses,
+      };
 }
 
 /// Represents a user's use of a Device in the Cloud Identity Devices API.
@@ -3451,40 +3290,18 @@ class GoogleAppsCloudidentityDevicesV1DeviceUser {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (compromisedState != null) {
-      _json['compromisedState'] = compromisedState;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (firstSyncTime != null) {
-      _json['firstSyncTime'] = firstSyncTime;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (lastSyncTime != null) {
-      _json['lastSyncTime'] = lastSyncTime;
-    }
-    if (managementState != null) {
-      _json['managementState'] = managementState;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (passwordState != null) {
-      _json['passwordState'] = passwordState;
-    }
-    if (userAgent != null) {
-      _json['userAgent'] = userAgent;
-    }
-    if (userEmail != null) {
-      _json['userEmail'] = userEmail;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (compromisedState != null) 'compromisedState': compromisedState,
+        if (createTime != null) 'createTime': createTime,
+        if (firstSyncTime != null) 'firstSyncTime': firstSyncTime,
+        if (languageCode != null) 'languageCode': languageCode,
+        if (lastSyncTime != null) 'lastSyncTime': lastSyncTime,
+        if (managementState != null) 'managementState': managementState,
+        if (name != null) 'name': name,
+        if (passwordState != null) 'passwordState': passwordState,
+        if (userAgent != null) 'userAgent': userAgent,
+        if (userEmail != null) 'userEmail': userEmail,
+      };
 }
 
 /// Response message that is returned in ListClientStates.
@@ -3513,17 +3330,11 @@ class GoogleAppsCloudidentityDevicesV1ListClientStatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clientStates != null) {
-      _json['clientStates'] =
-          clientStates.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clientStates != null)
+          'clientStates': clientStates.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message that is returned from the ListDeviceUsers method.
@@ -3552,17 +3363,11 @@ class GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceUsers != null) {
-      _json['deviceUsers'] =
-          deviceUsers.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceUsers != null)
+          'deviceUsers': deviceUsers.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message that is returned from the ListDevices method.
@@ -3590,16 +3395,11 @@ class GoogleAppsCloudidentityDevicesV1ListDevicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (devices != null) {
-      _json['devices'] = devices.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (devices != null)
+          'devices': devices.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response containing resource names of the DeviceUsers associated with the
@@ -3638,19 +3438,11 @@ class GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customer != null) {
-      _json['customer'] = customer;
-    }
-    if (names != null) {
-      _json['names'] = names;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customer != null) 'customer': customer,
+        if (names != null) 'names': names,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Request message for wiping all data on the device.
@@ -3674,13 +3466,9 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customer != null) {
-      _json['customer'] = customer;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customer != null) 'customer': customer,
+      };
 }
 
 /// Response message for wiping all data on the device.
@@ -3699,13 +3487,9 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (device != null) {
-      _json['device'] = device.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (device != null) 'device': device.toJson(),
+      };
 }
 
 /// Request message for starting an account wipe on device.
@@ -3730,13 +3514,9 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customer != null) {
-      _json['customer'] = customer;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customer != null) 'customer': customer,
+      };
 }
 
 /// Response message for wiping the user's account from the device.
@@ -3754,13 +3534,9 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceUser != null) {
-      _json['deviceUser'] = deviceUser.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceUser != null) 'deviceUser': deviceUser.toJson(),
+      };
 }
 
 /// A group within the Cloud Identity Groups API.
@@ -3871,37 +3647,18 @@ class Group {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (dynamicGroupMetadata != null) {
-      _json['dynamicGroupMetadata'] = dynamicGroupMetadata.toJson();
-    }
-    if (groupKey != null) {
-      _json['groupKey'] = groupKey.toJson();
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (dynamicGroupMetadata != null)
+          'dynamicGroupMetadata': dynamicGroupMetadata.toJson(),
+        if (groupKey != null) 'groupKey': groupKey.toJson(),
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+        if (parent != null) 'parent': parent,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Message representing a transitive group of a user or a group.
@@ -3970,28 +3727,15 @@ class GroupRelation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (group != null) {
-      _json['group'] = group;
-    }
-    if (groupKey != null) {
-      _json['groupKey'] = groupKey.toJson();
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (relationType != null) {
-      _json['relationType'] = relationType;
-    }
-    if (roles != null) {
-      _json['roles'] = roles.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (group != null) 'group': group,
+        if (groupKey != null) 'groupKey': groupKey.toJson(),
+        if (labels != null) 'labels': labels,
+        if (relationType != null) 'relationType': relationType,
+        if (roles != null)
+          'roles': roles.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for ListGroups operation.
@@ -4019,16 +3763,11 @@ class ListGroupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (groups != null) {
-      _json['groups'] = groups.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (groups != null)
+          'groups': groups.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for MembershipsService.ListMemberships.
@@ -4054,17 +3793,11 @@ class ListMembershipsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (memberships != null) {
-      _json['memberships'] =
-          memberships.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (memberships != null)
+          'memberships': memberships.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for GroupsService.LookupGroupName.
@@ -4081,13 +3814,9 @@ class LookupGroupNameResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+      };
 }
 
 /// The response message for MembershipsService.LookupMembershipName.
@@ -4106,13 +3835,9 @@ class LookupMembershipNameResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+      };
 }
 
 /// Message representing a transitive membership of a group.
@@ -4165,23 +3890,15 @@ class MemberRelation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (member != null) {
-      _json['member'] = member;
-    }
-    if (preferredMemberKey != null) {
-      _json['preferredMemberKey'] =
-          preferredMemberKey.map((value) => value.toJson()).toList();
-    }
-    if (relationType != null) {
-      _json['relationType'] = relationType;
-    }
-    if (roles != null) {
-      _json['roles'] = roles.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (member != null) 'member': member,
+        if (preferredMemberKey != null)
+          'preferredMemberKey':
+              preferredMemberKey.map((value) => value.toJson()).toList(),
+        if (relationType != null) 'relationType': relationType,
+        if (roles != null)
+          'roles': roles.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A membership within the Cloud Identity Groups API.
@@ -4257,28 +3974,16 @@ class Membership {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (preferredMemberKey != null) {
-      _json['preferredMemberKey'] = preferredMemberKey.toJson();
-    }
-    if (roles != null) {
-      _json['roles'] = roles.map((value) => value.toJson()).toList();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (name != null) 'name': name,
+        if (preferredMemberKey != null)
+          'preferredMemberKey': preferredMemberKey.toJson(),
+        if (roles != null)
+          'roles': roles.map((value) => value.toJson()).toList(),
+        if (type != null) 'type': type,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Membership graph's path information as an adjacency list.
@@ -4308,16 +4013,11 @@ class MembershipAdjacencyList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (edges != null) {
-      _json['edges'] = edges.map((value) => value.toJson()).toList();
-    }
-    if (group != null) {
-      _json['group'] = group;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (edges != null)
+          'edges': edges.map((value) => value.toJson()).toList(),
+        if (group != null) 'group': group,
+      };
 }
 
 /// A membership role within the Cloud Identity Groups API.
@@ -4347,16 +4047,10 @@ class MembershipRole {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (expiryDetail != null) {
-      _json['expiryDetail'] = expiryDetail.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (expiryDetail != null) 'expiryDetail': expiryDetail.toJson(),
+        if (name != null) 'name': name,
+      };
 }
 
 /// The request message for MembershipsService.ModifyMembershipRoles.
@@ -4405,20 +4099,14 @@ class ModifyMembershipRolesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (addRoles != null) {
-      _json['addRoles'] = addRoles.map((value) => value.toJson()).toList();
-    }
-    if (removeRoles != null) {
-      _json['removeRoles'] = removeRoles;
-    }
-    if (updateRolesParams != null) {
-      _json['updateRolesParams'] =
-          updateRolesParams.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (addRoles != null)
+          'addRoles': addRoles.map((value) => value.toJson()).toList(),
+        if (removeRoles != null) 'removeRoles': removeRoles,
+        if (updateRolesParams != null)
+          'updateRolesParams':
+              updateRolesParams.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response message for MembershipsService.ModifyMembershipRoles.
@@ -4435,13 +4123,9 @@ class ModifyMembershipRolesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (membership != null) {
-      _json['membership'] = membership.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (membership != null) 'membership': membership.toJson(),
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -4520,25 +4204,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// The response message for GroupsService.SearchGroups.
@@ -4564,16 +4236,11 @@ class SearchGroupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (groups != null) {
-      _json['groups'] = groups.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (groups != null)
+          'groups': groups.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for MembershipsService.SearchTransitiveGroups.
@@ -4599,17 +4266,11 @@ class SearchTransitiveGroupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (memberships != null) {
-      _json['memberships'] =
-          memberships.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (memberships != null)
+          'memberships': memberships.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for MembershipsService.SearchTransitiveMemberships.
@@ -4635,17 +4296,11 @@ class SearchTransitiveMembershipsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (memberships != null) {
-      _json['memberships'] =
-          memberships.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (memberships != null)
+          'memberships': memberships.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -4695,19 +4350,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Message representing the role of a TransitiveMembership.
@@ -4726,13 +4373,9 @@ class TransitiveMembershipRole {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (role != null) 'role': role,
+      };
 }
 
 /// The details of an update to a `MembershipRole`.
@@ -4759,16 +4402,10 @@ class UpdateMembershipRolesParams {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fieldMask != null) {
-      _json['fieldMask'] = fieldMask;
-    }
-    if (membershipRole != null) {
-      _json['membershipRole'] = membershipRole.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fieldMask != null) 'fieldMask': fieldMask,
+        if (membershipRole != null) 'membershipRole': membershipRole.toJson(),
+      };
 }
 
 /// UserInvitation to join a Google Workspace organization.
@@ -4812,20 +4449,10 @@ class UserInvitation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (mailsSentCount != null) {
-      _json['mailsSentCount'] = mailsSentCount;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (mailsSentCount != null) 'mailsSentCount': mailsSentCount,
+        if (name != null) 'name': name,
+        if (state != null) 'state': state,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }

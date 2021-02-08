@@ -170,16 +170,10 @@ class DirectoryListItemsIcons {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x16 != null) {
-      _json['x16'] = x16;
-    }
-    if (x32 != null) {
-      _json['x32'] = x32;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x16 != null) 'x16': x16,
+        if (x32 != null) 'x32': x32,
+      };
 }
 
 class DirectoryListItems {
@@ -263,46 +257,20 @@ class DirectoryListItems {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (discoveryLink != null) {
-      _json['discoveryLink'] = discoveryLink;
-    }
-    if (discoveryRestUrl != null) {
-      _json['discoveryRestUrl'] = discoveryRestUrl;
-    }
-    if (documentationLink != null) {
-      _json['documentationLink'] = documentationLink;
-    }
-    if (icons != null) {
-      _json['icons'] = icons.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (preferred != null) {
-      _json['preferred'] = preferred;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (discoveryLink != null) 'discoveryLink': discoveryLink,
+        if (discoveryRestUrl != null) 'discoveryRestUrl': discoveryRestUrl,
+        if (documentationLink != null) 'documentationLink': documentationLink,
+        if (icons != null) 'icons': icons.toJson(),
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+        if (preferred != null) 'preferred': preferred,
+        if (title != null) 'title': title,
+        if (version != null) 'version': version,
+      };
 }
 
 class DirectoryList {
@@ -334,19 +302,12 @@ class DirectoryList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (discoveryVersion != null) {
-      _json['discoveryVersion'] = discoveryVersion;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (discoveryVersion != null) 'discoveryVersion': discoveryVersion,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// Additional information about this property.
@@ -364,13 +325,9 @@ class JsonSchemaAnnotations {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (required != null) {
-      _json['required'] = required;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (required != null) 'required': required,
+      };
 }
 
 class JsonSchemaVariantMap {
@@ -388,16 +345,10 @@ class JsonSchemaVariantMap {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (P_ref != null) {
-      _json['\$ref'] = P_ref;
-    }
-    if (typeValue != null) {
-      _json['type_value'] = typeValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (P_ref != null) '\$ref': P_ref,
+        if (typeValue != null) 'type_value': typeValue,
+      };
 }
 
 /// In a variant data type, the value of one property is used to determine how
@@ -425,16 +376,10 @@ class JsonSchemaVariant {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (discriminant != null) {
-      _json['discriminant'] = discriminant;
-    }
-    if (map != null) {
-      _json['map'] = map.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (discriminant != null) 'discriminant': discriminant,
+        if (map != null) 'map': map.map((value) => value.toJson()).toList(),
+      };
 }
 
 class JsonSchema {
@@ -600,71 +545,31 @@ class JsonSchema {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (P_ref != null) {
-      _json['\$ref'] = P_ref;
-    }
-    if (additionalProperties != null) {
-      _json['additionalProperties'] = additionalProperties.toJson();
-    }
-    if (annotations != null) {
-      _json['annotations'] = annotations.toJson();
-    }
-    if (default_ != null) {
-      _json['default'] = default_;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (enum_ != null) {
-      _json['enum'] = enum_;
-    }
-    if (enumDescriptions != null) {
-      _json['enumDescriptions'] = enumDescriptions;
-    }
-    if (format != null) {
-      _json['format'] = format;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (items != null) {
-      _json['items'] = items.toJson();
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (maximum != null) {
-      _json['maximum'] = maximum;
-    }
-    if (minimum != null) {
-      _json['minimum'] = minimum;
-    }
-    if (pattern != null) {
-      _json['pattern'] = pattern;
-    }
-    if (properties != null) {
-      _json['properties'] =
-          properties.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (readOnly != null) {
-      _json['readOnly'] = readOnly;
-    }
-    if (repeated != null) {
-      _json['repeated'] = repeated;
-    }
-    if (required != null) {
-      _json['required'] = required;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (variant != null) {
-      _json['variant'] = variant.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (P_ref != null) '\$ref': P_ref,
+        if (additionalProperties != null)
+          'additionalProperties': additionalProperties.toJson(),
+        if (annotations != null) 'annotations': annotations.toJson(),
+        if (default_ != null) 'default': default_,
+        if (description != null) 'description': description,
+        if (enum_ != null) 'enum': enum_,
+        if (enumDescriptions != null) 'enumDescriptions': enumDescriptions,
+        if (format != null) 'format': format,
+        if (id != null) 'id': id,
+        if (items != null) 'items': items.toJson(),
+        if (location != null) 'location': location,
+        if (maximum != null) 'maximum': maximum,
+        if (minimum != null) 'minimum': minimum,
+        if (pattern != null) 'pattern': pattern,
+        if (properties != null)
+          'properties':
+              properties.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (readOnly != null) 'readOnly': readOnly,
+        if (repeated != null) 'repeated': repeated,
+        if (required != null) 'required': required,
+        if (type != null) 'type': type,
+        if (variant != null) 'variant': variant.toJson(),
+      };
 }
 
 /// The scope value.
@@ -680,13 +585,9 @@ class RestDescriptionAuthOauth2ScopesValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+      };
 }
 
 /// OAuth 2.0 authentication information.
@@ -708,14 +609,11 @@ class RestDescriptionAuthOauth2 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (scopes != null) {
-      _json['scopes'] =
-          scopes.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (scopes != null)
+          'scopes':
+              scopes.map((key, item) => core.MapEntry(key, item.toJson())),
+      };
 }
 
 /// Authentication information.
@@ -732,13 +630,9 @@ class RestDescriptionAuth {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (oauth2 != null) {
-      _json['oauth2'] = oauth2.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (oauth2 != null) 'oauth2': oauth2.toJson(),
+      };
 }
 
 /// Links to 16x16 and 32x32 icons representing the API.
@@ -760,16 +654,10 @@ class RestDescriptionIcons {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x16 != null) {
-      _json['x16'] = x16;
-    }
-    if (x32 != null) {
-      _json['x32'] = x32;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x16 != null) 'x16': x16,
+        if (x32 != null) 'x32': x32,
+      };
 }
 
 class RestDescription {
@@ -1006,104 +894,47 @@ class RestDescription {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auth != null) {
-      _json['auth'] = auth.toJson();
-    }
-    if (basePath != null) {
-      _json['basePath'] = basePath;
-    }
-    if (baseUrl != null) {
-      _json['baseUrl'] = baseUrl;
-    }
-    if (batchPath != null) {
-      _json['batchPath'] = batchPath;
-    }
-    if (canonicalName != null) {
-      _json['canonicalName'] = canonicalName;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (discoveryVersion != null) {
-      _json['discoveryVersion'] = discoveryVersion;
-    }
-    if (documentationLink != null) {
-      _json['documentationLink'] = documentationLink;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (exponentialBackoffDefault != null) {
-      _json['exponentialBackoffDefault'] = exponentialBackoffDefault;
-    }
-    if (features != null) {
-      _json['features'] = features;
-    }
-    if (icons != null) {
-      _json['icons'] = icons.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (methods != null) {
-      _json['methods'] =
-          methods.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (ownerDomain != null) {
-      _json['ownerDomain'] = ownerDomain;
-    }
-    if (ownerName != null) {
-      _json['ownerName'] = ownerName;
-    }
-    if (packagePath != null) {
-      _json['packagePath'] = packagePath;
-    }
-    if (parameters != null) {
-      _json['parameters'] =
-          parameters.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (protocol != null) {
-      _json['protocol'] = protocol;
-    }
-    if (resources != null) {
-      _json['resources'] =
-          resources.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (revision != null) {
-      _json['revision'] = revision;
-    }
-    if (rootUrl != null) {
-      _json['rootUrl'] = rootUrl;
-    }
-    if (schemas != null) {
-      _json['schemas'] =
-          schemas.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (servicePath != null) {
-      _json['servicePath'] = servicePath;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    if (versionModule != null) {
-      _json['version_module'] = versionModule;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auth != null) 'auth': auth.toJson(),
+        if (basePath != null) 'basePath': basePath,
+        if (baseUrl != null) 'baseUrl': baseUrl,
+        if (batchPath != null) 'batchPath': batchPath,
+        if (canonicalName != null) 'canonicalName': canonicalName,
+        if (description != null) 'description': description,
+        if (discoveryVersion != null) 'discoveryVersion': discoveryVersion,
+        if (documentationLink != null) 'documentationLink': documentationLink,
+        if (etag != null) 'etag': etag,
+        if (exponentialBackoffDefault != null)
+          'exponentialBackoffDefault': exponentialBackoffDefault,
+        if (features != null) 'features': features,
+        if (icons != null) 'icons': icons.toJson(),
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (labels != null) 'labels': labels,
+        if (methods != null)
+          'methods':
+              methods.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (name != null) 'name': name,
+        if (ownerDomain != null) 'ownerDomain': ownerDomain,
+        if (ownerName != null) 'ownerName': ownerName,
+        if (packagePath != null) 'packagePath': packagePath,
+        if (parameters != null)
+          'parameters':
+              parameters.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (protocol != null) 'protocol': protocol,
+        if (resources != null)
+          'resources':
+              resources.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (revision != null) 'revision': revision,
+        if (rootUrl != null) 'rootUrl': rootUrl,
+        if (schemas != null)
+          'schemas':
+              schemas.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (servicePath != null) 'servicePath': servicePath,
+        if (title != null) 'title': title,
+        if (version != null) 'version': version,
+        if (versionModule != null) 'version_module': versionModule,
+      };
 }
 
 /// Supports the Resumable Media Upload protocol.
@@ -1127,16 +958,10 @@ class RestMethodMediaUploadProtocolsResumable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (multipart != null) {
-      _json['multipart'] = multipart;
-    }
-    if (path != null) {
-      _json['path'] = path;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (multipart != null) 'multipart': multipart,
+        if (path != null) 'path': path,
+      };
 }
 
 /// Supports uploading as a single HTTP request.
@@ -1160,16 +985,10 @@ class RestMethodMediaUploadProtocolsSimple {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (multipart != null) {
-      _json['multipart'] = multipart;
-    }
-    if (path != null) {
-      _json['path'] = path;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (multipart != null) 'multipart': multipart,
+        if (path != null) 'path': path,
+      };
 }
 
 /// Supported upload protocols.
@@ -1193,16 +1012,10 @@ class RestMethodMediaUploadProtocols {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resumable != null) {
-      _json['resumable'] = resumable.toJson();
-    }
-    if (simple != null) {
-      _json['simple'] = simple.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resumable != null) 'resumable': resumable.toJson(),
+        if (simple != null) 'simple': simple.toJson(),
+      };
 }
 
 /// Media upload parameters.
@@ -1233,19 +1046,11 @@ class RestMethodMediaUpload {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accept != null) {
-      _json['accept'] = accept;
-    }
-    if (maxSize != null) {
-      _json['maxSize'] = maxSize;
-    }
-    if (protocols != null) {
-      _json['protocols'] = protocols.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accept != null) 'accept': accept,
+        if (maxSize != null) 'maxSize': maxSize,
+        if (protocols != null) 'protocols': protocols.toJson(),
+      };
 }
 
 /// The schema for the request.
@@ -1267,16 +1072,10 @@ class RestMethodRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (P_ref != null) {
-      _json['\$ref'] = P_ref;
-    }
-    if (parameterName != null) {
-      _json['parameterName'] = parameterName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (P_ref != null) '\$ref': P_ref,
+        if (parameterName != null) 'parameterName': parameterName,
+      };
 }
 
 /// The schema for the response.
@@ -1292,13 +1091,9 @@ class RestMethodResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (P_ref != null) {
-      _json['\$ref'] = P_ref;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (P_ref != null) '\$ref': P_ref,
+      };
 }
 
 class RestMethod {
@@ -1425,56 +1220,29 @@ class RestMethod {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (etagRequired != null) {
-      _json['etagRequired'] = etagRequired;
-    }
-    if (httpMethod != null) {
-      _json['httpMethod'] = httpMethod;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (mediaUpload != null) {
-      _json['mediaUpload'] = mediaUpload.toJson();
-    }
-    if (parameterOrder != null) {
-      _json['parameterOrder'] = parameterOrder;
-    }
-    if (parameters != null) {
-      _json['parameters'] =
-          parameters.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (path != null) {
-      _json['path'] = path;
-    }
-    if (request != null) {
-      _json['request'] = request.toJson();
-    }
-    if (response != null) {
-      _json['response'] = response.toJson();
-    }
-    if (scopes != null) {
-      _json['scopes'] = scopes;
-    }
-    if (supportsMediaDownload != null) {
-      _json['supportsMediaDownload'] = supportsMediaDownload;
-    }
-    if (supportsMediaUpload != null) {
-      _json['supportsMediaUpload'] = supportsMediaUpload;
-    }
-    if (supportsSubscription != null) {
-      _json['supportsSubscription'] = supportsSubscription;
-    }
-    if (useMediaDownloadService != null) {
-      _json['useMediaDownloadService'] = useMediaDownloadService;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (etagRequired != null) 'etagRequired': etagRequired,
+        if (httpMethod != null) 'httpMethod': httpMethod,
+        if (id != null) 'id': id,
+        if (mediaUpload != null) 'mediaUpload': mediaUpload.toJson(),
+        if (parameterOrder != null) 'parameterOrder': parameterOrder,
+        if (parameters != null)
+          'parameters':
+              parameters.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (path != null) 'path': path,
+        if (request != null) 'request': request.toJson(),
+        if (response != null) 'response': response.toJson(),
+        if (scopes != null) 'scopes': scopes,
+        if (supportsMediaDownload != null)
+          'supportsMediaDownload': supportsMediaDownload,
+        if (supportsMediaUpload != null)
+          'supportsMediaUpload': supportsMediaUpload,
+        if (supportsSubscription != null)
+          'supportsSubscription': supportsSubscription,
+        if (useMediaDownloadService != null)
+          'useMediaDownloadService': useMediaDownloadService,
+      };
 }
 
 class RestResource {
@@ -1509,16 +1277,12 @@ class RestResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (methods != null) {
-      _json['methods'] =
-          methods.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (resources != null) {
-      _json['resources'] =
-          resources.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (methods != null)
+          'methods':
+              methods.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (resources != null)
+          'resources':
+              resources.map((key, item) => core.MapEntry(key, item.toJson())),
+      };
 }

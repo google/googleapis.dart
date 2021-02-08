@@ -977,16 +977,10 @@ class AccessSecretVersionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (payload != null) {
-      _json['payload'] = payload.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (payload != null) 'payload': payload.toJson(),
+      };
 }
 
 /// Request message for SecretManagerService.AddSecretVersion.
@@ -1005,13 +999,9 @@ class AddSecretVersionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (payload != null) {
-      _json['payload'] = payload.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (payload != null) 'payload': payload.toJson(),
+      };
 }
 
 /// Specifies the audit configuration for a service.
@@ -1055,17 +1045,12 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditLogConfigs != null) {
-      _json['auditLogConfigs'] =
-          auditLogConfigs.map((value) => value.toJson()).toList();
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditLogConfigs != null)
+          'auditLogConfigs':
+              auditLogConfigs.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service,
+      };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -1102,16 +1087,10 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exemptedMembers != null) {
-      _json['exemptedMembers'] = exemptedMembers;
-    }
-    if (logType != null) {
-      _json['logType'] = logType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
+        if (logType != null) 'logType': logType,
+      };
 }
 
 /// A replication policy that replicates the Secret payload without any
@@ -1137,13 +1116,10 @@ class Automatic {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customerManagedEncryption != null) {
-      _json['customerManagedEncryption'] = customerManagedEncryption.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customerManagedEncryption != null)
+          'customerManagedEncryption': customerManagedEncryption.toJson(),
+      };
 }
 
 /// The replication status of a SecretVersion using automatic replication.
@@ -1167,13 +1143,10 @@ class AutomaticStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customerManagedEncryption != null) {
-      _json['customerManagedEncryption'] = customerManagedEncryption.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customerManagedEncryption != null)
+          'customerManagedEncryption': customerManagedEncryption.toJson(),
+      };
 }
 
 /// Associates `members` with a `role`.
@@ -1242,19 +1215,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// Configuration for encrypting secret payloads using customer-managed
@@ -1280,13 +1245,9 @@ class CustomerManagedEncryption {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kmsKeyName != null) {
-      _json['kmsKeyName'] = kmsKeyName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
+      };
 }
 
 /// Describes the status of customer-managed encryption.
@@ -1306,13 +1267,9 @@ class CustomerManagedEncryptionStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kmsKeyVersionName != null) {
-      _json['kmsKeyVersionName'] = kmsKeyVersionName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName,
+      };
 }
 
 /// Request message for SecretManagerService.DestroySecretVersion.
@@ -1323,10 +1280,7 @@ class DestroySecretVersionRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Request message for SecretManagerService.DisableSecretVersion.
@@ -1337,10 +1291,7 @@ class DisableSecretVersionRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1357,10 +1308,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Request message for SecretManagerService.EnableSecretVersion.
@@ -1371,10 +1319,7 @@ class EnableSecretVersionRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1438,22 +1383,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// The response message for Locations.ListLocations.
@@ -1478,16 +1413,11 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message for SecretManagerService.ListSecretVersions.
@@ -1522,19 +1452,12 @@ class ListSecretVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (totalSize != null) {
-      _json['totalSize'] = totalSize;
-    }
-    if (versions != null) {
-      _json['versions'] = versions.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (totalSize != null) 'totalSize': totalSize,
+        if (versions != null)
+          'versions': versions.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for SecretManagerService.ListSecrets.
@@ -1568,19 +1491,12 @@ class ListSecretsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (secrets != null) {
-      _json['secrets'] = secrets.map((value) => value.toJson()).toList();
-    }
-    if (totalSize != null) {
-      _json['totalSize'] = totalSize;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (secrets != null)
+          'secrets': secrets.map((value) => value.toJson()).toList(),
+        if (totalSize != null) 'totalSize': totalSize,
+      };
 }
 
 /// A resource that represents Google Cloud Platform location.
@@ -1645,25 +1561,13 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (labels != null) 'labels': labels,
+        if (locationId != null) 'locationId': locationId,
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -1770,23 +1674,14 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditConfigs != null) {
-      _json['auditConfigs'] =
-          auditConfigs.map((value) => value.toJson()).toList();
-    }
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditConfigs != null)
+          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Represents a Replica for this Secret.
@@ -1819,16 +1714,11 @@ class Replica {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customerManagedEncryption != null) {
-      _json['customerManagedEncryption'] = customerManagedEncryption.toJson();
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customerManagedEncryption != null)
+          'customerManagedEncryption': customerManagedEncryption.toJson(),
+        if (location != null) 'location': location,
+      };
 }
 
 /// Describes the status of a user-managed replica for the SecretVersion.
@@ -1860,16 +1750,11 @@ class ReplicaStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customerManagedEncryption != null) {
-      _json['customerManagedEncryption'] = customerManagedEncryption.toJson();
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customerManagedEncryption != null)
+          'customerManagedEncryption': customerManagedEncryption.toJson(),
+        if (location != null) 'location': location,
+      };
 }
 
 /// A policy that defines the replication and encryption configuration of data.
@@ -1893,16 +1778,10 @@ class Replication {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (automatic != null) {
-      _json['automatic'] = automatic.toJson();
-    }
-    if (userManaged != null) {
-      _json['userManaged'] = userManaged.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (automatic != null) 'automatic': automatic.toJson(),
+        if (userManaged != null) 'userManaged': userManaged.toJson(),
+      };
 }
 
 /// The replication status of a SecretVersion.
@@ -1932,16 +1811,10 @@ class ReplicationStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (automatic != null) {
-      _json['automatic'] = automatic.toJson();
-    }
-    if (userManaged != null) {
-      _json['userManaged'] = userManaged.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (automatic != null) 'automatic': automatic.toJson(),
+        if (userManaged != null) 'userManaged': userManaged.toJson(),
+      };
 }
 
 /// A Secret is a logical secret whose value and versions can be accessed.
@@ -2021,28 +1894,14 @@ class Secret {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (expireTime != null) {
-      _json['expireTime'] = expireTime;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (replication != null) {
-      _json['replication'] = replication.toJson();
-    }
-    if (ttl != null) {
-      _json['ttl'] = ttl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (expireTime != null) 'expireTime': expireTime,
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+        if (replication != null) 'replication': replication.toJson(),
+        if (ttl != null) 'ttl': ttl,
+      };
 }
 
 /// A secret payload resource in the Secret Manager API.
@@ -2069,13 +1928,9 @@ class SecretPayload {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (data != null) {
-      _json['data'] = data;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (data != null) 'data': data,
+      };
 }
 
 /// A secret version resource in the Secret Manager API.
@@ -2137,25 +1992,14 @@ class SecretVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (destroyTime != null) {
-      _json['destroyTime'] = destroyTime;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (replicationStatus != null) {
-      _json['replicationStatus'] = replicationStatus.toJson();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (destroyTime != null) 'destroyTime': destroyTime,
+        if (name != null) 'name': name,
+        if (replicationStatus != null)
+          'replicationStatus': replicationStatus.toJson(),
+        if (state != null) 'state': state,
+      };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -2185,16 +2029,10 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -2216,13 +2054,9 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -2241,13 +2075,9 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// A replication policy that replicates the Secret payload into the locations
@@ -2271,13 +2101,10 @@ class UserManaged {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (replicas != null) {
-      _json['replicas'] = replicas.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (replicas != null)
+          'replicas': replicas.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The replication status of a SecretVersion using user-managed replication.
@@ -2300,11 +2127,8 @@ class UserManagedStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (replicas != null) {
-      _json['replicas'] = replicas.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (replicas != null)
+          'replicas': replicas.map((value) => value.toJson()).toList(),
+      };
 }

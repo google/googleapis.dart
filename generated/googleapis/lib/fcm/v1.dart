@@ -225,34 +225,17 @@ class AndroidConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (collapseKey != null) {
-      _json['collapseKey'] = collapseKey;
-    }
-    if (data != null) {
-      _json['data'] = data;
-    }
-    if (directBootOk != null) {
-      _json['directBootOk'] = directBootOk;
-    }
-    if (fcmOptions != null) {
-      _json['fcmOptions'] = fcmOptions.toJson();
-    }
-    if (notification != null) {
-      _json['notification'] = notification.toJson();
-    }
-    if (priority != null) {
-      _json['priority'] = priority;
-    }
-    if (restrictedPackageName != null) {
-      _json['restrictedPackageName'] = restrictedPackageName;
-    }
-    if (ttl != null) {
-      _json['ttl'] = ttl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (collapseKey != null) 'collapseKey': collapseKey,
+        if (data != null) 'data': data,
+        if (directBootOk != null) 'directBootOk': directBootOk,
+        if (fcmOptions != null) 'fcmOptions': fcmOptions.toJson(),
+        if (notification != null) 'notification': notification.toJson(),
+        if (priority != null) 'priority': priority,
+        if (restrictedPackageName != null)
+          'restrictedPackageName': restrictedPackageName,
+        if (ttl != null) 'ttl': ttl,
+      };
 }
 
 /// Options for features provided by the FCM SDK for Android.
@@ -268,13 +251,9 @@ class AndroidFcmOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (analyticsLabel != null) {
-      _json['analyticsLabel'] = analyticsLabel;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (analyticsLabel != null) 'analyticsLabel': analyticsLabel,
+      };
 }
 
 /// Notification to send to android devices.
@@ -577,85 +556,36 @@ class AndroidNotification {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (body != null) {
-      _json['body'] = body;
-    }
-    if (bodyLocArgs != null) {
-      _json['bodyLocArgs'] = bodyLocArgs;
-    }
-    if (bodyLocKey != null) {
-      _json['bodyLocKey'] = bodyLocKey;
-    }
-    if (channelId != null) {
-      _json['channelId'] = channelId;
-    }
-    if (clickAction != null) {
-      _json['clickAction'] = clickAction;
-    }
-    if (color != null) {
-      _json['color'] = color;
-    }
-    if (defaultLightSettings != null) {
-      _json['defaultLightSettings'] = defaultLightSettings;
-    }
-    if (defaultSound != null) {
-      _json['defaultSound'] = defaultSound;
-    }
-    if (defaultVibrateTimings != null) {
-      _json['defaultVibrateTimings'] = defaultVibrateTimings;
-    }
-    if (eventTime != null) {
-      _json['eventTime'] = eventTime;
-    }
-    if (icon != null) {
-      _json['icon'] = icon;
-    }
-    if (image != null) {
-      _json['image'] = image;
-    }
-    if (lightSettings != null) {
-      _json['lightSettings'] = lightSettings.toJson();
-    }
-    if (localOnly != null) {
-      _json['localOnly'] = localOnly;
-    }
-    if (notificationCount != null) {
-      _json['notificationCount'] = notificationCount;
-    }
-    if (notificationPriority != null) {
-      _json['notificationPriority'] = notificationPriority;
-    }
-    if (sound != null) {
-      _json['sound'] = sound;
-    }
-    if (sticky != null) {
-      _json['sticky'] = sticky;
-    }
-    if (tag != null) {
-      _json['tag'] = tag;
-    }
-    if (ticker != null) {
-      _json['ticker'] = ticker;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (titleLocArgs != null) {
-      _json['titleLocArgs'] = titleLocArgs;
-    }
-    if (titleLocKey != null) {
-      _json['titleLocKey'] = titleLocKey;
-    }
-    if (vibrateTimings != null) {
-      _json['vibrateTimings'] = vibrateTimings;
-    }
-    if (visibility != null) {
-      _json['visibility'] = visibility;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (body != null) 'body': body,
+        if (bodyLocArgs != null) 'bodyLocArgs': bodyLocArgs,
+        if (bodyLocKey != null) 'bodyLocKey': bodyLocKey,
+        if (channelId != null) 'channelId': channelId,
+        if (clickAction != null) 'clickAction': clickAction,
+        if (color != null) 'color': color,
+        if (defaultLightSettings != null)
+          'defaultLightSettings': defaultLightSettings,
+        if (defaultSound != null) 'defaultSound': defaultSound,
+        if (defaultVibrateTimings != null)
+          'defaultVibrateTimings': defaultVibrateTimings,
+        if (eventTime != null) 'eventTime': eventTime,
+        if (icon != null) 'icon': icon,
+        if (image != null) 'image': image,
+        if (lightSettings != null) 'lightSettings': lightSettings.toJson(),
+        if (localOnly != null) 'localOnly': localOnly,
+        if (notificationCount != null) 'notificationCount': notificationCount,
+        if (notificationPriority != null)
+          'notificationPriority': notificationPriority,
+        if (sound != null) 'sound': sound,
+        if (sticky != null) 'sticky': sticky,
+        if (tag != null) 'tag': tag,
+        if (ticker != null) 'ticker': ticker,
+        if (title != null) 'title': title,
+        if (titleLocArgs != null) 'titleLocArgs': titleLocArgs,
+        if (titleLocKey != null) 'titleLocKey': titleLocKey,
+        if (vibrateTimings != null) 'vibrateTimings': vibrateTimings,
+        if (visibility != null) 'visibility': visibility,
+      };
 }
 
 /// [Apple Push Notification Service](https://goo.gl/MXRTPa) specific options.
@@ -709,19 +639,11 @@ class ApnsConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fcmOptions != null) {
-      _json['fcmOptions'] = fcmOptions.toJson();
-    }
-    if (headers != null) {
-      _json['headers'] = headers;
-    }
-    if (payload != null) {
-      _json['payload'] = payload;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fcmOptions != null) 'fcmOptions': fcmOptions.toJson(),
+        if (headers != null) 'headers': headers,
+        if (payload != null) 'payload': payload,
+      };
 }
 
 /// Options for features provided by the FCM SDK for iOS.
@@ -746,16 +668,10 @@ class ApnsFcmOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (analyticsLabel != null) {
-      _json['analyticsLabel'] = analyticsLabel;
-    }
-    if (image != null) {
-      _json['image'] = image;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (analyticsLabel != null) 'analyticsLabel': analyticsLabel,
+        if (image != null) 'image': image,
+      };
 }
 
 /// Represents a color in the RGBA color space.
@@ -846,22 +762,12 @@ class Color {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alpha != null) {
-      _json['alpha'] = alpha;
-    }
-    if (blue != null) {
-      _json['blue'] = blue;
-    }
-    if (green != null) {
-      _json['green'] = green;
-    }
-    if (red != null) {
-      _json['red'] = red;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alpha != null) 'alpha': alpha,
+        if (blue != null) 'blue': blue,
+        if (green != null) 'green': green,
+        if (red != null) 'red': red,
+      };
 }
 
 /// Platform independent options for features provided by the FCM SDKs.
@@ -877,13 +783,9 @@ class FcmOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (analyticsLabel != null) {
-      _json['analyticsLabel'] = analyticsLabel;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (analyticsLabel != null) 'analyticsLabel': analyticsLabel,
+      };
 }
 
 /// Settings to control notification LED.
@@ -925,19 +827,11 @@ class LightSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (color != null) {
-      _json['color'] = color.toJson();
-    }
-    if (lightOffDuration != null) {
-      _json['lightOffDuration'] = lightOffDuration;
-    }
-    if (lightOnDuration != null) {
-      _json['lightOnDuration'] = lightOnDuration;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (color != null) 'color': color.toJson(),
+        if (lightOffDuration != null) 'lightOffDuration': lightOffDuration,
+        if (lightOnDuration != null) 'lightOnDuration': lightOnDuration,
+      };
 }
 
 /// Message to send by Firebase Cloud Messaging Service.
@@ -1036,40 +930,18 @@ class Message {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (android != null) {
-      _json['android'] = android.toJson();
-    }
-    if (apns != null) {
-      _json['apns'] = apns.toJson();
-    }
-    if (condition != null) {
-      _json['condition'] = condition;
-    }
-    if (data != null) {
-      _json['data'] = data;
-    }
-    if (fcmOptions != null) {
-      _json['fcmOptions'] = fcmOptions.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (notification != null) {
-      _json['notification'] = notification.toJson();
-    }
-    if (token != null) {
-      _json['token'] = token;
-    }
-    if (topic != null) {
-      _json['topic'] = topic;
-    }
-    if (webpush != null) {
-      _json['webpush'] = webpush.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (android != null) 'android': android.toJson(),
+        if (apns != null) 'apns': apns.toJson(),
+        if (condition != null) 'condition': condition,
+        if (data != null) 'data': data,
+        if (fcmOptions != null) 'fcmOptions': fcmOptions.toJson(),
+        if (name != null) 'name': name,
+        if (notification != null) 'notification': notification.toJson(),
+        if (token != null) 'token': token,
+        if (topic != null) 'topic': topic,
+        if (webpush != null) 'webpush': webpush.toJson(),
+      };
 }
 
 /// Basic notification template to use across all platforms.
@@ -1104,19 +976,11 @@ class Notification {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (body != null) {
-      _json['body'] = body;
-    }
-    if (image != null) {
-      _json['image'] = image;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (body != null) 'body': body,
+        if (image != null) 'image': image,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Request to send a message to specified target.
@@ -1141,16 +1005,10 @@ class SendMessageRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (message != null) {
-      _json['message'] = message.toJson();
-    }
-    if (validateOnly != null) {
-      _json['validateOnly'] = validateOnly;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (message != null) 'message': message.toJson(),
+        if (validateOnly != null) 'validateOnly': validateOnly,
+      };
 }
 
 /// [Webpush protocol](https://tools.ietf.org/html/rfc8030) options.
@@ -1217,22 +1075,12 @@ class WebpushConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (data != null) {
-      _json['data'] = data;
-    }
-    if (fcmOptions != null) {
-      _json['fcmOptions'] = fcmOptions.toJson();
-    }
-    if (headers != null) {
-      _json['headers'] = headers;
-    }
-    if (notification != null) {
-      _json['notification'] = notification;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (data != null) 'data': data,
+        if (fcmOptions != null) 'fcmOptions': fcmOptions.toJson(),
+        if (headers != null) 'headers': headers,
+        if (notification != null) 'notification': notification,
+      };
 }
 
 /// Options for features provided by the FCM SDK for Web.
@@ -1256,14 +1104,8 @@ class WebpushFcmOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (analyticsLabel != null) {
-      _json['analyticsLabel'] = analyticsLabel;
-    }
-    if (link != null) {
-      _json['link'] = link;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (analyticsLabel != null) 'analyticsLabel': analyticsLabel,
+        if (link != null) 'link': link,
+      };
 }

@@ -858,20 +858,14 @@ class ObjectType extends ComplexDartSchemaType {
     }
 
     final toJsonString = StringBuffer();
-    toJsonString.writeln('  ${jsonType.declaration} toJson() {');
-    toJsonString.writeln(
-      'final _json = <${jsonType.keyJsonType.declaration}, '
-      '${jsonType.valueJsonType.declaration}$orNull>{};',
-    );
+    toJsonString.writeln('${jsonType.declaration} toJson() =>');
+    toJsonString.writeln('{');
     for (var property in properties) {
-      toJsonString.writeln('    if (${property.name} != null) {');
-      toJsonString
-          .writeln("      _json['${escapeString(property.jsonName)}'] = "
-              '${property.type.jsonEncode('${property.name}$notNull')};');
-      toJsonString.writeln('    }');
+      toJsonString.writeln('if (${property.name} != null)');
+      toJsonString.writeln("'${escapeString(property.jsonName)}':"
+          '${property.type.jsonEncode('${property.name}$notNull')},');
     }
-    toJsonString.writeln('    return _json;');
-    toJsonString.write('  }');
+    toJsonString.write('};');
 
     return '''
 ${comment.asDartDoc(0)}class $className $superClassString{

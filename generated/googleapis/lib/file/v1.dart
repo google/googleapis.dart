@@ -1133,43 +1133,20 @@ class Backup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (capacityGb != null) {
-      _json['capacityGb'] = capacityGb;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (downloadBytes != null) {
-      _json['downloadBytes'] = downloadBytes;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (sourceFileShare != null) {
-      _json['sourceFileShare'] = sourceFileShare;
-    }
-    if (sourceInstance != null) {
-      _json['sourceInstance'] = sourceInstance;
-    }
-    if (sourceInstanceTier != null) {
-      _json['sourceInstanceTier'] = sourceInstanceTier;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (storageBytes != null) {
-      _json['storageBytes'] = storageBytes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (capacityGb != null) 'capacityGb': capacityGb,
+        if (createTime != null) 'createTime': createTime,
+        if (description != null) 'description': description,
+        if (downloadBytes != null) 'downloadBytes': downloadBytes,
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+        if (sourceFileShare != null) 'sourceFileShare': sourceFileShare,
+        if (sourceInstance != null) 'sourceInstance': sourceInstance,
+        if (sourceInstanceTier != null)
+          'sourceInstanceTier': sourceInstanceTier,
+        if (state != null) 'state': state,
+        if (storageBytes != null) 'storageBytes': storageBytes,
+      };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -1180,10 +1157,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Time window specified for daily operations.
@@ -1208,16 +1182,10 @@ class DailyCycle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (duration != null) {
-      _json['duration'] = duration;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (duration != null) 'duration': duration,
+        if (startTime != null) 'startTime': startTime.toJson(),
+      };
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.
@@ -1260,19 +1228,11 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (day != null) {
-      _json['day'] = day;
-    }
-    if (month != null) {
-      _json['month'] = month;
-    }
-    if (year != null) {
-      _json['year'] = year;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (day != null) 'day': day,
+        if (month != null) 'month': month,
+        if (year != null) 'year': year,
+      };
 }
 
 /// DenyMaintenancePeriod definition.
@@ -1318,19 +1278,11 @@ class DenyMaintenancePeriod {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endDate != null) {
-      _json['endDate'] = endDate.toJson();
-    }
-    if (startDate != null) {
-      _json['startDate'] = startDate.toJson();
-    }
-    if (time != null) {
-      _json['time'] = time.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endDate != null) 'endDate': endDate.toJson(),
+        if (startDate != null) 'startDate': startDate.toJson(),
+        if (time != null) 'time': time.toJson(),
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1347,10 +1299,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// File share configuration for the instance.
@@ -1393,23 +1342,14 @@ class FileShareConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (capacityGb != null) {
-      _json['capacityGb'] = capacityGb;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (nfsExportOptions != null) {
-      _json['nfsExportOptions'] =
-          nfsExportOptions.map((value) => value.toJson()).toList();
-    }
-    if (sourceBackup != null) {
-      _json['sourceBackup'] = sourceBackup;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (capacityGb != null) 'capacityGb': capacityGb,
+        if (name != null) 'name': name,
+        if (nfsExportOptions != null)
+          'nfsExportOptions':
+              nfsExportOptions.map((value) => value.toJson()).toList(),
+        if (sourceBackup != null) 'sourceBackup': sourceBackup,
+      };
 }
 
 class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
@@ -1622,57 +1562,31 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (consumerDefinedName != null) {
-      _json['consumerDefinedName'] = consumerDefinedName;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (maintenancePolicyNames != null) {
-      _json['maintenancePolicyNames'] = maintenancePolicyNames;
-    }
-    if (maintenanceSchedules != null) {
-      _json['maintenanceSchedules'] = maintenanceSchedules
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (maintenanceSettings != null) {
-      _json['maintenanceSettings'] = maintenanceSettings.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (producerMetadata != null) {
-      _json['producerMetadata'] = producerMetadata;
-    }
-    if (provisionedResources != null) {
-      _json['provisionedResources'] =
-          provisionedResources.map((value) => value.toJson()).toList();
-    }
-    if (slmInstanceTemplate != null) {
-      _json['slmInstanceTemplate'] = slmInstanceTemplate;
-    }
-    if (sloMetadata != null) {
-      _json['sloMetadata'] = sloMetadata.toJson();
-    }
-    if (softwareVersions != null) {
-      _json['softwareVersions'] = softwareVersions;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (tenantProjectId != null) {
-      _json['tenantProjectId'] = tenantProjectId;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (consumerDefinedName != null)
+          'consumerDefinedName': consumerDefinedName,
+        if (createTime != null) 'createTime': createTime,
+        if (labels != null) 'labels': labels,
+        if (maintenancePolicyNames != null)
+          'maintenancePolicyNames': maintenancePolicyNames,
+        if (maintenanceSchedules != null)
+          'maintenanceSchedules': maintenanceSchedules
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (maintenanceSettings != null)
+          'maintenanceSettings': maintenanceSettings.toJson(),
+        if (name != null) 'name': name,
+        if (producerMetadata != null) 'producerMetadata': producerMetadata,
+        if (provisionedResources != null)
+          'provisionedResources':
+              provisionedResources.map((value) => value.toJson()).toList(),
+        if (slmInstanceTemplate != null)
+          'slmInstanceTemplate': slmInstanceTemplate,
+        if (sloMetadata != null) 'sloMetadata': sloMetadata.toJson(),
+        if (softwareVersions != null) 'softwareVersions': softwareVersions,
+        if (state != null) 'state': state,
+        if (tenantProjectId != null) 'tenantProjectId': tenantProjectId,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Maintenance schedule which is exposed to customer and potentially end user,
@@ -1726,25 +1640,15 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (canReschedule != null) {
-      _json['canReschedule'] = canReschedule;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (rolloutManagementPolicy != null) {
-      _json['rolloutManagementPolicy'] = rolloutManagementPolicy;
-    }
-    if (scheduleDeadlineTime != null) {
-      _json['scheduleDeadlineTime'] = scheduleDeadlineTime;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (canReschedule != null) 'canReschedule': canReschedule,
+        if (endTime != null) 'endTime': endTime,
+        if (rolloutManagementPolicy != null)
+          'rolloutManagementPolicy': rolloutManagementPolicy,
+        if (scheduleDeadlineTime != null)
+          'scheduleDeadlineTime': scheduleDeadlineTime,
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// Maintenance settings associated with instance.
@@ -1793,17 +1697,12 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exclude != null) {
-      _json['exclude'] = exclude;
-    }
-    if (maintenancePolicies != null) {
-      _json['maintenancePolicies'] = maintenancePolicies
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exclude != null) 'exclude': exclude,
+        if (maintenancePolicies != null)
+          'maintenancePolicies': maintenancePolicies
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+      };
 }
 
 /// Node information for custom per-node SLO implementations.
@@ -1849,19 +1748,12 @@ class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exclusions != null) {
-      _json['exclusions'] = exclusions.map((value) => value.toJson()).toList();
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (nodeId != null) {
-      _json['nodeId'] = nodeId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exclusions != null)
+          'exclusions': exclusions.map((value) => value.toJson()).toList(),
+        if (location != null) 'location': location,
+        if (nodeId != null) 'nodeId': nodeId,
+      };
 }
 
 /// Describes provisioned dataplane resources.
@@ -1892,16 +1784,10 @@ class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceType != null) {
-      _json['resourceType'] = resourceType;
-    }
-    if (resourceUrl != null) {
-      _json['resourceUrl'] = resourceUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceType != null) 'resourceType': resourceType,
+        if (resourceUrl != null) 'resourceUrl': resourceUrl,
+      };
 }
 
 /// SloEligibility is a tuple containing eligibility value: true if an instance
@@ -1929,16 +1815,10 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (eligible != null) {
-      _json['eligible'] = eligible;
-    }
-    if (reason != null) {
-      _json['reason'] = reason;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (eligible != null) 'eligible': eligible,
+        if (reason != null) 'reason': reason,
+      };
 }
 
 /// SloExclusion represents an exclusion in SLI calculation applies to all SLOs.
@@ -1990,22 +1870,12 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (duration != null) {
-      _json['duration'] = duration;
-    }
-    if (reason != null) {
-      _json['reason'] = reason;
-    }
-    if (sliName != null) {
-      _json['sliName'] = sliName;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (duration != null) 'duration': duration,
+        if (reason != null) 'reason': reason,
+        if (sliName != null) 'sliName': sliName,
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// SloMetadata contains resources required for proper SLO classification of the
@@ -2079,22 +1949,14 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (eligibility != null) {
-      _json['eligibility'] = eligibility.toJson();
-    }
-    if (exclusions != null) {
-      _json['exclusions'] = exclusions.map((value) => value.toJson()).toList();
-    }
-    if (nodes != null) {
-      _json['nodes'] = nodes.map((value) => value.toJson()).toList();
-    }
-    if (tier != null) {
-      _json['tier'] = tier;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (eligibility != null) 'eligibility': eligibility.toJson(),
+        if (exclusions != null)
+          'exclusions': exclusions.map((value) => value.toJson()).toList(),
+        if (nodes != null)
+          'nodes': nodes.map((value) => value.toJson()).toList(),
+        if (tier != null) 'tier': tier,
+      };
 }
 
 /// A Cloud Filestore instance.
@@ -2214,40 +2076,20 @@ class Instance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (fileShares != null) {
-      _json['fileShares'] = fileShares.map((value) => value.toJson()).toList();
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (networks != null) {
-      _json['networks'] = networks.map((value) => value.toJson()).toList();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (statusMessage != null) {
-      _json['statusMessage'] = statusMessage;
-    }
-    if (tier != null) {
-      _json['tier'] = tier;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (description != null) 'description': description,
+        if (etag != null) 'etag': etag,
+        if (fileShares != null)
+          'fileShares': fileShares.map((value) => value.toJson()).toList(),
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+        if (networks != null)
+          'networks': networks.map((value) => value.toJson()).toList(),
+        if (state != null) 'state': state,
+        if (statusMessage != null) 'statusMessage': statusMessage,
+        if (tier != null) 'tier': tier,
+      };
 }
 
 /// ListBackupsResponse is the result of ListBackupsRequest.
@@ -2288,19 +2130,12 @@ class ListBackupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backups != null) {
-      _json['backups'] = backups.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (unreachable != null) {
-      _json['unreachable'] = unreachable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backups != null)
+          'backups': backups.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (unreachable != null) 'unreachable': unreachable,
+      };
 }
 
 /// ListInstancesResponse is the result of ListInstancesRequest.
@@ -2341,19 +2176,12 @@ class ListInstancesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (instances != null) {
-      _json['instances'] = instances.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (unreachable != null) {
-      _json['unreachable'] = unreachable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (instances != null)
+          'instances': instances.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (unreachable != null) 'unreachable': unreachable,
+      };
 }
 
 /// The response message for Locations.ListLocations.
@@ -2378,16 +2206,11 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -2412,16 +2235,11 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A resource that represents Google Cloud Platform location.
@@ -2486,25 +2304,13 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (labels != null) 'labels': labels,
+        if (locationId != null) 'locationId': locationId,
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Defines policies to service maintenance events.
@@ -2591,31 +2397,15 @@ class MaintenancePolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (updatePolicy != null) {
-      _json['updatePolicy'] = updatePolicy.toJson();
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (description != null) 'description': description,
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+        if (state != null) 'state': state,
+        if (updatePolicy != null) 'updatePolicy': updatePolicy.toJson(),
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// MaintenanceWindow definition.
@@ -2639,16 +2429,10 @@ class MaintenanceWindow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dailyCycle != null) {
-      _json['dailyCycle'] = dailyCycle.toJson();
-    }
-    if (weeklyCycle != null) {
-      _json['weeklyCycle'] = weeklyCycle.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dailyCycle != null) 'dailyCycle': dailyCycle.toJson(),
+        if (weeklyCycle != null) 'weeklyCycle': weeklyCycle.toJson(),
+      };
 }
 
 /// Network configuration for the instance.
@@ -2701,22 +2485,12 @@ class NetworkConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ipAddresses != null) {
-      _json['ipAddresses'] = ipAddresses;
-    }
-    if (modes != null) {
-      _json['modes'] = modes;
-    }
-    if (network != null) {
-      _json['network'] = network;
-    }
-    if (reservedIpRange != null) {
-      _json['reservedIpRange'] = reservedIpRange;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ipAddresses != null) 'ipAddresses': ipAddresses,
+        if (modes != null) 'modes': modes,
+        if (network != null) 'network': network,
+        if (reservedIpRange != null) 'reservedIpRange': reservedIpRange,
+      };
 }
 
 /// NFS export options specifications.
@@ -2788,25 +2562,13 @@ class NfsExportOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessMode != null) {
-      _json['accessMode'] = accessMode;
-    }
-    if (anonGid != null) {
-      _json['anonGid'] = anonGid;
-    }
-    if (anonUid != null) {
-      _json['anonUid'] = anonUid;
-    }
-    if (ipRanges != null) {
-      _json['ipRanges'] = ipRanges;
-    }
-    if (squashMode != null) {
-      _json['squashMode'] = squashMode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessMode != null) 'accessMode': accessMode,
+        if (anonGid != null) 'anonGid': anonGid,
+        if (anonUid != null) 'anonUid': anonUid,
+        if (ipRanges != null) 'ipRanges': ipRanges,
+        if (squashMode != null) 'squashMode': squashMode,
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -2885,25 +2647,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// Represents the metadata of the long-running operation.
@@ -2973,31 +2723,15 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiVersion != null) {
-      _json['apiVersion'] = apiVersion;
-    }
-    if (cancelRequested != null) {
-      _json['cancelRequested'] = cancelRequested;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (statusDetail != null) {
-      _json['statusDetail'] = statusDetail;
-    }
-    if (target != null) {
-      _json['target'] = target;
-    }
-    if (verb != null) {
-      _json['verb'] = verb;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion,
+        if (cancelRequested != null) 'cancelRequested': cancelRequested,
+        if (createTime != null) 'createTime': createTime,
+        if (endTime != null) 'endTime': endTime,
+        if (statusDetail != null) 'statusDetail': statusDetail,
+        if (target != null) 'target': target,
+        if (verb != null) 'verb': verb,
+      };
 }
 
 /// RestoreInstanceRequest restores an existing instances's file share from a
@@ -3024,16 +2758,10 @@ class RestoreInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fileShare != null) {
-      _json['fileShare'] = fileShare;
-    }
-    if (sourceBackup != null) {
-      _json['sourceBackup'] = sourceBackup;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fileShare != null) 'fileShare': fileShare,
+        if (sourceBackup != null) 'sourceBackup': sourceBackup,
+      };
 }
 
 /// Configure the schedule.
@@ -3073,19 +2801,11 @@ class Schedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (day != null) {
-      _json['day'] = day;
-    }
-    if (duration != null) {
-      _json['duration'] = duration;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (day != null) 'day': day,
+        if (duration != null) 'duration': duration,
+        if (startTime != null) 'startTime': startTime.toJson(),
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -3135,19 +2855,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Represents a time of day.
@@ -3195,22 +2907,12 @@ class TimeOfDay {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hours != null) {
-      _json['hours'] = hours;
-    }
-    if (minutes != null) {
-      _json['minutes'] = minutes;
-    }
-    if (nanos != null) {
-      _json['nanos'] = nanos;
-    }
-    if (seconds != null) {
-      _json['seconds'] = seconds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hours != null) 'hours': hours,
+        if (minutes != null) 'minutes': minutes,
+        if (nanos != null) 'nanos': nanos,
+        if (seconds != null) 'seconds': seconds,
+      };
 }
 
 /// Maintenance policy applicable to instance updates.
@@ -3254,20 +2956,13 @@ class UpdatePolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channel != null) {
-      _json['channel'] = channel;
-    }
-    if (denyMaintenancePeriods != null) {
-      _json['denyMaintenancePeriods'] =
-          denyMaintenancePeriods.map((value) => value.toJson()).toList();
-    }
-    if (window != null) {
-      _json['window'] = window.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (channel != null) 'channel': channel,
+        if (denyMaintenancePeriods != null)
+          'denyMaintenancePeriods':
+              denyMaintenancePeriods.map((value) => value.toJson()).toList(),
+        if (window != null) 'window': window.toJson(),
+      };
 }
 
 /// Time window specified for weekly operations.
@@ -3288,11 +2983,8 @@ class WeeklyCycle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (schedule != null) {
-      _json['schedule'] = schedule.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (schedule != null)
+          'schedule': schedule.map((value) => value.toJson()).toList(),
+      };
 }

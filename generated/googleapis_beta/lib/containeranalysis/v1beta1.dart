@@ -1361,16 +1361,10 @@ class AliasContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Artifact describes a build product.
@@ -1408,19 +1402,11 @@ class Artifact {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (checksum != null) {
-      _json['checksum'] = checksum;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (names != null) {
-      _json['names'] = names;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (checksum != null) 'checksum': checksum,
+        if (id != null) 'id': id,
+        if (names != null) 'names': names,
+      };
 }
 
 /// Defines a hash object for use in Materials and Products.
@@ -1435,13 +1421,9 @@ class ArtifactHashes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sha256 != null) {
-      _json['sha256'] = sha256;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sha256 != null) 'sha256': sha256,
+      };
 }
 
 /// Defines an object to declare an in-toto artifact rule
@@ -1458,13 +1440,9 @@ class ArtifactRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (artifactRule != null) {
-      _json['artifactRule'] = artifactRule;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (artifactRule != null) 'artifactRule': artifactRule,
+      };
 }
 
 /// Occurrence that represents a single "attestation".
@@ -1496,16 +1474,12 @@ class Attestation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (genericSignedAttestation != null) {
-      _json['genericSignedAttestation'] = genericSignedAttestation.toJson();
-    }
-    if (pgpSignedAttestation != null) {
-      _json['pgpSignedAttestation'] = pgpSignedAttestation.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (genericSignedAttestation != null)
+          'genericSignedAttestation': genericSignedAttestation.toJson(),
+        if (pgpSignedAttestation != null)
+          'pgpSignedAttestation': pgpSignedAttestation.toJson(),
+      };
 }
 
 /// Note kind that represents a logical attestation "role" or "authority".
@@ -1530,13 +1504,9 @@ class Authority {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hint != null) {
-      _json['hint'] = hint.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hint != null) 'hint': hint.toJson(),
+      };
 }
 
 /// Basis describes the base image portion (Note) of the DockerImage
@@ -1568,16 +1538,10 @@ class Basis {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fingerprint != null) {
-      _json['fingerprint'] = fingerprint.toJson();
-    }
-    if (resourceUrl != null) {
-      _json['resourceUrl'] = resourceUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fingerprint != null) 'fingerprint': fingerprint.toJson(),
+        if (resourceUrl != null) 'resourceUrl': resourceUrl,
+      };
 }
 
 /// Request to create notes in batch.
@@ -1602,14 +1566,10 @@ class BatchCreateNotesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (notes != null) {
-      _json['notes'] =
-          notes.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (notes != null)
+          'notes': notes.map((key, item) => core.MapEntry(key, item.toJson())),
+      };
 }
 
 /// Response for creating notes in batch.
@@ -1628,13 +1588,10 @@ class BatchCreateNotesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (notes != null) {
-      _json['notes'] = notes.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (notes != null)
+          'notes': notes.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request to create occurrences in batch.
@@ -1657,14 +1614,10 @@ class BatchCreateOccurrencesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (occurrences != null) {
-      _json['occurrences'] =
-          occurrences.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (occurrences != null)
+          'occurrences': occurrences.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response for creating occurrences in batch.
@@ -1683,14 +1636,10 @@ class BatchCreateOccurrencesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (occurrences != null) {
-      _json['occurrences'] =
-          occurrences.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (occurrences != null)
+          'occurrences': occurrences.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Associates `members` with a `role`.
@@ -1759,19 +1708,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// Note holding the version of the provider's builder and the signature of the
@@ -1798,16 +1739,10 @@ class Build {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (builderVersion != null) {
-      _json['builderVersion'] = builderVersion;
-    }
-    if (signature != null) {
-      _json['signature'] = signature.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (builderVersion != null) 'builderVersion': builderVersion,
+        if (signature != null) 'signature': signature.toJson(),
+      };
 }
 
 /// Provenance of a build.
@@ -1920,50 +1855,25 @@ class BuildProvenance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (buildOptions != null) {
-      _json['buildOptions'] = buildOptions;
-    }
-    if (builderVersion != null) {
-      _json['builderVersion'] = builderVersion;
-    }
-    if (builtArtifacts != null) {
-      _json['builtArtifacts'] =
-          builtArtifacts.map((value) => value.toJson()).toList();
-    }
-    if (commands != null) {
-      _json['commands'] = commands.map((value) => value.toJson()).toList();
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (creator != null) {
-      _json['creator'] = creator;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (logsUri != null) {
-      _json['logsUri'] = logsUri;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (sourceProvenance != null) {
-      _json['sourceProvenance'] = sourceProvenance.toJson();
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (triggerId != null) {
-      _json['triggerId'] = triggerId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (buildOptions != null) 'buildOptions': buildOptions,
+        if (builderVersion != null) 'builderVersion': builderVersion,
+        if (builtArtifacts != null)
+          'builtArtifacts':
+              builtArtifacts.map((value) => value.toJson()).toList(),
+        if (commands != null)
+          'commands': commands.map((value) => value.toJson()).toList(),
+        if (createTime != null) 'createTime': createTime,
+        if (creator != null) 'creator': creator,
+        if (endTime != null) 'endTime': endTime,
+        if (id != null) 'id': id,
+        if (logsUri != null) 'logsUri': logsUri,
+        if (projectId != null) 'projectId': projectId,
+        if (sourceProvenance != null)
+          'sourceProvenance': sourceProvenance.toJson(),
+        if (startTime != null) 'startTime': startTime,
+        if (triggerId != null) 'triggerId': triggerId,
+      };
 }
 
 /// Message encapsulating the signature of the verified build.
@@ -2028,22 +1938,12 @@ class BuildSignature {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (keyId != null) {
-      _json['keyId'] = keyId;
-    }
-    if (keyType != null) {
-      _json['keyType'] = keyType;
-    }
-    if (publicKey != null) {
-      _json['publicKey'] = publicKey;
-    }
-    if (signature != null) {
-      _json['signature'] = signature;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (keyId != null) 'keyId': keyId,
+        if (keyType != null) 'keyType': keyType,
+        if (publicKey != null) 'publicKey': publicKey,
+        if (signature != null) 'signature': signature,
+      };
 }
 
 /// Defines an object for the byproducts field in in-toto links.
@@ -2067,13 +1967,9 @@ class ByProducts {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customValues != null) {
-      _json['customValues'] = customValues;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customValues != null) 'customValues': customValues,
+      };
 }
 
 /// Common Vulnerability Scoring System version 3.
@@ -2187,43 +2083,23 @@ class CVSSv3 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attackComplexity != null) {
-      _json['attackComplexity'] = attackComplexity;
-    }
-    if (attackVector != null) {
-      _json['attackVector'] = attackVector;
-    }
-    if (availabilityImpact != null) {
-      _json['availabilityImpact'] = availabilityImpact;
-    }
-    if (baseScore != null) {
-      _json['baseScore'] = baseScore;
-    }
-    if (confidentialityImpact != null) {
-      _json['confidentialityImpact'] = confidentialityImpact;
-    }
-    if (exploitabilityScore != null) {
-      _json['exploitabilityScore'] = exploitabilityScore;
-    }
-    if (impactScore != null) {
-      _json['impactScore'] = impactScore;
-    }
-    if (integrityImpact != null) {
-      _json['integrityImpact'] = integrityImpact;
-    }
-    if (privilegesRequired != null) {
-      _json['privilegesRequired'] = privilegesRequired;
-    }
-    if (scope != null) {
-      _json['scope'] = scope;
-    }
-    if (userInteraction != null) {
-      _json['userInteraction'] = userInteraction;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attackComplexity != null) 'attackComplexity': attackComplexity,
+        if (attackVector != null) 'attackVector': attackVector,
+        if (availabilityImpact != null)
+          'availabilityImpact': availabilityImpact,
+        if (baseScore != null) 'baseScore': baseScore,
+        if (confidentialityImpact != null)
+          'confidentialityImpact': confidentialityImpact,
+        if (exploitabilityScore != null)
+          'exploitabilityScore': exploitabilityScore,
+        if (impactScore != null) 'impactScore': impactScore,
+        if (integrityImpact != null) 'integrityImpact': integrityImpact,
+        if (privilegesRequired != null)
+          'privilegesRequired': privilegesRequired,
+        if (scope != null) 'scope': scope,
+        if (userInteraction != null) 'userInteraction': userInteraction,
+      };
 }
 
 /// A CloudRepoSourceContext denotes a particular revision in a Google Cloud
@@ -2254,19 +2130,11 @@ class CloudRepoSourceContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aliasContext != null) {
-      _json['aliasContext'] = aliasContext.toJson();
-    }
-    if (repoId != null) {
-      _json['repoId'] = repoId.toJson();
-    }
-    if (revisionId != null) {
-      _json['revisionId'] = revisionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aliasContext != null) 'aliasContext': aliasContext.toJson(),
+        if (repoId != null) 'repoId': repoId.toJson(),
+        if (revisionId != null) 'revisionId': revisionId,
+      };
 }
 
 /// Command describes a step performed as part of the build pipeline.
@@ -2323,28 +2191,14 @@ class Command {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (args != null) {
-      _json['args'] = args;
-    }
-    if (dir != null) {
-      _json['dir'] = dir;
-    }
-    if (env != null) {
-      _json['env'] = env;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (waitFor != null) {
-      _json['waitFor'] = waitFor;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (args != null) 'args': args,
+        if (dir != null) 'dir': dir,
+        if (env != null) 'env': env,
+        if (id != null) 'id': id,
+        if (name != null) 'name': name,
+        if (waitFor != null) 'waitFor': waitFor,
+      };
 }
 
 /// An artifact that can be deployed in some runtime.
@@ -2364,13 +2218,9 @@ class Deployable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceUri != null) {
-      _json['resourceUri'] = resourceUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceUri != null) 'resourceUri': resourceUri,
+      };
 }
 
 /// The period during which some deployable was active in a runtime.
@@ -2434,31 +2284,15 @@ class Deployment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (address != null) {
-      _json['address'] = address;
-    }
-    if (config != null) {
-      _json['config'] = config;
-    }
-    if (deployTime != null) {
-      _json['deployTime'] = deployTime;
-    }
-    if (platform != null) {
-      _json['platform'] = platform;
-    }
-    if (resourceUri != null) {
-      _json['resourceUri'] = resourceUri;
-    }
-    if (undeployTime != null) {
-      _json['undeployTime'] = undeployTime;
-    }
-    if (userEmail != null) {
-      _json['userEmail'] = userEmail;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (address != null) 'address': address,
+        if (config != null) 'config': config,
+        if (deployTime != null) 'deployTime': deployTime,
+        if (platform != null) 'platform': platform,
+        if (resourceUri != null) 'resourceUri': resourceUri,
+        if (undeployTime != null) 'undeployTime': undeployTime,
+        if (userEmail != null) 'userEmail': userEmail,
+      };
 }
 
 /// Derived describes the derived image portion (Occurrence) of the DockerImage
@@ -2508,22 +2342,13 @@ class Derived {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (baseResourceUrl != null) {
-      _json['baseResourceUrl'] = baseResourceUrl;
-    }
-    if (distance != null) {
-      _json['distance'] = distance;
-    }
-    if (fingerprint != null) {
-      _json['fingerprint'] = fingerprint.toJson();
-    }
-    if (layerInfo != null) {
-      _json['layerInfo'] = layerInfo.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (baseResourceUrl != null) 'baseResourceUrl': baseResourceUrl,
+        if (distance != null) 'distance': distance,
+        if (fingerprint != null) 'fingerprint': fingerprint.toJson(),
+        if (layerInfo != null)
+          'layerInfo': layerInfo.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Identifies all appearances of this vulnerability in the package for a
@@ -2618,43 +2443,21 @@ class Detail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cpeUri != null) {
-      _json['cpeUri'] = cpeUri;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (fixedLocation != null) {
-      _json['fixedLocation'] = fixedLocation.toJson();
-    }
-    if (isObsolete != null) {
-      _json['isObsolete'] = isObsolete;
-    }
-    if (maxAffectedVersion != null) {
-      _json['maxAffectedVersion'] = maxAffectedVersion.toJson();
-    }
-    if (minAffectedVersion != null) {
-      _json['minAffectedVersion'] = minAffectedVersion.toJson();
-    }
-    if (package != null) {
-      _json['package'] = package;
-    }
-    if (packageType != null) {
-      _json['packageType'] = packageType;
-    }
-    if (severityName != null) {
-      _json['severityName'] = severityName;
-    }
-    if (source != null) {
-      _json['source'] = source;
-    }
-    if (sourceUpdateTime != null) {
-      _json['sourceUpdateTime'] = sourceUpdateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cpeUri != null) 'cpeUri': cpeUri,
+        if (description != null) 'description': description,
+        if (fixedLocation != null) 'fixedLocation': fixedLocation.toJson(),
+        if (isObsolete != null) 'isObsolete': isObsolete,
+        if (maxAffectedVersion != null)
+          'maxAffectedVersion': maxAffectedVersion.toJson(),
+        if (minAffectedVersion != null)
+          'minAffectedVersion': minAffectedVersion.toJson(),
+        if (package != null) 'package': package,
+        if (packageType != null) 'packageType': packageType,
+        if (severityName != null) 'severityName': severityName,
+        if (source != null) 'source': source,
+        if (sourceUpdateTime != null) 'sourceUpdateTime': sourceUpdateTime,
+      };
 }
 
 /// Details of an attestation occurrence.
@@ -2673,13 +2476,9 @@ class Details {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attestation != null) {
-      _json['attestation'] = attestation.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attestation != null) 'attestation': attestation.toJson(),
+      };
 }
 
 /// Provides information about the analysis status of a discovered resource.
@@ -2731,22 +2530,14 @@ class Discovered {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (analysisStatus != null) {
-      _json['analysisStatus'] = analysisStatus;
-    }
-    if (analysisStatusError != null) {
-      _json['analysisStatusError'] = analysisStatusError.toJson();
-    }
-    if (continuousAnalysis != null) {
-      _json['continuousAnalysis'] = continuousAnalysis;
-    }
-    if (lastAnalysisTime != null) {
-      _json['lastAnalysisTime'] = lastAnalysisTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (analysisStatus != null) 'analysisStatus': analysisStatus,
+        if (analysisStatusError != null)
+          'analysisStatusError': analysisStatusError.toJson(),
+        if (continuousAnalysis != null)
+          'continuousAnalysis': continuousAnalysis,
+        if (lastAnalysisTime != null) 'lastAnalysisTime': lastAnalysisTime,
+      };
 }
 
 /// A note that indicates a type of analysis a provider would perform.
@@ -2780,13 +2571,9 @@ class Discovery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (analysisKind != null) {
-      _json['analysisKind'] = analysisKind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (analysisKind != null) 'analysisKind': analysisKind,
+      };
 }
 
 /// This represents a particular channel of distribution for a given package.
@@ -2843,28 +2630,14 @@ class Distribution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (architecture != null) {
-      _json['architecture'] = architecture;
-    }
-    if (cpeUri != null) {
-      _json['cpeUri'] = cpeUri;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (latestVersion != null) {
-      _json['latestVersion'] = latestVersion.toJson();
-    }
-    if (maintainer != null) {
-      _json['maintainer'] = maintainer;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (architecture != null) 'architecture': architecture,
+        if (cpeUri != null) 'cpeUri': cpeUri,
+        if (description != null) 'description': description,
+        if (latestVersion != null) 'latestVersion': latestVersion.toJson(),
+        if (maintainer != null) 'maintainer': maintainer,
+        if (url != null) 'url': url,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2881,10 +2654,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Defines an object for the environment field in in-toto links.
@@ -2908,13 +2678,9 @@ class Environment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customValues != null) {
-      _json['customValues'] = customValues;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customValues != null) 'customValues': customValues,
+      };
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -2978,22 +2744,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Container message for hashes of byte content of files, used in source
@@ -3015,13 +2771,10 @@ class FileHashes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fileHash != null) {
-      _json['fileHash'] = fileHash.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fileHash != null)
+          'fileHash': fileHash.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A set of properties that uniquely identify a given Docker image.
@@ -3059,19 +2812,11 @@ class Fingerprint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (v1Name != null) {
-      _json['v1Name'] = v1Name;
-    }
-    if (v2Blob != null) {
-      _json['v2Blob'] = v2Blob;
-    }
-    if (v2Name != null) {
-      _json['v2Name'] = v2Name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (v1Name != null) 'v1Name': v1Name,
+        if (v2Blob != null) 'v2Blob': v2Blob,
+        if (v2Name != null) 'v2Name': v2Name,
+      };
 }
 
 /// Per resource and severity counts of fixable and total vulnerabilities.
@@ -3115,22 +2860,12 @@ class FixableTotalByDigest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fixableCount != null) {
-      _json['fixableCount'] = fixableCount;
-    }
-    if (resource != null) {
-      _json['resource'] = resource.toJson();
-    }
-    if (severity != null) {
-      _json['severity'] = severity;
-    }
-    if (totalCount != null) {
-      _json['totalCount'] = totalCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fixableCount != null) 'fixableCount': fixableCount,
+        if (resource != null) 'resource': resource.toJson(),
+        if (severity != null) 'severity': severity,
+        if (totalCount != null) 'totalCount': totalCount,
+      };
 }
 
 /// An attestation wrapper that uses the Grafeas `Signature` message.
@@ -3189,19 +2924,12 @@ class GenericSignedAttestation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentType != null) {
-      _json['contentType'] = contentType;
-    }
-    if (serializedPayload != null) {
-      _json['serializedPayload'] = serializedPayload;
-    }
-    if (signatures != null) {
-      _json['signatures'] = signatures.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentType != null) 'contentType': contentType,
+        if (serializedPayload != null) 'serializedPayload': serializedPayload,
+        if (signatures != null)
+          'signatures': signatures.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A SourceContext referring to a Gerrit project.
@@ -3239,22 +2967,12 @@ class GerritSourceContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aliasContext != null) {
-      _json['aliasContext'] = aliasContext.toJson();
-    }
-    if (gerritProject != null) {
-      _json['gerritProject'] = gerritProject;
-    }
-    if (hostUri != null) {
-      _json['hostUri'] = hostUri;
-    }
-    if (revisionId != null) {
-      _json['revisionId'] = revisionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aliasContext != null) 'aliasContext': aliasContext.toJson(),
+        if (gerritProject != null) 'gerritProject': gerritProject,
+        if (hostUri != null) 'hostUri': hostUri,
+        if (revisionId != null) 'revisionId': revisionId,
+      };
 }
 
 /// Request message for `GetIamPolicy` method.
@@ -3272,13 +2990,9 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (options != null) {
-      _json['options'] = options.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (options != null) 'options': options.toJson(),
+      };
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
@@ -3303,13 +3017,10 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (requestedPolicyVersion != null) {
-      _json['requestedPolicyVersion'] = requestedPolicyVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (requestedPolicyVersion != null)
+          'requestedPolicyVersion': requestedPolicyVersion,
+      };
 }
 
 /// A GitSourceContext denotes a particular revision in a third party Git
@@ -3332,16 +3043,10 @@ class GitSourceContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (revisionId != null) {
-      _json['revisionId'] = revisionId;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (revisionId != null) 'revisionId': revisionId,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Metadata for all operations used and required for all operations that
@@ -3369,16 +3074,10 @@ class GoogleDevtoolsContaineranalysisV1alpha1OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (endTime != null) 'endTime': endTime,
+      };
 }
 
 /// Details of a build occurrence.
@@ -3412,16 +3111,10 @@ class GrafeasV1beta1BuildDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (provenance != null) {
-      _json['provenance'] = provenance.toJson();
-    }
-    if (provenanceBytes != null) {
-      _json['provenanceBytes'] = provenanceBytes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (provenance != null) 'provenance': provenance.toJson(),
+        if (provenanceBytes != null) 'provenanceBytes': provenanceBytes,
+      };
 }
 
 /// Details of a deployment occurrence.
@@ -3440,13 +3133,9 @@ class GrafeasV1beta1DeploymentDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deployment != null) {
-      _json['deployment'] = deployment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deployment != null) 'deployment': deployment.toJson(),
+      };
 }
 
 /// Details of a discovery occurrence.
@@ -3465,13 +3154,9 @@ class GrafeasV1beta1DiscoveryDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (discovered != null) {
-      _json['discovered'] = discovered.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (discovered != null) 'discovered': discovered.toJson(),
+      };
 }
 
 /// Details of an image occurrence.
@@ -3490,13 +3175,9 @@ class GrafeasV1beta1ImageDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (derivedImage != null) {
-      _json['derivedImage'] = derivedImage.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (derivedImage != null) 'derivedImage': derivedImage.toJson(),
+      };
 }
 
 class GrafeasV1beta1IntotoArtifact {
@@ -3515,16 +3196,10 @@ class GrafeasV1beta1IntotoArtifact {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hashes != null) {
-      _json['hashes'] = hashes.toJson();
-    }
-    if (resourceUri != null) {
-      _json['resourceUri'] = resourceUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hashes != null) 'hashes': hashes.toJson(),
+        if (resourceUri != null) 'resourceUri': resourceUri,
+      };
 }
 
 /// This corresponds to a signed in-toto link - it is made up of one or more
@@ -3551,16 +3226,11 @@ class GrafeasV1beta1IntotoDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (signatures != null) {
-      _json['signatures'] = signatures.map((value) => value.toJson()).toList();
-    }
-    if (signed != null) {
-      _json['signed'] = signed.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (signatures != null)
+          'signatures': signatures.map((value) => value.toJson()).toList(),
+        if (signed != null) 'signed': signed.toJson(),
+      };
 }
 
 /// A signature object consists of the KeyID used and the signature itself.
@@ -3579,16 +3249,10 @@ class GrafeasV1beta1IntotoSignature {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (keyid != null) {
-      _json['keyid'] = keyid;
-    }
-    if (sig != null) {
-      _json['sig'] = sig;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (keyid != null) 'keyid': keyid,
+        if (sig != null) 'sig': sig,
+      };
 }
 
 /// Details of a package occurrence.
@@ -3607,13 +3271,9 @@ class GrafeasV1beta1PackageDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (installation != null) {
-      _json['installation'] = installation.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (installation != null) 'installation': installation.toJson(),
+      };
 }
 
 /// Details of a vulnerability Occurrence.
@@ -3710,36 +3370,18 @@ class GrafeasV1beta1VulnerabilityDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cvssScore != null) {
-      _json['cvssScore'] = cvssScore;
-    }
-    if (effectiveSeverity != null) {
-      _json['effectiveSeverity'] = effectiveSeverity;
-    }
-    if (longDescription != null) {
-      _json['longDescription'] = longDescription;
-    }
-    if (packageIssue != null) {
-      _json['packageIssue'] =
-          packageIssue.map((value) => value.toJson()).toList();
-    }
-    if (relatedUrls != null) {
-      _json['relatedUrls'] =
-          relatedUrls.map((value) => value.toJson()).toList();
-    }
-    if (severity != null) {
-      _json['severity'] = severity;
-    }
-    if (shortDescription != null) {
-      _json['shortDescription'] = shortDescription;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cvssScore != null) 'cvssScore': cvssScore,
+        if (effectiveSeverity != null) 'effectiveSeverity': effectiveSeverity,
+        if (longDescription != null) 'longDescription': longDescription,
+        if (packageIssue != null)
+          'packageIssue': packageIssue.map((value) => value.toJson()).toList(),
+        if (relatedUrls != null)
+          'relatedUrls': relatedUrls.map((value) => value.toJson()).toList(),
+        if (severity != null) 'severity': severity,
+        if (shortDescription != null) 'shortDescription': shortDescription,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Container message for hash values.
@@ -3774,16 +3416,10 @@ class Hash {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+        if (value != null) 'value': value,
+      };
 }
 
 /// This submessage provides human-readable hints about the purpose of the
@@ -3808,13 +3444,9 @@ class Hint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (humanReadableName != null) {
-      _json['humanReadableName'] = humanReadableName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (humanReadableName != null) 'humanReadableName': humanReadableName,
+      };
 }
 
 /// This contains the fields corresponding to the definition of a software
@@ -3876,31 +3508,19 @@ class InToto {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (expectedCommand != null) {
-      _json['expectedCommand'] = expectedCommand;
-    }
-    if (expectedMaterials != null) {
-      _json['expectedMaterials'] =
-          expectedMaterials.map((value) => value.toJson()).toList();
-    }
-    if (expectedProducts != null) {
-      _json['expectedProducts'] =
-          expectedProducts.map((value) => value.toJson()).toList();
-    }
-    if (signingKeys != null) {
-      _json['signingKeys'] =
-          signingKeys.map((value) => value.toJson()).toList();
-    }
-    if (stepName != null) {
-      _json['stepName'] = stepName;
-    }
-    if (threshold != null) {
-      _json['threshold'] = threshold;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (expectedCommand != null) 'expectedCommand': expectedCommand,
+        if (expectedMaterials != null)
+          'expectedMaterials':
+              expectedMaterials.map((value) => value.toJson()).toList(),
+        if (expectedProducts != null)
+          'expectedProducts':
+              expectedProducts.map((value) => value.toJson()).toList(),
+        if (signingKeys != null)
+          'signingKeys': signingKeys.map((value) => value.toJson()).toList(),
+        if (stepName != null) 'stepName': stepName,
+        if (threshold != null) 'threshold': threshold,
+      };
 }
 
 /// This represents how a particular software package may be installed on a
@@ -3931,16 +3551,11 @@ class Installation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (location != null) {
-      _json['location'] = location.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (location != null)
+          'location': location.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+      };
 }
 
 class KnowledgeBase {
@@ -3962,16 +3577,10 @@ class KnowledgeBase {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Layer holds metadata specific to a layer of a Docker image.
@@ -4015,16 +3624,10 @@ class Layer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (arguments != null) {
-      _json['arguments'] = arguments;
-    }
-    if (directive != null) {
-      _json['directive'] = directive;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (arguments != null) 'arguments': arguments,
+        if (directive != null) 'directive': directive,
+      };
 }
 
 /// This corresponds to an in-toto link.
@@ -4097,25 +3700,15 @@ class Link {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (byproducts != null) {
-      _json['byproducts'] = byproducts.toJson();
-    }
-    if (command != null) {
-      _json['command'] = command;
-    }
-    if (environment != null) {
-      _json['environment'] = environment.toJson();
-    }
-    if (materials != null) {
-      _json['materials'] = materials.map((value) => value.toJson()).toList();
-    }
-    if (products != null) {
-      _json['products'] = products.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (byproducts != null) 'byproducts': byproducts.toJson(),
+        if (command != null) 'command': command,
+        if (environment != null) 'environment': environment.toJson(),
+        if (materials != null)
+          'materials': materials.map((value) => value.toJson()).toList(),
+        if (products != null)
+          'products': products.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response for listing occurrences for a note.
@@ -4140,17 +3733,11 @@ class ListNoteOccurrencesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (occurrences != null) {
-      _json['occurrences'] =
-          occurrences.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (occurrences != null)
+          'occurrences': occurrences.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response for listing notes.
@@ -4178,16 +3765,11 @@ class ListNotesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (notes != null) {
-      _json['notes'] = notes.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (notes != null)
+          'notes': notes.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response for listing occurrences.
@@ -4215,17 +3797,11 @@ class ListOccurrencesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (occurrences != null) {
-      _json['occurrences'] =
-          occurrences.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (occurrences != null)
+          'occurrences': occurrences.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response for listing scan configurations.
@@ -4253,17 +3829,11 @@ class ListScanConfigsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (scanConfigs != null) {
-      _json['scanConfigs'] =
-          scanConfigs.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (scanConfigs != null)
+          'scanConfigs': scanConfigs.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// An occurrence of a particular package installation found within a system's
@@ -4298,19 +3868,11 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cpeUri != null) {
-      _json['cpeUri'] = cpeUri;
-    }
-    if (path != null) {
-      _json['path'] = path;
-    }
-    if (version != null) {
-      _json['version'] = version.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cpeUri != null) 'cpeUri': cpeUri,
+        if (path != null) 'path': path,
+        if (version != null) 'version': version.toJson(),
+      };
 }
 
 /// A type of analysis that can be done for a resource.
@@ -4465,61 +4027,27 @@ class Note {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attestationAuthority != null) {
-      _json['attestationAuthority'] = attestationAuthority.toJson();
-    }
-    if (baseImage != null) {
-      _json['baseImage'] = baseImage.toJson();
-    }
-    if (build != null) {
-      _json['build'] = build.toJson();
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (deployable != null) {
-      _json['deployable'] = deployable.toJson();
-    }
-    if (discovery != null) {
-      _json['discovery'] = discovery.toJson();
-    }
-    if (expirationTime != null) {
-      _json['expirationTime'] = expirationTime;
-    }
-    if (intoto != null) {
-      _json['intoto'] = intoto.toJson();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (longDescription != null) {
-      _json['longDescription'] = longDescription;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (package != null) {
-      _json['package'] = package.toJson();
-    }
-    if (relatedNoteNames != null) {
-      _json['relatedNoteNames'] = relatedNoteNames;
-    }
-    if (relatedUrl != null) {
-      _json['relatedUrl'] = relatedUrl.map((value) => value.toJson()).toList();
-    }
-    if (shortDescription != null) {
-      _json['shortDescription'] = shortDescription;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    if (vulnerability != null) {
-      _json['vulnerability'] = vulnerability.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attestationAuthority != null)
+          'attestationAuthority': attestationAuthority.toJson(),
+        if (baseImage != null) 'baseImage': baseImage.toJson(),
+        if (build != null) 'build': build.toJson(),
+        if (createTime != null) 'createTime': createTime,
+        if (deployable != null) 'deployable': deployable.toJson(),
+        if (discovery != null) 'discovery': discovery.toJson(),
+        if (expirationTime != null) 'expirationTime': expirationTime,
+        if (intoto != null) 'intoto': intoto.toJson(),
+        if (kind != null) 'kind': kind,
+        if (longDescription != null) 'longDescription': longDescription,
+        if (name != null) 'name': name,
+        if (package != null) 'package': package.toJson(),
+        if (relatedNoteNames != null) 'relatedNoteNames': relatedNoteNames,
+        if (relatedUrl != null)
+          'relatedUrl': relatedUrl.map((value) => value.toJson()).toList(),
+        if (shortDescription != null) 'shortDescription': shortDescription,
+        if (updateTime != null) 'updateTime': updateTime,
+        if (vulnerability != null) 'vulnerability': vulnerability.toJson(),
+      };
 }
 
 /// An instance of an analysis type that has been found on a resource.
@@ -4659,55 +4187,23 @@ class Occurrence {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attestation != null) {
-      _json['attestation'] = attestation.toJson();
-    }
-    if (build != null) {
-      _json['build'] = build.toJson();
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (deployment != null) {
-      _json['deployment'] = deployment.toJson();
-    }
-    if (derivedImage != null) {
-      _json['derivedImage'] = derivedImage.toJson();
-    }
-    if (discovered != null) {
-      _json['discovered'] = discovered.toJson();
-    }
-    if (installation != null) {
-      _json['installation'] = installation.toJson();
-    }
-    if (intoto != null) {
-      _json['intoto'] = intoto.toJson();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (noteName != null) {
-      _json['noteName'] = noteName;
-    }
-    if (remediation != null) {
-      _json['remediation'] = remediation;
-    }
-    if (resource != null) {
-      _json['resource'] = resource.toJson();
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    if (vulnerability != null) {
-      _json['vulnerability'] = vulnerability.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attestation != null) 'attestation': attestation.toJson(),
+        if (build != null) 'build': build.toJson(),
+        if (createTime != null) 'createTime': createTime,
+        if (deployment != null) 'deployment': deployment.toJson(),
+        if (derivedImage != null) 'derivedImage': derivedImage.toJson(),
+        if (discovered != null) 'discovered': discovered.toJson(),
+        if (installation != null) 'installation': installation.toJson(),
+        if (intoto != null) 'intoto': intoto.toJson(),
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+        if (noteName != null) 'noteName': noteName,
+        if (remediation != null) 'remediation': remediation,
+        if (resource != null) 'resource': resource.toJson(),
+        if (updateTime != null) 'updateTime': updateTime,
+        if (vulnerability != null) 'vulnerability': vulnerability.toJson(),
+      };
 }
 
 /// This represents a particular package that is distributed over various
@@ -4737,17 +4233,11 @@ class Package {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (distribution != null) {
-      _json['distribution'] =
-          distribution.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (distribution != null)
+          'distribution': distribution.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+      };
 }
 
 /// This message wraps a location affected by a vulnerability and its associated
@@ -4781,19 +4271,12 @@ class PackageIssue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (affectedLocation != null) {
-      _json['affectedLocation'] = affectedLocation.toJson();
-    }
-    if (fixedLocation != null) {
-      _json['fixedLocation'] = fixedLocation.toJson();
-    }
-    if (severityName != null) {
-      _json['severityName'] = severityName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (affectedLocation != null)
+          'affectedLocation': affectedLocation.toJson(),
+        if (fixedLocation != null) 'fixedLocation': fixedLocation.toJson(),
+        if (severityName != null) 'severityName': severityName,
+      };
 }
 
 /// An attestation wrapper with a PGP-compatible signature.
@@ -4858,19 +4341,11 @@ class PgpSignedAttestation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentType != null) {
-      _json['contentType'] = contentType;
-    }
-    if (pgpKeyId != null) {
-      _json['pgpKeyId'] = pgpKeyId;
-    }
-    if (signature != null) {
-      _json['signature'] = signature;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentType != null) 'contentType': contentType,
+        if (pgpKeyId != null) 'pgpKeyId': pgpKeyId,
+        if (signature != null) 'signature': signature,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -4968,19 +4443,12 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Selects a repo using a Google Cloud Platform project ID (e.g.,
@@ -5005,16 +4473,10 @@ class ProjectRepoId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (repoName != null) {
-      _json['repoName'] = repoName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (projectId != null) 'projectId': projectId,
+        if (repoName != null) 'repoName': repoName,
+      };
 }
 
 /// Metadata for any related URL information.
@@ -5036,16 +4498,10 @@ class RelatedUrl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (label != null) {
-      _json['label'] = label;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (label != null) 'label': label,
+        if (url != null) 'url': url,
+      };
 }
 
 /// A unique identifier for a Cloud Repo.
@@ -5068,16 +4524,10 @@ class RepoId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (projectRepoId != null) {
-      _json['projectRepoId'] = projectRepoId.toJson();
-    }
-    if (uid != null) {
-      _json['uid'] = uid;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (projectRepoId != null) 'projectRepoId': projectRepoId.toJson(),
+        if (uid != null) 'uid': uid,
+      };
 }
 
 /// An entity that can have metadata.
@@ -5118,19 +4568,11 @@ class Resource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentHash != null) {
-      _json['contentHash'] = contentHash.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentHash != null) 'contentHash': contentHash.toJson(),
+        if (name != null) 'name': name,
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// A scan configuration specifies whether Cloud components in a project have a
@@ -5183,25 +4625,13 @@ class ScanConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (description != null) 'description': description,
+        if (enabled != null) 'enabled': enabled,
+        if (name != null) 'name': name,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -5222,13 +4652,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+      };
 }
 
 /// Verifiers (e.g. Kritis implementations) MUST verify signatures with respect
@@ -5291,16 +4717,10 @@ class Signature {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (publicKeyId != null) {
-      _json['publicKeyId'] = publicKeyId;
-    }
-    if (signature != null) {
-      _json['signature'] = signature;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (publicKeyId != null) 'publicKeyId': publicKeyId,
+        if (signature != null) 'signature': signature,
+      };
 }
 
 /// This defines the format used to record keys used in the software supply
@@ -5347,22 +4767,12 @@ class SigningKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (keyId != null) {
-      _json['keyId'] = keyId;
-    }
-    if (keyScheme != null) {
-      _json['keyScheme'] = keyScheme;
-    }
-    if (keyType != null) {
-      _json['keyType'] = keyType;
-    }
-    if (publicKeyValue != null) {
-      _json['publicKeyValue'] = publicKeyValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (keyId != null) 'keyId': keyId,
+        if (keyScheme != null) 'keyScheme': keyScheme,
+        if (keyType != null) 'keyType': keyType,
+        if (publicKeyValue != null) 'publicKeyValue': publicKeyValue,
+      };
 }
 
 /// Source describes the location of the source used for the build.
@@ -5419,24 +4829,17 @@ class Source {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (additionalContexts != null) {
-      _json['additionalContexts'] =
-          additionalContexts.map((value) => value.toJson()).toList();
-    }
-    if (artifactStorageSourceUri != null) {
-      _json['artifactStorageSourceUri'] = artifactStorageSourceUri;
-    }
-    if (context != null) {
-      _json['context'] = context.toJson();
-    }
-    if (fileHashes != null) {
-      _json['fileHashes'] =
-          fileHashes.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (additionalContexts != null)
+          'additionalContexts':
+              additionalContexts.map((value) => value.toJson()).toList(),
+        if (artifactStorageSourceUri != null)
+          'artifactStorageSourceUri': artifactStorageSourceUri,
+        if (context != null) 'context': context.toJson(),
+        if (fileHashes != null)
+          'fileHashes':
+              fileHashes.map((key, item) => core.MapEntry(key, item.toJson())),
+      };
 }
 
 /// A SourceContext is a reference to a tree of files.
@@ -5482,22 +4885,12 @@ class SourceContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cloudRepo != null) {
-      _json['cloudRepo'] = cloudRepo.toJson();
-    }
-    if (gerrit != null) {
-      _json['gerrit'] = gerrit.toJson();
-    }
-    if (git != null) {
-      _json['git'] = git.toJson();
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cloudRepo != null) 'cloudRepo': cloudRepo.toJson(),
+        if (gerrit != null) 'gerrit': gerrit.toJson(),
+        if (git != null) 'git': git.toJson(),
+        if (labels != null) 'labels': labels,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -5547,19 +4940,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -5581,13 +4966,9 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -5606,13 +4987,9 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Version contains structured information about the version of a package.
@@ -5667,25 +5044,13 @@ class Version {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (epoch != null) {
-      _json['epoch'] = epoch;
-    }
-    if (inclusive != null) {
-      _json['inclusive'] = inclusive;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (revision != null) {
-      _json['revision'] = revision;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (epoch != null) 'epoch': epoch,
+        if (inclusive != null) 'inclusive': inclusive,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+        if (revision != null) 'revision': revision,
+      };
 }
 
 /// Vulnerability provides metadata about a security vulnerability in a Note.
@@ -5757,29 +5122,17 @@ class Vulnerability {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cvssScore != null) {
-      _json['cvssScore'] = cvssScore;
-    }
-    if (cvssV3 != null) {
-      _json['cvssV3'] = cvssV3.toJson();
-    }
-    if (details != null) {
-      _json['details'] = details.map((value) => value.toJson()).toList();
-    }
-    if (severity != null) {
-      _json['severity'] = severity;
-    }
-    if (sourceUpdateTime != null) {
-      _json['sourceUpdateTime'] = sourceUpdateTime;
-    }
-    if (windowsDetails != null) {
-      _json['windowsDetails'] =
-          windowsDetails.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cvssScore != null) 'cvssScore': cvssScore,
+        if (cvssV3 != null) 'cvssV3': cvssV3.toJson(),
+        if (details != null)
+          'details': details.map((value) => value.toJson()).toList(),
+        if (severity != null) 'severity': severity,
+        if (sourceUpdateTime != null) 'sourceUpdateTime': sourceUpdateTime,
+        if (windowsDetails != null)
+          'windowsDetails':
+              windowsDetails.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The location of the vulnerability.
@@ -5816,19 +5169,11 @@ class VulnerabilityLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cpeUri != null) {
-      _json['cpeUri'] = cpeUri;
-    }
-    if (package != null) {
-      _json['package'] = package;
-    }
-    if (version != null) {
-      _json['version'] = version.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cpeUri != null) 'cpeUri': cpeUri,
+        if (package != null) 'package': package,
+        if (version != null) 'version': version.toJson(),
+      };
 }
 
 /// A summary of how many vulnerability occurrences there are per resource and
@@ -5848,13 +5193,10 @@ class VulnerabilityOccurrencesSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (counts != null) {
-      _json['counts'] = counts.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (counts != null)
+          'counts': counts.map((value) => value.toJson()).toList(),
+      };
 }
 
 class WindowsDetail {
@@ -5903,20 +5245,11 @@ class WindowsDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cpeUri != null) {
-      _json['cpeUri'] = cpeUri;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (fixingKbs != null) {
-      _json['fixingKbs'] = fixingKbs.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cpeUri != null) 'cpeUri': cpeUri,
+        if (description != null) 'description': description,
+        if (fixingKbs != null)
+          'fixingKbs': fixingKbs.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+      };
 }

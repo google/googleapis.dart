@@ -554,10 +554,7 @@ class DeleteEventsResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A description of the context in which an error occurred.
@@ -612,23 +609,14 @@ class ErrorContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (httpRequest != null) {
-      _json['httpRequest'] = httpRequest.toJson();
-    }
-    if (reportLocation != null) {
-      _json['reportLocation'] = reportLocation.toJson();
-    }
-    if (sourceReferences != null) {
-      _json['sourceReferences'] =
-          sourceReferences.map((value) => value.toJson()).toList();
-    }
-    if (user != null) {
-      _json['user'] = user;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (httpRequest != null) 'httpRequest': httpRequest.toJson(),
+        if (reportLocation != null) 'reportLocation': reportLocation.toJson(),
+        if (sourceReferences != null)
+          'sourceReferences':
+              sourceReferences.map((value) => value.toJson()).toList(),
+        if (user != null) 'user': user,
+      };
 }
 
 /// An error event which is returned by the Error Reporting system.
@@ -667,22 +655,12 @@ class ErrorEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (context != null) {
-      _json['context'] = context.toJson();
-    }
-    if (eventTime != null) {
-      _json['eventTime'] = eventTime;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    if (serviceContext != null) {
-      _json['serviceContext'] = serviceContext.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (context != null) 'context': context.toJson(),
+        if (eventTime != null) 'eventTime': eventTime,
+        if (message != null) 'message': message,
+        if (serviceContext != null) 'serviceContext': serviceContext.toJson(),
+      };
 }
 
 /// Description of a group of similar error events.
@@ -736,23 +714,14 @@ class ErrorGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (groupId != null) {
-      _json['groupId'] = groupId;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (resolutionStatus != null) {
-      _json['resolutionStatus'] = resolutionStatus;
-    }
-    if (trackingIssues != null) {
-      _json['trackingIssues'] =
-          trackingIssues.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (groupId != null) 'groupId': groupId,
+        if (name != null) 'name': name,
+        if (resolutionStatus != null) 'resolutionStatus': resolutionStatus,
+        if (trackingIssues != null)
+          'trackingIssues':
+              trackingIssues.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Data extracted for a specific group based on certain filter criteria, such
@@ -854,39 +823,22 @@ class ErrorGroupStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (affectedServices != null) {
-      _json['affectedServices'] =
-          affectedServices.map((value) => value.toJson()).toList();
-    }
-    if (affectedUsersCount != null) {
-      _json['affectedUsersCount'] = affectedUsersCount;
-    }
-    if (count != null) {
-      _json['count'] = count;
-    }
-    if (firstSeenTime != null) {
-      _json['firstSeenTime'] = firstSeenTime;
-    }
-    if (group != null) {
-      _json['group'] = group.toJson();
-    }
-    if (lastSeenTime != null) {
-      _json['lastSeenTime'] = lastSeenTime;
-    }
-    if (numAffectedServices != null) {
-      _json['numAffectedServices'] = numAffectedServices;
-    }
-    if (representative != null) {
-      _json['representative'] = representative.toJson();
-    }
-    if (timedCounts != null) {
-      _json['timedCounts'] =
-          timedCounts.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (affectedServices != null)
+          'affectedServices':
+              affectedServices.map((value) => value.toJson()).toList(),
+        if (affectedUsersCount != null)
+          'affectedUsersCount': affectedUsersCount,
+        if (count != null) 'count': count,
+        if (firstSeenTime != null) 'firstSeenTime': firstSeenTime,
+        if (group != null) 'group': group.toJson(),
+        if (lastSeenTime != null) 'lastSeenTime': lastSeenTime,
+        if (numAffectedServices != null)
+          'numAffectedServices': numAffectedServices,
+        if (representative != null) 'representative': representative.toJson(),
+        if (timedCounts != null)
+          'timedCounts': timedCounts.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// HTTP request data that is related to a reported error.
@@ -939,28 +891,15 @@ class HttpRequestContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (method != null) {
-      _json['method'] = method;
-    }
-    if (referrer != null) {
-      _json['referrer'] = referrer;
-    }
-    if (remoteIp != null) {
-      _json['remoteIp'] = remoteIp;
-    }
-    if (responseStatusCode != null) {
-      _json['responseStatusCode'] = responseStatusCode;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    if (userAgent != null) {
-      _json['userAgent'] = userAgent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (method != null) 'method': method,
+        if (referrer != null) 'referrer': referrer,
+        if (remoteIp != null) 'remoteIp': remoteIp,
+        if (responseStatusCode != null)
+          'responseStatusCode': responseStatusCode,
+        if (url != null) 'url': url,
+        if (userAgent != null) 'userAgent': userAgent,
+      };
 }
 
 /// Contains a set of requested error events.
@@ -995,20 +934,12 @@ class ListEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errorEvents != null) {
-      _json['errorEvents'] =
-          errorEvents.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (timeRangeBegin != null) {
-      _json['timeRangeBegin'] = timeRangeBegin;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errorEvents != null)
+          'errorEvents': errorEvents.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (timeRangeBegin != null) 'timeRangeBegin': timeRangeBegin,
+      };
 }
 
 /// Contains a set of requested error group stats.
@@ -1047,20 +978,13 @@ class ListGroupStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errorGroupStats != null) {
-      _json['errorGroupStats'] =
-          errorGroupStats.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (timeRangeBegin != null) {
-      _json['timeRangeBegin'] = timeRangeBegin;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errorGroupStats != null)
+          'errorGroupStats':
+              errorGroupStats.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (timeRangeBegin != null) 'timeRangeBegin': timeRangeBegin,
+      };
 }
 
 /// Response for reporting an individual error event.
@@ -1073,10 +997,7 @@ class ReportErrorEventResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// An error event which is reported to the Error Reporting system.
@@ -1144,22 +1065,12 @@ class ReportedErrorEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (context != null) {
-      _json['context'] = context.toJson();
-    }
-    if (eventTime != null) {
-      _json['eventTime'] = eventTime;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    if (serviceContext != null) {
-      _json['serviceContext'] = serviceContext.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (context != null) 'context': context.toJson(),
+        if (eventTime != null) 'eventTime': eventTime,
+        if (message != null) 'message': message,
+        if (serviceContext != null) 'serviceContext': serviceContext.toJson(),
+      };
 }
 
 /// Describes a running service that sends errors.
@@ -1204,19 +1115,11 @@ class ServiceContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceType != null) {
-      _json['resourceType'] = resourceType;
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceType != null) 'resourceType': resourceType,
+        if (service != null) 'service': service,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Indicates a location in the source code of the service for which errors are
@@ -1255,19 +1158,11 @@ class SourceLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filePath != null) {
-      _json['filePath'] = filePath;
-    }
-    if (functionName != null) {
-      _json['functionName'] = functionName;
-    }
-    if (lineNumber != null) {
-      _json['lineNumber'] = lineNumber;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filePath != null) 'filePath': filePath,
+        if (functionName != null) 'functionName': functionName,
+        if (lineNumber != null) 'lineNumber': lineNumber,
+      };
 }
 
 /// A reference to a particular snapshot of the source tree used to build and
@@ -1296,16 +1191,10 @@ class SourceReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (repository != null) {
-      _json['repository'] = repository;
-    }
-    if (revisionId != null) {
-      _json['revisionId'] = revisionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (repository != null) 'repository': repository,
+        if (revisionId != null) 'revisionId': revisionId,
+      };
 }
 
 /// The number of errors in a given time period.
@@ -1336,19 +1225,11 @@ class TimedCount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (count != null) {
-      _json['count'] = count;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (count != null) 'count': count,
+        if (endTime != null) 'endTime': endTime,
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// Information related to tracking the progress on resolving the error.
@@ -1366,11 +1247,7 @@ class TrackingIssue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (url != null) 'url': url,
+      };
 }

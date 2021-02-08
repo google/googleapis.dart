@@ -227,19 +227,11 @@ class GoogleMapsPlayablelocationsV3Impression {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gameObjectType != null) {
-      _json['gameObjectType'] = gameObjectType;
-    }
-    if (impressionType != null) {
-      _json['impressionType'] = impressionType;
-    }
-    if (locationName != null) {
-      _json['locationName'] = locationName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gameObjectType != null) 'gameObjectType': gameObjectType,
+        if (impressionType != null) 'impressionType': impressionType,
+        if (locationName != null) 'locationName': locationName,
+      };
 }
 
 /// A request for logging impressions.
@@ -287,20 +279,12 @@ class GoogleMapsPlayablelocationsV3LogImpressionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clientInfo != null) {
-      _json['clientInfo'] = clientInfo.toJson();
-    }
-    if (impressions != null) {
-      _json['impressions'] =
-          impressions.map((value) => value.toJson()).toList();
-    }
-    if (requestId != null) {
-      _json['requestId'] = requestId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clientInfo != null) 'clientInfo': clientInfo.toJson(),
+        if (impressions != null)
+          'impressions': impressions.map((value) => value.toJson()).toList(),
+        if (requestId != null) 'requestId': requestId,
+      };
 }
 
 /// A response for the LogImpressions method.
@@ -313,10 +297,7 @@ class GoogleMapsPlayablelocationsV3LogImpressionsResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A request for logging your player's bad location reports.
@@ -365,20 +346,13 @@ class GoogleMapsPlayablelocationsV3LogPlayerReportsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clientInfo != null) {
-      _json['clientInfo'] = clientInfo.toJson();
-    }
-    if (playerReports != null) {
-      _json['playerReports'] =
-          playerReports.map((value) => value.toJson()).toList();
-    }
-    if (requestId != null) {
-      _json['requestId'] = requestId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clientInfo != null) 'clientInfo': clientInfo.toJson(),
+        if (playerReports != null)
+          'playerReports':
+              playerReports.map((value) => value.toJson()).toList(),
+        if (requestId != null) 'requestId': requestId,
+      };
 }
 
 /// A response for the LogPlayerReports method.
@@ -391,10 +365,7 @@ class GoogleMapsPlayablelocationsV3LogPlayerReportsResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A report submitted by a player about a playable location that is considered
@@ -442,22 +413,12 @@ class GoogleMapsPlayablelocationsV3PlayerReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (locationName != null) {
-      _json['locationName'] = locationName;
-    }
-    if (reasonDetails != null) {
-      _json['reasonDetails'] = reasonDetails;
-    }
-    if (reasons != null) {
-      _json['reasons'] = reasons;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode,
+        if (locationName != null) 'locationName': locationName,
+        if (reasonDetails != null) 'reasonDetails': reasonDetails,
+        if (reasons != null) 'reasons': reasons,
+      };
 }
 
 /// Specifies the area to search for playable locations.
@@ -484,13 +445,9 @@ class GoogleMapsPlayablelocationsV3SampleAreaFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (s2CellId != null) {
-      _json['s2CellId'] = s2CellId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (s2CellId != null) 's2CellId': s2CellId,
+      };
 }
 
 /// Encapsulates a filter criterion for searching for a set of playable
@@ -536,19 +493,11 @@ class GoogleMapsPlayablelocationsV3SampleCriterion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fieldsToReturn != null) {
-      _json['fieldsToReturn'] = fieldsToReturn;
-    }
-    if (filter != null) {
-      _json['filter'] = filter.toJson();
-    }
-    if (gameObjectType != null) {
-      _json['gameObjectType'] = gameObjectType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fieldsToReturn != null) 'fieldsToReturn': fieldsToReturn,
+        if (filter != null) 'filter': filter.toJson(),
+        if (gameObjectType != null) 'gameObjectType': gameObjectType,
+      };
 }
 
 /// Specifies the filters to use when searching for playable locations.
@@ -585,19 +534,11 @@ class GoogleMapsPlayablelocationsV3SampleFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (includedTypes != null) {
-      _json['includedTypes'] = includedTypes;
-    }
-    if (maxLocationCount != null) {
-      _json['maxLocationCount'] = maxLocationCount;
-    }
-    if (spacing != null) {
-      _json['spacing'] = spacing.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (includedTypes != null) 'includedTypes': includedTypes,
+        if (maxLocationCount != null) 'maxLocationCount': maxLocationCount,
+        if (spacing != null) 'spacing': spacing.toJson(),
+      };
 }
 
 /// A geographical point suitable for placing game objects in location-based
@@ -661,28 +602,14 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (centerPoint != null) {
-      _json['centerPoint'] = centerPoint.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (placeId != null) {
-      _json['placeId'] = placeId;
-    }
-    if (plusCode != null) {
-      _json['plusCode'] = plusCode;
-    }
-    if (snappedPoint != null) {
-      _json['snappedPoint'] = snappedPoint.toJson();
-    }
-    if (types != null) {
-      _json['types'] = types;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (centerPoint != null) 'centerPoint': centerPoint.toJson(),
+        if (name != null) 'name': name,
+        if (placeId != null) 'placeId': placeId,
+        if (plusCode != null) 'plusCode': plusCode,
+        if (snappedPoint != null) 'snappedPoint': snappedPoint.toJson(),
+        if (types != null) 'types': types,
+      };
 }
 
 /// A list of PlayableLocation objects that satisfies a single Criterion.
@@ -703,13 +630,10 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocationList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Life of a query: - When a game starts in a new location, your game server
@@ -756,16 +680,11 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (areaFilter != null) {
-      _json['areaFilter'] = areaFilter.toJson();
-    }
-    if (criteria != null) {
-      _json['criteria'] = criteria.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (areaFilter != null) 'areaFilter': areaFilter.toJson(),
+        if (criteria != null)
+          'criteria': criteria.map((value) => value.toJson()).toList(),
+      };
 }
 
 ///  Response for the SamplePlayableLocations method.
@@ -807,17 +726,12 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locationsPerGameObjectType != null) {
-      _json['locationsPerGameObjectType'] = locationsPerGameObjectType
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (ttl != null) {
-      _json['ttl'] = ttl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locationsPerGameObjectType != null)
+          'locationsPerGameObjectType': locationsPerGameObjectType
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (ttl != null) 'ttl': ttl,
+      };
 }
 
 /// A set of options that specifies the separation between playable locations.
@@ -870,16 +784,10 @@ class GoogleMapsPlayablelocationsV3SampleSpacingOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (minSpacingMeters != null) {
-      _json['minSpacingMeters'] = minSpacingMeters;
-    }
-    if (pointType != null) {
-      _json['pointType'] = pointType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (minSpacingMeters != null) 'minSpacingMeters': minSpacingMeters,
+        if (pointType != null) 'pointType': pointType,
+      };
 }
 
 /// Client information.
@@ -962,34 +870,18 @@ class GoogleMapsUnityClientInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiClient != null) {
-      _json['apiClient'] = apiClient;
-    }
-    if (applicationId != null) {
-      _json['applicationId'] = applicationId;
-    }
-    if (applicationVersion != null) {
-      _json['applicationVersion'] = applicationVersion;
-    }
-    if (deviceModel != null) {
-      _json['deviceModel'] = deviceModel;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (operatingSystem != null) {
-      _json['operatingSystem'] = operatingSystem;
-    }
-    if (operatingSystemBuild != null) {
-      _json['operatingSystemBuild'] = operatingSystemBuild;
-    }
-    if (platform != null) {
-      _json['platform'] = platform;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiClient != null) 'apiClient': apiClient,
+        if (applicationId != null) 'applicationId': applicationId,
+        if (applicationVersion != null)
+          'applicationVersion': applicationVersion,
+        if (deviceModel != null) 'deviceModel': deviceModel,
+        if (languageCode != null) 'languageCode': languageCode,
+        if (operatingSystem != null) 'operatingSystem': operatingSystem,
+        if (operatingSystemBuild != null)
+          'operatingSystemBuild': operatingSystemBuild,
+        if (platform != null) 'platform': platform,
+      };
 }
 
 /// An object that represents a latitude/longitude pair.
@@ -1019,14 +911,8 @@ class GoogleTypeLatLng {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (latitude != null) {
-      _json['latitude'] = latitude;
-    }
-    if (longitude != null) {
-      _json['longitude'] = longitude;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (latitude != null) 'latitude': latitude,
+        if (longitude != null) 'longitude': longitude,
+      };
 }

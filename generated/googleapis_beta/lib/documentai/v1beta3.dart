@@ -565,22 +565,12 @@ class GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (stateMessage != null) {
-      _json['stateMessage'] = stateMessage;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (state != null) 'state': state,
+        if (stateMessage != null) 'stateMessage': stateMessage,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// The long running operation metadata for CreateLabelerPool.
@@ -599,13 +589,9 @@ class GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (commonMetadata != null) {
-      _json['commonMetadata'] = commonMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+      };
 }
 
 /// The long running operation metadata for DeleteLabelerPool.
@@ -624,13 +610,9 @@ class GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (commonMetadata != null) {
-      _json['commonMetadata'] = commonMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+      };
 }
 
 /// The long running operation metadata for delete processor method.
@@ -649,13 +631,9 @@ class GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (commonMetadata != null) {
-      _json['commonMetadata'] = commonMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+      };
 }
 
 /// The long running operation metadata for delete processor version method.
@@ -674,13 +652,9 @@ class GoogleCloudDocumentaiUiv1beta3DeleteProcessorVersionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (commonMetadata != null) {
-      _json['commonMetadata'] = commonMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+      };
 }
 
 /// The long running operation metadata for deploy processor version method.
@@ -699,13 +673,9 @@ class GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (commonMetadata != null) {
-      _json['commonMetadata'] = commonMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+      };
 }
 
 /// Response message for the deploy processor version method.
@@ -716,10 +686,7 @@ class GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The long running operation metadata for disable processor method.
@@ -738,13 +705,9 @@ class GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (commonMetadata != null) {
-      _json['commonMetadata'] = commonMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+      };
 }
 
 /// Response message for the disable processor method.
@@ -757,10 +720,7 @@ class GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The long running operation metadata for enable processor method.
@@ -779,13 +739,9 @@ class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (commonMetadata != null) {
-      _json['commonMetadata'] = commonMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+      };
 }
 
 /// Response message for the enable processor method.
@@ -798,10 +754,7 @@ class GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Metadata of the EvaluateProcessorVersion method.
@@ -820,13 +773,9 @@ class GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (commonMetadata != null) {
-      _json['commonMetadata'] = commonMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+      };
 }
 
 /// Metadata of the EvaluateProcessorVersion method.
@@ -844,13 +793,9 @@ class GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (evaluation != null) {
-      _json['evaluation'] = evaluation.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (evaluation != null) 'evaluation': evaluation.toJson(),
+      };
 }
 
 /// An evaluation of a ProcessorVersion's performance.
@@ -901,23 +846,15 @@ class GoogleCloudDocumentaiUiv1beta3Evaluation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allEntitiesMetrics != null) {
-      _json['allEntitiesMetrics'] = allEntitiesMetrics.toJson();
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (entityMetrics != null) {
-      _json['entityMetrics'] =
-          entityMetrics.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allEntitiesMetrics != null)
+          'allEntitiesMetrics': allEntitiesMetrics.toJson(),
+        if (createTime != null) 'createTime': createTime,
+        if (entityMetrics != null)
+          'entityMetrics': entityMetrics
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (name != null) 'name': name,
+      };
 }
 
 /// Evaluations metrics, at a specific confidence level.
@@ -941,16 +878,10 @@ class GoogleCloudDocumentaiUiv1beta3EvaluationConfidenceLevelMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidenceLevel != null) {
-      _json['confidenceLevel'] = confidenceLevel;
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidenceLevel != null) 'confidenceLevel': confidenceLevel,
+        if (metrics != null) 'metrics': metrics.toJson(),
+      };
 }
 
 /// Evaluation metrics, either in aggregate or about a specific entity.
@@ -978,19 +909,11 @@ class GoogleCloudDocumentaiUiv1beta3EvaluationMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (f1Score != null) {
-      _json['f1Score'] = f1Score;
-    }
-    if (precision != null) {
-      _json['precision'] = precision;
-    }
-    if (recall != null) {
-      _json['recall'] = recall;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (f1Score != null) 'f1Score': f1Score,
+        if (precision != null) 'precision': precision,
+        if (recall != null) 'recall': recall,
+      };
 }
 
 /// Metrics across multiple confidence levels.
@@ -1013,14 +936,11 @@ class GoogleCloudDocumentaiUiv1beta3EvaluationMultiConfidenceMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidenceLevelMetrics != null) {
-      _json['confidenceLevelMetrics'] =
-          confidenceLevelMetrics.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidenceLevelMetrics != null)
+          'confidenceLevelMetrics':
+              confidenceLevelMetrics.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Gives a short summary of an evaluation, and links to the evaluation itself.
@@ -1050,19 +970,12 @@ class GoogleCloudDocumentaiUiv1beta3EvaluationReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aggregateMetrics != null) {
-      _json['aggregateMetrics'] = aggregateMetrics.toJson();
-    }
-    if (evaluation != null) {
-      _json['evaluation'] = evaluation;
-    }
-    if (operation != null) {
-      _json['operation'] = operation;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aggregateMetrics != null)
+          'aggregateMetrics': aggregateMetrics.toJson(),
+        if (evaluation != null) 'evaluation': evaluation,
+        if (operation != null) 'operation': operation,
+      };
 }
 
 /// A processor version is an implementation of a processor.
@@ -1133,28 +1046,15 @@ class GoogleCloudDocumentaiUiv1beta3ProcessorVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (latestEvaluation != null) {
-      _json['latestEvaluation'] = latestEvaluation.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (schema != null) {
-      _json['schema'] = schema.toJson();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (displayName != null) 'displayName': displayName,
+        if (latestEvaluation != null)
+          'latestEvaluation': latestEvaluation.toJson(),
+        if (name != null) 'name': name,
+        if (schema != null) 'schema': schema.toJson(),
+        if (state != null) 'state': state,
+      };
 }
 
 /// The schema defines the output of the processed document by a processor.
@@ -1186,20 +1086,12 @@ class GoogleCloudDocumentaiUiv1beta3Schema {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (entityTypes != null) {
-      _json['entityTypes'] =
-          entityTypes.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (entityTypes != null)
+          'entityTypes': entityTypes.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// EntityType is the wrapper of a label of the corresponding model with
@@ -1278,28 +1170,15 @@ class GoogleCloudDocumentaiUiv1beta3SchemaEntityType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (baseType != null) {
-      _json['baseType'] = baseType;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (occurrenceType != null) {
-      _json['occurrenceType'] = occurrenceType;
-    }
-    if (properties != null) {
-      _json['properties'] = properties.map((value) => value.toJson()).toList();
-    }
-    if (source != null) {
-      _json['source'] = source;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (baseType != null) 'baseType': baseType,
+        if (description != null) 'description': description,
+        if (occurrenceType != null) 'occurrenceType': occurrenceType,
+        if (properties != null)
+          'properties': properties.map((value) => value.toJson()).toList(),
+        if (source != null) 'source': source,
+        if (type != null) 'type': type,
+      };
 }
 
 /// The metadata that represents a processor version being created.
@@ -1318,13 +1197,9 @@ class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (commonMetadata != null) {
-      _json['commonMetadata'] = commonMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+      };
 }
 
 /// The response for the TrainProcessorVersion method.
@@ -1343,13 +1218,10 @@ class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (processorVersion != null) {
-      _json['processorVersion'] = processorVersion.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (processorVersion != null)
+          'processorVersion': processorVersion.toJson(),
+      };
 }
 
 /// The long running operation metadata for the undeploy processor version
@@ -1369,13 +1241,9 @@ class GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (commonMetadata != null) {
-      _json['commonMetadata'] = commonMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+      };
 }
 
 /// Response message for the undeploy processor version method.
@@ -1386,10 +1254,7 @@ class GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The long running operation metadata for updating the human review
@@ -1409,13 +1274,9 @@ class GoogleCloudDocumentaiUiv1beta3UpdateHumanReviewConfigMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (commonMetadata != null) {
-      _json['commonMetadata'] = commonMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+      };
 }
 
 /// The long running operation metadata for UpdateLabelerPool.
@@ -1434,13 +1295,9 @@ class GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (commonMetadata != null) {
-      _json['commonMetadata'] = commonMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+      };
 }
 
 /// The long running operation metadata for batch process method.
@@ -1498,26 +1355,15 @@ class GoogleCloudDocumentaiV1BatchProcessMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (individualProcessStatuses != null) {
-      _json['individualProcessStatuses'] =
-          individualProcessStatuses.map((value) => value.toJson()).toList();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (stateMessage != null) {
-      _json['stateMessage'] = stateMessage;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (individualProcessStatuses != null)
+          'individualProcessStatuses':
+              individualProcessStatuses.map((value) => value.toJson()).toList(),
+        if (state != null) 'state': state,
+        if (stateMessage != null) 'stateMessage': stateMessage,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// The status of a each individual document in the batch process.
@@ -1559,22 +1405,14 @@ class GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (humanReviewStatus != null) {
-      _json['humanReviewStatus'] = humanReviewStatus.toJson();
-    }
-    if (inputGcsSource != null) {
-      _json['inputGcsSource'] = inputGcsSource;
-    }
-    if (outputGcsDestination != null) {
-      _json['outputGcsDestination'] = outputGcsDestination;
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (humanReviewStatus != null)
+          'humanReviewStatus': humanReviewStatus.toJson(),
+        if (inputGcsSource != null) 'inputGcsSource': inputGcsSource,
+        if (outputGcsDestination != null)
+          'outputGcsDestination': outputGcsDestination,
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 /// Response message for batch process document method.
@@ -1585,10 +1423,7 @@ class GoogleCloudDocumentaiV1BatchProcessResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The common metadata for long running operations.
@@ -1629,22 +1464,12 @@ class GoogleCloudDocumentaiV1CommonOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (stateMessage != null) {
-      _json['stateMessage'] = stateMessage;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (state != null) 'state': state,
+        if (stateMessage != null) 'stateMessage': stateMessage,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// The status of human review on a processed document.
@@ -1687,19 +1512,12 @@ class GoogleCloudDocumentaiV1HumanReviewStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (humanReviewOperation != null) {
-      _json['humanReviewOperation'] = humanReviewOperation;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (stateMessage != null) {
-      _json['stateMessage'] = stateMessage;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (humanReviewOperation != null)
+          'humanReviewOperation': humanReviewOperation,
+        if (state != null) 'state': state,
+        if (stateMessage != null) 'stateMessage': stateMessage,
+      };
 }
 
 /// The long running operation metadata for review document method.
@@ -1717,13 +1535,9 @@ class GoogleCloudDocumentaiV1ReviewDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (commonMetadata != null) {
-      _json['commonMetadata'] = commonMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+      };
 }
 
 /// Response message for review document method.
@@ -1739,13 +1553,9 @@ class GoogleCloudDocumentaiV1ReviewDocumentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcsDestination != null) {
-      _json['gcsDestination'] = gcsDestination;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsDestination != null) 'gcsDestination': gcsDestination,
+      };
 }
 
 /// Response to an batch document processing request.
@@ -1768,13 +1578,10 @@ class GoogleCloudDocumentaiV1beta1BatchProcessDocumentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (responses != null) {
-      _json['responses'] = responses.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (responses != null)
+          'responses': responses.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A bounding polygon for the detected image annotation.
@@ -1804,17 +1611,13 @@ class GoogleCloudDocumentaiV1beta1BoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (normalizedVertices != null) {
-      _json['normalizedVertices'] =
-          normalizedVertices.map((value) => value.toJson()).toList();
-    }
-    if (vertices != null) {
-      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (normalizedVertices != null)
+          'normalizedVertices':
+              normalizedVertices.map((value) => value.toJson()).toList(),
+        if (vertices != null)
+          'vertices': vertices.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Document represents the canonical document resource in Document
@@ -1964,52 +1767,29 @@ class GoogleCloudDocumentaiV1beta1Document {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (entities != null) {
-      _json['entities'] = entities.map((value) => value.toJson()).toList();
-    }
-    if (entityRelations != null) {
-      _json['entityRelations'] =
-          entityRelations.map((value) => value.toJson()).toList();
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    if (pages != null) {
-      _json['pages'] = pages.map((value) => value.toJson()).toList();
-    }
-    if (revisions != null) {
-      _json['revisions'] = revisions.map((value) => value.toJson()).toList();
-    }
-    if (shardInfo != null) {
-      _json['shardInfo'] = shardInfo.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    if (textChanges != null) {
-      _json['textChanges'] =
-          textChanges.map((value) => value.toJson()).toList();
-    }
-    if (textStyles != null) {
-      _json['textStyles'] = textStyles.map((value) => value.toJson()).toList();
-    }
-    if (translations != null) {
-      _json['translations'] =
-          translations.map((value) => value.toJson()).toList();
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (entities != null)
+          'entities': entities.map((value) => value.toJson()).toList(),
+        if (entityRelations != null)
+          'entityRelations':
+              entityRelations.map((value) => value.toJson()).toList(),
+        if (error != null) 'error': error.toJson(),
+        if (mimeType != null) 'mimeType': mimeType,
+        if (pages != null)
+          'pages': pages.map((value) => value.toJson()).toList(),
+        if (revisions != null)
+          'revisions': revisions.map((value) => value.toJson()).toList(),
+        if (shardInfo != null) 'shardInfo': shardInfo.toJson(),
+        if (text != null) 'text': text,
+        if (textChanges != null)
+          'textChanges': textChanges.map((value) => value.toJson()).toList(),
+        if (textStyles != null)
+          'textStyles': textStyles.map((value) => value.toJson()).toList(),
+        if (translations != null)
+          'translations': translations.map((value) => value.toJson()).toList(),
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// A phrase in the text that is a known entity type, such as a person, an
@@ -2124,43 +1904,21 @@ class GoogleCloudDocumentaiV1beta1DocumentEntity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (mentionId != null) {
-      _json['mentionId'] = mentionId;
-    }
-    if (mentionText != null) {
-      _json['mentionText'] = mentionText;
-    }
-    if (normalizedValue != null) {
-      _json['normalizedValue'] = normalizedValue.toJson();
-    }
-    if (pageAnchor != null) {
-      _json['pageAnchor'] = pageAnchor.toJson();
-    }
-    if (properties != null) {
-      _json['properties'] = properties.map((value) => value.toJson()).toList();
-    }
-    if (provenance != null) {
-      _json['provenance'] = provenance.toJson();
-    }
-    if (redacted != null) {
-      _json['redacted'] = redacted;
-    }
-    if (textAnchor != null) {
-      _json['textAnchor'] = textAnchor.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (id != null) 'id': id,
+        if (mentionId != null) 'mentionId': mentionId,
+        if (mentionText != null) 'mentionText': mentionText,
+        if (normalizedValue != null)
+          'normalizedValue': normalizedValue.toJson(),
+        if (pageAnchor != null) 'pageAnchor': pageAnchor.toJson(),
+        if (properties != null)
+          'properties': properties.map((value) => value.toJson()).toList(),
+        if (provenance != null) 'provenance': provenance.toJson(),
+        if (redacted != null) 'redacted': redacted,
+        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// Parsed and normalized entity value.
@@ -2225,25 +1983,13 @@ class GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (addressValue != null) {
-      _json['addressValue'] = addressValue.toJson();
-    }
-    if (dateValue != null) {
-      _json['dateValue'] = dateValue.toJson();
-    }
-    if (datetimeValue != null) {
-      _json['datetimeValue'] = datetimeValue.toJson();
-    }
-    if (moneyValue != null) {
-      _json['moneyValue'] = moneyValue.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (addressValue != null) 'addressValue': addressValue.toJson(),
+        if (dateValue != null) 'dateValue': dateValue.toJson(),
+        if (datetimeValue != null) 'datetimeValue': datetimeValue.toJson(),
+        if (moneyValue != null) 'moneyValue': moneyValue.toJson(),
+        if (text != null) 'text': text,
+      };
 }
 
 /// Relationship between Entities.
@@ -2271,19 +2017,11 @@ class GoogleCloudDocumentaiV1beta1DocumentEntityRelation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (objectId != null) {
-      _json['objectId'] = objectId;
-    }
-    if (relation != null) {
-      _json['relation'] = relation;
-    }
-    if (subjectId != null) {
-      _json['subjectId'] = subjectId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (objectId != null) 'objectId': objectId,
+        if (relation != null) 'relation': relation,
+        if (subjectId != null) 'subjectId': subjectId,
+      };
 }
 
 /// A page in a Document.
@@ -2428,51 +2166,32 @@ class GoogleCloudDocumentaiV1beta1DocumentPage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blocks != null) {
-      _json['blocks'] = blocks.map((value) => value.toJson()).toList();
-    }
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (dimension != null) {
-      _json['dimension'] = dimension.toJson();
-    }
-    if (formFields != null) {
-      _json['formFields'] = formFields.map((value) => value.toJson()).toList();
-    }
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    if (layout != null) {
-      _json['layout'] = layout.toJson();
-    }
-    if (lines != null) {
-      _json['lines'] = lines.map((value) => value.toJson()).toList();
-    }
-    if (pageNumber != null) {
-      _json['pageNumber'] = pageNumber;
-    }
-    if (paragraphs != null) {
-      _json['paragraphs'] = paragraphs.map((value) => value.toJson()).toList();
-    }
-    if (tables != null) {
-      _json['tables'] = tables.map((value) => value.toJson()).toList();
-    }
-    if (tokens != null) {
-      _json['tokens'] = tokens.map((value) => value.toJson()).toList();
-    }
-    if (transforms != null) {
-      _json['transforms'] = transforms.map((value) => value.toJson()).toList();
-    }
-    if (visualElements != null) {
-      _json['visualElements'] =
-          visualElements.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blocks != null)
+          'blocks': blocks.map((value) => value.toJson()).toList(),
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+        if (dimension != null) 'dimension': dimension.toJson(),
+        if (formFields != null)
+          'formFields': formFields.map((value) => value.toJson()).toList(),
+        if (image != null) 'image': image.toJson(),
+        if (layout != null) 'layout': layout.toJson(),
+        if (lines != null)
+          'lines': lines.map((value) => value.toJson()).toList(),
+        if (pageNumber != null) 'pageNumber': pageNumber,
+        if (paragraphs != null)
+          'paragraphs': paragraphs.map((value) => value.toJson()).toList(),
+        if (tables != null)
+          'tables': tables.map((value) => value.toJson()).toList(),
+        if (tokens != null)
+          'tokens': tokens.map((value) => value.toJson()).toList(),
+        if (transforms != null)
+          'transforms': transforms.map((value) => value.toJson()).toList(),
+        if (visualElements != null)
+          'visualElements':
+              visualElements.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Referencing the visual context of the entity in the Document.pages.
@@ -2495,13 +2214,10 @@ class GoogleCloudDocumentaiV1beta1DocumentPageAnchor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pageRefs != null) {
-      _json['pageRefs'] = pageRefs.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pageRefs != null)
+          'pageRefs': pageRefs.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents a weak reference to a page element within a document.
@@ -2555,22 +2271,12 @@ class GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (layoutId != null) {
-      _json['layoutId'] = layoutId;
-    }
-    if (layoutType != null) {
-      _json['layoutType'] = layoutType;
-    }
-    if (page != null) {
-      _json['page'] = page;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (layoutId != null) 'layoutId': layoutId,
+        if (layoutType != null) 'layoutType': layoutType,
+        if (page != null) 'page': page,
+      };
 }
 
 /// A block has a set of lines (collected into paragraphs) that have a common
@@ -2607,20 +2313,13 @@ class GoogleCloudDocumentaiV1beta1DocumentPageBlock {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (layout != null) {
-      _json['layout'] = layout.toJson();
-    }
-    if (provenance != null) {
-      _json['provenance'] = provenance.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout.toJson(),
+        if (provenance != null) 'provenance': provenance.toJson(),
+      };
 }
 
 /// Detected language for a structural component.
@@ -2648,16 +2347,10 @@ class GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// Dimension for the page.
@@ -2685,19 +2378,11 @@ class GoogleCloudDocumentaiV1beta1DocumentPageDimension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (height != null) {
-      _json['height'] = height;
-    }
-    if (unit != null) {
-      _json['unit'] = unit;
-    }
-    if (width != null) {
-      _json['width'] = width;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (height != null) 'height': height,
+        if (unit != null) 'unit': unit,
+        if (width != null) 'width': width,
+      };
 }
 
 /// A form field detected on the page.
@@ -2756,27 +2441,17 @@ class GoogleCloudDocumentaiV1beta1DocumentPageFormField {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fieldName != null) {
-      _json['fieldName'] = fieldName.toJson();
-    }
-    if (fieldValue != null) {
-      _json['fieldValue'] = fieldValue.toJson();
-    }
-    if (nameDetectedLanguages != null) {
-      _json['nameDetectedLanguages'] =
-          nameDetectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (valueDetectedLanguages != null) {
-      _json['valueDetectedLanguages'] =
-          valueDetectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (valueType != null) {
-      _json['valueType'] = valueType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fieldName != null) 'fieldName': fieldName.toJson(),
+        if (fieldValue != null) 'fieldValue': fieldValue.toJson(),
+        if (nameDetectedLanguages != null)
+          'nameDetectedLanguages':
+              nameDetectedLanguages.map((value) => value.toJson()).toList(),
+        if (valueDetectedLanguages != null)
+          'valueDetectedLanguages':
+              valueDetectedLanguages.map((value) => value.toJson()).toList(),
+        if (valueType != null) 'valueType': valueType,
+      };
 }
 
 /// Rendered image contents for this page.
@@ -2816,22 +2491,12 @@ class GoogleCloudDocumentaiV1beta1DocumentPageImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (height != null) {
-      _json['height'] = height;
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    if (width != null) {
-      _json['width'] = width;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (height != null) 'height': height,
+        if (mimeType != null) 'mimeType': mimeType,
+        if (width != null) 'width': width,
+      };
 }
 
 /// Visual element describing a layout unit on a page.
@@ -2880,22 +2545,12 @@ class GoogleCloudDocumentaiV1beta1DocumentPageLayout {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (orientation != null) {
-      _json['orientation'] = orientation;
-    }
-    if (textAnchor != null) {
-      _json['textAnchor'] = textAnchor.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (orientation != null) 'orientation': orientation,
+        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
+      };
 }
 
 /// A collection of tokens that a human would perceive as a line.
@@ -2933,20 +2588,13 @@ class GoogleCloudDocumentaiV1beta1DocumentPageLine {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (layout != null) {
-      _json['layout'] = layout.toJson();
-    }
-    if (provenance != null) {
-      _json['provenance'] = provenance.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout.toJson(),
+        if (provenance != null) 'provenance': provenance.toJson(),
+      };
 }
 
 /// Representation for transformation matrix, intended to be compatible and used
@@ -2991,22 +2639,12 @@ class GoogleCloudDocumentaiV1beta1DocumentPageMatrix {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cols != null) {
-      _json['cols'] = cols;
-    }
-    if (data != null) {
-      _json['data'] = data;
-    }
-    if (rows != null) {
-      _json['rows'] = rows;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cols != null) 'cols': cols,
+        if (data != null) 'data': data,
+        if (rows != null) 'rows': rows,
+        if (type != null) 'type': type,
+      };
 }
 
 /// A collection of lines that a human would perceive as a paragraph.
@@ -3042,20 +2680,13 @@ class GoogleCloudDocumentaiV1beta1DocumentPageParagraph {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (layout != null) {
-      _json['layout'] = layout.toJson();
-    }
-    if (provenance != null) {
-      _json['provenance'] = provenance.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout.toJson(),
+        if (provenance != null) 'provenance': provenance.toJson(),
+      };
 }
 
 /// A table representation similar to HTML table structure.
@@ -3104,23 +2735,16 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bodyRows != null) {
-      _json['bodyRows'] = bodyRows.map((value) => value.toJson()).toList();
-    }
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (headerRows != null) {
-      _json['headerRows'] = headerRows.map((value) => value.toJson()).toList();
-    }
-    if (layout != null) {
-      _json['layout'] = layout.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bodyRows != null)
+          'bodyRows': bodyRows.map((value) => value.toJson()).toList(),
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+        if (headerRows != null)
+          'headerRows': headerRows.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout.toJson(),
+      };
 }
 
 /// A cell representation inside the table.
@@ -3162,23 +2786,14 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTableTableCell {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (colSpan != null) {
-      _json['colSpan'] = colSpan;
-    }
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (layout != null) {
-      _json['layout'] = layout.toJson();
-    }
-    if (rowSpan != null) {
-      _json['rowSpan'] = rowSpan;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (colSpan != null) 'colSpan': colSpan,
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout.toJson(),
+        if (rowSpan != null) 'rowSpan': rowSpan,
+      };
 }
 
 /// A row of table cells.
@@ -3199,13 +2814,10 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTableTableRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cells != null) {
-      _json['cells'] = cells.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cells != null)
+          'cells': cells.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A detected token.
@@ -3249,23 +2861,14 @@ class GoogleCloudDocumentaiV1beta1DocumentPageToken {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detectedBreak != null) {
-      _json['detectedBreak'] = detectedBreak.toJson();
-    }
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (layout != null) {
-      _json['layout'] = layout.toJson();
-    }
-    if (provenance != null) {
-      _json['provenance'] = provenance.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detectedBreak != null) 'detectedBreak': detectedBreak.toJson(),
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout.toJson(),
+        if (provenance != null) 'provenance': provenance.toJson(),
+      };
 }
 
 /// Detected break at the end of a Token.
@@ -3288,13 +2891,9 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+      };
 }
 
 /// Detected non-text visual elements e.g. checkbox, signature etc.
@@ -3332,20 +2931,13 @@ class GoogleCloudDocumentaiV1beta1DocumentPageVisualElement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (layout != null) {
-      _json['layout'] = layout.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// Structure to identify provenance relationships between annotations in
@@ -3395,22 +2987,13 @@ class GoogleCloudDocumentaiV1beta1DocumentProvenance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (parents != null) {
-      _json['parents'] = parents.map((value) => value.toJson()).toList();
-    }
-    if (revision != null) {
-      _json['revision'] = revision;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (parents != null)
+          'parents': parents.map((value) => value.toJson()).toList(),
+        if (revision != null) 'revision': revision,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Structure for referencing parent provenances.
@@ -3436,16 +3019,10 @@ class GoogleCloudDocumentaiV1beta1DocumentProvenanceParent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (revision != null) {
-      _json['revision'] = revision;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (revision != null) 'revision': revision,
+      };
 }
 
 /// Contains past or forward revisions of this document.
@@ -3501,28 +3078,14 @@ class GoogleCloudDocumentaiV1beta1DocumentRevision {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (agent != null) {
-      _json['agent'] = agent;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (humanReview != null) {
-      _json['humanReview'] = humanReview.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    if (processor != null) {
-      _json['processor'] = processor;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (agent != null) 'agent': agent,
+        if (createTime != null) 'createTime': createTime,
+        if (humanReview != null) 'humanReview': humanReview.toJson(),
+        if (id != null) 'id': id,
+        if (parent != null) 'parent': parent,
+        if (processor != null) 'processor': processor,
+      };
 }
 
 /// Human Review information of the document.
@@ -3549,16 +3112,10 @@ class GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (stateMessage != null) {
-      _json['stateMessage'] = stateMessage;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (state != null) 'state': state,
+        if (stateMessage != null) 'stateMessage': stateMessage,
+      };
 }
 
 /// For a large document, sharding may be performed to produce several document
@@ -3590,19 +3147,11 @@ class GoogleCloudDocumentaiV1beta1DocumentShardInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (shardCount != null) {
-      _json['shardCount'] = shardCount;
-    }
-    if (shardIndex != null) {
-      _json['shardIndex'] = shardIndex;
-    }
-    if (textOffset != null) {
-      _json['textOffset'] = textOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (shardCount != null) 'shardCount': shardCount,
+        if (shardIndex != null) 'shardIndex': shardIndex,
+        if (textOffset != null) 'textOffset': textOffset,
+      };
 }
 
 /// Annotation for common text style attributes.
@@ -3669,31 +3218,16 @@ class GoogleCloudDocumentaiV1beta1DocumentStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backgroundColor != null) {
-      _json['backgroundColor'] = backgroundColor.toJson();
-    }
-    if (color != null) {
-      _json['color'] = color.toJson();
-    }
-    if (fontSize != null) {
-      _json['fontSize'] = fontSize.toJson();
-    }
-    if (fontWeight != null) {
-      _json['fontWeight'] = fontWeight;
-    }
-    if (textAnchor != null) {
-      _json['textAnchor'] = textAnchor.toJson();
-    }
-    if (textDecoration != null) {
-      _json['textDecoration'] = textDecoration;
-    }
-    if (textStyle != null) {
-      _json['textStyle'] = textStyle;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backgroundColor != null)
+          'backgroundColor': backgroundColor.toJson(),
+        if (color != null) 'color': color.toJson(),
+        if (fontSize != null) 'fontSize': fontSize.toJson(),
+        if (fontWeight != null) 'fontWeight': fontWeight,
+        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
+        if (textDecoration != null) 'textDecoration': textDecoration,
+        if (textStyle != null) 'textStyle': textStyle,
+      };
 }
 
 /// Font size with unit.
@@ -3717,16 +3251,10 @@ class GoogleCloudDocumentaiV1beta1DocumentStyleFontSize {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (size != null) {
-      _json['size'] = size;
-    }
-    if (unit != null) {
-      _json['unit'] = unit;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (size != null) 'size': size,
+        if (unit != null) 'unit': unit,
+      };
 }
 
 /// Text reference indexing into the Document.text.
@@ -3755,17 +3283,11 @@ class GoogleCloudDocumentaiV1beta1DocumentTextAnchor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (textSegments != null) {
-      _json['textSegments'] =
-          textSegments.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (textSegments != null)
+          'textSegments': textSegments.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A text segment in the Document.text.
@@ -3792,16 +3314,10 @@ class GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endIndex != null) {
-      _json['endIndex'] = endIndex;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endIndex != null) 'endIndex': endIndex,
+        if (startIndex != null) 'startIndex': startIndex,
+      };
 }
 
 /// This message is used for text changes aka.
@@ -3840,19 +3356,12 @@ class GoogleCloudDocumentaiV1beta1DocumentTextChange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (changedText != null) {
-      _json['changedText'] = changedText;
-    }
-    if (provenance != null) {
-      _json['provenance'] = provenance.map((value) => value.toJson()).toList();
-    }
-    if (textAnchor != null) {
-      _json['textAnchor'] = textAnchor.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (changedText != null) 'changedText': changedText,
+        if (provenance != null)
+          'provenance': provenance.map((value) => value.toJson()).toList(),
+        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
+      };
 }
 
 /// A translation of the text segment.
@@ -3898,22 +3407,13 @@ class GoogleCloudDocumentaiV1beta1DocumentTranslation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (provenance != null) {
-      _json['provenance'] = provenance.map((value) => value.toJson()).toList();
-    }
-    if (textAnchor != null) {
-      _json['textAnchor'] = textAnchor.toJson();
-    }
-    if (translatedText != null) {
-      _json['translatedText'] = translatedText;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode,
+        if (provenance != null)
+          'provenance': provenance.map((value) => value.toJson()).toList(),
+        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
+        if (translatedText != null) 'translatedText': translatedText,
+      };
 }
 
 /// The Google Cloud Storage location where the output file will be written to.
@@ -3928,13 +3428,9 @@ class GoogleCloudDocumentaiV1beta1GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// The Google Cloud Storage location where the input file will be read from.
@@ -3949,13 +3445,9 @@ class GoogleCloudDocumentaiV1beta1GcsSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// The desired input location and metadata.
@@ -3987,16 +3479,10 @@ class GoogleCloudDocumentaiV1beta1InputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcsSource != null) {
-      _json['gcsSource'] = gcsSource.toJson();
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsSource != null) 'gcsSource': gcsSource.toJson(),
+        if (mimeType != null) 'mimeType': mimeType,
+      };
 }
 
 /// A vertex represents a 2D point in the image.
@@ -4021,16 +3507,10 @@ class GoogleCloudDocumentaiV1beta1NormalizedVertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+      };
 }
 
 /// Contains metadata for the BatchProcessDocuments operation.
@@ -4073,22 +3553,12 @@ class GoogleCloudDocumentaiV1beta1OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (stateMessage != null) {
-      _json['stateMessage'] = stateMessage;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (state != null) 'state': state,
+        if (stateMessage != null) 'stateMessage': stateMessage,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// The desired output location and metadata.
@@ -4121,16 +3591,10 @@ class GoogleCloudDocumentaiV1beta1OutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcsDestination != null) {
-      _json['gcsDestination'] = gcsDestination.toJson();
-    }
-    if (pagesPerShard != null) {
-      _json['pagesPerShard'] = pagesPerShard;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsDestination != null) 'gcsDestination': gcsDestination.toJson(),
+        if (pagesPerShard != null) 'pagesPerShard': pagesPerShard,
+      };
 }
 
 /// Response to a single document processing request.
@@ -4159,16 +3623,10 @@ class GoogleCloudDocumentaiV1beta1ProcessDocumentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (inputConfig != null) {
-      _json['inputConfig'] = inputConfig.toJson();
-    }
-    if (outputConfig != null) {
-      _json['outputConfig'] = outputConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (inputConfig != null) 'inputConfig': inputConfig.toJson(),
+        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
+      };
 }
 
 /// A vertex represents a 2D point in the image.
@@ -4192,16 +3650,10 @@ class GoogleCloudDocumentaiV1beta1Vertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+      };
 }
 
 /// Response to an batch document processing request.
@@ -4224,13 +3676,10 @@ class GoogleCloudDocumentaiV1beta2BatchProcessDocumentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (responses != null) {
-      _json['responses'] = responses.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (responses != null)
+          'responses': responses.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A bounding polygon for the detected image annotation.
@@ -4260,17 +3709,13 @@ class GoogleCloudDocumentaiV1beta2BoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (normalizedVertices != null) {
-      _json['normalizedVertices'] =
-          normalizedVertices.map((value) => value.toJson()).toList();
-    }
-    if (vertices != null) {
-      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (normalizedVertices != null)
+          'normalizedVertices':
+              normalizedVertices.map((value) => value.toJson()).toList(),
+        if (vertices != null)
+          'vertices': vertices.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Document represents the canonical document resource in Document
@@ -4430,55 +3875,31 @@ class GoogleCloudDocumentaiV1beta2Document {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (entities != null) {
-      _json['entities'] = entities.map((value) => value.toJson()).toList();
-    }
-    if (entityRelations != null) {
-      _json['entityRelations'] =
-          entityRelations.map((value) => value.toJson()).toList();
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (labels != null) {
-      _json['labels'] = labels.map((value) => value.toJson()).toList();
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    if (pages != null) {
-      _json['pages'] = pages.map((value) => value.toJson()).toList();
-    }
-    if (revisions != null) {
-      _json['revisions'] = revisions.map((value) => value.toJson()).toList();
-    }
-    if (shardInfo != null) {
-      _json['shardInfo'] = shardInfo.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    if (textChanges != null) {
-      _json['textChanges'] =
-          textChanges.map((value) => value.toJson()).toList();
-    }
-    if (textStyles != null) {
-      _json['textStyles'] = textStyles.map((value) => value.toJson()).toList();
-    }
-    if (translations != null) {
-      _json['translations'] =
-          translations.map((value) => value.toJson()).toList();
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (entities != null)
+          'entities': entities.map((value) => value.toJson()).toList(),
+        if (entityRelations != null)
+          'entityRelations':
+              entityRelations.map((value) => value.toJson()).toList(),
+        if (error != null) 'error': error.toJson(),
+        if (labels != null)
+          'labels': labels.map((value) => value.toJson()).toList(),
+        if (mimeType != null) 'mimeType': mimeType,
+        if (pages != null)
+          'pages': pages.map((value) => value.toJson()).toList(),
+        if (revisions != null)
+          'revisions': revisions.map((value) => value.toJson()).toList(),
+        if (shardInfo != null) 'shardInfo': shardInfo.toJson(),
+        if (text != null) 'text': text,
+        if (textChanges != null)
+          'textChanges': textChanges.map((value) => value.toJson()).toList(),
+        if (textStyles != null)
+          'textStyles': textStyles.map((value) => value.toJson()).toList(),
+        if (translations != null)
+          'translations': translations.map((value) => value.toJson()).toList(),
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// A phrase in the text that is a known entity type, such as a person, an
@@ -4593,43 +4014,21 @@ class GoogleCloudDocumentaiV1beta2DocumentEntity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (mentionId != null) {
-      _json['mentionId'] = mentionId;
-    }
-    if (mentionText != null) {
-      _json['mentionText'] = mentionText;
-    }
-    if (normalizedValue != null) {
-      _json['normalizedValue'] = normalizedValue.toJson();
-    }
-    if (pageAnchor != null) {
-      _json['pageAnchor'] = pageAnchor.toJson();
-    }
-    if (properties != null) {
-      _json['properties'] = properties.map((value) => value.toJson()).toList();
-    }
-    if (provenance != null) {
-      _json['provenance'] = provenance.toJson();
-    }
-    if (redacted != null) {
-      _json['redacted'] = redacted;
-    }
-    if (textAnchor != null) {
-      _json['textAnchor'] = textAnchor.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (id != null) 'id': id,
+        if (mentionId != null) 'mentionId': mentionId,
+        if (mentionText != null) 'mentionText': mentionText,
+        if (normalizedValue != null)
+          'normalizedValue': normalizedValue.toJson(),
+        if (pageAnchor != null) 'pageAnchor': pageAnchor.toJson(),
+        if (properties != null)
+          'properties': properties.map((value) => value.toJson()).toList(),
+        if (provenance != null) 'provenance': provenance.toJson(),
+        if (redacted != null) 'redacted': redacted,
+        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// Parsed and normalized entity value.
@@ -4694,25 +4093,13 @@ class GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (addressValue != null) {
-      _json['addressValue'] = addressValue.toJson();
-    }
-    if (dateValue != null) {
-      _json['dateValue'] = dateValue.toJson();
-    }
-    if (datetimeValue != null) {
-      _json['datetimeValue'] = datetimeValue.toJson();
-    }
-    if (moneyValue != null) {
-      _json['moneyValue'] = moneyValue.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (addressValue != null) 'addressValue': addressValue.toJson(),
+        if (dateValue != null) 'dateValue': dateValue.toJson(),
+        if (datetimeValue != null) 'datetimeValue': datetimeValue.toJson(),
+        if (moneyValue != null) 'moneyValue': moneyValue.toJson(),
+        if (text != null) 'text': text,
+      };
 }
 
 /// Relationship between Entities.
@@ -4740,19 +4127,11 @@ class GoogleCloudDocumentaiV1beta2DocumentEntityRelation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (objectId != null) {
-      _json['objectId'] = objectId;
-    }
-    if (relation != null) {
-      _json['relation'] = relation;
-    }
-    if (subjectId != null) {
-      _json['subjectId'] = subjectId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (objectId != null) 'objectId': objectId,
+        if (relation != null) 'relation': relation,
+        if (subjectId != null) 'subjectId': subjectId,
+      };
 }
 
 /// Label attaches schema information and/or other metadata to segments within a
@@ -4791,19 +4170,11 @@ class GoogleCloudDocumentaiV1beta2DocumentLabel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (automlModel != null) {
-      _json['automlModel'] = automlModel;
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (automlModel != null) 'automlModel': automlModel,
+        if (confidence != null) 'confidence': confidence,
+        if (name != null) 'name': name,
+      };
 }
 
 /// A page in a Document.
@@ -4948,51 +4319,32 @@ class GoogleCloudDocumentaiV1beta2DocumentPage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blocks != null) {
-      _json['blocks'] = blocks.map((value) => value.toJson()).toList();
-    }
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (dimension != null) {
-      _json['dimension'] = dimension.toJson();
-    }
-    if (formFields != null) {
-      _json['formFields'] = formFields.map((value) => value.toJson()).toList();
-    }
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    if (layout != null) {
-      _json['layout'] = layout.toJson();
-    }
-    if (lines != null) {
-      _json['lines'] = lines.map((value) => value.toJson()).toList();
-    }
-    if (pageNumber != null) {
-      _json['pageNumber'] = pageNumber;
-    }
-    if (paragraphs != null) {
-      _json['paragraphs'] = paragraphs.map((value) => value.toJson()).toList();
-    }
-    if (tables != null) {
-      _json['tables'] = tables.map((value) => value.toJson()).toList();
-    }
-    if (tokens != null) {
-      _json['tokens'] = tokens.map((value) => value.toJson()).toList();
-    }
-    if (transforms != null) {
-      _json['transforms'] = transforms.map((value) => value.toJson()).toList();
-    }
-    if (visualElements != null) {
-      _json['visualElements'] =
-          visualElements.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blocks != null)
+          'blocks': blocks.map((value) => value.toJson()).toList(),
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+        if (dimension != null) 'dimension': dimension.toJson(),
+        if (formFields != null)
+          'formFields': formFields.map((value) => value.toJson()).toList(),
+        if (image != null) 'image': image.toJson(),
+        if (layout != null) 'layout': layout.toJson(),
+        if (lines != null)
+          'lines': lines.map((value) => value.toJson()).toList(),
+        if (pageNumber != null) 'pageNumber': pageNumber,
+        if (paragraphs != null)
+          'paragraphs': paragraphs.map((value) => value.toJson()).toList(),
+        if (tables != null)
+          'tables': tables.map((value) => value.toJson()).toList(),
+        if (tokens != null)
+          'tokens': tokens.map((value) => value.toJson()).toList(),
+        if (transforms != null)
+          'transforms': transforms.map((value) => value.toJson()).toList(),
+        if (visualElements != null)
+          'visualElements':
+              visualElements.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Referencing the visual context of the entity in the Document.pages.
@@ -5015,13 +4367,10 @@ class GoogleCloudDocumentaiV1beta2DocumentPageAnchor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pageRefs != null) {
-      _json['pageRefs'] = pageRefs.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pageRefs != null)
+          'pageRefs': pageRefs.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents a weak reference to a page element within a document.
@@ -5075,22 +4424,12 @@ class GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (layoutId != null) {
-      _json['layoutId'] = layoutId;
-    }
-    if (layoutType != null) {
-      _json['layoutType'] = layoutType;
-    }
-    if (page != null) {
-      _json['page'] = page;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (layoutId != null) 'layoutId': layoutId,
+        if (layoutType != null) 'layoutType': layoutType,
+        if (page != null) 'page': page,
+      };
 }
 
 /// A block has a set of lines (collected into paragraphs) that have a common
@@ -5127,20 +4466,13 @@ class GoogleCloudDocumentaiV1beta2DocumentPageBlock {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (layout != null) {
-      _json['layout'] = layout.toJson();
-    }
-    if (provenance != null) {
-      _json['provenance'] = provenance.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout.toJson(),
+        if (provenance != null) 'provenance': provenance.toJson(),
+      };
 }
 
 /// Detected language for a structural component.
@@ -5168,16 +4500,10 @@ class GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// Dimension for the page.
@@ -5205,19 +4531,11 @@ class GoogleCloudDocumentaiV1beta2DocumentPageDimension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (height != null) {
-      _json['height'] = height;
-    }
-    if (unit != null) {
-      _json['unit'] = unit;
-    }
-    if (width != null) {
-      _json['width'] = width;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (height != null) 'height': height,
+        if (unit != null) 'unit': unit,
+        if (width != null) 'width': width,
+      };
 }
 
 /// A form field detected on the page.
@@ -5276,27 +4594,17 @@ class GoogleCloudDocumentaiV1beta2DocumentPageFormField {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fieldName != null) {
-      _json['fieldName'] = fieldName.toJson();
-    }
-    if (fieldValue != null) {
-      _json['fieldValue'] = fieldValue.toJson();
-    }
-    if (nameDetectedLanguages != null) {
-      _json['nameDetectedLanguages'] =
-          nameDetectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (valueDetectedLanguages != null) {
-      _json['valueDetectedLanguages'] =
-          valueDetectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (valueType != null) {
-      _json['valueType'] = valueType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fieldName != null) 'fieldName': fieldName.toJson(),
+        if (fieldValue != null) 'fieldValue': fieldValue.toJson(),
+        if (nameDetectedLanguages != null)
+          'nameDetectedLanguages':
+              nameDetectedLanguages.map((value) => value.toJson()).toList(),
+        if (valueDetectedLanguages != null)
+          'valueDetectedLanguages':
+              valueDetectedLanguages.map((value) => value.toJson()).toList(),
+        if (valueType != null) 'valueType': valueType,
+      };
 }
 
 /// Rendered image contents for this page.
@@ -5336,22 +4644,12 @@ class GoogleCloudDocumentaiV1beta2DocumentPageImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (height != null) {
-      _json['height'] = height;
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    if (width != null) {
-      _json['width'] = width;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (height != null) 'height': height,
+        if (mimeType != null) 'mimeType': mimeType,
+        if (width != null) 'width': width,
+      };
 }
 
 /// Visual element describing a layout unit on a page.
@@ -5400,22 +4698,12 @@ class GoogleCloudDocumentaiV1beta2DocumentPageLayout {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (orientation != null) {
-      _json['orientation'] = orientation;
-    }
-    if (textAnchor != null) {
-      _json['textAnchor'] = textAnchor.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (orientation != null) 'orientation': orientation,
+        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
+      };
 }
 
 /// A collection of tokens that a human would perceive as a line.
@@ -5453,20 +4741,13 @@ class GoogleCloudDocumentaiV1beta2DocumentPageLine {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (layout != null) {
-      _json['layout'] = layout.toJson();
-    }
-    if (provenance != null) {
-      _json['provenance'] = provenance.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout.toJson(),
+        if (provenance != null) 'provenance': provenance.toJson(),
+      };
 }
 
 /// Representation for transformation matrix, intended to be compatible and used
@@ -5511,22 +4792,12 @@ class GoogleCloudDocumentaiV1beta2DocumentPageMatrix {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cols != null) {
-      _json['cols'] = cols;
-    }
-    if (data != null) {
-      _json['data'] = data;
-    }
-    if (rows != null) {
-      _json['rows'] = rows;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cols != null) 'cols': cols,
+        if (data != null) 'data': data,
+        if (rows != null) 'rows': rows,
+        if (type != null) 'type': type,
+      };
 }
 
 /// A collection of lines that a human would perceive as a paragraph.
@@ -5562,20 +4833,13 @@ class GoogleCloudDocumentaiV1beta2DocumentPageParagraph {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (layout != null) {
-      _json['layout'] = layout.toJson();
-    }
-    if (provenance != null) {
-      _json['provenance'] = provenance.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout.toJson(),
+        if (provenance != null) 'provenance': provenance.toJson(),
+      };
 }
 
 /// A table representation similar to HTML table structure.
@@ -5624,23 +4888,16 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bodyRows != null) {
-      _json['bodyRows'] = bodyRows.map((value) => value.toJson()).toList();
-    }
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (headerRows != null) {
-      _json['headerRows'] = headerRows.map((value) => value.toJson()).toList();
-    }
-    if (layout != null) {
-      _json['layout'] = layout.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bodyRows != null)
+          'bodyRows': bodyRows.map((value) => value.toJson()).toList(),
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+        if (headerRows != null)
+          'headerRows': headerRows.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout.toJson(),
+      };
 }
 
 /// A cell representation inside the table.
@@ -5682,23 +4939,14 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTableTableCell {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (colSpan != null) {
-      _json['colSpan'] = colSpan;
-    }
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (layout != null) {
-      _json['layout'] = layout.toJson();
-    }
-    if (rowSpan != null) {
-      _json['rowSpan'] = rowSpan;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (colSpan != null) 'colSpan': colSpan,
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout.toJson(),
+        if (rowSpan != null) 'rowSpan': rowSpan,
+      };
 }
 
 /// A row of table cells.
@@ -5719,13 +4967,10 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTableTableRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cells != null) {
-      _json['cells'] = cells.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cells != null)
+          'cells': cells.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A detected token.
@@ -5769,23 +5014,14 @@ class GoogleCloudDocumentaiV1beta2DocumentPageToken {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detectedBreak != null) {
-      _json['detectedBreak'] = detectedBreak.toJson();
-    }
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (layout != null) {
-      _json['layout'] = layout.toJson();
-    }
-    if (provenance != null) {
-      _json['provenance'] = provenance.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detectedBreak != null) 'detectedBreak': detectedBreak.toJson(),
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout.toJson(),
+        if (provenance != null) 'provenance': provenance.toJson(),
+      };
 }
 
 /// Detected break at the end of a Token.
@@ -5808,13 +5044,9 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+      };
 }
 
 /// Detected non-text visual elements e.g. checkbox, signature etc.
@@ -5852,20 +5084,13 @@ class GoogleCloudDocumentaiV1beta2DocumentPageVisualElement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (layout != null) {
-      _json['layout'] = layout.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// Structure to identify provenance relationships between annotations in
@@ -5915,22 +5140,13 @@ class GoogleCloudDocumentaiV1beta2DocumentProvenance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (parents != null) {
-      _json['parents'] = parents.map((value) => value.toJson()).toList();
-    }
-    if (revision != null) {
-      _json['revision'] = revision;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (parents != null)
+          'parents': parents.map((value) => value.toJson()).toList(),
+        if (revision != null) 'revision': revision,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Structure for referencing parent provenances.
@@ -5956,16 +5172,10 @@ class GoogleCloudDocumentaiV1beta2DocumentProvenanceParent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (revision != null) {
-      _json['revision'] = revision;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (revision != null) 'revision': revision,
+      };
 }
 
 /// Contains past or forward revisions of this document.
@@ -6021,28 +5231,14 @@ class GoogleCloudDocumentaiV1beta2DocumentRevision {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (agent != null) {
-      _json['agent'] = agent;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (humanReview != null) {
-      _json['humanReview'] = humanReview.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    if (processor != null) {
-      _json['processor'] = processor;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (agent != null) 'agent': agent,
+        if (createTime != null) 'createTime': createTime,
+        if (humanReview != null) 'humanReview': humanReview.toJson(),
+        if (id != null) 'id': id,
+        if (parent != null) 'parent': parent,
+        if (processor != null) 'processor': processor,
+      };
 }
 
 /// Human Review information of the document.
@@ -6069,16 +5265,10 @@ class GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (stateMessage != null) {
-      _json['stateMessage'] = stateMessage;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (state != null) 'state': state,
+        if (stateMessage != null) 'stateMessage': stateMessage,
+      };
 }
 
 /// For a large document, sharding may be performed to produce several document
@@ -6110,19 +5300,11 @@ class GoogleCloudDocumentaiV1beta2DocumentShardInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (shardCount != null) {
-      _json['shardCount'] = shardCount;
-    }
-    if (shardIndex != null) {
-      _json['shardIndex'] = shardIndex;
-    }
-    if (textOffset != null) {
-      _json['textOffset'] = textOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (shardCount != null) 'shardCount': shardCount,
+        if (shardIndex != null) 'shardIndex': shardIndex,
+        if (textOffset != null) 'textOffset': textOffset,
+      };
 }
 
 /// Annotation for common text style attributes.
@@ -6189,31 +5371,16 @@ class GoogleCloudDocumentaiV1beta2DocumentStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backgroundColor != null) {
-      _json['backgroundColor'] = backgroundColor.toJson();
-    }
-    if (color != null) {
-      _json['color'] = color.toJson();
-    }
-    if (fontSize != null) {
-      _json['fontSize'] = fontSize.toJson();
-    }
-    if (fontWeight != null) {
-      _json['fontWeight'] = fontWeight;
-    }
-    if (textAnchor != null) {
-      _json['textAnchor'] = textAnchor.toJson();
-    }
-    if (textDecoration != null) {
-      _json['textDecoration'] = textDecoration;
-    }
-    if (textStyle != null) {
-      _json['textStyle'] = textStyle;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backgroundColor != null)
+          'backgroundColor': backgroundColor.toJson(),
+        if (color != null) 'color': color.toJson(),
+        if (fontSize != null) 'fontSize': fontSize.toJson(),
+        if (fontWeight != null) 'fontWeight': fontWeight,
+        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
+        if (textDecoration != null) 'textDecoration': textDecoration,
+        if (textStyle != null) 'textStyle': textStyle,
+      };
 }
 
 /// Font size with unit.
@@ -6237,16 +5404,10 @@ class GoogleCloudDocumentaiV1beta2DocumentStyleFontSize {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (size != null) {
-      _json['size'] = size;
-    }
-    if (unit != null) {
-      _json['unit'] = unit;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (size != null) 'size': size,
+        if (unit != null) 'unit': unit,
+      };
 }
 
 /// Text reference indexing into the Document.text.
@@ -6275,17 +5436,11 @@ class GoogleCloudDocumentaiV1beta2DocumentTextAnchor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (textSegments != null) {
-      _json['textSegments'] =
-          textSegments.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (textSegments != null)
+          'textSegments': textSegments.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A text segment in the Document.text.
@@ -6312,16 +5467,10 @@ class GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endIndex != null) {
-      _json['endIndex'] = endIndex;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endIndex != null) 'endIndex': endIndex,
+        if (startIndex != null) 'startIndex': startIndex,
+      };
 }
 
 /// This message is used for text changes aka.
@@ -6360,19 +5509,12 @@ class GoogleCloudDocumentaiV1beta2DocumentTextChange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (changedText != null) {
-      _json['changedText'] = changedText;
-    }
-    if (provenance != null) {
-      _json['provenance'] = provenance.map((value) => value.toJson()).toList();
-    }
-    if (textAnchor != null) {
-      _json['textAnchor'] = textAnchor.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (changedText != null) 'changedText': changedText,
+        if (provenance != null)
+          'provenance': provenance.map((value) => value.toJson()).toList(),
+        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
+      };
 }
 
 /// A translation of the text segment.
@@ -6418,22 +5560,13 @@ class GoogleCloudDocumentaiV1beta2DocumentTranslation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (provenance != null) {
-      _json['provenance'] = provenance.map((value) => value.toJson()).toList();
-    }
-    if (textAnchor != null) {
-      _json['textAnchor'] = textAnchor.toJson();
-    }
-    if (translatedText != null) {
-      _json['translatedText'] = translatedText;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode,
+        if (provenance != null)
+          'provenance': provenance.map((value) => value.toJson()).toList(),
+        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
+        if (translatedText != null) 'translatedText': translatedText,
+      };
 }
 
 /// The Google Cloud Storage location where the output file will be written to.
@@ -6448,13 +5581,9 @@ class GoogleCloudDocumentaiV1beta2GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// The Google Cloud Storage location where the input file will be read from.
@@ -6469,13 +5598,9 @@ class GoogleCloudDocumentaiV1beta2GcsSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// The desired input location and metadata.
@@ -6523,19 +5648,11 @@ class GoogleCloudDocumentaiV1beta2InputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contents != null) {
-      _json['contents'] = contents;
-    }
-    if (gcsSource != null) {
-      _json['gcsSource'] = gcsSource.toJson();
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contents != null) 'contents': contents,
+        if (gcsSource != null) 'gcsSource': gcsSource.toJson(),
+        if (mimeType != null) 'mimeType': mimeType,
+      };
 }
 
 /// A vertex represents a 2D point in the image.
@@ -6560,16 +5677,10 @@ class GoogleCloudDocumentaiV1beta2NormalizedVertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+      };
 }
 
 /// Contains metadata for the BatchProcessDocuments operation.
@@ -6612,22 +5723,12 @@ class GoogleCloudDocumentaiV1beta2OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (stateMessage != null) {
-      _json['stateMessage'] = stateMessage;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (state != null) 'state': state,
+        if (stateMessage != null) 'stateMessage': stateMessage,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// The desired output location and metadata.
@@ -6660,16 +5761,10 @@ class GoogleCloudDocumentaiV1beta2OutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcsDestination != null) {
-      _json['gcsDestination'] = gcsDestination.toJson();
-    }
-    if (pagesPerShard != null) {
-      _json['pagesPerShard'] = pagesPerShard;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsDestination != null) 'gcsDestination': gcsDestination.toJson(),
+        if (pagesPerShard != null) 'pagesPerShard': pagesPerShard,
+      };
 }
 
 /// Response to a single document processing request.
@@ -6698,16 +5793,10 @@ class GoogleCloudDocumentaiV1beta2ProcessDocumentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (inputConfig != null) {
-      _json['inputConfig'] = inputConfig.toJson();
-    }
-    if (outputConfig != null) {
-      _json['outputConfig'] = outputConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (inputConfig != null) 'inputConfig': inputConfig.toJson(),
+        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
+      };
 }
 
 /// A vertex represents a 2D point in the image.
@@ -6731,16 +5820,10 @@ class GoogleCloudDocumentaiV1beta2Vertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+      };
 }
 
 /// The long running operation metadata for batch process method.
@@ -6799,26 +5882,15 @@ class GoogleCloudDocumentaiV1beta3BatchProcessMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (individualProcessStatuses != null) {
-      _json['individualProcessStatuses'] =
-          individualProcessStatuses.map((value) => value.toJson()).toList();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (stateMessage != null) {
-      _json['stateMessage'] = stateMessage;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (individualProcessStatuses != null)
+          'individualProcessStatuses':
+              individualProcessStatuses.map((value) => value.toJson()).toList(),
+        if (state != null) 'state': state,
+        if (stateMessage != null) 'stateMessage': stateMessage,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// The status of a each individual document in the batch process.
@@ -6872,25 +5944,16 @@ class GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (humanReviewOperation != null) {
-      _json['humanReviewOperation'] = humanReviewOperation;
-    }
-    if (humanReviewStatus != null) {
-      _json['humanReviewStatus'] = humanReviewStatus.toJson();
-    }
-    if (inputGcsSource != null) {
-      _json['inputGcsSource'] = inputGcsSource;
-    }
-    if (outputGcsDestination != null) {
-      _json['outputGcsDestination'] = outputGcsDestination;
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (humanReviewOperation != null)
+          'humanReviewOperation': humanReviewOperation,
+        if (humanReviewStatus != null)
+          'humanReviewStatus': humanReviewStatus.toJson(),
+        if (inputGcsSource != null) 'inputGcsSource': inputGcsSource,
+        if (outputGcsDestination != null)
+          'outputGcsDestination': outputGcsDestination,
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 /// Request message for batch process document method.
@@ -6948,26 +6011,15 @@ class GoogleCloudDocumentaiV1beta3BatchProcessRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (documentOutputConfig != null) {
-      _json['documentOutputConfig'] = documentOutputConfig.toJson();
-    }
-    if (inputConfigs != null) {
-      _json['inputConfigs'] =
-          inputConfigs.map((value) => value.toJson()).toList();
-    }
-    if (inputDocuments != null) {
-      _json['inputDocuments'] = inputDocuments.toJson();
-    }
-    if (outputConfig != null) {
-      _json['outputConfig'] = outputConfig.toJson();
-    }
-    if (skipHumanReview != null) {
-      _json['skipHumanReview'] = skipHumanReview;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (documentOutputConfig != null)
+          'documentOutputConfig': documentOutputConfig.toJson(),
+        if (inputConfigs != null)
+          'inputConfigs': inputConfigs.map((value) => value.toJson()).toList(),
+        if (inputDocuments != null) 'inputDocuments': inputDocuments.toJson(),
+        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
+        if (skipHumanReview != null) 'skipHumanReview': skipHumanReview,
+      };
 }
 
 /// The message for input config in batch process.
@@ -6994,16 +6046,10 @@ class GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcsSource != null) {
-      _json['gcsSource'] = gcsSource;
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsSource != null) 'gcsSource': gcsSource,
+        if (mimeType != null) 'mimeType': mimeType,
+      };
 }
 
 /// The message for output config in batch process.
@@ -7020,13 +6066,9 @@ class GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchOutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcsDestination != null) {
-      _json['gcsDestination'] = gcsDestination;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsDestination != null) 'gcsDestination': gcsDestination,
+      };
 }
 
 /// Response message for batch process document method.
@@ -7037,10 +6079,7 @@ class GoogleCloudDocumentaiV1beta3BatchProcessResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A bounding polygon for the detected image annotation.
@@ -7070,17 +6109,13 @@ class GoogleCloudDocumentaiV1beta3BoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (normalizedVertices != null) {
-      _json['normalizedVertices'] =
-          normalizedVertices.map((value) => value.toJson()).toList();
-    }
-    if (vertices != null) {
-      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (normalizedVertices != null)
+          'normalizedVertices':
+              normalizedVertices.map((value) => value.toJson()).toList(),
+        if (vertices != null)
+          'vertices': vertices.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The common metadata for long running operations.
@@ -7121,22 +6156,12 @@ class GoogleCloudDocumentaiV1beta3CommonOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (stateMessage != null) {
-      _json['stateMessage'] = stateMessage;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (state != null) 'state': state,
+        if (stateMessage != null) 'stateMessage': stateMessage,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Document represents the canonical document resource in Document
@@ -7286,52 +6311,29 @@ class GoogleCloudDocumentaiV1beta3Document {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (entities != null) {
-      _json['entities'] = entities.map((value) => value.toJson()).toList();
-    }
-    if (entityRelations != null) {
-      _json['entityRelations'] =
-          entityRelations.map((value) => value.toJson()).toList();
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    if (pages != null) {
-      _json['pages'] = pages.map((value) => value.toJson()).toList();
-    }
-    if (revisions != null) {
-      _json['revisions'] = revisions.map((value) => value.toJson()).toList();
-    }
-    if (shardInfo != null) {
-      _json['shardInfo'] = shardInfo.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    if (textChanges != null) {
-      _json['textChanges'] =
-          textChanges.map((value) => value.toJson()).toList();
-    }
-    if (textStyles != null) {
-      _json['textStyles'] = textStyles.map((value) => value.toJson()).toList();
-    }
-    if (translations != null) {
-      _json['translations'] =
-          translations.map((value) => value.toJson()).toList();
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (entities != null)
+          'entities': entities.map((value) => value.toJson()).toList(),
+        if (entityRelations != null)
+          'entityRelations':
+              entityRelations.map((value) => value.toJson()).toList(),
+        if (error != null) 'error': error.toJson(),
+        if (mimeType != null) 'mimeType': mimeType,
+        if (pages != null)
+          'pages': pages.map((value) => value.toJson()).toList(),
+        if (revisions != null)
+          'revisions': revisions.map((value) => value.toJson()).toList(),
+        if (shardInfo != null) 'shardInfo': shardInfo.toJson(),
+        if (text != null) 'text': text,
+        if (textChanges != null)
+          'textChanges': textChanges.map((value) => value.toJson()).toList(),
+        if (textStyles != null)
+          'textStyles': textStyles.map((value) => value.toJson()).toList(),
+        if (translations != null)
+          'translations': translations.map((value) => value.toJson()).toList(),
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// A phrase in the text that is a known entity type, such as a person, an
@@ -7446,43 +6448,21 @@ class GoogleCloudDocumentaiV1beta3DocumentEntity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (mentionId != null) {
-      _json['mentionId'] = mentionId;
-    }
-    if (mentionText != null) {
-      _json['mentionText'] = mentionText;
-    }
-    if (normalizedValue != null) {
-      _json['normalizedValue'] = normalizedValue.toJson();
-    }
-    if (pageAnchor != null) {
-      _json['pageAnchor'] = pageAnchor.toJson();
-    }
-    if (properties != null) {
-      _json['properties'] = properties.map((value) => value.toJson()).toList();
-    }
-    if (provenance != null) {
-      _json['provenance'] = provenance.toJson();
-    }
-    if (redacted != null) {
-      _json['redacted'] = redacted;
-    }
-    if (textAnchor != null) {
-      _json['textAnchor'] = textAnchor.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (id != null) 'id': id,
+        if (mentionId != null) 'mentionId': mentionId,
+        if (mentionText != null) 'mentionText': mentionText,
+        if (normalizedValue != null)
+          'normalizedValue': normalizedValue.toJson(),
+        if (pageAnchor != null) 'pageAnchor': pageAnchor.toJson(),
+        if (properties != null)
+          'properties': properties.map((value) => value.toJson()).toList(),
+        if (provenance != null) 'provenance': provenance.toJson(),
+        if (redacted != null) 'redacted': redacted,
+        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// Parsed and normalized entity value.
@@ -7547,25 +6527,13 @@ class GoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (addressValue != null) {
-      _json['addressValue'] = addressValue.toJson();
-    }
-    if (dateValue != null) {
-      _json['dateValue'] = dateValue.toJson();
-    }
-    if (datetimeValue != null) {
-      _json['datetimeValue'] = datetimeValue.toJson();
-    }
-    if (moneyValue != null) {
-      _json['moneyValue'] = moneyValue.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (addressValue != null) 'addressValue': addressValue.toJson(),
+        if (dateValue != null) 'dateValue': dateValue.toJson(),
+        if (datetimeValue != null) 'datetimeValue': datetimeValue.toJson(),
+        if (moneyValue != null) 'moneyValue': moneyValue.toJson(),
+        if (text != null) 'text': text,
+      };
 }
 
 /// Relationship between Entities.
@@ -7593,19 +6561,11 @@ class GoogleCloudDocumentaiV1beta3DocumentEntityRelation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (objectId != null) {
-      _json['objectId'] = objectId;
-    }
-    if (relation != null) {
-      _json['relation'] = relation;
-    }
-    if (subjectId != null) {
-      _json['subjectId'] = subjectId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (objectId != null) 'objectId': objectId,
+        if (relation != null) 'relation': relation,
+        if (subjectId != null) 'subjectId': subjectId,
+      };
 }
 
 /// Config that controls the output of documents.
@@ -7627,13 +6587,10 @@ class GoogleCloudDocumentaiV1beta3DocumentOutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcsOutputConfig != null) {
-      _json['gcsOutputConfig'] = gcsOutputConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsOutputConfig != null)
+          'gcsOutputConfig': gcsOutputConfig.toJson(),
+      };
 }
 
 /// The configuration used when outputting documents.
@@ -7650,13 +6607,9 @@ class GoogleCloudDocumentaiV1beta3DocumentOutputConfigGcsOutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcsUri != null) {
-      _json['gcsUri'] = gcsUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsUri != null) 'gcsUri': gcsUri,
+      };
 }
 
 /// A page in a Document.
@@ -7801,51 +6754,32 @@ class GoogleCloudDocumentaiV1beta3DocumentPage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blocks != null) {
-      _json['blocks'] = blocks.map((value) => value.toJson()).toList();
-    }
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (dimension != null) {
-      _json['dimension'] = dimension.toJson();
-    }
-    if (formFields != null) {
-      _json['formFields'] = formFields.map((value) => value.toJson()).toList();
-    }
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    if (layout != null) {
-      _json['layout'] = layout.toJson();
-    }
-    if (lines != null) {
-      _json['lines'] = lines.map((value) => value.toJson()).toList();
-    }
-    if (pageNumber != null) {
-      _json['pageNumber'] = pageNumber;
-    }
-    if (paragraphs != null) {
-      _json['paragraphs'] = paragraphs.map((value) => value.toJson()).toList();
-    }
-    if (tables != null) {
-      _json['tables'] = tables.map((value) => value.toJson()).toList();
-    }
-    if (tokens != null) {
-      _json['tokens'] = tokens.map((value) => value.toJson()).toList();
-    }
-    if (transforms != null) {
-      _json['transforms'] = transforms.map((value) => value.toJson()).toList();
-    }
-    if (visualElements != null) {
-      _json['visualElements'] =
-          visualElements.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blocks != null)
+          'blocks': blocks.map((value) => value.toJson()).toList(),
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+        if (dimension != null) 'dimension': dimension.toJson(),
+        if (formFields != null)
+          'formFields': formFields.map((value) => value.toJson()).toList(),
+        if (image != null) 'image': image.toJson(),
+        if (layout != null) 'layout': layout.toJson(),
+        if (lines != null)
+          'lines': lines.map((value) => value.toJson()).toList(),
+        if (pageNumber != null) 'pageNumber': pageNumber,
+        if (paragraphs != null)
+          'paragraphs': paragraphs.map((value) => value.toJson()).toList(),
+        if (tables != null)
+          'tables': tables.map((value) => value.toJson()).toList(),
+        if (tokens != null)
+          'tokens': tokens.map((value) => value.toJson()).toList(),
+        if (transforms != null)
+          'transforms': transforms.map((value) => value.toJson()).toList(),
+        if (visualElements != null)
+          'visualElements':
+              visualElements.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Referencing the visual context of the entity in the Document.pages.
@@ -7868,13 +6802,10 @@ class GoogleCloudDocumentaiV1beta3DocumentPageAnchor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pageRefs != null) {
-      _json['pageRefs'] = pageRefs.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pageRefs != null)
+          'pageRefs': pageRefs.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents a weak reference to a page element within a document.
@@ -7928,22 +6859,12 @@ class GoogleCloudDocumentaiV1beta3DocumentPageAnchorPageRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (layoutId != null) {
-      _json['layoutId'] = layoutId;
-    }
-    if (layoutType != null) {
-      _json['layoutType'] = layoutType;
-    }
-    if (page != null) {
-      _json['page'] = page;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (layoutId != null) 'layoutId': layoutId,
+        if (layoutType != null) 'layoutType': layoutType,
+        if (page != null) 'page': page,
+      };
 }
 
 /// A block has a set of lines (collected into paragraphs) that have a common
@@ -7980,20 +6901,13 @@ class GoogleCloudDocumentaiV1beta3DocumentPageBlock {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (layout != null) {
-      _json['layout'] = layout.toJson();
-    }
-    if (provenance != null) {
-      _json['provenance'] = provenance.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout.toJson(),
+        if (provenance != null) 'provenance': provenance.toJson(),
+      };
 }
 
 /// Detected language for a structural component.
@@ -8021,16 +6935,10 @@ class GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// Dimension for the page.
@@ -8058,19 +6966,11 @@ class GoogleCloudDocumentaiV1beta3DocumentPageDimension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (height != null) {
-      _json['height'] = height;
-    }
-    if (unit != null) {
-      _json['unit'] = unit;
-    }
-    if (width != null) {
-      _json['width'] = width;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (height != null) 'height': height,
+        if (unit != null) 'unit': unit,
+        if (width != null) 'width': width,
+      };
 }
 
 /// A form field detected on the page.
@@ -8129,27 +7029,17 @@ class GoogleCloudDocumentaiV1beta3DocumentPageFormField {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fieldName != null) {
-      _json['fieldName'] = fieldName.toJson();
-    }
-    if (fieldValue != null) {
-      _json['fieldValue'] = fieldValue.toJson();
-    }
-    if (nameDetectedLanguages != null) {
-      _json['nameDetectedLanguages'] =
-          nameDetectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (valueDetectedLanguages != null) {
-      _json['valueDetectedLanguages'] =
-          valueDetectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (valueType != null) {
-      _json['valueType'] = valueType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fieldName != null) 'fieldName': fieldName.toJson(),
+        if (fieldValue != null) 'fieldValue': fieldValue.toJson(),
+        if (nameDetectedLanguages != null)
+          'nameDetectedLanguages':
+              nameDetectedLanguages.map((value) => value.toJson()).toList(),
+        if (valueDetectedLanguages != null)
+          'valueDetectedLanguages':
+              valueDetectedLanguages.map((value) => value.toJson()).toList(),
+        if (valueType != null) 'valueType': valueType,
+      };
 }
 
 /// Rendered image contents for this page.
@@ -8189,22 +7079,12 @@ class GoogleCloudDocumentaiV1beta3DocumentPageImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (height != null) {
-      _json['height'] = height;
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    if (width != null) {
-      _json['width'] = width;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (height != null) 'height': height,
+        if (mimeType != null) 'mimeType': mimeType,
+        if (width != null) 'width': width,
+      };
 }
 
 /// Visual element describing a layout unit on a page.
@@ -8253,22 +7133,12 @@ class GoogleCloudDocumentaiV1beta3DocumentPageLayout {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (orientation != null) {
-      _json['orientation'] = orientation;
-    }
-    if (textAnchor != null) {
-      _json['textAnchor'] = textAnchor.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (confidence != null) 'confidence': confidence,
+        if (orientation != null) 'orientation': orientation,
+        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
+      };
 }
 
 /// A collection of tokens that a human would perceive as a line.
@@ -8306,20 +7176,13 @@ class GoogleCloudDocumentaiV1beta3DocumentPageLine {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (layout != null) {
-      _json['layout'] = layout.toJson();
-    }
-    if (provenance != null) {
-      _json['provenance'] = provenance.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout.toJson(),
+        if (provenance != null) 'provenance': provenance.toJson(),
+      };
 }
 
 /// Representation for transformation matrix, intended to be compatible and used
@@ -8364,22 +7227,12 @@ class GoogleCloudDocumentaiV1beta3DocumentPageMatrix {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cols != null) {
-      _json['cols'] = cols;
-    }
-    if (data != null) {
-      _json['data'] = data;
-    }
-    if (rows != null) {
-      _json['rows'] = rows;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cols != null) 'cols': cols,
+        if (data != null) 'data': data,
+        if (rows != null) 'rows': rows,
+        if (type != null) 'type': type,
+      };
 }
 
 /// A collection of lines that a human would perceive as a paragraph.
@@ -8415,20 +7268,13 @@ class GoogleCloudDocumentaiV1beta3DocumentPageParagraph {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (layout != null) {
-      _json['layout'] = layout.toJson();
-    }
-    if (provenance != null) {
-      _json['provenance'] = provenance.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout.toJson(),
+        if (provenance != null) 'provenance': provenance.toJson(),
+      };
 }
 
 /// A table representation similar to HTML table structure.
@@ -8477,23 +7323,16 @@ class GoogleCloudDocumentaiV1beta3DocumentPageTable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bodyRows != null) {
-      _json['bodyRows'] = bodyRows.map((value) => value.toJson()).toList();
-    }
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (headerRows != null) {
-      _json['headerRows'] = headerRows.map((value) => value.toJson()).toList();
-    }
-    if (layout != null) {
-      _json['layout'] = layout.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bodyRows != null)
+          'bodyRows': bodyRows.map((value) => value.toJson()).toList(),
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+        if (headerRows != null)
+          'headerRows': headerRows.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout.toJson(),
+      };
 }
 
 /// A cell representation inside the table.
@@ -8535,23 +7374,14 @@ class GoogleCloudDocumentaiV1beta3DocumentPageTableTableCell {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (colSpan != null) {
-      _json['colSpan'] = colSpan;
-    }
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (layout != null) {
-      _json['layout'] = layout.toJson();
-    }
-    if (rowSpan != null) {
-      _json['rowSpan'] = rowSpan;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (colSpan != null) 'colSpan': colSpan,
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout.toJson(),
+        if (rowSpan != null) 'rowSpan': rowSpan,
+      };
 }
 
 /// A row of table cells.
@@ -8572,13 +7402,10 @@ class GoogleCloudDocumentaiV1beta3DocumentPageTableTableRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cells != null) {
-      _json['cells'] = cells.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cells != null)
+          'cells': cells.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A detected token.
@@ -8622,23 +7449,14 @@ class GoogleCloudDocumentaiV1beta3DocumentPageToken {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detectedBreak != null) {
-      _json['detectedBreak'] = detectedBreak.toJson();
-    }
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (layout != null) {
-      _json['layout'] = layout.toJson();
-    }
-    if (provenance != null) {
-      _json['provenance'] = provenance.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detectedBreak != null) 'detectedBreak': detectedBreak.toJson(),
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout.toJson(),
+        if (provenance != null) 'provenance': provenance.toJson(),
+      };
 }
 
 /// Detected break at the end of a Token.
@@ -8661,13 +7479,9 @@ class GoogleCloudDocumentaiV1beta3DocumentPageTokenDetectedBreak {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+      };
 }
 
 /// Detected non-text visual elements e.g. checkbox, signature etc.
@@ -8705,20 +7519,13 @@ class GoogleCloudDocumentaiV1beta3DocumentPageVisualElement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detectedLanguages != null) {
-      _json['detectedLanguages'] =
-          detectedLanguages.map((value) => value.toJson()).toList();
-    }
-    if (layout != null) {
-      _json['layout'] = layout.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detectedLanguages != null)
+          'detectedLanguages':
+              detectedLanguages.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// Structure to identify provenance relationships between annotations in
@@ -8768,22 +7575,13 @@ class GoogleCloudDocumentaiV1beta3DocumentProvenance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (parents != null) {
-      _json['parents'] = parents.map((value) => value.toJson()).toList();
-    }
-    if (revision != null) {
-      _json['revision'] = revision;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (parents != null)
+          'parents': parents.map((value) => value.toJson()).toList(),
+        if (revision != null) 'revision': revision,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Structure for referencing parent provenances.
@@ -8809,16 +7607,10 @@ class GoogleCloudDocumentaiV1beta3DocumentProvenanceParent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (revision != null) {
-      _json['revision'] = revision;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (revision != null) 'revision': revision,
+      };
 }
 
 /// Contains past or forward revisions of this document.
@@ -8874,28 +7666,14 @@ class GoogleCloudDocumentaiV1beta3DocumentRevision {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (agent != null) {
-      _json['agent'] = agent;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (humanReview != null) {
-      _json['humanReview'] = humanReview.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    if (processor != null) {
-      _json['processor'] = processor;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (agent != null) 'agent': agent,
+        if (createTime != null) 'createTime': createTime,
+        if (humanReview != null) 'humanReview': humanReview.toJson(),
+        if (id != null) 'id': id,
+        if (parent != null) 'parent': parent,
+        if (processor != null) 'processor': processor,
+      };
 }
 
 /// Human Review information of the document.
@@ -8922,16 +7700,10 @@ class GoogleCloudDocumentaiV1beta3DocumentRevisionHumanReview {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (stateMessage != null) {
-      _json['stateMessage'] = stateMessage;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (state != null) 'state': state,
+        if (stateMessage != null) 'stateMessage': stateMessage,
+      };
 }
 
 /// For a large document, sharding may be performed to produce several document
@@ -8963,19 +7735,11 @@ class GoogleCloudDocumentaiV1beta3DocumentShardInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (shardCount != null) {
-      _json['shardCount'] = shardCount;
-    }
-    if (shardIndex != null) {
-      _json['shardIndex'] = shardIndex;
-    }
-    if (textOffset != null) {
-      _json['textOffset'] = textOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (shardCount != null) 'shardCount': shardCount,
+        if (shardIndex != null) 'shardIndex': shardIndex,
+        if (textOffset != null) 'textOffset': textOffset,
+      };
 }
 
 /// Annotation for common text style attributes.
@@ -9042,31 +7806,16 @@ class GoogleCloudDocumentaiV1beta3DocumentStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backgroundColor != null) {
-      _json['backgroundColor'] = backgroundColor.toJson();
-    }
-    if (color != null) {
-      _json['color'] = color.toJson();
-    }
-    if (fontSize != null) {
-      _json['fontSize'] = fontSize.toJson();
-    }
-    if (fontWeight != null) {
-      _json['fontWeight'] = fontWeight;
-    }
-    if (textAnchor != null) {
-      _json['textAnchor'] = textAnchor.toJson();
-    }
-    if (textDecoration != null) {
-      _json['textDecoration'] = textDecoration;
-    }
-    if (textStyle != null) {
-      _json['textStyle'] = textStyle;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backgroundColor != null)
+          'backgroundColor': backgroundColor.toJson(),
+        if (color != null) 'color': color.toJson(),
+        if (fontSize != null) 'fontSize': fontSize.toJson(),
+        if (fontWeight != null) 'fontWeight': fontWeight,
+        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
+        if (textDecoration != null) 'textDecoration': textDecoration,
+        if (textStyle != null) 'textStyle': textStyle,
+      };
 }
 
 /// Font size with unit.
@@ -9090,16 +7839,10 @@ class GoogleCloudDocumentaiV1beta3DocumentStyleFontSize {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (size != null) {
-      _json['size'] = size;
-    }
-    if (unit != null) {
-      _json['unit'] = unit;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (size != null) 'size': size,
+        if (unit != null) 'unit': unit,
+      };
 }
 
 /// Text reference indexing into the Document.text.
@@ -9128,17 +7871,11 @@ class GoogleCloudDocumentaiV1beta3DocumentTextAnchor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (textSegments != null) {
-      _json['textSegments'] =
-          textSegments.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (textSegments != null)
+          'textSegments': textSegments.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A text segment in the Document.text.
@@ -9165,16 +7902,10 @@ class GoogleCloudDocumentaiV1beta3DocumentTextAnchorTextSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endIndex != null) {
-      _json['endIndex'] = endIndex;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endIndex != null) 'endIndex': endIndex,
+        if (startIndex != null) 'startIndex': startIndex,
+      };
 }
 
 /// This message is used for text changes aka.
@@ -9213,19 +7944,12 @@ class GoogleCloudDocumentaiV1beta3DocumentTextChange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (changedText != null) {
-      _json['changedText'] = changedText;
-    }
-    if (provenance != null) {
-      _json['provenance'] = provenance.map((value) => value.toJson()).toList();
-    }
-    if (textAnchor != null) {
-      _json['textAnchor'] = textAnchor.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (changedText != null) 'changedText': changedText,
+        if (provenance != null)
+          'provenance': provenance.map((value) => value.toJson()).toList(),
+        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
+      };
 }
 
 /// A translation of the text segment.
@@ -9271,22 +7995,13 @@ class GoogleCloudDocumentaiV1beta3DocumentTranslation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (provenance != null) {
-      _json['provenance'] = provenance.map((value) => value.toJson()).toList();
-    }
-    if (textAnchor != null) {
-      _json['textAnchor'] = textAnchor.toJson();
-    }
-    if (translatedText != null) {
-      _json['translatedText'] = translatedText;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode,
+        if (provenance != null)
+          'provenance': provenance.map((value) => value.toJson()).toList(),
+        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
+        if (translatedText != null) 'translatedText': translatedText,
+      };
 }
 
 /// The status of human review on a processed document.
@@ -9329,19 +8044,12 @@ class GoogleCloudDocumentaiV1beta3HumanReviewStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (humanReviewOperation != null) {
-      _json['humanReviewOperation'] = humanReviewOperation;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (stateMessage != null) {
-      _json['stateMessage'] = stateMessage;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (humanReviewOperation != null)
+          'humanReviewOperation': humanReviewOperation,
+        if (state != null) 'state': state,
+        if (stateMessage != null) 'stateMessage': stateMessage,
+      };
 }
 
 /// A vertex represents a 2D point in the image.
@@ -9366,16 +8074,10 @@ class GoogleCloudDocumentaiV1beta3NormalizedVertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+      };
 }
 
 /// Request message for the process document method.
@@ -9415,22 +8117,12 @@ class GoogleCloudDocumentaiV1beta3ProcessRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (document != null) {
-      _json['document'] = document.toJson();
-    }
-    if (inlineDocument != null) {
-      _json['inlineDocument'] = inlineDocument.toJson();
-    }
-    if (rawDocument != null) {
-      _json['rawDocument'] = rawDocument.toJson();
-    }
-    if (skipHumanReview != null) {
-      _json['skipHumanReview'] = skipHumanReview;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (document != null) 'document': document.toJson(),
+        if (inlineDocument != null) 'inlineDocument': inlineDocument.toJson(),
+        if (rawDocument != null) 'rawDocument': rawDocument.toJson(),
+        if (skipHumanReview != null) 'skipHumanReview': skipHumanReview,
+      };
 }
 
 /// Response message for the process document method.
@@ -9467,19 +8159,13 @@ class GoogleCloudDocumentaiV1beta3ProcessResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (document != null) {
-      _json['document'] = document.toJson();
-    }
-    if (humanReviewOperation != null) {
-      _json['humanReviewOperation'] = humanReviewOperation;
-    }
-    if (humanReviewStatus != null) {
-      _json['humanReviewStatus'] = humanReviewStatus.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (document != null) 'document': document.toJson(),
+        if (humanReviewOperation != null)
+          'humanReviewOperation': humanReviewOperation,
+        if (humanReviewStatus != null)
+          'humanReviewStatus': humanReviewStatus.toJson(),
+      };
 }
 
 /// Payload message of raw document content (bytes).
@@ -9508,16 +8194,10 @@ class GoogleCloudDocumentaiV1beta3RawDocument {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (mimeType != null) 'mimeType': mimeType,
+      };
 }
 
 /// The long running operation metadata for review document method.
@@ -9569,25 +8249,13 @@ class GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (commonMetadata != null) {
-      _json['commonMetadata'] = commonMetadata.toJson();
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (stateMessage != null) {
-      _json['stateMessage'] = stateMessage;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+        if (createTime != null) 'createTime': createTime,
+        if (state != null) 'state': state,
+        if (stateMessage != null) 'stateMessage': stateMessage,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Request message for review document method.
@@ -9611,16 +8279,10 @@ class GoogleCloudDocumentaiV1beta3ReviewDocumentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (document != null) {
-      _json['document'] = document.toJson();
-    }
-    if (inlineDocument != null) {
-      _json['inlineDocument'] = inlineDocument.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (document != null) 'document': document.toJson(),
+        if (inlineDocument != null) 'inlineDocument': inlineDocument.toJson(),
+      };
 }
 
 /// Response message for review document method.
@@ -9636,13 +8298,9 @@ class GoogleCloudDocumentaiV1beta3ReviewDocumentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcsDestination != null) {
-      _json['gcsDestination'] = gcsDestination;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsDestination != null) 'gcsDestination': gcsDestination,
+      };
 }
 
 /// A vertex represents a 2D point in the image.
@@ -9666,16 +8324,10 @@ class GoogleCloudDocumentaiV1beta3Vertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+      };
 }
 
 /// The response message for Locations.ListLocations.
@@ -9701,16 +8353,11 @@ class GoogleCloudLocationListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// A resource that represents Google Cloud Platform location.
@@ -9775,25 +8422,13 @@ class GoogleCloudLocationLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (labels != null) 'labels': labels,
+        if (locationId != null) 'locationId': locationId,
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -9872,25 +8507,13 @@ class GoogleLongrunningOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -9907,10 +8530,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -9960,19 +8580,11 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Represents a color in the RGBA color space.
@@ -10063,22 +8675,12 @@ class GoogleTypeColor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alpha != null) {
-      _json['alpha'] = alpha;
-    }
-    if (blue != null) {
-      _json['blue'] = blue;
-    }
-    if (green != null) {
-      _json['green'] = green;
-    }
-    if (red != null) {
-      _json['red'] = red;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alpha != null) 'alpha': alpha,
+        if (blue != null) 'blue': blue,
+        if (green != null) 'green': green,
+        if (red != null) 'red': red,
+      };
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.
@@ -10121,19 +8723,11 @@ class GoogleTypeDate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (day != null) {
-      _json['day'] = day;
-    }
-    if (month != null) {
-      _json['month'] = month;
-    }
-    if (year != null) {
-      _json['year'] = year;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (day != null) 'day': day,
+        if (month != null) 'month': month,
+        if (year != null) 'year': year,
+      };
 }
 
 /// Represents civil time (or occasionally physical time).
@@ -10246,37 +8840,17 @@ class GoogleTypeDateTime {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (day != null) {
-      _json['day'] = day;
-    }
-    if (hours != null) {
-      _json['hours'] = hours;
-    }
-    if (minutes != null) {
-      _json['minutes'] = minutes;
-    }
-    if (month != null) {
-      _json['month'] = month;
-    }
-    if (nanos != null) {
-      _json['nanos'] = nanos;
-    }
-    if (seconds != null) {
-      _json['seconds'] = seconds;
-    }
-    if (timeZone != null) {
-      _json['timeZone'] = timeZone.toJson();
-    }
-    if (utcOffset != null) {
-      _json['utcOffset'] = utcOffset;
-    }
-    if (year != null) {
-      _json['year'] = year;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (day != null) 'day': day,
+        if (hours != null) 'hours': hours,
+        if (minutes != null) 'minutes': minutes,
+        if (month != null) 'month': month,
+        if (nanos != null) 'nanos': nanos,
+        if (seconds != null) 'seconds': seconds,
+        if (timeZone != null) 'timeZone': timeZone.toJson(),
+        if (utcOffset != null) 'utcOffset': utcOffset,
+        if (year != null) 'year': year,
+      };
 }
 
 /// Represents an amount of money with its currency type.
@@ -10312,19 +8886,11 @@ class GoogleTypeMoney {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (currencyCode != null) {
-      _json['currencyCode'] = currencyCode;
-    }
-    if (nanos != null) {
-      _json['nanos'] = nanos;
-    }
-    if (units != null) {
-      _json['units'] = units;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode,
+        if (nanos != null) 'nanos': nanos,
+        if (units != null) 'units': units,
+      };
 }
 
 /// Represents a postal address, e.g. for postal delivery or payments addresses.
@@ -10490,43 +9056,20 @@ class GoogleTypePostalAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (addressLines != null) {
-      _json['addressLines'] = addressLines;
-    }
-    if (administrativeArea != null) {
-      _json['administrativeArea'] = administrativeArea;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (locality != null) {
-      _json['locality'] = locality;
-    }
-    if (organization != null) {
-      _json['organization'] = organization;
-    }
-    if (postalCode != null) {
-      _json['postalCode'] = postalCode;
-    }
-    if (recipients != null) {
-      _json['recipients'] = recipients;
-    }
-    if (regionCode != null) {
-      _json['regionCode'] = regionCode;
-    }
-    if (revision != null) {
-      _json['revision'] = revision;
-    }
-    if (sortingCode != null) {
-      _json['sortingCode'] = sortingCode;
-    }
-    if (sublocality != null) {
-      _json['sublocality'] = sublocality;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (addressLines != null) 'addressLines': addressLines,
+        if (administrativeArea != null)
+          'administrativeArea': administrativeArea,
+        if (languageCode != null) 'languageCode': languageCode,
+        if (locality != null) 'locality': locality,
+        if (organization != null) 'organization': organization,
+        if (postalCode != null) 'postalCode': postalCode,
+        if (recipients != null) 'recipients': recipients,
+        if (regionCode != null) 'regionCode': regionCode,
+        if (revision != null) 'revision': revision,
+        if (sortingCode != null) 'sortingCode': sortingCode,
+        if (sublocality != null) 'sublocality': sublocality,
+      };
 }
 
 /// Represents a time zone from the
@@ -10551,14 +9094,8 @@ class GoogleTypeTimeZone {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (version != null) 'version': version,
+      };
 }

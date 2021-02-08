@@ -11516,19 +11516,11 @@ class GoogleApiHttpBody {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentType != null) {
-      _json['contentType'] = contentType;
-    }
-    if (data != null) {
-      _json['data'] = data;
-    }
-    if (extensions != null) {
-      _json['extensions'] = extensions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentType != null) 'contentType': contentType,
+        if (data != null) 'data': data,
+        if (extensions != null) 'extensions': extensions,
+      };
 }
 
 class GoogleCloudApigeeV1Access {
@@ -11553,19 +11545,11 @@ class GoogleCloudApigeeV1Access {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (Get != null) {
-      _json['Get'] = Get.toJson();
-    }
-    if (Remove != null) {
-      _json['Remove'] = Remove.toJson();
-    }
-    if (Set != null) {
-      _json['Set'] = Set.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (Get != null) 'Get': Get.toJson(),
+        if (Remove != null) 'Remove': Remove.toJson(),
+        if (Set != null) 'Set': Set.toJson(),
+      };
 }
 
 /// Get action.
@@ -11586,16 +11570,10 @@ class GoogleCloudApigeeV1AccessGet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Remove action.
@@ -11616,16 +11594,10 @@ class GoogleCloudApigeeV1AccessRemove {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (success != null) {
-      _json['success'] = success;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (success != null) 'success': success,
+      };
 }
 
 /// Set action.
@@ -11651,19 +11623,11 @@ class GoogleCloudApigeeV1AccessSet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (success != null) {
-      _json['success'] = success;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (success != null) 'success': success,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Request for ActivateNatAddressRequest.
@@ -11676,10 +11640,7 @@ class GoogleCloudApigeeV1ActivateNatAddressRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Reference to a certificate or key/certificate pair.
@@ -11714,19 +11675,11 @@ class GoogleCloudApigeeV1Alias {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alias != null) {
-      _json['alias'] = alias;
-    }
-    if (certsInfo != null) {
-      _json['certsInfo'] = certsInfo.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alias != null) 'alias': alias,
+        if (certsInfo != null) 'certsInfo': certsInfo.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 class GoogleCloudApigeeV1AliasRevisionConfig {
@@ -11761,19 +11714,11 @@ class GoogleCloudApigeeV1AliasRevisionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (location != null) 'location': location,
+        if (name != null) 'name': name,
+        if (type != null) 'type': type,
+      };
 }
 
 /// the Api category resource wrapped with response status, error_code etc.
@@ -11814,25 +11759,13 @@ class GoogleCloudApigeeV1ApiCategory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (data != null) {
-      _json['data'] = data.toJson();
-    }
-    if (errorCode != null) {
-      _json['errorCode'] = errorCode;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    if (requestId != null) {
-      _json['requestId'] = requestId;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (data != null) 'data': data.toJson(),
+        if (errorCode != null) 'errorCode': errorCode,
+        if (message != null) 'message': message,
+        if (requestId != null) 'requestId': requestId,
+        if (status != null) 'status': status,
+      };
 }
 
 /// the Api category resource.
@@ -11866,22 +11799,12 @@ class GoogleCloudApigeeV1ApiCategoryData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (siteId != null) {
-      _json['siteId'] = siteId;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (name != null) 'name': name,
+        if (siteId != null) 'siteId': siteId,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 class GoogleCloudApigeeV1ApiProduct {
@@ -12070,55 +11993,24 @@ class GoogleCloudApigeeV1ApiProduct {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiResources != null) {
-      _json['apiResources'] = apiResources;
-    }
-    if (approvalType != null) {
-      _json['approvalType'] = approvalType;
-    }
-    if (attributes != null) {
-      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
-    }
-    if (createdAt != null) {
-      _json['createdAt'] = createdAt;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (environments != null) {
-      _json['environments'] = environments;
-    }
-    if (lastModifiedAt != null) {
-      _json['lastModifiedAt'] = lastModifiedAt;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (operationGroup != null) {
-      _json['operationGroup'] = operationGroup.toJson();
-    }
-    if (proxies != null) {
-      _json['proxies'] = proxies;
-    }
-    if (quota != null) {
-      _json['quota'] = quota;
-    }
-    if (quotaInterval != null) {
-      _json['quotaInterval'] = quotaInterval;
-    }
-    if (quotaTimeUnit != null) {
-      _json['quotaTimeUnit'] = quotaTimeUnit;
-    }
-    if (scopes != null) {
-      _json['scopes'] = scopes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiResources != null) 'apiResources': apiResources,
+        if (approvalType != null) 'approvalType': approvalType,
+        if (attributes != null)
+          'attributes': attributes.map((value) => value.toJson()).toList(),
+        if (createdAt != null) 'createdAt': createdAt,
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (environments != null) 'environments': environments,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
+        if (name != null) 'name': name,
+        if (operationGroup != null) 'operationGroup': operationGroup.toJson(),
+        if (proxies != null) 'proxies': proxies,
+        if (quota != null) 'quota': quota,
+        if (quotaInterval != null) 'quotaInterval': quotaInterval,
+        if (quotaTimeUnit != null) 'quotaTimeUnit': quotaTimeUnit,
+        if (scopes != null) 'scopes': scopes,
+      };
 }
 
 class GoogleCloudApigeeV1ApiProductRef {
@@ -12139,16 +12031,10 @@ class GoogleCloudApigeeV1ApiProductRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiproduct != null) {
-      _json['apiproduct'] = apiproduct;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiproduct != null) 'apiproduct': apiproduct,
+        if (status != null) 'status': status,
+      };
 }
 
 /// Metadata describing the API proxy
@@ -12185,22 +12071,12 @@ class GoogleCloudApigeeV1ApiProxy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (latestRevisionId != null) {
-      _json['latestRevisionId'] = latestRevisionId;
-    }
-    if (metaData != null) {
-      _json['metaData'] = metaData.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (revision != null) {
-      _json['revision'] = revision;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (latestRevisionId != null) 'latestRevisionId': latestRevisionId,
+        if (metaData != null) 'metaData': metaData.toJson(),
+        if (name != null) 'name': name,
+        if (revision != null) 'revision': revision,
+      };
 }
 
 /// API proxy revision.
@@ -12396,76 +12272,32 @@ class GoogleCloudApigeeV1ApiProxyRevision {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basepaths != null) {
-      _json['basepaths'] = basepaths;
-    }
-    if (configurationVersion != null) {
-      _json['configurationVersion'] = configurationVersion.toJson();
-    }
-    if (contextInfo != null) {
-      _json['contextInfo'] = contextInfo;
-    }
-    if (createdAt != null) {
-      _json['createdAt'] = createdAt;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (entityMetaDataAsProperties != null) {
-      _json['entityMetaDataAsProperties'] = entityMetaDataAsProperties;
-    }
-    if (lastModifiedAt != null) {
-      _json['lastModifiedAt'] = lastModifiedAt;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (policies != null) {
-      _json['policies'] = policies;
-    }
-    if (proxies != null) {
-      _json['proxies'] = proxies;
-    }
-    if (proxyEndpoints != null) {
-      _json['proxyEndpoints'] = proxyEndpoints;
-    }
-    if (resourceFiles != null) {
-      _json['resourceFiles'] = resourceFiles.toJson();
-    }
-    if (resources != null) {
-      _json['resources'] = resources;
-    }
-    if (revision != null) {
-      _json['revision'] = revision;
-    }
-    if (sharedFlows != null) {
-      _json['sharedFlows'] = sharedFlows;
-    }
-    if (spec != null) {
-      _json['spec'] = spec;
-    }
-    if (targetEndpoints != null) {
-      _json['targetEndpoints'] = targetEndpoints;
-    }
-    if (targetServers != null) {
-      _json['targetServers'] = targetServers;
-    }
-    if (targets != null) {
-      _json['targets'] = targets;
-    }
-    if (teams != null) {
-      _json['teams'] = teams;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basepaths != null) 'basepaths': basepaths,
+        if (configurationVersion != null)
+          'configurationVersion': configurationVersion.toJson(),
+        if (contextInfo != null) 'contextInfo': contextInfo,
+        if (createdAt != null) 'createdAt': createdAt,
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (entityMetaDataAsProperties != null)
+          'entityMetaDataAsProperties': entityMetaDataAsProperties,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
+        if (name != null) 'name': name,
+        if (policies != null) 'policies': policies,
+        if (proxies != null) 'proxies': proxies,
+        if (proxyEndpoints != null) 'proxyEndpoints': proxyEndpoints,
+        if (resourceFiles != null) 'resourceFiles': resourceFiles.toJson(),
+        if (resources != null) 'resources': resources,
+        if (revision != null) 'revision': revision,
+        if (sharedFlows != null) 'sharedFlows': sharedFlows,
+        if (spec != null) 'spec': spec,
+        if (targetEndpoints != null) 'targetEndpoints': targetEndpoints,
+        if (targetServers != null) 'targetServers': targetServers,
+        if (targets != null) 'targets': targets,
+        if (teams != null) 'teams': teams,
+        if (type != null) 'type': type,
+      };
 }
 
 class GoogleCloudApigeeV1ApiResponseWrapper {
@@ -12498,22 +12330,12 @@ class GoogleCloudApigeeV1ApiResponseWrapper {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errorCode != null) {
-      _json['errorCode'] = errorCode;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    if (requestId != null) {
-      _json['requestId'] = requestId;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errorCode != null) 'errorCode': errorCode,
+        if (message != null) 'message': message,
+        if (requestId != null) 'requestId': requestId,
+        if (status != null) 'status': status,
+      };
 }
 
 class GoogleCloudApigeeV1App {
@@ -12630,51 +12452,24 @@ class GoogleCloudApigeeV1App {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiProducts != null) {
-      _json['apiProducts'] =
-          apiProducts.map((value) => value.toJson()).toList();
-    }
-    if (appId != null) {
-      _json['appId'] = appId;
-    }
-    if (attributes != null) {
-      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
-    }
-    if (callbackUrl != null) {
-      _json['callbackUrl'] = callbackUrl;
-    }
-    if (companyName != null) {
-      _json['companyName'] = companyName;
-    }
-    if (createdAt != null) {
-      _json['createdAt'] = createdAt;
-    }
-    if (credentials != null) {
-      _json['credentials'] =
-          credentials.map((value) => value.toJson()).toList();
-    }
-    if (developerId != null) {
-      _json['developerId'] = developerId;
-    }
-    if (keyExpiresIn != null) {
-      _json['keyExpiresIn'] = keyExpiresIn;
-    }
-    if (lastModifiedAt != null) {
-      _json['lastModifiedAt'] = lastModifiedAt;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (scopes != null) {
-      _json['scopes'] = scopes;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiProducts != null)
+          'apiProducts': apiProducts.map((value) => value.toJson()).toList(),
+        if (appId != null) 'appId': appId,
+        if (attributes != null)
+          'attributes': attributes.map((value) => value.toJson()).toList(),
+        if (callbackUrl != null) 'callbackUrl': callbackUrl,
+        if (companyName != null) 'companyName': companyName,
+        if (createdAt != null) 'createdAt': createdAt,
+        if (credentials != null)
+          'credentials': credentials.map((value) => value.toJson()).toList(),
+        if (developerId != null) 'developerId': developerId,
+        if (keyExpiresIn != null) 'keyExpiresIn': keyExpiresIn,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
+        if (name != null) 'name': name,
+        if (scopes != null) 'scopes': scopes,
+        if (status != null) 'status': status,
+      };
 }
 
 class GoogleCloudApigeeV1AsyncQuery {
@@ -12768,49 +12563,22 @@ class GoogleCloudApigeeV1AsyncQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (created != null) {
-      _json['created'] = created;
-    }
-    if (envgroupHostname != null) {
-      _json['envgroupHostname'] = envgroupHostname;
-    }
-    if (error != null) {
-      _json['error'] = error;
-    }
-    if (executionTime != null) {
-      _json['executionTime'] = executionTime;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (queryParams != null) {
-      _json['queryParams'] = queryParams.toJson();
-    }
-    if (reportDefinitionId != null) {
-      _json['reportDefinitionId'] = reportDefinitionId;
-    }
-    if (result != null) {
-      _json['result'] = result.toJson();
-    }
-    if (resultFileSize != null) {
-      _json['resultFileSize'] = resultFileSize;
-    }
-    if (resultRows != null) {
-      _json['resultRows'] = resultRows;
-    }
-    if (self != null) {
-      _json['self'] = self;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (updated != null) {
-      _json['updated'] = updated;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (created != null) 'created': created,
+        if (envgroupHostname != null) 'envgroupHostname': envgroupHostname,
+        if (error != null) 'error': error,
+        if (executionTime != null) 'executionTime': executionTime,
+        if (name != null) 'name': name,
+        if (queryParams != null) 'queryParams': queryParams.toJson(),
+        if (reportDefinitionId != null)
+          'reportDefinitionId': reportDefinitionId,
+        if (result != null) 'result': result.toJson(),
+        if (resultFileSize != null) 'resultFileSize': resultFileSize,
+        if (resultRows != null) 'resultRows': resultRows,
+        if (self != null) 'self': self,
+        if (state != null) 'state': state,
+        if (updated != null) 'updated': updated,
+      };
 }
 
 class GoogleCloudApigeeV1AsyncQueryResult {
@@ -12836,16 +12604,10 @@ class GoogleCloudApigeeV1AsyncQueryResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (expires != null) {
-      _json['expires'] = expires;
-    }
-    if (self != null) {
-      _json['self'] = self;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (expires != null) 'expires': expires,
+        if (self != null) 'self': self,
+      };
 }
 
 class GoogleCloudApigeeV1AsyncQueryResultView {
@@ -12894,25 +12656,13 @@ class GoogleCloudApigeeV1AsyncQueryResultView {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (error != null) {
-      _json['error'] = error;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (rows != null) {
-      _json['rows'] = rows;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (error != null) 'error': error,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (rows != null) 'rows': rows,
+        if (state != null) 'state': state,
+      };
 }
 
 /// Key-value pair to store extra metadata.
@@ -12934,16 +12684,10 @@ class GoogleCloudApigeeV1Attribute {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (value != null) 'value': value,
+      };
 }
 
 class GoogleCloudApigeeV1Attributes {
@@ -12962,13 +12706,10 @@ class GoogleCloudApigeeV1Attributes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attribute != null) {
-      _json['attribute'] = attribute.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attribute != null)
+          'attribute': attribute.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// CanaryEvaluation represents the canary analysis between two versions of the
@@ -13061,37 +12802,17 @@ class GoogleCloudApigeeV1CanaryEvaluation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (control != null) {
-      _json['control'] = control;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (metricLabels != null) {
-      _json['metricLabels'] = metricLabels.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (treatment != null) {
-      _json['treatment'] = treatment;
-    }
-    if (verdict != null) {
-      _json['verdict'] = verdict;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (control != null) 'control': control,
+        if (createTime != null) 'createTime': createTime,
+        if (endTime != null) 'endTime': endTime,
+        if (metricLabels != null) 'metricLabels': metricLabels.toJson(),
+        if (name != null) 'name': name,
+        if (startTime != null) 'startTime': startTime,
+        if (state != null) 'state': state,
+        if (treatment != null) 'treatment': treatment,
+        if (verdict != null) 'verdict': verdict,
+      };
 }
 
 /// Labels that can be used to filter Apigee metrics.
@@ -13125,19 +12846,11 @@ class GoogleCloudApigeeV1CanaryEvaluationMetricLabels {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (env != null) {
-      _json['env'] = env;
-    }
-    if (instanceId != null) {
-      _json['instance_id'] = instanceId;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (env != null) 'env': env,
+        if (instanceId != null) 'instance_id': instanceId,
+        if (location != null) 'location': location,
+      };
 }
 
 /// X.509 certificate as defined in RFC 5280.
@@ -13218,43 +12931,20 @@ class GoogleCloudApigeeV1CertInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConstraints != null) {
-      _json['basicConstraints'] = basicConstraints;
-    }
-    if (expiryDate != null) {
-      _json['expiryDate'] = expiryDate;
-    }
-    if (isValid != null) {
-      _json['isValid'] = isValid;
-    }
-    if (issuer != null) {
-      _json['issuer'] = issuer;
-    }
-    if (publicKey != null) {
-      _json['publicKey'] = publicKey;
-    }
-    if (serialNumber != null) {
-      _json['serialNumber'] = serialNumber;
-    }
-    if (sigAlgName != null) {
-      _json['sigAlgName'] = sigAlgName;
-    }
-    if (subject != null) {
-      _json['subject'] = subject;
-    }
-    if (subjectAlternativeNames != null) {
-      _json['subjectAlternativeNames'] = subjectAlternativeNames;
-    }
-    if (validFrom != null) {
-      _json['validFrom'] = validFrom;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConstraints != null) 'basicConstraints': basicConstraints,
+        if (expiryDate != null) 'expiryDate': expiryDate,
+        if (isValid != null) 'isValid': isValid,
+        if (issuer != null) 'issuer': issuer,
+        if (publicKey != null) 'publicKey': publicKey,
+        if (serialNumber != null) 'serialNumber': serialNumber,
+        if (sigAlgName != null) 'sigAlgName': sigAlgName,
+        if (subject != null) 'subject': subject,
+        if (subjectAlternativeNames != null)
+          'subjectAlternativeNames': subjectAlternativeNames,
+        if (validFrom != null) 'validFrom': validFrom,
+        if (version != null) 'version': version,
+      };
 }
 
 class GoogleCloudApigeeV1Certificate {
@@ -13273,13 +12963,10 @@ class GoogleCloudApigeeV1Certificate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (certInfo != null) {
-      _json['certInfo'] = certInfo.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (certInfo != null)
+          'certInfo': certInfo.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GoogleCloudApigeeV1CommonNameConfig {
@@ -13297,16 +12984,10 @@ class GoogleCloudApigeeV1CommonNameConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (matchWildCards != null) {
-      _json['matchWildCards'] = matchWildCards;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (matchWildCards != null) 'matchWildCards': matchWildCards,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Version of the API proxy configuration schema.
@@ -13330,16 +13011,10 @@ class GoogleCloudApigeeV1ConfigVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (majorVersion != null) {
-      _json['majorVersion'] = majorVersion;
-    }
-    if (minorVersion != null) {
-      _json['minorVersion'] = minorVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (majorVersion != null) 'majorVersion': majorVersion,
+        if (minorVersion != null) 'minorVersion': minorVersion,
+      };
 }
 
 class GoogleCloudApigeeV1Credential {
@@ -13409,35 +13084,18 @@ class GoogleCloudApigeeV1Credential {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiProducts != null) {
-      _json['apiProducts'] =
-          apiProducts.map((value) => value.toJson()).toList();
-    }
-    if (attributes != null) {
-      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
-    }
-    if (consumerKey != null) {
-      _json['consumerKey'] = consumerKey;
-    }
-    if (consumerSecret != null) {
-      _json['consumerSecret'] = consumerSecret;
-    }
-    if (expiresAt != null) {
-      _json['expiresAt'] = expiresAt;
-    }
-    if (issuedAt != null) {
-      _json['issuedAt'] = issuedAt;
-    }
-    if (scopes != null) {
-      _json['scopes'] = scopes;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiProducts != null)
+          'apiProducts': apiProducts.map((value) => value.toJson()).toList(),
+        if (attributes != null)
+          'attributes': attributes.map((value) => value.toJson()).toList(),
+        if (consumerKey != null) 'consumerKey': consumerKey,
+        if (consumerSecret != null) 'consumerSecret': consumerSecret,
+        if (expiresAt != null) 'expiresAt': expiresAt,
+        if (issuedAt != null) 'issuedAt': issuedAt,
+        if (scopes != null) 'scopes': scopes,
+        if (status != null) 'status': status,
+      };
 }
 
 class GoogleCloudApigeeV1CustomReport {
@@ -13628,76 +13286,32 @@ class GoogleCloudApigeeV1CustomReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (chartType != null) {
-      _json['chartType'] = chartType;
-    }
-    if (comments != null) {
-      _json['comments'] = comments;
-    }
-    if (createdAt != null) {
-      _json['createdAt'] = createdAt;
-    }
-    if (dimensions != null) {
-      _json['dimensions'] = dimensions;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (environment != null) {
-      _json['environment'] = environment;
-    }
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    if (fromTime != null) {
-      _json['fromTime'] = fromTime;
-    }
-    if (lastModifiedAt != null) {
-      _json['lastModifiedAt'] = lastModifiedAt;
-    }
-    if (lastViewedAt != null) {
-      _json['lastViewedAt'] = lastViewedAt;
-    }
-    if (limit != null) {
-      _json['limit'] = limit;
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (offset != null) {
-      _json['offset'] = offset;
-    }
-    if (organization != null) {
-      _json['organization'] = organization;
-    }
-    if (properties != null) {
-      _json['properties'] = properties.map((value) => value.toJson()).toList();
-    }
-    if (sortByCols != null) {
-      _json['sortByCols'] = sortByCols;
-    }
-    if (sortOrder != null) {
-      _json['sortOrder'] = sortOrder;
-    }
-    if (tags != null) {
-      _json['tags'] = tags;
-    }
-    if (timeUnit != null) {
-      _json['timeUnit'] = timeUnit;
-    }
-    if (toTime != null) {
-      _json['toTime'] = toTime;
-    }
-    if (topk != null) {
-      _json['topk'] = topk;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (chartType != null) 'chartType': chartType,
+        if (comments != null) 'comments': comments,
+        if (createdAt != null) 'createdAt': createdAt,
+        if (dimensions != null) 'dimensions': dimensions,
+        if (displayName != null) 'displayName': displayName,
+        if (environment != null) 'environment': environment,
+        if (filter != null) 'filter': filter,
+        if (fromTime != null) 'fromTime': fromTime,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
+        if (lastViewedAt != null) 'lastViewedAt': lastViewedAt,
+        if (limit != null) 'limit': limit,
+        if (metrics != null)
+          'metrics': metrics.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (offset != null) 'offset': offset,
+        if (organization != null) 'organization': organization,
+        if (properties != null)
+          'properties': properties.map((value) => value.toJson()).toList(),
+        if (sortByCols != null) 'sortByCols': sortByCols,
+        if (sortOrder != null) 'sortOrder': sortOrder,
+        if (tags != null) 'tags': tags,
+        if (timeUnit != null) 'timeUnit': timeUnit,
+        if (toTime != null) 'toTime': toTime,
+        if (topk != null) 'topk': topk,
+      };
 }
 
 /// This encapsulates a metric property of the form sum(message_count) where
@@ -13720,16 +13334,10 @@ class GoogleCloudApigeeV1CustomReportMetric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (function != null) {
-      _json['function'] = function;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (function != null) 'function': function,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Data collector configuration.
@@ -13786,25 +13394,13 @@ class GoogleCloudApigeeV1DataCollector {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createdAt != null) {
-      _json['createdAt'] = createdAt;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (lastModifiedAt != null) {
-      _json['lastModifiedAt'] = lastModifiedAt;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createdAt != null) 'createdAt': createdAt,
+        if (description != null) 'description': description,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
+        if (name != null) 'name': name,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Data collector and its configuration.
@@ -13834,16 +13430,10 @@ class GoogleCloudApigeeV1DataCollectorConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (type != null) 'type': type,
+      };
 }
 
 /// The data store defines the connection to export data repository (Cloud
@@ -13914,31 +13504,16 @@ class GoogleCloudApigeeV1Datastore {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (datastoreConfig != null) {
-      _json['datastoreConfig'] = datastoreConfig.toJson();
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (lastUpdateTime != null) {
-      _json['lastUpdateTime'] = lastUpdateTime;
-    }
-    if (org != null) {
-      _json['org'] = org;
-    }
-    if (self != null) {
-      _json['self'] = self;
-    }
-    if (targetType != null) {
-      _json['targetType'] = targetType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (datastoreConfig != null)
+          'datastoreConfig': datastoreConfig.toJson(),
+        if (displayName != null) 'displayName': displayName,
+        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime,
+        if (org != null) 'org': org,
+        if (self != null) 'self': self,
+        if (targetType != null) 'targetType': targetType,
+      };
 }
 
 /// Configuration detail for datastore
@@ -13982,25 +13557,13 @@ class GoogleCloudApigeeV1DatastoreConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bucketName != null) {
-      _json['bucketName'] = bucketName;
-    }
-    if (datasetName != null) {
-      _json['datasetName'] = datasetName;
-    }
-    if (path != null) {
-      _json['path'] = path;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (tablePrefix != null) {
-      _json['tablePrefix'] = tablePrefix;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bucketName != null) 'bucketName': bucketName,
+        if (datasetName != null) 'datasetName': datasetName,
+        if (path != null) 'path': path,
+        if (projectId != null) 'projectId': projectId,
+        if (tablePrefix != null) 'tablePrefix': tablePrefix,
+      };
 }
 
 /// Date range of the data to export.
@@ -14031,16 +13594,10 @@ class GoogleCloudApigeeV1DateRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (end != null) {
-      _json['end'] = end;
-    }
-    if (start != null) {
-      _json['start'] = start;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (end != null) 'end': end,
+        if (start != null) 'start': start,
+      };
 }
 
 class GoogleCloudApigeeV1DebugMask {
@@ -14130,37 +13687,17 @@ class GoogleCloudApigeeV1DebugMask {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (faultJSONPaths != null) {
-      _json['faultJSONPaths'] = faultJSONPaths;
-    }
-    if (faultXPaths != null) {
-      _json['faultXPaths'] = faultXPaths;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (namespaces != null) {
-      _json['namespaces'] = namespaces;
-    }
-    if (requestJSONPaths != null) {
-      _json['requestJSONPaths'] = requestJSONPaths;
-    }
-    if (requestXPaths != null) {
-      _json['requestXPaths'] = requestXPaths;
-    }
-    if (responseJSONPaths != null) {
-      _json['responseJSONPaths'] = responseJSONPaths;
-    }
-    if (responseXPaths != null) {
-      _json['responseXPaths'] = responseXPaths;
-    }
-    if (variables != null) {
-      _json['variables'] = variables;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (faultJSONPaths != null) 'faultJSONPaths': faultJSONPaths,
+        if (faultXPaths != null) 'faultXPaths': faultXPaths,
+        if (name != null) 'name': name,
+        if (namespaces != null) 'namespaces': namespaces,
+        if (requestJSONPaths != null) 'requestJSONPaths': requestJSONPaths,
+        if (requestXPaths != null) 'requestXPaths': requestXPaths,
+        if (responseJSONPaths != null) 'responseJSONPaths': responseJSONPaths,
+        if (responseXPaths != null) 'responseXPaths': responseXPaths,
+        if (variables != null) 'variables': variables,
+      };
 }
 
 class GoogleCloudApigeeV1DebugSession {
@@ -14227,28 +13764,14 @@ class GoogleCloudApigeeV1DebugSession {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (count != null) {
-      _json['count'] = count;
-    }
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (timeout != null) {
-      _json['timeout'] = timeout;
-    }
-    if (tracesize != null) {
-      _json['tracesize'] = tracesize;
-    }
-    if (validity != null) {
-      _json['validity'] = validity;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (count != null) 'count': count,
+        if (filter != null) 'filter': filter,
+        if (name != null) 'name': name,
+        if (timeout != null) 'timeout': timeout,
+        if (tracesize != null) 'tracesize': tracesize,
+        if (validity != null) 'validity': validity,
+      };
 }
 
 /// A transaction contains all of the debug information of the entire message
@@ -14279,16 +13802,11 @@ class GoogleCloudApigeeV1DebugSessionTransaction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (completed != null) {
-      _json['completed'] = completed;
-    }
-    if (point != null) {
-      _json['point'] = point.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (completed != null) 'completed': completed,
+        if (point != null)
+          'point': point.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GoogleCloudApigeeV1DeleteCustomReportResponse {
@@ -14303,13 +13821,9 @@ class GoogleCloudApigeeV1DeleteCustomReportResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (message != null) 'message': message,
+      };
 }
 
 class GoogleCloudApigeeV1Deployment {
@@ -14411,38 +13925,21 @@ class GoogleCloudApigeeV1Deployment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiProxy != null) {
-      _json['apiProxy'] = apiProxy;
-    }
-    if (deployStartTime != null) {
-      _json['deployStartTime'] = deployStartTime;
-    }
-    if (environment != null) {
-      _json['environment'] = environment;
-    }
-    if (errors != null) {
-      _json['errors'] = errors.map((value) => value.toJson()).toList();
-    }
-    if (instances != null) {
-      _json['instances'] = instances.map((value) => value.toJson()).toList();
-    }
-    if (pods != null) {
-      _json['pods'] = pods.map((value) => value.toJson()).toList();
-    }
-    if (revision != null) {
-      _json['revision'] = revision;
-    }
-    if (routeConflicts != null) {
-      _json['routeConflicts'] =
-          routeConflicts.map((value) => value.toJson()).toList();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiProxy != null) 'apiProxy': apiProxy,
+        if (deployStartTime != null) 'deployStartTime': deployStartTime,
+        if (environment != null) 'environment': environment,
+        if (errors != null)
+          'errors': errors.map((value) => value.toJson()).toList(),
+        if (instances != null)
+          'instances': instances.map((value) => value.toJson()).toList(),
+        if (pods != null) 'pods': pods.map((value) => value.toJson()).toList(),
+        if (revision != null) 'revision': revision,
+        if (routeConflicts != null)
+          'routeConflicts':
+              routeConflicts.map((value) => value.toJson()).toList(),
+        if (state != null) 'state': state,
+      };
 }
 
 /// Response for GenerateDeployChangeReport and GenerateUndeployChangeReport.
@@ -14495,21 +13992,16 @@ class GoogleCloudApigeeV1DeploymentChangeReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (routingChanges != null) {
-      _json['routingChanges'] =
-          routingChanges.map((value) => value.toJson()).toList();
-    }
-    if (routingConflicts != null) {
-      _json['routingConflicts'] =
-          routingConflicts.map((value) => value.toJson()).toList();
-    }
-    if (validationErrors != null) {
-      _json['validationErrors'] = validationErrors.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (routingChanges != null)
+          'routingChanges':
+              routingChanges.map((value) => value.toJson()).toList(),
+        if (routingConflicts != null)
+          'routingConflicts':
+              routingConflicts.map((value) => value.toJson()).toList(),
+        if (validationErrors != null)
+          'validationErrors': validationErrors.toJson(),
+      };
 }
 
 /// Describes a potential routing change that may occur as a result of some
@@ -14560,25 +14052,14 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingChange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (environmentGroup != null) {
-      _json['environmentGroup'] = environmentGroup;
-    }
-    if (fromDeployment != null) {
-      _json['fromDeployment'] = fromDeployment.toJson();
-    }
-    if (shouldSequenceRollout != null) {
-      _json['shouldSequenceRollout'] = shouldSequenceRollout;
-    }
-    if (toDeployment != null) {
-      _json['toDeployment'] = toDeployment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (environmentGroup != null) 'environmentGroup': environmentGroup,
+        if (fromDeployment != null) 'fromDeployment': fromDeployment.toJson(),
+        if (shouldSequenceRollout != null)
+          'shouldSequenceRollout': shouldSequenceRollout,
+        if (toDeployment != null) 'toDeployment': toDeployment.toJson(),
+      };
 }
 
 /// Describes a routing conflict that may cause a deployment not to receive
@@ -14612,19 +14093,12 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (conflictingDeployment != null) {
-      _json['conflictingDeployment'] = conflictingDeployment.toJson();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (environmentGroup != null) {
-      _json['environmentGroup'] = environmentGroup;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (conflictingDeployment != null)
+          'conflictingDeployment': conflictingDeployment.toJson(),
+        if (description != null) 'description': description,
+        if (environmentGroup != null) 'environmentGroup': environmentGroup,
+      };
 }
 
 /// A tuple representing a basepath and the deployment containing it.
@@ -14659,22 +14133,12 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiProxy != null) {
-      _json['apiProxy'] = apiProxy;
-    }
-    if (basepath != null) {
-      _json['basepath'] = basepath;
-    }
-    if (environment != null) {
-      _json['environment'] = environment;
-    }
-    if (revision != null) {
-      _json['revision'] = revision;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiProxy != null) 'apiProxy': apiProxy,
+        if (basepath != null) 'basepath': basepath,
+        if (environment != null) 'environment': environment,
+        if (revision != null) 'revision': revision,
+      };
 }
 
 class GoogleCloudApigeeV1DeploymentConfig {
@@ -14732,28 +14196,14 @@ class GoogleCloudApigeeV1DeploymentConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributes != null) {
-      _json['attributes'] = attributes;
-    }
-    if (basePath != null) {
-      _json['basePath'] = basePath;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (proxyUid != null) {
-      _json['proxyUid'] = proxyUid;
-    }
-    if (uid != null) {
-      _json['uid'] = uid;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributes != null) 'attributes': attributes,
+        if (basePath != null) 'basePath': basePath,
+        if (location != null) 'location': location,
+        if (name != null) 'name': name,
+        if (proxyUid != null) 'proxyUid': proxyUid,
+        if (uid != null) 'uid': uid,
+      };
 }
 
 class GoogleCloudApigeeV1Developer {
@@ -14884,52 +14334,23 @@ class GoogleCloudApigeeV1Developer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessType != null) {
-      _json['accessType'] = accessType;
-    }
-    if (appFamily != null) {
-      _json['appFamily'] = appFamily;
-    }
-    if (apps != null) {
-      _json['apps'] = apps;
-    }
-    if (attributes != null) {
-      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
-    }
-    if (companies != null) {
-      _json['companies'] = companies;
-    }
-    if (createdAt != null) {
-      _json['createdAt'] = createdAt;
-    }
-    if (developerId != null) {
-      _json['developerId'] = developerId;
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (firstName != null) {
-      _json['firstName'] = firstName;
-    }
-    if (lastModifiedAt != null) {
-      _json['lastModifiedAt'] = lastModifiedAt;
-    }
-    if (lastName != null) {
-      _json['lastName'] = lastName;
-    }
-    if (organizationName != null) {
-      _json['organizationName'] = organizationName;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (userName != null) {
-      _json['userName'] = userName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessType != null) 'accessType': accessType,
+        if (appFamily != null) 'appFamily': appFamily,
+        if (apps != null) 'apps': apps,
+        if (attributes != null)
+          'attributes': attributes.map((value) => value.toJson()).toList(),
+        if (companies != null) 'companies': companies,
+        if (createdAt != null) 'createdAt': createdAt,
+        if (developerId != null) 'developerId': developerId,
+        if (email != null) 'email': email,
+        if (firstName != null) 'firstName': firstName,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
+        if (lastName != null) 'lastName': lastName,
+        if (organizationName != null) 'organizationName': organizationName,
+        if (status != null) 'status': status,
+        if (userName != null) 'userName': userName,
+      };
 }
 
 class GoogleCloudApigeeV1DeveloperApp {
@@ -15045,50 +14466,23 @@ class GoogleCloudApigeeV1DeveloperApp {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiProducts != null) {
-      _json['apiProducts'] = apiProducts;
-    }
-    if (appFamily != null) {
-      _json['appFamily'] = appFamily;
-    }
-    if (appId != null) {
-      _json['appId'] = appId;
-    }
-    if (attributes != null) {
-      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
-    }
-    if (callbackUrl != null) {
-      _json['callbackUrl'] = callbackUrl;
-    }
-    if (createdAt != null) {
-      _json['createdAt'] = createdAt;
-    }
-    if (credentials != null) {
-      _json['credentials'] =
-          credentials.map((value) => value.toJson()).toList();
-    }
-    if (developerId != null) {
-      _json['developerId'] = developerId;
-    }
-    if (keyExpiresIn != null) {
-      _json['keyExpiresIn'] = keyExpiresIn;
-    }
-    if (lastModifiedAt != null) {
-      _json['lastModifiedAt'] = lastModifiedAt;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (scopes != null) {
-      _json['scopes'] = scopes;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiProducts != null) 'apiProducts': apiProducts,
+        if (appFamily != null) 'appFamily': appFamily,
+        if (appId != null) 'appId': appId,
+        if (attributes != null)
+          'attributes': attributes.map((value) => value.toJson()).toList(),
+        if (callbackUrl != null) 'callbackUrl': callbackUrl,
+        if (createdAt != null) 'createdAt': createdAt,
+        if (credentials != null)
+          'credentials': credentials.map((value) => value.toJson()).toList(),
+        if (developerId != null) 'developerId': developerId,
+        if (keyExpiresIn != null) 'keyExpiresIn': keyExpiresIn,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
+        if (name != null) 'name': name,
+        if (scopes != null) 'scopes': scopes,
+        if (status != null) 'status': status,
+      };
 }
 
 class GoogleCloudApigeeV1DeveloperAppKey {
@@ -15165,34 +14559,17 @@ class GoogleCloudApigeeV1DeveloperAppKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiProducts != null) {
-      _json['apiProducts'] = apiProducts;
-    }
-    if (attributes != null) {
-      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
-    }
-    if (consumerKey != null) {
-      _json['consumerKey'] = consumerKey;
-    }
-    if (consumerSecret != null) {
-      _json['consumerSecret'] = consumerSecret;
-    }
-    if (expiresAt != null) {
-      _json['expiresAt'] = expiresAt;
-    }
-    if (issuedAt != null) {
-      _json['issuedAt'] = issuedAt;
-    }
-    if (scopes != null) {
-      _json['scopes'] = scopes;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiProducts != null) 'apiProducts': apiProducts,
+        if (attributes != null)
+          'attributes': attributes.map((value) => value.toJson()).toList(),
+        if (consumerKey != null) 'consumerKey': consumerKey,
+        if (consumerSecret != null) 'consumerSecret': consumerSecret,
+        if (expiresAt != null) 'expiresAt': expiresAt,
+        if (issuedAt != null) 'issuedAt': issuedAt,
+        if (scopes != null) 'scopes': scopes,
+        if (status != null) 'status': status,
+      };
 }
 
 /// This message type encapsulates a metric grouped by dimension.
@@ -15218,16 +14595,11 @@ class GoogleCloudApigeeV1DimensionMetric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metrics != null) {
-      _json['metrics'] = metrics.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metrics != null)
+          'metrics': metrics.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+      };
 }
 
 /// Metadata common to many entities in this API.
@@ -15256,19 +14628,11 @@ class GoogleCloudApigeeV1EntityMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createdAt != null) {
-      _json['createdAt'] = createdAt;
-    }
-    if (lastModifiedAt != null) {
-      _json['lastModifiedAt'] = lastModifiedAt;
-    }
-    if (subType != null) {
-      _json['subType'] = subType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createdAt != null) 'createdAt': createdAt,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
+        if (subType != null) 'subType': subType,
+      };
 }
 
 class GoogleCloudApigeeV1Environment {
@@ -15343,31 +14707,15 @@ class GoogleCloudApigeeV1Environment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createdAt != null) {
-      _json['createdAt'] = createdAt;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (lastModifiedAt != null) {
-      _json['lastModifiedAt'] = lastModifiedAt;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (properties != null) {
-      _json['properties'] = properties.toJson();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createdAt != null) 'createdAt': createdAt,
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
+        if (name != null) 'name': name,
+        if (properties != null) 'properties': properties.toJson(),
+        if (state != null) 'state': state,
+      };
 }
 
 class GoogleCloudApigeeV1EnvironmentConfig {
@@ -15526,64 +14874,34 @@ class GoogleCloudApigeeV1EnvironmentConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (dataCollectors != null) {
-      _json['dataCollectors'] =
-          dataCollectors.map((value) => value.toJson()).toList();
-    }
-    if (debugMask != null) {
-      _json['debugMask'] = debugMask.toJson();
-    }
-    if (deployments != null) {
-      _json['deployments'] =
-          deployments.map((value) => value.toJson()).toList();
-    }
-    if (featureFlags != null) {
-      _json['featureFlags'] = featureFlags;
-    }
-    if (flowhooks != null) {
-      _json['flowhooks'] = flowhooks.map((value) => value.toJson()).toList();
-    }
-    if (keystores != null) {
-      _json['keystores'] = keystores.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (provider != null) {
-      _json['provider'] = provider;
-    }
-    if (pubsubTopic != null) {
-      _json['pubsubTopic'] = pubsubTopic;
-    }
-    if (resourceReferences != null) {
-      _json['resourceReferences'] =
-          resourceReferences.map((value) => value.toJson()).toList();
-    }
-    if (resources != null) {
-      _json['resources'] = resources.map((value) => value.toJson()).toList();
-    }
-    if (revisionId != null) {
-      _json['revisionId'] = revisionId;
-    }
-    if (sequenceNumber != null) {
-      _json['sequenceNumber'] = sequenceNumber;
-    }
-    if (targets != null) {
-      _json['targets'] = targets.map((value) => value.toJson()).toList();
-    }
-    if (traceConfig != null) {
-      _json['traceConfig'] = traceConfig.toJson();
-    }
-    if (uid != null) {
-      _json['uid'] = uid;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (dataCollectors != null)
+          'dataCollectors':
+              dataCollectors.map((value) => value.toJson()).toList(),
+        if (debugMask != null) 'debugMask': debugMask.toJson(),
+        if (deployments != null)
+          'deployments': deployments.map((value) => value.toJson()).toList(),
+        if (featureFlags != null) 'featureFlags': featureFlags,
+        if (flowhooks != null)
+          'flowhooks': flowhooks.map((value) => value.toJson()).toList(),
+        if (keystores != null)
+          'keystores': keystores.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (provider != null) 'provider': provider,
+        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic,
+        if (resourceReferences != null)
+          'resourceReferences':
+              resourceReferences.map((value) => value.toJson()).toList(),
+        if (resources != null)
+          'resources': resources.map((value) => value.toJson()).toList(),
+        if (revisionId != null) 'revisionId': revisionId,
+        if (sequenceNumber != null) 'sequenceNumber': sequenceNumber,
+        if (targets != null)
+          'targets': targets.map((value) => value.toJson()).toList(),
+        if (traceConfig != null) 'traceConfig': traceConfig.toJson(),
+        if (uid != null) 'uid': uid,
+      };
 }
 
 /// EnvironmentGroup configuration.
@@ -15645,25 +14963,13 @@ class GoogleCloudApigeeV1EnvironmentGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createdAt != null) {
-      _json['createdAt'] = createdAt;
-    }
-    if (hostnames != null) {
-      _json['hostnames'] = hostnames;
-    }
-    if (lastModifiedAt != null) {
-      _json['lastModifiedAt'] = lastModifiedAt;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createdAt != null) 'createdAt': createdAt,
+        if (hostnames != null) 'hostnames': hostnames,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
+        if (name != null) 'name': name,
+        if (state != null) 'state': state,
+      };
 }
 
 /// EnvironmentGroupAttachment is a resource which defines an attachment of an
@@ -15697,19 +15003,11 @@ class GoogleCloudApigeeV1EnvironmentGroupAttachment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createdAt != null) {
-      _json['createdAt'] = createdAt;
-    }
-    if (environment != null) {
-      _json['environment'] = environment;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createdAt != null) 'createdAt': createdAt,
+        if (environment != null) 'environment': environment,
+        if (name != null) 'name': name,
+      };
 }
 
 /// EnvironmentGroupConfig is a revisioned snapshot of an EnvironmentGroup and
@@ -15762,26 +15060,14 @@ class GoogleCloudApigeeV1EnvironmentGroupConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hostnames != null) {
-      _json['hostnames'] = hostnames;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (revisionId != null) {
-      _json['revisionId'] = revisionId;
-    }
-    if (routingRules != null) {
-      _json['routingRules'] =
-          routingRules.map((value) => value.toJson()).toList();
-    }
-    if (uid != null) {
-      _json['uid'] = uid;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hostnames != null) 'hostnames': hostnames,
+        if (name != null) 'name': name,
+        if (revisionId != null) 'revisionId': revisionId,
+        if (routingRules != null)
+          'routingRules': routingRules.map((value) => value.toJson()).toList(),
+        if (uid != null) 'uid': uid,
+      };
 }
 
 /// Details of an export job.
@@ -15867,37 +15153,17 @@ class GoogleCloudApigeeV1Export {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (created != null) {
-      _json['created'] = created;
-    }
-    if (datastoreName != null) {
-      _json['datastoreName'] = datastoreName;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (error != null) {
-      _json['error'] = error;
-    }
-    if (executionTime != null) {
-      _json['executionTime'] = executionTime;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (self != null) {
-      _json['self'] = self;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (updated != null) {
-      _json['updated'] = updated;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (created != null) 'created': created,
+        if (datastoreName != null) 'datastoreName': datastoreName,
+        if (description != null) 'description': description,
+        if (error != null) 'error': error,
+        if (executionTime != null) 'executionTime': executionTime,
+        if (name != null) 'name': name,
+        if (self != null) 'self': self,
+        if (state != null) 'state': state,
+        if (updated != null) 'updated': updated,
+      };
 }
 
 /// Request body for \[CreateExportRequest\]
@@ -15962,28 +15228,14 @@ class GoogleCloudApigeeV1ExportRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (csvDelimiter != null) {
-      _json['csvDelimiter'] = csvDelimiter;
-    }
-    if (datastoreName != null) {
-      _json['datastoreName'] = datastoreName;
-    }
-    if (dateRange != null) {
-      _json['dateRange'] = dateRange.toJson();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (outputFormat != null) {
-      _json['outputFormat'] = outputFormat;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (csvDelimiter != null) 'csvDelimiter': csvDelimiter,
+        if (datastoreName != null) 'datastoreName': datastoreName,
+        if (dateRange != null) 'dateRange': dateRange.toJson(),
+        if (description != null) 'description': description,
+        if (name != null) 'name': name,
+        if (outputFormat != null) 'outputFormat': outputFormat,
+      };
 }
 
 class GoogleCloudApigeeV1FlowHook {
@@ -16028,22 +15280,12 @@ class GoogleCloudApigeeV1FlowHook {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (continueOnError != null) {
-      _json['continueOnError'] = continueOnError;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (flowHookPoint != null) {
-      _json['flowHookPoint'] = flowHookPoint;
-    }
-    if (sharedFlow != null) {
-      _json['sharedFlow'] = sharedFlow;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (continueOnError != null) 'continueOnError': continueOnError,
+        if (description != null) 'description': description,
+        if (flowHookPoint != null) 'flowHookPoint': flowHookPoint,
+        if (sharedFlow != null) 'sharedFlow': sharedFlow,
+      };
 }
 
 class GoogleCloudApigeeV1FlowHookConfig {
@@ -16078,19 +15320,11 @@ class GoogleCloudApigeeV1FlowHookConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (continueOnError != null) {
-      _json['continueOnError'] = continueOnError;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (sharedFlowName != null) {
-      _json['sharedFlowName'] = sharedFlowName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (continueOnError != null) 'continueOnError': continueOnError,
+        if (name != null) 'name': name,
+        if (sharedFlowName != null) 'sharedFlowName': sharedFlowName,
+      };
 }
 
 /// Request for GetSyncAuthorization.
@@ -16101,10 +15335,7 @@ class GoogleCloudApigeeV1GetSyncAuthorizationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 class GoogleCloudApigeeV1IngressConfig {
@@ -16151,26 +15382,16 @@ class GoogleCloudApigeeV1IngressConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (environmentGroups != null) {
-      _json['environmentGroups'] =
-          environmentGroups.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (revisionCreateTime != null) {
-      _json['revisionCreateTime'] = revisionCreateTime;
-    }
-    if (revisionId != null) {
-      _json['revisionId'] = revisionId;
-    }
-    if (uid != null) {
-      _json['uid'] = uid;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (environmentGroups != null)
+          'environmentGroups':
+              environmentGroups.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (revisionCreateTime != null)
+          'revisionCreateTime': revisionCreateTime,
+        if (revisionId != null) 'revisionId': revisionId,
+        if (uid != null) 'uid': uid,
+      };
 }
 
 /// Apigee runtime instance.
@@ -16272,40 +15493,19 @@ class GoogleCloudApigeeV1Instance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createdAt != null) {
-      _json['createdAt'] = createdAt;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (diskEncryptionKeyName != null) {
-      _json['diskEncryptionKeyName'] = diskEncryptionKeyName;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (host != null) {
-      _json['host'] = host;
-    }
-    if (lastModifiedAt != null) {
-      _json['lastModifiedAt'] = lastModifiedAt;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (port != null) {
-      _json['port'] = port;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createdAt != null) 'createdAt': createdAt,
+        if (description != null) 'description': description,
+        if (diskEncryptionKeyName != null)
+          'diskEncryptionKeyName': diskEncryptionKeyName,
+        if (displayName != null) 'displayName': displayName,
+        if (host != null) 'host': host,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
+        if (location != null) 'location': location,
+        if (name != null) 'name': name,
+        if (port != null) 'port': port,
+        if (state != null) 'state': state,
+      };
 }
 
 /// InstanceAttachment represents the installation of an environment onto an
@@ -16338,19 +15538,11 @@ class GoogleCloudApigeeV1InstanceAttachment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createdAt != null) {
-      _json['createdAt'] = createdAt;
-    }
-    if (environment != null) {
-      _json['environment'] = environment;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createdAt != null) 'createdAt': createdAt,
+        if (environment != null) 'environment': environment,
+        if (name != null) 'name': name,
+      };
 }
 
 /// The status of a deployment as reported by a single instance.
@@ -16392,21 +15584,15 @@ class GoogleCloudApigeeV1InstanceDeploymentStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deployedRevisions != null) {
-      _json['deployedRevisions'] =
-          deployedRevisions.map((value) => value.toJson()).toList();
-    }
-    if (deployedRoutes != null) {
-      _json['deployedRoutes'] =
-          deployedRoutes.map((value) => value.toJson()).toList();
-    }
-    if (instance != null) {
-      _json['instance'] = instance;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deployedRevisions != null)
+          'deployedRevisions':
+              deployedRevisions.map((value) => value.toJson()).toList(),
+        if (deployedRoutes != null)
+          'deployedRoutes':
+              deployedRoutes.map((value) => value.toJson()).toList(),
+        if (instance != null) 'instance': instance,
+      };
 }
 
 /// Revisions deployed in the MPs.
@@ -16429,16 +15615,10 @@ class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (percentage != null) {
-      _json['percentage'] = percentage;
-    }
-    if (revision != null) {
-      _json['revision'] = revision;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (percentage != null) 'percentage': percentage,
+        if (revision != null) 'revision': revision,
+      };
 }
 
 /// A route deployed in the ingress routing table.
@@ -16475,22 +15655,12 @@ class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basepath != null) {
-      _json['basepath'] = basepath;
-    }
-    if (envgroup != null) {
-      _json['envgroup'] = envgroup;
-    }
-    if (environment != null) {
-      _json['environment'] = environment;
-    }
-    if (percentage != null) {
-      _json['percentage'] = percentage;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basepath != null) 'basepath': basepath,
+        if (envgroup != null) 'envgroup': envgroup,
+        if (environment != null) 'environment': environment,
+        if (percentage != null) 'percentage': percentage,
+      };
 }
 
 class GoogleCloudApigeeV1KeyAliasReference {
@@ -16514,16 +15684,10 @@ class GoogleCloudApigeeV1KeyAliasReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aliasId != null) {
-      _json['aliasId'] = aliasId;
-    }
-    if (reference != null) {
-      _json['reference'] = reference;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aliasId != null) 'aliasId': aliasId,
+        if (reference != null) 'reference': reference,
+      };
 }
 
 /// A collection of key, value string pairs
@@ -16549,16 +15713,10 @@ class GoogleCloudApigeeV1KeyValueMap {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (encrypted != null) {
-      _json['encrypted'] = encrypted;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (encrypted != null) 'encrypted': encrypted,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Datastore for Certificates and Aliases.
@@ -16588,16 +15746,10 @@ class GoogleCloudApigeeV1Keystore {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aliases != null) {
-      _json['aliases'] = aliases;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aliases != null) 'aliases': aliases,
+        if (name != null) 'name': name,
+      };
 }
 
 class GoogleCloudApigeeV1KeystoreConfig {
@@ -16623,16 +15775,11 @@ class GoogleCloudApigeeV1KeystoreConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aliases != null) {
-      _json['aliases'] = aliases.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aliases != null)
+          'aliases': aliases.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+      };
 }
 
 /// the response for ListApiCategoriesRequest.
@@ -16676,25 +15823,13 @@ class GoogleCloudApigeeV1ListApiCategoriesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (data != null) {
-      _json['data'] = data.map((value) => value.toJson()).toList();
-    }
-    if (errorCode != null) {
-      _json['errorCode'] = errorCode;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    if (requestId != null) {
-      _json['requestId'] = requestId;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (data != null) 'data': data.map((value) => value.toJson()).toList(),
+        if (errorCode != null) 'errorCode': errorCode,
+        if (message != null) 'message': message,
+        if (requestId != null) 'requestId': requestId,
+        if (status != null) 'status': status,
+      };
 }
 
 class GoogleCloudApigeeV1ListApiProductsResponse {
@@ -16713,13 +15848,10 @@ class GoogleCloudApigeeV1ListApiProductsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiProduct != null) {
-      _json['apiProduct'] = apiProduct.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiProduct != null)
+          'apiProduct': apiProduct.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GoogleCloudApigeeV1ListApiProxiesResponse {
@@ -16737,13 +15869,10 @@ class GoogleCloudApigeeV1ListApiProxiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (proxies != null) {
-      _json['proxies'] = proxies.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (proxies != null)
+          'proxies': proxies.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GoogleCloudApigeeV1ListAppsResponse {
@@ -16761,13 +15890,9 @@ class GoogleCloudApigeeV1ListAppsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (app != null) {
-      _json['app'] = app.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (app != null) 'app': app.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response for ListAsyncQueries.
@@ -16787,13 +15912,10 @@ class GoogleCloudApigeeV1ListAsyncQueriesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (queries != null) {
-      _json['queries'] = queries.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (queries != null)
+          'queries': queries.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// This message encapsulates a list of custom report definitions
@@ -16812,13 +15934,10 @@ class GoogleCloudApigeeV1ListCustomReportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (qualifier != null) {
-      _json['qualifier'] = qualifier.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (qualifier != null)
+          'qualifier': qualifier.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response for ListDataCollectors.
@@ -16847,17 +15966,12 @@ class GoogleCloudApigeeV1ListDataCollectorsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataCollectors != null) {
-      _json['dataCollectors'] =
-          dataCollectors.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataCollectors != null)
+          'dataCollectors':
+              dataCollectors.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response for ListDatastores
@@ -16877,13 +15991,10 @@ class GoogleCloudApigeeV1ListDatastoresResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (datastores != null) {
-      _json['datastores'] = datastores.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (datastores != null)
+          'datastores': datastores.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GoogleCloudApigeeV1ListDebugSessionsResponse {
@@ -16912,16 +16023,11 @@ class GoogleCloudApigeeV1ListDebugSessionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (sessions != null) {
-      _json['sessions'] = sessions.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (sessions != null)
+          'sessions': sessions.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GoogleCloudApigeeV1ListDeploymentsResponse {
@@ -16940,14 +16046,10 @@ class GoogleCloudApigeeV1ListDeploymentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deployments != null) {
-      _json['deployments'] =
-          deployments.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deployments != null)
+          'deployments': deployments.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GoogleCloudApigeeV1ListDeveloperAppsResponse {
@@ -16966,13 +16068,9 @@ class GoogleCloudApigeeV1ListDeveloperAppsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (app != null) {
-      _json['app'] = app.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (app != null) 'app': app.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response for ListEnvironmentGroupAttachments.
@@ -17004,17 +16102,13 @@ class GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (environmentGroupAttachments != null) {
-      _json['environmentGroupAttachments'] =
-          environmentGroupAttachments.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (environmentGroupAttachments != null)
+          'environmentGroupAttachments': environmentGroupAttachments
+              .map((value) => value.toJson())
+              .toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response for ListEnvironmentGroups.
@@ -17043,17 +16137,12 @@ class GoogleCloudApigeeV1ListEnvironmentGroupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (environmentGroups != null) {
-      _json['environmentGroups'] =
-          environmentGroups.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (environmentGroups != null)
+          'environmentGroups':
+              environmentGroups.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response for ListEnvironmentResources
@@ -17073,14 +16162,10 @@ class GoogleCloudApigeeV1ListEnvironmentResourcesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceFile != null) {
-      _json['resourceFile'] =
-          resourceFile.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceFile != null)
+          'resourceFile': resourceFile.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response for ListExports
@@ -17100,13 +16185,10 @@ class GoogleCloudApigeeV1ListExportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exports != null) {
-      _json['exports'] = exports.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exports != null)
+          'exports': exports.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GoogleCloudApigeeV1ListHybridIssuersResponse {
@@ -17125,13 +16207,10 @@ class GoogleCloudApigeeV1ListHybridIssuersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (issuers != null) {
-      _json['issuers'] = issuers.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (issuers != null)
+          'issuers': issuers.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response for ListInstanceAttachments.
@@ -17160,17 +16239,11 @@ class GoogleCloudApigeeV1ListInstanceAttachmentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attachments != null) {
-      _json['attachments'] =
-          attachments.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attachments != null)
+          'attachments': attachments.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response for ListInstances.
@@ -17199,16 +16272,11 @@ class GoogleCloudApigeeV1ListInstancesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (instances != null) {
-      _json['instances'] = instances.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (instances != null)
+          'instances': instances.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response for ListNatAddresses.
@@ -17237,17 +16305,11 @@ class GoogleCloudApigeeV1ListNatAddressesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (natAddresses != null) {
-      _json['natAddresses'] =
-          natAddresses.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (natAddresses != null)
+          'natAddresses': natAddresses.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class GoogleCloudApigeeV1ListOfDevelopersResponse {
@@ -17266,13 +16328,10 @@ class GoogleCloudApigeeV1ListOfDevelopersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (developer != null) {
-      _json['developer'] = developer.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (developer != null)
+          'developer': developer.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GoogleCloudApigeeV1ListOrganizationsResponse {
@@ -17291,14 +16350,11 @@ class GoogleCloudApigeeV1ListOrganizationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (organizations != null) {
-      _json['organizations'] =
-          organizations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (organizations != null)
+          'organizations':
+              organizations.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GoogleCloudApigeeV1ListSharedFlowsResponse {
@@ -17316,14 +16372,10 @@ class GoogleCloudApigeeV1ListSharedFlowsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sharedFlows != null) {
-      _json['sharedFlows'] =
-          sharedFlows.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sharedFlows != null)
+          'sharedFlows': sharedFlows.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// This message type encapsulates additional information about query execution.
@@ -17354,16 +16406,10 @@ class GoogleCloudApigeeV1Metadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errors != null) {
-      _json['errors'] = errors;
-    }
-    if (notices != null) {
-      _json['notices'] = notices;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errors != null) 'errors': errors,
+        if (notices != null) 'notices': notices,
+      };
 }
 
 /// This message type encapsulates the metric data point.
@@ -17397,16 +16443,10 @@ class GoogleCloudApigeeV1Metric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (values != null) {
-      _json['values'] = values;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (values != null) 'values': values,
+      };
 }
 
 /// Apigee NAT(network address translation) address.
@@ -17450,19 +16490,11 @@ class GoogleCloudApigeeV1NatAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ipAddress != null) {
-      _json['ipAddress'] = ipAddress;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ipAddress != null) 'ipAddress': ipAddress,
+        if (name != null) 'name': name,
+        if (state != null) 'state': state,
+      };
 }
 
 /// Operation represents the pairing of REST resource path and the actions
@@ -17493,16 +16525,10 @@ class GoogleCloudApigeeV1Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (methods != null) {
-      _json['methods'] = methods;
-    }
-    if (resource != null) {
-      _json['resource'] = resource;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (methods != null) 'methods': methods,
+        if (resource != null) 'resource': resource,
+      };
 }
 
 /// OperationConfig binds the resources in a proxy or remote service with the
@@ -17556,22 +16582,14 @@ class GoogleCloudApigeeV1OperationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiSource != null) {
-      _json['apiSource'] = apiSource;
-    }
-    if (attributes != null) {
-      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    if (quota != null) {
-      _json['quota'] = quota.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiSource != null) 'apiSource': apiSource,
+        if (attributes != null)
+          'attributes': attributes.map((value) => value.toJson()).toList(),
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+        if (quota != null) 'quota': quota.toJson(),
+      };
 }
 
 /// List of operation configuration details associated with Apigee API proxies
@@ -17609,17 +16627,13 @@ class GoogleCloudApigeeV1OperationGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operationConfigType != null) {
-      _json['operationConfigType'] = operationConfigType;
-    }
-    if (operationConfigs != null) {
-      _json['operationConfigs'] =
-          operationConfigs.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (operationConfigType != null)
+          'operationConfigType': operationConfigType,
+        if (operationConfigs != null)
+          'operationConfigs':
+              operationConfigs.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Metadata describing an Operation.
@@ -17657,19 +16671,12 @@ class GoogleCloudApigeeV1OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operationType != null) {
-      _json['operationType'] = operationType;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (targetResourceName != null) {
-      _json['targetResourceName'] = targetResourceName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (operationType != null) 'operationType': operationType,
+        if (state != null) 'state': state,
+        if (targetResourceName != null)
+          'targetResourceName': targetResourceName,
+      };
 }
 
 class GoogleCloudApigeeV1OptimizedStats {
@@ -17696,13 +16703,9 @@ class GoogleCloudApigeeV1OptimizedStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (Response != null) {
-      _json['Response'] = Response.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (Response != null) 'Response': Response.toJson(),
+      };
 }
 
 /// This message type encapsulates a data node as represented below: {
@@ -17729,13 +16732,9 @@ class GoogleCloudApigeeV1OptimizedStatsNode {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (data != null) {
-      _json['data'] = data;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (data != null) 'data': data,
+      };
 }
 
 /// This message type encapsulates a response format for Js Optimized Scenario.
@@ -17776,22 +16775,12 @@ class GoogleCloudApigeeV1OptimizedStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (TimeUnit != null) {
-      _json['TimeUnit'] = TimeUnit;
-    }
-    if (metaData != null) {
-      _json['metaData'] = metaData.toJson();
-    }
-    if (resultTruncated != null) {
-      _json['resultTruncated'] = resultTruncated;
-    }
-    if (stats != null) {
-      _json['stats'] = stats.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (TimeUnit != null) 'TimeUnit': TimeUnit,
+        if (metaData != null) 'metaData': metaData.toJson(),
+        if (resultTruncated != null) 'resultTruncated': resultTruncated,
+        if (stats != null) 'stats': stats.toJson(),
+      };
 }
 
 class GoogleCloudApigeeV1Organization {
@@ -18002,68 +16991,28 @@ class GoogleCloudApigeeV1Organization {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (analyticsRegion != null) {
-      _json['analyticsRegion'] = analyticsRegion;
-    }
-    if (attributes != null) {
-      _json['attributes'] = attributes;
-    }
-    if (authorizedNetwork != null) {
-      _json['authorizedNetwork'] = authorizedNetwork;
-    }
-    if (billingType != null) {
-      _json['billingType'] = billingType;
-    }
-    if (caCertificate != null) {
-      _json['caCertificate'] = caCertificate;
-    }
-    if (createdAt != null) {
-      _json['createdAt'] = createdAt;
-    }
-    if (customerName != null) {
-      _json['customerName'] = customerName;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (environments != null) {
-      _json['environments'] = environments;
-    }
-    if (lastModifiedAt != null) {
-      _json['lastModifiedAt'] = lastModifiedAt;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (properties != null) {
-      _json['properties'] = properties.toJson();
-    }
-    if (runtimeDatabaseEncryptionKeyName != null) {
-      _json['runtimeDatabaseEncryptionKeyName'] =
-          runtimeDatabaseEncryptionKeyName;
-    }
-    if (runtimeType_ != null) {
-      _json['runtimeType'] = runtimeType_;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (subscriptionType != null) {
-      _json['subscriptionType'] = subscriptionType;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (analyticsRegion != null) 'analyticsRegion': analyticsRegion,
+        if (attributes != null) 'attributes': attributes,
+        if (authorizedNetwork != null) 'authorizedNetwork': authorizedNetwork,
+        if (billingType != null) 'billingType': billingType,
+        if (caCertificate != null) 'caCertificate': caCertificate,
+        if (createdAt != null) 'createdAt': createdAt,
+        if (customerName != null) 'customerName': customerName,
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (environments != null) 'environments': environments,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
+        if (name != null) 'name': name,
+        if (projectId != null) 'projectId': projectId,
+        if (properties != null) 'properties': properties.toJson(),
+        if (runtimeDatabaseEncryptionKeyName != null)
+          'runtimeDatabaseEncryptionKeyName': runtimeDatabaseEncryptionKeyName,
+        if (runtimeType_ != null) 'runtimeType': runtimeType_,
+        if (state != null) 'state': state,
+        if (subscriptionType != null) 'subscriptionType': subscriptionType,
+        if (type != null) 'type': type,
+      };
 }
 
 class GoogleCloudApigeeV1OrganizationProjectMapping {
@@ -18086,16 +17035,10 @@ class GoogleCloudApigeeV1OrganizationProjectMapping {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (organization != null) {
-      _json['organization'] = organization;
-    }
-    if (projectIds != null) {
-      _json['projectIds'] = projectIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (organization != null) 'organization': organization,
+        if (projectIds != null) 'projectIds': projectIds,
+      };
 }
 
 class GoogleCloudApigeeV1PodStatus {
@@ -18165,37 +17108,18 @@ class GoogleCloudApigeeV1PodStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appVersion != null) {
-      _json['appVersion'] = appVersion;
-    }
-    if (deploymentStatus != null) {
-      _json['deploymentStatus'] = deploymentStatus;
-    }
-    if (deploymentStatusTime != null) {
-      _json['deploymentStatusTime'] = deploymentStatusTime;
-    }
-    if (deploymentTime != null) {
-      _json['deploymentTime'] = deploymentTime;
-    }
-    if (podName != null) {
-      _json['podName'] = podName;
-    }
-    if (podStatus != null) {
-      _json['podStatus'] = podStatus;
-    }
-    if (podStatusTime != null) {
-      _json['podStatusTime'] = podStatusTime;
-    }
-    if (statusCode != null) {
-      _json['statusCode'] = statusCode;
-    }
-    if (statusCodeDetails != null) {
-      _json['statusCodeDetails'] = statusCodeDetails;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appVersion != null) 'appVersion': appVersion,
+        if (deploymentStatus != null) 'deploymentStatus': deploymentStatus,
+        if (deploymentStatusTime != null)
+          'deploymentStatusTime': deploymentStatusTime,
+        if (deploymentTime != null) 'deploymentTime': deploymentTime,
+        if (podName != null) 'podName': podName,
+        if (podStatus != null) 'podStatus': podStatus,
+        if (podStatusTime != null) 'podStatusTime': podStatusTime,
+        if (statusCode != null) 'statusCode': statusCode,
+        if (statusCodeDetails != null) 'statusCodeDetails': statusCodeDetails,
+      };
 }
 
 /// Point is a group of information collected by runtime plane at critical
@@ -18231,16 +17155,11 @@ class GoogleCloudApigeeV1Point {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (results != null) {
-      _json['results'] = results.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Message for compatibility with legacy Edge specification for Java Properties
@@ -18261,13 +17180,10 @@ class GoogleCloudApigeeV1Properties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (property != null) {
-      _json['property'] = property.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (property != null)
+          'property': property.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A single property entry in the Properties message.
@@ -18289,16 +17205,10 @@ class GoogleCloudApigeeV1Property {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Request for ProvisionOrganization.
@@ -18336,19 +17246,11 @@ class GoogleCloudApigeeV1ProvisionOrganizationRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (analyticsRegion != null) {
-      _json['analyticsRegion'] = analyticsRegion;
-    }
-    if (authorizedNetwork != null) {
-      _json['authorizedNetwork'] = authorizedNetwork;
-    }
-    if (runtimeLocation != null) {
-      _json['runtimeLocation'] = runtimeLocation;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (analyticsRegion != null) 'analyticsRegion': analyticsRegion,
+        if (authorizedNetwork != null) 'authorizedNetwork': authorizedNetwork,
+        if (runtimeLocation != null) 'runtimeLocation': runtimeLocation,
+      };
 }
 
 class GoogleCloudApigeeV1Query {
@@ -18466,43 +17368,21 @@ class GoogleCloudApigeeV1Query {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (csvDelimiter != null) {
-      _json['csvDelimiter'] = csvDelimiter;
-    }
-    if (dimensions != null) {
-      _json['dimensions'] = dimensions;
-    }
-    if (envgroupHostname != null) {
-      _json['envgroupHostname'] = envgroupHostname;
-    }
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    if (groupByTimeUnit != null) {
-      _json['groupByTimeUnit'] = groupByTimeUnit;
-    }
-    if (limit != null) {
-      _json['limit'] = limit;
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (outputFormat != null) {
-      _json['outputFormat'] = outputFormat;
-    }
-    if (reportDefinitionId != null) {
-      _json['reportDefinitionId'] = reportDefinitionId;
-    }
-    if (timeRange != null) {
-      _json['timeRange'] = timeRange;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (csvDelimiter != null) 'csvDelimiter': csvDelimiter,
+        if (dimensions != null) 'dimensions': dimensions,
+        if (envgroupHostname != null) 'envgroupHostname': envgroupHostname,
+        if (filter != null) 'filter': filter,
+        if (groupByTimeUnit != null) 'groupByTimeUnit': groupByTimeUnit,
+        if (limit != null) 'limit': limit,
+        if (metrics != null)
+          'metrics': metrics.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (outputFormat != null) 'outputFormat': outputFormat,
+        if (reportDefinitionId != null)
+          'reportDefinitionId': reportDefinitionId,
+        if (timeRange != null) 'timeRange': timeRange,
+      };
 }
 
 class GoogleCloudApigeeV1QueryMetadata {
@@ -18553,28 +17433,14 @@ class GoogleCloudApigeeV1QueryMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensions != null) {
-      _json['dimensions'] = dimensions;
-    }
-    if (endTimestamp != null) {
-      _json['endTimestamp'] = endTimestamp;
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics;
-    }
-    if (outputFormat != null) {
-      _json['outputFormat'] = outputFormat;
-    }
-    if (startTimestamp != null) {
-      _json['startTimestamp'] = startTimestamp;
-    }
-    if (timeUnit != null) {
-      _json['timeUnit'] = timeUnit;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensions != null) 'dimensions': dimensions,
+        if (endTimestamp != null) 'endTimestamp': endTimestamp,
+        if (metrics != null) 'metrics': metrics,
+        if (outputFormat != null) 'outputFormat': outputFormat,
+        if (startTimestamp != null) 'startTimestamp': startTimestamp,
+        if (timeUnit != null) 'timeUnit': timeUnit,
+      };
 }
 
 /// More info about Metric:
@@ -18619,25 +17485,13 @@ class GoogleCloudApigeeV1QueryMetric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alias != null) {
-      _json['alias'] = alias;
-    }
-    if (function != null) {
-      _json['function'] = function;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (operator != null) {
-      _json['operator'] = operator;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alias != null) 'alias': alias,
+        if (function != null) 'function': function,
+        if (name != null) 'name': name,
+        if (operator != null) 'operator': operator,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Quota contains the essential parameters needed that can be applied on a
@@ -18680,19 +17534,11 @@ class GoogleCloudApigeeV1Quota {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (interval != null) {
-      _json['interval'] = interval;
-    }
-    if (limit != null) {
-      _json['limit'] = limit;
-    }
-    if (timeUnit != null) {
-      _json['timeUnit'] = timeUnit;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (interval != null) 'interval': interval,
+        if (limit != null) 'limit': limit,
+        if (timeUnit != null) 'timeUnit': timeUnit,
+      };
 }
 
 /// A Reference configuration.
@@ -18742,22 +17588,12 @@ class GoogleCloudApigeeV1Reference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (refers != null) {
-      _json['refers'] = refers;
-    }
-    if (resourceType != null) {
-      _json['resourceType'] = resourceType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (name != null) 'name': name,
+        if (refers != null) 'refers': refers,
+        if (resourceType != null) 'resourceType': resourceType,
+      };
 }
 
 class GoogleCloudApigeeV1ReferenceConfig {
@@ -18781,16 +17617,10 @@ class GoogleCloudApigeeV1ReferenceConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (resourceName != null) {
-      _json['resourceName'] = resourceName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (resourceName != null) 'resourceName': resourceName,
+      };
 }
 
 /// Request for ReportInstanceStatus.
@@ -18827,19 +17657,12 @@ class GoogleCloudApigeeV1ReportInstanceStatusRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (instanceUid != null) {
-      _json['instanceUid'] = instanceUid;
-    }
-    if (reportTime != null) {
-      _json['reportTime'] = reportTime;
-    }
-    if (resources != null) {
-      _json['resources'] = resources.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (instanceUid != null) 'instanceUid': instanceUid,
+        if (reportTime != null) 'reportTime': reportTime,
+        if (resources != null)
+          'resources': resources.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Placeholder for future enhancements to status reporting protocol
@@ -18850,10 +17673,7 @@ class GoogleCloudApigeeV1ReportInstanceStatusResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 class GoogleCloudApigeeV1ReportProperty {
@@ -18878,16 +17698,11 @@ class GoogleCloudApigeeV1ReportProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (property != null) {
-      _json['property'] = property;
-    }
-    if (value != null) {
-      _json['value'] = value.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (property != null) 'property': property,
+        if (value != null)
+          'value': value.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GoogleCloudApigeeV1ResourceConfig {
@@ -18910,16 +17725,10 @@ class GoogleCloudApigeeV1ResourceConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (location != null) 'location': location,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Metadata about a resource file.
@@ -18943,16 +17752,10 @@ class GoogleCloudApigeeV1ResourceFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (type != null) 'type': type,
+      };
 }
 
 /// List of resource files.
@@ -18972,14 +17775,10 @@ class GoogleCloudApigeeV1ResourceFiles {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceFile != null) {
-      _json['resourceFile'] =
-          resourceFile.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceFile != null)
+          'resourceFile': resourceFile.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The status of a resource loaded in the runtime.
@@ -19024,22 +17823,13 @@ class GoogleCloudApigeeV1ResourceStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resource != null) {
-      _json['resource'] = resource;
-    }
-    if (revisions != null) {
-      _json['revisions'] = revisions.map((value) => value.toJson()).toList();
-    }
-    if (totalReplicas != null) {
-      _json['totalReplicas'] = totalReplicas;
-    }
-    if (uid != null) {
-      _json['uid'] = uid;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resource != null) 'resource': resource,
+        if (revisions != null)
+          'revisions': revisions.map((value) => value.toJson()).toList(),
+        if (totalReplicas != null) 'totalReplicas': totalReplicas,
+        if (uid != null) 'uid': uid,
+      };
 }
 
 /// Result is short for "action result", could be different types identified by
@@ -19148,40 +17938,20 @@ class GoogleCloudApigeeV1Result {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ActionResult != null) {
-      _json['ActionResult'] = ActionResult;
-    }
-    if (accessList != null) {
-      _json['accessList'] = accessList.map((value) => value.toJson()).toList();
-    }
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (headers != null) {
-      _json['headers'] = headers.map((value) => value.toJson()).toList();
-    }
-    if (properties != null) {
-      _json['properties'] = properties.toJson();
-    }
-    if (reasonPhrase != null) {
-      _json['reasonPhrase'] = reasonPhrase;
-    }
-    if (statusCode != null) {
-      _json['statusCode'] = statusCode;
-    }
-    if (timestamp != null) {
-      _json['timestamp'] = timestamp;
-    }
-    if (uRI != null) {
-      _json['uRI'] = uRI;
-    }
-    if (verb != null) {
-      _json['verb'] = verb;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ActionResult != null) 'ActionResult': ActionResult,
+        if (accessList != null)
+          'accessList': accessList.map((value) => value.toJson()).toList(),
+        if (content != null) 'content': content,
+        if (headers != null)
+          'headers': headers.map((value) => value.toJson()).toList(),
+        if (properties != null) 'properties': properties.toJson(),
+        if (reasonPhrase != null) 'reasonPhrase': reasonPhrase,
+        if (statusCode != null) 'statusCode': statusCode,
+        if (timestamp != null) 'timestamp': timestamp,
+        if (uRI != null) 'uRI': uRI,
+        if (verb != null) 'verb': verb,
+      };
 }
 
 /// The status of a specific resource revision.
@@ -19219,22 +17989,13 @@ class GoogleCloudApigeeV1RevisionStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errors != null) {
-      _json['errors'] = errors.map((value) => value.toJson()).toList();
-    }
-    if (jsonSpec != null) {
-      _json['jsonSpec'] = jsonSpec;
-    }
-    if (replicas != null) {
-      _json['replicas'] = replicas;
-    }
-    if (revisionId != null) {
-      _json['revisionId'] = revisionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errors != null)
+          'errors': errors.map((value) => value.toJson()).toList(),
+        if (jsonSpec != null) 'jsonSpec': jsonSpec,
+        if (replicas != null) 'replicas': replicas,
+        if (revisionId != null) 'revisionId': revisionId,
+      };
 }
 
 class GoogleCloudApigeeV1RoutingRule {
@@ -19291,25 +18052,13 @@ class GoogleCloudApigeeV1RoutingRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basepath != null) {
-      _json['basepath'] = basepath;
-    }
-    if (envGroupRevision != null) {
-      _json['envGroupRevision'] = envGroupRevision;
-    }
-    if (environment != null) {
-      _json['environment'] = environment;
-    }
-    if (receiver != null) {
-      _json['receiver'] = receiver;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basepath != null) 'basepath': basepath,
+        if (envGroupRevision != null) 'envGroupRevision': envGroupRevision,
+        if (environment != null) 'environment': environment,
+        if (receiver != null) 'receiver': receiver,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// NEXT ID: 8 RuntimeTraceConfig defines the configurations for distributed
@@ -19377,31 +18126,17 @@ class GoogleCloudApigeeV1RuntimeTraceConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endpoint != null) {
-      _json['endpoint'] = endpoint;
-    }
-    if (exporter != null) {
-      _json['exporter'] = exporter;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (overrides != null) {
-      _json['overrides'] = overrides.map((value) => value.toJson()).toList();
-    }
-    if (revisionCreateTime != null) {
-      _json['revisionCreateTime'] = revisionCreateTime;
-    }
-    if (revisionId != null) {
-      _json['revisionId'] = revisionId;
-    }
-    if (samplingConfig != null) {
-      _json['samplingConfig'] = samplingConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endpoint != null) 'endpoint': endpoint,
+        if (exporter != null) 'exporter': exporter,
+        if (name != null) 'name': name,
+        if (overrides != null)
+          'overrides': overrides.map((value) => value.toJson()).toList(),
+        if (revisionCreateTime != null)
+          'revisionCreateTime': revisionCreateTime,
+        if (revisionId != null) 'revisionId': revisionId,
+        if (samplingConfig != null) 'samplingConfig': samplingConfig.toJson(),
+      };
 }
 
 /// NEXT ID: 7 Trace configuration override for a specific API proxy in an
@@ -19455,28 +18190,15 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiProxy != null) {
-      _json['apiProxy'] = apiProxy;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (revisionCreateTime != null) {
-      _json['revisionCreateTime'] = revisionCreateTime;
-    }
-    if (revisionId != null) {
-      _json['revisionId'] = revisionId;
-    }
-    if (samplingConfig != null) {
-      _json['samplingConfig'] = samplingConfig.toJson();
-    }
-    if (uid != null) {
-      _json['uid'] = uid;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiProxy != null) 'apiProxy': apiProxy,
+        if (name != null) 'name': name,
+        if (revisionCreateTime != null)
+          'revisionCreateTime': revisionCreateTime,
+        if (revisionId != null) 'revisionId': revisionId,
+        if (samplingConfig != null) 'samplingConfig': samplingConfig.toJson(),
+        if (uid != null) 'uid': uid,
+      };
 }
 
 /// NEXT ID: 3 RuntimeTraceSamplingConfig represents the detail settings of
@@ -19514,16 +18236,10 @@ class GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sampler != null) {
-      _json['sampler'] = sampler;
-    }
-    if (samplingRate != null) {
-      _json['samplingRate'] = samplingRate;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sampler != null) 'sampler': sampler,
+        if (samplingRate != null) 'samplingRate': samplingRate,
+      };
 }
 
 /// Response for Schema call
@@ -19566,19 +18282,13 @@ class GoogleCloudApigeeV1Schema {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensions != null) {
-      _json['dimensions'] = dimensions.map((value) => value.toJson()).toList();
-    }
-    if (meta != null) {
-      _json['meta'] = meta;
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensions != null)
+          'dimensions': dimensions.map((value) => value.toJson()).toList(),
+        if (meta != null) 'meta': meta,
+        if (metrics != null)
+          'metrics': metrics.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Message type for the schema element
@@ -19602,16 +18312,10 @@ class GoogleCloudApigeeV1SchemaSchemaElement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (properties != null) {
-      _json['properties'] = properties.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (properties != null) 'properties': properties.toJson(),
+      };
 }
 
 /// Message type for schema property
@@ -19640,19 +18344,11 @@ class GoogleCloudApigeeV1SchemaSchemaProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (custom != null) {
-      _json['custom'] = custom;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (custom != null) 'custom': custom,
+        if (type != null) 'type': type,
+      };
 }
 
 class GoogleCloudApigeeV1ServiceIssuersMapping {
@@ -19675,16 +18371,10 @@ class GoogleCloudApigeeV1ServiceIssuersMapping {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (emailIds != null) {
-      _json['emailIds'] = emailIds;
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (emailIds != null) 'emailIds': emailIds,
+        if (service != null) 'service': service,
+      };
 }
 
 /// Session carries the debug session id and its creation time.
@@ -19706,16 +18396,10 @@ class GoogleCloudApigeeV1Session {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (timestampMs != null) {
-      _json['timestampMs'] = timestampMs;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (timestampMs != null) 'timestampMs': timestampMs,
+      };
 }
 
 /// The metadata describing a shared flow
@@ -19752,22 +18436,12 @@ class GoogleCloudApigeeV1SharedFlow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (latestRevisionId != null) {
-      _json['latestRevisionId'] = latestRevisionId;
-    }
-    if (metaData != null) {
-      _json['metaData'] = metaData.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (revision != null) {
-      _json['revision'] = revision;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (latestRevisionId != null) 'latestRevisionId': latestRevisionId,
+        if (metaData != null) 'metaData': metaData.toJson(),
+        if (name != null) 'name': name,
+        if (revision != null) 'revision': revision,
+      };
 }
 
 /// The metadata describing a shared flow revision.
@@ -19885,52 +18559,24 @@ class GoogleCloudApigeeV1SharedFlowRevision {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (configurationVersion != null) {
-      _json['configurationVersion'] = configurationVersion.toJson();
-    }
-    if (contextInfo != null) {
-      _json['contextInfo'] = contextInfo;
-    }
-    if (createdAt != null) {
-      _json['createdAt'] = createdAt;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (entityMetaDataAsProperties != null) {
-      _json['entityMetaDataAsProperties'] = entityMetaDataAsProperties;
-    }
-    if (lastModifiedAt != null) {
-      _json['lastModifiedAt'] = lastModifiedAt;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (policies != null) {
-      _json['policies'] = policies;
-    }
-    if (resourceFiles != null) {
-      _json['resourceFiles'] = resourceFiles.toJson();
-    }
-    if (resources != null) {
-      _json['resources'] = resources;
-    }
-    if (revision != null) {
-      _json['revision'] = revision;
-    }
-    if (sharedFlows != null) {
-      _json['sharedFlows'] = sharedFlows;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (configurationVersion != null)
+          'configurationVersion': configurationVersion.toJson(),
+        if (contextInfo != null) 'contextInfo': contextInfo,
+        if (createdAt != null) 'createdAt': createdAt,
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (entityMetaDataAsProperties != null)
+          'entityMetaDataAsProperties': entityMetaDataAsProperties,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
+        if (name != null) 'name': name,
+        if (policies != null) 'policies': policies,
+        if (resourceFiles != null) 'resourceFiles': resourceFiles.toJson(),
+        if (resources != null) 'resources': resources,
+        if (revision != null) 'revision': revision,
+        if (sharedFlows != null) 'sharedFlows': sharedFlows,
+        if (type != null) 'type': type,
+      };
 }
 
 /// This message type encapsulates a stats response.
@@ -19967,20 +18613,13 @@ class GoogleCloudApigeeV1Stats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (environments != null) {
-      _json['environments'] =
-          environments.map((value) => value.toJson()).toList();
-    }
-    if (hosts != null) {
-      _json['hosts'] = hosts.map((value) => value.toJson()).toList();
-    }
-    if (metaData != null) {
-      _json['metaData'] = metaData.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (environments != null)
+          'environments': environments.map((value) => value.toJson()).toList(),
+        if (hosts != null)
+          'hosts': hosts.map((value) => value.toJson()).toList(),
+        if (metaData != null) 'metaData': metaData.toJson(),
+      };
 }
 
 /// This message type encapsulates the environment wrapper: "environments": \[ {
@@ -20027,19 +18666,13 @@ class GoogleCloudApigeeV1StatsEnvironmentStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensions != null) {
-      _json['dimensions'] = dimensions.map((value) => value.toJson()).toList();
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensions != null)
+          'dimensions': dimensions.map((value) => value.toJson()).toList(),
+        if (metrics != null)
+          'metrics': metrics.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+      };
 }
 
 /// This message type encapsulates the hostname wrapper: "hosts": \[ {
@@ -20087,19 +18720,13 @@ class GoogleCloudApigeeV1StatsHostStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensions != null) {
-      _json['dimensions'] = dimensions.map((value) => value.toJson()).toList();
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensions != null)
+          'dimensions': dimensions.map((value) => value.toJson()).toList(),
+        if (metrics != null)
+          'metrics': metrics.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+      };
 }
 
 /// Pub/Sub subscription of an environment.
@@ -20118,13 +18745,9 @@ class GoogleCloudApigeeV1Subscription {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+      };
 }
 
 class GoogleCloudApigeeV1SyncAuthorization {
@@ -20175,16 +18798,10 @@ class GoogleCloudApigeeV1SyncAuthorization {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (identities != null) {
-      _json['identities'] = identities;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (identities != null) 'identities': identities,
+      };
 }
 
 /// TargetServer configuration.
@@ -20260,28 +18877,14 @@ class GoogleCloudApigeeV1TargetServer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (host != null) {
-      _json['host'] = host;
-    }
-    if (isEnabled != null) {
-      _json['isEnabled'] = isEnabled;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (port != null) {
-      _json['port'] = port;
-    }
-    if (sSLInfo != null) {
-      _json['sSLInfo'] = sSLInfo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (host != null) 'host': host,
+        if (isEnabled != null) 'isEnabled': isEnabled,
+        if (name != null) 'name': name,
+        if (port != null) 'port': port,
+        if (sSLInfo != null) 'sSLInfo': sSLInfo.toJson(),
+      };
 }
 
 class GoogleCloudApigeeV1TargetServerConfig {
@@ -20316,22 +18919,12 @@ class GoogleCloudApigeeV1TargetServerConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (host != null) {
-      _json['host'] = host;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (port != null) {
-      _json['port'] = port;
-    }
-    if (tlsInfo != null) {
-      _json['tlsInfo'] = tlsInfo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (host != null) 'host': host,
+        if (name != null) 'name': name,
+        if (port != null) 'port': port,
+        if (tlsInfo != null) 'tlsInfo': tlsInfo.toJson(),
+      };
 }
 
 /// The response for TestDatastore
@@ -20357,16 +18950,10 @@ class GoogleCloudApigeeV1TestDatastoreResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (error != null) {
-      _json['error'] = error;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (error != null) 'error': error,
+        if (state != null) 'state': state,
+      };
 }
 
 /// TLS configuration information for VirtualHosts and TargetServers.
@@ -20456,37 +19043,18 @@ class GoogleCloudApigeeV1TlsInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ciphers != null) {
-      _json['ciphers'] = ciphers;
-    }
-    if (clientAuthEnabled != null) {
-      _json['clientAuthEnabled'] = clientAuthEnabled;
-    }
-    if (commonName != null) {
-      _json['commonName'] = commonName.toJson();
-    }
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    if (ignoreValidationErrors != null) {
-      _json['ignoreValidationErrors'] = ignoreValidationErrors;
-    }
-    if (keyAlias != null) {
-      _json['keyAlias'] = keyAlias;
-    }
-    if (keyStore != null) {
-      _json['keyStore'] = keyStore;
-    }
-    if (protocols != null) {
-      _json['protocols'] = protocols;
-    }
-    if (trustStore != null) {
-      _json['trustStore'] = trustStore;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ciphers != null) 'ciphers': ciphers,
+        if (clientAuthEnabled != null) 'clientAuthEnabled': clientAuthEnabled,
+        if (commonName != null) 'commonName': commonName.toJson(),
+        if (enabled != null) 'enabled': enabled,
+        if (ignoreValidationErrors != null)
+          'ignoreValidationErrors': ignoreValidationErrors,
+        if (keyAlias != null) 'keyAlias': keyAlias,
+        if (keyStore != null) 'keyStore': keyStore,
+        if (protocols != null) 'protocols': protocols,
+        if (trustStore != null) 'trustStore': trustStore,
+      };
 }
 
 class GoogleCloudApigeeV1TlsInfoCommonName {
@@ -20507,16 +19075,10 @@ class GoogleCloudApigeeV1TlsInfoCommonName {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (value != null) {
-      _json['value'] = value;
-    }
-    if (wildcardMatch != null) {
-      _json['wildcardMatch'] = wildcardMatch;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (value != null) 'value': value,
+        if (wildcardMatch != null) 'wildcardMatch': wildcardMatch,
+      };
 }
 
 class GoogleCloudApigeeV1TlsInfoConfig {
@@ -20597,37 +19159,19 @@ class GoogleCloudApigeeV1TlsInfoConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ciphers != null) {
-      _json['ciphers'] = ciphers;
-    }
-    if (clientAuthEnabled != null) {
-      _json['clientAuthEnabled'] = clientAuthEnabled;
-    }
-    if (commonName != null) {
-      _json['commonName'] = commonName.toJson();
-    }
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    if (ignoreValidationErrors != null) {
-      _json['ignoreValidationErrors'] = ignoreValidationErrors;
-    }
-    if (keyAlias != null) {
-      _json['keyAlias'] = keyAlias;
-    }
-    if (keyAliasReference != null) {
-      _json['keyAliasReference'] = keyAliasReference.toJson();
-    }
-    if (protocols != null) {
-      _json['protocols'] = protocols;
-    }
-    if (trustStore != null) {
-      _json['trustStore'] = trustStore;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ciphers != null) 'ciphers': ciphers,
+        if (clientAuthEnabled != null) 'clientAuthEnabled': clientAuthEnabled,
+        if (commonName != null) 'commonName': commonName.toJson(),
+        if (enabled != null) 'enabled': enabled,
+        if (ignoreValidationErrors != null)
+          'ignoreValidationErrors': ignoreValidationErrors,
+        if (keyAlias != null) 'keyAlias': keyAlias,
+        if (keyAliasReference != null)
+          'keyAliasReference': keyAliasReference.toJson(),
+        if (protocols != null) 'protocols': protocols,
+        if (trustStore != null) 'trustStore': trustStore,
+      };
 }
 
 /// Details on why a resource update failed in the runtime.
@@ -20747,22 +19291,12 @@ class GoogleCloudApigeeV1UpdateError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    if (resource != null) {
-      _json['resource'] = resource;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (message != null) 'message': message,
+        if (resource != null) 'resource': resource,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Specifies the audit configuration for a service.
@@ -20807,17 +19341,12 @@ class GoogleIamV1AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditLogConfigs != null) {
-      _json['auditLogConfigs'] =
-          auditLogConfigs.map((value) => value.toJson()).toList();
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditLogConfigs != null)
+          'auditLogConfigs':
+              auditLogConfigs.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service,
+      };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -20854,16 +19383,10 @@ class GoogleIamV1AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exemptedMembers != null) {
-      _json['exemptedMembers'] = exemptedMembers;
-    }
-    if (logType != null) {
-      _json['logType'] = logType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
+        if (logType != null) 'logType': logType,
+      };
 }
 
 /// Associates `members` with a `role`.
@@ -20932,19 +19455,11 @@ class GoogleIamV1Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -21052,23 +19567,14 @@ class GoogleIamV1Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditConfigs != null) {
-      _json['auditConfigs'] =
-          auditConfigs.map((value) => value.toJson()).toList();
-    }
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditConfigs != null)
+          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -21098,16 +19604,10 @@ class GoogleIamV1SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -21129,13 +19629,9 @@ class GoogleIamV1TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -21154,13 +19650,9 @@ class GoogleIamV1TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -21186,16 +19678,11 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -21274,25 +19761,13 @@ class GoogleLongrunningOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -21309,10 +19784,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Describes what preconditions have failed.
@@ -21336,13 +19808,10 @@ class GoogleRpcPreconditionFailure {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (violations != null) {
-      _json['violations'] = violations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (violations != null)
+          'violations': violations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A message type used to describe a single precondition failure.
@@ -21380,19 +19849,11 @@ class GoogleRpcPreconditionFailureViolation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (subject != null) {
-      _json['subject'] = subject;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (subject != null) 'subject': subject,
+        if (type != null) 'type': type,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -21442,19 +19903,11 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -21518,20 +19971,10 @@ class GoogleTypeExpr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }

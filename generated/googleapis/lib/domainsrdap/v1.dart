@@ -553,19 +553,11 @@ class HttpBody {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentType != null) {
-      _json['contentType'] = contentType;
-    }
-    if (data != null) {
-      _json['data'] = data;
-    }
-    if (extensions != null) {
-      _json['extensions'] = extensions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentType != null) 'contentType': contentType,
+        if (data != null) 'data': data,
+        if (extensions != null) 'extensions': extensions,
+      };
 }
 
 /// Links object defined in
@@ -632,31 +624,15 @@ class Link {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (href != null) {
-      _json['href'] = href;
-    }
-    if (hreflang != null) {
-      _json['hreflang'] = hreflang;
-    }
-    if (media != null) {
-      _json['media'] = media;
-    }
-    if (rel != null) {
-      _json['rel'] = rel;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (href != null) 'href': href,
+        if (hreflang != null) 'hreflang': hreflang,
+        if (media != null) 'media': media,
+        if (rel != null) 'rel': rel,
+        if (title != null) 'title': title,
+        if (type != null) 'type': type,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Notices object defined in
@@ -702,22 +678,13 @@ class Notice {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (links != null) {
-      _json['links'] = links.map((value) => value.toJson()).toList();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (links != null)
+          'links': links.map((value) => value.toJson()).toList(),
+        if (title != null) 'title': title,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Response to a general RDAP query.
@@ -782,29 +749,14 @@ class RdapResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (errorCode != null) {
-      _json['errorCode'] = errorCode;
-    }
-    if (jsonResponse != null) {
-      _json['jsonResponse'] = jsonResponse.toJson();
-    }
-    if (lang != null) {
-      _json['lang'] = lang;
-    }
-    if (notices != null) {
-      _json['notices'] = notices.map((value) => value.toJson()).toList();
-    }
-    if (rdapConformance != null) {
-      _json['rdapConformance'] = rdapConformance;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (errorCode != null) 'errorCode': errorCode,
+        if (jsonResponse != null) 'jsonResponse': jsonResponse.toJson(),
+        if (lang != null) 'lang': lang,
+        if (notices != null)
+          'notices': notices.map((value) => value.toJson()).toList(),
+        if (rdapConformance != null) 'rdapConformance': rdapConformance,
+        if (title != null) 'title': title,
+      };
 }

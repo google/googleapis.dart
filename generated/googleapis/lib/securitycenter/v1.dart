@@ -3388,31 +3388,17 @@ class Asset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (iamPolicy != null) {
-      _json['iamPolicy'] = iamPolicy.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (resourceProperties != null) {
-      _json['resourceProperties'] = resourceProperties;
-    }
-    if (securityCenterProperties != null) {
-      _json['securityCenterProperties'] = securityCenterProperties.toJson();
-    }
-    if (securityMarks != null) {
-      _json['securityMarks'] = securityMarks.toJson();
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (iamPolicy != null) 'iamPolicy': iamPolicy.toJson(),
+        if (name != null) 'name': name,
+        if (resourceProperties != null)
+          'resourceProperties': resourceProperties,
+        if (securityCenterProperties != null)
+          'securityCenterProperties': securityCenterProperties.toJson(),
+        if (securityMarks != null) 'securityMarks': securityMarks.toJson(),
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// The configuration used for Asset Discovery runs.
@@ -3453,19 +3439,11 @@ class AssetDiscoveryConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (folderIds != null) {
-      _json['folderIds'] = folderIds;
-    }
-    if (inclusionMode != null) {
-      _json['inclusionMode'] = inclusionMode;
-    }
-    if (projectIds != null) {
-      _json['projectIds'] = projectIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (folderIds != null) 'folderIds': folderIds,
+        if (inclusionMode != null) 'inclusionMode': inclusionMode,
+        if (projectIds != null) 'projectIds': projectIds,
+      };
 }
 
 /// Specifies the audit configuration for a service.
@@ -3509,17 +3487,12 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditLogConfigs != null) {
-      _json['auditLogConfigs'] =
-          auditLogConfigs.map((value) => value.toJson()).toList();
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditLogConfigs != null)
+          'auditLogConfigs':
+              auditLogConfigs.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service,
+      };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -3556,16 +3529,10 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exemptedMembers != null) {
-      _json['exemptedMembers'] = exemptedMembers;
-    }
-    if (logType != null) {
-      _json['logType'] = logType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
+        if (logType != null) 'logType': logType,
+      };
 }
 
 /// Associates `members` with a `role`.
@@ -3634,19 +3601,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -3663,10 +3622,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -3730,22 +3686,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Security Command Center finding.
@@ -3923,43 +3869,19 @@ class Finding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (category != null) {
-      _json['category'] = category;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (eventTime != null) {
-      _json['eventTime'] = eventTime;
-    }
-    if (externalUri != null) {
-      _json['externalUri'] = externalUri;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    if (resourceName != null) {
-      _json['resourceName'] = resourceName;
-    }
-    if (securityMarks != null) {
-      _json['securityMarks'] = securityMarks.toJson();
-    }
-    if (severity != null) {
-      _json['severity'] = severity;
-    }
-    if (sourceProperties != null) {
-      _json['sourceProperties'] = sourceProperties;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (category != null) 'category': category,
+        if (createTime != null) 'createTime': createTime,
+        if (eventTime != null) 'eventTime': eventTime,
+        if (externalUri != null) 'externalUri': externalUri,
+        if (name != null) 'name': name,
+        if (parent != null) 'parent': parent,
+        if (resourceName != null) 'resourceName': resourceName,
+        if (securityMarks != null) 'securityMarks': securityMarks.toJson(),
+        if (severity != null) 'severity': severity,
+        if (sourceProperties != null) 'sourceProperties': sourceProperties,
+        if (state != null) 'state': state,
+      };
 }
 
 /// Message that contains the resource name and display name of a folder
@@ -3986,16 +3908,11 @@ class Folder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceFolder != null) {
-      _json['resourceFolder'] = resourceFolder;
-    }
-    if (resourceFolderDisplayName != null) {
-      _json['resourceFolderDisplayName'] = resourceFolderDisplayName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceFolder != null) 'resourceFolder': resourceFolder,
+        if (resourceFolderDisplayName != null)
+          'resourceFolderDisplayName': resourceFolderDisplayName,
+      };
 }
 
 /// Request message for `GetIamPolicy` method.
@@ -4013,13 +3930,9 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (options != null) {
-      _json['options'] = options.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (options != null) 'options': options.toJson(),
+      };
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
@@ -4044,13 +3957,10 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (requestedPolicyVersion != null) {
-      _json['requestedPolicyVersion'] = requestedPolicyVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (requestedPolicyVersion != null)
+          'requestedPolicyVersion': requestedPolicyVersion,
+      };
 }
 
 /// Cloud SCC's Notification
@@ -4080,19 +3990,12 @@ class GoogleCloudSecuritycenterV1NotificationMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (finding != null) {
-      _json['finding'] = finding.toJson();
-    }
-    if (notificationConfigName != null) {
-      _json['notificationConfigName'] = notificationConfigName;
-    }
-    if (resource != null) {
-      _json['resource'] = resource.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (finding != null) 'finding': finding.toJson(),
+        if (notificationConfigName != null)
+          'notificationConfigName': notificationConfigName,
+        if (resource != null) 'resource': resource.toJson(),
+      };
 }
 
 /// Information related to the Google Cloud resource.
@@ -4149,28 +4052,16 @@ class GoogleCloudSecuritycenterV1Resource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (folders != null) {
-      _json['folders'] = folders.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    if (parentDisplayName != null) {
-      _json['parentDisplayName'] = parentDisplayName;
-    }
-    if (project != null) {
-      _json['project'] = project;
-    }
-    if (projectDisplayName != null) {
-      _json['projectDisplayName'] = projectDisplayName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (folders != null)
+          'folders': folders.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (parent != null) 'parent': parent,
+        if (parentDisplayName != null) 'parentDisplayName': parentDisplayName,
+        if (project != null) 'project': project,
+        if (projectDisplayName != null)
+          'projectDisplayName': projectDisplayName,
+      };
 }
 
 /// Response of asset discovery run
@@ -4200,16 +4091,10 @@ class GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (duration != null) {
-      _json['duration'] = duration;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (duration != null) 'duration': duration,
+        if (state != null) 'state': state,
+      };
 }
 
 /// Response of asset discovery run
@@ -4239,16 +4124,10 @@ class GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (duration != null) {
-      _json['duration'] = duration;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (duration != null) 'duration': duration,
+        if (state != null) 'state': state,
+      };
 }
 
 /// Security Command Center finding.
@@ -4394,43 +4273,19 @@ class GoogleCloudSecuritycenterV1p1beta1Finding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (category != null) {
-      _json['category'] = category;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (eventTime != null) {
-      _json['eventTime'] = eventTime;
-    }
-    if (externalUri != null) {
-      _json['externalUri'] = externalUri;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    if (resourceName != null) {
-      _json['resourceName'] = resourceName;
-    }
-    if (securityMarks != null) {
-      _json['securityMarks'] = securityMarks.toJson();
-    }
-    if (severity != null) {
-      _json['severity'] = severity;
-    }
-    if (sourceProperties != null) {
-      _json['sourceProperties'] = sourceProperties;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (category != null) 'category': category,
+        if (createTime != null) 'createTime': createTime,
+        if (eventTime != null) 'eventTime': eventTime,
+        if (externalUri != null) 'externalUri': externalUri,
+        if (name != null) 'name': name,
+        if (parent != null) 'parent': parent,
+        if (resourceName != null) 'resourceName': resourceName,
+        if (securityMarks != null) 'securityMarks': securityMarks.toJson(),
+        if (severity != null) 'severity': severity,
+        if (sourceProperties != null) 'sourceProperties': sourceProperties,
+        if (state != null) 'state': state,
+      };
 }
 
 /// Message that contains the resource name and display name of a folder
@@ -4457,16 +4312,11 @@ class GoogleCloudSecuritycenterV1p1beta1Folder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceFolder != null) {
-      _json['resourceFolder'] = resourceFolder;
-    }
-    if (resourceFolderDisplayName != null) {
-      _json['resourceFolderDisplayName'] = resourceFolderDisplayName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceFolder != null) 'resourceFolder': resourceFolder,
+        if (resourceFolderDisplayName != null)
+          'resourceFolderDisplayName': resourceFolderDisplayName,
+      };
 }
 
 /// Security Command Center's Notification
@@ -4497,19 +4347,12 @@ class GoogleCloudSecuritycenterV1p1beta1NotificationMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (finding != null) {
-      _json['finding'] = finding.toJson();
-    }
-    if (notificationConfigName != null) {
-      _json['notificationConfigName'] = notificationConfigName;
-    }
-    if (resource != null) {
-      _json['resource'] = resource.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (finding != null) 'finding': finding.toJson(),
+        if (notificationConfigName != null)
+          'notificationConfigName': notificationConfigName,
+        if (resource != null) 'resource': resource.toJson(),
+      };
 }
 
 /// Information related to the Google Cloud resource.
@@ -4567,28 +4410,16 @@ class GoogleCloudSecuritycenterV1p1beta1Resource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (folders != null) {
-      _json['folders'] = folders.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    if (parentDisplayName != null) {
-      _json['parentDisplayName'] = parentDisplayName;
-    }
-    if (project != null) {
-      _json['project'] = project;
-    }
-    if (projectDisplayName != null) {
-      _json['projectDisplayName'] = projectDisplayName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (folders != null)
+          'folders': folders.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (parent != null) 'parent': parent,
+        if (parentDisplayName != null) 'parentDisplayName': parentDisplayName,
+        if (project != null) 'project': project,
+        if (projectDisplayName != null)
+          'projectDisplayName': projectDisplayName,
+      };
 }
 
 /// Response of asset discovery run
@@ -4618,16 +4449,10 @@ class GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (duration != null) {
-      _json['duration'] = duration;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (duration != null) 'duration': duration,
+        if (state != null) 'state': state,
+      };
 }
 
 /// User specified security marks that are attached to the parent Security
@@ -4671,16 +4496,10 @@ class GoogleCloudSecuritycenterV1p1beta1SecurityMarks {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (marks != null) {
-      _json['marks'] = marks;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (marks != null) 'marks': marks,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Request message for grouping by assets.
@@ -4801,28 +4620,14 @@ class GroupAssetsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (compareDuration != null) {
-      _json['compareDuration'] = compareDuration;
-    }
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    if (groupBy != null) {
-      _json['groupBy'] = groupBy;
-    }
-    if (pageSize != null) {
-      _json['pageSize'] = pageSize;
-    }
-    if (pageToken != null) {
-      _json['pageToken'] = pageToken;
-    }
-    if (readTime != null) {
-      _json['readTime'] = readTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (compareDuration != null) 'compareDuration': compareDuration,
+        if (filter != null) 'filter': filter,
+        if (groupBy != null) 'groupBy': groupBy,
+        if (pageSize != null) 'pageSize': pageSize,
+        if (pageToken != null) 'pageToken': pageToken,
+        if (readTime != null) 'readTime': readTime,
+      };
 }
 
 /// Response message for grouping by assets.
@@ -4864,23 +4669,14 @@ class GroupAssetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (groupByResults != null) {
-      _json['groupByResults'] =
-          groupByResults.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (readTime != null) {
-      _json['readTime'] = readTime;
-    }
-    if (totalSize != null) {
-      _json['totalSize'] = totalSize;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (groupByResults != null)
+          'groupByResults':
+              groupByResults.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (readTime != null) 'readTime': readTime,
+        if (totalSize != null) 'totalSize': totalSize,
+      };
 }
 
 /// Request message for grouping by findings.
@@ -4986,28 +4782,14 @@ class GroupFindingsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (compareDuration != null) {
-      _json['compareDuration'] = compareDuration;
-    }
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    if (groupBy != null) {
-      _json['groupBy'] = groupBy;
-    }
-    if (pageSize != null) {
-      _json['pageSize'] = pageSize;
-    }
-    if (pageToken != null) {
-      _json['pageToken'] = pageToken;
-    }
-    if (readTime != null) {
-      _json['readTime'] = readTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (compareDuration != null) 'compareDuration': compareDuration,
+        if (filter != null) 'filter': filter,
+        if (groupBy != null) 'groupBy': groupBy,
+        if (pageSize != null) 'pageSize': pageSize,
+        if (pageToken != null) 'pageToken': pageToken,
+        if (readTime != null) 'readTime': readTime,
+      };
 }
 
 /// Response message for group by findings.
@@ -5049,23 +4831,14 @@ class GroupFindingsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (groupByResults != null) {
-      _json['groupByResults'] =
-          groupByResults.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (readTime != null) {
-      _json['readTime'] = readTime;
-    }
-    if (totalSize != null) {
-      _json['totalSize'] = totalSize;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (groupByResults != null)
+          'groupByResults':
+              groupByResults.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (readTime != null) 'readTime': readTime,
+        if (totalSize != null) 'totalSize': totalSize,
+      };
 }
 
 /// Result containing the properties and count of a groupBy request.
@@ -5097,16 +4870,10 @@ class GroupResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (count != null) {
-      _json['count'] = count;
-    }
-    if (properties != null) {
-      _json['properties'] = properties;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (count != null) 'count': count,
+        if (properties != null) 'properties': properties,
+      };
 }
 
 /// Cloud IAM Policy information associated with the Google Cloud resource
@@ -5129,13 +4896,9 @@ class IamPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policyBlob != null) {
-      _json['policyBlob'] = policyBlob;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policyBlob != null) 'policyBlob': policyBlob,
+      };
 }
 
 /// Response message for listing assets.
@@ -5173,23 +4936,14 @@ class ListAssetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (listAssetsResults != null) {
-      _json['listAssetsResults'] =
-          listAssetsResults.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (readTime != null) {
-      _json['readTime'] = readTime;
-    }
-    if (totalSize != null) {
-      _json['totalSize'] = totalSize;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (listAssetsResults != null)
+          'listAssetsResults':
+              listAssetsResults.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (readTime != null) 'readTime': readTime,
+        if (totalSize != null) 'totalSize': totalSize,
+      };
 }
 
 /// Result containing the Asset and its State.
@@ -5218,16 +4972,10 @@ class ListAssetsResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (asset != null) {
-      _json['asset'] = asset.toJson();
-    }
-    if (stateChange != null) {
-      _json['stateChange'] = stateChange;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (asset != null) 'asset': asset.toJson(),
+        if (stateChange != null) 'stateChange': stateChange,
+      };
 }
 
 /// Response message for listing findings.
@@ -5265,23 +5013,14 @@ class ListFindingsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (listFindingsResults != null) {
-      _json['listFindingsResults'] =
-          listFindingsResults.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (readTime != null) {
-      _json['readTime'] = readTime;
-    }
-    if (totalSize != null) {
-      _json['totalSize'] = totalSize;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (listFindingsResults != null)
+          'listFindingsResults':
+              listFindingsResults.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (readTime != null) 'readTime': readTime,
+        if (totalSize != null) 'totalSize': totalSize,
+      };
 }
 
 /// Result containing the Finding and its StateChange.
@@ -5323,19 +5062,11 @@ class ListFindingsResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (finding != null) {
-      _json['finding'] = finding.toJson();
-    }
-    if (resource != null) {
-      _json['resource'] = resource.toJson();
-    }
-    if (stateChange != null) {
-      _json['stateChange'] = stateChange;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (finding != null) 'finding': finding.toJson(),
+        if (resource != null) 'resource': resource.toJson(),
+        if (stateChange != null) 'stateChange': stateChange,
+      };
 }
 
 /// Response message for listing notification configs.
@@ -5361,17 +5092,12 @@ class ListNotificationConfigsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (notificationConfigs != null) {
-      _json['notificationConfigs'] =
-          notificationConfigs.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (notificationConfigs != null)
+          'notificationConfigs':
+              notificationConfigs.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -5396,16 +5122,11 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for listing sources.
@@ -5431,16 +5152,11 @@ class ListSourcesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (sources != null) {
-      _json['sources'] = sources.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (sources != null)
+          'sources': sources.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Cloud Security Command Center (Cloud SCC) notification configs.
@@ -5495,25 +5211,14 @@ class NotificationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (pubsubTopic != null) {
-      _json['pubsubTopic'] = pubsubTopic;
-    }
-    if (serviceAccount != null) {
-      _json['serviceAccount'] = serviceAccount;
-    }
-    if (streamingConfig != null) {
-      _json['streamingConfig'] = streamingConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (name != null) 'name': name,
+        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount,
+        if (streamingConfig != null)
+          'streamingConfig': streamingConfig.toJson(),
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -5592,25 +5297,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// User specified settings that are attached to the Security Command Center
@@ -5648,19 +5341,13 @@ class OrganizationSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assetDiscoveryConfig != null) {
-      _json['assetDiscoveryConfig'] = assetDiscoveryConfig.toJson();
-    }
-    if (enableAssetDiscovery != null) {
-      _json['enableAssetDiscovery'] = enableAssetDiscovery;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assetDiscoveryConfig != null)
+          'assetDiscoveryConfig': assetDiscoveryConfig.toJson(),
+        if (enableAssetDiscovery != null)
+          'enableAssetDiscovery': enableAssetDiscovery,
+        if (name != null) 'name': name,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -5767,23 +5454,14 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditConfigs != null) {
-      _json['auditConfigs'] =
-          auditConfigs.map((value) => value.toJson()).toList();
-    }
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditConfigs != null)
+          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Information related to the Google Cloud resource that is associated with
@@ -5841,28 +5519,16 @@ class Resource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (folders != null) {
-      _json['folders'] = folders.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parentDisplayName != null) {
-      _json['parentDisplayName'] = parentDisplayName;
-    }
-    if (parentName != null) {
-      _json['parentName'] = parentName;
-    }
-    if (projectDisplayName != null) {
-      _json['projectDisplayName'] = projectDisplayName;
-    }
-    if (projectName != null) {
-      _json['projectName'] = projectName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (folders != null)
+          'folders': folders.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (parentDisplayName != null) 'parentDisplayName': parentDisplayName,
+        if (parentName != null) 'parentName': parentName,
+        if (projectDisplayName != null)
+          'projectDisplayName': projectDisplayName,
+        if (projectName != null) 'projectName': projectName,
+      };
 }
 
 /// Request message for running asset discovery for an organization.
@@ -5873,10 +5539,7 @@ class RunAssetDiscoveryRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Security Command Center managed properties.
@@ -5966,37 +5629,21 @@ class SecurityCenterProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (folders != null) {
-      _json['folders'] = folders.map((value) => value.toJson()).toList();
-    }
-    if (resourceDisplayName != null) {
-      _json['resourceDisplayName'] = resourceDisplayName;
-    }
-    if (resourceName != null) {
-      _json['resourceName'] = resourceName;
-    }
-    if (resourceOwners != null) {
-      _json['resourceOwners'] = resourceOwners;
-    }
-    if (resourceParent != null) {
-      _json['resourceParent'] = resourceParent;
-    }
-    if (resourceParentDisplayName != null) {
-      _json['resourceParentDisplayName'] = resourceParentDisplayName;
-    }
-    if (resourceProject != null) {
-      _json['resourceProject'] = resourceProject;
-    }
-    if (resourceProjectDisplayName != null) {
-      _json['resourceProjectDisplayName'] = resourceProjectDisplayName;
-    }
-    if (resourceType != null) {
-      _json['resourceType'] = resourceType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (folders != null)
+          'folders': folders.map((value) => value.toJson()).toList(),
+        if (resourceDisplayName != null)
+          'resourceDisplayName': resourceDisplayName,
+        if (resourceName != null) 'resourceName': resourceName,
+        if (resourceOwners != null) 'resourceOwners': resourceOwners,
+        if (resourceParent != null) 'resourceParent': resourceParent,
+        if (resourceParentDisplayName != null)
+          'resourceParentDisplayName': resourceParentDisplayName,
+        if (resourceProject != null) 'resourceProject': resourceProject,
+        if (resourceProjectDisplayName != null)
+          'resourceProjectDisplayName': resourceProjectDisplayName,
+        if (resourceType != null) 'resourceType': resourceType,
+      };
 }
 
 /// User specified security marks that are attached to the parent Security
@@ -6040,16 +5687,10 @@ class SecurityMarks {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (marks != null) {
-      _json['marks'] = marks;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (marks != null) 'marks': marks,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Request message for updating a finding's state.
@@ -6081,16 +5722,10 @@ class SetFindingStateRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (startTime != null) 'startTime': startTime,
+        if (state != null) 'state': state,
+      };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -6120,16 +5755,10 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// Security Command Center finding source.
@@ -6175,19 +5804,11 @@ class Source {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -6237,19 +5858,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// The config for streaming-based notifications, which send each event as soon
@@ -6277,13 +5890,9 @@ class StreamingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filter != null) 'filter': filter,
+      };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -6305,13 +5914,9 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -6330,11 +5935,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }

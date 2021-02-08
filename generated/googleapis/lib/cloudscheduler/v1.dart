@@ -692,25 +692,14 @@ class AppEngineHttpTarget {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appEngineRouting != null) {
-      _json['appEngineRouting'] = appEngineRouting.toJson();
-    }
-    if (body != null) {
-      _json['body'] = body;
-    }
-    if (headers != null) {
-      _json['headers'] = headers;
-    }
-    if (httpMethod != null) {
-      _json['httpMethod'] = httpMethod;
-    }
-    if (relativeUri != null) {
-      _json['relativeUri'] = relativeUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appEngineRouting != null)
+          'appEngineRouting': appEngineRouting.toJson(),
+        if (body != null) 'body': body,
+        if (headers != null) 'headers': headers,
+        if (httpMethod != null) 'httpMethod': httpMethod,
+        if (relativeUri != null) 'relativeUri': relativeUri,
+      };
 }
 
 /// App Engine Routing.
@@ -791,22 +780,12 @@ class AppEngineRouting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (host != null) {
-      _json['host'] = host;
-    }
-    if (instance != null) {
-      _json['instance'] = instance;
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (host != null) 'host': host,
+        if (instance != null) 'instance': instance,
+        if (service != null) 'service': service,
+        if (version != null) 'version': version,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -823,10 +802,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Http target.
@@ -937,28 +913,14 @@ class HttpTarget {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (body != null) {
-      _json['body'] = body;
-    }
-    if (headers != null) {
-      _json['headers'] = headers;
-    }
-    if (httpMethod != null) {
-      _json['httpMethod'] = httpMethod;
-    }
-    if (oauthToken != null) {
-      _json['oauthToken'] = oauthToken.toJson();
-    }
-    if (oidcToken != null) {
-      _json['oidcToken'] = oidcToken.toJson();
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (body != null) 'body': body,
+        if (headers != null) 'headers': headers,
+        if (httpMethod != null) 'httpMethod': httpMethod,
+        if (oauthToken != null) 'oauthToken': oauthToken.toJson(),
+        if (oidcToken != null) 'oidcToken': oidcToken.toJson(),
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// Configuration for a job.
@@ -1125,52 +1087,23 @@ class Job {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appEngineHttpTarget != null) {
-      _json['appEngineHttpTarget'] = appEngineHttpTarget.toJson();
-    }
-    if (attemptDeadline != null) {
-      _json['attemptDeadline'] = attemptDeadline;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (httpTarget != null) {
-      _json['httpTarget'] = httpTarget.toJson();
-    }
-    if (lastAttemptTime != null) {
-      _json['lastAttemptTime'] = lastAttemptTime;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (pubsubTarget != null) {
-      _json['pubsubTarget'] = pubsubTarget.toJson();
-    }
-    if (retryConfig != null) {
-      _json['retryConfig'] = retryConfig.toJson();
-    }
-    if (schedule != null) {
-      _json['schedule'] = schedule;
-    }
-    if (scheduleTime != null) {
-      _json['scheduleTime'] = scheduleTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    if (timeZone != null) {
-      _json['timeZone'] = timeZone;
-    }
-    if (userUpdateTime != null) {
-      _json['userUpdateTime'] = userUpdateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appEngineHttpTarget != null)
+          'appEngineHttpTarget': appEngineHttpTarget.toJson(),
+        if (attemptDeadline != null) 'attemptDeadline': attemptDeadline,
+        if (description != null) 'description': description,
+        if (httpTarget != null) 'httpTarget': httpTarget.toJson(),
+        if (lastAttemptTime != null) 'lastAttemptTime': lastAttemptTime,
+        if (name != null) 'name': name,
+        if (pubsubTarget != null) 'pubsubTarget': pubsubTarget.toJson(),
+        if (retryConfig != null) 'retryConfig': retryConfig.toJson(),
+        if (schedule != null) 'schedule': schedule,
+        if (scheduleTime != null) 'scheduleTime': scheduleTime,
+        if (state != null) 'state': state,
+        if (status != null) 'status': status.toJson(),
+        if (timeZone != null) 'timeZone': timeZone,
+        if (userUpdateTime != null) 'userUpdateTime': userUpdateTime,
+      };
 }
 
 /// Response message for listing jobs using ListJobs.
@@ -1200,16 +1133,10 @@ class ListJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (jobs != null) {
-      _json['jobs'] = jobs.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (jobs != null) 'jobs': jobs.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Locations.ListLocations.
@@ -1234,16 +1161,11 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// A resource that represents Google Cloud Platform location.
@@ -1308,25 +1230,13 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (labels != null) 'labels': labels,
+        if (locationId != null) 'locationId': locationId,
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Contains information needed for generating an
@@ -1359,16 +1269,11 @@ class OAuthToken {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (scope != null) {
-      _json['scope'] = scope;
-    }
-    if (serviceAccountEmail != null) {
-      _json['serviceAccountEmail'] = serviceAccountEmail;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (scope != null) 'scope': scope,
+        if (serviceAccountEmail != null)
+          'serviceAccountEmail': serviceAccountEmail,
+      };
 }
 
 /// Contains information needed for generating an
@@ -1400,16 +1305,11 @@ class OidcToken {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audience != null) {
-      _json['audience'] = audience;
-    }
-    if (serviceAccountEmail != null) {
-      _json['serviceAccountEmail'] = serviceAccountEmail;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audience != null) 'audience': audience,
+        if (serviceAccountEmail != null)
+          'serviceAccountEmail': serviceAccountEmail,
+      };
 }
 
 /// Request message for PauseJob.
@@ -1420,10 +1320,7 @@ class PauseJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A message that is published by publishers and consumed by subscribers.
@@ -1503,25 +1400,13 @@ class PubsubMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributes != null) {
-      _json['attributes'] = attributes;
-    }
-    if (data != null) {
-      _json['data'] = data;
-    }
-    if (messageId != null) {
-      _json['messageId'] = messageId;
-    }
-    if (orderingKey != null) {
-      _json['orderingKey'] = orderingKey;
-    }
-    if (publishTime != null) {
-      _json['publishTime'] = publishTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributes != null) 'attributes': attributes,
+        if (data != null) 'data': data,
+        if (messageId != null) 'messageId': messageId,
+        if (orderingKey != null) 'orderingKey': orderingKey,
+        if (publishTime != null) 'publishTime': publishTime,
+      };
 }
 
 /// Pub/Sub target.
@@ -1579,19 +1464,11 @@ class PubsubTarget {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributes != null) {
-      _json['attributes'] = attributes;
-    }
-    if (data != null) {
-      _json['data'] = data;
-    }
-    if (topicName != null) {
-      _json['topicName'] = topicName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributes != null) 'attributes': attributes,
+        if (data != null) 'data': data,
+        if (topicName != null) 'topicName': topicName,
+      };
 }
 
 /// Request message for ResumeJob.
@@ -1602,10 +1479,7 @@ class ResumeJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Settings that determine the retry behavior.
@@ -1678,25 +1552,15 @@ class RetryConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maxBackoffDuration != null) {
-      _json['maxBackoffDuration'] = maxBackoffDuration;
-    }
-    if (maxDoublings != null) {
-      _json['maxDoublings'] = maxDoublings;
-    }
-    if (maxRetryDuration != null) {
-      _json['maxRetryDuration'] = maxRetryDuration;
-    }
-    if (minBackoffDuration != null) {
-      _json['minBackoffDuration'] = minBackoffDuration;
-    }
-    if (retryCount != null) {
-      _json['retryCount'] = retryCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maxBackoffDuration != null)
+          'maxBackoffDuration': maxBackoffDuration,
+        if (maxDoublings != null) 'maxDoublings': maxDoublings,
+        if (maxRetryDuration != null) 'maxRetryDuration': maxRetryDuration,
+        if (minBackoffDuration != null)
+          'minBackoffDuration': minBackoffDuration,
+        if (retryCount != null) 'retryCount': retryCount,
+      };
 }
 
 /// Request message for forcing a job to run now using RunJob.
@@ -1707,10 +1571,7 @@ class RunJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -1760,17 +1621,9 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }

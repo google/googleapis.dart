@@ -2498,13 +2498,10 @@ class AdminAuditData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissionDelta != null) {
-      _json['permissionDelta'] = permissionDelta.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissionDelta != null)
+          'permissionDelta': permissionDelta.toJson(),
+      };
 }
 
 /// Specifies the audit configuration for a service.
@@ -2548,17 +2545,12 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditLogConfigs != null) {
-      _json['auditLogConfigs'] =
-          auditLogConfigs.map((value) => value.toJson()).toList();
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditLogConfigs != null)
+          'auditLogConfigs':
+              auditLogConfigs.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service,
+      };
 }
 
 /// Audit log information specific to Cloud IAM.
@@ -2578,13 +2570,9 @@ class AuditData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policyDelta != null) {
-      _json['policyDelta'] = policyDelta.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policyDelta != null) 'policyDelta': policyDelta.toJson(),
+      };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -2621,16 +2609,10 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exemptedMembers != null) {
-      _json['exemptedMembers'] = exemptedMembers;
-    }
-    if (logType != null) {
-      _json['logType'] = logType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
+        if (logType != null) 'logType': logType,
+      };
 }
 
 /// Contains information about an auditable service.
@@ -2648,13 +2630,9 @@ class AuditableService {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+      };
 }
 
 /// Associates `members` with a `role`.
@@ -2723,19 +2701,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// One delta entry for Binding.
@@ -2783,22 +2753,12 @@ class BindingDelta {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (action != null) {
-      _json['action'] = action;
-    }
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (member != null) {
-      _json['member'] = member;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (action != null) 'action': action,
+        if (condition != null) 'condition': condition.toJson(),
+        if (member != null) 'member': member,
+        if (role != null) 'role': role,
+      };
 }
 
 /// The request to create a new role.
@@ -2825,16 +2785,10 @@ class CreateRoleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (role != null) {
-      _json['role'] = role.toJson();
-    }
-    if (roleId != null) {
-      _json['roleId'] = roleId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (role != null) 'role': role.toJson(),
+        if (roleId != null) 'roleId': roleId,
+      };
 }
 
 /// The service account key create request.
@@ -2873,16 +2827,10 @@ class CreateServiceAccountKeyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (keyAlgorithm != null) {
-      _json['keyAlgorithm'] = keyAlgorithm;
-    }
-    if (privateKeyType != null) {
-      _json['privateKeyType'] = privateKeyType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (keyAlgorithm != null) 'keyAlgorithm': keyAlgorithm,
+        if (privateKeyType != null) 'privateKeyType': privateKeyType,
+      };
 }
 
 /// The service account create request.
@@ -2914,16 +2862,10 @@ class CreateServiceAccountRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (serviceAccount != null) {
-      _json['serviceAccount'] = serviceAccount.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount.toJson(),
+      };
 }
 
 /// The service account disable request.
@@ -2934,10 +2876,7 @@ class DisableServiceAccountRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2954,10 +2893,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The service account enable request.
@@ -2968,10 +2904,7 @@ class EnableServiceAccountRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -3035,22 +2968,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// The request to lint a Cloud IAM policy object.
@@ -3080,16 +3003,10 @@ class LintPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (fullResourceName != null) {
-      _json['fullResourceName'] = fullResourceName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (fullResourceName != null) 'fullResourceName': fullResourceName,
+      };
 }
 
 /// The response of a lint operation.
@@ -3111,14 +3028,10 @@ class LintPolicyResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (lintResults != null) {
-      _json['lintResults'] =
-          lintResults.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (lintResults != null)
+          'lintResults': lintResults.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Structured response of a single validation unit.
@@ -3199,28 +3112,15 @@ class LintResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (debugMessage != null) {
-      _json['debugMessage'] = debugMessage;
-    }
-    if (fieldName != null) {
-      _json['fieldName'] = fieldName;
-    }
-    if (level != null) {
-      _json['level'] = level;
-    }
-    if (locationOffset != null) {
-      _json['locationOffset'] = locationOffset;
-    }
-    if (severity != null) {
-      _json['severity'] = severity;
-    }
-    if (validationUnitName != null) {
-      _json['validationUnitName'] = validationUnitName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (debugMessage != null) 'debugMessage': debugMessage,
+        if (fieldName != null) 'fieldName': fieldName,
+        if (level != null) 'level': level,
+        if (locationOffset != null) 'locationOffset': locationOffset,
+        if (severity != null) 'severity': severity,
+        if (validationUnitName != null)
+          'validationUnitName': validationUnitName,
+      };
 }
 
 /// The response containing the roles defined under a resource.
@@ -3246,16 +3146,11 @@ class ListRolesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (roles != null) {
-      _json['roles'] = roles.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (roles != null)
+          'roles': roles.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The service account keys list response.
@@ -3274,13 +3169,9 @@ class ListServiceAccountKeysResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (keys != null) {
-      _json['keys'] = keys.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (keys != null) 'keys': keys.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The service account list response.
@@ -3306,16 +3197,11 @@ class ListServiceAccountsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accounts != null) {
-      _json['accounts'] = accounts.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accounts != null)
+          'accounts': accounts.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -3394,25 +3280,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// The request for PatchServiceAccount.
@@ -3437,16 +3311,10 @@ class PatchServiceAccountRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (serviceAccount != null) {
-      _json['serviceAccount'] = serviceAccount.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (serviceAccount != null) 'serviceAccount': serviceAccount.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// A permission which can be included by a role.
@@ -3517,34 +3385,18 @@ class Permission {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiDisabled != null) {
-      _json['apiDisabled'] = apiDisabled;
-    }
-    if (customRolesSupportLevel != null) {
-      _json['customRolesSupportLevel'] = customRolesSupportLevel;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (onlyInPredefinedRoles != null) {
-      _json['onlyInPredefinedRoles'] = onlyInPredefinedRoles;
-    }
-    if (primaryPermission != null) {
-      _json['primaryPermission'] = primaryPermission;
-    }
-    if (stage != null) {
-      _json['stage'] = stage;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiDisabled != null) 'apiDisabled': apiDisabled,
+        if (customRolesSupportLevel != null)
+          'customRolesSupportLevel': customRolesSupportLevel,
+        if (description != null) 'description': description,
+        if (name != null) 'name': name,
+        if (onlyInPredefinedRoles != null)
+          'onlyInPredefinedRoles': onlyInPredefinedRoles,
+        if (primaryPermission != null) 'primaryPermission': primaryPermission,
+        if (stage != null) 'stage': stage,
+        if (title != null) 'title': title,
+      };
 }
 
 /// A PermissionDelta message to record the added_permissions and
@@ -3571,16 +3423,11 @@ class PermissionDelta {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (addedPermissions != null) {
-      _json['addedPermissions'] = addedPermissions;
-    }
-    if (removedPermissions != null) {
-      _json['removedPermissions'] = removedPermissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (addedPermissions != null) 'addedPermissions': addedPermissions,
+        if (removedPermissions != null)
+          'removedPermissions': removedPermissions,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -3687,23 +3534,14 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditConfigs != null) {
-      _json['auditConfigs'] =
-          auditConfigs.map((value) => value.toJson()).toList();
-    }
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditConfigs != null)
+          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// The difference delta between two policies.
@@ -3722,14 +3560,11 @@ class PolicyDelta {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bindingDeltas != null) {
-      _json['bindingDeltas'] =
-          bindingDeltas.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bindingDeltas != null)
+          'bindingDeltas':
+              bindingDeltas.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A request to get the list of auditable services for a resource.
@@ -3751,13 +3586,9 @@ class QueryAuditableServicesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fullResourceName != null) {
-      _json['fullResourceName'] = fullResourceName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fullResourceName != null) 'fullResourceName': fullResourceName,
+      };
 }
 
 /// A response containing a list of auditable services for a resource.
@@ -3776,13 +3607,10 @@ class QueryAuditableServicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (services != null) {
-      _json['services'] = services.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (services != null)
+          'services': services.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The grantable role query request.
@@ -3829,22 +3657,12 @@ class QueryGrantableRolesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fullResourceName != null) {
-      _json['fullResourceName'] = fullResourceName;
-    }
-    if (pageSize != null) {
-      _json['pageSize'] = pageSize;
-    }
-    if (pageToken != null) {
-      _json['pageToken'] = pageToken;
-    }
-    if (view != null) {
-      _json['view'] = view;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fullResourceName != null) 'fullResourceName': fullResourceName,
+        if (pageSize != null) 'pageSize': pageSize,
+        if (pageToken != null) 'pageToken': pageToken,
+        if (view != null) 'view': view,
+      };
 }
 
 /// The grantable role query response.
@@ -3870,16 +3688,11 @@ class QueryGrantableRolesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (roles != null) {
-      _json['roles'] = roles.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (roles != null)
+          'roles': roles.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A request to get permissions which can be tested on a resource.
@@ -3916,19 +3729,11 @@ class QueryTestablePermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fullResourceName != null) {
-      _json['fullResourceName'] = fullResourceName;
-    }
-    if (pageSize != null) {
-      _json['pageSize'] = pageSize;
-    }
-    if (pageToken != null) {
-      _json['pageToken'] = pageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fullResourceName != null) 'fullResourceName': fullResourceName,
+        if (pageSize != null) 'pageSize': pageSize,
+        if (pageToken != null) 'pageToken': pageToken,
+      };
 }
 
 /// The response containing permissions which can be tested on a resource.
@@ -3954,17 +3759,11 @@ class QueryTestablePermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (permissions != null) {
-      _json['permissions'] =
-          permissions.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (permissions != null)
+          'permissions': permissions.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A role in the Identity and Access Management API.
@@ -4051,31 +3850,16 @@ class Role {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deleted != null) {
-      _json['deleted'] = deleted;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (includedPermissions != null) {
-      _json['includedPermissions'] = includedPermissions;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (stage != null) {
-      _json['stage'] = stage;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deleted != null) 'deleted': deleted,
+        if (description != null) 'description': description,
+        if (etag != null) 'etag': etag,
+        if (includedPermissions != null)
+          'includedPermissions': includedPermissions,
+        if (name != null) 'name': name,
+        if (stage != null) 'stage': stage,
+        if (title != null) 'title': title,
+      };
 }
 
 /// An IAM service account.
@@ -4191,37 +3975,17 @@ class ServiceAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (disabled != null) {
-      _json['disabled'] = disabled;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (oauth2ClientId != null) {
-      _json['oauth2ClientId'] = oauth2ClientId;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (uniqueId != null) {
-      _json['uniqueId'] = uniqueId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (disabled != null) 'disabled': disabled,
+        if (displayName != null) 'displayName': displayName,
+        if (email != null) 'email': email,
+        if (etag != null) 'etag': etag,
+        if (name != null) 'name': name,
+        if (oauth2ClientId != null) 'oauth2ClientId': oauth2ClientId,
+        if (projectId != null) 'projectId': projectId,
+        if (uniqueId != null) 'uniqueId': uniqueId,
+      };
 }
 
 /// Represents a service account key.
@@ -4353,37 +4117,17 @@ class ServiceAccountKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (keyAlgorithm != null) {
-      _json['keyAlgorithm'] = keyAlgorithm;
-    }
-    if (keyOrigin != null) {
-      _json['keyOrigin'] = keyOrigin;
-    }
-    if (keyType != null) {
-      _json['keyType'] = keyType;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (privateKeyData != null) {
-      _json['privateKeyData'] = privateKeyData;
-    }
-    if (privateKeyType != null) {
-      _json['privateKeyType'] = privateKeyType;
-    }
-    if (publicKeyData != null) {
-      _json['publicKeyData'] = publicKeyData;
-    }
-    if (validAfterTime != null) {
-      _json['validAfterTime'] = validAfterTime;
-    }
-    if (validBeforeTime != null) {
-      _json['validBeforeTime'] = validBeforeTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (keyAlgorithm != null) 'keyAlgorithm': keyAlgorithm,
+        if (keyOrigin != null) 'keyOrigin': keyOrigin,
+        if (keyType != null) 'keyType': keyType,
+        if (name != null) 'name': name,
+        if (privateKeyData != null) 'privateKeyData': privateKeyData,
+        if (privateKeyType != null) 'privateKeyType': privateKeyType,
+        if (publicKeyData != null) 'publicKeyData': publicKeyData,
+        if (validAfterTime != null) 'validAfterTime': validAfterTime,
+        if (validBeforeTime != null) 'validBeforeTime': validBeforeTime,
+      };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -4413,16 +4157,10 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// [Migrate to Service Account Credentials API](https://cloud.google.com/iam/help/credentials/migrate-api).
@@ -4453,13 +4191,9 @@ class SignBlobRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bytesToSign != null) {
-      _json['bytesToSign'] = bytesToSign;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bytesToSign != null) 'bytesToSign': bytesToSign,
+      };
 }
 
 /// [Migrate to Service Account Credentials API](https://cloud.google.com/iam/help/credentials/migrate-api).
@@ -4499,16 +4233,10 @@ class SignBlobResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (keyId != null) {
-      _json['keyId'] = keyId;
-    }
-    if (signature != null) {
-      _json['signature'] = signature;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (keyId != null) 'keyId': keyId,
+        if (signature != null) 'signature': signature,
+      };
 }
 
 /// [Migrate to Service Account Credentials API](https://cloud.google.com/iam/help/credentials/migrate-api).
@@ -4538,13 +4266,9 @@ class SignJwtRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (payload != null) {
-      _json['payload'] = payload;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (payload != null) 'payload': payload,
+      };
 }
 
 /// [Migrate to Service Account Credentials API](https://cloud.google.com/iam/help/credentials/migrate-api).
@@ -4578,16 +4302,10 @@ class SignJwtResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (keyId != null) {
-      _json['keyId'] = keyId;
-    }
-    if (signedJwt != null) {
-      _json['signedJwt'] = signedJwt;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (keyId != null) 'keyId': keyId,
+        if (signedJwt != null) 'signedJwt': signedJwt,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -4637,19 +4355,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -4671,13 +4381,9 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -4696,13 +4402,9 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// The request to undelete an existing role.
@@ -4724,13 +4426,9 @@ class UndeleteRoleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+      };
 }
 
 /// The service account undelete request.
@@ -4741,10 +4439,7 @@ class UndeleteServiceAccountRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 class UndeleteServiceAccountResponse {
@@ -4760,13 +4455,10 @@ class UndeleteServiceAccountResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (restoredAccount != null) {
-      _json['restoredAccount'] = restoredAccount.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (restoredAccount != null)
+          'restoredAccount': restoredAccount.toJson(),
+      };
 }
 
 /// The service account key upload request.
@@ -4793,11 +4485,7 @@ class UploadServiceAccountKeyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (publicKeyData != null) {
-      _json['publicKeyData'] = publicKeyData;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (publicKeyData != null) 'publicKeyData': publicKeyData,
+      };
 }

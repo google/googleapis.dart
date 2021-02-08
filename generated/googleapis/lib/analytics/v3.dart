@@ -5855,16 +5855,10 @@ class AccountChildLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (href != null) {
-      _json['href'] = href;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (href != null) 'href': href,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Permissions the user has for this account.
@@ -5884,13 +5878,9 @@ class AccountPermissions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (effective != null) {
-      _json['effective'] = effective;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (effective != null) 'effective': effective,
+      };
 }
 
 /// JSON template for Analytics account entry.
@@ -5958,37 +5948,17 @@ class Account {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (childLink != null) {
-      _json['childLink'] = childLink.toJson();
-    }
-    if (created != null) {
-      _json['created'] = (created).toIso8601String();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (permissions != null) {
-      _json['permissions'] = permissions.toJson();
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (starred != null) {
-      _json['starred'] = starred;
-    }
-    if (updated != null) {
-      _json['updated'] = (updated).toIso8601String();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (childLink != null) 'childLink': childLink.toJson(),
+        if (created != null) 'created': (created).toIso8601String(),
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+        if (permissions != null) 'permissions': permissions.toJson(),
+        if (selfLink != null) 'selfLink': selfLink,
+        if (starred != null) 'starred': starred,
+        if (updated != null) 'updated': (updated).toIso8601String(),
+      };
 }
 
 /// JSON template for a linked account.
@@ -6022,22 +5992,12 @@ class AccountRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (href != null) {
-      _json['href'] = href;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (href != null) 'href': href,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+      };
 }
 
 /// An AccountSummary collection lists a summary of accounts, properties and
@@ -6107,34 +6067,17 @@ class AccountSummaries {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (itemsPerPage != null) {
-      _json['itemsPerPage'] = itemsPerPage;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextLink != null) {
-      _json['nextLink'] = nextLink;
-    }
-    if (previousLink != null) {
-      _json['previousLink'] = previousLink;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    if (username != null) {
-      _json['username'] = username;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
+        if (kind != null) 'kind': kind,
+        if (nextLink != null) 'nextLink': nextLink,
+        if (previousLink != null) 'previousLink': previousLink,
+        if (startIndex != null) 'startIndex': startIndex,
+        if (totalResults != null) 'totalResults': totalResults,
+        if (username != null) 'username': username,
+      };
 }
 
 /// JSON template for an Analytics AccountSummary.
@@ -6179,26 +6122,15 @@ class AccountSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (starred != null) {
-      _json['starred'] = starred;
-    }
-    if (webProperties != null) {
-      _json['webProperties'] =
-          webProperties.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+        if (starred != null) 'starred': starred,
+        if (webProperties != null)
+          'webProperties':
+              webProperties.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// JSON template for an Analytics account ticket.
@@ -6252,28 +6184,14 @@ class AccountTicket {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (account != null) {
-      _json['account'] = account.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (profile != null) {
-      _json['profile'] = profile.toJson();
-    }
-    if (redirectUri != null) {
-      _json['redirectUri'] = redirectUri;
-    }
-    if (webproperty != null) {
-      _json['webproperty'] = webproperty.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (account != null) 'account': account.toJson(),
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (profile != null) 'profile': profile.toJson(),
+        if (redirectUri != null) 'redirectUri': redirectUri,
+        if (webproperty != null) 'webproperty': webproperty.toJson(),
+      };
 }
 
 /// JSON template for an Analytics account tree requests.
@@ -6314,28 +6232,14 @@ class AccountTreeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountName != null) {
-      _json['accountName'] = accountName;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (profileName != null) {
-      _json['profileName'] = profileName;
-    }
-    if (timezone != null) {
-      _json['timezone'] = timezone;
-    }
-    if (webpropertyName != null) {
-      _json['webpropertyName'] = webpropertyName;
-    }
-    if (websiteUrl != null) {
-      _json['websiteUrl'] = websiteUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountName != null) 'accountName': accountName,
+        if (kind != null) 'kind': kind,
+        if (profileName != null) 'profileName': profileName,
+        if (timezone != null) 'timezone': timezone,
+        if (webpropertyName != null) 'webpropertyName': webpropertyName,
+        if (websiteUrl != null) 'websiteUrl': websiteUrl,
+      };
 }
 
 /// JSON template for an Analytics account tree response.
@@ -6375,22 +6279,12 @@ class AccountTreeResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (account != null) {
-      _json['account'] = account.toJson();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (profile != null) {
-      _json['profile'] = profile.toJson();
-    }
-    if (webproperty != null) {
-      _json['webproperty'] = webproperty.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (account != null) 'account': account.toJson(),
+        if (kind != null) 'kind': kind,
+        if (profile != null) 'profile': profile.toJson(),
+        if (webproperty != null) 'webproperty': webproperty.toJson(),
+      };
 }
 
 /// An account collection provides a list of Analytics accounts to which a user
@@ -6461,34 +6355,17 @@ class Accounts {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (itemsPerPage != null) {
-      _json['itemsPerPage'] = itemsPerPage;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextLink != null) {
-      _json['nextLink'] = nextLink;
-    }
-    if (previousLink != null) {
-      _json['previousLink'] = previousLink;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    if (username != null) {
-      _json['username'] = username;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
+        if (kind != null) 'kind': kind,
+        if (nextLink != null) 'nextLink': nextLink,
+        if (previousLink != null) 'previousLink': previousLink,
+        if (startIndex != null) 'startIndex': startIndex,
+        if (totalResults != null) 'totalResults': totalResults,
+        if (username != null) 'username': username,
+      };
 }
 
 /// JSON template for an Google Ads account.
@@ -6520,19 +6397,12 @@ class AdWordsAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (autoTaggingEnabled != null) {
-      _json['autoTaggingEnabled'] = autoTaggingEnabled;
-    }
-    if (customerId != null) {
-      _json['customerId'] = customerId;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (autoTaggingEnabled != null)
+          'autoTaggingEnabled': autoTaggingEnabled,
+        if (customerId != null) 'customerId': customerId,
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// Request template for the delete upload data request.
@@ -6550,13 +6420,10 @@ class AnalyticsDataimportDeleteUploadDataRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customDataImportUids != null) {
-      _json['customDataImportUids'] = customDataImportUids;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customDataImportUids != null)
+          'customDataImportUids': customDataImportUids,
+      };
 }
 
 /// JSON template for a metadata column.
@@ -6591,19 +6458,11 @@ class Column {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributes != null) {
-      _json['attributes'] = attributes;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributes != null) 'attributes': attributes,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// Lists columns (dimensions and metrics) for a particular report type.
@@ -6651,25 +6510,14 @@ class Columns {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributeNames != null) {
-      _json['attributeNames'] = attributeNames;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributeNames != null) 'attributeNames': attributeNames,
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (totalResults != null) 'totalResults': totalResults,
+      };
 }
 
 class CustomDataSourceChildLink {
@@ -6694,16 +6542,10 @@ class CustomDataSourceChildLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (href != null) {
-      _json['href'] = href;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (href != null) 'href': href,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Parent link for this custom data source.
@@ -6727,16 +6569,10 @@ class CustomDataSourceParentLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (href != null) {
-      _json['href'] = href;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (href != null) 'href': href,
+        if (type != null) 'type': type,
+      };
 }
 
 /// JSON template for an Analytics custom data source.
@@ -6847,58 +6683,24 @@ class CustomDataSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (childLink != null) {
-      _json['childLink'] = childLink.toJson();
-    }
-    if (created != null) {
-      _json['created'] = (created).toIso8601String();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (importBehavior != null) {
-      _json['importBehavior'] = importBehavior;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parentLink != null) {
-      _json['parentLink'] = parentLink.toJson();
-    }
-    if (profilesLinked != null) {
-      _json['profilesLinked'] = profilesLinked;
-    }
-    if (schema != null) {
-      _json['schema'] = schema;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (updated != null) {
-      _json['updated'] = (updated).toIso8601String();
-    }
-    if (uploadType != null) {
-      _json['uploadType'] = uploadType;
-    }
-    if (webPropertyId != null) {
-      _json['webPropertyId'] = webPropertyId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (childLink != null) 'childLink': childLink.toJson(),
+        if (created != null) 'created': (created).toIso8601String(),
+        if (description != null) 'description': description,
+        if (id != null) 'id': id,
+        if (importBehavior != null) 'importBehavior': importBehavior,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+        if (parentLink != null) 'parentLink': parentLink.toJson(),
+        if (profilesLinked != null) 'profilesLinked': profilesLinked,
+        if (schema != null) 'schema': schema,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (type != null) 'type': type,
+        if (updated != null) 'updated': (updated).toIso8601String(),
+        if (uploadType != null) 'uploadType': uploadType,
+        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+      };
 }
 
 /// Lists Analytics custom data sources to which the user has access.
@@ -6968,34 +6770,17 @@ class CustomDataSources {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (itemsPerPage != null) {
-      _json['itemsPerPage'] = itemsPerPage;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextLink != null) {
-      _json['nextLink'] = nextLink;
-    }
-    if (previousLink != null) {
-      _json['previousLink'] = previousLink;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    if (username != null) {
-      _json['username'] = username;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
+        if (kind != null) 'kind': kind,
+        if (nextLink != null) 'nextLink': nextLink,
+        if (previousLink != null) 'previousLink': previousLink,
+        if (startIndex != null) 'startIndex': startIndex,
+        if (totalResults != null) 'totalResults': totalResults,
+        if (username != null) 'username': username,
+      };
 }
 
 /// Parent link for the custom dimension.
@@ -7021,16 +6806,10 @@ class CustomDimensionParentLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (href != null) {
-      _json['href'] = href;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (href != null) 'href': href,
+        if (type != null) 'type': type,
+      };
 }
 
 /// JSON template for Analytics Custom Dimension.
@@ -7117,46 +6896,20 @@ class CustomDimension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (active != null) {
-      _json['active'] = active;
-    }
-    if (created != null) {
-      _json['created'] = (created).toIso8601String();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (index != null) {
-      _json['index'] = index;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parentLink != null) {
-      _json['parentLink'] = parentLink.toJson();
-    }
-    if (scope != null) {
-      _json['scope'] = scope;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (updated != null) {
-      _json['updated'] = (updated).toIso8601String();
-    }
-    if (webPropertyId != null) {
-      _json['webPropertyId'] = webPropertyId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (active != null) 'active': active,
+        if (created != null) 'created': (created).toIso8601String(),
+        if (id != null) 'id': id,
+        if (index != null) 'index': index,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+        if (parentLink != null) 'parentLink': parentLink.toJson(),
+        if (scope != null) 'scope': scope,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (updated != null) 'updated': (updated).toIso8601String(),
+        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+      };
 }
 
 /// A custom dimension collection lists Analytics custom dimensions to which the
@@ -7227,34 +6980,17 @@ class CustomDimensions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (itemsPerPage != null) {
-      _json['itemsPerPage'] = itemsPerPage;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextLink != null) {
-      _json['nextLink'] = nextLink;
-    }
-    if (previousLink != null) {
-      _json['previousLink'] = previousLink;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    if (username != null) {
-      _json['username'] = username;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
+        if (kind != null) 'kind': kind,
+        if (nextLink != null) 'nextLink': nextLink,
+        if (previousLink != null) 'previousLink': previousLink,
+        if (startIndex != null) 'startIndex': startIndex,
+        if (totalResults != null) 'totalResults': totalResults,
+        if (username != null) 'username': username,
+      };
 }
 
 /// Parent link for the custom metric.
@@ -7280,16 +7016,10 @@ class CustomMetricParentLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (href != null) {
-      _json['href'] = href;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (href != null) 'href': href,
+        if (type != null) 'type': type,
+      };
 }
 
 /// JSON template for Analytics Custom Metric.
@@ -7394,55 +7124,23 @@ class CustomMetric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (active != null) {
-      _json['active'] = active;
-    }
-    if (created != null) {
-      _json['created'] = (created).toIso8601String();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (index != null) {
-      _json['index'] = index;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (maxValue != null) {
-      _json['max_value'] = maxValue;
-    }
-    if (minValue != null) {
-      _json['min_value'] = minValue;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parentLink != null) {
-      _json['parentLink'] = parentLink.toJson();
-    }
-    if (scope != null) {
-      _json['scope'] = scope;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (updated != null) {
-      _json['updated'] = (updated).toIso8601String();
-    }
-    if (webPropertyId != null) {
-      _json['webPropertyId'] = webPropertyId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (active != null) 'active': active,
+        if (created != null) 'created': (created).toIso8601String(),
+        if (id != null) 'id': id,
+        if (index != null) 'index': index,
+        if (kind != null) 'kind': kind,
+        if (maxValue != null) 'max_value': maxValue,
+        if (minValue != null) 'min_value': minValue,
+        if (name != null) 'name': name,
+        if (parentLink != null) 'parentLink': parentLink.toJson(),
+        if (scope != null) 'scope': scope,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (type != null) 'type': type,
+        if (updated != null) 'updated': (updated).toIso8601String(),
+        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+      };
 }
 
 /// A custom metric collection lists Analytics custom metrics to which the user
@@ -7513,34 +7211,17 @@ class CustomMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (itemsPerPage != null) {
-      _json['itemsPerPage'] = itemsPerPage;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextLink != null) {
-      _json['nextLink'] = nextLink;
-    }
-    if (previousLink != null) {
-      _json['previousLink'] = previousLink;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    if (username != null) {
-      _json['username'] = username;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
+        if (kind != null) 'kind': kind,
+        if (nextLink != null) 'nextLink': nextLink,
+        if (previousLink != null) 'previousLink': previousLink,
+        if (startIndex != null) 'startIndex': startIndex,
+        if (totalResults != null) 'totalResults': totalResults,
+        if (username != null) 'username': username,
+      };
 }
 
 /// Web property being linked.
@@ -7556,13 +7237,9 @@ class EntityAdWordsLinkEntity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (webPropertyRef != null) {
-      _json['webPropertyRef'] = webPropertyRef.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (webPropertyRef != null) 'webPropertyRef': webPropertyRef.toJson(),
+      };
 }
 
 /// JSON template for Analytics Entity Google Ads Link.
@@ -7625,32 +7302,17 @@ class EntityAdWordsLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adWordsAccounts != null) {
-      _json['adWordsAccounts'] =
-          adWordsAccounts.map((value) => value.toJson()).toList();
-    }
-    if (entity != null) {
-      _json['entity'] = entity.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (profileIds != null) {
-      _json['profileIds'] = profileIds;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adWordsAccounts != null)
+          'adWordsAccounts':
+              adWordsAccounts.map((value) => value.toJson()).toList(),
+        if (entity != null) 'entity': entity.toJson(),
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+        if (profileIds != null) 'profileIds': profileIds,
+        if (selfLink != null) 'selfLink': selfLink,
+      };
 }
 
 /// An entity Google Ads link collection provides a list of GA-Google Ads links
@@ -7712,31 +7374,16 @@ class EntityAdWordsLinks {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (itemsPerPage != null) {
-      _json['itemsPerPage'] = itemsPerPage;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextLink != null) {
-      _json['nextLink'] = nextLink;
-    }
-    if (previousLink != null) {
-      _json['previousLink'] = previousLink;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
+        if (kind != null) 'kind': kind,
+        if (nextLink != null) 'nextLink': nextLink,
+        if (previousLink != null) 'previousLink': previousLink,
+        if (startIndex != null) 'startIndex': startIndex,
+        if (totalResults != null) 'totalResults': totalResults,
+      };
 }
 
 /// Entity for this link.
@@ -7769,19 +7416,11 @@ class EntityUserLinkEntity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountRef != null) {
-      _json['accountRef'] = accountRef.toJson();
-    }
-    if (profileRef != null) {
-      _json['profileRef'] = profileRef.toJson();
-    }
-    if (webPropertyRef != null) {
-      _json['webPropertyRef'] = webPropertyRef.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountRef != null) 'accountRef': accountRef.toJson(),
+        if (profileRef != null) 'profileRef': profileRef.toJson(),
+        if (webPropertyRef != null) 'webPropertyRef': webPropertyRef.toJson(),
+      };
 }
 
 /// Permissions the user has for this entity.
@@ -7815,16 +7454,10 @@ class EntityUserLinkPermissions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (effective != null) {
-      _json['effective'] = effective;
-    }
-    if (local != null) {
-      _json['local'] = local;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (effective != null) 'effective': effective,
+        if (local != null) 'local': local,
+      };
 }
 
 /// JSON template for an Analytics Entity-User Link.
@@ -7877,28 +7510,14 @@ class EntityUserLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entity != null) {
-      _json['entity'] = entity.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (permissions != null) {
-      _json['permissions'] = permissions.toJson();
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (userRef != null) {
-      _json['userRef'] = userRef.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entity != null) 'entity': entity.toJson(),
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (permissions != null) 'permissions': permissions.toJson(),
+        if (selfLink != null) 'selfLink': selfLink,
+        if (userRef != null) 'userRef': userRef.toJson(),
+      };
 }
 
 /// An entity user link collection provides a list of Analytics ACL links Each
@@ -7960,31 +7579,16 @@ class EntityUserLinks {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (itemsPerPage != null) {
-      _json['itemsPerPage'] = itemsPerPage;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextLink != null) {
-      _json['nextLink'] = nextLink;
-    }
-    if (previousLink != null) {
-      _json['previousLink'] = previousLink;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
+        if (kind != null) 'kind': kind,
+        if (nextLink != null) 'nextLink': nextLink,
+        if (previousLink != null) 'previousLink': previousLink,
+        if (startIndex != null) 'startIndex': startIndex,
+        if (totalResults != null) 'totalResults': totalResults,
+      };
 }
 
 /// Parent link for an experiment.
@@ -8012,16 +7616,10 @@ class ExperimentParentLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (href != null) {
-      _json['href'] = href;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (href != null) 'href': href,
+        if (type != null) 'type': type,
+      };
 }
 
 class ExperimentVariations {
@@ -8074,25 +7672,13 @@ class ExperimentVariations {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    if (weight != null) {
-      _json['weight'] = weight;
-    }
-    if (won != null) {
-      _json['won'] = won;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (status != null) 'status': status,
+        if (url != null) 'url': url,
+        if (weight != null) 'weight': weight,
+        if (won != null) 'won': won,
+      };
 }
 
 /// JSON template for Analytics experiment resource.
@@ -8368,94 +7954,42 @@ class Experiment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (created != null) {
-      _json['created'] = (created).toIso8601String();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (editableInGaUi != null) {
-      _json['editableInGaUi'] = editableInGaUi;
-    }
-    if (endTime != null) {
-      _json['endTime'] = (endTime).toIso8601String();
-    }
-    if (equalWeighting != null) {
-      _json['equalWeighting'] = equalWeighting;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (internalWebPropertyId != null) {
-      _json['internalWebPropertyId'] = internalWebPropertyId;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (minimumExperimentLengthInDays != null) {
-      _json['minimumExperimentLengthInDays'] = minimumExperimentLengthInDays;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (objectiveMetric != null) {
-      _json['objectiveMetric'] = objectiveMetric;
-    }
-    if (optimizationType != null) {
-      _json['optimizationType'] = optimizationType;
-    }
-    if (parentLink != null) {
-      _json['parentLink'] = parentLink.toJson();
-    }
-    if (profileId != null) {
-      _json['profileId'] = profileId;
-    }
-    if (reasonExperimentEnded != null) {
-      _json['reasonExperimentEnded'] = reasonExperimentEnded;
-    }
-    if (rewriteVariationUrlsAsOriginal != null) {
-      _json['rewriteVariationUrlsAsOriginal'] = rewriteVariationUrlsAsOriginal;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (servingFramework != null) {
-      _json['servingFramework'] = servingFramework;
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet;
-    }
-    if (startTime != null) {
-      _json['startTime'] = (startTime).toIso8601String();
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (trafficCoverage != null) {
-      _json['trafficCoverage'] = trafficCoverage;
-    }
-    if (updated != null) {
-      _json['updated'] = (updated).toIso8601String();
-    }
-    if (variations != null) {
-      _json['variations'] = variations.map((value) => value.toJson()).toList();
-    }
-    if (webPropertyId != null) {
-      _json['webPropertyId'] = webPropertyId;
-    }
-    if (winnerConfidenceLevel != null) {
-      _json['winnerConfidenceLevel'] = winnerConfidenceLevel;
-    }
-    if (winnerFound != null) {
-      _json['winnerFound'] = winnerFound;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (created != null) 'created': (created).toIso8601String(),
+        if (description != null) 'description': description,
+        if (editableInGaUi != null) 'editableInGaUi': editableInGaUi,
+        if (endTime != null) 'endTime': (endTime).toIso8601String(),
+        if (equalWeighting != null) 'equalWeighting': equalWeighting,
+        if (id != null) 'id': id,
+        if (internalWebPropertyId != null)
+          'internalWebPropertyId': internalWebPropertyId,
+        if (kind != null) 'kind': kind,
+        if (minimumExperimentLengthInDays != null)
+          'minimumExperimentLengthInDays': minimumExperimentLengthInDays,
+        if (name != null) 'name': name,
+        if (objectiveMetric != null) 'objectiveMetric': objectiveMetric,
+        if (optimizationType != null) 'optimizationType': optimizationType,
+        if (parentLink != null) 'parentLink': parentLink.toJson(),
+        if (profileId != null) 'profileId': profileId,
+        if (reasonExperimentEnded != null)
+          'reasonExperimentEnded': reasonExperimentEnded,
+        if (rewriteVariationUrlsAsOriginal != null)
+          'rewriteVariationUrlsAsOriginal': rewriteVariationUrlsAsOriginal,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (servingFramework != null) 'servingFramework': servingFramework,
+        if (snippet != null) 'snippet': snippet,
+        if (startTime != null) 'startTime': (startTime).toIso8601String(),
+        if (status != null) 'status': status,
+        if (trafficCoverage != null) 'trafficCoverage': trafficCoverage,
+        if (updated != null) 'updated': (updated).toIso8601String(),
+        if (variations != null)
+          'variations': variations.map((value) => value.toJson()).toList(),
+        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+        if (winnerConfidenceLevel != null)
+          'winnerConfidenceLevel': winnerConfidenceLevel,
+        if (winnerFound != null) 'winnerFound': winnerFound,
+      };
 }
 
 /// An experiment collection lists Analytics experiments to which the user has
@@ -8526,34 +8060,17 @@ class Experiments {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (itemsPerPage != null) {
-      _json['itemsPerPage'] = itemsPerPage;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextLink != null) {
-      _json['nextLink'] = nextLink;
-    }
-    if (previousLink != null) {
-      _json['previousLink'] = previousLink;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    if (username != null) {
-      _json['username'] = username;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
+        if (kind != null) 'kind': kind,
+        if (nextLink != null) 'nextLink': nextLink,
+        if (previousLink != null) 'previousLink': previousLink,
+        if (startIndex != null) 'startIndex': startIndex,
+        if (totalResults != null) 'totalResults': totalResults,
+        if (username != null) 'username': username,
+      };
 }
 
 /// Details for the filter of the type ADVANCED.
@@ -8648,49 +8165,23 @@ class FilterAdvancedDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (caseSensitive != null) {
-      _json['caseSensitive'] = caseSensitive;
-    }
-    if (extractA != null) {
-      _json['extractA'] = extractA;
-    }
-    if (extractB != null) {
-      _json['extractB'] = extractB;
-    }
-    if (fieldA != null) {
-      _json['fieldA'] = fieldA;
-    }
-    if (fieldAIndex != null) {
-      _json['fieldAIndex'] = fieldAIndex;
-    }
-    if (fieldARequired != null) {
-      _json['fieldARequired'] = fieldARequired;
-    }
-    if (fieldB != null) {
-      _json['fieldB'] = fieldB;
-    }
-    if (fieldBIndex != null) {
-      _json['fieldBIndex'] = fieldBIndex;
-    }
-    if (fieldBRequired != null) {
-      _json['fieldBRequired'] = fieldBRequired;
-    }
-    if (outputConstructor != null) {
-      _json['outputConstructor'] = outputConstructor;
-    }
-    if (outputToField != null) {
-      _json['outputToField'] = outputToField;
-    }
-    if (outputToFieldIndex != null) {
-      _json['outputToFieldIndex'] = outputToFieldIndex;
-    }
-    if (overrideOutputField != null) {
-      _json['overrideOutputField'] = overrideOutputField;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (caseSensitive != null) 'caseSensitive': caseSensitive,
+        if (extractA != null) 'extractA': extractA,
+        if (extractB != null) 'extractB': extractB,
+        if (fieldA != null) 'fieldA': fieldA,
+        if (fieldAIndex != null) 'fieldAIndex': fieldAIndex,
+        if (fieldARequired != null) 'fieldARequired': fieldARequired,
+        if (fieldB != null) 'fieldB': fieldB,
+        if (fieldBIndex != null) 'fieldBIndex': fieldBIndex,
+        if (fieldBRequired != null) 'fieldBRequired': fieldBRequired,
+        if (outputConstructor != null) 'outputConstructor': outputConstructor,
+        if (outputToField != null) 'outputToField': outputToField,
+        if (outputToFieldIndex != null)
+          'outputToFieldIndex': outputToFieldIndex,
+        if (overrideOutputField != null)
+          'overrideOutputField': overrideOutputField,
+      };
 }
 
 /// Details for the filter of the type LOWER.
@@ -8714,16 +8205,10 @@ class FilterLowercaseDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (field != null) {
-      _json['field'] = field;
-    }
-    if (fieldIndex != null) {
-      _json['fieldIndex'] = fieldIndex;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (field != null) 'field': field,
+        if (fieldIndex != null) 'fieldIndex': fieldIndex,
+      };
 }
 
 /// Parent link for this filter.
@@ -8747,16 +8232,10 @@ class FilterParentLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (href != null) {
-      _json['href'] = href;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (href != null) 'href': href,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Details for the filter of the type SEARCH_AND_REPLACE.
@@ -8798,25 +8277,13 @@ class FilterSearchAndReplaceDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (caseSensitive != null) {
-      _json['caseSensitive'] = caseSensitive;
-    }
-    if (field != null) {
-      _json['field'] = field;
-    }
-    if (fieldIndex != null) {
-      _json['fieldIndex'] = fieldIndex;
-    }
-    if (replaceString != null) {
-      _json['replaceString'] = replaceString;
-    }
-    if (searchString != null) {
-      _json['searchString'] = searchString;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (caseSensitive != null) 'caseSensitive': caseSensitive,
+        if (field != null) 'field': field,
+        if (fieldIndex != null) 'fieldIndex': fieldIndex,
+        if (replaceString != null) 'replaceString': replaceString,
+        if (searchString != null) 'searchString': searchString,
+      };
 }
 
 /// Details for the filter of the type UPPER.
@@ -8840,16 +8307,10 @@ class FilterUppercaseDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (field != null) {
-      _json['field'] = field;
-    }
-    if (fieldIndex != null) {
-      _json['fieldIndex'] = fieldIndex;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (field != null) 'field': field,
+        if (fieldIndex != null) 'fieldIndex': fieldIndex,
+      };
 }
 
 /// JSON template for an Analytics account filter.
@@ -8962,55 +8423,27 @@ class Filter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (advancedDetails != null) {
-      _json['advancedDetails'] = advancedDetails.toJson();
-    }
-    if (created != null) {
-      _json['created'] = (created).toIso8601String();
-    }
-    if (excludeDetails != null) {
-      _json['excludeDetails'] = excludeDetails.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (includeDetails != null) {
-      _json['includeDetails'] = includeDetails.toJson();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (lowercaseDetails != null) {
-      _json['lowercaseDetails'] = lowercaseDetails.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parentLink != null) {
-      _json['parentLink'] = parentLink.toJson();
-    }
-    if (searchAndReplaceDetails != null) {
-      _json['searchAndReplaceDetails'] = searchAndReplaceDetails.toJson();
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (updated != null) {
-      _json['updated'] = (updated).toIso8601String();
-    }
-    if (uppercaseDetails != null) {
-      _json['uppercaseDetails'] = uppercaseDetails.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (advancedDetails != null)
+          'advancedDetails': advancedDetails.toJson(),
+        if (created != null) 'created': (created).toIso8601String(),
+        if (excludeDetails != null) 'excludeDetails': excludeDetails.toJson(),
+        if (id != null) 'id': id,
+        if (includeDetails != null) 'includeDetails': includeDetails.toJson(),
+        if (kind != null) 'kind': kind,
+        if (lowercaseDetails != null)
+          'lowercaseDetails': lowercaseDetails.toJson(),
+        if (name != null) 'name': name,
+        if (parentLink != null) 'parentLink': parentLink.toJson(),
+        if (searchAndReplaceDetails != null)
+          'searchAndReplaceDetails': searchAndReplaceDetails.toJson(),
+        if (selfLink != null) 'selfLink': selfLink,
+        if (type != null) 'type': type,
+        if (updated != null) 'updated': (updated).toIso8601String(),
+        if (uppercaseDetails != null)
+          'uppercaseDetails': uppercaseDetails.toJson(),
+      };
 }
 
 /// JSON template for an Analytics filter expression.
@@ -9150,28 +8583,14 @@ class FilterExpression {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (caseSensitive != null) {
-      _json['caseSensitive'] = caseSensitive;
-    }
-    if (expressionValue != null) {
-      _json['expressionValue'] = expressionValue;
-    }
-    if (field != null) {
-      _json['field'] = field;
-    }
-    if (fieldIndex != null) {
-      _json['fieldIndex'] = fieldIndex;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (matchType != null) {
-      _json['matchType'] = matchType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (caseSensitive != null) 'caseSensitive': caseSensitive,
+        if (expressionValue != null) 'expressionValue': expressionValue,
+        if (field != null) 'field': field,
+        if (fieldIndex != null) 'fieldIndex': fieldIndex,
+        if (kind != null) 'kind': kind,
+        if (matchType != null) 'matchType': matchType,
+      };
 }
 
 /// JSON template for a profile filter link.
@@ -9211,25 +8630,13 @@ class FilterRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (href != null) {
-      _json['href'] = href;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (href != null) 'href': href,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+      };
 }
 
 /// A filter collection lists filters created by users in an Analytics account.
@@ -9298,34 +8705,17 @@ class Filters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (itemsPerPage != null) {
-      _json['itemsPerPage'] = itemsPerPage;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextLink != null) {
-      _json['nextLink'] = nextLink;
-    }
-    if (previousLink != null) {
-      _json['previousLink'] = previousLink;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    if (username != null) {
-      _json['username'] = username;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
+        if (kind != null) 'kind': kind,
+        if (nextLink != null) 'nextLink': nextLink,
+        if (previousLink != null) 'previousLink': previousLink,
+        if (startIndex != null) 'startIndex': startIndex,
+        if (totalResults != null) 'totalResults': totalResults,
+        if (username != null) 'username': username,
+      };
 }
 
 class GaDataColumnHeaders {
@@ -9358,19 +8748,11 @@ class GaDataColumnHeaders {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columnType != null) {
-      _json['columnType'] = columnType;
-    }
-    if (dataType != null) {
-      _json['dataType'] = dataType;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columnType != null) 'columnType': columnType,
+        if (dataType != null) 'dataType': dataType,
+        if (name != null) 'name': name,
+      };
 }
 
 class GaDataDataTableCols {
@@ -9392,19 +8774,11 @@ class GaDataDataTableCols {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (label != null) {
-      _json['label'] = label;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (label != null) 'label': label,
+        if (type != null) 'type': type,
+      };
 }
 
 class GaDataDataTableRowsC {
@@ -9418,13 +8792,9 @@ class GaDataDataTableRowsC {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (v != null) {
-      _json['v'] = v;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (v != null) 'v': v,
+      };
 }
 
 class GaDataDataTableRows {
@@ -9441,13 +8811,9 @@ class GaDataDataTableRows {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (c != null) {
-      _json['c'] = c.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (c != null) 'c': c.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GaDataDataTable {
@@ -9471,16 +8837,10 @@ class GaDataDataTable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cols != null) {
-      _json['cols'] = cols.map((value) => value.toJson()).toList();
-    }
-    if (rows != null) {
-      _json['rows'] = rows.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cols != null) 'cols': cols.map((value) => value.toJson()).toList(),
+        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Information for the view (profile), for which the Analytics data was
@@ -9527,28 +8887,15 @@ class GaDataProfileInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (internalWebPropertyId != null) {
-      _json['internalWebPropertyId'] = internalWebPropertyId;
-    }
-    if (profileId != null) {
-      _json['profileId'] = profileId;
-    }
-    if (profileName != null) {
-      _json['profileName'] = profileName;
-    }
-    if (tableId != null) {
-      _json['tableId'] = tableId;
-    }
-    if (webPropertyId != null) {
-      _json['webPropertyId'] = webPropertyId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (internalWebPropertyId != null)
+          'internalWebPropertyId': internalWebPropertyId,
+        if (profileId != null) 'profileId': profileId,
+        if (profileName != null) 'profileName': profileName,
+        if (tableId != null) 'tableId': tableId,
+        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+      };
 }
 
 /// Analytics data request query parameters.
@@ -9628,43 +8975,19 @@ class GaDataQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensions != null) {
-      _json['dimensions'] = dimensions;
-    }
-    if (endDate != null) {
-      _json['end-date'] = endDate;
-    }
-    if (filters != null) {
-      _json['filters'] = filters;
-    }
-    if (ids != null) {
-      _json['ids'] = ids;
-    }
-    if (maxResults != null) {
-      _json['max-results'] = maxResults;
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics;
-    }
-    if (samplingLevel != null) {
-      _json['samplingLevel'] = samplingLevel;
-    }
-    if (segment != null) {
-      _json['segment'] = segment;
-    }
-    if (sort != null) {
-      _json['sort'] = sort;
-    }
-    if (startDate != null) {
-      _json['start-date'] = startDate;
-    }
-    if (startIndex != null) {
-      _json['start-index'] = startIndex;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensions != null) 'dimensions': dimensions,
+        if (endDate != null) 'end-date': endDate,
+        if (filters != null) 'filters': filters,
+        if (ids != null) 'ids': ids,
+        if (maxResults != null) 'max-results': maxResults,
+        if (metrics != null) 'metrics': metrics,
+        if (samplingLevel != null) 'samplingLevel': samplingLevel,
+        if (segment != null) 'segment': segment,
+        if (sort != null) 'sort': sort,
+        if (startDate != null) 'start-date': startDate,
+        if (startIndex != null) 'start-index': startIndex,
+      };
 }
 
 /// Analytics data for a given view (profile).
@@ -9806,62 +9129,29 @@ class GaData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columnHeaders != null) {
-      _json['columnHeaders'] =
-          columnHeaders.map((value) => value.toJson()).toList();
-    }
-    if (containsSampledData != null) {
-      _json['containsSampledData'] = containsSampledData;
-    }
-    if (dataLastRefreshed != null) {
-      _json['dataLastRefreshed'] = dataLastRefreshed;
-    }
-    if (dataTable != null) {
-      _json['dataTable'] = dataTable.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (itemsPerPage != null) {
-      _json['itemsPerPage'] = itemsPerPage;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextLink != null) {
-      _json['nextLink'] = nextLink;
-    }
-    if (previousLink != null) {
-      _json['previousLink'] = previousLink;
-    }
-    if (profileInfo != null) {
-      _json['profileInfo'] = profileInfo.toJson();
-    }
-    if (query != null) {
-      _json['query'] = query.toJson();
-    }
-    if (rows != null) {
-      _json['rows'] = rows;
-    }
-    if (sampleSize != null) {
-      _json['sampleSize'] = sampleSize;
-    }
-    if (sampleSpace != null) {
-      _json['sampleSpace'] = sampleSpace;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    if (totalsForAllResults != null) {
-      _json['totalsForAllResults'] = totalsForAllResults;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columnHeaders != null)
+          'columnHeaders':
+              columnHeaders.map((value) => value.toJson()).toList(),
+        if (containsSampledData != null)
+          'containsSampledData': containsSampledData,
+        if (dataLastRefreshed != null) 'dataLastRefreshed': dataLastRefreshed,
+        if (dataTable != null) 'dataTable': dataTable.toJson(),
+        if (id != null) 'id': id,
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
+        if (kind != null) 'kind': kind,
+        if (nextLink != null) 'nextLink': nextLink,
+        if (previousLink != null) 'previousLink': previousLink,
+        if (profileInfo != null) 'profileInfo': profileInfo.toJson(),
+        if (query != null) 'query': query.toJson(),
+        if (rows != null) 'rows': rows,
+        if (sampleSize != null) 'sampleSize': sampleSize,
+        if (sampleSpace != null) 'sampleSpace': sampleSpace,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (totalResults != null) 'totalResults': totalResults,
+        if (totalsForAllResults != null)
+          'totalsForAllResults': totalsForAllResults,
+      };
 }
 
 class GoalEventDetailsEventConditions {
@@ -9906,25 +9196,13 @@ class GoalEventDetailsEventConditions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (comparisonType != null) {
-      _json['comparisonType'] = comparisonType;
-    }
-    if (comparisonValue != null) {
-      _json['comparisonValue'] = comparisonValue;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (matchType != null) {
-      _json['matchType'] = matchType;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (comparisonType != null) 'comparisonType': comparisonType,
+        if (comparisonValue != null) 'comparisonValue': comparisonValue,
+        if (expression != null) 'expression': expression,
+        if (matchType != null) 'matchType': matchType,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Details for the goal of the type EVENT.
@@ -9950,17 +9228,12 @@ class GoalEventDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (eventConditions != null) {
-      _json['eventConditions'] =
-          eventConditions.map((value) => value.toJson()).toList();
-    }
-    if (useEventValue != null) {
-      _json['useEventValue'] = useEventValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (eventConditions != null)
+          'eventConditions':
+              eventConditions.map((value) => value.toJson()).toList(),
+        if (useEventValue != null) 'useEventValue': useEventValue,
+      };
 }
 
 /// Parent link for a goal.
@@ -9984,16 +9257,10 @@ class GoalParentLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (href != null) {
-      _json['href'] = href;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (href != null) 'href': href,
+        if (type != null) 'type': type,
+      };
 }
 
 class GoalUrlDestinationDetailsSteps {
@@ -10020,19 +9287,11 @@ class GoalUrlDestinationDetailsSteps {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (number != null) {
-      _json['number'] = number;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (number != null) 'number': number,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Details for the goal of the type URL_DESTINATION.
@@ -10079,25 +9338,14 @@ class GoalUrlDestinationDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (caseSensitive != null) {
-      _json['caseSensitive'] = caseSensitive;
-    }
-    if (firstStepRequired != null) {
-      _json['firstStepRequired'] = firstStepRequired;
-    }
-    if (matchType != null) {
-      _json['matchType'] = matchType;
-    }
-    if (steps != null) {
-      _json['steps'] = steps.map((value) => value.toJson()).toList();
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (caseSensitive != null) 'caseSensitive': caseSensitive,
+        if (firstStepRequired != null) 'firstStepRequired': firstStepRequired,
+        if (matchType != null) 'matchType': matchType,
+        if (steps != null)
+          'steps': steps.map((value) => value.toJson()).toList(),
+        if (url != null) 'url': url,
+      };
 }
 
 /// Details for the goal of the type VISIT_NUM_PAGES.
@@ -10121,16 +9369,10 @@ class GoalVisitNumPagesDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (comparisonType != null) {
-      _json['comparisonType'] = comparisonType;
-    }
-    if (comparisonValue != null) {
-      _json['comparisonValue'] = comparisonValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (comparisonType != null) 'comparisonType': comparisonType,
+        if (comparisonValue != null) 'comparisonValue': comparisonValue,
+      };
 }
 
 /// Details for the goal of the type VISIT_TIME_ON_SITE.
@@ -10154,16 +9396,10 @@ class GoalVisitTimeOnSiteDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (comparisonType != null) {
-      _json['comparisonType'] = comparisonType;
-    }
-    if (comparisonValue != null) {
-      _json['comparisonValue'] = comparisonValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (comparisonType != null) 'comparisonType': comparisonType,
+        if (comparisonValue != null) 'comparisonValue': comparisonValue,
+      };
 }
 
 /// JSON template for Analytics goal resource.
@@ -10295,64 +9531,30 @@ class Goal {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (active != null) {
-      _json['active'] = active;
-    }
-    if (created != null) {
-      _json['created'] = (created).toIso8601String();
-    }
-    if (eventDetails != null) {
-      _json['eventDetails'] = eventDetails.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (internalWebPropertyId != null) {
-      _json['internalWebPropertyId'] = internalWebPropertyId;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parentLink != null) {
-      _json['parentLink'] = parentLink.toJson();
-    }
-    if (profileId != null) {
-      _json['profileId'] = profileId;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (updated != null) {
-      _json['updated'] = (updated).toIso8601String();
-    }
-    if (urlDestinationDetails != null) {
-      _json['urlDestinationDetails'] = urlDestinationDetails.toJson();
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    if (visitNumPagesDetails != null) {
-      _json['visitNumPagesDetails'] = visitNumPagesDetails.toJson();
-    }
-    if (visitTimeOnSiteDetails != null) {
-      _json['visitTimeOnSiteDetails'] = visitTimeOnSiteDetails.toJson();
-    }
-    if (webPropertyId != null) {
-      _json['webPropertyId'] = webPropertyId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (active != null) 'active': active,
+        if (created != null) 'created': (created).toIso8601String(),
+        if (eventDetails != null) 'eventDetails': eventDetails.toJson(),
+        if (id != null) 'id': id,
+        if (internalWebPropertyId != null)
+          'internalWebPropertyId': internalWebPropertyId,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+        if (parentLink != null) 'parentLink': parentLink.toJson(),
+        if (profileId != null) 'profileId': profileId,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (type != null) 'type': type,
+        if (updated != null) 'updated': (updated).toIso8601String(),
+        if (urlDestinationDetails != null)
+          'urlDestinationDetails': urlDestinationDetails.toJson(),
+        if (value != null) 'value': value,
+        if (visitNumPagesDetails != null)
+          'visitNumPagesDetails': visitNumPagesDetails.toJson(),
+        if (visitTimeOnSiteDetails != null)
+          'visitTimeOnSiteDetails': visitTimeOnSiteDetails.toJson(),
+        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+      };
 }
 
 /// A goal collection lists Analytics goals to which the user has access.
@@ -10422,34 +9624,17 @@ class Goals {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (itemsPerPage != null) {
-      _json['itemsPerPage'] = itemsPerPage;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextLink != null) {
-      _json['nextLink'] = nextLink;
-    }
-    if (previousLink != null) {
-      _json['previousLink'] = previousLink;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    if (username != null) {
-      _json['username'] = username;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
+        if (kind != null) 'kind': kind,
+        if (nextLink != null) 'nextLink': nextLink,
+        if (previousLink != null) 'previousLink': previousLink,
+        if (startIndex != null) 'startIndex': startIndex,
+        if (totalResults != null) 'totalResults': totalResults,
+        if (username != null) 'username': username,
+      };
 }
 
 /// JSON template for a hash Client Id request resource.
@@ -10472,19 +9657,11 @@ class HashClientIdRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clientId != null) {
-      _json['clientId'] = clientId;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (webPropertyId != null) {
-      _json['webPropertyId'] = webPropertyId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clientId != null) 'clientId': clientId,
+        if (kind != null) 'kind': kind,
+        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+      };
 }
 
 /// JSON template for a hash Client Id response resource.
@@ -10511,22 +9688,12 @@ class HashClientIdResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clientId != null) {
-      _json['clientId'] = clientId;
-    }
-    if (hashedClientId != null) {
-      _json['hashedClientId'] = hashedClientId;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (webPropertyId != null) {
-      _json['webPropertyId'] = webPropertyId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clientId != null) 'clientId': clientId,
+        if (hashedClientId != null) 'hashedClientId': hashedClientId,
+        if (kind != null) 'kind': kind,
+        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+      };
 }
 
 /// JSON template for an Analytics Remarketing Include Conditions.
@@ -10574,25 +9741,14 @@ class IncludeConditions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (daysToLookBack != null) {
-      _json['daysToLookBack'] = daysToLookBack;
-    }
-    if (isSmartList != null) {
-      _json['isSmartList'] = isSmartList;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (membershipDurationDays != null) {
-      _json['membershipDurationDays'] = membershipDurationDays;
-    }
-    if (segment != null) {
-      _json['segment'] = segment;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (daysToLookBack != null) 'daysToLookBack': daysToLookBack,
+        if (isSmartList != null) 'isSmartList': isSmartList,
+        if (kind != null) 'kind': kind,
+        if (membershipDurationDays != null)
+          'membershipDurationDays': membershipDurationDays,
+        if (segment != null) 'segment': segment,
+      };
 }
 
 /// JSON template for an Analytics Remarketing Audience Foreign Link.
@@ -10669,40 +9825,20 @@ class LinkedForeignAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (eligibleForSearch != null) {
-      _json['eligibleForSearch'] = eligibleForSearch;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (internalWebPropertyId != null) {
-      _json['internalWebPropertyId'] = internalWebPropertyId;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (linkedAccountId != null) {
-      _json['linkedAccountId'] = linkedAccountId;
-    }
-    if (remarketingAudienceId != null) {
-      _json['remarketingAudienceId'] = remarketingAudienceId;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (webPropertyId != null) {
-      _json['webPropertyId'] = webPropertyId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (eligibleForSearch != null) 'eligibleForSearch': eligibleForSearch,
+        if (id != null) 'id': id,
+        if (internalWebPropertyId != null)
+          'internalWebPropertyId': internalWebPropertyId,
+        if (kind != null) 'kind': kind,
+        if (linkedAccountId != null) 'linkedAccountId': linkedAccountId,
+        if (remarketingAudienceId != null)
+          'remarketingAudienceId': remarketingAudienceId,
+        if (status != null) 'status': status,
+        if (type != null) 'type': type,
+        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+      };
 }
 
 class McfDataColumnHeaders {
@@ -10734,19 +9870,11 @@ class McfDataColumnHeaders {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columnType != null) {
-      _json['columnType'] = columnType;
-    }
-    if (dataType != null) {
-      _json['dataType'] = dataType;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columnType != null) 'columnType': columnType,
+        if (dataType != null) 'dataType': dataType,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Information for the view (profile), for which the Analytics data was
@@ -10793,28 +9921,15 @@ class McfDataProfileInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (internalWebPropertyId != null) {
-      _json['internalWebPropertyId'] = internalWebPropertyId;
-    }
-    if (profileId != null) {
-      _json['profileId'] = profileId;
-    }
-    if (profileName != null) {
-      _json['profileName'] = profileName;
-    }
-    if (tableId != null) {
-      _json['tableId'] = tableId;
-    }
-    if (webPropertyId != null) {
-      _json['webPropertyId'] = webPropertyId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (internalWebPropertyId != null)
+          'internalWebPropertyId': internalWebPropertyId,
+        if (profileId != null) 'profileId': profileId,
+        if (profileName != null) 'profileName': profileName,
+        if (tableId != null) 'tableId': tableId,
+        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+      };
 }
 
 /// Analytics data request query parameters.
@@ -10894,43 +10009,19 @@ class McfDataQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensions != null) {
-      _json['dimensions'] = dimensions;
-    }
-    if (endDate != null) {
-      _json['end-date'] = endDate;
-    }
-    if (filters != null) {
-      _json['filters'] = filters;
-    }
-    if (ids != null) {
-      _json['ids'] = ids;
-    }
-    if (maxResults != null) {
-      _json['max-results'] = maxResults;
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics;
-    }
-    if (samplingLevel != null) {
-      _json['samplingLevel'] = samplingLevel;
-    }
-    if (segment != null) {
-      _json['segment'] = segment;
-    }
-    if (sort != null) {
-      _json['sort'] = sort;
-    }
-    if (startDate != null) {
-      _json['start-date'] = startDate;
-    }
-    if (startIndex != null) {
-      _json['start-index'] = startIndex;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensions != null) 'dimensions': dimensions,
+        if (endDate != null) 'end-date': endDate,
+        if (filters != null) 'filters': filters,
+        if (ids != null) 'ids': ids,
+        if (maxResults != null) 'max-results': maxResults,
+        if (metrics != null) 'metrics': metrics,
+        if (samplingLevel != null) 'samplingLevel': samplingLevel,
+        if (segment != null) 'segment': segment,
+        if (sort != null) 'sort': sort,
+        if (startDate != null) 'start-date': startDate,
+        if (startIndex != null) 'start-index': startIndex,
+      };
 }
 
 class McfDataRowsConversionPathValue {
@@ -10955,16 +10046,10 @@ class McfDataRowsConversionPathValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (interactionType != null) {
-      _json['interactionType'] = interactionType;
-    }
-    if (nodeValue != null) {
-      _json['nodeValue'] = nodeValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (interactionType != null) 'interactionType': interactionType,
+        if (nodeValue != null) 'nodeValue': nodeValue,
+      };
 }
 
 /// A union object representing a dimension or metric value.
@@ -10996,17 +10081,12 @@ class McfDataRows {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (conversionPathValue != null) {
-      _json['conversionPathValue'] =
-          conversionPathValue.map((value) => value.toJson()).toList();
-    }
-    if (primitiveValue != null) {
-      _json['primitiveValue'] = primitiveValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (conversionPathValue != null)
+          'conversionPathValue':
+              conversionPathValue.map((value) => value.toJson()).toList(),
+        if (primitiveValue != null) 'primitiveValue': primitiveValue,
+      };
 }
 
 /// Multi-Channel Funnels data for a given view (profile).
@@ -11138,58 +10218,30 @@ class McfData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columnHeaders != null) {
-      _json['columnHeaders'] =
-          columnHeaders.map((value) => value.toJson()).toList();
-    }
-    if (containsSampledData != null) {
-      _json['containsSampledData'] = containsSampledData;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (itemsPerPage != null) {
-      _json['itemsPerPage'] = itemsPerPage;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextLink != null) {
-      _json['nextLink'] = nextLink;
-    }
-    if (previousLink != null) {
-      _json['previousLink'] = previousLink;
-    }
-    if (profileInfo != null) {
-      _json['profileInfo'] = profileInfo.toJson();
-    }
-    if (query != null) {
-      _json['query'] = query.toJson();
-    }
-    if (rows != null) {
-      _json['rows'] = rows
-          .map((value) => value.map((value) => value.toJson()).toList())
-          .toList();
-    }
-    if (sampleSize != null) {
-      _json['sampleSize'] = sampleSize;
-    }
-    if (sampleSpace != null) {
-      _json['sampleSpace'] = sampleSpace;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    if (totalsForAllResults != null) {
-      _json['totalsForAllResults'] = totalsForAllResults;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columnHeaders != null)
+          'columnHeaders':
+              columnHeaders.map((value) => value.toJson()).toList(),
+        if (containsSampledData != null)
+          'containsSampledData': containsSampledData,
+        if (id != null) 'id': id,
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
+        if (kind != null) 'kind': kind,
+        if (nextLink != null) 'nextLink': nextLink,
+        if (previousLink != null) 'previousLink': previousLink,
+        if (profileInfo != null) 'profileInfo': profileInfo.toJson(),
+        if (query != null) 'query': query.toJson(),
+        if (rows != null)
+          'rows': rows
+              .map((value) => value.map((value) => value.toJson()).toList())
+              .toList(),
+        if (sampleSize != null) 'sampleSize': sampleSize,
+        if (sampleSpace != null) 'sampleSpace': sampleSpace,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (totalResults != null) 'totalResults': totalResults,
+        if (totalsForAllResults != null)
+          'totalsForAllResults': totalsForAllResults,
+      };
 }
 
 /// Child link for this view (profile).
@@ -11213,16 +10265,10 @@ class ProfileChildLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (href != null) {
-      _json['href'] = href;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (href != null) 'href': href,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Parent link for this view (profile).
@@ -11246,16 +10292,10 @@ class ProfileParentLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (href != null) {
-      _json['href'] = href;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (href != null) 'href': href,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Permissions the user has for this view (profile).
@@ -11276,13 +10316,9 @@ class ProfilePermissions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (effective != null) {
-      _json['effective'] = effective;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (effective != null) 'effective': effective,
+      };
 }
 
 /// JSON template for an Analytics view (profile).
@@ -11476,89 +10512,43 @@ class Profile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (botFilteringEnabled != null) {
-      _json['botFilteringEnabled'] = botFilteringEnabled;
-    }
-    if (childLink != null) {
-      _json['childLink'] = childLink.toJson();
-    }
-    if (created != null) {
-      _json['created'] = (created).toIso8601String();
-    }
-    if (currency != null) {
-      _json['currency'] = currency;
-    }
-    if (defaultPage != null) {
-      _json['defaultPage'] = defaultPage;
-    }
-    if (eCommerceTracking != null) {
-      _json['eCommerceTracking'] = eCommerceTracking;
-    }
-    if (enhancedECommerceTracking != null) {
-      _json['enhancedECommerceTracking'] = enhancedECommerceTracking;
-    }
-    if (excludeQueryParameters != null) {
-      _json['excludeQueryParameters'] = excludeQueryParameters;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (internalWebPropertyId != null) {
-      _json['internalWebPropertyId'] = internalWebPropertyId;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parentLink != null) {
-      _json['parentLink'] = parentLink.toJson();
-    }
-    if (permissions != null) {
-      _json['permissions'] = permissions.toJson();
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (siteSearchCategoryParameters != null) {
-      _json['siteSearchCategoryParameters'] = siteSearchCategoryParameters;
-    }
-    if (siteSearchQueryParameters != null) {
-      _json['siteSearchQueryParameters'] = siteSearchQueryParameters;
-    }
-    if (starred != null) {
-      _json['starred'] = starred;
-    }
-    if (stripSiteSearchCategoryParameters != null) {
-      _json['stripSiteSearchCategoryParameters'] =
-          stripSiteSearchCategoryParameters;
-    }
-    if (stripSiteSearchQueryParameters != null) {
-      _json['stripSiteSearchQueryParameters'] = stripSiteSearchQueryParameters;
-    }
-    if (timezone != null) {
-      _json['timezone'] = timezone;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (updated != null) {
-      _json['updated'] = (updated).toIso8601String();
-    }
-    if (webPropertyId != null) {
-      _json['webPropertyId'] = webPropertyId;
-    }
-    if (websiteUrl != null) {
-      _json['websiteUrl'] = websiteUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (botFilteringEnabled != null)
+          'botFilteringEnabled': botFilteringEnabled,
+        if (childLink != null) 'childLink': childLink.toJson(),
+        if (created != null) 'created': (created).toIso8601String(),
+        if (currency != null) 'currency': currency,
+        if (defaultPage != null) 'defaultPage': defaultPage,
+        if (eCommerceTracking != null) 'eCommerceTracking': eCommerceTracking,
+        if (enhancedECommerceTracking != null)
+          'enhancedECommerceTracking': enhancedECommerceTracking,
+        if (excludeQueryParameters != null)
+          'excludeQueryParameters': excludeQueryParameters,
+        if (id != null) 'id': id,
+        if (internalWebPropertyId != null)
+          'internalWebPropertyId': internalWebPropertyId,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+        if (parentLink != null) 'parentLink': parentLink.toJson(),
+        if (permissions != null) 'permissions': permissions.toJson(),
+        if (selfLink != null) 'selfLink': selfLink,
+        if (siteSearchCategoryParameters != null)
+          'siteSearchCategoryParameters': siteSearchCategoryParameters,
+        if (siteSearchQueryParameters != null)
+          'siteSearchQueryParameters': siteSearchQueryParameters,
+        if (starred != null) 'starred': starred,
+        if (stripSiteSearchCategoryParameters != null)
+          'stripSiteSearchCategoryParameters':
+              stripSiteSearchCategoryParameters,
+        if (stripSiteSearchQueryParameters != null)
+          'stripSiteSearchQueryParameters': stripSiteSearchQueryParameters,
+        if (timezone != null) 'timezone': timezone,
+        if (type != null) 'type': type,
+        if (updated != null) 'updated': (updated).toIso8601String(),
+        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+        if (websiteUrl != null) 'websiteUrl': websiteUrl,
+      };
 }
 
 /// JSON template for an Analytics profile filter link.
@@ -11618,28 +10608,14 @@ class ProfileFilterLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filterRef != null) {
-      _json['filterRef'] = filterRef.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (profileRef != null) {
-      _json['profileRef'] = profileRef.toJson();
-    }
-    if (rank != null) {
-      _json['rank'] = rank;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filterRef != null) 'filterRef': filterRef.toJson(),
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (profileRef != null) 'profileRef': profileRef.toJson(),
+        if (rank != null) 'rank': rank,
+        if (selfLink != null) 'selfLink': selfLink,
+      };
 }
 
 /// A profile filter link collection lists profile filter links between profiles
@@ -11709,34 +10685,17 @@ class ProfileFilterLinks {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (itemsPerPage != null) {
-      _json['itemsPerPage'] = itemsPerPage;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextLink != null) {
-      _json['nextLink'] = nextLink;
-    }
-    if (previousLink != null) {
-      _json['previousLink'] = previousLink;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    if (username != null) {
-      _json['username'] = username;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
+        if (kind != null) 'kind': kind,
+        if (nextLink != null) 'nextLink': nextLink,
+        if (previousLink != null) 'previousLink': previousLink,
+        if (startIndex != null) 'startIndex': startIndex,
+        if (totalResults != null) 'totalResults': totalResults,
+        if (username != null) 'username': username,
+      };
 }
 
 /// JSON template for a linked view (profile).
@@ -11789,31 +10748,16 @@ class ProfileRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (href != null) {
-      _json['href'] = href;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (internalWebPropertyId != null) {
-      _json['internalWebPropertyId'] = internalWebPropertyId;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (webPropertyId != null) {
-      _json['webPropertyId'] = webPropertyId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (href != null) 'href': href,
+        if (id != null) 'id': id,
+        if (internalWebPropertyId != null)
+          'internalWebPropertyId': internalWebPropertyId,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+      };
 }
 
 /// JSON template for an Analytics ProfileSummary.
@@ -11857,25 +10801,13 @@ class ProfileSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (starred != null) {
-      _json['starred'] = starred;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+        if (starred != null) 'starred': starred,
+        if (type != null) 'type': type,
+      };
 }
 
 /// A view (profile) collection lists Analytics views (profiles) to which the
@@ -11946,34 +10878,17 @@ class Profiles {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (itemsPerPage != null) {
-      _json['itemsPerPage'] = itemsPerPage;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextLink != null) {
-      _json['nextLink'] = nextLink;
-    }
-    if (previousLink != null) {
-      _json['previousLink'] = previousLink;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    if (username != null) {
-      _json['username'] = username;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
+        if (kind != null) 'kind': kind,
+        if (nextLink != null) 'nextLink': nextLink,
+        if (previousLink != null) 'previousLink': previousLink,
+        if (startIndex != null) 'startIndex': startIndex,
+        if (totalResults != null) 'totalResults': totalResults,
+        if (username != null) 'username': username,
+      };
 }
 
 class RealtimeDataColumnHeaders {
@@ -12006,19 +10921,11 @@ class RealtimeDataColumnHeaders {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columnType != null) {
-      _json['columnType'] = columnType;
-    }
-    if (dataType != null) {
-      _json['dataType'] = dataType;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columnType != null) 'columnType': columnType,
+        if (dataType != null) 'dataType': dataType,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Information for the view (profile), for which the real time data was
@@ -12065,28 +10972,15 @@ class RealtimeDataProfileInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (internalWebPropertyId != null) {
-      _json['internalWebPropertyId'] = internalWebPropertyId;
-    }
-    if (profileId != null) {
-      _json['profileId'] = profileId;
-    }
-    if (profileName != null) {
-      _json['profileName'] = profileName;
-    }
-    if (tableId != null) {
-      _json['tableId'] = tableId;
-    }
-    if (webPropertyId != null) {
-      _json['webPropertyId'] = webPropertyId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (internalWebPropertyId != null)
+          'internalWebPropertyId': internalWebPropertyId,
+        if (profileId != null) 'profileId': profileId,
+        if (profileName != null) 'profileName': profileName,
+        if (tableId != null) 'tableId': tableId,
+        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+      };
 }
 
 /// Real time data request query parameters.
@@ -12136,28 +11030,14 @@ class RealtimeDataQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensions != null) {
-      _json['dimensions'] = dimensions;
-    }
-    if (filters != null) {
-      _json['filters'] = filters;
-    }
-    if (ids != null) {
-      _json['ids'] = ids;
-    }
-    if (maxResults != null) {
-      _json['max-results'] = maxResults;
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics;
-    }
-    if (sort != null) {
-      _json['sort'] = sort;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensions != null) 'dimensions': dimensions,
+        if (filters != null) 'filters': filters,
+        if (ids != null) 'ids': ids,
+        if (maxResults != null) 'max-results': maxResults,
+        if (metrics != null) 'metrics': metrics,
+        if (sort != null) 'sort': sort,
+      };
 }
 
 /// Real time data for a given view (profile).
@@ -12249,38 +11129,20 @@ class RealtimeData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columnHeaders != null) {
-      _json['columnHeaders'] =
-          columnHeaders.map((value) => value.toJson()).toList();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (profileInfo != null) {
-      _json['profileInfo'] = profileInfo.toJson();
-    }
-    if (query != null) {
-      _json['query'] = query.toJson();
-    }
-    if (rows != null) {
-      _json['rows'] = rows;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    if (totalsForAllResults != null) {
-      _json['totalsForAllResults'] = totalsForAllResults;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columnHeaders != null)
+          'columnHeaders':
+              columnHeaders.map((value) => value.toJson()).toList(),
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (profileInfo != null) 'profileInfo': profileInfo.toJson(),
+        if (query != null) 'query': query.toJson(),
+        if (rows != null) 'rows': rows,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (totalResults != null) 'totalResults': totalResults,
+        if (totalsForAllResults != null)
+          'totalsForAllResults': totalsForAllResults,
+      };
 }
 
 /// The simple audience definition that will cause a user to be added to an
@@ -12298,13 +11160,10 @@ class RemarketingAudienceAudienceDefinition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (includeConditions != null) {
-      _json['includeConditions'] = includeConditions.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (includeConditions != null)
+          'includeConditions': includeConditions.toJson(),
+      };
 }
 
 /// Defines the conditions to exclude users from the audience.
@@ -12328,16 +11187,10 @@ class RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exclusionDuration != null) {
-      _json['exclusionDuration'] = exclusionDuration;
-    }
-    if (segment != null) {
-      _json['segment'] = segment;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exclusionDuration != null) 'exclusionDuration': exclusionDuration,
+        if (segment != null) 'segment': segment,
+      };
 }
 
 /// A state based audience definition that will cause a user to be added or
@@ -12365,16 +11218,12 @@ class RemarketingAudienceStateBasedAudienceDefinition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (excludeConditions != null) {
-      _json['excludeConditions'] = excludeConditions.toJson();
-    }
-    if (includeConditions != null) {
-      _json['includeConditions'] = includeConditions.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (excludeConditions != null)
+          'excludeConditions': excludeConditions.toJson(),
+        if (includeConditions != null)
+          'includeConditions': includeConditions.toJson(),
+      };
 }
 
 /// JSON template for an Analytics remarketing audience.
@@ -12483,54 +11332,27 @@ class RemarketingAudience {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (audienceDefinition != null) {
-      _json['audienceDefinition'] = audienceDefinition.toJson();
-    }
-    if (audienceType != null) {
-      _json['audienceType'] = audienceType;
-    }
-    if (created != null) {
-      _json['created'] = (created).toIso8601String();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (internalWebPropertyId != null) {
-      _json['internalWebPropertyId'] = internalWebPropertyId;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (linkedAdAccounts != null) {
-      _json['linkedAdAccounts'] =
-          linkedAdAccounts.map((value) => value.toJson()).toList();
-    }
-    if (linkedViews != null) {
-      _json['linkedViews'] = linkedViews;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (stateBasedAudienceDefinition != null) {
-      _json['stateBasedAudienceDefinition'] =
-          stateBasedAudienceDefinition.toJson();
-    }
-    if (updated != null) {
-      _json['updated'] = (updated).toIso8601String();
-    }
-    if (webPropertyId != null) {
-      _json['webPropertyId'] = webPropertyId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (audienceDefinition != null)
+          'audienceDefinition': audienceDefinition.toJson(),
+        if (audienceType != null) 'audienceType': audienceType,
+        if (created != null) 'created': (created).toIso8601String(),
+        if (description != null) 'description': description,
+        if (id != null) 'id': id,
+        if (internalWebPropertyId != null)
+          'internalWebPropertyId': internalWebPropertyId,
+        if (kind != null) 'kind': kind,
+        if (linkedAdAccounts != null)
+          'linkedAdAccounts':
+              linkedAdAccounts.map((value) => value.toJson()).toList(),
+        if (linkedViews != null) 'linkedViews': linkedViews,
+        if (name != null) 'name': name,
+        if (stateBasedAudienceDefinition != null)
+          'stateBasedAudienceDefinition': stateBasedAudienceDefinition.toJson(),
+        if (updated != null) 'updated': (updated).toIso8601String(),
+        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+      };
 }
 
 /// A remarketing audience collection lists Analytics remarketing audiences to
@@ -12601,34 +11423,17 @@ class RemarketingAudiences {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (itemsPerPage != null) {
-      _json['itemsPerPage'] = itemsPerPage;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextLink != null) {
-      _json['nextLink'] = nextLink;
-    }
-    if (previousLink != null) {
-      _json['previousLink'] = previousLink;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    if (username != null) {
-      _json['username'] = username;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
+        if (kind != null) 'kind': kind,
+        if (nextLink != null) 'nextLink': nextLink,
+        if (previousLink != null) 'previousLink': previousLink,
+        if (startIndex != null) 'startIndex': startIndex,
+        if (totalResults != null) 'totalResults': totalResults,
+        if (username != null) 'username': username,
+      };
 }
 
 /// JSON template for an Analytics segment.
@@ -12696,37 +11501,17 @@ class Segment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (created != null) {
-      _json['created'] = (created).toIso8601String();
-    }
-    if (definition != null) {
-      _json['definition'] = definition;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (segmentId != null) {
-      _json['segmentId'] = segmentId;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (updated != null) {
-      _json['updated'] = (updated).toIso8601String();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (created != null) 'created': (created).toIso8601String(),
+        if (definition != null) 'definition': definition,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+        if (segmentId != null) 'segmentId': segmentId,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (type != null) 'type': type,
+        if (updated != null) 'updated': (updated).toIso8601String(),
+      };
 }
 
 /// An segment collection lists Analytics segments that the user has access to.
@@ -12795,34 +11580,17 @@ class Segments {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (itemsPerPage != null) {
-      _json['itemsPerPage'] = itemsPerPage;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextLink != null) {
-      _json['nextLink'] = nextLink;
-    }
-    if (previousLink != null) {
-      _json['previousLink'] = previousLink;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    if (username != null) {
-      _json['username'] = username;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
+        if (kind != null) 'kind': kind,
+        if (nextLink != null) 'nextLink': nextLink,
+        if (previousLink != null) 'previousLink': previousLink,
+        if (startIndex != null) 'startIndex': startIndex,
+        if (totalResults != null) 'totalResults': totalResults,
+        if (username != null) 'username': username,
+      };
 }
 
 /// Download details for a file stored in Google Cloud Storage.
@@ -12844,16 +11612,10 @@ class UnsampledReportCloudStorageDownloadDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bucketId != null) {
-      _json['bucketId'] = bucketId;
-    }
-    if (objectId != null) {
-      _json['objectId'] = objectId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bucketId != null) 'bucketId': bucketId,
+        if (objectId != null) 'objectId': objectId,
+      };
 }
 
 /// Download details for a file stored in Google Drive.
@@ -12869,13 +11631,9 @@ class UnsampledReportDriveDownloadDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (documentId != null) {
-      _json['documentId'] = documentId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (documentId != null) 'documentId': documentId,
+      };
 }
 
 /// JSON template for Analytics unsampled report resource.
@@ -13012,68 +11770,29 @@ class UnsampledReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (cloudStorageDownloadDetails != null) {
-      _json['cloudStorageDownloadDetails'] =
-          cloudStorageDownloadDetails.toJson();
-    }
-    if (created != null) {
-      _json['created'] = (created).toIso8601String();
-    }
-    if (dimensions != null) {
-      _json['dimensions'] = dimensions;
-    }
-    if (downloadType != null) {
-      _json['downloadType'] = downloadType;
-    }
-    if (driveDownloadDetails != null) {
-      _json['driveDownloadDetails'] = driveDownloadDetails.toJson();
-    }
-    if (endDate != null) {
-      _json['end-date'] = endDate;
-    }
-    if (filters != null) {
-      _json['filters'] = filters;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics;
-    }
-    if (profileId != null) {
-      _json['profileId'] = profileId;
-    }
-    if (segment != null) {
-      _json['segment'] = segment;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (startDate != null) {
-      _json['start-date'] = startDate;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (updated != null) {
-      _json['updated'] = (updated).toIso8601String();
-    }
-    if (webPropertyId != null) {
-      _json['webPropertyId'] = webPropertyId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (cloudStorageDownloadDetails != null)
+          'cloudStorageDownloadDetails': cloudStorageDownloadDetails.toJson(),
+        if (created != null) 'created': (created).toIso8601String(),
+        if (dimensions != null) 'dimensions': dimensions,
+        if (downloadType != null) 'downloadType': downloadType,
+        if (driveDownloadDetails != null)
+          'driveDownloadDetails': driveDownloadDetails.toJson(),
+        if (endDate != null) 'end-date': endDate,
+        if (filters != null) 'filters': filters,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (metrics != null) 'metrics': metrics,
+        if (profileId != null) 'profileId': profileId,
+        if (segment != null) 'segment': segment,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (startDate != null) 'start-date': startDate,
+        if (status != null) 'status': status,
+        if (title != null) 'title': title,
+        if (updated != null) 'updated': (updated).toIso8601String(),
+        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+      };
 }
 
 /// An unsampled report collection lists Analytics unsampled reports to which
@@ -13145,34 +11864,17 @@ class UnsampledReports {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (itemsPerPage != null) {
-      _json['itemsPerPage'] = itemsPerPage;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextLink != null) {
-      _json['nextLink'] = nextLink;
-    }
-    if (previousLink != null) {
-      _json['previousLink'] = previousLink;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    if (username != null) {
-      _json['username'] = username;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
+        if (kind != null) 'kind': kind,
+        if (nextLink != null) 'nextLink': nextLink,
+        if (previousLink != null) 'previousLink': previousLink,
+        if (startIndex != null) 'startIndex': startIndex,
+        if (totalResults != null) 'totalResults': totalResults,
+        if (username != null) 'username': username,
+      };
 }
 
 /// Metadata returned for an upload operation.
@@ -13228,31 +11930,16 @@ class Upload {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (customDataSourceId != null) {
-      _json['customDataSourceId'] = customDataSourceId;
-    }
-    if (errors != null) {
-      _json['errors'] = errors;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (uploadTime != null) {
-      _json['uploadTime'] = (uploadTime).toIso8601String();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (customDataSourceId != null)
+          'customDataSourceId': customDataSourceId,
+        if (errors != null) 'errors': errors,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (status != null) 'status': status,
+        if (uploadTime != null) 'uploadTime': (uploadTime).toIso8601String(),
+      };
 }
 
 /// Upload collection lists Analytics uploads to which the user has access.
@@ -13316,31 +12003,16 @@ class Uploads {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (itemsPerPage != null) {
-      _json['itemsPerPage'] = itemsPerPage;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextLink != null) {
-      _json['nextLink'] = nextLink;
-    }
-    if (previousLink != null) {
-      _json['previousLink'] = previousLink;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
+        if (kind != null) 'kind': kind,
+        if (nextLink != null) 'nextLink': nextLink,
+        if (previousLink != null) 'previousLink': previousLink,
+        if (startIndex != null) 'startIndex': startIndex,
+        if (totalResults != null) 'totalResults': totalResults,
+      };
 }
 
 /// User ID.
@@ -13362,16 +12034,10 @@ class UserDeletionRequestId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (userId != null) {
-      _json['userId'] = userId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+        if (userId != null) 'userId': userId,
+      };
 }
 
 /// JSON template for a user deletion request resource.
@@ -13420,28 +12086,15 @@ class UserDeletionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deletionRequestTime != null) {
-      _json['deletionRequestTime'] = (deletionRequestTime).toIso8601String();
-    }
-    if (firebaseProjectId != null) {
-      _json['firebaseProjectId'] = firebaseProjectId;
-    }
-    if (id != null) {
-      _json['id'] = id.toJson();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (propertyId != null) {
-      _json['propertyId'] = propertyId;
-    }
-    if (webPropertyId != null) {
-      _json['webPropertyId'] = webPropertyId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deletionRequestTime != null)
+          'deletionRequestTime': (deletionRequestTime).toIso8601String(),
+        if (firebaseProjectId != null) 'firebaseProjectId': firebaseProjectId,
+        if (id != null) 'id': id.toJson(),
+        if (kind != null) 'kind': kind,
+        if (propertyId != null) 'propertyId': propertyId,
+        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+      };
 }
 
 /// JSON template for a user reference.
@@ -13467,19 +12120,11 @@ class UserRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (email != null) 'email': email,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// JSON template for a web property reference.
@@ -13525,28 +12170,15 @@ class WebPropertyRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (href != null) {
-      _json['href'] = href;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (internalWebPropertyId != null) {
-      _json['internalWebPropertyId'] = internalWebPropertyId;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (href != null) 'href': href,
+        if (id != null) 'id': id,
+        if (internalWebPropertyId != null)
+          'internalWebPropertyId': internalWebPropertyId,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+      };
 }
 
 /// JSON template for an Analytics WebPropertySummary.
@@ -13612,34 +12244,18 @@ class WebPropertySummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (internalWebPropertyId != null) {
-      _json['internalWebPropertyId'] = internalWebPropertyId;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (level != null) {
-      _json['level'] = level;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (profiles != null) {
-      _json['profiles'] = profiles.map((value) => value.toJson()).toList();
-    }
-    if (starred != null) {
-      _json['starred'] = starred;
-    }
-    if (websiteUrl != null) {
-      _json['websiteUrl'] = websiteUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (internalWebPropertyId != null)
+          'internalWebPropertyId': internalWebPropertyId,
+        if (kind != null) 'kind': kind,
+        if (level != null) 'level': level,
+        if (name != null) 'name': name,
+        if (profiles != null)
+          'profiles': profiles.map((value) => value.toJson()).toList(),
+        if (starred != null) 'starred': starred,
+        if (websiteUrl != null) 'websiteUrl': websiteUrl,
+      };
 }
 
 /// A web property collection lists Analytics web properties to which the user
@@ -13710,34 +12326,17 @@ class Webproperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (itemsPerPage != null) {
-      _json['itemsPerPage'] = itemsPerPage;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextLink != null) {
-      _json['nextLink'] = nextLink;
-    }
-    if (previousLink != null) {
-      _json['previousLink'] = previousLink;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    if (username != null) {
-      _json['username'] = username;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
+        if (kind != null) 'kind': kind,
+        if (nextLink != null) 'nextLink': nextLink,
+        if (previousLink != null) 'previousLink': previousLink,
+        if (startIndex != null) 'startIndex': startIndex,
+        if (totalResults != null) 'totalResults': totalResults,
+        if (username != null) 'username': username,
+      };
 }
 
 /// Child link for this web property.
@@ -13763,16 +12362,10 @@ class WebpropertyChildLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (href != null) {
-      _json['href'] = href;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (href != null) 'href': href,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Parent link for this web property.
@@ -13798,16 +12391,10 @@ class WebpropertyParentLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (href != null) {
-      _json['href'] = href;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (href != null) 'href': href,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Permissions the user has for this web property.
@@ -13828,13 +12415,9 @@ class WebpropertyPermissions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (effective != null) {
-      _json['effective'] = effective;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (effective != null) 'effective': effective,
+      };
 }
 
 /// JSON template for an Analytics web property.
@@ -13974,66 +12557,27 @@ class Webproperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (childLink != null) {
-      _json['childLink'] = childLink.toJson();
-    }
-    if (created != null) {
-      _json['created'] = (created).toIso8601String();
-    }
-    if (dataRetentionResetOnNewActivity != null) {
-      _json['dataRetentionResetOnNewActivity'] =
-          dataRetentionResetOnNewActivity;
-    }
-    if (dataRetentionTtl != null) {
-      _json['dataRetentionTtl'] = dataRetentionTtl;
-    }
-    if (defaultProfileId != null) {
-      _json['defaultProfileId'] = defaultProfileId;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (industryVertical != null) {
-      _json['industryVertical'] = industryVertical;
-    }
-    if (internalWebPropertyId != null) {
-      _json['internalWebPropertyId'] = internalWebPropertyId;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (level != null) {
-      _json['level'] = level;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parentLink != null) {
-      _json['parentLink'] = parentLink.toJson();
-    }
-    if (permissions != null) {
-      _json['permissions'] = permissions.toJson();
-    }
-    if (profileCount != null) {
-      _json['profileCount'] = profileCount;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (starred != null) {
-      _json['starred'] = starred;
-    }
-    if (updated != null) {
-      _json['updated'] = (updated).toIso8601String();
-    }
-    if (websiteUrl != null) {
-      _json['websiteUrl'] = websiteUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (childLink != null) 'childLink': childLink.toJson(),
+        if (created != null) 'created': (created).toIso8601String(),
+        if (dataRetentionResetOnNewActivity != null)
+          'dataRetentionResetOnNewActivity': dataRetentionResetOnNewActivity,
+        if (dataRetentionTtl != null) 'dataRetentionTtl': dataRetentionTtl,
+        if (defaultProfileId != null) 'defaultProfileId': defaultProfileId,
+        if (id != null) 'id': id,
+        if (industryVertical != null) 'industryVertical': industryVertical,
+        if (internalWebPropertyId != null)
+          'internalWebPropertyId': internalWebPropertyId,
+        if (kind != null) 'kind': kind,
+        if (level != null) 'level': level,
+        if (name != null) 'name': name,
+        if (parentLink != null) 'parentLink': parentLink.toJson(),
+        if (permissions != null) 'permissions': permissions.toJson(),
+        if (profileCount != null) 'profileCount': profileCount,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (starred != null) 'starred': starred,
+        if (updated != null) 'updated': (updated).toIso8601String(),
+        if (websiteUrl != null) 'websiteUrl': websiteUrl,
+      };
 }

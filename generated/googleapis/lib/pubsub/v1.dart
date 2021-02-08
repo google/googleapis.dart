@@ -1897,13 +1897,9 @@ class AcknowledgeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ackIds != null) {
-      _json['ackIds'] = ackIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ackIds != null) 'ackIds': ackIds,
+      };
 }
 
 /// Associates `members` with a `role`.
@@ -1972,19 +1968,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// Request for the `CreateSnapshot` method.
@@ -2022,16 +2010,10 @@ class CreateSnapshotRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (subscription != null) {
-      _json['subscription'] = subscription;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (labels != null) 'labels': labels,
+        if (subscription != null) 'subscription': subscription,
+      };
 }
 
 /// Dead lettering is done on a best effort basis.
@@ -2072,16 +2054,11 @@ class DeadLetterPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deadLetterTopic != null) {
-      _json['deadLetterTopic'] = deadLetterTopic;
-    }
-    if (maxDeliveryAttempts != null) {
-      _json['maxDeliveryAttempts'] = maxDeliveryAttempts;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deadLetterTopic != null) 'deadLetterTopic': deadLetterTopic,
+        if (maxDeliveryAttempts != null)
+          'maxDeliveryAttempts': maxDeliveryAttempts,
+      };
 }
 
 /// Response for the DetachSubscription method.
@@ -2094,10 +2071,7 @@ class DetachSubscriptionResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2114,10 +2088,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A policy that specifies the conditions for resource expiration (i.e.,
@@ -2140,13 +2111,9 @@ class ExpirationPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ttl != null) {
-      _json['ttl'] = ttl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ttl != null) 'ttl': ttl,
+      };
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -2210,22 +2177,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Response for the `ListSnapshots` method.
@@ -2251,16 +2208,11 @@ class ListSnapshotsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (snapshots != null) {
-      _json['snapshots'] = snapshots.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (snapshots != null)
+          'snapshots': snapshots.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response for the `ListSubscriptions` method.
@@ -2287,17 +2239,12 @@ class ListSubscriptionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (subscriptions != null) {
-      _json['subscriptions'] =
-          subscriptions.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (subscriptions != null)
+          'subscriptions':
+              subscriptions.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response for the `ListTopicSnapshots` method.
@@ -2323,16 +2270,10 @@ class ListTopicSnapshotsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (snapshots != null) {
-      _json['snapshots'] = snapshots;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (snapshots != null) 'snapshots': snapshots,
+      };
 }
 
 /// Response for the `ListTopicSubscriptions` method.
@@ -2358,16 +2299,10 @@ class ListTopicSubscriptionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (subscriptions != null) {
-      _json['subscriptions'] = subscriptions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (subscriptions != null) 'subscriptions': subscriptions,
+      };
 }
 
 /// Response for the `ListTopics` method.
@@ -2393,16 +2328,11 @@ class ListTopicsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (topics != null) {
-      _json['topics'] = topics.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (topics != null)
+          'topics': topics.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A policy constraining the storage of messages published to the topic.
@@ -2427,13 +2357,10 @@ class MessageStoragePolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowedPersistenceRegions != null) {
-      _json['allowedPersistenceRegions'] = allowedPersistenceRegions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowedPersistenceRegions != null)
+          'allowedPersistenceRegions': allowedPersistenceRegions,
+      };
 }
 
 /// Request for the ModifyAckDeadline method.
@@ -2470,16 +2397,11 @@ class ModifyAckDeadlineRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ackDeadlineSeconds != null) {
-      _json['ackDeadlineSeconds'] = ackDeadlineSeconds;
-    }
-    if (ackIds != null) {
-      _json['ackIds'] = ackIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ackDeadlineSeconds != null)
+          'ackDeadlineSeconds': ackDeadlineSeconds,
+        if (ackIds != null) 'ackIds': ackIds,
+      };
 }
 
 /// Request for the ModifyPushConfig method.
@@ -2503,13 +2425,9 @@ class ModifyPushConfigRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pushConfig != null) {
-      _json['pushConfig'] = pushConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pushConfig != null) 'pushConfig': pushConfig.toJson(),
+      };
 }
 
 /// Contains information needed for generating an
@@ -2544,16 +2462,11 @@ class OidcToken {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audience != null) {
-      _json['audience'] = audience;
-    }
-    if (serviceAccountEmail != null) {
-      _json['serviceAccountEmail'] = serviceAccountEmail;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audience != null) 'audience': audience,
+        if (serviceAccountEmail != null)
+          'serviceAccountEmail': serviceAccountEmail,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -2651,19 +2564,12 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Request for the Publish method.
@@ -2684,13 +2590,10 @@ class PublishRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (messages != null) {
-      _json['messages'] = messages.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (messages != null)
+          'messages': messages.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response for the `Publish` method.
@@ -2711,13 +2614,9 @@ class PublishResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (messageIds != null) {
-      _json['messageIds'] = messageIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (messageIds != null) 'messageIds': messageIds,
+      };
 }
 
 /// A message that is published by publishers and consumed by subscribers.
@@ -2797,25 +2696,13 @@ class PubsubMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributes != null) {
-      _json['attributes'] = attributes;
-    }
-    if (data != null) {
-      _json['data'] = data;
-    }
-    if (messageId != null) {
-      _json['messageId'] = messageId;
-    }
-    if (orderingKey != null) {
-      _json['orderingKey'] = orderingKey;
-    }
-    if (publishTime != null) {
-      _json['publishTime'] = publishTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributes != null) 'attributes': attributes,
+        if (data != null) 'data': data,
+        if (messageId != null) 'messageId': messageId,
+        if (orderingKey != null) 'orderingKey': orderingKey,
+        if (publishTime != null) 'publishTime': publishTime,
+      };
 }
 
 /// Request for the `Pull` method.
@@ -2851,16 +2738,10 @@ class PullRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maxMessages != null) {
-      _json['maxMessages'] = maxMessages;
-    }
-    if (returnImmediately != null) {
-      _json['returnImmediately'] = returnImmediately;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maxMessages != null) 'maxMessages': maxMessages,
+        if (returnImmediately != null) 'returnImmediately': returnImmediately,
+      };
 }
 
 /// Response for the `Pull` method.
@@ -2884,14 +2765,11 @@ class PullResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (receivedMessages != null) {
-      _json['receivedMessages'] =
-          receivedMessages.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (receivedMessages != null)
+          'receivedMessages':
+              receivedMessages.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Configuration for a push delivery endpoint.
@@ -2945,19 +2823,11 @@ class PushConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributes != null) {
-      _json['attributes'] = attributes;
-    }
-    if (oidcToken != null) {
-      _json['oidcToken'] = oidcToken.toJson();
-    }
-    if (pushEndpoint != null) {
-      _json['pushEndpoint'] = pushEndpoint;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributes != null) 'attributes': attributes,
+        if (oidcToken != null) 'oidcToken': oidcToken.toJson(),
+        if (pushEndpoint != null) 'pushEndpoint': pushEndpoint,
+      };
 }
 
 /// A message and its corresponding acknowledgment ID.
@@ -2997,19 +2867,11 @@ class ReceivedMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ackId != null) {
-      _json['ackId'] = ackId;
-    }
-    if (deliveryAttempt != null) {
-      _json['deliveryAttempt'] = deliveryAttempt;
-    }
-    if (message != null) {
-      _json['message'] = message.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ackId != null) 'ackId': ackId,
+        if (deliveryAttempt != null) 'deliveryAttempt': deliveryAttempt,
+        if (message != null) 'message': message.toJson(),
+      };
 }
 
 /// A policy that specifies how Cloud Pub/Sub retries message delivery.
@@ -3042,16 +2904,10 @@ class RetryPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maximumBackoff != null) {
-      _json['maximumBackoff'] = maximumBackoff;
-    }
-    if (minimumBackoff != null) {
-      _json['minimumBackoff'] = minimumBackoff;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maximumBackoff != null) 'maximumBackoff': maximumBackoff,
+        if (minimumBackoff != null) 'minimumBackoff': minimumBackoff,
+      };
 }
 
 /// Request for the `Seek` method.
@@ -3087,16 +2943,10 @@ class SeekRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (snapshot != null) {
-      _json['snapshot'] = snapshot;
-    }
-    if (time != null) {
-      _json['time'] = time;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (snapshot != null) 'snapshot': snapshot,
+        if (time != null) 'time': time,
+      };
 }
 
 /// Response for the `Seek` method (this response is empty).
@@ -3107,10 +2957,7 @@ class SeekResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -3131,13 +2978,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+      };
 }
 
 /// A snapshot resource.
@@ -3194,22 +3037,12 @@ class Snapshot {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (expireTime != null) {
-      _json['expireTime'] = expireTime;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (topic != null) {
-      _json['topic'] = topic;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (expireTime != null) 'expireTime': expireTime,
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+        if (topic != null) 'topic': topic,
+      };
 }
 
 /// A subscription resource.
@@ -3386,49 +3219,27 @@ class Subscription {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ackDeadlineSeconds != null) {
-      _json['ackDeadlineSeconds'] = ackDeadlineSeconds;
-    }
-    if (deadLetterPolicy != null) {
-      _json['deadLetterPolicy'] = deadLetterPolicy.toJson();
-    }
-    if (detached != null) {
-      _json['detached'] = detached;
-    }
-    if (enableMessageOrdering != null) {
-      _json['enableMessageOrdering'] = enableMessageOrdering;
-    }
-    if (expirationPolicy != null) {
-      _json['expirationPolicy'] = expirationPolicy.toJson();
-    }
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (messageRetentionDuration != null) {
-      _json['messageRetentionDuration'] = messageRetentionDuration;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (pushConfig != null) {
-      _json['pushConfig'] = pushConfig.toJson();
-    }
-    if (retainAckedMessages != null) {
-      _json['retainAckedMessages'] = retainAckedMessages;
-    }
-    if (retryPolicy != null) {
-      _json['retryPolicy'] = retryPolicy.toJson();
-    }
-    if (topic != null) {
-      _json['topic'] = topic;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ackDeadlineSeconds != null)
+          'ackDeadlineSeconds': ackDeadlineSeconds,
+        if (deadLetterPolicy != null)
+          'deadLetterPolicy': deadLetterPolicy.toJson(),
+        if (detached != null) 'detached': detached,
+        if (enableMessageOrdering != null)
+          'enableMessageOrdering': enableMessageOrdering,
+        if (expirationPolicy != null)
+          'expirationPolicy': expirationPolicy.toJson(),
+        if (filter != null) 'filter': filter,
+        if (labels != null) 'labels': labels,
+        if (messageRetentionDuration != null)
+          'messageRetentionDuration': messageRetentionDuration,
+        if (name != null) 'name': name,
+        if (pushConfig != null) 'pushConfig': pushConfig.toJson(),
+        if (retainAckedMessages != null)
+          'retainAckedMessages': retainAckedMessages,
+        if (retryPolicy != null) 'retryPolicy': retryPolicy.toJson(),
+        if (topic != null) 'topic': topic,
+      };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -3450,13 +3261,9 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -3475,13 +3282,9 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// A topic resource.
@@ -3547,25 +3350,14 @@ class Topic {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kmsKeyName != null) {
-      _json['kmsKeyName'] = kmsKeyName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (messageStoragePolicy != null) {
-      _json['messageStoragePolicy'] = messageStoragePolicy.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (satisfiesPzs != null) {
-      _json['satisfiesPzs'] = satisfiesPzs;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
+        if (labels != null) 'labels': labels,
+        if (messageStoragePolicy != null)
+          'messageStoragePolicy': messageStoragePolicy.toJson(),
+        if (name != null) 'name': name,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs,
+      };
 }
 
 /// Request for the UpdateSnapshot method.
@@ -3594,16 +3386,10 @@ class UpdateSnapshotRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (snapshot != null) {
-      _json['snapshot'] = snapshot.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (snapshot != null) 'snapshot': snapshot.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// Request for the UpdateSubscription method.
@@ -3632,16 +3418,10 @@ class UpdateSubscriptionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (subscription != null) {
-      _json['subscription'] = subscription.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (subscription != null) 'subscription': subscription.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// Request for the UpdateTopic method.
@@ -3673,14 +3453,8 @@ class UpdateTopicRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (topic != null) {
-      _json['topic'] = topic.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (topic != null) 'topic': topic.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }

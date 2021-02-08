@@ -302,26 +302,17 @@ class AutoText {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (suggestedDeletionIds != null) {
-      _json['suggestedDeletionIds'] = suggestedDeletionIds;
-    }
-    if (suggestedInsertionIds != null) {
-      _json['suggestedInsertionIds'] = suggestedInsertionIds;
-    }
-    if (suggestedTextStyleChanges != null) {
-      _json['suggestedTextStyleChanges'] = suggestedTextStyleChanges
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (textStyle != null) {
-      _json['textStyle'] = textStyle.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (suggestedDeletionIds != null)
+          'suggestedDeletionIds': suggestedDeletionIds,
+        if (suggestedInsertionIds != null)
+          'suggestedInsertionIds': suggestedInsertionIds,
+        if (suggestedTextStyleChanges != null)
+          'suggestedTextStyleChanges': suggestedTextStyleChanges
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (textStyle != null) 'textStyle': textStyle.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// Represents the background of a document.
@@ -338,13 +329,9 @@ class Background {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (color != null) {
-      _json['color'] = color.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (color != null) 'color': color.toJson(),
+      };
 }
 
 /// A mask that indicates which of the fields on the base Background have been
@@ -364,13 +351,10 @@ class BackgroundSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backgroundColorSuggested != null) {
-      _json['backgroundColorSuggested'] = backgroundColorSuggested;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backgroundColorSuggested != null)
+          'backgroundColorSuggested': backgroundColorSuggested,
+      };
 }
 
 /// Request message for BatchUpdateDocument.
@@ -396,16 +380,11 @@ class BatchUpdateDocumentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (requests != null) {
-      _json['requests'] = requests.map((value) => value.toJson()).toList();
-    }
-    if (writeControl != null) {
-      _json['writeControl'] = writeControl.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (requests != null)
+          'requests': requests.map((value) => value.toJson()).toList(),
+        if (writeControl != null) 'writeControl': writeControl.toJson(),
+      };
 }
 
 /// Response message from a BatchUpdateDocument request.
@@ -440,19 +419,12 @@ class BatchUpdateDocumentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (documentId != null) {
-      _json['documentId'] = documentId;
-    }
-    if (replies != null) {
-      _json['replies'] = replies.map((value) => value.toJson()).toList();
-    }
-    if (writeControl != null) {
-      _json['writeControl'] = writeControl.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (documentId != null) 'documentId': documentId,
+        if (replies != null)
+          'replies': replies.map((value) => value.toJson()).toList(),
+        if (writeControl != null) 'writeControl': writeControl.toJson(),
+      };
 }
 
 /// The document body.
@@ -476,13 +448,10 @@ class Body {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null)
+          'content': content.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Describes the bullet of a paragraph.
@@ -511,19 +480,11 @@ class Bullet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (listId != null) {
-      _json['listId'] = listId;
-    }
-    if (nestingLevel != null) {
-      _json['nestingLevel'] = nestingLevel;
-    }
-    if (textStyle != null) {
-      _json['textStyle'] = textStyle.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (listId != null) 'listId': listId,
+        if (nestingLevel != null) 'nestingLevel': nestingLevel,
+        if (textStyle != null) 'textStyle': textStyle.toJson(),
+      };
 }
 
 /// A mask that indicates which of the fields on the base Bullet have been
@@ -557,19 +518,13 @@ class BulletSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (listIdSuggested != null) {
-      _json['listIdSuggested'] = listIdSuggested;
-    }
-    if (nestingLevelSuggested != null) {
-      _json['nestingLevelSuggested'] = nestingLevelSuggested;
-    }
-    if (textStyleSuggestionState != null) {
-      _json['textStyleSuggestionState'] = textStyleSuggestionState.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (listIdSuggested != null) 'listIdSuggested': listIdSuggested,
+        if (nestingLevelSuggested != null)
+          'nestingLevelSuggested': nestingLevelSuggested,
+        if (textStyleSuggestionState != null)
+          'textStyleSuggestionState': textStyleSuggestionState.toJson(),
+      };
 }
 
 /// A solid color.
@@ -586,13 +541,9 @@ class Color {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (rgbColor != null) {
-      _json['rgbColor'] = rgbColor.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (rgbColor != null) 'rgbColor': rgbColor.toJson(),
+      };
 }
 
 /// A ParagraphElement representing a column break.
@@ -653,23 +604,16 @@ class ColumnBreak {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (suggestedDeletionIds != null) {
-      _json['suggestedDeletionIds'] = suggestedDeletionIds;
-    }
-    if (suggestedInsertionIds != null) {
-      _json['suggestedInsertionIds'] = suggestedInsertionIds;
-    }
-    if (suggestedTextStyleChanges != null) {
-      _json['suggestedTextStyleChanges'] = suggestedTextStyleChanges
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (textStyle != null) {
-      _json['textStyle'] = textStyle.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (suggestedDeletionIds != null)
+          'suggestedDeletionIds': suggestedDeletionIds,
+        if (suggestedInsertionIds != null)
+          'suggestedInsertionIds': suggestedInsertionIds,
+        if (suggestedTextStyleChanges != null)
+          'suggestedTextStyleChanges': suggestedTextStyleChanges
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (textStyle != null) 'textStyle': textStyle.toJson(),
+      };
 }
 
 /// Creates a Footer.
@@ -705,16 +649,11 @@ class CreateFooterRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sectionBreakLocation != null) {
-      _json['sectionBreakLocation'] = sectionBreakLocation.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sectionBreakLocation != null)
+          'sectionBreakLocation': sectionBreakLocation.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// The result of creating a footer.
@@ -730,13 +669,9 @@ class CreateFooterResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (footerId != null) {
-      _json['footerId'] = footerId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (footerId != null) 'footerId': footerId,
+      };
 }
 
 /// Creates a Footnote segment and inserts a new FootnoteReference to it at the
@@ -775,16 +710,11 @@ class CreateFootnoteRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endOfSegmentLocation != null) {
-      _json['endOfSegmentLocation'] = endOfSegmentLocation.toJson();
-    }
-    if (location != null) {
-      _json['location'] = location.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endOfSegmentLocation != null)
+          'endOfSegmentLocation': endOfSegmentLocation.toJson(),
+        if (location != null) 'location': location.toJson(),
+      };
 }
 
 /// The result of creating a footnote.
@@ -800,13 +730,9 @@ class CreateFootnoteResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (footnoteId != null) {
-      _json['footnoteId'] = footnoteId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (footnoteId != null) 'footnoteId': footnoteId,
+      };
 }
 
 /// Creates a Header.
@@ -842,16 +768,11 @@ class CreateHeaderRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sectionBreakLocation != null) {
-      _json['sectionBreakLocation'] = sectionBreakLocation.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sectionBreakLocation != null)
+          'sectionBreakLocation': sectionBreakLocation.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// The result of creating a header.
@@ -867,13 +788,9 @@ class CreateHeaderResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (headerId != null) {
-      _json['headerId'] = headerId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (headerId != null) 'headerId': headerId,
+      };
 }
 
 /// Creates a NamedRange referencing the given range.
@@ -899,16 +816,10 @@ class CreateNamedRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (range != null) 'range': range.toJson(),
+      };
 }
 
 /// The result of creating a named range.
@@ -924,13 +835,9 @@ class CreateNamedRangeResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (namedRangeId != null) {
-      _json['namedRangeId'] = namedRangeId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (namedRangeId != null) 'namedRangeId': namedRangeId,
+      };
 }
 
 /// Creates bullets for all of the paragraphs that overlap with the given range.
@@ -1002,16 +909,10 @@ class CreateParagraphBulletsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bulletPreset != null) {
-      _json['bulletPreset'] = bulletPreset;
-    }
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bulletPreset != null) 'bulletPreset': bulletPreset,
+        if (range != null) 'range': range.toJson(),
+      };
 }
 
 /// The crop properties of an image.
@@ -1070,25 +971,13 @@ class CropProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (angle != null) {
-      _json['angle'] = angle;
-    }
-    if (offsetBottom != null) {
-      _json['offsetBottom'] = offsetBottom;
-    }
-    if (offsetLeft != null) {
-      _json['offsetLeft'] = offsetLeft;
-    }
-    if (offsetRight != null) {
-      _json['offsetRight'] = offsetRight;
-    }
-    if (offsetTop != null) {
-      _json['offsetTop'] = offsetTop;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (angle != null) 'angle': angle,
+        if (offsetBottom != null) 'offsetBottom': offsetBottom,
+        if (offsetLeft != null) 'offsetLeft': offsetLeft,
+        if (offsetRight != null) 'offsetRight': offsetRight,
+        if (offsetTop != null) 'offsetTop': offsetTop,
+      };
 }
 
 /// A mask that indicates which of the fields on the base CropProperties have
@@ -1131,25 +1020,17 @@ class CropPropertiesSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (angleSuggested != null) {
-      _json['angleSuggested'] = angleSuggested;
-    }
-    if (offsetBottomSuggested != null) {
-      _json['offsetBottomSuggested'] = offsetBottomSuggested;
-    }
-    if (offsetLeftSuggested != null) {
-      _json['offsetLeftSuggested'] = offsetLeftSuggested;
-    }
-    if (offsetRightSuggested != null) {
-      _json['offsetRightSuggested'] = offsetRightSuggested;
-    }
-    if (offsetTopSuggested != null) {
-      _json['offsetTopSuggested'] = offsetTopSuggested;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (angleSuggested != null) 'angleSuggested': angleSuggested,
+        if (offsetBottomSuggested != null)
+          'offsetBottomSuggested': offsetBottomSuggested,
+        if (offsetLeftSuggested != null)
+          'offsetLeftSuggested': offsetLeftSuggested,
+        if (offsetRightSuggested != null)
+          'offsetRightSuggested': offsetRightSuggested,
+        if (offsetTopSuggested != null)
+          'offsetTopSuggested': offsetTopSuggested,
+      };
 }
 
 /// Deletes content from the document.
@@ -1179,13 +1060,9 @@ class DeleteContentRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (range != null) 'range': range.toJson(),
+      };
 }
 
 /// Deletes a Footer from the document.
@@ -1207,13 +1084,9 @@ class DeleteFooterRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (footerId != null) {
-      _json['footerId'] = footerId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (footerId != null) 'footerId': footerId,
+      };
 }
 
 /// Deletes a Header from the document.
@@ -1235,13 +1108,9 @@ class DeleteHeaderRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (headerId != null) {
-      _json['headerId'] = headerId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (headerId != null) 'headerId': headerId,
+      };
 }
 
 /// Deletes a NamedRange.
@@ -1265,16 +1134,10 @@ class DeleteNamedRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (namedRangeId != null) {
-      _json['namedRangeId'] = namedRangeId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (namedRangeId != null) 'namedRangeId': namedRangeId,
+      };
 }
 
 /// Deletes bullets from all of the paragraphs that overlap with the given
@@ -1295,13 +1158,9 @@ class DeleteParagraphBulletsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (range != null) 'range': range.toJson(),
+      };
 }
 
 /// Deletes a PositionedObject from the document.
@@ -1317,13 +1176,9 @@ class DeletePositionedObjectRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (objectId != null) {
-      _json['objectId'] = objectId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (objectId != null) 'objectId': objectId,
+      };
 }
 
 /// Deletes a column from a table.
@@ -1345,13 +1200,10 @@ class DeleteTableColumnRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (tableCellLocation != null) {
-      _json['tableCellLocation'] = tableCellLocation.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (tableCellLocation != null)
+          'tableCellLocation': tableCellLocation.toJson(),
+      };
 }
 
 /// Deletes a row from a table.
@@ -1372,13 +1224,10 @@ class DeleteTableRowRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (tableCellLocation != null) {
-      _json['tableCellLocation'] = tableCellLocation.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (tableCellLocation != null)
+          'tableCellLocation': tableCellLocation.toJson(),
+      };
 }
 
 /// A magnitude in a single direction in the specified units.
@@ -1403,16 +1252,10 @@ class Dimension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (magnitude != null) {
-      _json['magnitude'] = magnitude;
-    }
-    if (unit != null) {
-      _json['unit'] = unit;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (magnitude != null) 'magnitude': magnitude,
+        if (unit != null) 'unit': unit,
+      };
 }
 
 /// A Google Docs document.
@@ -1648,67 +1491,42 @@ class Document {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (body != null) {
-      _json['body'] = body.toJson();
-    }
-    if (documentId != null) {
-      _json['documentId'] = documentId;
-    }
-    if (documentStyle != null) {
-      _json['documentStyle'] = documentStyle.toJson();
-    }
-    if (footers != null) {
-      _json['footers'] =
-          footers.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (footnotes != null) {
-      _json['footnotes'] =
-          footnotes.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (headers != null) {
-      _json['headers'] =
-          headers.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (inlineObjects != null) {
-      _json['inlineObjects'] =
-          inlineObjects.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (lists != null) {
-      _json['lists'] =
-          lists.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (namedRanges != null) {
-      _json['namedRanges'] =
-          namedRanges.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (namedStyles != null) {
-      _json['namedStyles'] = namedStyles.toJson();
-    }
-    if (positionedObjects != null) {
-      _json['positionedObjects'] = positionedObjects
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (revisionId != null) {
-      _json['revisionId'] = revisionId;
-    }
-    if (suggestedDocumentStyleChanges != null) {
-      _json['suggestedDocumentStyleChanges'] = suggestedDocumentStyleChanges
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (suggestedNamedStylesChanges != null) {
-      _json['suggestedNamedStylesChanges'] = suggestedNamedStylesChanges
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (suggestionsViewMode != null) {
-      _json['suggestionsViewMode'] = suggestionsViewMode;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (body != null) 'body': body.toJson(),
+        if (documentId != null) 'documentId': documentId,
+        if (documentStyle != null) 'documentStyle': documentStyle.toJson(),
+        if (footers != null)
+          'footers':
+              footers.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (footnotes != null)
+          'footnotes':
+              footnotes.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (headers != null)
+          'headers':
+              headers.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (inlineObjects != null)
+          'inlineObjects': inlineObjects
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (lists != null)
+          'lists': lists.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (namedRanges != null)
+          'namedRanges':
+              namedRanges.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (namedStyles != null) 'namedStyles': namedStyles.toJson(),
+        if (positionedObjects != null)
+          'positionedObjects': positionedObjects
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (revisionId != null) 'revisionId': revisionId,
+        if (suggestedDocumentStyleChanges != null)
+          'suggestedDocumentStyleChanges': suggestedDocumentStyleChanges
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (suggestedNamedStylesChanges != null)
+          'suggestedNamedStylesChanges': suggestedNamedStylesChanges
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (suggestionsViewMode != null)
+          'suggestionsViewMode': suggestionsViewMode,
+        if (title != null) 'title': title,
+      };
 }
 
 /// The style of the document.
@@ -1881,64 +1699,29 @@ class DocumentStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (background != null) {
-      _json['background'] = background.toJson();
-    }
-    if (defaultFooterId != null) {
-      _json['defaultFooterId'] = defaultFooterId;
-    }
-    if (defaultHeaderId != null) {
-      _json['defaultHeaderId'] = defaultHeaderId;
-    }
-    if (evenPageFooterId != null) {
-      _json['evenPageFooterId'] = evenPageFooterId;
-    }
-    if (evenPageHeaderId != null) {
-      _json['evenPageHeaderId'] = evenPageHeaderId;
-    }
-    if (firstPageFooterId != null) {
-      _json['firstPageFooterId'] = firstPageFooterId;
-    }
-    if (firstPageHeaderId != null) {
-      _json['firstPageHeaderId'] = firstPageHeaderId;
-    }
-    if (marginBottom != null) {
-      _json['marginBottom'] = marginBottom.toJson();
-    }
-    if (marginFooter != null) {
-      _json['marginFooter'] = marginFooter.toJson();
-    }
-    if (marginHeader != null) {
-      _json['marginHeader'] = marginHeader.toJson();
-    }
-    if (marginLeft != null) {
-      _json['marginLeft'] = marginLeft.toJson();
-    }
-    if (marginRight != null) {
-      _json['marginRight'] = marginRight.toJson();
-    }
-    if (marginTop != null) {
-      _json['marginTop'] = marginTop.toJson();
-    }
-    if (pageNumberStart != null) {
-      _json['pageNumberStart'] = pageNumberStart;
-    }
-    if (pageSize != null) {
-      _json['pageSize'] = pageSize.toJson();
-    }
-    if (useCustomHeaderFooterMargins != null) {
-      _json['useCustomHeaderFooterMargins'] = useCustomHeaderFooterMargins;
-    }
-    if (useEvenPageHeaderFooter != null) {
-      _json['useEvenPageHeaderFooter'] = useEvenPageHeaderFooter;
-    }
-    if (useFirstPageHeaderFooter != null) {
-      _json['useFirstPageHeaderFooter'] = useFirstPageHeaderFooter;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (background != null) 'background': background.toJson(),
+        if (defaultFooterId != null) 'defaultFooterId': defaultFooterId,
+        if (defaultHeaderId != null) 'defaultHeaderId': defaultHeaderId,
+        if (evenPageFooterId != null) 'evenPageFooterId': evenPageFooterId,
+        if (evenPageHeaderId != null) 'evenPageHeaderId': evenPageHeaderId,
+        if (firstPageFooterId != null) 'firstPageFooterId': firstPageFooterId,
+        if (firstPageHeaderId != null) 'firstPageHeaderId': firstPageHeaderId,
+        if (marginBottom != null) 'marginBottom': marginBottom.toJson(),
+        if (marginFooter != null) 'marginFooter': marginFooter.toJson(),
+        if (marginHeader != null) 'marginHeader': marginHeader.toJson(),
+        if (marginLeft != null) 'marginLeft': marginLeft.toJson(),
+        if (marginRight != null) 'marginRight': marginRight.toJson(),
+        if (marginTop != null) 'marginTop': marginTop.toJson(),
+        if (pageNumberStart != null) 'pageNumberStart': pageNumberStart,
+        if (pageSize != null) 'pageSize': pageSize.toJson(),
+        if (useCustomHeaderFooterMargins != null)
+          'useCustomHeaderFooterMargins': useCustomHeaderFooterMargins,
+        if (useEvenPageHeaderFooter != null)
+          'useEvenPageHeaderFooter': useEvenPageHeaderFooter,
+        if (useFirstPageHeaderFooter != null)
+          'useFirstPageHeaderFooter': useFirstPageHeaderFooter,
+      };
 }
 
 /// A mask that indicates which of the fields on the base DocumentStyle have
@@ -2073,67 +1856,46 @@ class DocumentStyleSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backgroundSuggestionState != null) {
-      _json['backgroundSuggestionState'] = backgroundSuggestionState.toJson();
-    }
-    if (defaultFooterIdSuggested != null) {
-      _json['defaultFooterIdSuggested'] = defaultFooterIdSuggested;
-    }
-    if (defaultHeaderIdSuggested != null) {
-      _json['defaultHeaderIdSuggested'] = defaultHeaderIdSuggested;
-    }
-    if (evenPageFooterIdSuggested != null) {
-      _json['evenPageFooterIdSuggested'] = evenPageFooterIdSuggested;
-    }
-    if (evenPageHeaderIdSuggested != null) {
-      _json['evenPageHeaderIdSuggested'] = evenPageHeaderIdSuggested;
-    }
-    if (firstPageFooterIdSuggested != null) {
-      _json['firstPageFooterIdSuggested'] = firstPageFooterIdSuggested;
-    }
-    if (firstPageHeaderIdSuggested != null) {
-      _json['firstPageHeaderIdSuggested'] = firstPageHeaderIdSuggested;
-    }
-    if (marginBottomSuggested != null) {
-      _json['marginBottomSuggested'] = marginBottomSuggested;
-    }
-    if (marginFooterSuggested != null) {
-      _json['marginFooterSuggested'] = marginFooterSuggested;
-    }
-    if (marginHeaderSuggested != null) {
-      _json['marginHeaderSuggested'] = marginHeaderSuggested;
-    }
-    if (marginLeftSuggested != null) {
-      _json['marginLeftSuggested'] = marginLeftSuggested;
-    }
-    if (marginRightSuggested != null) {
-      _json['marginRightSuggested'] = marginRightSuggested;
-    }
-    if (marginTopSuggested != null) {
-      _json['marginTopSuggested'] = marginTopSuggested;
-    }
-    if (pageNumberStartSuggested != null) {
-      _json['pageNumberStartSuggested'] = pageNumberStartSuggested;
-    }
-    if (pageSizeSuggestionState != null) {
-      _json['pageSizeSuggestionState'] = pageSizeSuggestionState.toJson();
-    }
-    if (useCustomHeaderFooterMarginsSuggested != null) {
-      _json['useCustomHeaderFooterMarginsSuggested'] =
-          useCustomHeaderFooterMarginsSuggested;
-    }
-    if (useEvenPageHeaderFooterSuggested != null) {
-      _json['useEvenPageHeaderFooterSuggested'] =
-          useEvenPageHeaderFooterSuggested;
-    }
-    if (useFirstPageHeaderFooterSuggested != null) {
-      _json['useFirstPageHeaderFooterSuggested'] =
-          useFirstPageHeaderFooterSuggested;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backgroundSuggestionState != null)
+          'backgroundSuggestionState': backgroundSuggestionState.toJson(),
+        if (defaultFooterIdSuggested != null)
+          'defaultFooterIdSuggested': defaultFooterIdSuggested,
+        if (defaultHeaderIdSuggested != null)
+          'defaultHeaderIdSuggested': defaultHeaderIdSuggested,
+        if (evenPageFooterIdSuggested != null)
+          'evenPageFooterIdSuggested': evenPageFooterIdSuggested,
+        if (evenPageHeaderIdSuggested != null)
+          'evenPageHeaderIdSuggested': evenPageHeaderIdSuggested,
+        if (firstPageFooterIdSuggested != null)
+          'firstPageFooterIdSuggested': firstPageFooterIdSuggested,
+        if (firstPageHeaderIdSuggested != null)
+          'firstPageHeaderIdSuggested': firstPageHeaderIdSuggested,
+        if (marginBottomSuggested != null)
+          'marginBottomSuggested': marginBottomSuggested,
+        if (marginFooterSuggested != null)
+          'marginFooterSuggested': marginFooterSuggested,
+        if (marginHeaderSuggested != null)
+          'marginHeaderSuggested': marginHeaderSuggested,
+        if (marginLeftSuggested != null)
+          'marginLeftSuggested': marginLeftSuggested,
+        if (marginRightSuggested != null)
+          'marginRightSuggested': marginRightSuggested,
+        if (marginTopSuggested != null)
+          'marginTopSuggested': marginTopSuggested,
+        if (pageNumberStartSuggested != null)
+          'pageNumberStartSuggested': pageNumberStartSuggested,
+        if (pageSizeSuggestionState != null)
+          'pageSizeSuggestionState': pageSizeSuggestionState.toJson(),
+        if (useCustomHeaderFooterMarginsSuggested != null)
+          'useCustomHeaderFooterMarginsSuggested':
+              useCustomHeaderFooterMarginsSuggested,
+        if (useEvenPageHeaderFooterSuggested != null)
+          'useEvenPageHeaderFooterSuggested': useEvenPageHeaderFooterSuggested,
+        if (useFirstPageHeaderFooterSuggested != null)
+          'useFirstPageHeaderFooterSuggested':
+              useFirstPageHeaderFooterSuggested,
+      };
 }
 
 /// The properties of an embedded drawing.
@@ -2144,10 +1906,7 @@ class EmbeddedDrawingProperties {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A mask that indicates which of the fields on the base
@@ -2161,10 +1920,7 @@ class EmbeddedDrawingPropertiesSuggestionState {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// An embedded object in the document.
@@ -2259,43 +2015,23 @@ class EmbeddedObject {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (embeddedDrawingProperties != null) {
-      _json['embeddedDrawingProperties'] = embeddedDrawingProperties.toJson();
-    }
-    if (embeddedObjectBorder != null) {
-      _json['embeddedObjectBorder'] = embeddedObjectBorder.toJson();
-    }
-    if (imageProperties != null) {
-      _json['imageProperties'] = imageProperties.toJson();
-    }
-    if (linkedContentReference != null) {
-      _json['linkedContentReference'] = linkedContentReference.toJson();
-    }
-    if (marginBottom != null) {
-      _json['marginBottom'] = marginBottom.toJson();
-    }
-    if (marginLeft != null) {
-      _json['marginLeft'] = marginLeft.toJson();
-    }
-    if (marginRight != null) {
-      _json['marginRight'] = marginRight.toJson();
-    }
-    if (marginTop != null) {
-      _json['marginTop'] = marginTop.toJson();
-    }
-    if (size != null) {
-      _json['size'] = size.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (embeddedDrawingProperties != null)
+          'embeddedDrawingProperties': embeddedDrawingProperties.toJson(),
+        if (embeddedObjectBorder != null)
+          'embeddedObjectBorder': embeddedObjectBorder.toJson(),
+        if (imageProperties != null)
+          'imageProperties': imageProperties.toJson(),
+        if (linkedContentReference != null)
+          'linkedContentReference': linkedContentReference.toJson(),
+        if (marginBottom != null) 'marginBottom': marginBottom.toJson(),
+        if (marginLeft != null) 'marginLeft': marginLeft.toJson(),
+        if (marginRight != null) 'marginRight': marginRight.toJson(),
+        if (marginTop != null) 'marginTop': marginTop.toJson(),
+        if (size != null) 'size': size.toJson(),
+        if (title != null) 'title': title,
+      };
 }
 
 /// A border around an EmbeddedObject.
@@ -2345,22 +2081,12 @@ class EmbeddedObjectBorder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (color != null) {
-      _json['color'] = color.toJson();
-    }
-    if (dashStyle != null) {
-      _json['dashStyle'] = dashStyle;
-    }
-    if (propertyState != null) {
-      _json['propertyState'] = propertyState;
-    }
-    if (width != null) {
-      _json['width'] = width.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (color != null) 'color': color.toJson(),
+        if (dashStyle != null) 'dashStyle': dashStyle,
+        if (propertyState != null) 'propertyState': propertyState,
+        if (width != null) 'width': width.toJson(),
+      };
 }
 
 /// A mask that indicates which of the fields on the base EmbeddedObjectBorder
@@ -2397,22 +2123,14 @@ class EmbeddedObjectBorderSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (colorSuggested != null) {
-      _json['colorSuggested'] = colorSuggested;
-    }
-    if (dashStyleSuggested != null) {
-      _json['dashStyleSuggested'] = dashStyleSuggested;
-    }
-    if (propertyStateSuggested != null) {
-      _json['propertyStateSuggested'] = propertyStateSuggested;
-    }
-    if (widthSuggested != null) {
-      _json['widthSuggested'] = widthSuggested;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (colorSuggested != null) 'colorSuggested': colorSuggested,
+        if (dashStyleSuggested != null)
+          'dashStyleSuggested': dashStyleSuggested,
+        if (propertyStateSuggested != null)
+          'propertyStateSuggested': propertyStateSuggested,
+        if (widthSuggested != null) 'widthSuggested': widthSuggested,
+      };
 }
 
 /// A mask that indicates which of the fields on the base EmbeddedObject have
@@ -2509,47 +2227,33 @@ class EmbeddedObjectSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (descriptionSuggested != null) {
-      _json['descriptionSuggested'] = descriptionSuggested;
-    }
-    if (embeddedDrawingPropertiesSuggestionState != null) {
-      _json['embeddedDrawingPropertiesSuggestionState'] =
-          embeddedDrawingPropertiesSuggestionState.toJson();
-    }
-    if (embeddedObjectBorderSuggestionState != null) {
-      _json['embeddedObjectBorderSuggestionState'] =
-          embeddedObjectBorderSuggestionState.toJson();
-    }
-    if (imagePropertiesSuggestionState != null) {
-      _json['imagePropertiesSuggestionState'] =
-          imagePropertiesSuggestionState.toJson();
-    }
-    if (linkedContentReferenceSuggestionState != null) {
-      _json['linkedContentReferenceSuggestionState'] =
-          linkedContentReferenceSuggestionState.toJson();
-    }
-    if (marginBottomSuggested != null) {
-      _json['marginBottomSuggested'] = marginBottomSuggested;
-    }
-    if (marginLeftSuggested != null) {
-      _json['marginLeftSuggested'] = marginLeftSuggested;
-    }
-    if (marginRightSuggested != null) {
-      _json['marginRightSuggested'] = marginRightSuggested;
-    }
-    if (marginTopSuggested != null) {
-      _json['marginTopSuggested'] = marginTopSuggested;
-    }
-    if (sizeSuggestionState != null) {
-      _json['sizeSuggestionState'] = sizeSuggestionState.toJson();
-    }
-    if (titleSuggested != null) {
-      _json['titleSuggested'] = titleSuggested;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (descriptionSuggested != null)
+          'descriptionSuggested': descriptionSuggested,
+        if (embeddedDrawingPropertiesSuggestionState != null)
+          'embeddedDrawingPropertiesSuggestionState':
+              embeddedDrawingPropertiesSuggestionState.toJson(),
+        if (embeddedObjectBorderSuggestionState != null)
+          'embeddedObjectBorderSuggestionState':
+              embeddedObjectBorderSuggestionState.toJson(),
+        if (imagePropertiesSuggestionState != null)
+          'imagePropertiesSuggestionState':
+              imagePropertiesSuggestionState.toJson(),
+        if (linkedContentReferenceSuggestionState != null)
+          'linkedContentReferenceSuggestionState':
+              linkedContentReferenceSuggestionState.toJson(),
+        if (marginBottomSuggested != null)
+          'marginBottomSuggested': marginBottomSuggested,
+        if (marginLeftSuggested != null)
+          'marginLeftSuggested': marginLeftSuggested,
+        if (marginRightSuggested != null)
+          'marginRightSuggested': marginRightSuggested,
+        if (marginTopSuggested != null)
+          'marginTopSuggested': marginTopSuggested,
+        if (sizeSuggestionState != null)
+          'sizeSuggestionState': sizeSuggestionState.toJson(),
+        if (titleSuggested != null) 'titleSuggested': titleSuggested,
+      };
 }
 
 /// Location at the end of a body, header, footer or footnote.
@@ -2569,13 +2273,9 @@ class EndOfSegmentLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (segmentId != null) {
-      _json['segmentId'] = segmentId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (segmentId != null) 'segmentId': segmentId,
+      };
 }
 
 /// A ParagraphElement representing an equation.
@@ -2606,16 +2306,12 @@ class Equation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (suggestedDeletionIds != null) {
-      _json['suggestedDeletionIds'] = suggestedDeletionIds;
-    }
-    if (suggestedInsertionIds != null) {
-      _json['suggestedInsertionIds'] = suggestedInsertionIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (suggestedDeletionIds != null)
+          'suggestedDeletionIds': suggestedDeletionIds,
+        if (suggestedInsertionIds != null)
+          'suggestedInsertionIds': suggestedInsertionIds,
+      };
 }
 
 /// A document footer.
@@ -2642,16 +2338,11 @@ class Footer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content.map((value) => value.toJson()).toList();
-    }
-    if (footerId != null) {
-      _json['footerId'] = footerId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null)
+          'content': content.map((value) => value.toJson()).toList(),
+        if (footerId != null) 'footerId': footerId,
+      };
 }
 
 /// A document footnote.
@@ -2678,16 +2369,11 @@ class Footnote {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content.map((value) => value.toJson()).toList();
-    }
-    if (footnoteId != null) {
-      _json['footnoteId'] = footnoteId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null)
+          'content': content.map((value) => value.toJson()).toList(),
+        if (footnoteId != null) 'footnoteId': footnoteId,
+      };
 }
 
 /// A ParagraphElement representing a footnote reference.
@@ -2757,29 +2443,18 @@ class FootnoteReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (footnoteId != null) {
-      _json['footnoteId'] = footnoteId;
-    }
-    if (footnoteNumber != null) {
-      _json['footnoteNumber'] = footnoteNumber;
-    }
-    if (suggestedDeletionIds != null) {
-      _json['suggestedDeletionIds'] = suggestedDeletionIds;
-    }
-    if (suggestedInsertionIds != null) {
-      _json['suggestedInsertionIds'] = suggestedInsertionIds;
-    }
-    if (suggestedTextStyleChanges != null) {
-      _json['suggestedTextStyleChanges'] = suggestedTextStyleChanges
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (textStyle != null) {
-      _json['textStyle'] = textStyle.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (footnoteId != null) 'footnoteId': footnoteId,
+        if (footnoteNumber != null) 'footnoteNumber': footnoteNumber,
+        if (suggestedDeletionIds != null)
+          'suggestedDeletionIds': suggestedDeletionIds,
+        if (suggestedInsertionIds != null)
+          'suggestedInsertionIds': suggestedInsertionIds,
+        if (suggestedTextStyleChanges != null)
+          'suggestedTextStyleChanges': suggestedTextStyleChanges
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (textStyle != null) 'textStyle': textStyle.toJson(),
+      };
 }
 
 /// A document header.
@@ -2806,16 +2481,11 @@ class Header {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content.map((value) => value.toJson()).toList();
-    }
-    if (headerId != null) {
-      _json['headerId'] = headerId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null)
+          'content': content.map((value) => value.toJson()).toList(),
+        if (headerId != null) 'headerId': headerId,
+      };
 }
 
 /// A ParagraphElement representing a horizontal line.
@@ -2873,23 +2543,16 @@ class HorizontalRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (suggestedDeletionIds != null) {
-      _json['suggestedDeletionIds'] = suggestedDeletionIds;
-    }
-    if (suggestedInsertionIds != null) {
-      _json['suggestedInsertionIds'] = suggestedInsertionIds;
-    }
-    if (suggestedTextStyleChanges != null) {
-      _json['suggestedTextStyleChanges'] = suggestedTextStyleChanges
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (textStyle != null) {
-      _json['textStyle'] = textStyle.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (suggestedDeletionIds != null)
+          'suggestedDeletionIds': suggestedDeletionIds,
+        if (suggestedInsertionIds != null)
+          'suggestedInsertionIds': suggestedInsertionIds,
+        if (suggestedTextStyleChanges != null)
+          'suggestedTextStyleChanges': suggestedTextStyleChanges
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (textStyle != null) 'textStyle': textStyle.toJson(),
+      };
 }
 
 /// The properties of an image.
@@ -2957,31 +2620,15 @@ class ImageProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (angle != null) {
-      _json['angle'] = angle;
-    }
-    if (brightness != null) {
-      _json['brightness'] = brightness;
-    }
-    if (contentUri != null) {
-      _json['contentUri'] = contentUri;
-    }
-    if (contrast != null) {
-      _json['contrast'] = contrast;
-    }
-    if (cropProperties != null) {
-      _json['cropProperties'] = cropProperties.toJson();
-    }
-    if (sourceUri != null) {
-      _json['sourceUri'] = sourceUri;
-    }
-    if (transparency != null) {
-      _json['transparency'] = transparency;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (angle != null) 'angle': angle,
+        if (brightness != null) 'brightness': brightness,
+        if (contentUri != null) 'contentUri': contentUri,
+        if (contrast != null) 'contrast': contrast,
+        if (cropProperties != null) 'cropProperties': cropProperties.toJson(),
+        if (sourceUri != null) 'sourceUri': sourceUri,
+        if (transparency != null) 'transparency': transparency,
+      };
 }
 
 /// A mask that indicates which of the fields on the base ImageProperties have
@@ -3039,32 +2686,21 @@ class ImagePropertiesSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (angleSuggested != null) {
-      _json['angleSuggested'] = angleSuggested;
-    }
-    if (brightnessSuggested != null) {
-      _json['brightnessSuggested'] = brightnessSuggested;
-    }
-    if (contentUriSuggested != null) {
-      _json['contentUriSuggested'] = contentUriSuggested;
-    }
-    if (contrastSuggested != null) {
-      _json['contrastSuggested'] = contrastSuggested;
-    }
-    if (cropPropertiesSuggestionState != null) {
-      _json['cropPropertiesSuggestionState'] =
-          cropPropertiesSuggestionState.toJson();
-    }
-    if (sourceUriSuggested != null) {
-      _json['sourceUriSuggested'] = sourceUriSuggested;
-    }
-    if (transparencySuggested != null) {
-      _json['transparencySuggested'] = transparencySuggested;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (angleSuggested != null) 'angleSuggested': angleSuggested,
+        if (brightnessSuggested != null)
+          'brightnessSuggested': brightnessSuggested,
+        if (contentUriSuggested != null)
+          'contentUriSuggested': contentUriSuggested,
+        if (contrastSuggested != null) 'contrastSuggested': contrastSuggested,
+        if (cropPropertiesSuggestionState != null)
+          'cropPropertiesSuggestionState':
+              cropPropertiesSuggestionState.toJson(),
+        if (sourceUriSuggested != null)
+          'sourceUriSuggested': sourceUriSuggested,
+        if (transparencySuggested != null)
+          'transparencySuggested': transparencySuggested,
+      };
 }
 
 /// An object that appears inline with text.
@@ -3125,27 +2761,19 @@ class InlineObject {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (inlineObjectProperties != null) {
-      _json['inlineObjectProperties'] = inlineObjectProperties.toJson();
-    }
-    if (objectId != null) {
-      _json['objectId'] = objectId;
-    }
-    if (suggestedDeletionIds != null) {
-      _json['suggestedDeletionIds'] = suggestedDeletionIds;
-    }
-    if (suggestedInlineObjectPropertiesChanges != null) {
-      _json['suggestedInlineObjectPropertiesChanges'] =
-          suggestedInlineObjectPropertiesChanges
-              .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (suggestedInsertionId != null) {
-      _json['suggestedInsertionId'] = suggestedInsertionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (inlineObjectProperties != null)
+          'inlineObjectProperties': inlineObjectProperties.toJson(),
+        if (objectId != null) 'objectId': objectId,
+        if (suggestedDeletionIds != null)
+          'suggestedDeletionIds': suggestedDeletionIds,
+        if (suggestedInlineObjectPropertiesChanges != null)
+          'suggestedInlineObjectPropertiesChanges':
+              suggestedInlineObjectPropertiesChanges
+                  .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (suggestedInsertionId != null)
+          'suggestedInsertionId': suggestedInsertionId,
+      };
 }
 
 /// A ParagraphElement that contains an InlineObject.
@@ -3209,26 +2837,17 @@ class InlineObjectElement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (inlineObjectId != null) {
-      _json['inlineObjectId'] = inlineObjectId;
-    }
-    if (suggestedDeletionIds != null) {
-      _json['suggestedDeletionIds'] = suggestedDeletionIds;
-    }
-    if (suggestedInsertionIds != null) {
-      _json['suggestedInsertionIds'] = suggestedInsertionIds;
-    }
-    if (suggestedTextStyleChanges != null) {
-      _json['suggestedTextStyleChanges'] = suggestedTextStyleChanges
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (textStyle != null) {
-      _json['textStyle'] = textStyle.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (inlineObjectId != null) 'inlineObjectId': inlineObjectId,
+        if (suggestedDeletionIds != null)
+          'suggestedDeletionIds': suggestedDeletionIds,
+        if (suggestedInsertionIds != null)
+          'suggestedInsertionIds': suggestedInsertionIds,
+        if (suggestedTextStyleChanges != null)
+          'suggestedTextStyleChanges': suggestedTextStyleChanges
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (textStyle != null) 'textStyle': textStyle.toJson(),
+      };
 }
 
 /// Properties of an InlineObject.
@@ -3245,13 +2864,9 @@ class InlineObjectProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (embeddedObject != null) {
-      _json['embeddedObject'] = embeddedObject.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (embeddedObject != null) 'embeddedObject': embeddedObject.toJson(),
+      };
 }
 
 /// A mask that indicates which of the fields on the base InlineObjectProperties
@@ -3273,14 +2888,11 @@ class InlineObjectPropertiesSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (embeddedObjectSuggestionState != null) {
-      _json['embeddedObjectSuggestionState'] =
-          embeddedObjectSuggestionState.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (embeddedObjectSuggestionState != null)
+          'embeddedObjectSuggestionState':
+              embeddedObjectSuggestionState.toJson(),
+      };
 }
 
 /// Inserts an InlineObject containing an image at the given location.
@@ -3338,22 +2950,13 @@ class InsertInlineImageRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endOfSegmentLocation != null) {
-      _json['endOfSegmentLocation'] = endOfSegmentLocation.toJson();
-    }
-    if (location != null) {
-      _json['location'] = location.toJson();
-    }
-    if (objectSize != null) {
-      _json['objectSize'] = objectSize.toJson();
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endOfSegmentLocation != null)
+          'endOfSegmentLocation': endOfSegmentLocation.toJson(),
+        if (location != null) 'location': location.toJson(),
+        if (objectSize != null) 'objectSize': objectSize.toJson(),
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// The result of inserting an inline image.
@@ -3369,13 +2972,9 @@ class InsertInlineImageResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (objectId != null) {
-      _json['objectId'] = objectId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (objectId != null) 'objectId': objectId,
+      };
 }
 
 /// The result of inserting an embedded Google Sheets chart.
@@ -3391,13 +2990,9 @@ class InsertInlineSheetsChartResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (objectId != null) {
-      _json['objectId'] = objectId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (objectId != null) 'objectId': objectId,
+      };
 }
 
 /// Inserts a page break followed by a newline at the specified location.
@@ -3432,16 +3027,11 @@ class InsertPageBreakRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endOfSegmentLocation != null) {
-      _json['endOfSegmentLocation'] = endOfSegmentLocation.toJson();
-    }
-    if (location != null) {
-      _json['location'] = location.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endOfSegmentLocation != null)
+          'endOfSegmentLocation': endOfSegmentLocation.toJson(),
+        if (location != null) 'location': location.toJson(),
+      };
 }
 
 /// Inserts a section break at the given location.
@@ -3489,19 +3079,12 @@ class InsertSectionBreakRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endOfSegmentLocation != null) {
-      _json['endOfSegmentLocation'] = endOfSegmentLocation.toJson();
-    }
-    if (location != null) {
-      _json['location'] = location.toJson();
-    }
-    if (sectionType != null) {
-      _json['sectionType'] = sectionType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endOfSegmentLocation != null)
+          'endOfSegmentLocation': endOfSegmentLocation.toJson(),
+        if (location != null) 'location': location.toJson(),
+        if (sectionType != null) 'sectionType': sectionType,
+      };
 }
 
 /// Inserts an empty column into a table.
@@ -3530,16 +3113,11 @@ class InsertTableColumnRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (insertRight != null) {
-      _json['insertRight'] = insertRight;
-    }
-    if (tableCellLocation != null) {
-      _json['tableCellLocation'] = tableCellLocation.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (insertRight != null) 'insertRight': insertRight,
+        if (tableCellLocation != null)
+          'tableCellLocation': tableCellLocation.toJson(),
+      };
 }
 
 /// Inserts a table at the specified location.
@@ -3587,22 +3165,13 @@ class InsertTableRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columns != null) {
-      _json['columns'] = columns;
-    }
-    if (endOfSegmentLocation != null) {
-      _json['endOfSegmentLocation'] = endOfSegmentLocation.toJson();
-    }
-    if (location != null) {
-      _json['location'] = location.toJson();
-    }
-    if (rows != null) {
-      _json['rows'] = rows;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columns != null) 'columns': columns,
+        if (endOfSegmentLocation != null)
+          'endOfSegmentLocation': endOfSegmentLocation.toJson(),
+        if (location != null) 'location': location.toJson(),
+        if (rows != null) 'rows': rows,
+      };
 }
 
 /// Inserts an empty row into a table.
@@ -3631,16 +3200,11 @@ class InsertTableRowRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (insertBelow != null) {
-      _json['insertBelow'] = insertBelow;
-    }
-    if (tableCellLocation != null) {
-      _json['tableCellLocation'] = tableCellLocation.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (insertBelow != null) 'insertBelow': insertBelow,
+        if (tableCellLocation != null)
+          'tableCellLocation': tableCellLocation.toJson(),
+      };
 }
 
 /// Inserts text at the specified location.
@@ -3686,19 +3250,12 @@ class InsertTextRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endOfSegmentLocation != null) {
-      _json['endOfSegmentLocation'] = endOfSegmentLocation.toJson();
-    }
-    if (location != null) {
-      _json['location'] = location.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endOfSegmentLocation != null)
+          'endOfSegmentLocation': endOfSegmentLocation.toJson(),
+        if (location != null) 'location': location.toJson(),
+        if (text != null) 'text': text,
+      };
 }
 
 /// A reference to another portion of a document or an external URL resource.
@@ -3726,19 +3283,11 @@ class Link {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bookmarkId != null) {
-      _json['bookmarkId'] = bookmarkId;
-    }
-    if (headingId != null) {
-      _json['headingId'] = headingId;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bookmarkId != null) 'bookmarkId': bookmarkId,
+        if (headingId != null) 'headingId': headingId,
+        if (url != null) 'url': url,
+      };
 }
 
 /// A reference to the external linked source content.
@@ -3755,13 +3304,10 @@ class LinkedContentReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sheetsChartReference != null) {
-      _json['sheetsChartReference'] = sheetsChartReference.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sheetsChartReference != null)
+          'sheetsChartReference': sheetsChartReference.toJson(),
+      };
 }
 
 /// A mask that indicates which of the fields on the base LinkedContentReference
@@ -3784,14 +3330,11 @@ class LinkedContentReferenceSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sheetsChartReferenceSuggestionState != null) {
-      _json['sheetsChartReferenceSuggestionState'] =
-          sheetsChartReferenceSuggestionState.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sheetsChartReferenceSuggestionState != null)
+          'sheetsChartReferenceSuggestionState':
+              sheetsChartReferenceSuggestionState.toJson(),
+      };
 }
 
 /// A List represents the list attributes for a group of paragraphs that all
@@ -3845,23 +3388,16 @@ class List {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (listProperties != null) {
-      _json['listProperties'] = listProperties.toJson();
-    }
-    if (suggestedDeletionIds != null) {
-      _json['suggestedDeletionIds'] = suggestedDeletionIds;
-    }
-    if (suggestedInsertionId != null) {
-      _json['suggestedInsertionId'] = suggestedInsertionId;
-    }
-    if (suggestedListPropertiesChanges != null) {
-      _json['suggestedListPropertiesChanges'] = suggestedListPropertiesChanges
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (listProperties != null) 'listProperties': listProperties.toJson(),
+        if (suggestedDeletionIds != null)
+          'suggestedDeletionIds': suggestedDeletionIds,
+        if (suggestedInsertionId != null)
+          'suggestedInsertionId': suggestedInsertionId,
+        if (suggestedListPropertiesChanges != null)
+          'suggestedListPropertiesChanges': suggestedListPropertiesChanges
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+      };
 }
 
 /// The properties of a list which describe the look and feel of bullets
@@ -3886,14 +3422,11 @@ class ListProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nestingLevels != null) {
-      _json['nestingLevels'] =
-          nestingLevels.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nestingLevels != null)
+          'nestingLevels':
+              nestingLevels.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A mask that indicates which of the fields on the base ListProperties have
@@ -3921,14 +3454,12 @@ class ListPropertiesSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nestingLevelsSuggestionStates != null) {
-      _json['nestingLevelsSuggestionStates'] =
-          nestingLevelsSuggestionStates.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nestingLevelsSuggestionStates != null)
+          'nestingLevelsSuggestionStates': nestingLevelsSuggestionStates
+              .map((value) => value.toJson())
+              .toList(),
+      };
 }
 
 /// A particular location in the document.
@@ -3955,16 +3486,10 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (index != null) {
-      _json['index'] = index;
-    }
-    if (segmentId != null) {
-      _json['segmentId'] = segmentId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (index != null) 'index': index,
+        if (segmentId != null) 'segmentId': segmentId,
+      };
 }
 
 /// Merges cells in a Table.
@@ -3988,13 +3513,9 @@ class MergeTableCellsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (tableRange != null) {
-      _json['tableRange'] = tableRange.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (tableRange != null) 'tableRange': tableRange.toJson(),
+      };
 }
 
 /// A collection of Ranges with the same named range ID.
@@ -4035,19 +3556,12 @@ class NamedRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (namedRangeId != null) {
-      _json['namedRangeId'] = namedRangeId;
-    }
-    if (ranges != null) {
-      _json['ranges'] = ranges.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (namedRangeId != null) 'namedRangeId': namedRangeId,
+        if (ranges != null)
+          'ranges': ranges.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A collection of all the NamedRanges in the document that share a given name.
@@ -4072,17 +3586,11 @@ class NamedRanges {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (namedRanges != null) {
-      _json['namedRanges'] =
-          namedRanges.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (namedRanges != null)
+          'namedRanges': namedRanges.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A named style.
@@ -4126,19 +3634,11 @@ class NamedStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (namedStyleType != null) {
-      _json['namedStyleType'] = namedStyleType;
-    }
-    if (paragraphStyle != null) {
-      _json['paragraphStyle'] = paragraphStyle.toJson();
-    }
-    if (textStyle != null) {
-      _json['textStyle'] = textStyle.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (namedStyleType != null) 'namedStyleType': namedStyleType,
+        if (paragraphStyle != null) 'paragraphStyle': paragraphStyle.toJson(),
+        if (textStyle != null) 'textStyle': textStyle.toJson(),
+      };
 }
 
 /// A suggestion state of a NamedStyle message.
@@ -4186,20 +3686,14 @@ class NamedStyleSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (namedStyleType != null) {
-      _json['namedStyleType'] = namedStyleType;
-    }
-    if (paragraphStyleSuggestionState != null) {
-      _json['paragraphStyleSuggestionState'] =
-          paragraphStyleSuggestionState.toJson();
-    }
-    if (textStyleSuggestionState != null) {
-      _json['textStyleSuggestionState'] = textStyleSuggestionState.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (namedStyleType != null) 'namedStyleType': namedStyleType,
+        if (paragraphStyleSuggestionState != null)
+          'paragraphStyleSuggestionState':
+              paragraphStyleSuggestionState.toJson(),
+        if (textStyleSuggestionState != null)
+          'textStyleSuggestionState': textStyleSuggestionState.toJson(),
+      };
 }
 
 /// The named styles.
@@ -4223,13 +3717,10 @@ class NamedStyles {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (styles != null) {
-      _json['styles'] = styles.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (styles != null)
+          'styles': styles.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The suggestion state of a NamedStyles message.
@@ -4253,14 +3744,11 @@ class NamedStylesSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (stylesSuggestionStates != null) {
-      _json['stylesSuggestionStates'] =
-          stylesSuggestionStates.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (stylesSuggestionStates != null)
+          'stylesSuggestionStates':
+              stylesSuggestionStates.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Contains properties describing the look and feel of a list bullet at a given
@@ -4384,34 +3872,17 @@ class NestingLevel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bulletAlignment != null) {
-      _json['bulletAlignment'] = bulletAlignment;
-    }
-    if (glyphFormat != null) {
-      _json['glyphFormat'] = glyphFormat;
-    }
-    if (glyphSymbol != null) {
-      _json['glyphSymbol'] = glyphSymbol;
-    }
-    if (glyphType != null) {
-      _json['glyphType'] = glyphType;
-    }
-    if (indentFirstLine != null) {
-      _json['indentFirstLine'] = indentFirstLine.toJson();
-    }
-    if (indentStart != null) {
-      _json['indentStart'] = indentStart.toJson();
-    }
-    if (startNumber != null) {
-      _json['startNumber'] = startNumber;
-    }
-    if (textStyle != null) {
-      _json['textStyle'] = textStyle.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bulletAlignment != null) 'bulletAlignment': bulletAlignment,
+        if (glyphFormat != null) 'glyphFormat': glyphFormat,
+        if (glyphSymbol != null) 'glyphSymbol': glyphSymbol,
+        if (glyphType != null) 'glyphType': glyphType,
+        if (indentFirstLine != null)
+          'indentFirstLine': indentFirstLine.toJson(),
+        if (indentStart != null) 'indentStart': indentStart.toJson(),
+        if (startNumber != null) 'startNumber': startNumber,
+        if (textStyle != null) 'textStyle': textStyle.toJson(),
+      };
 }
 
 /// A mask that indicates which of the fields on the base NestingLevel have been
@@ -4475,34 +3946,24 @@ class NestingLevelSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bulletAlignmentSuggested != null) {
-      _json['bulletAlignmentSuggested'] = bulletAlignmentSuggested;
-    }
-    if (glyphFormatSuggested != null) {
-      _json['glyphFormatSuggested'] = glyphFormatSuggested;
-    }
-    if (glyphSymbolSuggested != null) {
-      _json['glyphSymbolSuggested'] = glyphSymbolSuggested;
-    }
-    if (glyphTypeSuggested != null) {
-      _json['glyphTypeSuggested'] = glyphTypeSuggested;
-    }
-    if (indentFirstLineSuggested != null) {
-      _json['indentFirstLineSuggested'] = indentFirstLineSuggested;
-    }
-    if (indentStartSuggested != null) {
-      _json['indentStartSuggested'] = indentStartSuggested;
-    }
-    if (startNumberSuggested != null) {
-      _json['startNumberSuggested'] = startNumberSuggested;
-    }
-    if (textStyleSuggestionState != null) {
-      _json['textStyleSuggestionState'] = textStyleSuggestionState.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bulletAlignmentSuggested != null)
+          'bulletAlignmentSuggested': bulletAlignmentSuggested,
+        if (glyphFormatSuggested != null)
+          'glyphFormatSuggested': glyphFormatSuggested,
+        if (glyphSymbolSuggested != null)
+          'glyphSymbolSuggested': glyphSymbolSuggested,
+        if (glyphTypeSuggested != null)
+          'glyphTypeSuggested': glyphTypeSuggested,
+        if (indentFirstLineSuggested != null)
+          'indentFirstLineSuggested': indentFirstLineSuggested,
+        if (indentStartSuggested != null)
+          'indentStartSuggested': indentStartSuggested,
+        if (startNumberSuggested != null)
+          'startNumberSuggested': startNumberSuggested,
+        if (textStyleSuggestionState != null)
+          'textStyleSuggestionState': textStyleSuggestionState.toJson(),
+      };
 }
 
 /// A collection of object IDs.
@@ -4520,13 +3981,9 @@ class ObjectReferences {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (objectIds != null) {
-      _json['objectIds'] = objectIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (objectIds != null) 'objectIds': objectIds,
+      };
 }
 
 /// A color that can either be fully opaque or fully transparent.
@@ -4545,13 +4002,9 @@ class OptionalColor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (color != null) {
-      _json['color'] = color.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (color != null) 'color': color.toJson(),
+      };
 }
 
 /// A ParagraphElement representing a page break.
@@ -4611,23 +4064,16 @@ class PageBreak {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (suggestedDeletionIds != null) {
-      _json['suggestedDeletionIds'] = suggestedDeletionIds;
-    }
-    if (suggestedInsertionIds != null) {
-      _json['suggestedInsertionIds'] = suggestedInsertionIds;
-    }
-    if (suggestedTextStyleChanges != null) {
-      _json['suggestedTextStyleChanges'] = suggestedTextStyleChanges
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (textStyle != null) {
-      _json['textStyle'] = textStyle.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (suggestedDeletionIds != null)
+          'suggestedDeletionIds': suggestedDeletionIds,
+        if (suggestedInsertionIds != null)
+          'suggestedInsertionIds': suggestedInsertionIds,
+        if (suggestedTextStyleChanges != null)
+          'suggestedTextStyleChanges': suggestedTextStyleChanges
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (textStyle != null) 'textStyle': textStyle.toJson(),
+      };
 }
 
 /// A StructuralElement representing a paragraph.
@@ -4719,34 +4165,23 @@ class Paragraph {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bullet != null) {
-      _json['bullet'] = bullet.toJson();
-    }
-    if (elements != null) {
-      _json['elements'] = elements.map((value) => value.toJson()).toList();
-    }
-    if (paragraphStyle != null) {
-      _json['paragraphStyle'] = paragraphStyle.toJson();
-    }
-    if (positionedObjectIds != null) {
-      _json['positionedObjectIds'] = positionedObjectIds;
-    }
-    if (suggestedBulletChanges != null) {
-      _json['suggestedBulletChanges'] = suggestedBulletChanges
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (suggestedParagraphStyleChanges != null) {
-      _json['suggestedParagraphStyleChanges'] = suggestedParagraphStyleChanges
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (suggestedPositionedObjectIds != null) {
-      _json['suggestedPositionedObjectIds'] = suggestedPositionedObjectIds
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bullet != null) 'bullet': bullet.toJson(),
+        if (elements != null)
+          'elements': elements.map((value) => value.toJson()).toList(),
+        if (paragraphStyle != null) 'paragraphStyle': paragraphStyle.toJson(),
+        if (positionedObjectIds != null)
+          'positionedObjectIds': positionedObjectIds,
+        if (suggestedBulletChanges != null)
+          'suggestedBulletChanges': suggestedBulletChanges
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (suggestedParagraphStyleChanges != null)
+          'suggestedParagraphStyleChanges': suggestedParagraphStyleChanges
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (suggestedPositionedObjectIds != null)
+          'suggestedPositionedObjectIds': suggestedPositionedObjectIds
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+      };
 }
 
 /// A border around a paragraph.
@@ -4791,22 +4226,12 @@ class ParagraphBorder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (color != null) {
-      _json['color'] = color.toJson();
-    }
-    if (dashStyle != null) {
-      _json['dashStyle'] = dashStyle;
-    }
-    if (padding != null) {
-      _json['padding'] = padding.toJson();
-    }
-    if (width != null) {
-      _json['width'] = width.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (color != null) 'color': color.toJson(),
+        if (dashStyle != null) 'dashStyle': dashStyle,
+        if (padding != null) 'padding': padding.toJson(),
+        if (width != null) 'width': width.toJson(),
+      };
 }
 
 /// A ParagraphElement describes content within a Paragraph.
@@ -4886,40 +4311,20 @@ class ParagraphElement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (autoText != null) {
-      _json['autoText'] = autoText.toJson();
-    }
-    if (columnBreak != null) {
-      _json['columnBreak'] = columnBreak.toJson();
-    }
-    if (endIndex != null) {
-      _json['endIndex'] = endIndex;
-    }
-    if (equation != null) {
-      _json['equation'] = equation.toJson();
-    }
-    if (footnoteReference != null) {
-      _json['footnoteReference'] = footnoteReference.toJson();
-    }
-    if (horizontalRule != null) {
-      _json['horizontalRule'] = horizontalRule.toJson();
-    }
-    if (inlineObjectElement != null) {
-      _json['inlineObjectElement'] = inlineObjectElement.toJson();
-    }
-    if (pageBreak != null) {
-      _json['pageBreak'] = pageBreak.toJson();
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (textRun != null) {
-      _json['textRun'] = textRun.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (autoText != null) 'autoText': autoText.toJson(),
+        if (columnBreak != null) 'columnBreak': columnBreak.toJson(),
+        if (endIndex != null) 'endIndex': endIndex,
+        if (equation != null) 'equation': equation.toJson(),
+        if (footnoteReference != null)
+          'footnoteReference': footnoteReference.toJson(),
+        if (horizontalRule != null) 'horizontalRule': horizontalRule.toJson(),
+        if (inlineObjectElement != null)
+          'inlineObjectElement': inlineObjectElement.toJson(),
+        if (pageBreak != null) 'pageBreak': pageBreak.toJson(),
+        if (startIndex != null) 'startIndex': startIndex,
+        if (textRun != null) 'textRun': textRun.toJson(),
+      };
 }
 
 /// Styles that apply to a whole paragraph.
@@ -5172,73 +4577,32 @@ class ParagraphStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alignment != null) {
-      _json['alignment'] = alignment;
-    }
-    if (avoidWidowAndOrphan != null) {
-      _json['avoidWidowAndOrphan'] = avoidWidowAndOrphan;
-    }
-    if (borderBetween != null) {
-      _json['borderBetween'] = borderBetween.toJson();
-    }
-    if (borderBottom != null) {
-      _json['borderBottom'] = borderBottom.toJson();
-    }
-    if (borderLeft != null) {
-      _json['borderLeft'] = borderLeft.toJson();
-    }
-    if (borderRight != null) {
-      _json['borderRight'] = borderRight.toJson();
-    }
-    if (borderTop != null) {
-      _json['borderTop'] = borderTop.toJson();
-    }
-    if (direction != null) {
-      _json['direction'] = direction;
-    }
-    if (headingId != null) {
-      _json['headingId'] = headingId;
-    }
-    if (indentEnd != null) {
-      _json['indentEnd'] = indentEnd.toJson();
-    }
-    if (indentFirstLine != null) {
-      _json['indentFirstLine'] = indentFirstLine.toJson();
-    }
-    if (indentStart != null) {
-      _json['indentStart'] = indentStart.toJson();
-    }
-    if (keepLinesTogether != null) {
-      _json['keepLinesTogether'] = keepLinesTogether;
-    }
-    if (keepWithNext != null) {
-      _json['keepWithNext'] = keepWithNext;
-    }
-    if (lineSpacing != null) {
-      _json['lineSpacing'] = lineSpacing;
-    }
-    if (namedStyleType != null) {
-      _json['namedStyleType'] = namedStyleType;
-    }
-    if (shading != null) {
-      _json['shading'] = shading.toJson();
-    }
-    if (spaceAbove != null) {
-      _json['spaceAbove'] = spaceAbove.toJson();
-    }
-    if (spaceBelow != null) {
-      _json['spaceBelow'] = spaceBelow.toJson();
-    }
-    if (spacingMode != null) {
-      _json['spacingMode'] = spacingMode;
-    }
-    if (tabStops != null) {
-      _json['tabStops'] = tabStops.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alignment != null) 'alignment': alignment,
+        if (avoidWidowAndOrphan != null)
+          'avoidWidowAndOrphan': avoidWidowAndOrphan,
+        if (borderBetween != null) 'borderBetween': borderBetween.toJson(),
+        if (borderBottom != null) 'borderBottom': borderBottom.toJson(),
+        if (borderLeft != null) 'borderLeft': borderLeft.toJson(),
+        if (borderRight != null) 'borderRight': borderRight.toJson(),
+        if (borderTop != null) 'borderTop': borderTop.toJson(),
+        if (direction != null) 'direction': direction,
+        if (headingId != null) 'headingId': headingId,
+        if (indentEnd != null) 'indentEnd': indentEnd.toJson(),
+        if (indentFirstLine != null)
+          'indentFirstLine': indentFirstLine.toJson(),
+        if (indentStart != null) 'indentStart': indentStart.toJson(),
+        if (keepLinesTogether != null) 'keepLinesTogether': keepLinesTogether,
+        if (keepWithNext != null) 'keepWithNext': keepWithNext,
+        if (lineSpacing != null) 'lineSpacing': lineSpacing,
+        if (namedStyleType != null) 'namedStyleType': namedStyleType,
+        if (shading != null) 'shading': shading.toJson(),
+        if (spaceAbove != null) 'spaceAbove': spaceAbove.toJson(),
+        if (spaceBelow != null) 'spaceBelow': spaceBelow.toJson(),
+        if (spacingMode != null) 'spacingMode': spacingMode,
+        if (tabStops != null)
+          'tabStops': tabStops.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A mask that indicates which of the fields on the base ParagraphStyle have
@@ -5376,70 +4740,48 @@ class ParagraphStyleSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alignmentSuggested != null) {
-      _json['alignmentSuggested'] = alignmentSuggested;
-    }
-    if (avoidWidowAndOrphanSuggested != null) {
-      _json['avoidWidowAndOrphanSuggested'] = avoidWidowAndOrphanSuggested;
-    }
-    if (borderBetweenSuggested != null) {
-      _json['borderBetweenSuggested'] = borderBetweenSuggested;
-    }
-    if (borderBottomSuggested != null) {
-      _json['borderBottomSuggested'] = borderBottomSuggested;
-    }
-    if (borderLeftSuggested != null) {
-      _json['borderLeftSuggested'] = borderLeftSuggested;
-    }
-    if (borderRightSuggested != null) {
-      _json['borderRightSuggested'] = borderRightSuggested;
-    }
-    if (borderTopSuggested != null) {
-      _json['borderTopSuggested'] = borderTopSuggested;
-    }
-    if (directionSuggested != null) {
-      _json['directionSuggested'] = directionSuggested;
-    }
-    if (headingIdSuggested != null) {
-      _json['headingIdSuggested'] = headingIdSuggested;
-    }
-    if (indentEndSuggested != null) {
-      _json['indentEndSuggested'] = indentEndSuggested;
-    }
-    if (indentFirstLineSuggested != null) {
-      _json['indentFirstLineSuggested'] = indentFirstLineSuggested;
-    }
-    if (indentStartSuggested != null) {
-      _json['indentStartSuggested'] = indentStartSuggested;
-    }
-    if (keepLinesTogetherSuggested != null) {
-      _json['keepLinesTogetherSuggested'] = keepLinesTogetherSuggested;
-    }
-    if (keepWithNextSuggested != null) {
-      _json['keepWithNextSuggested'] = keepWithNextSuggested;
-    }
-    if (lineSpacingSuggested != null) {
-      _json['lineSpacingSuggested'] = lineSpacingSuggested;
-    }
-    if (namedStyleTypeSuggested != null) {
-      _json['namedStyleTypeSuggested'] = namedStyleTypeSuggested;
-    }
-    if (shadingSuggestionState != null) {
-      _json['shadingSuggestionState'] = shadingSuggestionState.toJson();
-    }
-    if (spaceAboveSuggested != null) {
-      _json['spaceAboveSuggested'] = spaceAboveSuggested;
-    }
-    if (spaceBelowSuggested != null) {
-      _json['spaceBelowSuggested'] = spaceBelowSuggested;
-    }
-    if (spacingModeSuggested != null) {
-      _json['spacingModeSuggested'] = spacingModeSuggested;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alignmentSuggested != null)
+          'alignmentSuggested': alignmentSuggested,
+        if (avoidWidowAndOrphanSuggested != null)
+          'avoidWidowAndOrphanSuggested': avoidWidowAndOrphanSuggested,
+        if (borderBetweenSuggested != null)
+          'borderBetweenSuggested': borderBetweenSuggested,
+        if (borderBottomSuggested != null)
+          'borderBottomSuggested': borderBottomSuggested,
+        if (borderLeftSuggested != null)
+          'borderLeftSuggested': borderLeftSuggested,
+        if (borderRightSuggested != null)
+          'borderRightSuggested': borderRightSuggested,
+        if (borderTopSuggested != null)
+          'borderTopSuggested': borderTopSuggested,
+        if (directionSuggested != null)
+          'directionSuggested': directionSuggested,
+        if (headingIdSuggested != null)
+          'headingIdSuggested': headingIdSuggested,
+        if (indentEndSuggested != null)
+          'indentEndSuggested': indentEndSuggested,
+        if (indentFirstLineSuggested != null)
+          'indentFirstLineSuggested': indentFirstLineSuggested,
+        if (indentStartSuggested != null)
+          'indentStartSuggested': indentStartSuggested,
+        if (keepLinesTogetherSuggested != null)
+          'keepLinesTogetherSuggested': keepLinesTogetherSuggested,
+        if (keepWithNextSuggested != null)
+          'keepWithNextSuggested': keepWithNextSuggested,
+        if (lineSpacingSuggested != null)
+          'lineSpacingSuggested': lineSpacingSuggested,
+        if (namedStyleTypeSuggested != null)
+          'namedStyleTypeSuggested': namedStyleTypeSuggested,
+        if (shadingSuggestionState != null)
+          'shadingSuggestionState': shadingSuggestionState.toJson(),
+        if (spaceAboveSuggested != null)
+          'spaceAboveSuggested': spaceAboveSuggested,
+        if (spaceBelowSuggested != null)
+          'spaceBelowSuggested': spaceBelowSuggested,
+        if (spacingModeSuggested != null)
+          'spacingModeSuggested': spacingModeSuggested,
+      };
 }
 
 /// An object that is tethered to a Paragraph and positioned relative to the
@@ -5501,27 +4843,19 @@ class PositionedObject {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (objectId != null) {
-      _json['objectId'] = objectId;
-    }
-    if (positionedObjectProperties != null) {
-      _json['positionedObjectProperties'] = positionedObjectProperties.toJson();
-    }
-    if (suggestedDeletionIds != null) {
-      _json['suggestedDeletionIds'] = suggestedDeletionIds;
-    }
-    if (suggestedInsertionId != null) {
-      _json['suggestedInsertionId'] = suggestedInsertionId;
-    }
-    if (suggestedPositionedObjectPropertiesChanges != null) {
-      _json['suggestedPositionedObjectPropertiesChanges'] =
-          suggestedPositionedObjectPropertiesChanges
-              .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (objectId != null) 'objectId': objectId,
+        if (positionedObjectProperties != null)
+          'positionedObjectProperties': positionedObjectProperties.toJson(),
+        if (suggestedDeletionIds != null)
+          'suggestedDeletionIds': suggestedDeletionIds,
+        if (suggestedInsertionId != null)
+          'suggestedInsertionId': suggestedInsertionId,
+        if (suggestedPositionedObjectPropertiesChanges != null)
+          'suggestedPositionedObjectPropertiesChanges':
+              suggestedPositionedObjectPropertiesChanges
+                  .map((key, item) => core.MapEntry(key, item.toJson())),
+      };
 }
 
 /// The positioning of a PositionedObject.
@@ -5572,19 +4906,11 @@ class PositionedObjectPositioning {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (layout != null) {
-      _json['layout'] = layout;
-    }
-    if (leftOffset != null) {
-      _json['leftOffset'] = leftOffset.toJson();
-    }
-    if (topOffset != null) {
-      _json['topOffset'] = topOffset.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (layout != null) 'layout': layout,
+        if (leftOffset != null) 'leftOffset': leftOffset.toJson(),
+        if (topOffset != null) 'topOffset': topOffset.toJson(),
+      };
 }
 
 /// A mask that indicates which of the fields on the base
@@ -5615,19 +4941,13 @@ class PositionedObjectPositioningSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (layoutSuggested != null) {
-      _json['layoutSuggested'] = layoutSuggested;
-    }
-    if (leftOffsetSuggested != null) {
-      _json['leftOffsetSuggested'] = leftOffsetSuggested;
-    }
-    if (topOffsetSuggested != null) {
-      _json['topOffsetSuggested'] = topOffsetSuggested;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (layoutSuggested != null) 'layoutSuggested': layoutSuggested,
+        if (leftOffsetSuggested != null)
+          'leftOffsetSuggested': leftOffsetSuggested,
+        if (topOffsetSuggested != null)
+          'topOffsetSuggested': topOffsetSuggested,
+      };
 }
 
 /// Properties of a PositionedObject.
@@ -5652,16 +4972,10 @@ class PositionedObjectProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (embeddedObject != null) {
-      _json['embeddedObject'] = embeddedObject.toJson();
-    }
-    if (positioning != null) {
-      _json['positioning'] = positioning.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (embeddedObject != null) 'embeddedObject': embeddedObject.toJson(),
+        if (positioning != null) 'positioning': positioning.toJson(),
+      };
 }
 
 /// A mask that indicates which of the fields on the base
@@ -5693,17 +5007,13 @@ class PositionedObjectPropertiesSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (embeddedObjectSuggestionState != null) {
-      _json['embeddedObjectSuggestionState'] =
-          embeddedObjectSuggestionState.toJson();
-    }
-    if (positioningSuggestionState != null) {
-      _json['positioningSuggestionState'] = positioningSuggestionState.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (embeddedObjectSuggestionState != null)
+          'embeddedObjectSuggestionState':
+              embeddedObjectSuggestionState.toJson(),
+        if (positioningSuggestionState != null)
+          'positioningSuggestionState': positioningSuggestionState.toJson(),
+      };
 }
 
 /// Specifies a contiguous range of text.
@@ -5741,19 +5051,11 @@ class Range {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endIndex != null) {
-      _json['endIndex'] = endIndex;
-    }
-    if (segmentId != null) {
-      _json['segmentId'] = segmentId;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endIndex != null) 'endIndex': endIndex,
+        if (segmentId != null) 'segmentId': segmentId,
+        if (startIndex != null) 'startIndex': startIndex,
+      };
 }
 
 /// Replaces all instances of text matching a criteria with replace text.
@@ -5776,16 +5078,10 @@ class ReplaceAllTextRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (containsText != null) {
-      _json['containsText'] = containsText.toJson();
-    }
-    if (replaceText != null) {
-      _json['replaceText'] = replaceText;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (containsText != null) 'containsText': containsText.toJson(),
+        if (replaceText != null) 'replaceText': replaceText,
+      };
 }
 
 /// The result of replacing text.
@@ -5801,13 +5097,10 @@ class ReplaceAllTextResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (occurrencesChanged != null) {
-      _json['occurrencesChanged'] = occurrencesChanged;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (occurrencesChanged != null)
+          'occurrencesChanged': occurrencesChanged,
+      };
 }
 
 /// Replaces an existing image with a new image.
@@ -5851,19 +5144,12 @@ class ReplaceImageRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (imageObjectId != null) {
-      _json['imageObjectId'] = imageObjectId;
-    }
-    if (imageReplaceMethod != null) {
-      _json['imageReplaceMethod'] = imageReplaceMethod;
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (imageObjectId != null) 'imageObjectId': imageObjectId,
+        if (imageReplaceMethod != null)
+          'imageReplaceMethod': imageReplaceMethod,
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// Replaces the contents of the specified NamedRange or NamedRanges with the
@@ -5905,19 +5191,11 @@ class ReplaceNamedRangeContentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (namedRangeId != null) {
-      _json['namedRangeId'] = namedRangeId;
-    }
-    if (namedRangeName != null) {
-      _json['namedRangeName'] = namedRangeName;
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (namedRangeId != null) 'namedRangeId': namedRangeId,
+        if (namedRangeName != null) 'namedRangeName': namedRangeName,
+        if (text != null) 'text': text,
+      };
 }
 
 /// A single update to apply to a document.
@@ -6156,107 +5434,61 @@ class Request {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createFooter != null) {
-      _json['createFooter'] = createFooter.toJson();
-    }
-    if (createFootnote != null) {
-      _json['createFootnote'] = createFootnote.toJson();
-    }
-    if (createHeader != null) {
-      _json['createHeader'] = createHeader.toJson();
-    }
-    if (createNamedRange != null) {
-      _json['createNamedRange'] = createNamedRange.toJson();
-    }
-    if (createParagraphBullets != null) {
-      _json['createParagraphBullets'] = createParagraphBullets.toJson();
-    }
-    if (deleteContentRange != null) {
-      _json['deleteContentRange'] = deleteContentRange.toJson();
-    }
-    if (deleteFooter != null) {
-      _json['deleteFooter'] = deleteFooter.toJson();
-    }
-    if (deleteHeader != null) {
-      _json['deleteHeader'] = deleteHeader.toJson();
-    }
-    if (deleteNamedRange != null) {
-      _json['deleteNamedRange'] = deleteNamedRange.toJson();
-    }
-    if (deleteParagraphBullets != null) {
-      _json['deleteParagraphBullets'] = deleteParagraphBullets.toJson();
-    }
-    if (deletePositionedObject != null) {
-      _json['deletePositionedObject'] = deletePositionedObject.toJson();
-    }
-    if (deleteTableColumn != null) {
-      _json['deleteTableColumn'] = deleteTableColumn.toJson();
-    }
-    if (deleteTableRow != null) {
-      _json['deleteTableRow'] = deleteTableRow.toJson();
-    }
-    if (insertInlineImage != null) {
-      _json['insertInlineImage'] = insertInlineImage.toJson();
-    }
-    if (insertPageBreak != null) {
-      _json['insertPageBreak'] = insertPageBreak.toJson();
-    }
-    if (insertSectionBreak != null) {
-      _json['insertSectionBreak'] = insertSectionBreak.toJson();
-    }
-    if (insertTable != null) {
-      _json['insertTable'] = insertTable.toJson();
-    }
-    if (insertTableColumn != null) {
-      _json['insertTableColumn'] = insertTableColumn.toJson();
-    }
-    if (insertTableRow != null) {
-      _json['insertTableRow'] = insertTableRow.toJson();
-    }
-    if (insertText != null) {
-      _json['insertText'] = insertText.toJson();
-    }
-    if (mergeTableCells != null) {
-      _json['mergeTableCells'] = mergeTableCells.toJson();
-    }
-    if (replaceAllText != null) {
-      _json['replaceAllText'] = replaceAllText.toJson();
-    }
-    if (replaceImage != null) {
-      _json['replaceImage'] = replaceImage.toJson();
-    }
-    if (replaceNamedRangeContent != null) {
-      _json['replaceNamedRangeContent'] = replaceNamedRangeContent.toJson();
-    }
-    if (unmergeTableCells != null) {
-      _json['unmergeTableCells'] = unmergeTableCells.toJson();
-    }
-    if (updateDocumentStyle != null) {
-      _json['updateDocumentStyle'] = updateDocumentStyle.toJson();
-    }
-    if (updateParagraphStyle != null) {
-      _json['updateParagraphStyle'] = updateParagraphStyle.toJson();
-    }
-    if (updateSectionStyle != null) {
-      _json['updateSectionStyle'] = updateSectionStyle.toJson();
-    }
-    if (updateTableCellStyle != null) {
-      _json['updateTableCellStyle'] = updateTableCellStyle.toJson();
-    }
-    if (updateTableColumnProperties != null) {
-      _json['updateTableColumnProperties'] =
-          updateTableColumnProperties.toJson();
-    }
-    if (updateTableRowStyle != null) {
-      _json['updateTableRowStyle'] = updateTableRowStyle.toJson();
-    }
-    if (updateTextStyle != null) {
-      _json['updateTextStyle'] = updateTextStyle.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createFooter != null) 'createFooter': createFooter.toJson(),
+        if (createFootnote != null) 'createFootnote': createFootnote.toJson(),
+        if (createHeader != null) 'createHeader': createHeader.toJson(),
+        if (createNamedRange != null)
+          'createNamedRange': createNamedRange.toJson(),
+        if (createParagraphBullets != null)
+          'createParagraphBullets': createParagraphBullets.toJson(),
+        if (deleteContentRange != null)
+          'deleteContentRange': deleteContentRange.toJson(),
+        if (deleteFooter != null) 'deleteFooter': deleteFooter.toJson(),
+        if (deleteHeader != null) 'deleteHeader': deleteHeader.toJson(),
+        if (deleteNamedRange != null)
+          'deleteNamedRange': deleteNamedRange.toJson(),
+        if (deleteParagraphBullets != null)
+          'deleteParagraphBullets': deleteParagraphBullets.toJson(),
+        if (deletePositionedObject != null)
+          'deletePositionedObject': deletePositionedObject.toJson(),
+        if (deleteTableColumn != null)
+          'deleteTableColumn': deleteTableColumn.toJson(),
+        if (deleteTableRow != null) 'deleteTableRow': deleteTableRow.toJson(),
+        if (insertInlineImage != null)
+          'insertInlineImage': insertInlineImage.toJson(),
+        if (insertPageBreak != null)
+          'insertPageBreak': insertPageBreak.toJson(),
+        if (insertSectionBreak != null)
+          'insertSectionBreak': insertSectionBreak.toJson(),
+        if (insertTable != null) 'insertTable': insertTable.toJson(),
+        if (insertTableColumn != null)
+          'insertTableColumn': insertTableColumn.toJson(),
+        if (insertTableRow != null) 'insertTableRow': insertTableRow.toJson(),
+        if (insertText != null) 'insertText': insertText.toJson(),
+        if (mergeTableCells != null)
+          'mergeTableCells': mergeTableCells.toJson(),
+        if (replaceAllText != null) 'replaceAllText': replaceAllText.toJson(),
+        if (replaceImage != null) 'replaceImage': replaceImage.toJson(),
+        if (replaceNamedRangeContent != null)
+          'replaceNamedRangeContent': replaceNamedRangeContent.toJson(),
+        if (unmergeTableCells != null)
+          'unmergeTableCells': unmergeTableCells.toJson(),
+        if (updateDocumentStyle != null)
+          'updateDocumentStyle': updateDocumentStyle.toJson(),
+        if (updateParagraphStyle != null)
+          'updateParagraphStyle': updateParagraphStyle.toJson(),
+        if (updateSectionStyle != null)
+          'updateSectionStyle': updateSectionStyle.toJson(),
+        if (updateTableCellStyle != null)
+          'updateTableCellStyle': updateTableCellStyle.toJson(),
+        if (updateTableColumnProperties != null)
+          'updateTableColumnProperties': updateTableColumnProperties.toJson(),
+        if (updateTableRowStyle != null)
+          'updateTableRowStyle': updateTableRowStyle.toJson(),
+        if (updateTextStyle != null)
+          'updateTextStyle': updateTextStyle.toJson(),
+      };
 }
 
 /// A single response from an update.
@@ -6316,31 +5548,18 @@ class Response {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createFooter != null) {
-      _json['createFooter'] = createFooter.toJson();
-    }
-    if (createFootnote != null) {
-      _json['createFootnote'] = createFootnote.toJson();
-    }
-    if (createHeader != null) {
-      _json['createHeader'] = createHeader.toJson();
-    }
-    if (createNamedRange != null) {
-      _json['createNamedRange'] = createNamedRange.toJson();
-    }
-    if (insertInlineImage != null) {
-      _json['insertInlineImage'] = insertInlineImage.toJson();
-    }
-    if (insertInlineSheetsChart != null) {
-      _json['insertInlineSheetsChart'] = insertInlineSheetsChart.toJson();
-    }
-    if (replaceAllText != null) {
-      _json['replaceAllText'] = replaceAllText.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createFooter != null) 'createFooter': createFooter.toJson(),
+        if (createFootnote != null) 'createFootnote': createFootnote.toJson(),
+        if (createHeader != null) 'createHeader': createHeader.toJson(),
+        if (createNamedRange != null)
+          'createNamedRange': createNamedRange.toJson(),
+        if (insertInlineImage != null)
+          'insertInlineImage': insertInlineImage.toJson(),
+        if (insertInlineSheetsChart != null)
+          'insertInlineSheetsChart': insertInlineSheetsChart.toJson(),
+        if (replaceAllText != null) 'replaceAllText': replaceAllText.toJson(),
+      };
 }
 
 /// An RGB color.
@@ -6368,19 +5587,11 @@ class RgbColor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blue != null) {
-      _json['blue'] = blue;
-    }
-    if (green != null) {
-      _json['green'] = green;
-    }
-    if (red != null) {
-      _json['red'] = red;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blue != null) 'blue': blue,
+        if (green != null) 'green': green,
+        if (red != null) 'red': red,
+      };
 }
 
 /// A StructuralElement representing a section break.
@@ -6423,19 +5634,13 @@ class SectionBreak {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sectionStyle != null) {
-      _json['sectionStyle'] = sectionStyle.toJson();
-    }
-    if (suggestedDeletionIds != null) {
-      _json['suggestedDeletionIds'] = suggestedDeletionIds;
-    }
-    if (suggestedInsertionIds != null) {
-      _json['suggestedInsertionIds'] = suggestedInsertionIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sectionStyle != null) 'sectionStyle': sectionStyle.toJson(),
+        if (suggestedDeletionIds != null)
+          'suggestedDeletionIds': suggestedDeletionIds,
+        if (suggestedInsertionIds != null)
+          'suggestedInsertionIds': suggestedInsertionIds,
+      };
 }
 
 /// Properties that apply to a section's column.
@@ -6461,16 +5666,10 @@ class SectionColumnProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (paddingEnd != null) {
-      _json['paddingEnd'] = paddingEnd.toJson();
-    }
-    if (width != null) {
-      _json['width'] = width.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (paddingEnd != null) 'paddingEnd': paddingEnd.toJson(),
+        if (width != null) 'width': width.toJson(),
+      };
 }
 
 /// The styling that applies to a section.
@@ -6711,65 +5910,30 @@ class SectionStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columnProperties != null) {
-      _json['columnProperties'] =
-          columnProperties.map((value) => value.toJson()).toList();
-    }
-    if (columnSeparatorStyle != null) {
-      _json['columnSeparatorStyle'] = columnSeparatorStyle;
-    }
-    if (contentDirection != null) {
-      _json['contentDirection'] = contentDirection;
-    }
-    if (defaultFooterId != null) {
-      _json['defaultFooterId'] = defaultFooterId;
-    }
-    if (defaultHeaderId != null) {
-      _json['defaultHeaderId'] = defaultHeaderId;
-    }
-    if (evenPageFooterId != null) {
-      _json['evenPageFooterId'] = evenPageFooterId;
-    }
-    if (evenPageHeaderId != null) {
-      _json['evenPageHeaderId'] = evenPageHeaderId;
-    }
-    if (firstPageFooterId != null) {
-      _json['firstPageFooterId'] = firstPageFooterId;
-    }
-    if (firstPageHeaderId != null) {
-      _json['firstPageHeaderId'] = firstPageHeaderId;
-    }
-    if (marginBottom != null) {
-      _json['marginBottom'] = marginBottom.toJson();
-    }
-    if (marginFooter != null) {
-      _json['marginFooter'] = marginFooter.toJson();
-    }
-    if (marginHeader != null) {
-      _json['marginHeader'] = marginHeader.toJson();
-    }
-    if (marginLeft != null) {
-      _json['marginLeft'] = marginLeft.toJson();
-    }
-    if (marginRight != null) {
-      _json['marginRight'] = marginRight.toJson();
-    }
-    if (marginTop != null) {
-      _json['marginTop'] = marginTop.toJson();
-    }
-    if (pageNumberStart != null) {
-      _json['pageNumberStart'] = pageNumberStart;
-    }
-    if (sectionType != null) {
-      _json['sectionType'] = sectionType;
-    }
-    if (useFirstPageHeaderFooter != null) {
-      _json['useFirstPageHeaderFooter'] = useFirstPageHeaderFooter;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columnProperties != null)
+          'columnProperties':
+              columnProperties.map((value) => value.toJson()).toList(),
+        if (columnSeparatorStyle != null)
+          'columnSeparatorStyle': columnSeparatorStyle,
+        if (contentDirection != null) 'contentDirection': contentDirection,
+        if (defaultFooterId != null) 'defaultFooterId': defaultFooterId,
+        if (defaultHeaderId != null) 'defaultHeaderId': defaultHeaderId,
+        if (evenPageFooterId != null) 'evenPageFooterId': evenPageFooterId,
+        if (evenPageHeaderId != null) 'evenPageHeaderId': evenPageHeaderId,
+        if (firstPageFooterId != null) 'firstPageFooterId': firstPageFooterId,
+        if (firstPageHeaderId != null) 'firstPageHeaderId': firstPageHeaderId,
+        if (marginBottom != null) 'marginBottom': marginBottom.toJson(),
+        if (marginFooter != null) 'marginFooter': marginFooter.toJson(),
+        if (marginHeader != null) 'marginHeader': marginHeader.toJson(),
+        if (marginLeft != null) 'marginLeft': marginLeft.toJson(),
+        if (marginRight != null) 'marginRight': marginRight.toJson(),
+        if (marginTop != null) 'marginTop': marginTop.toJson(),
+        if (pageNumberStart != null) 'pageNumberStart': pageNumberStart,
+        if (sectionType != null) 'sectionType': sectionType,
+        if (useFirstPageHeaderFooter != null)
+          'useFirstPageHeaderFooter': useFirstPageHeaderFooter,
+      };
 }
 
 /// The shading of a paragraph.
@@ -6786,13 +5950,10 @@ class Shading {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backgroundColor != null) {
-      _json['backgroundColor'] = backgroundColor.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backgroundColor != null)
+          'backgroundColor': backgroundColor.toJson(),
+      };
 }
 
 /// A mask that indicates which of the fields on the base Shading have been
@@ -6811,13 +5972,10 @@ class ShadingSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backgroundColorSuggested != null) {
-      _json['backgroundColorSuggested'] = backgroundColorSuggested;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backgroundColorSuggested != null)
+          'backgroundColorSuggested': backgroundColorSuggested,
+      };
 }
 
 /// A reference to a linked chart embedded from Google Sheets.
@@ -6840,16 +5998,10 @@ class SheetsChartReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (chartId != null) {
-      _json['chartId'] = chartId;
-    }
-    if (spreadsheetId != null) {
-      _json['spreadsheetId'] = spreadsheetId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (chartId != null) 'chartId': chartId,
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
+      };
 }
 
 /// A mask that indicates which of the fields on the base SheetsChartReference
@@ -6874,16 +6026,11 @@ class SheetsChartReferenceSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (chartIdSuggested != null) {
-      _json['chartIdSuggested'] = chartIdSuggested;
-    }
-    if (spreadsheetIdSuggested != null) {
-      _json['spreadsheetIdSuggested'] = spreadsheetIdSuggested;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (chartIdSuggested != null) 'chartIdSuggested': chartIdSuggested,
+        if (spreadsheetIdSuggested != null)
+          'spreadsheetIdSuggested': spreadsheetIdSuggested,
+      };
 }
 
 /// A width and height.
@@ -6907,16 +6054,10 @@ class Size {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (height != null) {
-      _json['height'] = height.toJson();
-    }
-    if (width != null) {
-      _json['width'] = width.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (height != null) 'height': height.toJson(),
+        if (width != null) 'width': width.toJson(),
+      };
 }
 
 /// A mask that indicates which of the fields on the base Size have been changed
@@ -6941,16 +6082,10 @@ class SizeSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (heightSuggested != null) {
-      _json['heightSuggested'] = heightSuggested;
-    }
-    if (widthSuggested != null) {
-      _json['widthSuggested'] = widthSuggested;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (heightSuggested != null) 'heightSuggested': heightSuggested,
+        if (widthSuggested != null) 'widthSuggested': widthSuggested,
+      };
 }
 
 /// A StructuralElement describes content that provides structure to the
@@ -7003,28 +6138,15 @@ class StructuralElement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endIndex != null) {
-      _json['endIndex'] = endIndex;
-    }
-    if (paragraph != null) {
-      _json['paragraph'] = paragraph.toJson();
-    }
-    if (sectionBreak != null) {
-      _json['sectionBreak'] = sectionBreak.toJson();
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (table != null) {
-      _json['table'] = table.toJson();
-    }
-    if (tableOfContents != null) {
-      _json['tableOfContents'] = tableOfContents.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endIndex != null) 'endIndex': endIndex,
+        if (paragraph != null) 'paragraph': paragraph.toJson(),
+        if (sectionBreak != null) 'sectionBreak': sectionBreak.toJson(),
+        if (startIndex != null) 'startIndex': startIndex,
+        if (table != null) 'table': table.toJson(),
+        if (tableOfContents != null)
+          'tableOfContents': tableOfContents.toJson(),
+      };
 }
 
 /// A criteria that matches a specific string of text in the document.
@@ -7049,16 +6171,10 @@ class SubstringMatchCriteria {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (matchCase != null) {
-      _json['matchCase'] = matchCase;
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (matchCase != null) 'matchCase': matchCase,
+        if (text != null) 'text': text,
+      };
 }
 
 /// A suggested change to a Bullet.
@@ -7087,16 +6203,11 @@ class SuggestedBullet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bullet != null) {
-      _json['bullet'] = bullet.toJson();
-    }
-    if (bulletSuggestionState != null) {
-      _json['bulletSuggestionState'] = bulletSuggestionState.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bullet != null) 'bullet': bullet.toJson(),
+        if (bulletSuggestionState != null)
+          'bulletSuggestionState': bulletSuggestionState.toJson(),
+      };
 }
 
 /// A suggested change to the DocumentStyle.
@@ -7125,17 +6236,11 @@ class SuggestedDocumentStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (documentStyle != null) {
-      _json['documentStyle'] = documentStyle.toJson();
-    }
-    if (documentStyleSuggestionState != null) {
-      _json['documentStyleSuggestionState'] =
-          documentStyleSuggestionState.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (documentStyle != null) 'documentStyle': documentStyle.toJson(),
+        if (documentStyleSuggestionState != null)
+          'documentStyleSuggestionState': documentStyleSuggestionState.toJson(),
+      };
 }
 
 /// A suggested change to InlineObjectProperties.
@@ -7167,17 +6272,13 @@ class SuggestedInlineObjectProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (inlineObjectProperties != null) {
-      _json['inlineObjectProperties'] = inlineObjectProperties.toJson();
-    }
-    if (inlineObjectPropertiesSuggestionState != null) {
-      _json['inlineObjectPropertiesSuggestionState'] =
-          inlineObjectPropertiesSuggestionState.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (inlineObjectProperties != null)
+          'inlineObjectProperties': inlineObjectProperties.toJson(),
+        if (inlineObjectPropertiesSuggestionState != null)
+          'inlineObjectPropertiesSuggestionState':
+              inlineObjectPropertiesSuggestionState.toJson(),
+      };
 }
 
 /// A suggested change to ListProperties.
@@ -7206,17 +6307,12 @@ class SuggestedListProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (listProperties != null) {
-      _json['listProperties'] = listProperties.toJson();
-    }
-    if (listPropertiesSuggestionState != null) {
-      _json['listPropertiesSuggestionState'] =
-          listPropertiesSuggestionState.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (listProperties != null) 'listProperties': listProperties.toJson(),
+        if (listPropertiesSuggestionState != null)
+          'listPropertiesSuggestionState':
+              listPropertiesSuggestionState.toJson(),
+      };
 }
 
 /// A suggested change to the NamedStyles.
@@ -7245,16 +6341,11 @@ class SuggestedNamedStyles {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (namedStyles != null) {
-      _json['namedStyles'] = namedStyles.toJson();
-    }
-    if (namedStylesSuggestionState != null) {
-      _json['namedStylesSuggestionState'] = namedStylesSuggestionState.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (namedStyles != null) 'namedStyles': namedStyles.toJson(),
+        if (namedStylesSuggestionState != null)
+          'namedStylesSuggestionState': namedStylesSuggestionState.toJson(),
+      };
 }
 
 /// A suggested change to a ParagraphStyle.
@@ -7283,17 +6374,12 @@ class SuggestedParagraphStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (paragraphStyle != null) {
-      _json['paragraphStyle'] = paragraphStyle.toJson();
-    }
-    if (paragraphStyleSuggestionState != null) {
-      _json['paragraphStyleSuggestionState'] =
-          paragraphStyleSuggestionState.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (paragraphStyle != null) 'paragraphStyle': paragraphStyle.toJson(),
+        if (paragraphStyleSuggestionState != null)
+          'paragraphStyleSuggestionState':
+              paragraphStyleSuggestionState.toJson(),
+      };
 }
 
 /// A suggested change to PositionedObjectProperties.
@@ -7327,17 +6413,13 @@ class SuggestedPositionedObjectProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (positionedObjectProperties != null) {
-      _json['positionedObjectProperties'] = positionedObjectProperties.toJson();
-    }
-    if (positionedObjectPropertiesSuggestionState != null) {
-      _json['positionedObjectPropertiesSuggestionState'] =
-          positionedObjectPropertiesSuggestionState.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (positionedObjectProperties != null)
+          'positionedObjectProperties': positionedObjectProperties.toJson(),
+        if (positionedObjectPropertiesSuggestionState != null)
+          'positionedObjectPropertiesSuggestionState':
+              positionedObjectPropertiesSuggestionState.toJson(),
+      };
 }
 
 /// A suggested change to a TableCellStyle.
@@ -7366,17 +6448,12 @@ class SuggestedTableCellStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (tableCellStyle != null) {
-      _json['tableCellStyle'] = tableCellStyle.toJson();
-    }
-    if (tableCellStyleSuggestionState != null) {
-      _json['tableCellStyleSuggestionState'] =
-          tableCellStyleSuggestionState.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (tableCellStyle != null) 'tableCellStyle': tableCellStyle.toJson(),
+        if (tableCellStyleSuggestionState != null)
+          'tableCellStyleSuggestionState':
+              tableCellStyleSuggestionState.toJson(),
+      };
 }
 
 /// A suggested change to a TableRowStyle.
@@ -7405,17 +6482,11 @@ class SuggestedTableRowStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (tableRowStyle != null) {
-      _json['tableRowStyle'] = tableRowStyle.toJson();
-    }
-    if (tableRowStyleSuggestionState != null) {
-      _json['tableRowStyleSuggestionState'] =
-          tableRowStyleSuggestionState.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (tableRowStyle != null) 'tableRowStyle': tableRowStyle.toJson(),
+        if (tableRowStyleSuggestionState != null)
+          'tableRowStyleSuggestionState': tableRowStyleSuggestionState.toJson(),
+      };
 }
 
 /// A suggested change to a TextStyle.
@@ -7444,16 +6515,11 @@ class SuggestedTextStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (textStyle != null) {
-      _json['textStyle'] = textStyle.toJson();
-    }
-    if (textStyleSuggestionState != null) {
-      _json['textStyleSuggestionState'] = textStyleSuggestionState.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (textStyle != null) 'textStyle': textStyle.toJson(),
+        if (textStyleSuggestionState != null)
+          'textStyleSuggestionState': textStyleSuggestionState.toJson(),
+      };
 }
 
 /// A tab stop within a paragraph.
@@ -7485,16 +6551,10 @@ class TabStop {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alignment != null) {
-      _json['alignment'] = alignment;
-    }
-    if (offset != null) {
-      _json['offset'] = offset.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alignment != null) 'alignment': alignment,
+        if (offset != null) 'offset': offset.toJson(),
+      };
 }
 
 /// A StructuralElement representing a table.
@@ -7556,28 +6616,17 @@ class Table {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columns != null) {
-      _json['columns'] = columns;
-    }
-    if (rows != null) {
-      _json['rows'] = rows;
-    }
-    if (suggestedDeletionIds != null) {
-      _json['suggestedDeletionIds'] = suggestedDeletionIds;
-    }
-    if (suggestedInsertionIds != null) {
-      _json['suggestedInsertionIds'] = suggestedInsertionIds;
-    }
-    if (tableRows != null) {
-      _json['tableRows'] = tableRows.map((value) => value.toJson()).toList();
-    }
-    if (tableStyle != null) {
-      _json['tableStyle'] = tableStyle.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columns != null) 'columns': columns,
+        if (rows != null) 'rows': rows,
+        if (suggestedDeletionIds != null)
+          'suggestedDeletionIds': suggestedDeletionIds,
+        if (suggestedInsertionIds != null)
+          'suggestedInsertionIds': suggestedInsertionIds,
+        if (tableRows != null)
+          'tableRows': tableRows.map((value) => value.toJson()).toList(),
+        if (tableStyle != null) 'tableStyle': tableStyle.toJson(),
+      };
 }
 
 /// The contents and style of a cell in a Table.
@@ -7651,32 +6700,20 @@ class TableCell {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content.map((value) => value.toJson()).toList();
-    }
-    if (endIndex != null) {
-      _json['endIndex'] = endIndex;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (suggestedDeletionIds != null) {
-      _json['suggestedDeletionIds'] = suggestedDeletionIds;
-    }
-    if (suggestedInsertionIds != null) {
-      _json['suggestedInsertionIds'] = suggestedInsertionIds;
-    }
-    if (suggestedTableCellStyleChanges != null) {
-      _json['suggestedTableCellStyleChanges'] = suggestedTableCellStyleChanges
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (tableCellStyle != null) {
-      _json['tableCellStyle'] = tableCellStyle.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null)
+          'content': content.map((value) => value.toJson()).toList(),
+        if (endIndex != null) 'endIndex': endIndex,
+        if (startIndex != null) 'startIndex': startIndex,
+        if (suggestedDeletionIds != null)
+          'suggestedDeletionIds': suggestedDeletionIds,
+        if (suggestedInsertionIds != null)
+          'suggestedInsertionIds': suggestedInsertionIds,
+        if (suggestedTableCellStyleChanges != null)
+          'suggestedTableCellStyleChanges': suggestedTableCellStyleChanges
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (tableCellStyle != null) 'tableCellStyle': tableCellStyle.toJson(),
+      };
 }
 
 /// A border around a table cell.
@@ -7719,19 +6756,11 @@ class TableCellBorder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (color != null) {
-      _json['color'] = color.toJson();
-    }
-    if (dashStyle != null) {
-      _json['dashStyle'] = dashStyle;
-    }
-    if (width != null) {
-      _json['width'] = width.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (color != null) 'color': color.toJson(),
+        if (dashStyle != null) 'dashStyle': dashStyle,
+        if (width != null) 'width': width.toJson(),
+      };
 }
 
 /// Location of a single cell within a table.
@@ -7764,19 +6793,12 @@ class TableCellLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columnIndex != null) {
-      _json['columnIndex'] = columnIndex;
-    }
-    if (rowIndex != null) {
-      _json['rowIndex'] = rowIndex;
-    }
-    if (tableStartLocation != null) {
-      _json['tableStartLocation'] = tableStartLocation.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columnIndex != null) 'columnIndex': columnIndex,
+        if (rowIndex != null) 'rowIndex': rowIndex,
+        if (tableStartLocation != null)
+          'tableStartLocation': tableStartLocation.toJson(),
+      };
 }
 
 /// The style of a TableCell.
@@ -7887,46 +6909,21 @@ class TableCellStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backgroundColor != null) {
-      _json['backgroundColor'] = backgroundColor.toJson();
-    }
-    if (borderBottom != null) {
-      _json['borderBottom'] = borderBottom.toJson();
-    }
-    if (borderLeft != null) {
-      _json['borderLeft'] = borderLeft.toJson();
-    }
-    if (borderRight != null) {
-      _json['borderRight'] = borderRight.toJson();
-    }
-    if (borderTop != null) {
-      _json['borderTop'] = borderTop.toJson();
-    }
-    if (columnSpan != null) {
-      _json['columnSpan'] = columnSpan;
-    }
-    if (contentAlignment != null) {
-      _json['contentAlignment'] = contentAlignment;
-    }
-    if (paddingBottom != null) {
-      _json['paddingBottom'] = paddingBottom.toJson();
-    }
-    if (paddingLeft != null) {
-      _json['paddingLeft'] = paddingLeft.toJson();
-    }
-    if (paddingRight != null) {
-      _json['paddingRight'] = paddingRight.toJson();
-    }
-    if (paddingTop != null) {
-      _json['paddingTop'] = paddingTop.toJson();
-    }
-    if (rowSpan != null) {
-      _json['rowSpan'] = rowSpan;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backgroundColor != null)
+          'backgroundColor': backgroundColor.toJson(),
+        if (borderBottom != null) 'borderBottom': borderBottom.toJson(),
+        if (borderLeft != null) 'borderLeft': borderLeft.toJson(),
+        if (borderRight != null) 'borderRight': borderRight.toJson(),
+        if (borderTop != null) 'borderTop': borderTop.toJson(),
+        if (columnSpan != null) 'columnSpan': columnSpan,
+        if (contentAlignment != null) 'contentAlignment': contentAlignment,
+        if (paddingBottom != null) 'paddingBottom': paddingBottom.toJson(),
+        if (paddingLeft != null) 'paddingLeft': paddingLeft.toJson(),
+        if (paddingRight != null) 'paddingRight': paddingRight.toJson(),
+        if (paddingTop != null) 'paddingTop': paddingTop.toJson(),
+        if (rowSpan != null) 'rowSpan': rowSpan,
+      };
 }
 
 /// A mask that indicates which of the fields on the base TableCellStyle have
@@ -8012,46 +7009,31 @@ class TableCellStyleSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backgroundColorSuggested != null) {
-      _json['backgroundColorSuggested'] = backgroundColorSuggested;
-    }
-    if (borderBottomSuggested != null) {
-      _json['borderBottomSuggested'] = borderBottomSuggested;
-    }
-    if (borderLeftSuggested != null) {
-      _json['borderLeftSuggested'] = borderLeftSuggested;
-    }
-    if (borderRightSuggested != null) {
-      _json['borderRightSuggested'] = borderRightSuggested;
-    }
-    if (borderTopSuggested != null) {
-      _json['borderTopSuggested'] = borderTopSuggested;
-    }
-    if (columnSpanSuggested != null) {
-      _json['columnSpanSuggested'] = columnSpanSuggested;
-    }
-    if (contentAlignmentSuggested != null) {
-      _json['contentAlignmentSuggested'] = contentAlignmentSuggested;
-    }
-    if (paddingBottomSuggested != null) {
-      _json['paddingBottomSuggested'] = paddingBottomSuggested;
-    }
-    if (paddingLeftSuggested != null) {
-      _json['paddingLeftSuggested'] = paddingLeftSuggested;
-    }
-    if (paddingRightSuggested != null) {
-      _json['paddingRightSuggested'] = paddingRightSuggested;
-    }
-    if (paddingTopSuggested != null) {
-      _json['paddingTopSuggested'] = paddingTopSuggested;
-    }
-    if (rowSpanSuggested != null) {
-      _json['rowSpanSuggested'] = rowSpanSuggested;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backgroundColorSuggested != null)
+          'backgroundColorSuggested': backgroundColorSuggested,
+        if (borderBottomSuggested != null)
+          'borderBottomSuggested': borderBottomSuggested,
+        if (borderLeftSuggested != null)
+          'borderLeftSuggested': borderLeftSuggested,
+        if (borderRightSuggested != null)
+          'borderRightSuggested': borderRightSuggested,
+        if (borderTopSuggested != null)
+          'borderTopSuggested': borderTopSuggested,
+        if (columnSpanSuggested != null)
+          'columnSpanSuggested': columnSpanSuggested,
+        if (contentAlignmentSuggested != null)
+          'contentAlignmentSuggested': contentAlignmentSuggested,
+        if (paddingBottomSuggested != null)
+          'paddingBottomSuggested': paddingBottomSuggested,
+        if (paddingLeftSuggested != null)
+          'paddingLeftSuggested': paddingLeftSuggested,
+        if (paddingRightSuggested != null)
+          'paddingRightSuggested': paddingRightSuggested,
+        if (paddingTopSuggested != null)
+          'paddingTopSuggested': paddingTopSuggested,
+        if (rowSpanSuggested != null) 'rowSpanSuggested': rowSpanSuggested,
+      };
 }
 
 /// The properties of a column in a table.
@@ -8084,16 +7066,10 @@ class TableColumnProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (width != null) {
-      _json['width'] = width.toJson();
-    }
-    if (widthType != null) {
-      _json['widthType'] = widthType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (width != null) 'width': width.toJson(),
+        if (widthType != null) 'widthType': widthType,
+      };
 }
 
 /// A StructuralElement representing a table of contents.
@@ -8133,19 +7109,14 @@ class TableOfContents {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content.map((value) => value.toJson()).toList();
-    }
-    if (suggestedDeletionIds != null) {
-      _json['suggestedDeletionIds'] = suggestedDeletionIds;
-    }
-    if (suggestedInsertionIds != null) {
-      _json['suggestedInsertionIds'] = suggestedInsertionIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null)
+          'content': content.map((value) => value.toJson()).toList(),
+        if (suggestedDeletionIds != null)
+          'suggestedDeletionIds': suggestedDeletionIds,
+        if (suggestedInsertionIds != null)
+          'suggestedInsertionIds': suggestedInsertionIds,
+      };
 }
 
 /// A table range represents a reference to a subset of a table.
@@ -8181,19 +7152,12 @@ class TableRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columnSpan != null) {
-      _json['columnSpan'] = columnSpan;
-    }
-    if (rowSpan != null) {
-      _json['rowSpan'] = rowSpan;
-    }
-    if (tableCellLocation != null) {
-      _json['tableCellLocation'] = tableCellLocation.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columnSpan != null) 'columnSpan': columnSpan,
+        if (rowSpan != null) 'rowSpan': rowSpan,
+        if (tableCellLocation != null)
+          'tableCellLocation': tableCellLocation.toJson(),
+      };
 }
 
 /// The contents and style of a row in a Table.
@@ -8270,32 +7234,20 @@ class TableRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endIndex != null) {
-      _json['endIndex'] = endIndex;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (suggestedDeletionIds != null) {
-      _json['suggestedDeletionIds'] = suggestedDeletionIds;
-    }
-    if (suggestedInsertionIds != null) {
-      _json['suggestedInsertionIds'] = suggestedInsertionIds;
-    }
-    if (suggestedTableRowStyleChanges != null) {
-      _json['suggestedTableRowStyleChanges'] = suggestedTableRowStyleChanges
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (tableCells != null) {
-      _json['tableCells'] = tableCells.map((value) => value.toJson()).toList();
-    }
-    if (tableRowStyle != null) {
-      _json['tableRowStyle'] = tableRowStyle.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endIndex != null) 'endIndex': endIndex,
+        if (startIndex != null) 'startIndex': startIndex,
+        if (suggestedDeletionIds != null)
+          'suggestedDeletionIds': suggestedDeletionIds,
+        if (suggestedInsertionIds != null)
+          'suggestedInsertionIds': suggestedInsertionIds,
+        if (suggestedTableRowStyleChanges != null)
+          'suggestedTableRowStyleChanges': suggestedTableRowStyleChanges
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (tableCells != null)
+          'tableCells': tableCells.map((value) => value.toJson()).toList(),
+        if (tableRowStyle != null) 'tableRowStyle': tableRowStyle.toJson(),
+      };
 }
 
 /// Styles that apply to a table row.
@@ -8316,13 +7268,9 @@ class TableRowStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (minRowHeight != null) {
-      _json['minRowHeight'] = minRowHeight.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (minRowHeight != null) 'minRowHeight': minRowHeight.toJson(),
+      };
 }
 
 /// A mask that indicates which of the fields on the base TableRowStyle have
@@ -8341,13 +7289,10 @@ class TableRowStyleSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (minRowHeightSuggested != null) {
-      _json['minRowHeightSuggested'] = minRowHeightSuggested;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (minRowHeightSuggested != null)
+          'minRowHeightSuggested': minRowHeightSuggested,
+      };
 }
 
 /// Styles that apply to a table.
@@ -8370,14 +7315,11 @@ class TableStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (tableColumnProperties != null) {
-      _json['tableColumnProperties'] =
-          tableColumnProperties.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (tableColumnProperties != null)
+          'tableColumnProperties':
+              tableColumnProperties.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A ParagraphElement that represents a run of text that all has the same
@@ -8440,26 +7382,17 @@ class TextRun {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (suggestedDeletionIds != null) {
-      _json['suggestedDeletionIds'] = suggestedDeletionIds;
-    }
-    if (suggestedInsertionIds != null) {
-      _json['suggestedInsertionIds'] = suggestedInsertionIds;
-    }
-    if (suggestedTextStyleChanges != null) {
-      _json['suggestedTextStyleChanges'] = suggestedTextStyleChanges
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (textStyle != null) {
-      _json['textStyle'] = textStyle.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (suggestedDeletionIds != null)
+          'suggestedDeletionIds': suggestedDeletionIds,
+        if (suggestedInsertionIds != null)
+          'suggestedInsertionIds': suggestedInsertionIds,
+        if (suggestedTextStyleChanges != null)
+          'suggestedTextStyleChanges': suggestedTextStyleChanges
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (textStyle != null) 'textStyle': textStyle.toJson(),
+      };
 }
 
 /// Represents the styling that can be applied to text.
@@ -8590,43 +7523,22 @@ class TextStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backgroundColor != null) {
-      _json['backgroundColor'] = backgroundColor.toJson();
-    }
-    if (baselineOffset != null) {
-      _json['baselineOffset'] = baselineOffset;
-    }
-    if (bold != null) {
-      _json['bold'] = bold;
-    }
-    if (fontSize != null) {
-      _json['fontSize'] = fontSize.toJson();
-    }
-    if (foregroundColor != null) {
-      _json['foregroundColor'] = foregroundColor.toJson();
-    }
-    if (italic != null) {
-      _json['italic'] = italic;
-    }
-    if (link != null) {
-      _json['link'] = link.toJson();
-    }
-    if (smallCaps != null) {
-      _json['smallCaps'] = smallCaps;
-    }
-    if (strikethrough != null) {
-      _json['strikethrough'] = strikethrough;
-    }
-    if (underline != null) {
-      _json['underline'] = underline;
-    }
-    if (weightedFontFamily != null) {
-      _json['weightedFontFamily'] = weightedFontFamily.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backgroundColor != null)
+          'backgroundColor': backgroundColor.toJson(),
+        if (baselineOffset != null) 'baselineOffset': baselineOffset,
+        if (bold != null) 'bold': bold,
+        if (fontSize != null) 'fontSize': fontSize.toJson(),
+        if (foregroundColor != null)
+          'foregroundColor': foregroundColor.toJson(),
+        if (italic != null) 'italic': italic,
+        if (link != null) 'link': link.toJson(),
+        if (smallCaps != null) 'smallCaps': smallCaps,
+        if (strikethrough != null) 'strikethrough': strikethrough,
+        if (underline != null) 'underline': underline,
+        if (weightedFontFamily != null)
+          'weightedFontFamily': weightedFontFamily.toJson(),
+      };
 }
 
 /// A mask that indicates which of the fields on the base TextStyle have been
@@ -8706,43 +7618,26 @@ class TextStyleSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backgroundColorSuggested != null) {
-      _json['backgroundColorSuggested'] = backgroundColorSuggested;
-    }
-    if (baselineOffsetSuggested != null) {
-      _json['baselineOffsetSuggested'] = baselineOffsetSuggested;
-    }
-    if (boldSuggested != null) {
-      _json['boldSuggested'] = boldSuggested;
-    }
-    if (fontSizeSuggested != null) {
-      _json['fontSizeSuggested'] = fontSizeSuggested;
-    }
-    if (foregroundColorSuggested != null) {
-      _json['foregroundColorSuggested'] = foregroundColorSuggested;
-    }
-    if (italicSuggested != null) {
-      _json['italicSuggested'] = italicSuggested;
-    }
-    if (linkSuggested != null) {
-      _json['linkSuggested'] = linkSuggested;
-    }
-    if (smallCapsSuggested != null) {
-      _json['smallCapsSuggested'] = smallCapsSuggested;
-    }
-    if (strikethroughSuggested != null) {
-      _json['strikethroughSuggested'] = strikethroughSuggested;
-    }
-    if (underlineSuggested != null) {
-      _json['underlineSuggested'] = underlineSuggested;
-    }
-    if (weightedFontFamilySuggested != null) {
-      _json['weightedFontFamilySuggested'] = weightedFontFamilySuggested;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backgroundColorSuggested != null)
+          'backgroundColorSuggested': backgroundColorSuggested,
+        if (baselineOffsetSuggested != null)
+          'baselineOffsetSuggested': baselineOffsetSuggested,
+        if (boldSuggested != null) 'boldSuggested': boldSuggested,
+        if (fontSizeSuggested != null) 'fontSizeSuggested': fontSizeSuggested,
+        if (foregroundColorSuggested != null)
+          'foregroundColorSuggested': foregroundColorSuggested,
+        if (italicSuggested != null) 'italicSuggested': italicSuggested,
+        if (linkSuggested != null) 'linkSuggested': linkSuggested,
+        if (smallCapsSuggested != null)
+          'smallCapsSuggested': smallCapsSuggested,
+        if (strikethroughSuggested != null)
+          'strikethroughSuggested': strikethroughSuggested,
+        if (underlineSuggested != null)
+          'underlineSuggested': underlineSuggested,
+        if (weightedFontFamilySuggested != null)
+          'weightedFontFamilySuggested': weightedFontFamilySuggested,
+      };
 }
 
 /// Unmerges cells in a Table.
@@ -8766,13 +7661,9 @@ class UnmergeTableCellsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (tableRange != null) {
-      _json['tableRange'] = tableRange.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (tableRange != null) 'tableRange': tableRange.toJson(),
+      };
 }
 
 /// Updates the DocumentStyle.
@@ -8804,16 +7695,10 @@ class UpdateDocumentStyleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (documentStyle != null) {
-      _json['documentStyle'] = documentStyle.toJson();
-    }
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (documentStyle != null) 'documentStyle': documentStyle.toJson(),
+        if (fields != null) 'fields': fields,
+      };
 }
 
 /// Update the styling of all paragraphs that overlap with the given range.
@@ -8853,19 +7738,11 @@ class UpdateParagraphStyleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    if (paragraphStyle != null) {
-      _json['paragraphStyle'] = paragraphStyle.toJson();
-    }
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fields != null) 'fields': fields,
+        if (paragraphStyle != null) 'paragraphStyle': paragraphStyle.toJson(),
+        if (range != null) 'range': range.toJson(),
+      };
 }
 
 /// Updates the SectionStyle.
@@ -8907,19 +7784,11 @@ class UpdateSectionStyleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    if (sectionStyle != null) {
-      _json['sectionStyle'] = sectionStyle.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fields != null) 'fields': fields,
+        if (range != null) 'range': range.toJson(),
+        if (sectionStyle != null) 'sectionStyle': sectionStyle.toJson(),
+      };
 }
 
 /// Updates the style of a range of table cells.
@@ -8973,22 +7842,13 @@ class UpdateTableCellStyleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    if (tableCellStyle != null) {
-      _json['tableCellStyle'] = tableCellStyle.toJson();
-    }
-    if (tableRange != null) {
-      _json['tableRange'] = tableRange.toJson();
-    }
-    if (tableStartLocation != null) {
-      _json['tableStartLocation'] = tableStartLocation.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fields != null) 'fields': fields,
+        if (tableCellStyle != null) 'tableCellStyle': tableCellStyle.toJson(),
+        if (tableRange != null) 'tableRange': tableRange.toJson(),
+        if (tableStartLocation != null)
+          'tableStartLocation': tableStartLocation.toJson(),
+      };
 }
 
 /// Updates the TableColumnProperties of columns in a table.
@@ -9037,22 +7897,14 @@ class UpdateTableColumnPropertiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columnIndices != null) {
-      _json['columnIndices'] = columnIndices;
-    }
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    if (tableColumnProperties != null) {
-      _json['tableColumnProperties'] = tableColumnProperties.toJson();
-    }
-    if (tableStartLocation != null) {
-      _json['tableStartLocation'] = tableStartLocation.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columnIndices != null) 'columnIndices': columnIndices,
+        if (fields != null) 'fields': fields,
+        if (tableColumnProperties != null)
+          'tableColumnProperties': tableColumnProperties.toJson(),
+        if (tableStartLocation != null)
+          'tableStartLocation': tableStartLocation.toJson(),
+      };
 }
 
 /// Updates the TableRowStyle of rows in a table.
@@ -9097,22 +7949,13 @@ class UpdateTableRowStyleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    if (rowIndices != null) {
-      _json['rowIndices'] = rowIndices;
-    }
-    if (tableRowStyle != null) {
-      _json['tableRowStyle'] = tableRowStyle.toJson();
-    }
-    if (tableStartLocation != null) {
-      _json['tableStartLocation'] = tableStartLocation.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fields != null) 'fields': fields,
+        if (rowIndices != null) 'rowIndices': rowIndices,
+        if (tableRowStyle != null) 'tableRowStyle': tableRowStyle.toJson(),
+        if (tableStartLocation != null)
+          'tableStartLocation': tableStartLocation.toJson(),
+      };
 }
 
 /// Update the styling of text.
@@ -9158,19 +8001,11 @@ class UpdateTextStyleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    if (textStyle != null) {
-      _json['textStyle'] = textStyle.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fields != null) 'fields': fields,
+        if (range != null) 'range': range.toJson(),
+        if (textStyle != null) 'textStyle': textStyle.toJson(),
+      };
 }
 
 /// Represents a font family and weight of text.
@@ -9211,16 +8046,10 @@ class WeightedFontFamily {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fontFamily != null) {
-      _json['fontFamily'] = fontFamily;
-    }
-    if (weight != null) {
-      _json['weight'] = weight;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fontFamily != null) 'fontFamily': fontFamily,
+        if (weight != null) 'weight': weight,
+      };
 }
 
 /// Provides control over how write requests are executed.
@@ -9263,14 +8092,9 @@ class WriteControl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (requiredRevisionId != null) {
-      _json['requiredRevisionId'] = requiredRevisionId;
-    }
-    if (targetRevisionId != null) {
-      _json['targetRevisionId'] = targetRevisionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (requiredRevisionId != null)
+          'requiredRevisionId': requiredRevisionId,
+        if (targetRevisionId != null) 'targetRevisionId': targetRevisionId,
+      };
 }

@@ -5422,17 +5422,12 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditLogConfigs != null) {
-      _json['auditLogConfigs'] =
-          auditLogConfigs.map((value) => value.toJson()).toList();
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditLogConfigs != null)
+          'auditLogConfigs':
+              auditLogConfigs.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service,
+      };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -5469,16 +5464,10 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exemptedMembers != null) {
-      _json['exemptedMembers'] = exemptedMembers;
-    }
-    if (logType != null) {
-      _json['logType'] = logType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
+        if (logType != null) 'logType': logType,
+      };
 }
 
 /// Associates `members` with a `role`.
@@ -5547,19 +5536,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -5570,10 +5551,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Mask a string by replacing its characters with a fixed character.
@@ -5591,13 +5569,9 @@ class CharacterMaskConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maskingCharacter != null) {
-      _json['maskingCharacter'] = maskingCharacter;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maskingCharacter != null) 'maskingCharacter': maskingCharacter,
+      };
 }
 
 /// Creates a new message.
@@ -5614,13 +5588,9 @@ class CreateMessageRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (message != null) {
-      _json['message'] = message.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (message != null) 'message': message.toJson(),
+      };
 }
 
 /// Pseudonymization method that generates surrogates via cryptographic hashing.
@@ -5649,13 +5619,9 @@ class CryptoHashConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cryptoKey != null) {
-      _json['cryptoKey'] = cryptoKey;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cryptoKey != null) 'cryptoKey': cryptoKey,
+      };
 }
 
 /// A message representing a health dataset.
@@ -5686,16 +5652,10 @@ class Dataset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (timeZone != null) {
-      _json['timeZone'] = timeZone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (timeZone != null) 'timeZone': timeZone,
+      };
 }
 
 /// Shift a date forward or backward in time by a random amount which is
@@ -5722,13 +5682,9 @@ class DateShiftConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cryptoKey != null) {
-      _json['cryptoKey'] = cryptoKey;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cryptoKey != null) 'cryptoKey': cryptoKey,
+      };
 }
 
 /// Configures de-id options specific to different types of content.
@@ -5772,22 +5728,12 @@ class DeidentifyConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dicom != null) {
-      _json['dicom'] = dicom.toJson();
-    }
-    if (fhir != null) {
-      _json['fhir'] = fhir.toJson();
-    }
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dicom != null) 'dicom': dicom.toJson(),
+        if (fhir != null) 'fhir': fhir.toJson(),
+        if (image != null) 'image': image.toJson(),
+        if (text != null) 'text': text.toJson(),
+      };
 }
 
 /// Redacts identifying information from the specified dataset.
@@ -5814,16 +5760,11 @@ class DeidentifyDatasetRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (config != null) {
-      _json['config'] = config.toJson();
-    }
-    if (destinationDataset != null) {
-      _json['destinationDataset'] = destinationDataset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (config != null) 'config': config.toJson(),
+        if (destinationDataset != null)
+          'destinationDataset': destinationDataset,
+      };
 }
 
 /// Creates a new DICOM store with sensitive information de-identified.
@@ -5861,19 +5802,11 @@ class DeidentifyDicomStoreRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (config != null) {
-      _json['config'] = config.toJson();
-    }
-    if (destinationStore != null) {
-      _json['destinationStore'] = destinationStore;
-    }
-    if (filterConfig != null) {
-      _json['filterConfig'] = filterConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (config != null) 'config': config.toJson(),
+        if (destinationStore != null) 'destinationStore': destinationStore,
+        if (filterConfig != null) 'filterConfig': filterConfig.toJson(),
+      };
 }
 
 /// Creates a new FHIR store with sensitive information de-identified.
@@ -5913,19 +5846,11 @@ class DeidentifyFhirStoreRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (config != null) {
-      _json['config'] = config.toJson();
-    }
-    if (destinationStore != null) {
-      _json['destinationStore'] = destinationStore;
-    }
-    if (resourceFilter != null) {
-      _json['resourceFilter'] = resourceFilter.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (config != null) 'config': config.toJson(),
+        if (destinationStore != null) 'destinationStore': destinationStore,
+        if (resourceFilter != null) 'resourceFilter': resourceFilter.toJson(),
+      };
 }
 
 /// Contains a summary of the Deidentify operation.
@@ -5936,10 +5861,7 @@ class DeidentifySummary {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Specifies the parameters needed for de-identification of DICOM stores.
@@ -6001,22 +5923,12 @@ class DicomConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filterProfile != null) {
-      _json['filterProfile'] = filterProfile;
-    }
-    if (keepList != null) {
-      _json['keepList'] = keepList.toJson();
-    }
-    if (removeList != null) {
-      _json['removeList'] = removeList.toJson();
-    }
-    if (skipIdRedaction != null) {
-      _json['skipIdRedaction'] = skipIdRedaction;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filterProfile != null) 'filterProfile': filterProfile,
+        if (keepList != null) 'keepList': keepList.toJson(),
+        if (removeList != null) 'removeList': removeList.toJson(),
+        if (skipIdRedaction != null) 'skipIdRedaction': skipIdRedaction,
+      };
 }
 
 /// Specifies the filter configuration for DICOM resources.
@@ -6041,13 +5953,10 @@ class DicomFilterConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourcePathsGcsUri != null) {
-      _json['resourcePathsGcsUri'] = resourcePathsGcsUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourcePathsGcsUri != null)
+          'resourcePathsGcsUri': resourcePathsGcsUri,
+      };
 }
 
 /// Represents a DICOM store.
@@ -6093,19 +6002,12 @@ class DicomStore {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (notificationConfig != null) {
-      _json['notificationConfig'] = notificationConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+        if (notificationConfig != null)
+          'notificationConfig': notificationConfig.toJson(),
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -6122,10 +6024,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Exports data from the specified DICOM store.
@@ -6164,16 +6063,11 @@ class ExportDicomDataRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bigqueryDestination != null) {
-      _json['bigqueryDestination'] = bigqueryDestination.toJson();
-    }
-    if (gcsDestination != null) {
-      _json['gcsDestination'] = gcsDestination.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bigqueryDestination != null)
+          'bigqueryDestination': bigqueryDestination.toJson(),
+        if (gcsDestination != null) 'gcsDestination': gcsDestination.toJson(),
+      };
 }
 
 /// Returns additional information in regards to a completed DICOM store export.
@@ -6184,10 +6078,7 @@ class ExportDicomDataResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Request to export resources.
@@ -6223,16 +6114,11 @@ class ExportResourcesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bigqueryDestination != null) {
-      _json['bigqueryDestination'] = bigqueryDestination.toJson();
-    }
-    if (gcsDestination != null) {
-      _json['gcsDestination'] = gcsDestination.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bigqueryDestination != null)
+          'bigqueryDestination': bigqueryDestination.toJson(),
+        if (gcsDestination != null) 'gcsDestination': gcsDestination.toJson(),
+      };
 }
 
 /// Response when all resources export successfully.
@@ -6246,10 +6132,7 @@ class ExportResourcesResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -6313,22 +6196,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Specifies how to handle de-identification of a FHIR store.
@@ -6350,14 +6223,11 @@ class FhirConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fieldMetadataList != null) {
-      _json['fieldMetadataList'] =
-          fieldMetadataList.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fieldMetadataList != null)
+          'fieldMetadataList':
+              fieldMetadataList.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Filter configuration.
@@ -6377,13 +6247,9 @@ class FhirFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resources != null) {
-      _json['resources'] = resources.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resources != null) 'resources': resources.toJson(),
+      };
 }
 
 /// Represents a FHIR store.
@@ -6524,35 +6390,22 @@ class FhirStore {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (disableReferentialIntegrity != null) {
-      _json['disableReferentialIntegrity'] = disableReferentialIntegrity;
-    }
-    if (disableResourceVersioning != null) {
-      _json['disableResourceVersioning'] = disableResourceVersioning;
-    }
-    if (enableUpdateCreate != null) {
-      _json['enableUpdateCreate'] = enableUpdateCreate;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (notificationConfig != null) {
-      _json['notificationConfig'] = notificationConfig.toJson();
-    }
-    if (streamConfigs != null) {
-      _json['streamConfigs'] =
-          streamConfigs.map((value) => value.toJson()).toList();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (disableReferentialIntegrity != null)
+          'disableReferentialIntegrity': disableReferentialIntegrity,
+        if (disableResourceVersioning != null)
+          'disableResourceVersioning': disableResourceVersioning,
+        if (enableUpdateCreate != null)
+          'enableUpdateCreate': enableUpdateCreate,
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+        if (notificationConfig != null)
+          'notificationConfig': notificationConfig.toJson(),
+        if (streamConfigs != null)
+          'streamConfigs':
+              streamConfigs.map((value) => value.toJson()).toList(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// Specifies FHIR paths to match, and how to handle de-identification of
@@ -6591,16 +6444,10 @@ class FieldMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (action != null) {
-      _json['action'] = action;
-    }
-    if (paths != null) {
-      _json['paths'] = paths;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (action != null) 'action': action,
+        if (paths != null) 'paths': paths,
+      };
 }
 
 /// Contains a summary of the DeidentifyDicomStore operation.
@@ -6611,10 +6458,7 @@ class GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Contains a summary of the DeidentifyFhirStore operation.
@@ -6625,10 +6469,7 @@ class GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The BigQuery table where the server writes the output.
@@ -6655,16 +6496,10 @@ class GoogleCloudHealthcareV1DicomBigQueryDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (force != null) {
-      _json['force'] = force;
-    }
-    if (tableUri != null) {
-      _json['tableUri'] = tableUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (force != null) 'force': force,
+        if (tableUri != null) 'tableUri': tableUri,
+      };
 }
 
 /// The Cloud Storage location where the server writes the output and the export
@@ -6715,16 +6550,10 @@ class GoogleCloudHealthcareV1DicomGcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    if (uriPrefix != null) {
-      _json['uriPrefix'] = uriPrefix;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (mimeType != null) 'mimeType': mimeType,
+        if (uriPrefix != null) 'uriPrefix': uriPrefix,
+      };
 }
 
 /// Specifies the configuration for importing data from Cloud Storage.
@@ -6752,13 +6581,9 @@ class GoogleCloudHealthcareV1DicomGcsSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// The configuration for exporting to BigQuery.
@@ -6811,22 +6636,12 @@ class GoogleCloudHealthcareV1FhirBigQueryDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (datasetUri != null) {
-      _json['datasetUri'] = datasetUri;
-    }
-    if (force != null) {
-      _json['force'] = force;
-    }
-    if (schemaConfig != null) {
-      _json['schemaConfig'] = schemaConfig.toJson();
-    }
-    if (writeDisposition != null) {
-      _json['writeDisposition'] = writeDisposition;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (datasetUri != null) 'datasetUri': datasetUri,
+        if (force != null) 'force': force,
+        if (schemaConfig != null) 'schemaConfig': schemaConfig.toJson(),
+        if (writeDisposition != null) 'writeDisposition': writeDisposition,
+      };
 }
 
 /// The configuration for exporting to Cloud Storage.
@@ -6847,13 +6662,9 @@ class GoogleCloudHealthcareV1FhirGcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uriPrefix != null) {
-      _json['uriPrefix'] = uriPrefix;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uriPrefix != null) 'uriPrefix': uriPrefix,
+      };
 }
 
 /// Specifies the configuration for importing data from Cloud Storage.
@@ -6881,13 +6692,9 @@ class GoogleCloudHealthcareV1FhirGcsSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// Specifies where and whether to send notifications upon changes to a data
@@ -6944,16 +6751,10 @@ class Hl7V2NotificationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    if (pubsubTopic != null) {
-      _json['pubsubTopic'] = pubsubTopic;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filter != null) 'filter': filter,
+        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic,
+      };
 }
 
 /// Represents an HL7v2 store.
@@ -7029,26 +6830,16 @@ class Hl7V2Store {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (notificationConfigs != null) {
-      _json['notificationConfigs'] =
-          notificationConfigs.map((value) => value.toJson()).toList();
-    }
-    if (parserConfig != null) {
-      _json['parserConfig'] = parserConfig.toJson();
-    }
-    if (rejectDuplicateMessage != null) {
-      _json['rejectDuplicateMessage'] = rejectDuplicateMessage;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+        if (notificationConfigs != null)
+          'notificationConfigs':
+              notificationConfigs.map((value) => value.toJson()).toList(),
+        if (parserConfig != null) 'parserConfig': parserConfig.toJson(),
+        if (rejectDuplicateMessage != null)
+          'rejectDuplicateMessage': rejectDuplicateMessage,
+      };
 }
 
 /// Message that represents an arbitrary HTTP body.
@@ -7113,19 +6904,11 @@ class HttpBody {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentType != null) {
-      _json['contentType'] = contentType;
-    }
-    if (data != null) {
-      _json['data'] = data;
-    }
-    if (extensions != null) {
-      _json['extensions'] = extensions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentType != null) 'contentType': contentType,
+        if (data != null) 'data': data,
+        if (extensions != null) 'extensions': extensions,
+      };
 }
 
 /// Specifies how to handle de-identification of image pixels.
@@ -7147,13 +6930,9 @@ class ImageConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (textRedactionMode != null) {
-      _json['textRedactionMode'] = textRedactionMode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (textRedactionMode != null) 'textRedactionMode': textRedactionMode,
+      };
 }
 
 /// Imports data into the specified DICOM store.
@@ -7178,13 +6957,9 @@ class ImportDicomDataRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcsSource != null) {
-      _json['gcsSource'] = gcsSource.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsSource != null) 'gcsSource': gcsSource.toJson(),
+      };
 }
 
 /// Returns additional information in regards to a completed DICOM store import.
@@ -7195,10 +6970,7 @@ class ImportDicomDataResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Request to import resources.
@@ -7240,16 +7012,10 @@ class ImportResourcesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentStructure != null) {
-      _json['contentStructure'] = contentStructure;
-    }
-    if (gcsSource != null) {
-      _json['gcsSource'] = gcsSource.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentStructure != null) 'contentStructure': contentStructure,
+        if (gcsSource != null) 'gcsSource': gcsSource.toJson(),
+      };
 }
 
 /// Final response of importing resources.
@@ -7263,10 +7029,7 @@ class ImportResourcesResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A transformation to apply to text that is identified as a specific
@@ -7323,28 +7086,18 @@ class InfoTypeTransformation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (characterMaskConfig != null) {
-      _json['characterMaskConfig'] = characterMaskConfig.toJson();
-    }
-    if (cryptoHashConfig != null) {
-      _json['cryptoHashConfig'] = cryptoHashConfig.toJson();
-    }
-    if (dateShiftConfig != null) {
-      _json['dateShiftConfig'] = dateShiftConfig.toJson();
-    }
-    if (infoTypes != null) {
-      _json['infoTypes'] = infoTypes;
-    }
-    if (redactConfig != null) {
-      _json['redactConfig'] = redactConfig.toJson();
-    }
-    if (replaceWithInfoTypeConfig != null) {
-      _json['replaceWithInfoTypeConfig'] = replaceWithInfoTypeConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (characterMaskConfig != null)
+          'characterMaskConfig': characterMaskConfig.toJson(),
+        if (cryptoHashConfig != null)
+          'cryptoHashConfig': cryptoHashConfig.toJson(),
+        if (dateShiftConfig != null)
+          'dateShiftConfig': dateShiftConfig.toJson(),
+        if (infoTypes != null) 'infoTypes': infoTypes,
+        if (redactConfig != null) 'redactConfig': redactConfig.toJson(),
+        if (replaceWithInfoTypeConfig != null)
+          'replaceWithInfoTypeConfig': replaceWithInfoTypeConfig.toJson(),
+      };
 }
 
 /// Ingests a message into the specified HL7v2 store.
@@ -7361,13 +7114,9 @@ class IngestMessageRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (message != null) {
-      _json['message'] = message.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (message != null) 'message': message.toJson(),
+      };
 }
 
 /// Acknowledges that a message has been ingested into the specified HL7v2
@@ -7397,16 +7146,10 @@ class IngestMessageResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hl7Ack != null) {
-      _json['hl7Ack'] = hl7Ack;
-    }
-    if (message != null) {
-      _json['message'] = message.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hl7Ack != null) 'hl7Ack': hl7Ack,
+        if (message != null) 'message': message.toJson(),
+      };
 }
 
 /// Lists the available datasets.
@@ -7432,16 +7175,11 @@ class ListDatasetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (datasets != null) {
-      _json['datasets'] = datasets.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (datasets != null)
+          'datasets': datasets.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Lists the DICOM stores in the given dataset.
@@ -7469,17 +7207,11 @@ class ListDicomStoresResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dicomStores != null) {
-      _json['dicomStores'] =
-          dicomStores.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dicomStores != null)
+          'dicomStores': dicomStores.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Lists the FHIR stores in the given dataset.
@@ -7507,16 +7239,11 @@ class ListFhirStoresResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fhirStores != null) {
-      _json['fhirStores'] = fhirStores.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fhirStores != null)
+          'fhirStores': fhirStores.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Lists the HL7v2 stores in the given dataset.
@@ -7544,17 +7271,11 @@ class ListHl7V2StoresResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hl7V2Stores != null) {
-      _json['hl7V2Stores'] =
-          hl7V2Stores.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hl7V2Stores != null)
+          'hl7V2Stores': hl7V2Stores.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Locations.ListLocations.
@@ -7579,16 +7300,11 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Lists the messages in the specified HL7v2 store.
@@ -7617,17 +7333,12 @@ class ListMessagesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hl7V2Messages != null) {
-      _json['hl7V2Messages'] =
-          hl7V2Messages.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hl7V2Messages != null)
+          'hl7V2Messages':
+              hl7V2Messages.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -7652,16 +7363,11 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A resource that represents Google Cloud Platform location.
@@ -7726,25 +7432,13 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (labels != null) 'labels': labels,
+        if (locationId != null) 'locationId': locationId,
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+      };
 }
 
 /// A complete HL7v2 message.
@@ -7852,37 +7546,18 @@ class Message {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (data != null) {
-      _json['data'] = data;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (messageType != null) {
-      _json['messageType'] = messageType;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parsedData != null) {
-      _json['parsedData'] = parsedData.toJson();
-    }
-    if (patientIds != null) {
-      _json['patientIds'] = patientIds.map((value) => value.toJson()).toList();
-    }
-    if (sendFacility != null) {
-      _json['sendFacility'] = sendFacility;
-    }
-    if (sendTime != null) {
-      _json['sendTime'] = sendTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (data != null) 'data': data,
+        if (labels != null) 'labels': labels,
+        if (messageType != null) 'messageType': messageType,
+        if (name != null) 'name': name,
+        if (parsedData != null) 'parsedData': parsedData.toJson(),
+        if (patientIds != null)
+          'patientIds': patientIds.map((value) => value.toJson()).toList(),
+        if (sendFacility != null) 'sendFacility': sendFacility,
+        if (sendTime != null) 'sendTime': sendTime,
+      };
 }
 
 /// Specifies where to send notifications upon changes to a data store.
@@ -7915,13 +7590,9 @@ class NotificationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pubsubTopic != null) {
-      _json['pubsubTopic'] = pubsubTopic;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic,
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -8000,25 +7671,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// OperationMetadata provides information about the operation execution.
@@ -8068,28 +7727,14 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiMethodName != null) {
-      _json['apiMethodName'] = apiMethodName;
-    }
-    if (cancelRequested != null) {
-      _json['cancelRequested'] = cancelRequested;
-    }
-    if (counter != null) {
-      _json['counter'] = counter.toJson();
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (logsUrl != null) {
-      _json['logsUrl'] = logsUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiMethodName != null) 'apiMethodName': apiMethodName,
+        if (cancelRequested != null) 'cancelRequested': cancelRequested,
+        if (counter != null) 'counter': counter.toJson(),
+        if (createTime != null) 'createTime': createTime,
+        if (endTime != null) 'endTime': endTime,
+        if (logsUrl != null) 'logsUrl': logsUrl,
+      };
 }
 
 /// The content of a HL7v2 message in a structured format.
@@ -8107,13 +7752,10 @@ class ParsedData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (segments != null) {
-      _json['segments'] = segments.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (segments != null)
+          'segments': segments.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The configuration for the parser.
@@ -8147,16 +7789,10 @@ class ParserConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowNullHeader != null) {
-      _json['allowNullHeader'] = allowNullHeader;
-    }
-    if (segmentTerminator != null) {
-      _json['segmentTerminator'] = segmentTerminator;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowNullHeader != null) 'allowNullHeader': allowNullHeader,
+        if (segmentTerminator != null) 'segmentTerminator': segmentTerminator,
+      };
 }
 
 /// A patient identifier and associated type.
@@ -8180,16 +7816,10 @@ class PatientId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+        if (value != null) 'value': value,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -8296,23 +7926,14 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditConfigs != null) {
-      _json['auditConfigs'] =
-          auditConfigs.map((value) => value.toJson()).toList();
-    }
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditConfigs != null)
+          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// ProgressCounter provides counters to describe an operation's progress.
@@ -8340,19 +7961,11 @@ class ProgressCounter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (failure != null) {
-      _json['failure'] = failure;
-    }
-    if (pending != null) {
-      _json['pending'] = pending;
-    }
-    if (success != null) {
-      _json['success'] = success;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (failure != null) 'failure': failure,
+        if (pending != null) 'pending': pending,
+        if (success != null) 'success': success,
+      };
 }
 
 /// Define how to redact sensitive values.
@@ -8366,10 +7979,7 @@ class RedactConfig {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// When using the INSPECT_AND_TRANSFORM action, each match is replaced with the
@@ -8384,10 +7994,7 @@ class ReplaceWithInfoTypeConfig {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A list of FHIR resources.
@@ -8407,13 +8014,9 @@ class Resources {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resources != null) {
-      _json['resources'] = resources;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resources != null) 'resources': resources,
+      };
 }
 
 /// Configuration for the FHIR BigQuery schema.
@@ -8455,16 +8058,11 @@ class SchemaConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (recursiveStructureDepth != null) {
-      _json['recursiveStructureDepth'] = recursiveStructureDepth;
-    }
-    if (schemaType != null) {
-      _json['schemaType'] = schemaType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (recursiveStructureDepth != null)
+          'recursiveStructureDepth': recursiveStructureDepth,
+        if (schemaType != null) 'schemaType': schemaType,
+      };
 }
 
 /// Request to search the resources in the specified FHIR store.
@@ -8485,13 +8083,9 @@ class SearchResourcesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceType != null) {
-      _json['resourceType'] = resourceType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceType != null) 'resourceType': resourceType,
+      };
 }
 
 /// A segment in a structured format.
@@ -8539,19 +8133,11 @@ class Segment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    if (segmentId != null) {
-      _json['segmentId'] = segmentId;
-    }
-    if (setId != null) {
-      _json['setId'] = setId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fields != null) 'fields': fields,
+        if (segmentId != null) 'segmentId': segmentId,
+        if (setId != null) 'setId': setId,
+      };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -8581,16 +8167,10 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -8640,19 +8220,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Contains configuration for streaming FHIR export.
@@ -8712,16 +8284,11 @@ class StreamConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bigqueryDestination != null) {
-      _json['bigqueryDestination'] = bigqueryDestination.toJson();
-    }
-    if (resourceTypes != null) {
-      _json['resourceTypes'] = resourceTypes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bigqueryDestination != null)
+          'bigqueryDestination': bigqueryDestination.toJson(),
+        if (resourceTypes != null) 'resourceTypes': resourceTypes,
+      };
 }
 
 /// List of tags to be filtered.
@@ -8745,13 +8312,9 @@ class TagFilterList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (tags != null) {
-      _json['tags'] = tags;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (tags != null) 'tags': tags,
+      };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -8773,13 +8336,9 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -8798,13 +8357,9 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 class TextConfig {
@@ -8823,12 +8378,9 @@ class TextConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (transformations != null) {
-      _json['transformations'] =
-          transformations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (transformations != null)
+          'transformations':
+              transformations.map((value) => value.toJson()).toList(),
+      };
 }

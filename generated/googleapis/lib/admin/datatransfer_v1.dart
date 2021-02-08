@@ -365,26 +365,15 @@ class Application {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (transferParams != null) {
-      _json['transferParams'] =
-          transferParams.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+        if (transferParams != null)
+          'transferParams':
+              transferParams.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Template to map fields of ApplicationDataTransfer resource.
@@ -423,20 +412,14 @@ class ApplicationDataTransfer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (applicationId != null) {
-      _json['applicationId'] = applicationId;
-    }
-    if (applicationTransferParams != null) {
-      _json['applicationTransferParams'] =
-          applicationTransferParams.map((value) => value.toJson()).toList();
-    }
-    if (applicationTransferStatus != null) {
-      _json['applicationTransferStatus'] = applicationTransferStatus;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (applicationId != null) 'applicationId': applicationId,
+        if (applicationTransferParams != null)
+          'applicationTransferParams':
+              applicationTransferParams.map((value) => value.toJson()).toList(),
+        if (applicationTransferStatus != null)
+          'applicationTransferStatus': applicationTransferStatus,
+      };
 }
 
 /// Template for application transfer parameters.
@@ -464,16 +447,10 @@ class ApplicationTransferParam {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Template for a collection of Applications.
@@ -511,23 +488,13 @@ class ApplicationsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (applications != null) {
-      _json['applications'] =
-          applications.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (applications != null)
+          'applications': applications.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// A Transfer resource represents the transfer of the ownership of user data
@@ -597,35 +564,19 @@ class DataTransfer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (applicationDataTransfers != null) {
-      _json['applicationDataTransfers'] =
-          applicationDataTransfers.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (newOwnerUserId != null) {
-      _json['newOwnerUserId'] = newOwnerUserId;
-    }
-    if (oldOwnerUserId != null) {
-      _json['oldOwnerUserId'] = oldOwnerUserId;
-    }
-    if (overallTransferStatusCode != null) {
-      _json['overallTransferStatusCode'] = overallTransferStatusCode;
-    }
-    if (requestTime != null) {
-      _json['requestTime'] = (requestTime).toIso8601String();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (applicationDataTransfers != null)
+          'applicationDataTransfers':
+              applicationDataTransfers.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (newOwnerUserId != null) 'newOwnerUserId': newOwnerUserId,
+        if (oldOwnerUserId != null) 'oldOwnerUserId': oldOwnerUserId,
+        if (overallTransferStatusCode != null)
+          'overallTransferStatusCode': overallTransferStatusCode,
+        if (requestTime != null) 'requestTime': (requestTime).toIso8601String(),
+      };
 }
 
 /// Template for a collection of DataTransfer resources.
@@ -662,21 +613,12 @@ class DataTransfersListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataTransfers != null) {
-      _json['dataTransfers'] =
-          dataTransfers.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataTransfers != null)
+          'dataTransfers':
+              dataTransfers.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }

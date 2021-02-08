@@ -583,10 +583,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// gdata
@@ -640,25 +637,15 @@ class GdataBlobstore2Info {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blobGeneration != null) {
-      _json['blobGeneration'] = blobGeneration;
-    }
-    if (blobId != null) {
-      _json['blobId'] = blobId;
-    }
-    if (downloadReadHandle != null) {
-      _json['downloadReadHandle'] = downloadReadHandle;
-    }
-    if (readToken != null) {
-      _json['readToken'] = readToken;
-    }
-    if (uploadMetadataContainer != null) {
-      _json['uploadMetadataContainer'] = uploadMetadataContainer;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blobGeneration != null) 'blobGeneration': blobGeneration,
+        if (blobId != null) 'blobId': blobId,
+        if (downloadReadHandle != null)
+          'downloadReadHandle': downloadReadHandle,
+        if (readToken != null) 'readToken': readToken,
+        if (uploadMetadataContainer != null)
+          'uploadMetadataContainer': uploadMetadataContainer,
+      };
 }
 
 /// gdata
@@ -773,43 +760,20 @@ class GdataCompositeMedia {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blobRef != null) {
-      _json['blobRef'] = blobRef;
-    }
-    if (blobstore2Info != null) {
-      _json['blobstore2Info'] = blobstore2Info.toJson();
-    }
-    if (cosmoBinaryReference != null) {
-      _json['cosmoBinaryReference'] = cosmoBinaryReference;
-    }
-    if (crc32cHash != null) {
-      _json['crc32cHash'] = crc32cHash;
-    }
-    if (inline != null) {
-      _json['inline'] = inline;
-    }
-    if (length != null) {
-      _json['length'] = length;
-    }
-    if (md5Hash != null) {
-      _json['md5Hash'] = md5Hash;
-    }
-    if (objectId != null) {
-      _json['objectId'] = objectId.toJson();
-    }
-    if (path != null) {
-      _json['path'] = path;
-    }
-    if (referenceType != null) {
-      _json['referenceType'] = referenceType;
-    }
-    if (sha1Hash != null) {
-      _json['sha1Hash'] = sha1Hash;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blobRef != null) 'blobRef': blobRef,
+        if (blobstore2Info != null) 'blobstore2Info': blobstore2Info.toJson(),
+        if (cosmoBinaryReference != null)
+          'cosmoBinaryReference': cosmoBinaryReference,
+        if (crc32cHash != null) 'crc32cHash': crc32cHash,
+        if (inline != null) 'inline': inline,
+        if (length != null) 'length': length,
+        if (md5Hash != null) 'md5Hash': md5Hash,
+        if (objectId != null) 'objectId': objectId.toJson(),
+        if (path != null) 'path': path,
+        if (referenceType != null) 'referenceType': referenceType,
+        if (sha1Hash != null) 'sha1Hash': sha1Hash,
+      };
 }
 
 /// gdata
@@ -849,25 +813,13 @@ class GdataContentTypeInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bestGuess != null) {
-      _json['bestGuess'] = bestGuess;
-    }
-    if (fromBytes != null) {
-      _json['fromBytes'] = fromBytes;
-    }
-    if (fromFileName != null) {
-      _json['fromFileName'] = fromFileName;
-    }
-    if (fromHeader != null) {
-      _json['fromHeader'] = fromHeader;
-    }
-    if (fromUrlPath != null) {
-      _json['fromUrlPath'] = fromUrlPath;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bestGuess != null) 'bestGuess': bestGuess,
+        if (fromBytes != null) 'fromBytes': fromBytes,
+        if (fromFileName != null) 'fromFileName': fromFileName,
+        if (fromHeader != null) 'fromHeader': fromHeader,
+        if (fromUrlPath != null) 'fromUrlPath': fromUrlPath,
+      };
 }
 
 /// gdata
@@ -909,25 +861,14 @@ class GdataDiffChecksumsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (checksumsLocation != null) {
-      _json['checksumsLocation'] = checksumsLocation.toJson();
-    }
-    if (chunkSizeBytes != null) {
-      _json['chunkSizeBytes'] = chunkSizeBytes;
-    }
-    if (objectLocation != null) {
-      _json['objectLocation'] = objectLocation.toJson();
-    }
-    if (objectSizeBytes != null) {
-      _json['objectSizeBytes'] = objectSizeBytes;
-    }
-    if (objectVersion != null) {
-      _json['objectVersion'] = objectVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (checksumsLocation != null)
+          'checksumsLocation': checksumsLocation.toJson(),
+        if (chunkSizeBytes != null) 'chunkSizeBytes': chunkSizeBytes,
+        if (objectLocation != null) 'objectLocation': objectLocation.toJson(),
+        if (objectSizeBytes != null) 'objectSizeBytes': objectSizeBytes,
+        if (objectVersion != null) 'objectVersion': objectVersion,
+      };
 }
 
 /// gdata
@@ -944,13 +885,9 @@ class GdataDiffDownloadResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (objectLocation != null) {
-      _json['objectLocation'] = objectLocation.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (objectLocation != null) 'objectLocation': objectLocation.toJson(),
+      };
 }
 
 /// gdata
@@ -980,19 +917,11 @@ class GdataDiffUploadRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (checksumsInfo != null) {
-      _json['checksumsInfo'] = checksumsInfo.toJson();
-    }
-    if (objectInfo != null) {
-      _json['objectInfo'] = objectInfo.toJson();
-    }
-    if (objectVersion != null) {
-      _json['objectVersion'] = objectVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (checksumsInfo != null) 'checksumsInfo': checksumsInfo.toJson(),
+        if (objectInfo != null) 'objectInfo': objectInfo.toJson(),
+        if (objectVersion != null) 'objectVersion': objectVersion,
+      };
 }
 
 /// gdata
@@ -1015,16 +944,10 @@ class GdataDiffUploadResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (objectVersion != null) {
-      _json['objectVersion'] = objectVersion;
-    }
-    if (originalObject != null) {
-      _json['originalObject'] = originalObject.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (objectVersion != null) 'objectVersion': objectVersion,
+        if (originalObject != null) 'originalObject': originalObject.toJson(),
+      };
 }
 
 /// gdata
@@ -1046,16 +969,10 @@ class GdataDiffVersionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (objectSizeBytes != null) {
-      _json['objectSizeBytes'] = objectSizeBytes;
-    }
-    if (objectVersion != null) {
-      _json['objectVersion'] = objectVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (objectSizeBytes != null) 'objectSizeBytes': objectSizeBytes,
+        if (objectVersion != null) 'objectVersion': objectVersion,
+      };
 }
 
 /// gdata
@@ -1077,16 +994,11 @@ class GdataDownloadParameters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowGzipCompression != null) {
-      _json['allowGzipCompression'] = allowGzipCompression;
-    }
-    if (ignoreRange != null) {
-      _json['ignoreRange'] = ignoreRange;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowGzipCompression != null)
+          'allowGzipCompression': allowGzipCompression,
+        if (ignoreRange != null) 'ignoreRange': ignoreRange,
+      };
 }
 
 /// gdata
@@ -1354,101 +1266,48 @@ class GdataMedia {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (algorithm != null) {
-      _json['algorithm'] = algorithm;
-    }
-    if (bigstoreObjectRef != null) {
-      _json['bigstoreObjectRef'] = bigstoreObjectRef;
-    }
-    if (blobRef != null) {
-      _json['blobRef'] = blobRef;
-    }
-    if (blobstore2Info != null) {
-      _json['blobstore2Info'] = blobstore2Info.toJson();
-    }
-    if (compositeMedia != null) {
-      _json['compositeMedia'] =
-          compositeMedia.map((value) => value.toJson()).toList();
-    }
-    if (contentType != null) {
-      _json['contentType'] = contentType;
-    }
-    if (contentTypeInfo != null) {
-      _json['contentTypeInfo'] = contentTypeInfo.toJson();
-    }
-    if (cosmoBinaryReference != null) {
-      _json['cosmoBinaryReference'] = cosmoBinaryReference;
-    }
-    if (crc32cHash != null) {
-      _json['crc32cHash'] = crc32cHash;
-    }
-    if (diffChecksumsResponse != null) {
-      _json['diffChecksumsResponse'] = diffChecksumsResponse.toJson();
-    }
-    if (diffDownloadResponse != null) {
-      _json['diffDownloadResponse'] = diffDownloadResponse.toJson();
-    }
-    if (diffUploadRequest != null) {
-      _json['diffUploadRequest'] = diffUploadRequest.toJson();
-    }
-    if (diffUploadResponse != null) {
-      _json['diffUploadResponse'] = diffUploadResponse.toJson();
-    }
-    if (diffVersionResponse != null) {
-      _json['diffVersionResponse'] = diffVersionResponse.toJson();
-    }
-    if (downloadParameters != null) {
-      _json['downloadParameters'] = downloadParameters.toJson();
-    }
-    if (filename != null) {
-      _json['filename'] = filename;
-    }
-    if (hash != null) {
-      _json['hash'] = hash;
-    }
-    if (hashVerified != null) {
-      _json['hashVerified'] = hashVerified;
-    }
-    if (inline != null) {
-      _json['inline'] = inline;
-    }
-    if (isPotentialRetry != null) {
-      _json['isPotentialRetry'] = isPotentialRetry;
-    }
-    if (length != null) {
-      _json['length'] = length;
-    }
-    if (md5Hash != null) {
-      _json['md5Hash'] = md5Hash;
-    }
-    if (mediaId != null) {
-      _json['mediaId'] = mediaId;
-    }
-    if (objectId != null) {
-      _json['objectId'] = objectId.toJson();
-    }
-    if (path != null) {
-      _json['path'] = path;
-    }
-    if (referenceType != null) {
-      _json['referenceType'] = referenceType;
-    }
-    if (sha1Hash != null) {
-      _json['sha1Hash'] = sha1Hash;
-    }
-    if (sha256Hash != null) {
-      _json['sha256Hash'] = sha256Hash;
-    }
-    if (timestamp != null) {
-      _json['timestamp'] = timestamp;
-    }
-    if (token != null) {
-      _json['token'] = token;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (algorithm != null) 'algorithm': algorithm,
+        if (bigstoreObjectRef != null) 'bigstoreObjectRef': bigstoreObjectRef,
+        if (blobRef != null) 'blobRef': blobRef,
+        if (blobstore2Info != null) 'blobstore2Info': blobstore2Info.toJson(),
+        if (compositeMedia != null)
+          'compositeMedia':
+              compositeMedia.map((value) => value.toJson()).toList(),
+        if (contentType != null) 'contentType': contentType,
+        if (contentTypeInfo != null)
+          'contentTypeInfo': contentTypeInfo.toJson(),
+        if (cosmoBinaryReference != null)
+          'cosmoBinaryReference': cosmoBinaryReference,
+        if (crc32cHash != null) 'crc32cHash': crc32cHash,
+        if (diffChecksumsResponse != null)
+          'diffChecksumsResponse': diffChecksumsResponse.toJson(),
+        if (diffDownloadResponse != null)
+          'diffDownloadResponse': diffDownloadResponse.toJson(),
+        if (diffUploadRequest != null)
+          'diffUploadRequest': diffUploadRequest.toJson(),
+        if (diffUploadResponse != null)
+          'diffUploadResponse': diffUploadResponse.toJson(),
+        if (diffVersionResponse != null)
+          'diffVersionResponse': diffVersionResponse.toJson(),
+        if (downloadParameters != null)
+          'downloadParameters': downloadParameters.toJson(),
+        if (filename != null) 'filename': filename,
+        if (hash != null) 'hash': hash,
+        if (hashVerified != null) 'hashVerified': hashVerified,
+        if (inline != null) 'inline': inline,
+        if (isPotentialRetry != null) 'isPotentialRetry': isPotentialRetry,
+        if (length != null) 'length': length,
+        if (md5Hash != null) 'md5Hash': md5Hash,
+        if (mediaId != null) 'mediaId': mediaId,
+        if (objectId != null) 'objectId': objectId.toJson(),
+        if (path != null) 'path': path,
+        if (referenceType != null) 'referenceType': referenceType,
+        if (sha1Hash != null) 'sha1Hash': sha1Hash,
+        if (sha256Hash != null) 'sha256Hash': sha256Hash,
+        if (timestamp != null) 'timestamp': timestamp,
+        if (token != null) 'token': token,
+      };
 }
 
 /// gdata
@@ -1476,19 +1335,11 @@ class GdataObjectId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bucketName != null) {
-      _json['bucketName'] = bucketName;
-    }
-    if (generation != null) {
-      _json['generation'] = generation;
-    }
-    if (objectName != null) {
-      _json['objectName'] = objectName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bucketName != null) 'bucketName': bucketName,
+        if (generation != null) 'generation': generation,
+        if (objectName != null) 'objectName': objectName,
+      };
 }
 
 /// A job creating reports of a specific type.
@@ -1543,28 +1394,14 @@ class Job {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (expireTime != null) {
-      _json['expireTime'] = expireTime;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (reportTypeId != null) {
-      _json['reportTypeId'] = reportTypeId;
-    }
-    if (systemManaged != null) {
-      _json['systemManaged'] = systemManaged;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (expireTime != null) 'expireTime': expireTime,
+        if (id != null) 'id': id,
+        if (name != null) 'name': name,
+        if (reportTypeId != null) 'reportTypeId': reportTypeId,
+        if (systemManaged != null) 'systemManaged': systemManaged,
+      };
 }
 
 /// Response message for ReportingService.ListJobs.
@@ -1592,16 +1429,10 @@ class ListJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (jobs != null) {
-      _json['jobs'] = jobs.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (jobs != null) 'jobs': jobs.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message for ReportingService.ListReportTypes.
@@ -1630,17 +1461,11 @@ class ListReportTypesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (reportTypes != null) {
-      _json['reportTypes'] =
-          reportTypes.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (reportTypes != null)
+          'reportTypes': reportTypes.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for ReportingService.ListReports.
@@ -1669,16 +1494,11 @@ class ListReportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (reports != null) {
-      _json['reports'] = reports.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (reports != null)
+          'reports': reports.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A report's metadata including the URL from which the report itself can be
@@ -1737,31 +1557,15 @@ class Report {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (downloadUrl != null) {
-      _json['downloadUrl'] = downloadUrl;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (jobExpireTime != null) {
-      _json['jobExpireTime'] = jobExpireTime;
-    }
-    if (jobId != null) {
-      _json['jobId'] = jobId;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (downloadUrl != null) 'downloadUrl': downloadUrl,
+        if (endTime != null) 'endTime': endTime,
+        if (id != null) 'id': id,
+        if (jobExpireTime != null) 'jobExpireTime': jobExpireTime,
+        if (jobId != null) 'jobId': jobId,
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// A report type.
@@ -1802,20 +1606,10 @@ class ReportType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deprecateTime != null) {
-      _json['deprecateTime'] = deprecateTime;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (systemManaged != null) {
-      _json['systemManaged'] = systemManaged;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deprecateTime != null) 'deprecateTime': deprecateTime,
+        if (id != null) 'id': id,
+        if (name != null) 'name': name,
+        if (systemManaged != null) 'systemManaged': systemManaged,
+      };
 }

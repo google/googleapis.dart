@@ -381,16 +381,10 @@ class AndroidAppAsset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (certificate != null) {
-      _json['certificate'] = certificate.toJson();
-    }
-    if (packageName != null) {
-      _json['packageName'] = packageName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (certificate != null) 'certificate': certificate.toJson(),
+        if (packageName != null) 'packageName': packageName,
+      };
 }
 
 /// Uniquely identifies an asset.
@@ -418,16 +412,10 @@ class Asset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (androidApp != null) {
-      _json['androidApp'] = androidApp.toJson();
-    }
-    if (web != null) {
-      _json['web'] = web.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (androidApp != null) 'androidApp': androidApp.toJson(),
+        if (web != null) 'web': web.toJson(),
+      };
 }
 
 /// Describes an X509 certificate.
@@ -457,13 +445,9 @@ class CertificateInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sha256Fingerprint != null) {
-      _json['sha256Fingerprint'] = sha256Fingerprint;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sha256Fingerprint != null) 'sha256Fingerprint': sha256Fingerprint,
+      };
 }
 
 /// Response message for the CheckAssetLinks call.
@@ -510,22 +494,12 @@ class CheckResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (debugString != null) {
-      _json['debugString'] = debugString;
-    }
-    if (errorCode != null) {
-      _json['errorCode'] = errorCode;
-    }
-    if (linked != null) {
-      _json['linked'] = linked;
-    }
-    if (maxAge != null) {
-      _json['maxAge'] = maxAge;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (debugString != null) 'debugString': debugString,
+        if (errorCode != null) 'errorCode': errorCode,
+        if (linked != null) 'linked': linked,
+        if (maxAge != null) 'maxAge': maxAge,
+      };
 }
 
 /// Response message for the List call.
@@ -574,22 +548,13 @@ class ListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (debugString != null) {
-      _json['debugString'] = debugString;
-    }
-    if (errorCode != null) {
-      _json['errorCode'] = errorCode;
-    }
-    if (maxAge != null) {
-      _json['maxAge'] = maxAge;
-    }
-    if (statements != null) {
-      _json['statements'] = statements.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (debugString != null) 'debugString': debugString,
+        if (errorCode != null) 'errorCode': errorCode,
+        if (maxAge != null) 'maxAge': maxAge,
+        if (statements != null)
+          'statements': statements.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Describes a reliable statement that has been made about the relationship
@@ -638,19 +603,11 @@ class Statement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (relation != null) {
-      _json['relation'] = relation;
-    }
-    if (source != null) {
-      _json['source'] = source.toJson();
-    }
-    if (target != null) {
-      _json['target'] = target.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (relation != null) 'relation': relation,
+        if (source != null) 'source': source.toJson(),
+        if (target != null) 'target': target.toJson(),
+      };
 }
 
 /// Describes a web asset.
@@ -682,11 +639,7 @@ class WebAsset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (site != null) {
-      _json['site'] = site;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (site != null) 'site': site,
+      };
 }

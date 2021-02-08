@@ -1212,17 +1212,12 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditLogConfigs != null) {
-      _json['auditLogConfigs'] =
-          auditLogConfigs.map((value) => value.toJson()).toList();
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditLogConfigs != null)
+          'auditLogConfigs':
+              auditLogConfigs.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service,
+      };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -1259,16 +1254,10 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exemptedMembers != null) {
-      _json['exemptedMembers'] = exemptedMembers;
-    }
-    if (logType != null) {
-      _json['logType'] = logType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
+        if (logType != null) 'logType': logType,
+      };
 }
 
 /// Defines an authorization code.
@@ -1286,13 +1275,9 @@ class AuthorizationCode {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+      };
 }
 
 /// Associates `members` with a `role`.
@@ -1361,19 +1346,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// Request for the `ConfigureContactSettings` method.
@@ -1419,22 +1396,13 @@ class ConfigureContactSettingsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contactNotices != null) {
-      _json['contactNotices'] = contactNotices;
-    }
-    if (contactSettings != null) {
-      _json['contactSettings'] = contactSettings.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    if (validateOnly != null) {
-      _json['validateOnly'] = validateOnly;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contactNotices != null) 'contactNotices': contactNotices,
+        if (contactSettings != null)
+          'contactSettings': contactSettings.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+        if (validateOnly != null) 'validateOnly': validateOnly,
+      };
 }
 
 /// Request for the `ConfigureDnsSettings` method.
@@ -1473,19 +1441,11 @@ class ConfigureDnsSettingsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dnsSettings != null) {
-      _json['dnsSettings'] = dnsSettings.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    if (validateOnly != null) {
-      _json['validateOnly'] = validateOnly;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dnsSettings != null) 'dnsSettings': dnsSettings.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+        if (validateOnly != null) 'validateOnly': validateOnly,
+      };
 }
 
 /// Request for the `ConfigureManagementSettings` method.
@@ -1514,16 +1474,11 @@ class ConfigureManagementSettingsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (managementSettings != null) {
-      _json['managementSettings'] = managementSettings.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (managementSettings != null)
+          'managementSettings': managementSettings.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// Details required for a contact associated with a `Registration`.
@@ -1568,22 +1523,12 @@ class Contact {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (faxNumber != null) {
-      _json['faxNumber'] = faxNumber;
-    }
-    if (phoneNumber != null) {
-      _json['phoneNumber'] = phoneNumber;
-    }
-    if (postalAddress != null) {
-      _json['postalAddress'] = postalAddress.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (email != null) 'email': email,
+        if (faxNumber != null) 'faxNumber': faxNumber,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber,
+        if (postalAddress != null) 'postalAddress': postalAddress.toJson(),
+      };
 }
 
 /// Defines the contact information associated with a `Registration`.
@@ -1653,22 +1598,14 @@ class ContactSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adminContact != null) {
-      _json['adminContact'] = adminContact.toJson();
-    }
-    if (privacy != null) {
-      _json['privacy'] = privacy;
-    }
-    if (registrantContact != null) {
-      _json['registrantContact'] = registrantContact.toJson();
-    }
-    if (technicalContact != null) {
-      _json['technicalContact'] = technicalContact.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adminContact != null) 'adminContact': adminContact.toJson(),
+        if (privacy != null) 'privacy': privacy,
+        if (registrantContact != null)
+          'registrantContact': registrantContact.toJson(),
+        if (technicalContact != null)
+          'technicalContact': technicalContact.toJson(),
+      };
 }
 
 /// Configuration for an arbitrary DNS provider.
@@ -1703,16 +1640,11 @@ class CustomDns {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dsRecords != null) {
-      _json['dsRecords'] = dsRecords.map((value) => value.toJson()).toList();
-    }
-    if (nameServers != null) {
-      _json['nameServers'] = nameServers;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dsRecords != null)
+          'dsRecords': dsRecords.map((value) => value.toJson()).toList(),
+        if (nameServers != null) 'nameServers': nameServers,
+      };
 }
 
 /// Defines the DNS configuration of a `Registration`, including name servers,
@@ -1748,20 +1680,13 @@ class DnsSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customDns != null) {
-      _json['customDns'] = customDns.toJson();
-    }
-    if (glueRecords != null) {
-      _json['glueRecords'] =
-          glueRecords.map((value) => value.toJson()).toList();
-    }
-    if (googleDomainsDns != null) {
-      _json['googleDomainsDns'] = googleDomainsDns.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customDns != null) 'customDns': customDns.toJson(),
+        if (glueRecords != null)
+          'glueRecords': glueRecords.map((value) => value.toJson()).toList(),
+        if (googleDomainsDns != null)
+          'googleDomainsDns': googleDomainsDns.toJson(),
+      };
 }
 
 /// Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC
@@ -1822,22 +1747,12 @@ class DsRecord {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (algorithm != null) {
-      _json['algorithm'] = algorithm;
-    }
-    if (digest != null) {
-      _json['digest'] = digest;
-    }
-    if (digestType != null) {
-      _json['digestType'] = digestType;
-    }
-    if (keyTag != null) {
-      _json['keyTag'] = keyTag;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (algorithm != null) 'algorithm': algorithm,
+        if (digest != null) 'digest': digest,
+        if (digestType != null) 'digestType': digestType,
+        if (keyTag != null) 'keyTag': keyTag,
+      };
 }
 
 /// Request for the `ExportRegistration` method.
@@ -1848,10 +1763,7 @@ class ExportRegistrationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1915,22 +1827,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Defines a host on your domain that is a DNS name server for your domain
@@ -1977,19 +1879,11 @@ class GlueRecord {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hostName != null) {
-      _json['hostName'] = hostName;
-    }
-    if (ipv4Addresses != null) {
-      _json['ipv4Addresses'] = ipv4Addresses;
-    }
-    if (ipv6Addresses != null) {
-      _json['ipv6Addresses'] = ipv6Addresses;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hostName != null) 'hostName': hostName,
+        if (ipv4Addresses != null) 'ipv4Addresses': ipv4Addresses,
+        if (ipv6Addresses != null) 'ipv6Addresses': ipv6Addresses,
+      };
 }
 
 /// Configuration for using the free DNS zone provided by Google Domains as a
@@ -2049,19 +1943,12 @@ class GoogleDomainsDns {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dsRecords != null) {
-      _json['dsRecords'] = dsRecords.map((value) => value.toJson()).toList();
-    }
-    if (dsState != null) {
-      _json['dsState'] = dsState;
-    }
-    if (nameServers != null) {
-      _json['nameServers'] = nameServers;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dsRecords != null)
+          'dsRecords': dsRecords.map((value) => value.toJson()).toList(),
+        if (dsState != null) 'dsState': dsState,
+        if (nameServers != null) 'nameServers': nameServers,
+      };
 }
 
 /// The response message for Locations.ListLocations.
@@ -2086,16 +1973,11 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -2120,16 +2002,11 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response for the `ListRegistrations` method.
@@ -2157,17 +2034,12 @@ class ListRegistrationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (registrations != null) {
-      _json['registrations'] =
-          registrations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (registrations != null)
+          'registrations':
+              registrations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A resource that represents Google Cloud Platform location.
@@ -2232,25 +2104,13 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (labels != null) 'labels': labels,
+        if (locationId != null) 'locationId': locationId,
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Defines renewal, billing, and transfer settings for a `Registration`.
@@ -2290,16 +2150,10 @@ class ManagementSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (renewalMethod != null) {
-      _json['renewalMethod'] = renewalMethod;
-    }
-    if (transferLockState != null) {
-      _json['transferLockState'] = transferLockState;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (renewalMethod != null) 'renewalMethod': renewalMethod,
+        if (transferLockState != null) 'transferLockState': transferLockState,
+      };
 }
 
 /// Represents an amount of money with its currency type.
@@ -2335,19 +2189,11 @@ class Money {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (currencyCode != null) {
-      _json['currencyCode'] = currencyCode;
-    }
-    if (nanos != null) {
-      _json['nanos'] = nanos;
-    }
-    if (units != null) {
-      _json['units'] = units;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode,
+        if (nanos != null) 'nanos': nanos,
+        if (units != null) 'units': units,
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -2426,25 +2272,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// Represents the metadata of the long-running operation.
@@ -2492,28 +2326,14 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiVersion != null) {
-      _json['apiVersion'] = apiVersion;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (statusDetail != null) {
-      _json['statusDetail'] = statusDetail;
-    }
-    if (target != null) {
-      _json['target'] = target;
-    }
-    if (verb != null) {
-      _json['verb'] = verb;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion,
+        if (createTime != null) 'createTime': createTime,
+        if (endTime != null) 'endTime': endTime,
+        if (statusDetail != null) 'statusDetail': statusDetail,
+        if (target != null) 'target': target,
+        if (verb != null) 'verb': verb,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -2620,23 +2440,14 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditConfigs != null) {
-      _json['auditConfigs'] =
-          auditConfigs.map((value) => value.toJson()).toList();
-    }
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditConfigs != null)
+          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Represents a postal address, e.g. for postal delivery or payments addresses.
@@ -2802,43 +2613,20 @@ class PostalAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (addressLines != null) {
-      _json['addressLines'] = addressLines;
-    }
-    if (administrativeArea != null) {
-      _json['administrativeArea'] = administrativeArea;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (locality != null) {
-      _json['locality'] = locality;
-    }
-    if (organization != null) {
-      _json['organization'] = organization;
-    }
-    if (postalCode != null) {
-      _json['postalCode'] = postalCode;
-    }
-    if (recipients != null) {
-      _json['recipients'] = recipients;
-    }
-    if (regionCode != null) {
-      _json['regionCode'] = regionCode;
-    }
-    if (revision != null) {
-      _json['revision'] = revision;
-    }
-    if (sortingCode != null) {
-      _json['sortingCode'] = sortingCode;
-    }
-    if (sublocality != null) {
-      _json['sublocality'] = sublocality;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (addressLines != null) 'addressLines': addressLines,
+        if (administrativeArea != null)
+          'administrativeArea': administrativeArea,
+        if (languageCode != null) 'languageCode': languageCode,
+        if (locality != null) 'locality': locality,
+        if (organization != null) 'organization': organization,
+        if (postalCode != null) 'postalCode': postalCode,
+        if (recipients != null) 'recipients': recipients,
+        if (regionCode != null) 'regionCode': regionCode,
+        if (revision != null) 'revision': revision,
+        if (sortingCode != null) 'sortingCode': sortingCode,
+        if (sublocality != null) 'sublocality': sublocality,
+      };
 }
 
 /// Request for the `RegisterDomain` method.
@@ -2901,25 +2689,13 @@ class RegisterDomainRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contactNotices != null) {
-      _json['contactNotices'] = contactNotices;
-    }
-    if (domainNotices != null) {
-      _json['domainNotices'] = domainNotices;
-    }
-    if (registration != null) {
-      _json['registration'] = registration.toJson();
-    }
-    if (validateOnly != null) {
-      _json['validateOnly'] = validateOnly;
-    }
-    if (yearlyPrice != null) {
-      _json['yearlyPrice'] = yearlyPrice.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contactNotices != null) 'contactNotices': contactNotices,
+        if (domainNotices != null) 'domainNotices': domainNotices,
+        if (registration != null) 'registration': registration.toJson(),
+        if (validateOnly != null) 'validateOnly': validateOnly,
+        if (yearlyPrice != null) 'yearlyPrice': yearlyPrice.toJson(),
+      };
 }
 
 /// Parameters required to register a new domain.
@@ -2979,25 +2755,13 @@ class RegisterParameters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (availability != null) {
-      _json['availability'] = availability;
-    }
-    if (domainName != null) {
-      _json['domainName'] = domainName;
-    }
-    if (domainNotices != null) {
-      _json['domainNotices'] = domainNotices;
-    }
-    if (supportedPrivacy != null) {
-      _json['supportedPrivacy'] = supportedPrivacy;
-    }
-    if (yearlyPrice != null) {
-      _json['yearlyPrice'] = yearlyPrice.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (availability != null) 'availability': availability,
+        if (domainName != null) 'domainName': domainName,
+        if (domainNotices != null) 'domainNotices': domainNotices,
+        if (supportedPrivacy != null) 'supportedPrivacy': supportedPrivacy,
+        if (yearlyPrice != null) 'yearlyPrice': yearlyPrice.toJson(),
+      };
 }
 
 /// The `Registration` resource facilitates managing and configuring domain name
@@ -3154,46 +2918,23 @@ class Registration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contactSettings != null) {
-      _json['contactSettings'] = contactSettings.toJson();
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (dnsSettings != null) {
-      _json['dnsSettings'] = dnsSettings.toJson();
-    }
-    if (domainName != null) {
-      _json['domainName'] = domainName;
-    }
-    if (expireTime != null) {
-      _json['expireTime'] = expireTime;
-    }
-    if (issues != null) {
-      _json['issues'] = issues;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (managementSettings != null) {
-      _json['managementSettings'] = managementSettings.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (pendingContactSettings != null) {
-      _json['pendingContactSettings'] = pendingContactSettings.toJson();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (supportedPrivacy != null) {
-      _json['supportedPrivacy'] = supportedPrivacy;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contactSettings != null)
+          'contactSettings': contactSettings.toJson(),
+        if (createTime != null) 'createTime': createTime,
+        if (dnsSettings != null) 'dnsSettings': dnsSettings.toJson(),
+        if (domainName != null) 'domainName': domainName,
+        if (expireTime != null) 'expireTime': expireTime,
+        if (issues != null) 'issues': issues,
+        if (labels != null) 'labels': labels,
+        if (managementSettings != null)
+          'managementSettings': managementSettings.toJson(),
+        if (name != null) 'name': name,
+        if (pendingContactSettings != null)
+          'pendingContactSettings': pendingContactSettings.toJson(),
+        if (state != null) 'state': state,
+        if (supportedPrivacy != null) 'supportedPrivacy': supportedPrivacy,
+      };
 }
 
 /// Request for the `ResetAuthorizationCode` method.
@@ -3204,10 +2945,7 @@ class ResetAuthorizationCodeRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Response for the `RetrieveRegisterParameters` method.
@@ -3224,13 +2962,10 @@ class RetrieveRegisterParametersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (registerParameters != null) {
-      _json['registerParameters'] = registerParameters.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (registerParameters != null)
+          'registerParameters': registerParameters.toJson(),
+      };
 }
 
 /// Response for the `SearchDomains` method.
@@ -3249,14 +2984,11 @@ class SearchDomainsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (registerParameters != null) {
-      _json['registerParameters'] =
-          registerParameters.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (registerParameters != null)
+          'registerParameters':
+              registerParameters.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -3286,16 +3018,10 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -3345,19 +3071,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -3379,13 +3097,9 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -3404,11 +3118,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }

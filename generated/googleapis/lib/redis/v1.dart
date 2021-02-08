@@ -947,10 +947,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Request for Export.
@@ -969,13 +966,9 @@ class ExportInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (outputConfig != null) {
-      _json['outputConfig'] = outputConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
+      };
 }
 
 /// Request for Failover.
@@ -1005,13 +998,10 @@ class FailoverInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataProtectionMode != null) {
-      _json['dataProtectionMode'] = dataProtectionMode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataProtectionMode != null)
+          'dataProtectionMode': dataProtectionMode,
+      };
 }
 
 /// The Cloud Storage location for the output content
@@ -1031,13 +1021,9 @@ class GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// The Cloud Storage location for the input content
@@ -1057,13 +1043,9 @@ class GcsSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// This location metadata represents additional configuration options for a
@@ -1097,14 +1079,11 @@ class GoogleCloudRedisV1LocationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (availableZones != null) {
-      _json['availableZones'] =
-          availableZones.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (availableZones != null)
+          'availableZones': availableZones
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+      };
 }
 
 /// Represents the v1 metadata of the long-running operation.
@@ -1156,31 +1135,15 @@ class GoogleCloudRedisV1OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiVersion != null) {
-      _json['apiVersion'] = apiVersion;
-    }
-    if (cancelRequested != null) {
-      _json['cancelRequested'] = cancelRequested;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (statusDetail != null) {
-      _json['statusDetail'] = statusDetail;
-    }
-    if (target != null) {
-      _json['target'] = target;
-    }
-    if (verb != null) {
-      _json['verb'] = verb;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion,
+        if (cancelRequested != null) 'cancelRequested': cancelRequested,
+        if (createTime != null) 'createTime': createTime,
+        if (endTime != null) 'endTime': endTime,
+        if (statusDetail != null) 'statusDetail': statusDetail,
+        if (target != null) 'target': target,
+        if (verb != null) 'verb': verb,
+      };
 }
 
 /// Defines specific information for a particular zone.
@@ -1193,10 +1156,7 @@ class GoogleCloudRedisV1ZoneMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Request for Import.
@@ -1215,13 +1175,9 @@ class ImportInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (inputConfig != null) {
-      _json['inputConfig'] = inputConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (inputConfig != null) 'inputConfig': inputConfig.toJson(),
+      };
 }
 
 /// The input content
@@ -1238,13 +1194,9 @@ class InputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcsSource != null) {
-      _json['gcsSource'] = gcsSource.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsSource != null) 'gcsSource': gcsSource.toJson(),
+      };
 }
 
 /// A Google Cloud Redis instance.
@@ -1527,77 +1479,35 @@ class Instance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alternativeLocationId != null) {
-      _json['alternativeLocationId'] = alternativeLocationId;
-    }
-    if (authEnabled != null) {
-      _json['authEnabled'] = authEnabled;
-    }
-    if (authorizedNetwork != null) {
-      _json['authorizedNetwork'] = authorizedNetwork;
-    }
-    if (connectMode != null) {
-      _json['connectMode'] = connectMode;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (currentLocationId != null) {
-      _json['currentLocationId'] = currentLocationId;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (host != null) {
-      _json['host'] = host;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (memorySizeGb != null) {
-      _json['memorySizeGb'] = memorySizeGb;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (persistenceIamIdentity != null) {
-      _json['persistenceIamIdentity'] = persistenceIamIdentity;
-    }
-    if (port != null) {
-      _json['port'] = port;
-    }
-    if (redisConfigs != null) {
-      _json['redisConfigs'] = redisConfigs;
-    }
-    if (redisVersion != null) {
-      _json['redisVersion'] = redisVersion;
-    }
-    if (reservedIpRange != null) {
-      _json['reservedIpRange'] = reservedIpRange;
-    }
-    if (serverCaCerts != null) {
-      _json['serverCaCerts'] =
-          serverCaCerts.map((value) => value.toJson()).toList();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (statusMessage != null) {
-      _json['statusMessage'] = statusMessage;
-    }
-    if (tier != null) {
-      _json['tier'] = tier;
-    }
-    if (transitEncryptionMode != null) {
-      _json['transitEncryptionMode'] = transitEncryptionMode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alternativeLocationId != null)
+          'alternativeLocationId': alternativeLocationId,
+        if (authEnabled != null) 'authEnabled': authEnabled,
+        if (authorizedNetwork != null) 'authorizedNetwork': authorizedNetwork,
+        if (connectMode != null) 'connectMode': connectMode,
+        if (createTime != null) 'createTime': createTime,
+        if (currentLocationId != null) 'currentLocationId': currentLocationId,
+        if (displayName != null) 'displayName': displayName,
+        if (host != null) 'host': host,
+        if (labels != null) 'labels': labels,
+        if (locationId != null) 'locationId': locationId,
+        if (memorySizeGb != null) 'memorySizeGb': memorySizeGb,
+        if (name != null) 'name': name,
+        if (persistenceIamIdentity != null)
+          'persistenceIamIdentity': persistenceIamIdentity,
+        if (port != null) 'port': port,
+        if (redisConfigs != null) 'redisConfigs': redisConfigs,
+        if (redisVersion != null) 'redisVersion': redisVersion,
+        if (reservedIpRange != null) 'reservedIpRange': reservedIpRange,
+        if (serverCaCerts != null)
+          'serverCaCerts':
+              serverCaCerts.map((value) => value.toJson()).toList(),
+        if (state != null) 'state': state,
+        if (statusMessage != null) 'statusMessage': statusMessage,
+        if (tier != null) 'tier': tier,
+        if (transitEncryptionMode != null)
+          'transitEncryptionMode': transitEncryptionMode,
+      };
 }
 
 /// Instance AUTH string details.
@@ -1613,13 +1523,9 @@ class InstanceAuthString {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (authString != null) {
-      _json['authString'] = authString;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (authString != null) 'authString': authString,
+      };
 }
 
 /// Response for ListInstances.
@@ -1663,19 +1569,12 @@ class ListInstancesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (instances != null) {
-      _json['instances'] = instances.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (unreachable != null) {
-      _json['unreachable'] = unreachable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (instances != null)
+          'instances': instances.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (unreachable != null) 'unreachable': unreachable,
+      };
 }
 
 /// The response message for Locations.ListLocations.
@@ -1700,16 +1599,11 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -1734,16 +1628,11 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A resource that represents Google Cloud Platform location.
@@ -1812,25 +1701,13 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (labels != null) 'labels': labels,
+        if (locationId != null) 'locationId': locationId,
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -1913,25 +1790,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// The output content
@@ -1948,13 +1813,9 @@ class OutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcsDestination != null) {
-      _json['gcsDestination'] = gcsDestination.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsDestination != null) 'gcsDestination': gcsDestination.toJson(),
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -2004,19 +1865,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// TlsCertificate Resource
@@ -2064,25 +1917,13 @@ class TlsCertificate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cert != null) {
-      _json['cert'] = cert;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (expireTime != null) {
-      _json['expireTime'] = expireTime;
-    }
-    if (serialNumber != null) {
-      _json['serialNumber'] = serialNumber;
-    }
-    if (sha1Fingerprint != null) {
-      _json['sha1Fingerprint'] = sha1Fingerprint;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cert != null) 'cert': cert,
+        if (createTime != null) 'createTime': createTime,
+        if (expireTime != null) 'expireTime': expireTime,
+        if (serialNumber != null) 'serialNumber': serialNumber,
+        if (sha1Fingerprint != null) 'sha1Fingerprint': sha1Fingerprint,
+      };
 }
 
 /// Request for UpgradeInstance.
@@ -2100,11 +1941,7 @@ class UpgradeInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (redisVersion != null) {
-      _json['redisVersion'] = redisVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (redisVersion != null) 'redisVersion': redisVersion,
+      };
 }

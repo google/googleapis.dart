@@ -557,14 +557,11 @@ class GoogleCloudVideointelligenceV1AnnotateVideoProgress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationProgress != null) {
-      _json['annotationProgress'] =
-          annotationProgress.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationProgress != null)
+          'annotationProgress':
+              annotationProgress.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Video annotation request.
@@ -649,28 +646,14 @@ class GoogleCloudVideointelligenceV1AnnotateVideoRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (features != null) {
-      _json['features'] = features;
-    }
-    if (inputContent != null) {
-      _json['inputContent'] = inputContent;
-    }
-    if (inputUri != null) {
-      _json['inputUri'] = inputUri;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (outputUri != null) {
-      _json['outputUri'] = outputUri;
-    }
-    if (videoContext != null) {
-      _json['videoContext'] = videoContext.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (features != null) 'features': features,
+        if (inputContent != null) 'inputContent': inputContent,
+        if (inputUri != null) 'inputUri': inputUri,
+        if (locationId != null) 'locationId': locationId,
+        if (outputUri != null) 'outputUri': outputUri,
+        if (videoContext != null) 'videoContext': videoContext.toJson(),
+      };
 }
 
 /// Video annotation response.
@@ -694,14 +677,11 @@ class GoogleCloudVideointelligenceV1AnnotateVideoResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationResults != null) {
-      _json['annotationResults'] =
-          annotationResults.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationResults != null)
+          'annotationResults':
+              annotationResults.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A generic detected attribute represented by name in string format.
@@ -735,19 +715,11 @@ class GoogleCloudVideointelligenceV1DetectedAttribute {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (name != null) 'name': name,
+        if (value != null) 'value': value,
+      };
 }
 
 /// A generic detected landmark represented by name in string format and a 2D
@@ -782,19 +754,11 @@ class GoogleCloudVideointelligenceV1DetectedLandmark {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (point != null) {
-      _json['point'] = point.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (name != null) 'name': name,
+        if (point != null) 'point': point.toJson(),
+      };
 }
 
 /// Detected entity from video analysis.
@@ -825,19 +789,11 @@ class GoogleCloudVideointelligenceV1Entity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (entityId != null) {
-      _json['entityId'] = entityId;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (entityId != null) 'entityId': entityId,
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// Explicit content annotation (based on per-frame visual signals only).
@@ -867,16 +823,11 @@ class GoogleCloudVideointelligenceV1ExplicitContentAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (frames != null) {
-      _json['frames'] = frames.map((value) => value.toJson()).toList();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (frames != null)
+          'frames': frames.map((value) => value.toJson()).toList(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// Config for EXPLICIT_CONTENT_DETECTION.
@@ -896,13 +847,9 @@ class GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (model != null) {
-      _json['model'] = model;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (model != null) 'model': model,
+      };
 }
 
 /// Video frame level annotation results for explicit content.
@@ -932,16 +879,11 @@ class GoogleCloudVideointelligenceV1ExplicitContentFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pornographyLikelihood != null) {
-      _json['pornographyLikelihood'] = pornographyLikelihood;
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pornographyLikelihood != null)
+          'pornographyLikelihood': pornographyLikelihood,
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// No effect.
@@ -985,19 +927,13 @@ class GoogleCloudVideointelligenceV1FaceAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (frames != null) {
-      _json['frames'] = frames.map((value) => value.toJson()).toList();
-    }
-    if (segments != null) {
-      _json['segments'] = segments.map((value) => value.toJson()).toList();
-    }
-    if (thumbnail != null) {
-      _json['thumbnail'] = thumbnail;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (frames != null)
+          'frames': frames.map((value) => value.toJson()).toList(),
+        if (segments != null)
+          'segments': segments.map((value) => value.toJson()).toList(),
+        if (thumbnail != null) 'thumbnail': thumbnail,
+      };
 }
 
 /// Face detection annotation.
@@ -1036,19 +972,12 @@ class GoogleCloudVideointelligenceV1FaceDetectionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (thumbnail != null) {
-      _json['thumbnail'] = thumbnail;
-    }
-    if (tracks != null) {
-      _json['tracks'] = tracks.map((value) => value.toJson()).toList();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (thumbnail != null) 'thumbnail': thumbnail,
+        if (tracks != null)
+          'tracks': tracks.map((value) => value.toJson()).toList(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// Config for FACE_DETECTION.
@@ -1082,19 +1011,12 @@ class GoogleCloudVideointelligenceV1FaceDetectionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (includeAttributes != null) {
-      _json['includeAttributes'] = includeAttributes;
-    }
-    if (includeBoundingBoxes != null) {
-      _json['includeBoundingBoxes'] = includeBoundingBoxes;
-    }
-    if (model != null) {
-      _json['model'] = model;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (includeAttributes != null) 'includeAttributes': includeAttributes,
+        if (includeBoundingBoxes != null)
+          'includeBoundingBoxes': includeBoundingBoxes,
+        if (model != null) 'model': model,
+      };
 }
 
 /// No effect.
@@ -1127,17 +1049,12 @@ class GoogleCloudVideointelligenceV1FaceFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (normalizedBoundingBoxes != null) {
-      _json['normalizedBoundingBoxes'] =
-          normalizedBoundingBoxes.map((value) => value.toJson()).toList();
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (normalizedBoundingBoxes != null)
+          'normalizedBoundingBoxes':
+              normalizedBoundingBoxes.map((value) => value.toJson()).toList(),
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// Video segment level annotation results for face detection.
@@ -1154,13 +1071,9 @@ class GoogleCloudVideointelligenceV1FaceSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (segment != null) 'segment': segment.toJson(),
+      };
 }
 
 /// Label annotation.
@@ -1217,26 +1130,17 @@ class GoogleCloudVideointelligenceV1LabelAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (categoryEntities != null) {
-      _json['categoryEntities'] =
-          categoryEntities.map((value) => value.toJson()).toList();
-    }
-    if (entity != null) {
-      _json['entity'] = entity.toJson();
-    }
-    if (frames != null) {
-      _json['frames'] = frames.map((value) => value.toJson()).toList();
-    }
-    if (segments != null) {
-      _json['segments'] = segments.map((value) => value.toJson()).toList();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (categoryEntities != null)
+          'categoryEntities':
+              categoryEntities.map((value) => value.toJson()).toList(),
+        if (entity != null) 'entity': entity.toJson(),
+        if (frames != null)
+          'frames': frames.map((value) => value.toJson()).toList(),
+        if (segments != null)
+          'segments': segments.map((value) => value.toJson()).toList(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// Config for LABEL_DETECTION.
@@ -1305,25 +1209,16 @@ class GoogleCloudVideointelligenceV1LabelDetectionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (frameConfidenceThreshold != null) {
-      _json['frameConfidenceThreshold'] = frameConfidenceThreshold;
-    }
-    if (labelDetectionMode != null) {
-      _json['labelDetectionMode'] = labelDetectionMode;
-    }
-    if (model != null) {
-      _json['model'] = model;
-    }
-    if (stationaryCamera != null) {
-      _json['stationaryCamera'] = stationaryCamera;
-    }
-    if (videoConfidenceThreshold != null) {
-      _json['videoConfidenceThreshold'] = videoConfidenceThreshold;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (frameConfidenceThreshold != null)
+          'frameConfidenceThreshold': frameConfidenceThreshold,
+        if (labelDetectionMode != null)
+          'labelDetectionMode': labelDetectionMode,
+        if (model != null) 'model': model,
+        if (stationaryCamera != null) 'stationaryCamera': stationaryCamera,
+        if (videoConfidenceThreshold != null)
+          'videoConfidenceThreshold': videoConfidenceThreshold,
+      };
 }
 
 /// Video frame level annotation results for label detection.
@@ -1348,16 +1243,10 @@ class GoogleCloudVideointelligenceV1LabelFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// Video segment level annotation results for label detection.
@@ -1382,16 +1271,10 @@ class GoogleCloudVideointelligenceV1LabelSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (segment != null) 'segment': segment.toJson(),
+      };
 }
 
 /// Annotation corresponding to one detected, tracked and recognized logo class.
@@ -1436,19 +1319,13 @@ class GoogleCloudVideointelligenceV1LogoRecognitionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entity != null) {
-      _json['entity'] = entity.toJson();
-    }
-    if (segments != null) {
-      _json['segments'] = segments.map((value) => value.toJson()).toList();
-    }
-    if (tracks != null) {
-      _json['tracks'] = tracks.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entity != null) 'entity': entity.toJson(),
+        if (segments != null)
+          'segments': segments.map((value) => value.toJson()).toList(),
+        if (tracks != null)
+          'tracks': tracks.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Normalized bounding box.
@@ -1485,22 +1362,12 @@ class GoogleCloudVideointelligenceV1NormalizedBoundingBox {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bottom != null) {
-      _json['bottom'] = bottom;
-    }
-    if (left != null) {
-      _json['left'] = left;
-    }
-    if (right != null) {
-      _json['right'] = right;
-    }
-    if (top != null) {
-      _json['top'] = top;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bottom != null) 'bottom': bottom,
+        if (left != null) 'left': left,
+        if (right != null) 'right': right,
+        if (top != null) 'top': top,
+      };
 }
 
 /// Normalized bounding polygon for text (that might not be aligned with axis).
@@ -1529,13 +1396,10 @@ class GoogleCloudVideointelligenceV1NormalizedBoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (vertices != null) {
-      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (vertices != null)
+          'vertices': vertices.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A vertex represents a 2D point in the image.
@@ -1560,16 +1424,10 @@ class GoogleCloudVideointelligenceV1NormalizedVertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+      };
 }
 
 /// Annotations corresponding to one tracked object.
@@ -1634,28 +1492,15 @@ class GoogleCloudVideointelligenceV1ObjectTrackingAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (entity != null) {
-      _json['entity'] = entity.toJson();
-    }
-    if (frames != null) {
-      _json['frames'] = frames.map((value) => value.toJson()).toList();
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    if (trackId != null) {
-      _json['trackId'] = trackId;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (entity != null) 'entity': entity.toJson(),
+        if (frames != null)
+          'frames': frames.map((value) => value.toJson()).toList(),
+        if (segment != null) 'segment': segment.toJson(),
+        if (trackId != null) 'trackId': trackId,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Config for OBJECT_TRACKING.
@@ -1674,13 +1519,9 @@ class GoogleCloudVideointelligenceV1ObjectTrackingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (model != null) {
-      _json['model'] = model;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (model != null) 'model': model,
+      };
 }
 
 /// Video frame level annotations for object detection and tracking.
@@ -1707,16 +1548,11 @@ class GoogleCloudVideointelligenceV1ObjectTrackingFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (normalizedBoundingBox != null) {
-      _json['normalizedBoundingBox'] = normalizedBoundingBox.toJson();
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (normalizedBoundingBox != null)
+          'normalizedBoundingBox': normalizedBoundingBox.toJson(),
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// Person detection annotation per video.
@@ -1743,16 +1579,11 @@ class GoogleCloudVideointelligenceV1PersonDetectionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (tracks != null) {
-      _json['tracks'] = tracks.map((value) => value.toJson()).toList();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (tracks != null)
+          'tracks': tracks.map((value) => value.toJson()).toList(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// Config for PERSON_DETECTION.
@@ -1787,19 +1618,13 @@ class GoogleCloudVideointelligenceV1PersonDetectionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (includeAttributes != null) {
-      _json['includeAttributes'] = includeAttributes;
-    }
-    if (includeBoundingBoxes != null) {
-      _json['includeBoundingBoxes'] = includeBoundingBoxes;
-    }
-    if (includePoseLandmarks != null) {
-      _json['includePoseLandmarks'] = includePoseLandmarks;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (includeAttributes != null) 'includeAttributes': includeAttributes,
+        if (includeBoundingBoxes != null)
+          'includeBoundingBoxes': includeBoundingBoxes,
+        if (includePoseLandmarks != null)
+          'includePoseLandmarks': includePoseLandmarks,
+      };
 }
 
 /// Config for SHOT_CHANGE_DETECTION.
@@ -1819,13 +1644,9 @@ class GoogleCloudVideointelligenceV1ShotChangeDetectionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (model != null) {
-      _json['model'] = model;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (model != null) 'model': model,
+      };
 }
 
 /// Provides "hints" to the speech recognizer to favor specific words and
@@ -1853,13 +1674,9 @@ class GoogleCloudVideointelligenceV1SpeechContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (phrases != null) {
-      _json['phrases'] = phrases;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (phrases != null) 'phrases': phrases,
+      };
 }
 
 /// Alternative hypotheses (a.k.a. n-best list).
@@ -1905,19 +1722,12 @@ class GoogleCloudVideointelligenceV1SpeechRecognitionAlternative {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (transcript != null) {
-      _json['transcript'] = transcript;
-    }
-    if (words != null) {
-      _json['words'] = words.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (transcript != null) 'transcript': transcript,
+        if (words != null)
+          'words': words.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A speech recognition result corresponding to a portion of the audio.
@@ -1955,17 +1765,11 @@ class GoogleCloudVideointelligenceV1SpeechTranscription {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alternatives != null) {
-      _json['alternatives'] =
-          alternatives.map((value) => value.toJson()).toList();
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alternatives != null)
+          'alternatives': alternatives.map((value) => value.toJson()).toList(),
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// Config for SPEECH_TRANSCRIPTION.
@@ -2092,38 +1896,23 @@ class GoogleCloudVideointelligenceV1SpeechTranscriptionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audioTracks != null) {
-      _json['audioTracks'] = audioTracks;
-    }
-    if (diarizationSpeakerCount != null) {
-      _json['diarizationSpeakerCount'] = diarizationSpeakerCount;
-    }
-    if (enableAutomaticPunctuation != null) {
-      _json['enableAutomaticPunctuation'] = enableAutomaticPunctuation;
-    }
-    if (enableSpeakerDiarization != null) {
-      _json['enableSpeakerDiarization'] = enableSpeakerDiarization;
-    }
-    if (enableWordConfidence != null) {
-      _json['enableWordConfidence'] = enableWordConfidence;
-    }
-    if (filterProfanity != null) {
-      _json['filterProfanity'] = filterProfanity;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (maxAlternatives != null) {
-      _json['maxAlternatives'] = maxAlternatives;
-    }
-    if (speechContexts != null) {
-      _json['speechContexts'] =
-          speechContexts.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audioTracks != null) 'audioTracks': audioTracks,
+        if (diarizationSpeakerCount != null)
+          'diarizationSpeakerCount': diarizationSpeakerCount,
+        if (enableAutomaticPunctuation != null)
+          'enableAutomaticPunctuation': enableAutomaticPunctuation,
+        if (enableSpeakerDiarization != null)
+          'enableSpeakerDiarization': enableSpeakerDiarization,
+        if (enableWordConfidence != null)
+          'enableWordConfidence': enableWordConfidence,
+        if (filterProfanity != null) 'filterProfanity': filterProfanity,
+        if (languageCode != null) 'languageCode': languageCode,
+        if (maxAlternatives != null) 'maxAlternatives': maxAlternatives,
+        if (speechContexts != null)
+          'speechContexts':
+              speechContexts.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Annotations related to one detected OCR text snippet.
@@ -2158,19 +1947,12 @@ class GoogleCloudVideointelligenceV1TextAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (segments != null) {
-      _json['segments'] = segments.map((value) => value.toJson()).toList();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (segments != null)
+          'segments': segments.map((value) => value.toJson()).toList(),
+        if (text != null) 'text': text,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Config for TEXT_DETECTION.
@@ -2202,16 +1984,10 @@ class GoogleCloudVideointelligenceV1TextDetectionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (languageHints != null) {
-      _json['languageHints'] = languageHints;
-    }
-    if (model != null) {
-      _json['model'] = model;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (languageHints != null) 'languageHints': languageHints,
+        if (model != null) 'model': model,
+      };
 }
 
 /// Video frame level annotation results for text annotation (OCR).
@@ -2239,16 +2015,11 @@ class GoogleCloudVideointelligenceV1TextFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (rotatedBoundingBox != null) {
-      _json['rotatedBoundingBox'] = rotatedBoundingBox.toJson();
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (rotatedBoundingBox != null)
+          'rotatedBoundingBox': rotatedBoundingBox.toJson(),
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// Video segment level annotation results for text detection.
@@ -2284,19 +2055,12 @@ class GoogleCloudVideointelligenceV1TextSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (frames != null) {
-      _json['frames'] = frames.map((value) => value.toJson()).toList();
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (frames != null)
+          'frames': frames.map((value) => value.toJson()).toList(),
+        if (segment != null) 'segment': segment.toJson(),
+      };
 }
 
 /// For tracking related features.
@@ -2349,22 +2113,15 @@ class GoogleCloudVideointelligenceV1TimestampedObject {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributes != null) {
-      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
-    }
-    if (landmarks != null) {
-      _json['landmarks'] = landmarks.map((value) => value.toJson()).toList();
-    }
-    if (normalizedBoundingBox != null) {
-      _json['normalizedBoundingBox'] = normalizedBoundingBox.toJson();
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributes != null)
+          'attributes': attributes.map((value) => value.toJson()).toList(),
+        if (landmarks != null)
+          'landmarks': landmarks.map((value) => value.toJson()).toList(),
+        if (normalizedBoundingBox != null)
+          'normalizedBoundingBox': normalizedBoundingBox.toJson(),
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// A track of an object instance.
@@ -2411,23 +2168,15 @@ class GoogleCloudVideointelligenceV1Track {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributes != null) {
-      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    if (timestampedObjects != null) {
-      _json['timestampedObjects'] =
-          timestampedObjects.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributes != null)
+          'attributes': attributes.map((value) => value.toJson()).toList(),
+        if (confidence != null) 'confidence': confidence,
+        if (segment != null) 'segment': segment.toJson(),
+        if (timestampedObjects != null)
+          'timestampedObjects':
+              timestampedObjects.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Annotation progress for a single video.
@@ -2491,28 +2240,14 @@ class GoogleCloudVideointelligenceV1VideoAnnotationProgress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (feature != null) {
-      _json['feature'] = feature;
-    }
-    if (inputUri != null) {
-      _json['inputUri'] = inputUri;
-    }
-    if (progressPercent != null) {
-      _json['progressPercent'] = progressPercent;
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (feature != null) 'feature': feature,
+        if (inputUri != null) 'inputUri': inputUri,
+        if (progressPercent != null) 'progressPercent': progressPercent,
+        if (segment != null) 'segment': segment.toJson(),
+        if (startTime != null) 'startTime': startTime,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Annotation results for a single video.
@@ -2724,75 +2459,56 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (explicitAnnotation != null) {
-      _json['explicitAnnotation'] = explicitAnnotation.toJson();
-    }
-    if (faceAnnotations != null) {
-      _json['faceAnnotations'] =
-          faceAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (faceDetectionAnnotations != null) {
-      _json['faceDetectionAnnotations'] =
-          faceDetectionAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (frameLabelAnnotations != null) {
-      _json['frameLabelAnnotations'] =
-          frameLabelAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (inputUri != null) {
-      _json['inputUri'] = inputUri;
-    }
-    if (logoRecognitionAnnotations != null) {
-      _json['logoRecognitionAnnotations'] =
-          logoRecognitionAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (objectAnnotations != null) {
-      _json['objectAnnotations'] =
-          objectAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (personDetectionAnnotations != null) {
-      _json['personDetectionAnnotations'] =
-          personDetectionAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    if (segmentLabelAnnotations != null) {
-      _json['segmentLabelAnnotations'] =
-          segmentLabelAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (segmentPresenceLabelAnnotations != null) {
-      _json['segmentPresenceLabelAnnotations'] = segmentPresenceLabelAnnotations
-          .map((value) => value.toJson())
-          .toList();
-    }
-    if (shotAnnotations != null) {
-      _json['shotAnnotations'] =
-          shotAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (shotLabelAnnotations != null) {
-      _json['shotLabelAnnotations'] =
-          shotLabelAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (shotPresenceLabelAnnotations != null) {
-      _json['shotPresenceLabelAnnotations'] =
-          shotPresenceLabelAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (speechTranscriptions != null) {
-      _json['speechTranscriptions'] =
-          speechTranscriptions.map((value) => value.toJson()).toList();
-    }
-    if (textAnnotations != null) {
-      _json['textAnnotations'] =
-          textAnnotations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (error != null) 'error': error.toJson(),
+        if (explicitAnnotation != null)
+          'explicitAnnotation': explicitAnnotation.toJson(),
+        if (faceAnnotations != null)
+          'faceAnnotations':
+              faceAnnotations.map((value) => value.toJson()).toList(),
+        if (faceDetectionAnnotations != null)
+          'faceDetectionAnnotations':
+              faceDetectionAnnotations.map((value) => value.toJson()).toList(),
+        if (frameLabelAnnotations != null)
+          'frameLabelAnnotations':
+              frameLabelAnnotations.map((value) => value.toJson()).toList(),
+        if (inputUri != null) 'inputUri': inputUri,
+        if (logoRecognitionAnnotations != null)
+          'logoRecognitionAnnotations': logoRecognitionAnnotations
+              .map((value) => value.toJson())
+              .toList(),
+        if (objectAnnotations != null)
+          'objectAnnotations':
+              objectAnnotations.map((value) => value.toJson()).toList(),
+        if (personDetectionAnnotations != null)
+          'personDetectionAnnotations': personDetectionAnnotations
+              .map((value) => value.toJson())
+              .toList(),
+        if (segment != null) 'segment': segment.toJson(),
+        if (segmentLabelAnnotations != null)
+          'segmentLabelAnnotations':
+              segmentLabelAnnotations.map((value) => value.toJson()).toList(),
+        if (segmentPresenceLabelAnnotations != null)
+          'segmentPresenceLabelAnnotations': segmentPresenceLabelAnnotations
+              .map((value) => value.toJson())
+              .toList(),
+        if (shotAnnotations != null)
+          'shotAnnotations':
+              shotAnnotations.map((value) => value.toJson()).toList(),
+        if (shotLabelAnnotations != null)
+          'shotLabelAnnotations':
+              shotLabelAnnotations.map((value) => value.toJson()).toList(),
+        if (shotPresenceLabelAnnotations != null)
+          'shotPresenceLabelAnnotations': shotPresenceLabelAnnotations
+              .map((value) => value.toJson())
+              .toList(),
+        if (speechTranscriptions != null)
+          'speechTranscriptions':
+              speechTranscriptions.map((value) => value.toJson()).toList(),
+        if (textAnnotations != null)
+          'textAnnotations':
+              textAnnotations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Video context and/or feature-specific parameters.
@@ -2890,38 +2606,27 @@ class GoogleCloudVideointelligenceV1VideoContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (explicitContentDetectionConfig != null) {
-      _json['explicitContentDetectionConfig'] =
-          explicitContentDetectionConfig.toJson();
-    }
-    if (faceDetectionConfig != null) {
-      _json['faceDetectionConfig'] = faceDetectionConfig.toJson();
-    }
-    if (labelDetectionConfig != null) {
-      _json['labelDetectionConfig'] = labelDetectionConfig.toJson();
-    }
-    if (objectTrackingConfig != null) {
-      _json['objectTrackingConfig'] = objectTrackingConfig.toJson();
-    }
-    if (personDetectionConfig != null) {
-      _json['personDetectionConfig'] = personDetectionConfig.toJson();
-    }
-    if (segments != null) {
-      _json['segments'] = segments.map((value) => value.toJson()).toList();
-    }
-    if (shotChangeDetectionConfig != null) {
-      _json['shotChangeDetectionConfig'] = shotChangeDetectionConfig.toJson();
-    }
-    if (speechTranscriptionConfig != null) {
-      _json['speechTranscriptionConfig'] = speechTranscriptionConfig.toJson();
-    }
-    if (textDetectionConfig != null) {
-      _json['textDetectionConfig'] = textDetectionConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (explicitContentDetectionConfig != null)
+          'explicitContentDetectionConfig':
+              explicitContentDetectionConfig.toJson(),
+        if (faceDetectionConfig != null)
+          'faceDetectionConfig': faceDetectionConfig.toJson(),
+        if (labelDetectionConfig != null)
+          'labelDetectionConfig': labelDetectionConfig.toJson(),
+        if (objectTrackingConfig != null)
+          'objectTrackingConfig': objectTrackingConfig.toJson(),
+        if (personDetectionConfig != null)
+          'personDetectionConfig': personDetectionConfig.toJson(),
+        if (segments != null)
+          'segments': segments.map((value) => value.toJson()).toList(),
+        if (shotChangeDetectionConfig != null)
+          'shotChangeDetectionConfig': shotChangeDetectionConfig.toJson(),
+        if (speechTranscriptionConfig != null)
+          'speechTranscriptionConfig': speechTranscriptionConfig.toJson(),
+        if (textDetectionConfig != null)
+          'textDetectionConfig': textDetectionConfig.toJson(),
+      };
 }
 
 /// Video segment.
@@ -2945,16 +2650,10 @@ class GoogleCloudVideointelligenceV1VideoSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTimeOffset != null) {
-      _json['endTimeOffset'] = endTimeOffset;
-    }
-    if (startTimeOffset != null) {
-      _json['startTimeOffset'] = startTimeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTimeOffset != null) 'endTimeOffset': endTimeOffset,
+        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset,
+      };
 }
 
 /// Word-specific information for recognized words.
@@ -3021,25 +2720,13 @@ class GoogleCloudVideointelligenceV1WordInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (speakerTag != null) {
-      _json['speakerTag'] = speakerTag;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (word != null) {
-      _json['word'] = word;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (endTime != null) 'endTime': endTime,
+        if (speakerTag != null) 'speakerTag': speakerTag,
+        if (startTime != null) 'startTime': startTime,
+        if (word != null) 'word': word,
+      };
 }
 
 /// Video annotation progress.
@@ -3065,14 +2752,11 @@ class GoogleCloudVideointelligenceV1beta2AnnotateVideoProgress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationProgress != null) {
-      _json['annotationProgress'] =
-          annotationProgress.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationProgress != null)
+          'annotationProgress':
+              annotationProgress.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Video annotation response.
@@ -3098,14 +2782,11 @@ class GoogleCloudVideointelligenceV1beta2AnnotateVideoResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationResults != null) {
-      _json['annotationResults'] =
-          annotationResults.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationResults != null)
+          'annotationResults':
+              annotationResults.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A generic detected attribute represented by name in string format.
@@ -3140,19 +2821,11 @@ class GoogleCloudVideointelligenceV1beta2DetectedAttribute {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (name != null) 'name': name,
+        if (value != null) 'value': value,
+      };
 }
 
 /// A generic detected landmark represented by name in string format and a 2D
@@ -3187,19 +2860,11 @@ class GoogleCloudVideointelligenceV1beta2DetectedLandmark {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (point != null) {
-      _json['point'] = point.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (name != null) 'name': name,
+        if (point != null) 'point': point.toJson(),
+      };
 }
 
 /// Detected entity from video analysis.
@@ -3230,19 +2895,11 @@ class GoogleCloudVideointelligenceV1beta2Entity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (entityId != null) {
-      _json['entityId'] = entityId;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (entityId != null) 'entityId': entityId,
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// Explicit content annotation (based on per-frame visual signals only).
@@ -3272,16 +2929,11 @@ class GoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (frames != null) {
-      _json['frames'] = frames.map((value) => value.toJson()).toList();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (frames != null)
+          'frames': frames.map((value) => value.toJson()).toList(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// Video frame level annotation results for explicit content.
@@ -3312,16 +2964,11 @@ class GoogleCloudVideointelligenceV1beta2ExplicitContentFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pornographyLikelihood != null) {
-      _json['pornographyLikelihood'] = pornographyLikelihood;
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pornographyLikelihood != null)
+          'pornographyLikelihood': pornographyLikelihood,
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// No effect.
@@ -3365,19 +3012,13 @@ class GoogleCloudVideointelligenceV1beta2FaceAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (frames != null) {
-      _json['frames'] = frames.map((value) => value.toJson()).toList();
-    }
-    if (segments != null) {
-      _json['segments'] = segments.map((value) => value.toJson()).toList();
-    }
-    if (thumbnail != null) {
-      _json['thumbnail'] = thumbnail;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (frames != null)
+          'frames': frames.map((value) => value.toJson()).toList(),
+        if (segments != null)
+          'segments': segments.map((value) => value.toJson()).toList(),
+        if (thumbnail != null) 'thumbnail': thumbnail,
+      };
 }
 
 /// Face detection annotation.
@@ -3416,19 +3057,12 @@ class GoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (thumbnail != null) {
-      _json['thumbnail'] = thumbnail;
-    }
-    if (tracks != null) {
-      _json['tracks'] = tracks.map((value) => value.toJson()).toList();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (thumbnail != null) 'thumbnail': thumbnail,
+        if (tracks != null)
+          'tracks': tracks.map((value) => value.toJson()).toList(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// No effect.
@@ -3462,17 +3096,12 @@ class GoogleCloudVideointelligenceV1beta2FaceFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (normalizedBoundingBoxes != null) {
-      _json['normalizedBoundingBoxes'] =
-          normalizedBoundingBoxes.map((value) => value.toJson()).toList();
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (normalizedBoundingBoxes != null)
+          'normalizedBoundingBoxes':
+              normalizedBoundingBoxes.map((value) => value.toJson()).toList(),
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// Video segment level annotation results for face detection.
@@ -3489,13 +3118,9 @@ class GoogleCloudVideointelligenceV1beta2FaceSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (segment != null) 'segment': segment.toJson(),
+      };
 }
 
 /// Label annotation.
@@ -3552,26 +3177,17 @@ class GoogleCloudVideointelligenceV1beta2LabelAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (categoryEntities != null) {
-      _json['categoryEntities'] =
-          categoryEntities.map((value) => value.toJson()).toList();
-    }
-    if (entity != null) {
-      _json['entity'] = entity.toJson();
-    }
-    if (frames != null) {
-      _json['frames'] = frames.map((value) => value.toJson()).toList();
-    }
-    if (segments != null) {
-      _json['segments'] = segments.map((value) => value.toJson()).toList();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (categoryEntities != null)
+          'categoryEntities':
+              categoryEntities.map((value) => value.toJson()).toList(),
+        if (entity != null) 'entity': entity.toJson(),
+        if (frames != null)
+          'frames': frames.map((value) => value.toJson()).toList(),
+        if (segments != null)
+          'segments': segments.map((value) => value.toJson()).toList(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// Video frame level annotation results for label detection.
@@ -3596,16 +3212,10 @@ class GoogleCloudVideointelligenceV1beta2LabelFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// Video segment level annotation results for label detection.
@@ -3630,16 +3240,10 @@ class GoogleCloudVideointelligenceV1beta2LabelSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (segment != null) 'segment': segment.toJson(),
+      };
 }
 
 /// Annotation corresponding to one detected, tracked and recognized logo class.
@@ -3684,19 +3288,13 @@ class GoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entity != null) {
-      _json['entity'] = entity.toJson();
-    }
-    if (segments != null) {
-      _json['segments'] = segments.map((value) => value.toJson()).toList();
-    }
-    if (tracks != null) {
-      _json['tracks'] = tracks.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entity != null) 'entity': entity.toJson(),
+        if (segments != null)
+          'segments': segments.map((value) => value.toJson()).toList(),
+        if (tracks != null)
+          'tracks': tracks.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Normalized bounding box.
@@ -3734,22 +3332,12 @@ class GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bottom != null) {
-      _json['bottom'] = bottom;
-    }
-    if (left != null) {
-      _json['left'] = left;
-    }
-    if (right != null) {
-      _json['right'] = right;
-    }
-    if (top != null) {
-      _json['top'] = top;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bottom != null) 'bottom': bottom,
+        if (left != null) 'left': left,
+        if (right != null) 'right': right,
+        if (top != null) 'top': top,
+      };
 }
 
 /// Normalized bounding polygon for text (that might not be aligned with axis).
@@ -3778,13 +3366,10 @@ class GoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (vertices != null) {
-      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (vertices != null)
+          'vertices': vertices.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A vertex represents a 2D point in the image.
@@ -3809,16 +3394,10 @@ class GoogleCloudVideointelligenceV1beta2NormalizedVertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+      };
 }
 
 /// Annotations corresponding to one tracked object.
@@ -3883,28 +3462,15 @@ class GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (entity != null) {
-      _json['entity'] = entity.toJson();
-    }
-    if (frames != null) {
-      _json['frames'] = frames.map((value) => value.toJson()).toList();
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    if (trackId != null) {
-      _json['trackId'] = trackId;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (entity != null) 'entity': entity.toJson(),
+        if (frames != null)
+          'frames': frames.map((value) => value.toJson()).toList(),
+        if (segment != null) 'segment': segment.toJson(),
+        if (trackId != null) 'trackId': trackId,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Video frame level annotations for object detection and tracking.
@@ -3933,16 +3499,11 @@ class GoogleCloudVideointelligenceV1beta2ObjectTrackingFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (normalizedBoundingBox != null) {
-      _json['normalizedBoundingBox'] = normalizedBoundingBox.toJson();
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (normalizedBoundingBox != null)
+          'normalizedBoundingBox': normalizedBoundingBox.toJson(),
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// Person detection annotation per video.
@@ -3969,16 +3530,11 @@ class GoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (tracks != null) {
-      _json['tracks'] = tracks.map((value) => value.toJson()).toList();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (tracks != null)
+          'tracks': tracks.map((value) => value.toJson()).toList(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// Alternative hypotheses (a.k.a. n-best list).
@@ -4024,19 +3580,12 @@ class GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (transcript != null) {
-      _json['transcript'] = transcript;
-    }
-    if (words != null) {
-      _json['words'] = words.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (transcript != null) 'transcript': transcript,
+        if (words != null)
+          'words': words.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A speech recognition result corresponding to a portion of the audio.
@@ -4075,17 +3624,11 @@ class GoogleCloudVideointelligenceV1beta2SpeechTranscription {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alternatives != null) {
-      _json['alternatives'] =
-          alternatives.map((value) => value.toJson()).toList();
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alternatives != null)
+          'alternatives': alternatives.map((value) => value.toJson()).toList(),
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// Annotations related to one detected OCR text snippet.
@@ -4120,19 +3663,12 @@ class GoogleCloudVideointelligenceV1beta2TextAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (segments != null) {
-      _json['segments'] = segments.map((value) => value.toJson()).toList();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (segments != null)
+          'segments': segments.map((value) => value.toJson()).toList(),
+        if (text != null) 'text': text,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Video frame level annotation results for text annotation (OCR).
@@ -4160,16 +3696,11 @@ class GoogleCloudVideointelligenceV1beta2TextFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (rotatedBoundingBox != null) {
-      _json['rotatedBoundingBox'] = rotatedBoundingBox.toJson();
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (rotatedBoundingBox != null)
+          'rotatedBoundingBox': rotatedBoundingBox.toJson(),
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// Video segment level annotation results for text detection.
@@ -4205,19 +3736,12 @@ class GoogleCloudVideointelligenceV1beta2TextSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (frames != null) {
-      _json['frames'] = frames.map((value) => value.toJson()).toList();
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (frames != null)
+          'frames': frames.map((value) => value.toJson()).toList(),
+        if (segment != null) 'segment': segment.toJson(),
+      };
 }
 
 /// For tracking related features.
@@ -4272,22 +3796,15 @@ class GoogleCloudVideointelligenceV1beta2TimestampedObject {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributes != null) {
-      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
-    }
-    if (landmarks != null) {
-      _json['landmarks'] = landmarks.map((value) => value.toJson()).toList();
-    }
-    if (normalizedBoundingBox != null) {
-      _json['normalizedBoundingBox'] = normalizedBoundingBox.toJson();
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributes != null)
+          'attributes': attributes.map((value) => value.toJson()).toList(),
+        if (landmarks != null)
+          'landmarks': landmarks.map((value) => value.toJson()).toList(),
+        if (normalizedBoundingBox != null)
+          'normalizedBoundingBox': normalizedBoundingBox.toJson(),
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// A track of an object instance.
@@ -4335,23 +3852,15 @@ class GoogleCloudVideointelligenceV1beta2Track {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributes != null) {
-      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    if (timestampedObjects != null) {
-      _json['timestampedObjects'] =
-          timestampedObjects.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributes != null)
+          'attributes': attributes.map((value) => value.toJson()).toList(),
+        if (confidence != null) 'confidence': confidence,
+        if (segment != null) 'segment': segment.toJson(),
+        if (timestampedObjects != null)
+          'timestampedObjects':
+              timestampedObjects.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Annotation progress for a single video.
@@ -4415,28 +3924,14 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (feature != null) {
-      _json['feature'] = feature;
-    }
-    if (inputUri != null) {
-      _json['inputUri'] = inputUri;
-    }
-    if (progressPercent != null) {
-      _json['progressPercent'] = progressPercent;
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (feature != null) 'feature': feature,
+        if (inputUri != null) 'inputUri': inputUri,
+        if (progressPercent != null) 'progressPercent': progressPercent,
+        if (segment != null) 'segment': segment.toJson(),
+        if (startTime != null) 'startTime': startTime,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Annotation results for a single video.
@@ -4654,75 +4149,56 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (explicitAnnotation != null) {
-      _json['explicitAnnotation'] = explicitAnnotation.toJson();
-    }
-    if (faceAnnotations != null) {
-      _json['faceAnnotations'] =
-          faceAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (faceDetectionAnnotations != null) {
-      _json['faceDetectionAnnotations'] =
-          faceDetectionAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (frameLabelAnnotations != null) {
-      _json['frameLabelAnnotations'] =
-          frameLabelAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (inputUri != null) {
-      _json['inputUri'] = inputUri;
-    }
-    if (logoRecognitionAnnotations != null) {
-      _json['logoRecognitionAnnotations'] =
-          logoRecognitionAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (objectAnnotations != null) {
-      _json['objectAnnotations'] =
-          objectAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (personDetectionAnnotations != null) {
-      _json['personDetectionAnnotations'] =
-          personDetectionAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    if (segmentLabelAnnotations != null) {
-      _json['segmentLabelAnnotations'] =
-          segmentLabelAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (segmentPresenceLabelAnnotations != null) {
-      _json['segmentPresenceLabelAnnotations'] = segmentPresenceLabelAnnotations
-          .map((value) => value.toJson())
-          .toList();
-    }
-    if (shotAnnotations != null) {
-      _json['shotAnnotations'] =
-          shotAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (shotLabelAnnotations != null) {
-      _json['shotLabelAnnotations'] =
-          shotLabelAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (shotPresenceLabelAnnotations != null) {
-      _json['shotPresenceLabelAnnotations'] =
-          shotPresenceLabelAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (speechTranscriptions != null) {
-      _json['speechTranscriptions'] =
-          speechTranscriptions.map((value) => value.toJson()).toList();
-    }
-    if (textAnnotations != null) {
-      _json['textAnnotations'] =
-          textAnnotations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (error != null) 'error': error.toJson(),
+        if (explicitAnnotation != null)
+          'explicitAnnotation': explicitAnnotation.toJson(),
+        if (faceAnnotations != null)
+          'faceAnnotations':
+              faceAnnotations.map((value) => value.toJson()).toList(),
+        if (faceDetectionAnnotations != null)
+          'faceDetectionAnnotations':
+              faceDetectionAnnotations.map((value) => value.toJson()).toList(),
+        if (frameLabelAnnotations != null)
+          'frameLabelAnnotations':
+              frameLabelAnnotations.map((value) => value.toJson()).toList(),
+        if (inputUri != null) 'inputUri': inputUri,
+        if (logoRecognitionAnnotations != null)
+          'logoRecognitionAnnotations': logoRecognitionAnnotations
+              .map((value) => value.toJson())
+              .toList(),
+        if (objectAnnotations != null)
+          'objectAnnotations':
+              objectAnnotations.map((value) => value.toJson()).toList(),
+        if (personDetectionAnnotations != null)
+          'personDetectionAnnotations': personDetectionAnnotations
+              .map((value) => value.toJson())
+              .toList(),
+        if (segment != null) 'segment': segment.toJson(),
+        if (segmentLabelAnnotations != null)
+          'segmentLabelAnnotations':
+              segmentLabelAnnotations.map((value) => value.toJson()).toList(),
+        if (segmentPresenceLabelAnnotations != null)
+          'segmentPresenceLabelAnnotations': segmentPresenceLabelAnnotations
+              .map((value) => value.toJson())
+              .toList(),
+        if (shotAnnotations != null)
+          'shotAnnotations':
+              shotAnnotations.map((value) => value.toJson()).toList(),
+        if (shotLabelAnnotations != null)
+          'shotLabelAnnotations':
+              shotLabelAnnotations.map((value) => value.toJson()).toList(),
+        if (shotPresenceLabelAnnotations != null)
+          'shotPresenceLabelAnnotations': shotPresenceLabelAnnotations
+              .map((value) => value.toJson())
+              .toList(),
+        if (speechTranscriptions != null)
+          'speechTranscriptions':
+              speechTranscriptions.map((value) => value.toJson()).toList(),
+        if (textAnnotations != null)
+          'textAnnotations':
+              textAnnotations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Video segment.
@@ -4746,16 +4222,10 @@ class GoogleCloudVideointelligenceV1beta2VideoSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTimeOffset != null) {
-      _json['endTimeOffset'] = endTimeOffset;
-    }
-    if (startTimeOffset != null) {
-      _json['startTimeOffset'] = startTimeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTimeOffset != null) 'endTimeOffset': endTimeOffset,
+        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset,
+      };
 }
 
 /// Word-specific information for recognized words.
@@ -4822,25 +4292,13 @@ class GoogleCloudVideointelligenceV1beta2WordInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (speakerTag != null) {
-      _json['speakerTag'] = speakerTag;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (word != null) {
-      _json['word'] = word;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (endTime != null) 'endTime': endTime,
+        if (speakerTag != null) 'speakerTag': speakerTag,
+        if (startTime != null) 'startTime': startTime,
+        if (word != null) 'word': word,
+      };
 }
 
 /// Video annotation progress.
@@ -4866,14 +4324,11 @@ class GoogleCloudVideointelligenceV1p1beta1AnnotateVideoProgress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationProgress != null) {
-      _json['annotationProgress'] =
-          annotationProgress.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationProgress != null)
+          'annotationProgress':
+              annotationProgress.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Video annotation response.
@@ -4899,14 +4354,11 @@ class GoogleCloudVideointelligenceV1p1beta1AnnotateVideoResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationResults != null) {
-      _json['annotationResults'] =
-          annotationResults.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationResults != null)
+          'annotationResults':
+              annotationResults.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A generic detected attribute represented by name in string format.
@@ -4941,19 +4393,11 @@ class GoogleCloudVideointelligenceV1p1beta1DetectedAttribute {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (name != null) 'name': name,
+        if (value != null) 'value': value,
+      };
 }
 
 /// A generic detected landmark represented by name in string format and a 2D
@@ -4989,19 +4433,11 @@ class GoogleCloudVideointelligenceV1p1beta1DetectedLandmark {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (point != null) {
-      _json['point'] = point.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (name != null) 'name': name,
+        if (point != null) 'point': point.toJson(),
+      };
 }
 
 /// Detected entity from video analysis.
@@ -5032,19 +4468,11 @@ class GoogleCloudVideointelligenceV1p1beta1Entity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (entityId != null) {
-      _json['entityId'] = entityId;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (entityId != null) 'entityId': entityId,
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// Explicit content annotation (based on per-frame visual signals only).
@@ -5075,16 +4503,11 @@ class GoogleCloudVideointelligenceV1p1beta1ExplicitContentAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (frames != null) {
-      _json['frames'] = frames.map((value) => value.toJson()).toList();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (frames != null)
+          'frames': frames.map((value) => value.toJson()).toList(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// Video frame level annotation results for explicit content.
@@ -5115,16 +4538,11 @@ class GoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pornographyLikelihood != null) {
-      _json['pornographyLikelihood'] = pornographyLikelihood;
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pornographyLikelihood != null)
+          'pornographyLikelihood': pornographyLikelihood,
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// No effect.
@@ -5168,19 +4586,13 @@ class GoogleCloudVideointelligenceV1p1beta1FaceAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (frames != null) {
-      _json['frames'] = frames.map((value) => value.toJson()).toList();
-    }
-    if (segments != null) {
-      _json['segments'] = segments.map((value) => value.toJson()).toList();
-    }
-    if (thumbnail != null) {
-      _json['thumbnail'] = thumbnail;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (frames != null)
+          'frames': frames.map((value) => value.toJson()).toList(),
+        if (segments != null)
+          'segments': segments.map((value) => value.toJson()).toList(),
+        if (thumbnail != null) 'thumbnail': thumbnail,
+      };
 }
 
 /// Face detection annotation.
@@ -5219,19 +4631,12 @@ class GoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (thumbnail != null) {
-      _json['thumbnail'] = thumbnail;
-    }
-    if (tracks != null) {
-      _json['tracks'] = tracks.map((value) => value.toJson()).toList();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (thumbnail != null) 'thumbnail': thumbnail,
+        if (tracks != null)
+          'tracks': tracks.map((value) => value.toJson()).toList(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// No effect.
@@ -5265,17 +4670,12 @@ class GoogleCloudVideointelligenceV1p1beta1FaceFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (normalizedBoundingBoxes != null) {
-      _json['normalizedBoundingBoxes'] =
-          normalizedBoundingBoxes.map((value) => value.toJson()).toList();
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (normalizedBoundingBoxes != null)
+          'normalizedBoundingBoxes':
+              normalizedBoundingBoxes.map((value) => value.toJson()).toList(),
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// Video segment level annotation results for face detection.
@@ -5292,13 +4692,9 @@ class GoogleCloudVideointelligenceV1p1beta1FaceSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (segment != null) 'segment': segment.toJson(),
+      };
 }
 
 /// Label annotation.
@@ -5356,26 +4752,17 @@ class GoogleCloudVideointelligenceV1p1beta1LabelAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (categoryEntities != null) {
-      _json['categoryEntities'] =
-          categoryEntities.map((value) => value.toJson()).toList();
-    }
-    if (entity != null) {
-      _json['entity'] = entity.toJson();
-    }
-    if (frames != null) {
-      _json['frames'] = frames.map((value) => value.toJson()).toList();
-    }
-    if (segments != null) {
-      _json['segments'] = segments.map((value) => value.toJson()).toList();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (categoryEntities != null)
+          'categoryEntities':
+              categoryEntities.map((value) => value.toJson()).toList(),
+        if (entity != null) 'entity': entity.toJson(),
+        if (frames != null)
+          'frames': frames.map((value) => value.toJson()).toList(),
+        if (segments != null)
+          'segments': segments.map((value) => value.toJson()).toList(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// Video frame level annotation results for label detection.
@@ -5400,16 +4787,10 @@ class GoogleCloudVideointelligenceV1p1beta1LabelFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// Video segment level annotation results for label detection.
@@ -5434,16 +4815,10 @@ class GoogleCloudVideointelligenceV1p1beta1LabelSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (segment != null) 'segment': segment.toJson(),
+      };
 }
 
 /// Annotation corresponding to one detected, tracked and recognized logo class.
@@ -5488,19 +4863,13 @@ class GoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entity != null) {
-      _json['entity'] = entity.toJson();
-    }
-    if (segments != null) {
-      _json['segments'] = segments.map((value) => value.toJson()).toList();
-    }
-    if (tracks != null) {
-      _json['tracks'] = tracks.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entity != null) 'entity': entity.toJson(),
+        if (segments != null)
+          'segments': segments.map((value) => value.toJson()).toList(),
+        if (tracks != null)
+          'tracks': tracks.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Normalized bounding box.
@@ -5538,22 +4907,12 @@ class GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bottom != null) {
-      _json['bottom'] = bottom;
-    }
-    if (left != null) {
-      _json['left'] = left;
-    }
-    if (right != null) {
-      _json['right'] = right;
-    }
-    if (top != null) {
-      _json['top'] = top;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bottom != null) 'bottom': bottom,
+        if (left != null) 'left': left,
+        if (right != null) 'right': right,
+        if (top != null) 'top': top,
+      };
 }
 
 /// Normalized bounding polygon for text (that might not be aligned with axis).
@@ -5582,13 +4941,10 @@ class GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (vertices != null) {
-      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (vertices != null)
+          'vertices': vertices.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A vertex represents a 2D point in the image.
@@ -5614,16 +4970,10 @@ class GoogleCloudVideointelligenceV1p1beta1NormalizedVertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+      };
 }
 
 /// Annotations corresponding to one tracked object.
@@ -5689,28 +5039,15 @@ class GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (entity != null) {
-      _json['entity'] = entity.toJson();
-    }
-    if (frames != null) {
-      _json['frames'] = frames.map((value) => value.toJson()).toList();
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    if (trackId != null) {
-      _json['trackId'] = trackId;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (entity != null) 'entity': entity.toJson(),
+        if (frames != null)
+          'frames': frames.map((value) => value.toJson()).toList(),
+        if (segment != null) 'segment': segment.toJson(),
+        if (trackId != null) 'trackId': trackId,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Video frame level annotations for object detection and tracking.
@@ -5739,16 +5076,11 @@ class GoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (normalizedBoundingBox != null) {
-      _json['normalizedBoundingBox'] = normalizedBoundingBox.toJson();
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (normalizedBoundingBox != null)
+          'normalizedBoundingBox': normalizedBoundingBox.toJson(),
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// Person detection annotation per video.
@@ -5775,16 +5107,11 @@ class GoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (tracks != null) {
-      _json['tracks'] = tracks.map((value) => value.toJson()).toList();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (tracks != null)
+          'tracks': tracks.map((value) => value.toJson()).toList(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// Alternative hypotheses (a.k.a. n-best list).
@@ -5830,19 +5157,12 @@ class GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (transcript != null) {
-      _json['transcript'] = transcript;
-    }
-    if (words != null) {
-      _json['words'] = words.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (transcript != null) 'transcript': transcript,
+        if (words != null)
+          'words': words.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A speech recognition result corresponding to a portion of the audio.
@@ -5881,17 +5201,11 @@ class GoogleCloudVideointelligenceV1p1beta1SpeechTranscription {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alternatives != null) {
-      _json['alternatives'] =
-          alternatives.map((value) => value.toJson()).toList();
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alternatives != null)
+          'alternatives': alternatives.map((value) => value.toJson()).toList(),
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// Annotations related to one detected OCR text snippet.
@@ -5926,19 +5240,12 @@ class GoogleCloudVideointelligenceV1p1beta1TextAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (segments != null) {
-      _json['segments'] = segments.map((value) => value.toJson()).toList();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (segments != null)
+          'segments': segments.map((value) => value.toJson()).toList(),
+        if (text != null) 'text': text,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Video frame level annotation results for text annotation (OCR).
@@ -5967,16 +5274,11 @@ class GoogleCloudVideointelligenceV1p1beta1TextFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (rotatedBoundingBox != null) {
-      _json['rotatedBoundingBox'] = rotatedBoundingBox.toJson();
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (rotatedBoundingBox != null)
+          'rotatedBoundingBox': rotatedBoundingBox.toJson(),
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// Video segment level annotation results for text detection.
@@ -6012,19 +5314,12 @@ class GoogleCloudVideointelligenceV1p1beta1TextSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (frames != null) {
-      _json['frames'] = frames.map((value) => value.toJson()).toList();
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (frames != null)
+          'frames': frames.map((value) => value.toJson()).toList(),
+        if (segment != null) 'segment': segment.toJson(),
+      };
 }
 
 /// For tracking related features.
@@ -6079,22 +5374,15 @@ class GoogleCloudVideointelligenceV1p1beta1TimestampedObject {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributes != null) {
-      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
-    }
-    if (landmarks != null) {
-      _json['landmarks'] = landmarks.map((value) => value.toJson()).toList();
-    }
-    if (normalizedBoundingBox != null) {
-      _json['normalizedBoundingBox'] = normalizedBoundingBox.toJson();
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributes != null)
+          'attributes': attributes.map((value) => value.toJson()).toList(),
+        if (landmarks != null)
+          'landmarks': landmarks.map((value) => value.toJson()).toList(),
+        if (normalizedBoundingBox != null)
+          'normalizedBoundingBox': normalizedBoundingBox.toJson(),
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// A track of an object instance.
@@ -6142,23 +5430,15 @@ class GoogleCloudVideointelligenceV1p1beta1Track {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributes != null) {
-      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    if (timestampedObjects != null) {
-      _json['timestampedObjects'] =
-          timestampedObjects.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributes != null)
+          'attributes': attributes.map((value) => value.toJson()).toList(),
+        if (confidence != null) 'confidence': confidence,
+        if (segment != null) 'segment': segment.toJson(),
+        if (timestampedObjects != null)
+          'timestampedObjects':
+              timestampedObjects.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Annotation progress for a single video.
@@ -6222,28 +5502,14 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (feature != null) {
-      _json['feature'] = feature;
-    }
-    if (inputUri != null) {
-      _json['inputUri'] = inputUri;
-    }
-    if (progressPercent != null) {
-      _json['progressPercent'] = progressPercent;
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (feature != null) 'feature': feature,
+        if (inputUri != null) 'inputUri': inputUri,
+        if (progressPercent != null) 'progressPercent': progressPercent,
+        if (segment != null) 'segment': segment.toJson(),
+        if (startTime != null) 'startTime': startTime,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Annotation results for a single video.
@@ -6464,75 +5730,56 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (explicitAnnotation != null) {
-      _json['explicitAnnotation'] = explicitAnnotation.toJson();
-    }
-    if (faceAnnotations != null) {
-      _json['faceAnnotations'] =
-          faceAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (faceDetectionAnnotations != null) {
-      _json['faceDetectionAnnotations'] =
-          faceDetectionAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (frameLabelAnnotations != null) {
-      _json['frameLabelAnnotations'] =
-          frameLabelAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (inputUri != null) {
-      _json['inputUri'] = inputUri;
-    }
-    if (logoRecognitionAnnotations != null) {
-      _json['logoRecognitionAnnotations'] =
-          logoRecognitionAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (objectAnnotations != null) {
-      _json['objectAnnotations'] =
-          objectAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (personDetectionAnnotations != null) {
-      _json['personDetectionAnnotations'] =
-          personDetectionAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    if (segmentLabelAnnotations != null) {
-      _json['segmentLabelAnnotations'] =
-          segmentLabelAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (segmentPresenceLabelAnnotations != null) {
-      _json['segmentPresenceLabelAnnotations'] = segmentPresenceLabelAnnotations
-          .map((value) => value.toJson())
-          .toList();
-    }
-    if (shotAnnotations != null) {
-      _json['shotAnnotations'] =
-          shotAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (shotLabelAnnotations != null) {
-      _json['shotLabelAnnotations'] =
-          shotLabelAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (shotPresenceLabelAnnotations != null) {
-      _json['shotPresenceLabelAnnotations'] =
-          shotPresenceLabelAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (speechTranscriptions != null) {
-      _json['speechTranscriptions'] =
-          speechTranscriptions.map((value) => value.toJson()).toList();
-    }
-    if (textAnnotations != null) {
-      _json['textAnnotations'] =
-          textAnnotations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (error != null) 'error': error.toJson(),
+        if (explicitAnnotation != null)
+          'explicitAnnotation': explicitAnnotation.toJson(),
+        if (faceAnnotations != null)
+          'faceAnnotations':
+              faceAnnotations.map((value) => value.toJson()).toList(),
+        if (faceDetectionAnnotations != null)
+          'faceDetectionAnnotations':
+              faceDetectionAnnotations.map((value) => value.toJson()).toList(),
+        if (frameLabelAnnotations != null)
+          'frameLabelAnnotations':
+              frameLabelAnnotations.map((value) => value.toJson()).toList(),
+        if (inputUri != null) 'inputUri': inputUri,
+        if (logoRecognitionAnnotations != null)
+          'logoRecognitionAnnotations': logoRecognitionAnnotations
+              .map((value) => value.toJson())
+              .toList(),
+        if (objectAnnotations != null)
+          'objectAnnotations':
+              objectAnnotations.map((value) => value.toJson()).toList(),
+        if (personDetectionAnnotations != null)
+          'personDetectionAnnotations': personDetectionAnnotations
+              .map((value) => value.toJson())
+              .toList(),
+        if (segment != null) 'segment': segment.toJson(),
+        if (segmentLabelAnnotations != null)
+          'segmentLabelAnnotations':
+              segmentLabelAnnotations.map((value) => value.toJson()).toList(),
+        if (segmentPresenceLabelAnnotations != null)
+          'segmentPresenceLabelAnnotations': segmentPresenceLabelAnnotations
+              .map((value) => value.toJson())
+              .toList(),
+        if (shotAnnotations != null)
+          'shotAnnotations':
+              shotAnnotations.map((value) => value.toJson()).toList(),
+        if (shotLabelAnnotations != null)
+          'shotLabelAnnotations':
+              shotLabelAnnotations.map((value) => value.toJson()).toList(),
+        if (shotPresenceLabelAnnotations != null)
+          'shotPresenceLabelAnnotations': shotPresenceLabelAnnotations
+              .map((value) => value.toJson())
+              .toList(),
+        if (speechTranscriptions != null)
+          'speechTranscriptions':
+              speechTranscriptions.map((value) => value.toJson()).toList(),
+        if (textAnnotations != null)
+          'textAnnotations':
+              textAnnotations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Video segment.
@@ -6556,16 +5803,10 @@ class GoogleCloudVideointelligenceV1p1beta1VideoSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTimeOffset != null) {
-      _json['endTimeOffset'] = endTimeOffset;
-    }
-    if (startTimeOffset != null) {
-      _json['startTimeOffset'] = startTimeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTimeOffset != null) 'endTimeOffset': endTimeOffset,
+        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset,
+      };
 }
 
 /// Word-specific information for recognized words.
@@ -6632,25 +5873,13 @@ class GoogleCloudVideointelligenceV1p1beta1WordInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (speakerTag != null) {
-      _json['speakerTag'] = speakerTag;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (word != null) {
-      _json['word'] = word;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (endTime != null) 'endTime': endTime,
+        if (speakerTag != null) 'speakerTag': speakerTag,
+        if (startTime != null) 'startTime': startTime,
+        if (word != null) 'word': word,
+      };
 }
 
 /// Video annotation progress.
@@ -6676,14 +5905,11 @@ class GoogleCloudVideointelligenceV1p2beta1AnnotateVideoProgress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationProgress != null) {
-      _json['annotationProgress'] =
-          annotationProgress.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationProgress != null)
+          'annotationProgress':
+              annotationProgress.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Video annotation response.
@@ -6709,14 +5935,11 @@ class GoogleCloudVideointelligenceV1p2beta1AnnotateVideoResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationResults != null) {
-      _json['annotationResults'] =
-          annotationResults.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationResults != null)
+          'annotationResults':
+              annotationResults.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A generic detected attribute represented by name in string format.
@@ -6751,19 +5974,11 @@ class GoogleCloudVideointelligenceV1p2beta1DetectedAttribute {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (name != null) 'name': name,
+        if (value != null) 'value': value,
+      };
 }
 
 /// A generic detected landmark represented by name in string format and a 2D
@@ -6799,19 +6014,11 @@ class GoogleCloudVideointelligenceV1p2beta1DetectedLandmark {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (point != null) {
-      _json['point'] = point.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (name != null) 'name': name,
+        if (point != null) 'point': point.toJson(),
+      };
 }
 
 /// Detected entity from video analysis.
@@ -6842,19 +6049,11 @@ class GoogleCloudVideointelligenceV1p2beta1Entity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (entityId != null) {
-      _json['entityId'] = entityId;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (entityId != null) 'entityId': entityId,
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// Explicit content annotation (based on per-frame visual signals only).
@@ -6885,16 +6084,11 @@ class GoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (frames != null) {
-      _json['frames'] = frames.map((value) => value.toJson()).toList();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (frames != null)
+          'frames': frames.map((value) => value.toJson()).toList(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// Video frame level annotation results for explicit content.
@@ -6925,16 +6119,11 @@ class GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pornographyLikelihood != null) {
-      _json['pornographyLikelihood'] = pornographyLikelihood;
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pornographyLikelihood != null)
+          'pornographyLikelihood': pornographyLikelihood,
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// No effect.
@@ -6978,19 +6167,13 @@ class GoogleCloudVideointelligenceV1p2beta1FaceAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (frames != null) {
-      _json['frames'] = frames.map((value) => value.toJson()).toList();
-    }
-    if (segments != null) {
-      _json['segments'] = segments.map((value) => value.toJson()).toList();
-    }
-    if (thumbnail != null) {
-      _json['thumbnail'] = thumbnail;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (frames != null)
+          'frames': frames.map((value) => value.toJson()).toList(),
+        if (segments != null)
+          'segments': segments.map((value) => value.toJson()).toList(),
+        if (thumbnail != null) 'thumbnail': thumbnail,
+      };
 }
 
 /// Face detection annotation.
@@ -7029,19 +6212,12 @@ class GoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (thumbnail != null) {
-      _json['thumbnail'] = thumbnail;
-    }
-    if (tracks != null) {
-      _json['tracks'] = tracks.map((value) => value.toJson()).toList();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (thumbnail != null) 'thumbnail': thumbnail,
+        if (tracks != null)
+          'tracks': tracks.map((value) => value.toJson()).toList(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// No effect.
@@ -7075,17 +6251,12 @@ class GoogleCloudVideointelligenceV1p2beta1FaceFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (normalizedBoundingBoxes != null) {
-      _json['normalizedBoundingBoxes'] =
-          normalizedBoundingBoxes.map((value) => value.toJson()).toList();
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (normalizedBoundingBoxes != null)
+          'normalizedBoundingBoxes':
+              normalizedBoundingBoxes.map((value) => value.toJson()).toList(),
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// Video segment level annotation results for face detection.
@@ -7102,13 +6273,9 @@ class GoogleCloudVideointelligenceV1p2beta1FaceSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (segment != null) 'segment': segment.toJson(),
+      };
 }
 
 /// Label annotation.
@@ -7166,26 +6333,17 @@ class GoogleCloudVideointelligenceV1p2beta1LabelAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (categoryEntities != null) {
-      _json['categoryEntities'] =
-          categoryEntities.map((value) => value.toJson()).toList();
-    }
-    if (entity != null) {
-      _json['entity'] = entity.toJson();
-    }
-    if (frames != null) {
-      _json['frames'] = frames.map((value) => value.toJson()).toList();
-    }
-    if (segments != null) {
-      _json['segments'] = segments.map((value) => value.toJson()).toList();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (categoryEntities != null)
+          'categoryEntities':
+              categoryEntities.map((value) => value.toJson()).toList(),
+        if (entity != null) 'entity': entity.toJson(),
+        if (frames != null)
+          'frames': frames.map((value) => value.toJson()).toList(),
+        if (segments != null)
+          'segments': segments.map((value) => value.toJson()).toList(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// Video frame level annotation results for label detection.
@@ -7210,16 +6368,10 @@ class GoogleCloudVideointelligenceV1p2beta1LabelFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// Video segment level annotation results for label detection.
@@ -7244,16 +6396,10 @@ class GoogleCloudVideointelligenceV1p2beta1LabelSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (segment != null) 'segment': segment.toJson(),
+      };
 }
 
 /// Annotation corresponding to one detected, tracked and recognized logo class.
@@ -7298,19 +6444,13 @@ class GoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entity != null) {
-      _json['entity'] = entity.toJson();
-    }
-    if (segments != null) {
-      _json['segments'] = segments.map((value) => value.toJson()).toList();
-    }
-    if (tracks != null) {
-      _json['tracks'] = tracks.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entity != null) 'entity': entity.toJson(),
+        if (segments != null)
+          'segments': segments.map((value) => value.toJson()).toList(),
+        if (tracks != null)
+          'tracks': tracks.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Normalized bounding box.
@@ -7348,22 +6488,12 @@ class GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bottom != null) {
-      _json['bottom'] = bottom;
-    }
-    if (left != null) {
-      _json['left'] = left;
-    }
-    if (right != null) {
-      _json['right'] = right;
-    }
-    if (top != null) {
-      _json['top'] = top;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bottom != null) 'bottom': bottom,
+        if (left != null) 'left': left,
+        if (right != null) 'right': right,
+        if (top != null) 'top': top,
+      };
 }
 
 /// Normalized bounding polygon for text (that might not be aligned with axis).
@@ -7392,13 +6522,10 @@ class GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (vertices != null) {
-      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (vertices != null)
+          'vertices': vertices.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A vertex represents a 2D point in the image.
@@ -7424,16 +6551,10 @@ class GoogleCloudVideointelligenceV1p2beta1NormalizedVertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+      };
 }
 
 /// Annotations corresponding to one tracked object.
@@ -7499,28 +6620,15 @@ class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (entity != null) {
-      _json['entity'] = entity.toJson();
-    }
-    if (frames != null) {
-      _json['frames'] = frames.map((value) => value.toJson()).toList();
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    if (trackId != null) {
-      _json['trackId'] = trackId;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (entity != null) 'entity': entity.toJson(),
+        if (frames != null)
+          'frames': frames.map((value) => value.toJson()).toList(),
+        if (segment != null) 'segment': segment.toJson(),
+        if (trackId != null) 'trackId': trackId,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Video frame level annotations for object detection and tracking.
@@ -7549,16 +6657,11 @@ class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (normalizedBoundingBox != null) {
-      _json['normalizedBoundingBox'] = normalizedBoundingBox.toJson();
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (normalizedBoundingBox != null)
+          'normalizedBoundingBox': normalizedBoundingBox.toJson(),
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// Person detection annotation per video.
@@ -7585,16 +6688,11 @@ class GoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (tracks != null) {
-      _json['tracks'] = tracks.map((value) => value.toJson()).toList();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (tracks != null)
+          'tracks': tracks.map((value) => value.toJson()).toList(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// Alternative hypotheses (a.k.a. n-best list).
@@ -7640,19 +6738,12 @@ class GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (transcript != null) {
-      _json['transcript'] = transcript;
-    }
-    if (words != null) {
-      _json['words'] = words.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (transcript != null) 'transcript': transcript,
+        if (words != null)
+          'words': words.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A speech recognition result corresponding to a portion of the audio.
@@ -7691,17 +6782,11 @@ class GoogleCloudVideointelligenceV1p2beta1SpeechTranscription {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alternatives != null) {
-      _json['alternatives'] =
-          alternatives.map((value) => value.toJson()).toList();
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alternatives != null)
+          'alternatives': alternatives.map((value) => value.toJson()).toList(),
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// Annotations related to one detected OCR text snippet.
@@ -7736,19 +6821,12 @@ class GoogleCloudVideointelligenceV1p2beta1TextAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (segments != null) {
-      _json['segments'] = segments.map((value) => value.toJson()).toList();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (segments != null)
+          'segments': segments.map((value) => value.toJson()).toList(),
+        if (text != null) 'text': text,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Video frame level annotation results for text annotation (OCR).
@@ -7777,16 +6855,11 @@ class GoogleCloudVideointelligenceV1p2beta1TextFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (rotatedBoundingBox != null) {
-      _json['rotatedBoundingBox'] = rotatedBoundingBox.toJson();
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (rotatedBoundingBox != null)
+          'rotatedBoundingBox': rotatedBoundingBox.toJson(),
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// Video segment level annotation results for text detection.
@@ -7822,19 +6895,12 @@ class GoogleCloudVideointelligenceV1p2beta1TextSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (frames != null) {
-      _json['frames'] = frames.map((value) => value.toJson()).toList();
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (frames != null)
+          'frames': frames.map((value) => value.toJson()).toList(),
+        if (segment != null) 'segment': segment.toJson(),
+      };
 }
 
 /// For tracking related features.
@@ -7889,22 +6955,15 @@ class GoogleCloudVideointelligenceV1p2beta1TimestampedObject {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributes != null) {
-      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
-    }
-    if (landmarks != null) {
-      _json['landmarks'] = landmarks.map((value) => value.toJson()).toList();
-    }
-    if (normalizedBoundingBox != null) {
-      _json['normalizedBoundingBox'] = normalizedBoundingBox.toJson();
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributes != null)
+          'attributes': attributes.map((value) => value.toJson()).toList(),
+        if (landmarks != null)
+          'landmarks': landmarks.map((value) => value.toJson()).toList(),
+        if (normalizedBoundingBox != null)
+          'normalizedBoundingBox': normalizedBoundingBox.toJson(),
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// A track of an object instance.
@@ -7952,23 +7011,15 @@ class GoogleCloudVideointelligenceV1p2beta1Track {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributes != null) {
-      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    if (timestampedObjects != null) {
-      _json['timestampedObjects'] =
-          timestampedObjects.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributes != null)
+          'attributes': attributes.map((value) => value.toJson()).toList(),
+        if (confidence != null) 'confidence': confidence,
+        if (segment != null) 'segment': segment.toJson(),
+        if (timestampedObjects != null)
+          'timestampedObjects':
+              timestampedObjects.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Annotation progress for a single video.
@@ -8032,28 +7083,14 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (feature != null) {
-      _json['feature'] = feature;
-    }
-    if (inputUri != null) {
-      _json['inputUri'] = inputUri;
-    }
-    if (progressPercent != null) {
-      _json['progressPercent'] = progressPercent;
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (feature != null) 'feature': feature,
+        if (inputUri != null) 'inputUri': inputUri,
+        if (progressPercent != null) 'progressPercent': progressPercent,
+        if (segment != null) 'segment': segment.toJson(),
+        if (startTime != null) 'startTime': startTime,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Annotation results for a single video.
@@ -8274,75 +7311,56 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (explicitAnnotation != null) {
-      _json['explicitAnnotation'] = explicitAnnotation.toJson();
-    }
-    if (faceAnnotations != null) {
-      _json['faceAnnotations'] =
-          faceAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (faceDetectionAnnotations != null) {
-      _json['faceDetectionAnnotations'] =
-          faceDetectionAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (frameLabelAnnotations != null) {
-      _json['frameLabelAnnotations'] =
-          frameLabelAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (inputUri != null) {
-      _json['inputUri'] = inputUri;
-    }
-    if (logoRecognitionAnnotations != null) {
-      _json['logoRecognitionAnnotations'] =
-          logoRecognitionAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (objectAnnotations != null) {
-      _json['objectAnnotations'] =
-          objectAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (personDetectionAnnotations != null) {
-      _json['personDetectionAnnotations'] =
-          personDetectionAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    if (segmentLabelAnnotations != null) {
-      _json['segmentLabelAnnotations'] =
-          segmentLabelAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (segmentPresenceLabelAnnotations != null) {
-      _json['segmentPresenceLabelAnnotations'] = segmentPresenceLabelAnnotations
-          .map((value) => value.toJson())
-          .toList();
-    }
-    if (shotAnnotations != null) {
-      _json['shotAnnotations'] =
-          shotAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (shotLabelAnnotations != null) {
-      _json['shotLabelAnnotations'] =
-          shotLabelAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (shotPresenceLabelAnnotations != null) {
-      _json['shotPresenceLabelAnnotations'] =
-          shotPresenceLabelAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (speechTranscriptions != null) {
-      _json['speechTranscriptions'] =
-          speechTranscriptions.map((value) => value.toJson()).toList();
-    }
-    if (textAnnotations != null) {
-      _json['textAnnotations'] =
-          textAnnotations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (error != null) 'error': error.toJson(),
+        if (explicitAnnotation != null)
+          'explicitAnnotation': explicitAnnotation.toJson(),
+        if (faceAnnotations != null)
+          'faceAnnotations':
+              faceAnnotations.map((value) => value.toJson()).toList(),
+        if (faceDetectionAnnotations != null)
+          'faceDetectionAnnotations':
+              faceDetectionAnnotations.map((value) => value.toJson()).toList(),
+        if (frameLabelAnnotations != null)
+          'frameLabelAnnotations':
+              frameLabelAnnotations.map((value) => value.toJson()).toList(),
+        if (inputUri != null) 'inputUri': inputUri,
+        if (logoRecognitionAnnotations != null)
+          'logoRecognitionAnnotations': logoRecognitionAnnotations
+              .map((value) => value.toJson())
+              .toList(),
+        if (objectAnnotations != null)
+          'objectAnnotations':
+              objectAnnotations.map((value) => value.toJson()).toList(),
+        if (personDetectionAnnotations != null)
+          'personDetectionAnnotations': personDetectionAnnotations
+              .map((value) => value.toJson())
+              .toList(),
+        if (segment != null) 'segment': segment.toJson(),
+        if (segmentLabelAnnotations != null)
+          'segmentLabelAnnotations':
+              segmentLabelAnnotations.map((value) => value.toJson()).toList(),
+        if (segmentPresenceLabelAnnotations != null)
+          'segmentPresenceLabelAnnotations': segmentPresenceLabelAnnotations
+              .map((value) => value.toJson())
+              .toList(),
+        if (shotAnnotations != null)
+          'shotAnnotations':
+              shotAnnotations.map((value) => value.toJson()).toList(),
+        if (shotLabelAnnotations != null)
+          'shotLabelAnnotations':
+              shotLabelAnnotations.map((value) => value.toJson()).toList(),
+        if (shotPresenceLabelAnnotations != null)
+          'shotPresenceLabelAnnotations': shotPresenceLabelAnnotations
+              .map((value) => value.toJson())
+              .toList(),
+        if (speechTranscriptions != null)
+          'speechTranscriptions':
+              speechTranscriptions.map((value) => value.toJson()).toList(),
+        if (textAnnotations != null)
+          'textAnnotations':
+              textAnnotations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Video segment.
@@ -8366,16 +7384,10 @@ class GoogleCloudVideointelligenceV1p2beta1VideoSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTimeOffset != null) {
-      _json['endTimeOffset'] = endTimeOffset;
-    }
-    if (startTimeOffset != null) {
-      _json['startTimeOffset'] = startTimeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTimeOffset != null) 'endTimeOffset': endTimeOffset,
+        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset,
+      };
 }
 
 /// Word-specific information for recognized words.
@@ -8442,25 +7454,13 @@ class GoogleCloudVideointelligenceV1p2beta1WordInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (speakerTag != null) {
-      _json['speakerTag'] = speakerTag;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (word != null) {
-      _json['word'] = word;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (endTime != null) 'endTime': endTime,
+        if (speakerTag != null) 'speakerTag': speakerTag,
+        if (startTime != null) 'startTime': startTime,
+        if (word != null) 'word': word,
+      };
 }
 
 /// Video annotation progress.
@@ -8486,14 +7486,11 @@ class GoogleCloudVideointelligenceV1p3beta1AnnotateVideoProgress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationProgress != null) {
-      _json['annotationProgress'] =
-          annotationProgress.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationProgress != null)
+          'annotationProgress':
+              annotationProgress.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Video annotation response.
@@ -8519,14 +7516,11 @@ class GoogleCloudVideointelligenceV1p3beta1AnnotateVideoResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationResults != null) {
-      _json['annotationResults'] =
-          annotationResults.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationResults != null)
+          'annotationResults':
+              annotationResults.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Celebrity definition.
@@ -8559,19 +7553,11 @@ class GoogleCloudVideointelligenceV1p3beta1Celebrity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Celebrity recognition annotation per video.
@@ -8600,17 +7586,12 @@ class GoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (celebrityTracks != null) {
-      _json['celebrityTracks'] =
-          celebrityTracks.map((value) => value.toJson()).toList();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (celebrityTracks != null)
+          'celebrityTracks':
+              celebrityTracks.map((value) => value.toJson()).toList(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// The annotation result of a celebrity face track.
@@ -8642,17 +7623,11 @@ class GoogleCloudVideointelligenceV1p3beta1CelebrityTrack {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (celebrities != null) {
-      _json['celebrities'] =
-          celebrities.map((value) => value.toJson()).toList();
-    }
-    if (faceTrack != null) {
-      _json['faceTrack'] = faceTrack.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (celebrities != null)
+          'celebrities': celebrities.map((value) => value.toJson()).toList(),
+        if (faceTrack != null) 'faceTrack': faceTrack.toJson(),
+      };
 }
 
 /// A generic detected attribute represented by name in string format.
@@ -8687,19 +7662,11 @@ class GoogleCloudVideointelligenceV1p3beta1DetectedAttribute {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (name != null) 'name': name,
+        if (value != null) 'value': value,
+      };
 }
 
 /// A generic detected landmark represented by name in string format and a 2D
@@ -8735,19 +7702,11 @@ class GoogleCloudVideointelligenceV1p3beta1DetectedLandmark {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (point != null) {
-      _json['point'] = point.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (name != null) 'name': name,
+        if (point != null) 'point': point.toJson(),
+      };
 }
 
 /// Detected entity from video analysis.
@@ -8778,19 +7737,11 @@ class GoogleCloudVideointelligenceV1p3beta1Entity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (entityId != null) {
-      _json['entityId'] = entityId;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (entityId != null) 'entityId': entityId,
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// Explicit content annotation (based on per-frame visual signals only).
@@ -8821,16 +7772,11 @@ class GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (frames != null) {
-      _json['frames'] = frames.map((value) => value.toJson()).toList();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (frames != null)
+          'frames': frames.map((value) => value.toJson()).toList(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// Video frame level annotation results for explicit content.
@@ -8861,16 +7807,11 @@ class GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pornographyLikelihood != null) {
-      _json['pornographyLikelihood'] = pornographyLikelihood;
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pornographyLikelihood != null)
+          'pornographyLikelihood': pornographyLikelihood,
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// No effect.
@@ -8914,19 +7855,13 @@ class GoogleCloudVideointelligenceV1p3beta1FaceAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (frames != null) {
-      _json['frames'] = frames.map((value) => value.toJson()).toList();
-    }
-    if (segments != null) {
-      _json['segments'] = segments.map((value) => value.toJson()).toList();
-    }
-    if (thumbnail != null) {
-      _json['thumbnail'] = thumbnail;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (frames != null)
+          'frames': frames.map((value) => value.toJson()).toList(),
+        if (segments != null)
+          'segments': segments.map((value) => value.toJson()).toList(),
+        if (thumbnail != null) 'thumbnail': thumbnail,
+      };
 }
 
 /// Face detection annotation.
@@ -8965,19 +7900,12 @@ class GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (thumbnail != null) {
-      _json['thumbnail'] = thumbnail;
-    }
-    if (tracks != null) {
-      _json['tracks'] = tracks.map((value) => value.toJson()).toList();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (thumbnail != null) 'thumbnail': thumbnail,
+        if (tracks != null)
+          'tracks': tracks.map((value) => value.toJson()).toList(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// No effect.
@@ -9011,17 +7939,12 @@ class GoogleCloudVideointelligenceV1p3beta1FaceFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (normalizedBoundingBoxes != null) {
-      _json['normalizedBoundingBoxes'] =
-          normalizedBoundingBoxes.map((value) => value.toJson()).toList();
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (normalizedBoundingBoxes != null)
+          'normalizedBoundingBoxes':
+              normalizedBoundingBoxes.map((value) => value.toJson()).toList(),
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// Video segment level annotation results for face detection.
@@ -9038,13 +7961,9 @@ class GoogleCloudVideointelligenceV1p3beta1FaceSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (segment != null) 'segment': segment.toJson(),
+      };
 }
 
 /// Label annotation.
@@ -9102,26 +8021,17 @@ class GoogleCloudVideointelligenceV1p3beta1LabelAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (categoryEntities != null) {
-      _json['categoryEntities'] =
-          categoryEntities.map((value) => value.toJson()).toList();
-    }
-    if (entity != null) {
-      _json['entity'] = entity.toJson();
-    }
-    if (frames != null) {
-      _json['frames'] = frames.map((value) => value.toJson()).toList();
-    }
-    if (segments != null) {
-      _json['segments'] = segments.map((value) => value.toJson()).toList();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (categoryEntities != null)
+          'categoryEntities':
+              categoryEntities.map((value) => value.toJson()).toList(),
+        if (entity != null) 'entity': entity.toJson(),
+        if (frames != null)
+          'frames': frames.map((value) => value.toJson()).toList(),
+        if (segments != null)
+          'segments': segments.map((value) => value.toJson()).toList(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// Video frame level annotation results for label detection.
@@ -9146,16 +8056,10 @@ class GoogleCloudVideointelligenceV1p3beta1LabelFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// Video segment level annotation results for label detection.
@@ -9180,16 +8084,10 @@ class GoogleCloudVideointelligenceV1p3beta1LabelSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (segment != null) 'segment': segment.toJson(),
+      };
 }
 
 /// Annotation corresponding to one detected, tracked and recognized logo class.
@@ -9234,19 +8132,13 @@ class GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entity != null) {
-      _json['entity'] = entity.toJson();
-    }
-    if (segments != null) {
-      _json['segments'] = segments.map((value) => value.toJson()).toList();
-    }
-    if (tracks != null) {
-      _json['tracks'] = tracks.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entity != null) 'entity': entity.toJson(),
+        if (segments != null)
+          'segments': segments.map((value) => value.toJson()).toList(),
+        if (tracks != null)
+          'tracks': tracks.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Normalized bounding box.
@@ -9284,22 +8176,12 @@ class GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bottom != null) {
-      _json['bottom'] = bottom;
-    }
-    if (left != null) {
-      _json['left'] = left;
-    }
-    if (right != null) {
-      _json['right'] = right;
-    }
-    if (top != null) {
-      _json['top'] = top;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bottom != null) 'bottom': bottom,
+        if (left != null) 'left': left,
+        if (right != null) 'right': right,
+        if (top != null) 'top': top,
+      };
 }
 
 /// Normalized bounding polygon for text (that might not be aligned with axis).
@@ -9328,13 +8210,10 @@ class GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (vertices != null) {
-      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (vertices != null)
+          'vertices': vertices.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A vertex represents a 2D point in the image.
@@ -9360,16 +8239,10 @@ class GoogleCloudVideointelligenceV1p3beta1NormalizedVertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+      };
 }
 
 /// Annotations corresponding to one tracked object.
@@ -9435,28 +8308,15 @@ class GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (entity != null) {
-      _json['entity'] = entity.toJson();
-    }
-    if (frames != null) {
-      _json['frames'] = frames.map((value) => value.toJson()).toList();
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    if (trackId != null) {
-      _json['trackId'] = trackId;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (entity != null) 'entity': entity.toJson(),
+        if (frames != null)
+          'frames': frames.map((value) => value.toJson()).toList(),
+        if (segment != null) 'segment': segment.toJson(),
+        if (trackId != null) 'trackId': trackId,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Video frame level annotations for object detection and tracking.
@@ -9485,16 +8345,11 @@ class GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (normalizedBoundingBox != null) {
-      _json['normalizedBoundingBox'] = normalizedBoundingBox.toJson();
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (normalizedBoundingBox != null)
+          'normalizedBoundingBox': normalizedBoundingBox.toJson(),
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// Person detection annotation per video.
@@ -9521,16 +8376,11 @@ class GoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (tracks != null) {
-      _json['tracks'] = tracks.map((value) => value.toJson()).toList();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (tracks != null)
+          'tracks': tracks.map((value) => value.toJson()).toList(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// The recognized celebrity with confidence score.
@@ -9556,16 +8406,10 @@ class GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (celebrity != null) {
-      _json['celebrity'] = celebrity.toJson();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (celebrity != null) 'celebrity': celebrity.toJson(),
+        if (confidence != null) 'confidence': confidence,
+      };
 }
 
 /// Alternative hypotheses (a.k.a. n-best list).
@@ -9611,19 +8455,12 @@ class GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (transcript != null) {
-      _json['transcript'] = transcript;
-    }
-    if (words != null) {
-      _json['words'] = words.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (transcript != null) 'transcript': transcript,
+        if (words != null)
+          'words': words.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A speech recognition result corresponding to a portion of the audio.
@@ -9662,17 +8499,11 @@ class GoogleCloudVideointelligenceV1p3beta1SpeechTranscription {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alternatives != null) {
-      _json['alternatives'] =
-          alternatives.map((value) => value.toJson()).toList();
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alternatives != null)
+          'alternatives': alternatives.map((value) => value.toJson()).toList(),
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// `StreamingAnnotateVideoResponse` is the only message returned to the client
@@ -9715,19 +8546,13 @@ class GoogleCloudVideointelligenceV1p3beta1StreamingAnnotateVideoResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationResults != null) {
-      _json['annotationResults'] = annotationResults.toJson();
-    }
-    if (annotationResultsUri != null) {
-      _json['annotationResultsUri'] = annotationResultsUri;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationResults != null)
+          'annotationResults': annotationResults.toJson(),
+        if (annotationResultsUri != null)
+          'annotationResultsUri': annotationResultsUri,
+        if (error != null) 'error': error.toJson(),
+      };
 }
 
 /// Streaming annotation results corresponding to a portion of the video that is
@@ -9792,28 +8617,20 @@ class GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (explicitAnnotation != null) {
-      _json['explicitAnnotation'] = explicitAnnotation.toJson();
-    }
-    if (frameTimestamp != null) {
-      _json['frameTimestamp'] = frameTimestamp;
-    }
-    if (labelAnnotations != null) {
-      _json['labelAnnotations'] =
-          labelAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (objectAnnotations != null) {
-      _json['objectAnnotations'] =
-          objectAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (shotAnnotations != null) {
-      _json['shotAnnotations'] =
-          shotAnnotations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (explicitAnnotation != null)
+          'explicitAnnotation': explicitAnnotation.toJson(),
+        if (frameTimestamp != null) 'frameTimestamp': frameTimestamp,
+        if (labelAnnotations != null)
+          'labelAnnotations':
+              labelAnnotations.map((value) => value.toJson()).toList(),
+        if (objectAnnotations != null)
+          'objectAnnotations':
+              objectAnnotations.map((value) => value.toJson()).toList(),
+        if (shotAnnotations != null)
+          'shotAnnotations':
+              shotAnnotations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Annotations related to one detected OCR text snippet.
@@ -9848,19 +8665,12 @@ class GoogleCloudVideointelligenceV1p3beta1TextAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (segments != null) {
-      _json['segments'] = segments.map((value) => value.toJson()).toList();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (segments != null)
+          'segments': segments.map((value) => value.toJson()).toList(),
+        if (text != null) 'text': text,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Video frame level annotation results for text annotation (OCR).
@@ -9889,16 +8699,11 @@ class GoogleCloudVideointelligenceV1p3beta1TextFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (rotatedBoundingBox != null) {
-      _json['rotatedBoundingBox'] = rotatedBoundingBox.toJson();
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (rotatedBoundingBox != null)
+          'rotatedBoundingBox': rotatedBoundingBox.toJson(),
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// Video segment level annotation results for text detection.
@@ -9934,19 +8739,12 @@ class GoogleCloudVideointelligenceV1p3beta1TextSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (frames != null) {
-      _json['frames'] = frames.map((value) => value.toJson()).toList();
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (frames != null)
+          'frames': frames.map((value) => value.toJson()).toList(),
+        if (segment != null) 'segment': segment.toJson(),
+      };
 }
 
 /// For tracking related features.
@@ -10001,22 +8799,15 @@ class GoogleCloudVideointelligenceV1p3beta1TimestampedObject {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributes != null) {
-      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
-    }
-    if (landmarks != null) {
-      _json['landmarks'] = landmarks.map((value) => value.toJson()).toList();
-    }
-    if (normalizedBoundingBox != null) {
-      _json['normalizedBoundingBox'] = normalizedBoundingBox.toJson();
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributes != null)
+          'attributes': attributes.map((value) => value.toJson()).toList(),
+        if (landmarks != null)
+          'landmarks': landmarks.map((value) => value.toJson()).toList(),
+        if (normalizedBoundingBox != null)
+          'normalizedBoundingBox': normalizedBoundingBox.toJson(),
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// A track of an object instance.
@@ -10064,23 +8855,15 @@ class GoogleCloudVideointelligenceV1p3beta1Track {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributes != null) {
-      _json['attributes'] = attributes.map((value) => value.toJson()).toList();
-    }
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    if (timestampedObjects != null) {
-      _json['timestampedObjects'] =
-          timestampedObjects.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributes != null)
+          'attributes': attributes.map((value) => value.toJson()).toList(),
+        if (confidence != null) 'confidence': confidence,
+        if (segment != null) 'segment': segment.toJson(),
+        if (timestampedObjects != null)
+          'timestampedObjects':
+              timestampedObjects.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Annotation progress for a single video.
@@ -10145,28 +8928,14 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (feature != null) {
-      _json['feature'] = feature;
-    }
-    if (inputUri != null) {
-      _json['inputUri'] = inputUri;
-    }
-    if (progressPercent != null) {
-      _json['progressPercent'] = progressPercent;
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (feature != null) 'feature': feature,
+        if (inputUri != null) 'inputUri': inputUri,
+        if (progressPercent != null) 'progressPercent': progressPercent,
+        if (segment != null) 'segment': segment.toJson(),
+        if (startTime != null) 'startTime': startTime,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Annotation results for a single video.
@@ -10397,79 +9166,59 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (celebrityRecognitionAnnotations != null) {
-      _json['celebrityRecognitionAnnotations'] =
-          celebrityRecognitionAnnotations.toJson();
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (explicitAnnotation != null) {
-      _json['explicitAnnotation'] = explicitAnnotation.toJson();
-    }
-    if (faceAnnotations != null) {
-      _json['faceAnnotations'] =
-          faceAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (faceDetectionAnnotations != null) {
-      _json['faceDetectionAnnotations'] =
-          faceDetectionAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (frameLabelAnnotations != null) {
-      _json['frameLabelAnnotations'] =
-          frameLabelAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (inputUri != null) {
-      _json['inputUri'] = inputUri;
-    }
-    if (logoRecognitionAnnotations != null) {
-      _json['logoRecognitionAnnotations'] =
-          logoRecognitionAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (objectAnnotations != null) {
-      _json['objectAnnotations'] =
-          objectAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (personDetectionAnnotations != null) {
-      _json['personDetectionAnnotations'] =
-          personDetectionAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (segment != null) {
-      _json['segment'] = segment.toJson();
-    }
-    if (segmentLabelAnnotations != null) {
-      _json['segmentLabelAnnotations'] =
-          segmentLabelAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (segmentPresenceLabelAnnotations != null) {
-      _json['segmentPresenceLabelAnnotations'] = segmentPresenceLabelAnnotations
-          .map((value) => value.toJson())
-          .toList();
-    }
-    if (shotAnnotations != null) {
-      _json['shotAnnotations'] =
-          shotAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (shotLabelAnnotations != null) {
-      _json['shotLabelAnnotations'] =
-          shotLabelAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (shotPresenceLabelAnnotations != null) {
-      _json['shotPresenceLabelAnnotations'] =
-          shotPresenceLabelAnnotations.map((value) => value.toJson()).toList();
-    }
-    if (speechTranscriptions != null) {
-      _json['speechTranscriptions'] =
-          speechTranscriptions.map((value) => value.toJson()).toList();
-    }
-    if (textAnnotations != null) {
-      _json['textAnnotations'] =
-          textAnnotations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (celebrityRecognitionAnnotations != null)
+          'celebrityRecognitionAnnotations':
+              celebrityRecognitionAnnotations.toJson(),
+        if (error != null) 'error': error.toJson(),
+        if (explicitAnnotation != null)
+          'explicitAnnotation': explicitAnnotation.toJson(),
+        if (faceAnnotations != null)
+          'faceAnnotations':
+              faceAnnotations.map((value) => value.toJson()).toList(),
+        if (faceDetectionAnnotations != null)
+          'faceDetectionAnnotations':
+              faceDetectionAnnotations.map((value) => value.toJson()).toList(),
+        if (frameLabelAnnotations != null)
+          'frameLabelAnnotations':
+              frameLabelAnnotations.map((value) => value.toJson()).toList(),
+        if (inputUri != null) 'inputUri': inputUri,
+        if (logoRecognitionAnnotations != null)
+          'logoRecognitionAnnotations': logoRecognitionAnnotations
+              .map((value) => value.toJson())
+              .toList(),
+        if (objectAnnotations != null)
+          'objectAnnotations':
+              objectAnnotations.map((value) => value.toJson()).toList(),
+        if (personDetectionAnnotations != null)
+          'personDetectionAnnotations': personDetectionAnnotations
+              .map((value) => value.toJson())
+              .toList(),
+        if (segment != null) 'segment': segment.toJson(),
+        if (segmentLabelAnnotations != null)
+          'segmentLabelAnnotations':
+              segmentLabelAnnotations.map((value) => value.toJson()).toList(),
+        if (segmentPresenceLabelAnnotations != null)
+          'segmentPresenceLabelAnnotations': segmentPresenceLabelAnnotations
+              .map((value) => value.toJson())
+              .toList(),
+        if (shotAnnotations != null)
+          'shotAnnotations':
+              shotAnnotations.map((value) => value.toJson()).toList(),
+        if (shotLabelAnnotations != null)
+          'shotLabelAnnotations':
+              shotLabelAnnotations.map((value) => value.toJson()).toList(),
+        if (shotPresenceLabelAnnotations != null)
+          'shotPresenceLabelAnnotations': shotPresenceLabelAnnotations
+              .map((value) => value.toJson())
+              .toList(),
+        if (speechTranscriptions != null)
+          'speechTranscriptions':
+              speechTranscriptions.map((value) => value.toJson()).toList(),
+        if (textAnnotations != null)
+          'textAnnotations':
+              textAnnotations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Video segment.
@@ -10493,16 +9242,10 @@ class GoogleCloudVideointelligenceV1p3beta1VideoSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTimeOffset != null) {
-      _json['endTimeOffset'] = endTimeOffset;
-    }
-    if (startTimeOffset != null) {
-      _json['startTimeOffset'] = startTimeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTimeOffset != null) 'endTimeOffset': endTimeOffset,
+        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset,
+      };
 }
 
 /// Word-specific information for recognized words.
@@ -10569,25 +9312,13 @@ class GoogleCloudVideointelligenceV1p3beta1WordInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (speakerTag != null) {
-      _json['speakerTag'] = speakerTag;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (word != null) {
-      _json['word'] = word;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (endTime != null) 'endTime': endTime,
+        if (speakerTag != null) 'speakerTag': speakerTag,
+        if (startTime != null) 'startTime': startTime,
+        if (word != null) 'word': word,
+      };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -10598,10 +9329,7 @@ class GoogleLongrunningCancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The response message for Operations.ListOperations.
@@ -10627,16 +9355,11 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -10715,25 +9438,13 @@ class GoogleLongrunningOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -10750,10 +9461,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -10803,17 +9511,9 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }

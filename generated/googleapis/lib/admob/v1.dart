@@ -324,19 +324,11 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (day != null) {
-      _json['day'] = day;
-    }
-    if (month != null) {
-      _json['month'] = month;
-    }
-    if (year != null) {
-      _json['year'] = year;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (day != null) 'day': day,
+        if (month != null) 'month': month,
+        if (year != null) 'year': year,
+      };
 }
 
 /// Specification of a single date range.
@@ -366,16 +358,10 @@ class DateRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endDate != null) {
-      _json['endDate'] = endDate.toJson();
-    }
-    if (startDate != null) {
-      _json['startDate'] = startDate.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endDate != null) 'endDate': endDate.toJson(),
+        if (startDate != null) 'startDate': startDate.toJson(),
+      };
 }
 
 /// Request to generate an AdMob Mediation report.
@@ -392,13 +378,9 @@ class GenerateMediationReportRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (reportSpec != null) {
-      _json['reportSpec'] = reportSpec.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (reportSpec != null) 'reportSpec': reportSpec.toJson(),
+      };
 }
 
 /// The streaming response for the AdMob Mediation report where the first
@@ -442,19 +424,11 @@ class GenerateMediationReportResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (footer != null) {
-      _json['footer'] = footer.toJson();
-    }
-    if (header != null) {
-      _json['header'] = header.toJson();
-    }
-    if (row != null) {
-      _json['row'] = row.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (footer != null) 'footer': footer.toJson(),
+        if (header != null) 'header': header.toJson(),
+        if (row != null) 'row': row.toJson(),
+      };
 }
 
 /// Request to generate an AdMob Network report.
@@ -471,13 +445,9 @@ class GenerateNetworkReportRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (reportSpec != null) {
-      _json['reportSpec'] = reportSpec.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (reportSpec != null) 'reportSpec': reportSpec.toJson(),
+      };
 }
 
 /// The streaming response for the AdMob Network report where the first response
@@ -520,19 +490,11 @@ class GenerateNetworkReportResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (footer != null) {
-      _json['footer'] = footer.toJson();
-    }
-    if (header != null) {
-      _json['header'] = header.toJson();
-    }
-    if (row != null) {
-      _json['row'] = row.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (footer != null) 'footer': footer.toJson(),
+        if (header != null) 'header': header.toJson(),
+        if (row != null) 'row': row.toJson(),
+      };
 }
 
 /// Response for the publisher account list request.
@@ -558,16 +520,11 @@ class ListPublisherAccountsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (account != null) {
-      _json['account'] = account.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (account != null)
+          'account': account.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Localization settings for reports, such as currency and language.
@@ -599,16 +556,10 @@ class LocalizationSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (currencyCode != null) {
-      _json['currencyCode'] = currencyCode;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode,
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// The specification for generating an AdMob Mediation report.
@@ -713,36 +664,21 @@ class MediationReportSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dateRange != null) {
-      _json['dateRange'] = dateRange.toJson();
-    }
-    if (dimensionFilters != null) {
-      _json['dimensionFilters'] =
-          dimensionFilters.map((value) => value.toJson()).toList();
-    }
-    if (dimensions != null) {
-      _json['dimensions'] = dimensions;
-    }
-    if (localizationSettings != null) {
-      _json['localizationSettings'] = localizationSettings.toJson();
-    }
-    if (maxReportRows != null) {
-      _json['maxReportRows'] = maxReportRows;
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics;
-    }
-    if (sortConditions != null) {
-      _json['sortConditions'] =
-          sortConditions.map((value) => value.toJson()).toList();
-    }
-    if (timeZone != null) {
-      _json['timeZone'] = timeZone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dateRange != null) 'dateRange': dateRange.toJson(),
+        if (dimensionFilters != null)
+          'dimensionFilters':
+              dimensionFilters.map((value) => value.toJson()).toList(),
+        if (dimensions != null) 'dimensions': dimensions,
+        if (localizationSettings != null)
+          'localizationSettings': localizationSettings.toJson(),
+        if (maxReportRows != null) 'maxReportRows': maxReportRows,
+        if (metrics != null) 'metrics': metrics,
+        if (sortConditions != null)
+          'sortConditions':
+              sortConditions.map((value) => value.toJson()).toList(),
+        if (timeZone != null) 'timeZone': timeZone,
+      };
 }
 
 /// Describes which report rows to match based on their dimension values.
@@ -793,16 +729,10 @@ class MediationReportSpecDimensionFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimension != null) {
-      _json['dimension'] = dimension;
-    }
-    if (matchesAny != null) {
-      _json['matchesAny'] = matchesAny.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimension != null) 'dimension': dimension,
+        if (matchesAny != null) 'matchesAny': matchesAny.toJson(),
+      };
 }
 
 /// Sorting direction to be applied on a dimension or a metric.
@@ -888,19 +818,11 @@ class MediationReportSpecSortCondition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimension != null) {
-      _json['dimension'] = dimension;
-    }
-    if (metric != null) {
-      _json['metric'] = metric;
-    }
-    if (order != null) {
-      _json['order'] = order;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimension != null) 'dimension': dimension,
+        if (metric != null) 'metric': metric,
+        if (order != null) 'order': order,
+      };
 }
 
 /// The specification for generating an AdMob Network report.
@@ -1006,36 +928,21 @@ class NetworkReportSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dateRange != null) {
-      _json['dateRange'] = dateRange.toJson();
-    }
-    if (dimensionFilters != null) {
-      _json['dimensionFilters'] =
-          dimensionFilters.map((value) => value.toJson()).toList();
-    }
-    if (dimensions != null) {
-      _json['dimensions'] = dimensions;
-    }
-    if (localizationSettings != null) {
-      _json['localizationSettings'] = localizationSettings.toJson();
-    }
-    if (maxReportRows != null) {
-      _json['maxReportRows'] = maxReportRows;
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics;
-    }
-    if (sortConditions != null) {
-      _json['sortConditions'] =
-          sortConditions.map((value) => value.toJson()).toList();
-    }
-    if (timeZone != null) {
-      _json['timeZone'] = timeZone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dateRange != null) 'dateRange': dateRange.toJson(),
+        if (dimensionFilters != null)
+          'dimensionFilters':
+              dimensionFilters.map((value) => value.toJson()).toList(),
+        if (dimensions != null) 'dimensions': dimensions,
+        if (localizationSettings != null)
+          'localizationSettings': localizationSettings.toJson(),
+        if (maxReportRows != null) 'maxReportRows': maxReportRows,
+        if (metrics != null) 'metrics': metrics,
+        if (sortConditions != null)
+          'sortConditions':
+              sortConditions.map((value) => value.toJson()).toList(),
+        if (timeZone != null) 'timeZone': timeZone,
+      };
 }
 
 /// Describes which report rows to match based on their dimension values.
@@ -1084,16 +991,10 @@ class NetworkReportSpecDimensionFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimension != null) {
-      _json['dimension'] = dimension;
-    }
-    if (matchesAny != null) {
-      _json['matchesAny'] = matchesAny.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimension != null) 'dimension': dimension,
+        if (matchesAny != null) 'matchesAny': matchesAny.toJson(),
+      };
 }
 
 /// Sorting direction to be applied on a dimension or a metric.
@@ -1178,19 +1079,11 @@ class NetworkReportSpecSortCondition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimension != null) {
-      _json['dimension'] = dimension;
-    }
-    if (metric != null) {
-      _json['metric'] = metric;
-    }
-    if (order != null) {
-      _json['order'] = order;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimension != null) 'dimension': dimension,
+        if (metric != null) 'metric': metric,
+        if (order != null) 'order': order,
+      };
 }
 
 /// A publisher account contains information relevant to the use of this API,
@@ -1234,22 +1127,12 @@ class PublisherAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (currencyCode != null) {
-      _json['currencyCode'] = currencyCode;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (publisherId != null) {
-      _json['publisherId'] = publisherId;
-    }
-    if (reportingTimeZone != null) {
-      _json['reportingTimeZone'] = reportingTimeZone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode,
+        if (name != null) 'name': name,
+        if (publisherId != null) 'publisherId': publisherId,
+        if (reportingTimeZone != null) 'reportingTimeZone': reportingTimeZone,
+      };
 }
 
 /// Groups data available after report generation, for example, warnings and row
@@ -1280,16 +1163,11 @@ class ReportFooter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (matchingRowCount != null) {
-      _json['matchingRowCount'] = matchingRowCount;
-    }
-    if (warnings != null) {
-      _json['warnings'] = warnings.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (matchingRowCount != null) 'matchingRowCount': matchingRowCount,
+        if (warnings != null)
+          'warnings': warnings.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Groups data helps to treat the generated report.
@@ -1328,19 +1206,12 @@ class ReportHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dateRange != null) {
-      _json['dateRange'] = dateRange.toJson();
-    }
-    if (localizationSettings != null) {
-      _json['localizationSettings'] = localizationSettings.toJson();
-    }
-    if (reportingTimeZone != null) {
-      _json['reportingTimeZone'] = reportingTimeZone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dateRange != null) 'dateRange': dateRange.toJson(),
+        if (localizationSettings != null)
+          'localizationSettings': localizationSettings.toJson(),
+        if (reportingTimeZone != null) 'reportingTimeZone': reportingTimeZone,
+      };
 }
 
 /// A row of the returning report.
@@ -1381,18 +1252,14 @@ class ReportRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensionValues != null) {
-      _json['dimensionValues'] =
-          dimensionValues.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (metricValues != null) {
-      _json['metricValues'] =
-          metricValues.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensionValues != null)
+          'dimensionValues': dimensionValues
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (metricValues != null)
+          'metricValues': metricValues
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+      };
 }
 
 /// Representation of a dimension value.
@@ -1417,16 +1284,10 @@ class ReportRowDimensionValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayLabel != null) {
-      _json['displayLabel'] = displayLabel;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayLabel != null) 'displayLabel': displayLabel,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Representation of a metric value.
@@ -1460,19 +1321,11 @@ class ReportRowMetricValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (doubleValue != null) {
-      _json['doubleValue'] = doubleValue;
-    }
-    if (integerValue != null) {
-      _json['integerValue'] = integerValue;
-    }
-    if (microsValue != null) {
-      _json['microsValue'] = microsValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (doubleValue != null) 'doubleValue': doubleValue,
+        if (integerValue != null) 'integerValue': integerValue,
+        if (microsValue != null) 'microsValue': microsValue,
+      };
 }
 
 /// Warnings associated with generation of the report.
@@ -1511,16 +1364,10 @@ class ReportWarning {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (type != null) 'type': type,
+      };
 }
 
 /// List of string values.
@@ -1538,11 +1385,7 @@ class StringList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (values != null) {
-      _json['values'] = values;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (values != null) 'values': values,
+      };
 }

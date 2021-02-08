@@ -1508,19 +1508,11 @@ class GoogleApiHttpBody {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentType != null) {
-      _json['contentType'] = contentType;
-    }
-    if (data != null) {
-      _json['data'] = data;
-    }
-    if (extensions != null) {
-      _json['extensions'] = extensions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentType != null) 'contentType': contentType,
+        if (data != null) 'data': data,
+        if (extensions != null) 'extensions': extensions,
+      };
 }
 
 /// Metadata for TriggerCatalogRejoin method.
@@ -1531,10 +1523,7 @@ class GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Response message for TriggerCatalogRejoin method.
@@ -1551,13 +1540,10 @@ class GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (rejoinedUserEventsCount != null) {
-      _json['rejoinedUserEventsCount'] = rejoinedUserEventsCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (rejoinedUserEventsCount != null)
+          'rejoinedUserEventsCount': rejoinedUserEventsCount,
+      };
 }
 
 /// Metadata associated with a tune operation.
@@ -1577,13 +1563,10 @@ class GoogleCloudRecommendationengineV1alphaTuningMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (recommendationModel != null) {
-      _json['recommendationModel'] = recommendationModel;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (recommendationModel != null)
+          'recommendationModel': recommendationModel,
+      };
 }
 
 /// Response associated with a tune operation.
@@ -1594,10 +1577,7 @@ class GoogleCloudRecommendationengineV1alphaTuningResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// BigQuery source import data from.
@@ -1663,25 +1643,13 @@ class GoogleCloudRecommendationengineV1beta1BigQuerySource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataSchema != null) {
-      _json['dataSchema'] = dataSchema;
-    }
-    if (datasetId != null) {
-      _json['datasetId'] = datasetId;
-    }
-    if (gcsStagingDir != null) {
-      _json['gcsStagingDir'] = gcsStagingDir;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (tableId != null) {
-      _json['tableId'] = tableId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataSchema != null) 'dataSchema': dataSchema,
+        if (datasetId != null) 'datasetId': datasetId,
+        if (gcsStagingDir != null) 'gcsStagingDir': gcsStagingDir,
+        if (projectId != null) 'projectId': projectId,
+        if (tableId != null) 'tableId': tableId,
+      };
 }
 
 /// The catalog configuration.
@@ -1727,22 +1695,14 @@ class GoogleCloudRecommendationengineV1beta1Catalog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (catalogItemLevelConfig != null) {
-      _json['catalogItemLevelConfig'] = catalogItemLevelConfig.toJson();
-    }
-    if (defaultEventStoreId != null) {
-      _json['defaultEventStoreId'] = defaultEventStoreId;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (catalogItemLevelConfig != null)
+          'catalogItemLevelConfig': catalogItemLevelConfig.toJson(),
+        if (defaultEventStoreId != null)
+          'defaultEventStoreId': defaultEventStoreId,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+      };
 }
 
 /// The inline source for the input config for ImportCatalogItems method.
@@ -1767,14 +1727,10 @@ class GoogleCloudRecommendationengineV1beta1CatalogInlineSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (catalogItems != null) {
-      _json['catalogItems'] =
-          catalogItems.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (catalogItems != null)
+          'catalogItems': catalogItems.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// CatalogItem captures all metadata information of items to be recommended.
@@ -1903,38 +1859,20 @@ class GoogleCloudRecommendationengineV1beta1CatalogItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (categoryHierarchies != null) {
-      _json['categoryHierarchies'] =
-          categoryHierarchies.map((value) => value.toJson()).toList();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (itemAttributes != null) {
-      _json['itemAttributes'] = itemAttributes.toJson();
-    }
-    if (itemGroupId != null) {
-      _json['itemGroupId'] = itemGroupId;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (productMetadata != null) {
-      _json['productMetadata'] = productMetadata.toJson();
-    }
-    if (tags != null) {
-      _json['tags'] = tags;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (categoryHierarchies != null)
+          'categoryHierarchies':
+              categoryHierarchies.map((value) => value.toJson()).toList(),
+        if (description != null) 'description': description,
+        if (id != null) 'id': id,
+        if (itemAttributes != null) 'itemAttributes': itemAttributes.toJson(),
+        if (itemGroupId != null) 'itemGroupId': itemGroupId,
+        if (languageCode != null) 'languageCode': languageCode,
+        if (productMetadata != null)
+          'productMetadata': productMetadata.toJson(),
+        if (tags != null) 'tags': tags,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Category represents catalog item category hierarchy.
@@ -1959,13 +1897,9 @@ class GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (categories != null) {
-      _json['categories'] = categories;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (categories != null) 'categories': categories,
+      };
 }
 
 /// Configures the catalog level that users send events to, and the level at
@@ -2009,16 +1943,10 @@ class GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (eventItemLevel != null) {
-      _json['eventItemLevel'] = eventItemLevel;
-    }
-    if (predictItemLevel != null) {
-      _json['predictItemLevel'] = predictItemLevel;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (eventItemLevel != null) 'eventItemLevel': eventItemLevel,
+        if (predictItemLevel != null) 'predictItemLevel': predictItemLevel,
+      };
 }
 
 /// Request message for the `CreatePredictionApiKeyRegistration` method.
@@ -2041,14 +1969,10 @@ class GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRe
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (predictionApiKeyRegistration != null) {
-      _json['predictionApiKeyRegistration'] =
-          predictionApiKeyRegistration.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (predictionApiKeyRegistration != null)
+          'predictionApiKeyRegistration': predictionApiKeyRegistration.toJson(),
+      };
 }
 
 /// User event details shared by all recommendation types.
@@ -2142,28 +2066,16 @@ class GoogleCloudRecommendationengineV1beta1EventDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (eventAttributes != null) {
-      _json['eventAttributes'] = eventAttributes.toJson();
-    }
-    if (experimentIds != null) {
-      _json['experimentIds'] = experimentIds;
-    }
-    if (pageViewId != null) {
-      _json['pageViewId'] = pageViewId;
-    }
-    if (recommendationToken != null) {
-      _json['recommendationToken'] = recommendationToken;
-    }
-    if (referrerUri != null) {
-      _json['referrerUri'] = referrerUri;
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (eventAttributes != null)
+          'eventAttributes': eventAttributes.toJson(),
+        if (experimentIds != null) 'experimentIds': experimentIds,
+        if (pageViewId != null) 'pageViewId': pageViewId,
+        if (recommendationToken != null)
+          'recommendationToken': recommendationToken,
+        if (referrerUri != null) 'referrerUri': referrerUri,
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// FeatureMap represents extra features that customers want to include in the
@@ -2217,18 +2129,14 @@ class GoogleCloudRecommendationengineV1beta1FeatureMap {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (categoricalFeatures != null) {
-      _json['categoricalFeatures'] = categoricalFeatures
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (numericalFeatures != null) {
-      _json['numericalFeatures'] = numericalFeatures
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (categoricalFeatures != null)
+          'categoricalFeatures': categoricalFeatures
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (numericalFeatures != null)
+          'numericalFeatures': numericalFeatures
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+      };
 }
 
 /// A list of float features.
@@ -2247,13 +2155,9 @@ class GoogleCloudRecommendationengineV1beta1FeatureMapFloatList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (value != null) 'value': value,
+      };
 }
 
 /// A list of string features.
@@ -2272,13 +2176,9 @@ class GoogleCloudRecommendationengineV1beta1FeatureMapStringList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (value != null) 'value': value,
+      };
 }
 
 /// Google Cloud Storage location for input content.
@@ -2325,16 +2225,10 @@ class GoogleCloudRecommendationengineV1beta1GcsSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (inputUris != null) {
-      _json['inputUris'] = inputUris;
-    }
-    if (jsonSchema != null) {
-      _json['jsonSchema'] = jsonSchema;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (inputUris != null) 'inputUris': inputUris,
+        if (jsonSchema != null) 'jsonSchema': jsonSchema,
+      };
 }
 
 /// Catalog item thumbnail/detail image.
@@ -2368,19 +2262,11 @@ class GoogleCloudRecommendationengineV1beta1Image {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (height != null) {
-      _json['height'] = height;
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    if (width != null) {
-      _json['width'] = width;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (height != null) 'height': height,
+        if (uri != null) 'uri': uri,
+        if (width != null) 'width': width,
+      };
 }
 
 /// Request message for Import methods.
@@ -2432,22 +2318,12 @@ class GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errorsConfig != null) {
-      _json['errorsConfig'] = errorsConfig.toJson();
-    }
-    if (inputConfig != null) {
-      _json['inputConfig'] = inputConfig.toJson();
-    }
-    if (requestId != null) {
-      _json['requestId'] = requestId;
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errorsConfig != null) 'errorsConfig': errorsConfig.toJson(),
+        if (inputConfig != null) 'inputConfig': inputConfig.toJson(),
+        if (requestId != null) 'requestId': requestId,
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// Response of the ImportCatalogItemsRequest.
@@ -2479,17 +2355,11 @@ class GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errorSamples != null) {
-      _json['errorSamples'] =
-          errorSamples.map((value) => value.toJson()).toList();
-    }
-    if (errorsConfig != null) {
-      _json['errorsConfig'] = errorsConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errorSamples != null)
+          'errorSamples': errorSamples.map((value) => value.toJson()).toList(),
+        if (errorsConfig != null) 'errorsConfig': errorsConfig.toJson(),
+      };
 }
 
 /// Configuration of destination for Import related errors.
@@ -2510,13 +2380,9 @@ class GoogleCloudRecommendationengineV1beta1ImportErrorsConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcsPrefix != null) {
-      _json['gcsPrefix'] = gcsPrefix;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix,
+      };
 }
 
 /// Metadata related to the progress of the Import operation.
@@ -2569,28 +2435,14 @@ class GoogleCloudRecommendationengineV1beta1ImportMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (failureCount != null) {
-      _json['failureCount'] = failureCount;
-    }
-    if (operationName != null) {
-      _json['operationName'] = operationName;
-    }
-    if (requestId != null) {
-      _json['requestId'] = requestId;
-    }
-    if (successCount != null) {
-      _json['successCount'] = successCount;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (failureCount != null) 'failureCount': failureCount,
+        if (operationName != null) 'operationName': operationName,
+        if (requestId != null) 'requestId': requestId,
+        if (successCount != null) 'successCount': successCount,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Request message for the ImportUserEvents request.
@@ -2634,19 +2486,11 @@ class GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errorsConfig != null) {
-      _json['errorsConfig'] = errorsConfig.toJson();
-    }
-    if (inputConfig != null) {
-      _json['inputConfig'] = inputConfig.toJson();
-    }
-    if (requestId != null) {
-      _json['requestId'] = requestId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errorsConfig != null) 'errorsConfig': errorsConfig.toJson(),
+        if (inputConfig != null) 'inputConfig': inputConfig.toJson(),
+        if (requestId != null) 'requestId': requestId,
+      };
 }
 
 /// Response of the ImportUserEventsRequest.
@@ -2687,20 +2531,12 @@ class GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errorSamples != null) {
-      _json['errorSamples'] =
-          errorSamples.map((value) => value.toJson()).toList();
-    }
-    if (errorsConfig != null) {
-      _json['errorsConfig'] = errorsConfig.toJson();
-    }
-    if (importSummary != null) {
-      _json['importSummary'] = importSummary.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errorSamples != null)
+          'errorSamples': errorSamples.map((value) => value.toJson()).toList(),
+        if (errorsConfig != null) 'errorsConfig': errorsConfig.toJson(),
+        if (importSummary != null) 'importSummary': importSummary.toJson(),
+      };
 }
 
 /// The input config source.
@@ -2744,22 +2580,14 @@ class GoogleCloudRecommendationengineV1beta1InputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bigQuerySource != null) {
-      _json['bigQuerySource'] = bigQuerySource.toJson();
-    }
-    if (catalogInlineSource != null) {
-      _json['catalogInlineSource'] = catalogInlineSource.toJson();
-    }
-    if (gcsSource != null) {
-      _json['gcsSource'] = gcsSource.toJson();
-    }
-    if (userEventInlineSource != null) {
-      _json['userEventInlineSource'] = userEventInlineSource.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bigQuerySource != null) 'bigQuerySource': bigQuerySource.toJson(),
+        if (catalogInlineSource != null)
+          'catalogInlineSource': catalogInlineSource.toJson(),
+        if (gcsSource != null) 'gcsSource': gcsSource.toJson(),
+        if (userEventInlineSource != null)
+          'userEventInlineSource': userEventInlineSource.toJson(),
+      };
 }
 
 /// Response message for ListCatalogItems method.
@@ -2789,17 +2617,11 @@ class GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (catalogItems != null) {
-      _json['catalogItems'] =
-          catalogItems.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (catalogItems != null)
+          'catalogItems': catalogItems.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response for ListCatalogs method.
@@ -2828,16 +2650,11 @@ class GoogleCloudRecommendationengineV1beta1ListCatalogsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (catalogs != null) {
-      _json['catalogs'] = catalogs.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (catalogs != null)
+          'catalogs': catalogs.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message for the `ListPredictionApiKeyRegistrations`.
@@ -2870,17 +2687,13 @@ class GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsRes
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (predictionApiKeyRegistrations != null) {
-      _json['predictionApiKeyRegistrations'] =
-          predictionApiKeyRegistrations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (predictionApiKeyRegistrations != null)
+          'predictionApiKeyRegistrations': predictionApiKeyRegistrations
+              .map((value) => value.toJson())
+              .toList(),
+      };
 }
 
 /// Response message for ListUserEvents method.
@@ -2910,16 +2723,11 @@ class GoogleCloudRecommendationengineV1beta1ListUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (userEvents != null) {
-      _json['userEvents'] = userEvents.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (userEvents != null)
+          'userEvents': userEvents.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request message for Predict method.
@@ -3045,31 +2853,15 @@ class GoogleCloudRecommendationengineV1beta1PredictRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dryRun != null) {
-      _json['dryRun'] = dryRun;
-    }
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (pageSize != null) {
-      _json['pageSize'] = pageSize;
-    }
-    if (pageToken != null) {
-      _json['pageToken'] = pageToken;
-    }
-    if (params != null) {
-      _json['params'] = params;
-    }
-    if (userEvent != null) {
-      _json['userEvent'] = userEvent.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dryRun != null) 'dryRun': dryRun,
+        if (filter != null) 'filter': filter,
+        if (labels != null) 'labels': labels,
+        if (pageSize != null) 'pageSize': pageSize,
+        if (pageToken != null) 'pageToken': pageToken,
+        if (params != null) 'params': params,
+        if (userEvent != null) 'userEvent': userEvent.toJson(),
+      };
 }
 
 /// Response message for predict method.
@@ -3144,28 +2936,17 @@ class GoogleCloudRecommendationengineV1beta1PredictResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dryRun != null) {
-      _json['dryRun'] = dryRun;
-    }
-    if (itemsMissingInCatalog != null) {
-      _json['itemsMissingInCatalog'] = itemsMissingInCatalog;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (recommendationToken != null) {
-      _json['recommendationToken'] = recommendationToken;
-    }
-    if (results != null) {
-      _json['results'] = results.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dryRun != null) 'dryRun': dryRun,
+        if (itemsMissingInCatalog != null)
+          'itemsMissingInCatalog': itemsMissingInCatalog,
+        if (metadata != null) 'metadata': metadata,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (recommendationToken != null)
+          'recommendationToken': recommendationToken,
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// PredictionResult represents the recommendation prediction results.
@@ -3203,16 +2984,10 @@ class GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (itemMetadata != null) {
-      _json['itemMetadata'] = itemMetadata;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (itemMetadata != null) 'itemMetadata': itemMetadata,
+      };
 }
 
 /// Registered Api Key.
@@ -3229,13 +3004,9 @@ class GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiKey != null) {
-      _json['apiKey'] = apiKey;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiKey != null) 'apiKey': apiKey,
+      };
 }
 
 /// ProductCatalogItem captures item metadata specific to retail products.
@@ -3341,34 +3112,18 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (availableQuantity != null) {
-      _json['availableQuantity'] = availableQuantity;
-    }
-    if (canonicalProductUri != null) {
-      _json['canonicalProductUri'] = canonicalProductUri;
-    }
-    if (costs != null) {
-      _json['costs'] = costs;
-    }
-    if (currencyCode != null) {
-      _json['currencyCode'] = currencyCode;
-    }
-    if (exactPrice != null) {
-      _json['exactPrice'] = exactPrice.toJson();
-    }
-    if (images != null) {
-      _json['images'] = images.map((value) => value.toJson()).toList();
-    }
-    if (priceRange != null) {
-      _json['priceRange'] = priceRange.toJson();
-    }
-    if (stockState != null) {
-      _json['stockState'] = stockState;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (availableQuantity != null) 'availableQuantity': availableQuantity,
+        if (canonicalProductUri != null)
+          'canonicalProductUri': canonicalProductUri,
+        if (costs != null) 'costs': costs,
+        if (currencyCode != null) 'currencyCode': currencyCode,
+        if (exactPrice != null) 'exactPrice': exactPrice.toJson(),
+        if (images != null)
+          'images': images.map((value) => value.toJson()).toList(),
+        if (priceRange != null) 'priceRange': priceRange.toJson(),
+        if (stockState != null) 'stockState': stockState,
+      };
 }
 
 /// Exact product price.
@@ -3397,16 +3152,10 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayPrice != null) {
-      _json['displayPrice'] = displayPrice;
-    }
-    if (originalPrice != null) {
-      _json['originalPrice'] = originalPrice;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayPrice != null) 'displayPrice': displayPrice,
+        if (originalPrice != null) 'originalPrice': originalPrice,
+      };
 }
 
 /// Product price range when there are a range of prices for different
@@ -3434,16 +3183,10 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (max != null) {
-      _json['max'] = max;
-    }
-    if (min != null) {
-      _json['min'] = min;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (max != null) 'max': max,
+        if (min != null) 'min': min,
+      };
 }
 
 /// Detailed product information associated with a user event.
@@ -3551,34 +3294,16 @@ class GoogleCloudRecommendationengineV1beta1ProductDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (availableQuantity != null) {
-      _json['availableQuantity'] = availableQuantity;
-    }
-    if (currencyCode != null) {
-      _json['currencyCode'] = currencyCode;
-    }
-    if (displayPrice != null) {
-      _json['displayPrice'] = displayPrice;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (itemAttributes != null) {
-      _json['itemAttributes'] = itemAttributes.toJson();
-    }
-    if (originalPrice != null) {
-      _json['originalPrice'] = originalPrice;
-    }
-    if (quantity != null) {
-      _json['quantity'] = quantity;
-    }
-    if (stockState != null) {
-      _json['stockState'] = stockState;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (availableQuantity != null) 'availableQuantity': availableQuantity,
+        if (currencyCode != null) 'currencyCode': currencyCode,
+        if (displayPrice != null) 'displayPrice': displayPrice,
+        if (id != null) 'id': id,
+        if (itemAttributes != null) 'itemAttributes': itemAttributes.toJson(),
+        if (originalPrice != null) 'originalPrice': originalPrice,
+        if (quantity != null) 'quantity': quantity,
+        if (stockState != null) 'stockState': stockState,
+      };
 }
 
 /// ProductEventDetail captures user event information specific to retail
@@ -3678,30 +3403,19 @@ class GoogleCloudRecommendationengineV1beta1ProductEventDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cartId != null) {
-      _json['cartId'] = cartId;
-    }
-    if (listId != null) {
-      _json['listId'] = listId;
-    }
-    if (pageCategories != null) {
-      _json['pageCategories'] =
-          pageCategories.map((value) => value.toJson()).toList();
-    }
-    if (productDetails != null) {
-      _json['productDetails'] =
-          productDetails.map((value) => value.toJson()).toList();
-    }
-    if (purchaseTransaction != null) {
-      _json['purchaseTransaction'] = purchaseTransaction.toJson();
-    }
-    if (searchQuery != null) {
-      _json['searchQuery'] = searchQuery;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cartId != null) 'cartId': cartId,
+        if (listId != null) 'listId': listId,
+        if (pageCategories != null)
+          'pageCategories':
+              pageCategories.map((value) => value.toJson()).toList(),
+        if (productDetails != null)
+          'productDetails':
+              productDetails.map((value) => value.toJson()).toList(),
+        if (purchaseTransaction != null)
+          'purchaseTransaction': purchaseTransaction.toJson(),
+        if (searchQuery != null) 'searchQuery': searchQuery,
+      };
 }
 
 /// A transaction represents the entire purchase transaction.
@@ -3776,25 +3490,13 @@ class GoogleCloudRecommendationengineV1beta1PurchaseTransaction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (costs != null) {
-      _json['costs'] = costs;
-    }
-    if (currencyCode != null) {
-      _json['currencyCode'] = currencyCode;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (revenue != null) {
-      _json['revenue'] = revenue;
-    }
-    if (taxes != null) {
-      _json['taxes'] = taxes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (costs != null) 'costs': costs,
+        if (currencyCode != null) 'currencyCode': currencyCode,
+        if (id != null) 'id': id,
+        if (revenue != null) 'revenue': revenue,
+        if (taxes != null) 'taxes': taxes,
+      };
 }
 
 /// Metadata related to the progress of the PurgeUserEvents operation.
@@ -3819,16 +3521,10 @@ class GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (operationName != null) {
-      _json['operationName'] = operationName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (operationName != null) 'operationName': operationName,
+      };
 }
 
 /// Request message for PurgeUserEvents method.
@@ -3870,16 +3566,10 @@ class GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    if (force != null) {
-      _json['force'] = force;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filter != null) 'filter': filter,
+        if (force != null) 'force': force,
+      };
 }
 
 /// Response of the PurgeUserEventsRequest.
@@ -3912,17 +3602,12 @@ class GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (purgedEventsCount != null) {
-      _json['purgedEventsCount'] = purgedEventsCount;
-    }
-    if (userEventsSample != null) {
-      _json['userEventsSample'] =
-          userEventsSample.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (purgedEventsCount != null) 'purgedEventsCount': purgedEventsCount,
+        if (userEventsSample != null)
+          'userEventsSample':
+              userEventsSample.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Metadata for RejoinUserEvents method.
@@ -3933,10 +3618,7 @@ class GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Request message for CatalogRejoin method.
@@ -3961,13 +3643,10 @@ class GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (userEventRejoinScope != null) {
-      _json['userEventRejoinScope'] = userEventRejoinScope;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (userEventRejoinScope != null)
+          'userEventRejoinScope': userEventRejoinScope,
+      };
 }
 
 /// Response message for RejoinUserEvents method.
@@ -3984,13 +3663,10 @@ class GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (rejoinedUserEventsCount != null) {
-      _json['rejoinedUserEventsCount'] = rejoinedUserEventsCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (rejoinedUserEventsCount != null)
+          'rejoinedUserEventsCount': rejoinedUserEventsCount,
+      };
 }
 
 /// UserEvent captures all metadata information recommendation engine needs to
@@ -4089,28 +3765,15 @@ class GoogleCloudRecommendationengineV1beta1UserEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (eventDetail != null) {
-      _json['eventDetail'] = eventDetail.toJson();
-    }
-    if (eventSource != null) {
-      _json['eventSource'] = eventSource;
-    }
-    if (eventTime != null) {
-      _json['eventTime'] = eventTime;
-    }
-    if (eventType != null) {
-      _json['eventType'] = eventType;
-    }
-    if (productEventDetail != null) {
-      _json['productEventDetail'] = productEventDetail.toJson();
-    }
-    if (userInfo != null) {
-      _json['userInfo'] = userInfo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (eventDetail != null) 'eventDetail': eventDetail.toJson(),
+        if (eventSource != null) 'eventSource': eventSource,
+        if (eventTime != null) 'eventTime': eventTime,
+        if (eventType != null) 'eventType': eventType,
+        if (productEventDetail != null)
+          'productEventDetail': productEventDetail.toJson(),
+        if (userInfo != null) 'userInfo': userInfo.toJson(),
+      };
 }
 
 /// A summary of import result.
@@ -4136,16 +3799,11 @@ class GoogleCloudRecommendationengineV1beta1UserEventImportSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (joinedEventsCount != null) {
-      _json['joinedEventsCount'] = joinedEventsCount;
-    }
-    if (unjoinedEventsCount != null) {
-      _json['unjoinedEventsCount'] = unjoinedEventsCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (joinedEventsCount != null) 'joinedEventsCount': joinedEventsCount,
+        if (unjoinedEventsCount != null)
+          'unjoinedEventsCount': unjoinedEventsCount,
+      };
 }
 
 /// The inline source for the input config for ImportUserEvents method.
@@ -4170,13 +3828,10 @@ class GoogleCloudRecommendationengineV1beta1UserEventInlineSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (userEvents != null) {
-      _json['userEvents'] = userEvents.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (userEvents != null)
+          'userEvents': userEvents.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Information of end users.
@@ -4249,25 +3904,13 @@ class GoogleCloudRecommendationengineV1beta1UserInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (directUserRequest != null) {
-      _json['directUserRequest'] = directUserRequest;
-    }
-    if (ipAddress != null) {
-      _json['ipAddress'] = ipAddress;
-    }
-    if (userAgent != null) {
-      _json['userAgent'] = userAgent;
-    }
-    if (userId != null) {
-      _json['userId'] = userId;
-    }
-    if (visitorId != null) {
-      _json['visitorId'] = visitorId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (directUserRequest != null) 'directUserRequest': directUserRequest,
+        if (ipAddress != null) 'ipAddress': ipAddress,
+        if (userAgent != null) 'userAgent': userAgent,
+        if (userId != null) 'userId': userId,
+        if (visitorId != null) 'visitorId': visitorId,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -4293,16 +3936,11 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -4381,25 +4019,13 @@ class GoogleLongrunningOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -4416,10 +4042,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -4469,17 +4092,9 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }

@@ -505,19 +505,12 @@ class ChannelGrouping {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fallbackName != null) {
-      _json['fallbackName'] = fallbackName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (rules != null) {
-      _json['rules'] = rules.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fallbackName != null) 'fallbackName': fallbackName,
+        if (name != null) 'name': name,
+        if (rules != null)
+          'rules': rules.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// DisjunctiveMatchStatement that OR's all contained filters.
@@ -539,14 +532,10 @@ class DisjunctiveMatchStatement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (eventFilters != null) {
-      _json['eventFilters'] =
-          eventFilters.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (eventFilters != null)
+          'eventFilters': eventFilters.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request to fetch stored line items.
@@ -597,22 +586,12 @@ class DownloadLineItemsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fileSpec != null) {
-      _json['fileSpec'] = fileSpec;
-    }
-    if (filterIds != null) {
-      _json['filterIds'] = filterIds;
-    }
-    if (filterType != null) {
-      _json['filterType'] = filterType;
-    }
-    if (format != null) {
-      _json['format'] = format;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fileSpec != null) 'fileSpec': fileSpec,
+        if (filterIds != null) 'filterIds': filterIds,
+        if (filterType != null) 'filterType': filterType,
+        if (format != null) 'format': format,
+      };
 }
 
 /// Download line items response.
@@ -630,13 +609,9 @@ class DownloadLineItemsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (lineItems != null) {
-      _json['lineItems'] = lineItems;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (lineItems != null) 'lineItems': lineItems,
+      };
 }
 
 /// Request to fetch stored inventory sources, campaigns, insertion orders, line
@@ -695,22 +670,12 @@ class DownloadRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fileTypes != null) {
-      _json['fileTypes'] = fileTypes;
-    }
-    if (filterIds != null) {
-      _json['filterIds'] = filterIds;
-    }
-    if (filterType != null) {
-      _json['filterType'] = filterType;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fileTypes != null) 'fileTypes': fileTypes,
+        if (filterIds != null) 'filterIds': filterIds,
+        if (filterType != null) 'filterType': filterType,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Download response.
@@ -754,28 +719,14 @@ class DownloadResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adGroups != null) {
-      _json['adGroups'] = adGroups;
-    }
-    if (ads != null) {
-      _json['ads'] = ads;
-    }
-    if (campaigns != null) {
-      _json['campaigns'] = campaigns;
-    }
-    if (insertionOrders != null) {
-      _json['insertionOrders'] = insertionOrders;
-    }
-    if (inventorySources != null) {
-      _json['inventorySources'] = inventorySources;
-    }
-    if (lineItems != null) {
-      _json['lineItems'] = lineItems;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adGroups != null) 'adGroups': adGroups,
+        if (ads != null) 'ads': ads,
+        if (campaigns != null) 'campaigns': campaigns,
+        if (insertionOrders != null) 'insertionOrders': insertionOrders,
+        if (inventorySources != null) 'inventorySources': inventorySources,
+        if (lineItems != null) 'lineItems': lineItems,
+      };
 }
 
 /// Defines the type of filter to be applied to the path, a DV360 event
@@ -793,13 +744,10 @@ class EventFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensionFilter != null) {
-      _json['dimensionFilter'] = dimensionFilter.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensionFilter != null)
+          'dimensionFilter': dimensionFilter.toJson(),
+      };
 }
 
 /// Filter used to match traffic data in your report.
@@ -1085,16 +1033,10 @@ class FilterPair {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+        if (value != null) 'value': value,
+      };
 }
 
 /// List queries response.
@@ -1127,19 +1069,12 @@ class ListQueriesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (queries != null) {
-      _json['queries'] = queries.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (queries != null)
+          'queries': queries.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// List reports response.
@@ -1172,19 +1107,12 @@ class ListReportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (reports != null) {
-      _json['reports'] = reports.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (reports != null)
+          'reports': reports.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Additional query options.
@@ -1210,16 +1138,12 @@ class Options {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (includeOnlyTargetedUserLists != null) {
-      _json['includeOnlyTargetedUserLists'] = includeOnlyTargetedUserLists;
-    }
-    if (pathQueryOptions != null) {
-      _json['pathQueryOptions'] = pathQueryOptions.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (includeOnlyTargetedUserLists != null)
+          'includeOnlyTargetedUserLists': includeOnlyTargetedUserLists,
+        if (pathQueryOptions != null)
+          'pathQueryOptions': pathQueryOptions.toJson(),
+      };
 }
 
 /// Parameters of a query or report.
@@ -1310,28 +1234,15 @@ class Parameters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filters != null) {
-      _json['filters'] = filters.map((value) => value.toJson()).toList();
-    }
-    if (groupBys != null) {
-      _json['groupBys'] = groupBys;
-    }
-    if (includeInviteData != null) {
-      _json['includeInviteData'] = includeInviteData;
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics;
-    }
-    if (options != null) {
-      _json['options'] = options.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filters != null)
+          'filters': filters.map((value) => value.toJson()).toList(),
+        if (groupBys != null) 'groupBys': groupBys,
+        if (includeInviteData != null) 'includeInviteData': includeInviteData,
+        if (metrics != null) 'metrics': metrics,
+        if (options != null) 'options': options.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// Path filters specify which paths to include in a report.
@@ -1366,17 +1277,11 @@ class PathFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (eventFilters != null) {
-      _json['eventFilters'] =
-          eventFilters.map((value) => value.toJson()).toList();
-    }
-    if (pathMatchPosition != null) {
-      _json['pathMatchPosition'] = pathMatchPosition;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (eventFilters != null)
+          'eventFilters': eventFilters.map((value) => value.toJson()).toList(),
+        if (pathMatchPosition != null) 'pathMatchPosition': pathMatchPosition,
+      };
 }
 
 /// Path Query Options for Report Options.
@@ -1404,17 +1309,12 @@ class PathQueryOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channelGrouping != null) {
-      _json['channelGrouping'] = channelGrouping.toJson();
-    }
-    if (pathFilters != null) {
-      _json['pathFilters'] =
-          pathFilters.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (channelGrouping != null)
+          'channelGrouping': channelGrouping.toJson(),
+        if (pathFilters != null)
+          'pathFilters': pathFilters.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Dimension Filter on path events.
@@ -1714,19 +1614,11 @@ class PathQueryOptionsFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    if (match != null) {
-      _json['match'] = match;
-    }
-    if (values != null) {
-      _json['values'] = values;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filter != null) 'filter': filter,
+        if (match != null) 'match': match,
+        if (values != null) 'values': values,
+      };
 }
 
 /// Represents a query.
@@ -1797,34 +1689,18 @@ class Query {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (params != null) {
-      _json['params'] = params.toJson();
-    }
-    if (queryId != null) {
-      _json['queryId'] = queryId;
-    }
-    if (reportDataEndTimeMs != null) {
-      _json['reportDataEndTimeMs'] = reportDataEndTimeMs;
-    }
-    if (reportDataStartTimeMs != null) {
-      _json['reportDataStartTimeMs'] = reportDataStartTimeMs;
-    }
-    if (schedule != null) {
-      _json['schedule'] = schedule.toJson();
-    }
-    if (timezoneCode != null) {
-      _json['timezoneCode'] = timezoneCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (params != null) 'params': params.toJson(),
+        if (queryId != null) 'queryId': queryId,
+        if (reportDataEndTimeMs != null)
+          'reportDataEndTimeMs': reportDataEndTimeMs,
+        if (reportDataStartTimeMs != null)
+          'reportDataStartTimeMs': reportDataStartTimeMs,
+        if (schedule != null) 'schedule': schedule.toJson(),
+        if (timezoneCode != null) 'timezoneCode': timezoneCode,
+      };
 }
 
 /// Query metadata.
@@ -1942,44 +1818,23 @@ class QueryMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataRange != null) {
-      _json['dataRange'] = dataRange;
-    }
-    if (format != null) {
-      _json['format'] = format;
-    }
-    if (googleCloudStoragePathForLatestReport != null) {
-      _json['googleCloudStoragePathForLatestReport'] =
-          googleCloudStoragePathForLatestReport;
-    }
-    if (googleDrivePathForLatestReport != null) {
-      _json['googleDrivePathForLatestReport'] = googleDrivePathForLatestReport;
-    }
-    if (latestReportRunTimeMs != null) {
-      _json['latestReportRunTimeMs'] = latestReportRunTimeMs;
-    }
-    if (locale != null) {
-      _json['locale'] = locale;
-    }
-    if (reportCount != null) {
-      _json['reportCount'] = reportCount;
-    }
-    if (running != null) {
-      _json['running'] = running;
-    }
-    if (sendNotification != null) {
-      _json['sendNotification'] = sendNotification;
-    }
-    if (shareEmailAddress != null) {
-      _json['shareEmailAddress'] = shareEmailAddress;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataRange != null) 'dataRange': dataRange,
+        if (format != null) 'format': format,
+        if (googleCloudStoragePathForLatestReport != null)
+          'googleCloudStoragePathForLatestReport':
+              googleCloudStoragePathForLatestReport,
+        if (googleDrivePathForLatestReport != null)
+          'googleDrivePathForLatestReport': googleDrivePathForLatestReport,
+        if (latestReportRunTimeMs != null)
+          'latestReportRunTimeMs': latestReportRunTimeMs,
+        if (locale != null) 'locale': locale,
+        if (reportCount != null) 'reportCount': reportCount,
+        if (running != null) 'running': running,
+        if (sendNotification != null) 'sendNotification': sendNotification,
+        if (shareEmailAddress != null) 'shareEmailAddress': shareEmailAddress,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Information on how frequently and when to run a query.
@@ -2033,25 +1888,15 @@ class QuerySchedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTimeMs != null) {
-      _json['endTimeMs'] = endTimeMs;
-    }
-    if (frequency != null) {
-      _json['frequency'] = frequency;
-    }
-    if (nextRunMinuteOfDay != null) {
-      _json['nextRunMinuteOfDay'] = nextRunMinuteOfDay;
-    }
-    if (nextRunTimezoneCode != null) {
-      _json['nextRunTimezoneCode'] = nextRunTimezoneCode;
-    }
-    if (startTimeMs != null) {
-      _json['startTimeMs'] = startTimeMs;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTimeMs != null) 'endTimeMs': endTimeMs,
+        if (frequency != null) 'frequency': frequency,
+        if (nextRunMinuteOfDay != null)
+          'nextRunMinuteOfDay': nextRunMinuteOfDay,
+        if (nextRunTimezoneCode != null)
+          'nextRunTimezoneCode': nextRunTimezoneCode,
+        if (startTimeMs != null) 'startTimeMs': startTimeMs,
+      };
 }
 
 /// Represents a report.
@@ -2082,19 +1927,11 @@ class Report {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (params != null) {
-      _json['params'] = params.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key.toJson(),
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (params != null) 'params': params.toJson(),
+      };
 }
 
 /// An explanation of a report failure.
@@ -2129,13 +1966,9 @@ class ReportFailure {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errorCode != null) {
-      _json['errorCode'] = errorCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errorCode != null) 'errorCode': errorCode,
+      };
 }
 
 /// Key used to identify a report.
@@ -2157,16 +1990,10 @@ class ReportKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (queryId != null) {
-      _json['queryId'] = queryId;
-    }
-    if (reportId != null) {
-      _json['reportId'] = reportId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (queryId != null) 'queryId': queryId,
+        if (reportId != null) 'reportId': reportId,
+      };
 }
 
 /// Report metadata.
@@ -2202,22 +2029,15 @@ class ReportMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (googleCloudStoragePath != null) {
-      _json['googleCloudStoragePath'] = googleCloudStoragePath;
-    }
-    if (reportDataEndTimeMs != null) {
-      _json['reportDataEndTimeMs'] = reportDataEndTimeMs;
-    }
-    if (reportDataStartTimeMs != null) {
-      _json['reportDataStartTimeMs'] = reportDataStartTimeMs;
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (googleCloudStoragePath != null)
+          'googleCloudStoragePath': googleCloudStoragePath,
+        if (reportDataEndTimeMs != null)
+          'reportDataEndTimeMs': reportDataEndTimeMs,
+        if (reportDataStartTimeMs != null)
+          'reportDataStartTimeMs': reportDataStartTimeMs,
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 /// Report status.
@@ -2260,22 +2080,12 @@ class ReportStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (failure != null) {
-      _json['failure'] = failure.toJson();
-    }
-    if (finishTimeMs != null) {
-      _json['finishTimeMs'] = finishTimeMs;
-    }
-    if (format != null) {
-      _json['format'] = format;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (failure != null) 'failure': failure.toJson(),
+        if (finishTimeMs != null) 'finishTimeMs': finishTimeMs,
+        if (format != null) 'format': format,
+        if (state != null) 'state': state,
+      };
 }
 
 /// Represents the upload status of a row in the request.
@@ -2323,28 +2133,14 @@ class RowStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (changed != null) {
-      _json['changed'] = changed;
-    }
-    if (entityId != null) {
-      _json['entityId'] = entityId;
-    }
-    if (entityName != null) {
-      _json['entityName'] = entityName;
-    }
-    if (errors != null) {
-      _json['errors'] = errors;
-    }
-    if (persisted != null) {
-      _json['persisted'] = persisted;
-    }
-    if (rowNumber != null) {
-      _json['rowNumber'] = rowNumber;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (changed != null) 'changed': changed,
+        if (entityId != null) 'entityId': entityId,
+        if (entityName != null) 'entityName': entityName,
+        if (errors != null) 'errors': errors,
+        if (persisted != null) 'persisted': persisted,
+        if (rowNumber != null) 'rowNumber': rowNumber,
+      };
 }
 
 /// A Rule defines a name, and a boolean expression in \[conjunctive normal
@@ -2373,17 +2169,13 @@ class Rule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (disjunctiveMatchStatements != null) {
-      _json['disjunctiveMatchStatements'] =
-          disjunctiveMatchStatements.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (disjunctiveMatchStatements != null)
+          'disjunctiveMatchStatements': disjunctiveMatchStatements
+              .map((value) => value.toJson())
+              .toList(),
+        if (name != null) 'name': name,
+      };
 }
 
 /// Request to run a stored query to generate a report.
@@ -2446,22 +2238,14 @@ class RunQueryRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataRange != null) {
-      _json['dataRange'] = dataRange;
-    }
-    if (reportDataEndTimeMs != null) {
-      _json['reportDataEndTimeMs'] = reportDataEndTimeMs;
-    }
-    if (reportDataStartTimeMs != null) {
-      _json['reportDataStartTimeMs'] = reportDataStartTimeMs;
-    }
-    if (timezoneCode != null) {
-      _json['timezoneCode'] = timezoneCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataRange != null) 'dataRange': dataRange,
+        if (reportDataEndTimeMs != null)
+          'reportDataEndTimeMs': reportDataEndTimeMs,
+        if (reportDataStartTimeMs != null)
+          'reportDataStartTimeMs': reportDataStartTimeMs,
+        if (timezoneCode != null) 'timezoneCode': timezoneCode,
+      };
 }
 
 /// Request to upload line items.
@@ -2496,19 +2280,11 @@ class UploadLineItemsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dryRun != null) {
-      _json['dryRun'] = dryRun;
-    }
-    if (format != null) {
-      _json['format'] = format;
-    }
-    if (lineItems != null) {
-      _json['lineItems'] = lineItems;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dryRun != null) 'dryRun': dryRun,
+        if (format != null) 'format': format,
+        if (lineItems != null) 'lineItems': lineItems,
+      };
 }
 
 /// Upload line items response.
@@ -2525,13 +2301,9 @@ class UploadLineItemsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uploadStatus != null) {
-      _json['uploadStatus'] = uploadStatus.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uploadStatus != null) 'uploadStatus': uploadStatus.toJson(),
+      };
 }
 
 /// Represents the status of upload.
@@ -2558,14 +2330,9 @@ class UploadStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errors != null) {
-      _json['errors'] = errors;
-    }
-    if (rowStatus != null) {
-      _json['rowStatus'] = rowStatus.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errors != null) 'errors': errors,
+        if (rowStatus != null)
+          'rowStatus': rowStatus.map((value) => value.toJson()).toList(),
+      };
 }

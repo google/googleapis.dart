@@ -651,13 +651,9 @@ class EmptyResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errors != null) {
-      _json['errors'] = errors.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errors != null) 'errors': errors.toJson(),
+      };
 }
 
 /// Describes one specific error.
@@ -738,31 +734,16 @@ class ErrorProto {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (argument != null) {
-      _json['argument'] = argument;
-    }
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (debugInfo != null) {
-      _json['debugInfo'] = debugInfo;
-    }
-    if (domain != null) {
-      _json['domain'] = domain;
-    }
-    if (externalErrorMessage != null) {
-      _json['externalErrorMessage'] = externalErrorMessage;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (locationType != null) {
-      _json['locationType'] = locationType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (argument != null) 'argument': argument,
+        if (code != null) 'code': code,
+        if (debugInfo != null) 'debugInfo': debugInfo,
+        if (domain != null) 'domain': domain,
+        if (externalErrorMessage != null)
+          'externalErrorMessage': externalErrorMessage,
+        if (location != null) 'location': location,
+        if (locationType != null) 'locationType': locationType,
+      };
 }
 
 /// Request Error information.
@@ -808,19 +789,12 @@ class Errors {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (error != null) {
-      _json['error'] = error.map((value) => value.toJson()).toList();
-    }
-    if (requestId != null) {
-      _json['requestId'] = requestId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (error != null)
+          'error': error.map((value) => value.toJson()).toList(),
+        if (requestId != null) 'requestId': requestId,
+      };
 }
 
 /// A group.
@@ -873,28 +847,14 @@ class Group {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentDetails != null) {
-      _json['contentDetails'] = contentDetails.toJson();
-    }
-    if (errors != null) {
-      _json['errors'] = errors.toJson();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentDetails != null) 'contentDetails': contentDetails.toJson(),
+        if (errors != null) 'errors': errors.toJson(),
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (snippet != null) 'snippet': snippet.toJson(),
+      };
 }
 
 /// A group's content details.
@@ -919,16 +879,10 @@ class GroupContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (itemCount != null) {
-      _json['itemCount'] = itemCount;
-    }
-    if (itemType != null) {
-      _json['itemType'] = itemType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (itemCount != null) 'itemCount': itemCount,
+        if (itemType != null) 'itemType': itemType,
+      };
 }
 
 /// A group item.
@@ -987,28 +941,14 @@ class GroupItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errors != null) {
-      _json['errors'] = errors.toJson();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (groupId != null) {
-      _json['groupId'] = groupId;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (resource != null) {
-      _json['resource'] = resource.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errors != null) 'errors': errors.toJson(),
+        if (etag != null) 'etag': etag,
+        if (groupId != null) 'groupId': groupId,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (resource != null) 'resource': resource.toJson(),
+      };
 }
 
 class GroupItemResource {
@@ -1033,16 +973,10 @@ class GroupItemResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// A group snippet.
@@ -1068,16 +1002,10 @@ class GroupSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (publishedAt != null) {
-      _json['publishedAt'] = publishedAt;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (publishedAt != null) 'publishedAt': publishedAt,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Response message for GroupsService.ListGroupItems.
@@ -1119,22 +1047,13 @@ class ListGroupItemsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errors != null) {
-      _json['errors'] = errors.toJson();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errors != null) 'errors': errors.toJson(),
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// Response message for GroupsService.ListGroups.
@@ -1183,25 +1102,14 @@ class ListGroupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errors != null) {
-      _json['errors'] = errors.toJson();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errors != null) 'errors': errors.toJson(),
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message for TargetedQueriesService.Query.
@@ -1268,23 +1176,14 @@ class QueryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columnHeaders != null) {
-      _json['columnHeaders'] =
-          columnHeaders.map((value) => value.toJson()).toList();
-    }
-    if (errors != null) {
-      _json['errors'] = errors.toJson();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (rows != null) {
-      _json['rows'] = rows;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columnHeaders != null)
+          'columnHeaders':
+              columnHeaders.map((value) => value.toJson()).toList(),
+        if (errors != null) 'errors': errors.toJson(),
+        if (kind != null) 'kind': kind,
+        if (rows != null) 'rows': rows,
+      };
 }
 
 /// The description of a column of the result table.
@@ -1312,17 +1211,9 @@ class ResultTableColumnHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columnType != null) {
-      _json['columnType'] = columnType;
-    }
-    if (dataType != null) {
-      _json['dataType'] = dataType;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columnType != null) 'columnType': columnType,
+        if (dataType != null) 'dataType': dataType,
+        if (name != null) 'name': name,
+      };
 }

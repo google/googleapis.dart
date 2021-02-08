@@ -600,19 +600,11 @@ class AptSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (excludes != null) {
-      _json['excludes'] = excludes;
-    }
-    if (exclusivePackages != null) {
-      _json['exclusivePackages'] = exclusivePackages;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (excludes != null) 'excludes': excludes,
+        if (exclusivePackages != null) 'exclusivePackages': exclusivePackages,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Message for canceling a patch job.
@@ -623,10 +615,7 @@ class CancelPatchJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -643,10 +632,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A step that runs an executable for a PatchJob.
@@ -671,16 +657,12 @@ class ExecStep {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (linuxExecStepConfig != null) {
-      _json['linuxExecStepConfig'] = linuxExecStepConfig.toJson();
-    }
-    if (windowsExecStepConfig != null) {
-      _json['windowsExecStepConfig'] = windowsExecStepConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (linuxExecStepConfig != null)
+          'linuxExecStepConfig': linuxExecStepConfig.toJson(),
+        if (windowsExecStepConfig != null)
+          'windowsExecStepConfig': windowsExecStepConfig.toJson(),
+      };
 }
 
 /// Common configurations for an ExecStep.
@@ -732,22 +714,13 @@ class ExecStepConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowedSuccessCodes != null) {
-      _json['allowedSuccessCodes'] = allowedSuccessCodes;
-    }
-    if (gcsObject != null) {
-      _json['gcsObject'] = gcsObject.toJson();
-    }
-    if (interpreter != null) {
-      _json['interpreter'] = interpreter;
-    }
-    if (localPath != null) {
-      _json['localPath'] = localPath;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowedSuccessCodes != null)
+          'allowedSuccessCodes': allowedSuccessCodes,
+        if (gcsObject != null) 'gcsObject': gcsObject.toJson(),
+        if (interpreter != null) 'interpreter': interpreter,
+        if (localPath != null) 'localPath': localPath,
+      };
 }
 
 /// A request message to initiate patching across Compute Engine instances.
@@ -814,31 +787,15 @@ class ExecutePatchJobRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (dryRun != null) {
-      _json['dryRun'] = dryRun;
-    }
-    if (duration != null) {
-      _json['duration'] = duration;
-    }
-    if (instanceFilter != null) {
-      _json['instanceFilter'] = instanceFilter.toJson();
-    }
-    if (patchConfig != null) {
-      _json['patchConfig'] = patchConfig.toJson();
-    }
-    if (rollout != null) {
-      _json['rollout'] = rollout.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (dryRun != null) 'dryRun': dryRun,
+        if (duration != null) 'duration': duration,
+        if (instanceFilter != null) 'instanceFilter': instanceFilter.toJson(),
+        if (patchConfig != null) 'patchConfig': patchConfig.toJson(),
+        if (rollout != null) 'rollout': rollout.toJson(),
+      };
 }
 
 /// Message encapsulating a value that can be either absolute ("fixed") or
@@ -862,16 +819,10 @@ class FixedOrPercent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fixed != null) {
-      _json['fixed'] = fixed;
-    }
-    if (percent != null) {
-      _json['percent'] = percent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fixed != null) 'fixed': fixed,
+        if (percent != null) 'percent': percent,
+      };
 }
 
 /// Cloud Storage object representation.
@@ -908,19 +859,11 @@ class GcsObject {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bucket != null) {
-      _json['bucket'] = bucket;
-    }
-    if (generationNumber != null) {
-      _json['generationNumber'] = generationNumber;
-    }
-    if (object != null) {
-      _json['object'] = object;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bucket != null) 'bucket': bucket,
+        if (generationNumber != null) 'generationNumber': generationNumber,
+        if (object != null) 'object': object,
+      };
 }
 
 /// Googet patching is performed by running `googet update`.
@@ -931,10 +874,7 @@ class GooSettings {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The inventory details of a VM.
@@ -967,17 +907,11 @@ class Inventory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] =
-          items.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (osInfo != null) {
-      _json['osInfo'] = osInfo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (osInfo != null) 'osInfo': osInfo.toJson(),
+      };
 }
 
 /// A single piece of inventory on a VM.
@@ -1041,31 +975,17 @@ class InventoryItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (availablePackage != null) {
-      _json['availablePackage'] = availablePackage.toJson();
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (installedPackage != null) {
-      _json['installedPackage'] = installedPackage.toJson();
-    }
-    if (originType != null) {
-      _json['originType'] = originType;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (availablePackage != null)
+          'availablePackage': availablePackage.toJson(),
+        if (createTime != null) 'createTime': createTime,
+        if (id != null) 'id': id,
+        if (installedPackage != null)
+          'installedPackage': installedPackage.toJson(),
+        if (originType != null) 'originType': originType,
+        if (type != null) 'type': type,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Operating system information for the VM.
@@ -1128,34 +1048,17 @@ class InventoryOsInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (architecture != null) {
-      _json['architecture'] = architecture;
-    }
-    if (hostname != null) {
-      _json['hostname'] = hostname;
-    }
-    if (kernelRelease != null) {
-      _json['kernelRelease'] = kernelRelease;
-    }
-    if (kernelVersion != null) {
-      _json['kernelVersion'] = kernelVersion;
-    }
-    if (longName != null) {
-      _json['longName'] = longName;
-    }
-    if (osconfigAgentVersion != null) {
-      _json['osconfigAgentVersion'] = osconfigAgentVersion;
-    }
-    if (shortName != null) {
-      _json['shortName'] = shortName;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (architecture != null) 'architecture': architecture,
+        if (hostname != null) 'hostname': hostname,
+        if (kernelRelease != null) 'kernelRelease': kernelRelease,
+        if (kernelVersion != null) 'kernelVersion': kernelVersion,
+        if (longName != null) 'longName': longName,
+        if (osconfigAgentVersion != null)
+          'osconfigAgentVersion': osconfigAgentVersion,
+        if (shortName != null) 'shortName': shortName,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Software package information of the operating system.
@@ -1243,34 +1146,16 @@ class InventorySoftwarePackage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aptPackage != null) {
-      _json['aptPackage'] = aptPackage.toJson();
-    }
-    if (cosPackage != null) {
-      _json['cosPackage'] = cosPackage.toJson();
-    }
-    if (googetPackage != null) {
-      _json['googetPackage'] = googetPackage.toJson();
-    }
-    if (qfePackage != null) {
-      _json['qfePackage'] = qfePackage.toJson();
-    }
-    if (wuaPackage != null) {
-      _json['wuaPackage'] = wuaPackage.toJson();
-    }
-    if (yumPackage != null) {
-      _json['yumPackage'] = yumPackage.toJson();
-    }
-    if (zypperPackage != null) {
-      _json['zypperPackage'] = zypperPackage.toJson();
-    }
-    if (zypperPatch != null) {
-      _json['zypperPatch'] = zypperPatch.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aptPackage != null) 'aptPackage': aptPackage.toJson(),
+        if (cosPackage != null) 'cosPackage': cosPackage.toJson(),
+        if (googetPackage != null) 'googetPackage': googetPackage.toJson(),
+        if (qfePackage != null) 'qfePackage': qfePackage.toJson(),
+        if (wuaPackage != null) 'wuaPackage': wuaPackage.toJson(),
+        if (yumPackage != null) 'yumPackage': yumPackage.toJson(),
+        if (zypperPackage != null) 'zypperPackage': zypperPackage.toJson(),
+        if (zypperPatch != null) 'zypperPatch': zypperPatch.toJson(),
+      };
 }
 
 /// Information related to the a standard versioned package.
@@ -1301,19 +1186,11 @@ class InventoryVersionedPackage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (architecture != null) {
-      _json['architecture'] = architecture;
-    }
-    if (packageName != null) {
-      _json['packageName'] = packageName;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (architecture != null) 'architecture': architecture,
+        if (packageName != null) 'packageName': packageName,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Information related to a Quick Fix Engineering package.
@@ -1353,22 +1230,12 @@ class InventoryWindowsQuickFixEngineeringPackage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (caption != null) {
-      _json['caption'] = caption;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (hotFixId != null) {
-      _json['hotFixId'] = hotFixId;
-    }
-    if (installTime != null) {
-      _json['installTime'] = installTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (caption != null) 'caption': caption,
+        if (description != null) 'description': description,
+        if (hotFixId != null) 'hotFixId': hotFixId,
+        if (installTime != null) 'installTime': installTime,
+      };
 }
 
 /// Details related to a Windows Update package.
@@ -1450,37 +1317,19 @@ class InventoryWindowsUpdatePackage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (categories != null) {
-      _json['categories'] = categories.map((value) => value.toJson()).toList();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (kbArticleIds != null) {
-      _json['kbArticleIds'] = kbArticleIds;
-    }
-    if (lastDeploymentChangeTime != null) {
-      _json['lastDeploymentChangeTime'] = lastDeploymentChangeTime;
-    }
-    if (moreInfoUrls != null) {
-      _json['moreInfoUrls'] = moreInfoUrls;
-    }
-    if (revisionNumber != null) {
-      _json['revisionNumber'] = revisionNumber;
-    }
-    if (supportUrl != null) {
-      _json['supportUrl'] = supportUrl;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (updateId != null) {
-      _json['updateId'] = updateId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (categories != null)
+          'categories': categories.map((value) => value.toJson()).toList(),
+        if (description != null) 'description': description,
+        if (kbArticleIds != null) 'kbArticleIds': kbArticleIds,
+        if (lastDeploymentChangeTime != null)
+          'lastDeploymentChangeTime': lastDeploymentChangeTime,
+        if (moreInfoUrls != null) 'moreInfoUrls': moreInfoUrls,
+        if (revisionNumber != null) 'revisionNumber': revisionNumber,
+        if (supportUrl != null) 'supportUrl': supportUrl,
+        if (title != null) 'title': title,
+        if (updateId != null) 'updateId': updateId,
+      };
 }
 
 /// Categories specified by the Windows Update.
@@ -1502,16 +1351,10 @@ class InventoryWindowsUpdatePackageWindowsUpdateCategory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Details related to a Zypper Patch.
@@ -1545,22 +1388,12 @@ class InventoryZypperPatch {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (category != null) {
-      _json['category'] = category;
-    }
-    if (patchName != null) {
-      _json['patchName'] = patchName;
-    }
-    if (severity != null) {
-      _json['severity'] = severity;
-    }
-    if (summary != null) {
-      _json['summary'] = summary;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (category != null) 'category': category,
+        if (patchName != null) 'patchName': patchName,
+        if (severity != null) 'severity': severity,
+        if (summary != null) 'summary': summary,
+      };
 }
 
 /// A response message for listing patch deployments.
@@ -1586,17 +1419,12 @@ class ListPatchDeploymentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (patchDeployments != null) {
-      _json['patchDeployments'] =
-          patchDeployments.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (patchDeployments != null)
+          'patchDeployments':
+              patchDeployments.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A response message for listing the instances details for a patch job.
@@ -1622,17 +1450,12 @@ class ListPatchJobInstanceDetailsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (patchJobInstanceDetails != null) {
-      _json['patchJobInstanceDetails'] =
-          patchJobInstanceDetails.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (patchJobInstanceDetails != null)
+          'patchJobInstanceDetails':
+              patchJobInstanceDetails.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A response message for listing patch jobs.
@@ -1657,16 +1480,11 @@ class ListPatchJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (patchJobs != null) {
-      _json['patchJobs'] = patchJobs.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (patchJobs != null)
+          'patchJobs': patchJobs.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents a monthly schedule.
@@ -1701,16 +1519,10 @@ class MonthlySchedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (monthDay != null) {
-      _json['monthDay'] = monthDay;
-    }
-    if (weekDayOfMonth != null) {
-      _json['weekDayOfMonth'] = weekDayOfMonth.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (monthDay != null) 'monthDay': monthDay,
+        if (weekDayOfMonth != null) 'weekDayOfMonth': weekDayOfMonth.toJson(),
+      };
 }
 
 /// Sets the time for a one time patch deployment.
@@ -1730,13 +1542,9 @@ class OneTimeSchedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (executeTime != null) {
-      _json['executeTime'] = executeTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (executeTime != null) 'executeTime': executeTime,
+      };
 }
 
 /// Patch configuration specifications.
@@ -1821,34 +1629,16 @@ class PatchConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apt != null) {
-      _json['apt'] = apt.toJson();
-    }
-    if (goo != null) {
-      _json['goo'] = goo.toJson();
-    }
-    if (postStep != null) {
-      _json['postStep'] = postStep.toJson();
-    }
-    if (preStep != null) {
-      _json['preStep'] = preStep.toJson();
-    }
-    if (rebootConfig != null) {
-      _json['rebootConfig'] = rebootConfig;
-    }
-    if (windowsUpdate != null) {
-      _json['windowsUpdate'] = windowsUpdate.toJson();
-    }
-    if (yum != null) {
-      _json['yum'] = yum.toJson();
-    }
-    if (zypper != null) {
-      _json['zypper'] = zypper.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apt != null) 'apt': apt.toJson(),
+        if (goo != null) 'goo': goo.toJson(),
+        if (postStep != null) 'postStep': postStep.toJson(),
+        if (preStep != null) 'preStep': preStep.toJson(),
+        if (rebootConfig != null) 'rebootConfig': rebootConfig,
+        if (windowsUpdate != null) 'windowsUpdate': windowsUpdate.toJson(),
+        if (yum != null) 'yum': yum.toJson(),
+        if (zypper != null) 'zypper': zypper.toJson(),
+      };
 }
 
 /// Patch deployments are configurations that individual patch jobs use to
@@ -1972,43 +1762,21 @@ class PatchDeployment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (duration != null) {
-      _json['duration'] = duration;
-    }
-    if (instanceFilter != null) {
-      _json['instanceFilter'] = instanceFilter.toJson();
-    }
-    if (lastExecuteTime != null) {
-      _json['lastExecuteTime'] = lastExecuteTime;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (oneTimeSchedule != null) {
-      _json['oneTimeSchedule'] = oneTimeSchedule.toJson();
-    }
-    if (patchConfig != null) {
-      _json['patchConfig'] = patchConfig.toJson();
-    }
-    if (recurringSchedule != null) {
-      _json['recurringSchedule'] = recurringSchedule.toJson();
-    }
-    if (rollout != null) {
-      _json['rollout'] = rollout.toJson();
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (description != null) 'description': description,
+        if (duration != null) 'duration': duration,
+        if (instanceFilter != null) 'instanceFilter': instanceFilter.toJson(),
+        if (lastExecuteTime != null) 'lastExecuteTime': lastExecuteTime,
+        if (name != null) 'name': name,
+        if (oneTimeSchedule != null)
+          'oneTimeSchedule': oneTimeSchedule.toJson(),
+        if (patchConfig != null) 'patchConfig': patchConfig.toJson(),
+        if (recurringSchedule != null)
+          'recurringSchedule': recurringSchedule.toJson(),
+        if (rollout != null) 'rollout': rollout.toJson(),
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// A filter to target VM instances for patching.
@@ -2076,26 +1844,15 @@ class PatchInstanceFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (all != null) {
-      _json['all'] = all;
-    }
-    if (groupLabels != null) {
-      _json['groupLabels'] =
-          groupLabels.map((value) => value.toJson()).toList();
-    }
-    if (instanceNamePrefixes != null) {
-      _json['instanceNamePrefixes'] = instanceNamePrefixes;
-    }
-    if (instances != null) {
-      _json['instances'] = instances;
-    }
-    if (zones != null) {
-      _json['zones'] = zones;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (all != null) 'all': all,
+        if (groupLabels != null)
+          'groupLabels': groupLabels.map((value) => value.toJson()).toList(),
+        if (instanceNamePrefixes != null)
+          'instanceNamePrefixes': instanceNamePrefixes,
+        if (instances != null) 'instances': instances,
+        if (zones != null) 'zones': zones,
+      };
 }
 
 /// Targets a group of VM instances by using their
@@ -2125,13 +1882,9 @@ class PatchInstanceFilterGroupLabel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (labels != null) 'labels': labels,
+      };
 }
 
 /// A high level representation of a patch job that is either in progress or has
@@ -2264,55 +2017,24 @@ class PatchJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (dryRun != null) {
-      _json['dryRun'] = dryRun;
-    }
-    if (duration != null) {
-      _json['duration'] = duration;
-    }
-    if (errorMessage != null) {
-      _json['errorMessage'] = errorMessage;
-    }
-    if (instanceDetailsSummary != null) {
-      _json['instanceDetailsSummary'] = instanceDetailsSummary.toJson();
-    }
-    if (instanceFilter != null) {
-      _json['instanceFilter'] = instanceFilter.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (patchConfig != null) {
-      _json['patchConfig'] = patchConfig.toJson();
-    }
-    if (patchDeployment != null) {
-      _json['patchDeployment'] = patchDeployment;
-    }
-    if (percentComplete != null) {
-      _json['percentComplete'] = percentComplete;
-    }
-    if (rollout != null) {
-      _json['rollout'] = rollout.toJson();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (dryRun != null) 'dryRun': dryRun,
+        if (duration != null) 'duration': duration,
+        if (errorMessage != null) 'errorMessage': errorMessage,
+        if (instanceDetailsSummary != null)
+          'instanceDetailsSummary': instanceDetailsSummary.toJson(),
+        if (instanceFilter != null) 'instanceFilter': instanceFilter.toJson(),
+        if (name != null) 'name': name,
+        if (patchConfig != null) 'patchConfig': patchConfig.toJson(),
+        if (patchDeployment != null) 'patchDeployment': patchDeployment,
+        if (percentComplete != null) 'percentComplete': percentComplete,
+        if (rollout != null) 'rollout': rollout.toJson(),
+        if (state != null) 'state': state,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Patch details for a VM instance.
@@ -2378,25 +2100,13 @@ class PatchJobInstanceDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attemptCount != null) {
-      _json['attemptCount'] = attemptCount;
-    }
-    if (failureReason != null) {
-      _json['failureReason'] = failureReason;
-    }
-    if (instanceSystemId != null) {
-      _json['instanceSystemId'] = instanceSystemId;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attemptCount != null) 'attemptCount': attemptCount,
+        if (failureReason != null) 'failureReason': failureReason,
+        if (instanceSystemId != null) 'instanceSystemId': instanceSystemId,
+        if (name != null) 'name': name,
+        if (state != null) 'state': state,
+      };
 }
 
 /// A summary of the current patch state across all instances that this patch
@@ -2510,57 +2220,39 @@ class PatchJobInstanceDetailsSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ackedInstanceCount != null) {
-      _json['ackedInstanceCount'] = ackedInstanceCount;
-    }
-    if (applyingPatchesInstanceCount != null) {
-      _json['applyingPatchesInstanceCount'] = applyingPatchesInstanceCount;
-    }
-    if (downloadingPatchesInstanceCount != null) {
-      _json['downloadingPatchesInstanceCount'] =
-          downloadingPatchesInstanceCount;
-    }
-    if (failedInstanceCount != null) {
-      _json['failedInstanceCount'] = failedInstanceCount;
-    }
-    if (inactiveInstanceCount != null) {
-      _json['inactiveInstanceCount'] = inactiveInstanceCount;
-    }
-    if (noAgentDetectedInstanceCount != null) {
-      _json['noAgentDetectedInstanceCount'] = noAgentDetectedInstanceCount;
-    }
-    if (notifiedInstanceCount != null) {
-      _json['notifiedInstanceCount'] = notifiedInstanceCount;
-    }
-    if (pendingInstanceCount != null) {
-      _json['pendingInstanceCount'] = pendingInstanceCount;
-    }
-    if (postPatchStepInstanceCount != null) {
-      _json['postPatchStepInstanceCount'] = postPatchStepInstanceCount;
-    }
-    if (prePatchStepInstanceCount != null) {
-      _json['prePatchStepInstanceCount'] = prePatchStepInstanceCount;
-    }
-    if (rebootingInstanceCount != null) {
-      _json['rebootingInstanceCount'] = rebootingInstanceCount;
-    }
-    if (startedInstanceCount != null) {
-      _json['startedInstanceCount'] = startedInstanceCount;
-    }
-    if (succeededInstanceCount != null) {
-      _json['succeededInstanceCount'] = succeededInstanceCount;
-    }
-    if (succeededRebootRequiredInstanceCount != null) {
-      _json['succeededRebootRequiredInstanceCount'] =
-          succeededRebootRequiredInstanceCount;
-    }
-    if (timedOutInstanceCount != null) {
-      _json['timedOutInstanceCount'] = timedOutInstanceCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ackedInstanceCount != null)
+          'ackedInstanceCount': ackedInstanceCount,
+        if (applyingPatchesInstanceCount != null)
+          'applyingPatchesInstanceCount': applyingPatchesInstanceCount,
+        if (downloadingPatchesInstanceCount != null)
+          'downloadingPatchesInstanceCount': downloadingPatchesInstanceCount,
+        if (failedInstanceCount != null)
+          'failedInstanceCount': failedInstanceCount,
+        if (inactiveInstanceCount != null)
+          'inactiveInstanceCount': inactiveInstanceCount,
+        if (noAgentDetectedInstanceCount != null)
+          'noAgentDetectedInstanceCount': noAgentDetectedInstanceCount,
+        if (notifiedInstanceCount != null)
+          'notifiedInstanceCount': notifiedInstanceCount,
+        if (pendingInstanceCount != null)
+          'pendingInstanceCount': pendingInstanceCount,
+        if (postPatchStepInstanceCount != null)
+          'postPatchStepInstanceCount': postPatchStepInstanceCount,
+        if (prePatchStepInstanceCount != null)
+          'prePatchStepInstanceCount': prePatchStepInstanceCount,
+        if (rebootingInstanceCount != null)
+          'rebootingInstanceCount': rebootingInstanceCount,
+        if (startedInstanceCount != null)
+          'startedInstanceCount': startedInstanceCount,
+        if (succeededInstanceCount != null)
+          'succeededInstanceCount': succeededInstanceCount,
+        if (succeededRebootRequiredInstanceCount != null)
+          'succeededRebootRequiredInstanceCount':
+              succeededRebootRequiredInstanceCount,
+        if (timedOutInstanceCount != null)
+          'timedOutInstanceCount': timedOutInstanceCount,
+      };
 }
 
 /// Patch rollout configuration specifications.
@@ -2615,16 +2307,11 @@ class PatchRollout {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (disruptionBudget != null) {
-      _json['disruptionBudget'] = disruptionBudget.toJson();
-    }
-    if (mode != null) {
-      _json['mode'] = mode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (disruptionBudget != null)
+          'disruptionBudget': disruptionBudget.toJson(),
+        if (mode != null) 'mode': mode,
+      };
 }
 
 /// Sets the time for recurring patch deployments.
@@ -2721,37 +2408,17 @@ class RecurringSchedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (frequency != null) {
-      _json['frequency'] = frequency;
-    }
-    if (lastExecuteTime != null) {
-      _json['lastExecuteTime'] = lastExecuteTime;
-    }
-    if (monthly != null) {
-      _json['monthly'] = monthly.toJson();
-    }
-    if (nextExecuteTime != null) {
-      _json['nextExecuteTime'] = nextExecuteTime;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (timeOfDay != null) {
-      _json['timeOfDay'] = timeOfDay.toJson();
-    }
-    if (timeZone != null) {
-      _json['timeZone'] = timeZone.toJson();
-    }
-    if (weekly != null) {
-      _json['weekly'] = weekly.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (frequency != null) 'frequency': frequency,
+        if (lastExecuteTime != null) 'lastExecuteTime': lastExecuteTime,
+        if (monthly != null) 'monthly': monthly.toJson(),
+        if (nextExecuteTime != null) 'nextExecuteTime': nextExecuteTime,
+        if (startTime != null) 'startTime': startTime,
+        if (timeOfDay != null) 'timeOfDay': timeOfDay.toJson(),
+        if (timeZone != null) 'timeZone': timeZone.toJson(),
+        if (weekly != null) 'weekly': weekly.toJson(),
+      };
 }
 
 /// Represents a time of day.
@@ -2799,22 +2466,12 @@ class TimeOfDay {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hours != null) {
-      _json['hours'] = hours;
-    }
-    if (minutes != null) {
-      _json['minutes'] = minutes;
-    }
-    if (nanos != null) {
-      _json['nanos'] = nanos;
-    }
-    if (seconds != null) {
-      _json['seconds'] = seconds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hours != null) 'hours': hours,
+        if (minutes != null) 'minutes': minutes,
+        if (nanos != null) 'nanos': nanos,
+        if (seconds != null) 'seconds': seconds,
+      };
 }
 
 /// Represents a time zone from the
@@ -2839,16 +2496,10 @@ class TimeZone {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Represents one week day in a month.
@@ -2888,16 +2539,10 @@ class WeekDayOfMonth {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dayOfWeek != null) {
-      _json['dayOfWeek'] = dayOfWeek;
-    }
-    if (weekOrdinal != null) {
-      _json['weekOrdinal'] = weekOrdinal;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dayOfWeek != null) 'dayOfWeek': dayOfWeek,
+        if (weekOrdinal != null) 'weekOrdinal': weekOrdinal,
+      };
 }
 
 /// Represents a weekly schedule.
@@ -2924,13 +2569,9 @@ class WeeklySchedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dayOfWeek != null) {
-      _json['dayOfWeek'] = dayOfWeek;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dayOfWeek != null) 'dayOfWeek': dayOfWeek,
+      };
 }
 
 /// Windows patching is performed using the Windows Update Agent.
@@ -2969,19 +2610,11 @@ class WindowsUpdateSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (classifications != null) {
-      _json['classifications'] = classifications;
-    }
-    if (excludes != null) {
-      _json['excludes'] = excludes;
-    }
-    if (exclusivePatches != null) {
-      _json['exclusivePatches'] = exclusivePatches;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (classifications != null) 'classifications': classifications,
+        if (excludes != null) 'excludes': excludes,
+        if (exclusivePatches != null) 'exclusivePatches': exclusivePatches,
+      };
 }
 
 /// Yum patching is performed by executing `yum update`.
@@ -3030,22 +2663,12 @@ class YumSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (excludes != null) {
-      _json['excludes'] = excludes;
-    }
-    if (exclusivePackages != null) {
-      _json['exclusivePackages'] = exclusivePackages;
-    }
-    if (minimal != null) {
-      _json['minimal'] = minimal;
-    }
-    if (security != null) {
-      _json['security'] = security;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (excludes != null) 'excludes': excludes,
+        if (exclusivePackages != null) 'exclusivePackages': exclusivePackages,
+        if (minimal != null) 'minimal': minimal,
+        if (security != null) 'security': security,
+      };
 }
 
 /// Zypper patching is performed by running `zypper patch`.
@@ -3109,26 +2732,12 @@ class ZypperSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (categories != null) {
-      _json['categories'] = categories;
-    }
-    if (excludes != null) {
-      _json['excludes'] = excludes;
-    }
-    if (exclusivePatches != null) {
-      _json['exclusivePatches'] = exclusivePatches;
-    }
-    if (severities != null) {
-      _json['severities'] = severities;
-    }
-    if (withOptional != null) {
-      _json['withOptional'] = withOptional;
-    }
-    if (withUpdate != null) {
-      _json['withUpdate'] = withUpdate;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (categories != null) 'categories': categories,
+        if (excludes != null) 'excludes': excludes,
+        if (exclusivePatches != null) 'exclusivePatches': exclusivePatches,
+        if (severities != null) 'severities': severities,
+        if (withOptional != null) 'withOptional': withOptional,
+        if (withUpdate != null) 'withUpdate': withUpdate,
+      };
 }

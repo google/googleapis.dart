@@ -2062,16 +2062,10 @@ class AcceleratorConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (coreCount != null) {
-      _json['coreCount'] = coreCount;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (coreCount != null) 'coreCount': coreCount,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Associates `members` with a `role`.
@@ -2140,19 +2134,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -2163,10 +2149,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Definition of a container image for starting a notebook instance with the
@@ -2195,16 +2178,10 @@ class ContainerImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (repository != null) {
-      _json['repository'] = repository;
-    }
-    if (tag != null) {
-      _json['tag'] = tag;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (repository != null) 'repository': repository,
+        if (tag != null) 'tag': tag,
+      };
 }
 
 /// An instance-attached disk resource.
@@ -2327,47 +2304,22 @@ class Disk {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (autoDelete != null) {
-      _json['autoDelete'] = autoDelete;
-    }
-    if (boot != null) {
-      _json['boot'] = boot;
-    }
-    if (deviceName != null) {
-      _json['deviceName'] = deviceName;
-    }
-    if (diskSizeGb != null) {
-      _json['diskSizeGb'] = diskSizeGb;
-    }
-    if (guestOsFeatures != null) {
-      _json['guestOsFeatures'] =
-          guestOsFeatures.map((value) => value.toJson()).toList();
-    }
-    if (index != null) {
-      _json['index'] = index;
-    }
-    if (interface != null) {
-      _json['interface'] = interface;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (licenses != null) {
-      _json['licenses'] = licenses;
-    }
-    if (mode != null) {
-      _json['mode'] = mode;
-    }
-    if (source != null) {
-      _json['source'] = source;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (autoDelete != null) 'autoDelete': autoDelete,
+        if (boot != null) 'boot': boot,
+        if (deviceName != null) 'deviceName': deviceName,
+        if (diskSizeGb != null) 'diskSizeGb': diskSizeGb,
+        if (guestOsFeatures != null)
+          'guestOsFeatures':
+              guestOsFeatures.map((value) => value.toJson()).toList(),
+        if (index != null) 'index': index,
+        if (interface != null) 'interface': interface,
+        if (kind != null) 'kind': kind,
+        if (licenses != null) 'licenses': licenses,
+        if (mode != null) 'mode': mode,
+        if (source != null) 'source': source,
+        if (type != null) 'type': type,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2384,10 +2336,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Definition of a software environment that is used to start a notebook
@@ -2453,31 +2402,15 @@ class Environment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (containerImage != null) {
-      _json['containerImage'] = containerImage.toJson();
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (postStartupScript != null) {
-      _json['postStartupScript'] = postStartupScript;
-    }
-    if (vmImage != null) {
-      _json['vmImage'] = vmImage.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (containerImage != null) 'containerImage': containerImage.toJson(),
+        if (createTime != null) 'createTime': createTime,
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (postStartupScript != null) 'postStartupScript': postStartupScript,
+        if (vmImage != null) 'vmImage': vmImage.toJson(),
+      };
 }
 
 /// The definition of a single executed notebook.
@@ -2564,34 +2497,18 @@ class Execution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (executionTemplate != null) {
-      _json['executionTemplate'] = executionTemplate.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (outputNotebookFile != null) {
-      _json['outputNotebookFile'] = outputNotebookFile;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (executionTemplate != null)
+          'executionTemplate': executionTemplate.toJson(),
+        if (name != null) 'name': name,
+        if (outputNotebookFile != null)
+          'outputNotebookFile': outputNotebookFile,
+        if (state != null) 'state': state,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// The description a notebook execution workload.
@@ -2720,34 +2637,18 @@ class ExecutionTemplate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (acceleratorConfig != null) {
-      _json['acceleratorConfig'] = acceleratorConfig.toJson();
-    }
-    if (containerImageUri != null) {
-      _json['containerImageUri'] = containerImageUri;
-    }
-    if (inputNotebookFile != null) {
-      _json['inputNotebookFile'] = inputNotebookFile;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (masterType != null) {
-      _json['masterType'] = masterType;
-    }
-    if (outputNotebookFolder != null) {
-      _json['outputNotebookFolder'] = outputNotebookFolder;
-    }
-    if (paramsYamlFile != null) {
-      _json['paramsYamlFile'] = paramsYamlFile;
-    }
-    if (scaleTier != null) {
-      _json['scaleTier'] = scaleTier;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (acceleratorConfig != null)
+          'acceleratorConfig': acceleratorConfig.toJson(),
+        if (containerImageUri != null) 'containerImageUri': containerImageUri,
+        if (inputNotebookFile != null) 'inputNotebookFile': inputNotebookFile,
+        if (labels != null) 'labels': labels,
+        if (masterType != null) 'masterType': masterType,
+        if (outputNotebookFolder != null)
+          'outputNotebookFolder': outputNotebookFolder,
+        if (paramsYamlFile != null) 'paramsYamlFile': paramsYamlFile,
+        if (scaleTier != null) 'scaleTier': scaleTier,
+      };
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -2811,22 +2712,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Response for checking if a notebook instance is healthy.
@@ -2873,16 +2764,10 @@ class GetInstanceHealthResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (healthInfo != null) {
-      _json['healthInfo'] = healthInfo;
-    }
-    if (healthState != null) {
-      _json['healthState'] = healthState;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (healthInfo != null) 'healthInfo': healthInfo,
+        if (healthState != null) 'healthState': healthState,
+      };
 }
 
 /// Guest OS features for boot disk.
@@ -2902,13 +2787,9 @@ class GuestOsFeature {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+      };
 }
 
 /// The definition of a notebook instance.
@@ -3255,107 +3136,47 @@ class Instance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (acceleratorConfig != null) {
-      _json['acceleratorConfig'] = acceleratorConfig.toJson();
-    }
-    if (bootDiskSizeGb != null) {
-      _json['bootDiskSizeGb'] = bootDiskSizeGb;
-    }
-    if (bootDiskType != null) {
-      _json['bootDiskType'] = bootDiskType;
-    }
-    if (containerImage != null) {
-      _json['containerImage'] = containerImage.toJson();
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (customGpuDriverPath != null) {
-      _json['customGpuDriverPath'] = customGpuDriverPath;
-    }
-    if (dataDiskSizeGb != null) {
-      _json['dataDiskSizeGb'] = dataDiskSizeGb;
-    }
-    if (dataDiskType != null) {
-      _json['dataDiskType'] = dataDiskType;
-    }
-    if (diskEncryption != null) {
-      _json['diskEncryption'] = diskEncryption;
-    }
-    if (disks != null) {
-      _json['disks'] = disks.map((value) => value.toJson()).toList();
-    }
-    if (installGpuDriver != null) {
-      _json['installGpuDriver'] = installGpuDriver;
-    }
-    if (instanceOwners != null) {
-      _json['instanceOwners'] = instanceOwners;
-    }
-    if (kmsKey != null) {
-      _json['kmsKey'] = kmsKey;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (machineType != null) {
-      _json['machineType'] = machineType;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (network != null) {
-      _json['network'] = network;
-    }
-    if (noProxyAccess != null) {
-      _json['noProxyAccess'] = noProxyAccess;
-    }
-    if (noPublicIp != null) {
-      _json['noPublicIp'] = noPublicIp;
-    }
-    if (noRemoveDataDisk != null) {
-      _json['noRemoveDataDisk'] = noRemoveDataDisk;
-    }
-    if (postStartupScript != null) {
-      _json['postStartupScript'] = postStartupScript;
-    }
-    if (proxyUri != null) {
-      _json['proxyUri'] = proxyUri;
-    }
-    if (serviceAccount != null) {
-      _json['serviceAccount'] = serviceAccount;
-    }
-    if (serviceAccountScopes != null) {
-      _json['serviceAccountScopes'] = serviceAccountScopes;
-    }
-    if (shieldedInstanceConfig != null) {
-      _json['shieldedInstanceConfig'] = shieldedInstanceConfig.toJson();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (subnet != null) {
-      _json['subnet'] = subnet;
-    }
-    if (tags != null) {
-      _json['tags'] = tags;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    if (upgradeHistory != null) {
-      _json['upgradeHistory'] =
-          upgradeHistory.map((value) => value.toJson()).toList();
-    }
-    if (vmImage != null) {
-      _json['vmImage'] = vmImage.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (acceleratorConfig != null)
+          'acceleratorConfig': acceleratorConfig.toJson(),
+        if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb,
+        if (bootDiskType != null) 'bootDiskType': bootDiskType,
+        if (containerImage != null) 'containerImage': containerImage.toJson(),
+        if (createTime != null) 'createTime': createTime,
+        if (customGpuDriverPath != null)
+          'customGpuDriverPath': customGpuDriverPath,
+        if (dataDiskSizeGb != null) 'dataDiskSizeGb': dataDiskSizeGb,
+        if (dataDiskType != null) 'dataDiskType': dataDiskType,
+        if (diskEncryption != null) 'diskEncryption': diskEncryption,
+        if (disks != null)
+          'disks': disks.map((value) => value.toJson()).toList(),
+        if (installGpuDriver != null) 'installGpuDriver': installGpuDriver,
+        if (instanceOwners != null) 'instanceOwners': instanceOwners,
+        if (kmsKey != null) 'kmsKey': kmsKey,
+        if (labels != null) 'labels': labels,
+        if (machineType != null) 'machineType': machineType,
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (network != null) 'network': network,
+        if (noProxyAccess != null) 'noProxyAccess': noProxyAccess,
+        if (noPublicIp != null) 'noPublicIp': noPublicIp,
+        if (noRemoveDataDisk != null) 'noRemoveDataDisk': noRemoveDataDisk,
+        if (postStartupScript != null) 'postStartupScript': postStartupScript,
+        if (proxyUri != null) 'proxyUri': proxyUri,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount,
+        if (serviceAccountScopes != null)
+          'serviceAccountScopes': serviceAccountScopes,
+        if (shieldedInstanceConfig != null)
+          'shieldedInstanceConfig': shieldedInstanceConfig.toJson(),
+        if (state != null) 'state': state,
+        if (subnet != null) 'subnet': subnet,
+        if (tags != null) 'tags': tags,
+        if (updateTime != null) 'updateTime': updateTime,
+        if (upgradeHistory != null)
+          'upgradeHistory':
+              upgradeHistory.map((value) => value.toJson()).toList(),
+        if (vmImage != null) 'vmImage': vmImage.toJson(),
+      };
 }
 
 /// Response for checking if a notebook instance is upgradeable.
@@ -3386,19 +3207,11 @@ class IsInstanceUpgradeableResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (upgradeInfo != null) {
-      _json['upgradeInfo'] = upgradeInfo;
-    }
-    if (upgradeVersion != null) {
-      _json['upgradeVersion'] = upgradeVersion;
-    }
-    if (upgradeable != null) {
-      _json['upgradeable'] = upgradeable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (upgradeInfo != null) 'upgradeInfo': upgradeInfo,
+        if (upgradeVersion != null) 'upgradeVersion': upgradeVersion,
+        if (upgradeable != null) 'upgradeable': upgradeable,
+      };
 }
 
 /// Response for listing environments.
@@ -3432,20 +3245,12 @@ class ListEnvironmentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (environments != null) {
-      _json['environments'] =
-          environments.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (unreachable != null) {
-      _json['unreachable'] = unreachable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (environments != null)
+          'environments': environments.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (unreachable != null) 'unreachable': unreachable,
+      };
 }
 
 /// Response for listing scheduled notebook executions
@@ -3483,19 +3288,12 @@ class ListExecutionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (executions != null) {
-      _json['executions'] = executions.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (unreachable != null) {
-      _json['unreachable'] = unreachable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (executions != null)
+          'executions': executions.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (unreachable != null) 'unreachable': unreachable,
+      };
 }
 
 /// Response for listing notebook instances.
@@ -3532,19 +3330,12 @@ class ListInstancesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (instances != null) {
-      _json['instances'] = instances.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (unreachable != null) {
-      _json['unreachable'] = unreachable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (instances != null)
+          'instances': instances.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (unreachable != null) 'unreachable': unreachable,
+      };
 }
 
 /// The response message for Locations.ListLocations.
@@ -3569,16 +3360,11 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -3603,16 +3389,11 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response for listing scheduled notebook job.
@@ -3650,19 +3431,12 @@ class ListSchedulesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (schedules != null) {
-      _json['schedules'] = schedules.map((value) => value.toJson()).toList();
-    }
-    if (unreachable != null) {
-      _json['unreachable'] = unreachable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (schedules != null)
+          'schedules': schedules.map((value) => value.toJson()).toList(),
+        if (unreachable != null) 'unreachable': unreachable,
+      };
 }
 
 /// A resource that represents Google Cloud Platform location.
@@ -3727,25 +3501,13 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (labels != null) 'labels': labels,
+        if (locationId != null) 'locationId': locationId,
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -3824,25 +3586,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// Represents the metadata of the long-running operation.
@@ -3904,34 +3654,17 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiVersion != null) {
-      _json['apiVersion'] = apiVersion;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (endpoint != null) {
-      _json['endpoint'] = endpoint;
-    }
-    if (requestedCancellation != null) {
-      _json['requestedCancellation'] = requestedCancellation;
-    }
-    if (statusMessage != null) {
-      _json['statusMessage'] = statusMessage;
-    }
-    if (target != null) {
-      _json['target'] = target;
-    }
-    if (verb != null) {
-      _json['verb'] = verb;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion,
+        if (createTime != null) 'createTime': createTime,
+        if (endTime != null) 'endTime': endTime,
+        if (endpoint != null) 'endpoint': endpoint,
+        if (requestedCancellation != null)
+          'requestedCancellation': requestedCancellation,
+        if (statusMessage != null) 'statusMessage': statusMessage,
+        if (target != null) 'target': target,
+        if (verb != null) 'verb': verb,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -4029,19 +3762,12 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Request for registering a notebook instance.
@@ -4063,13 +3789,9 @@ class RegisterInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (instanceId != null) {
-      _json['instanceId'] = instanceId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (instanceId != null) 'instanceId': instanceId,
+      };
 }
 
 /// Request for notebook instances to report information to Notebooks API.
@@ -4103,16 +3825,10 @@ class ReportInstanceInfoRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (vmId != null) {
-      _json['vmId'] = vmId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metadata != null) 'metadata': metadata,
+        if (vmId != null) 'vmId': vmId,
+      };
 }
 
 /// Request for reseting a notebook instance
@@ -4123,10 +3839,7 @@ class ResetInstanceRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The definition of a schedule.
@@ -4224,37 +3937,18 @@ class Schedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (cronSchedule != null) {
-      _json['cronSchedule'] = cronSchedule;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (executionTemplate != null) {
-      _json['executionTemplate'] = executionTemplate.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (timeZone != null) {
-      _json['timeZone'] = timeZone;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (cronSchedule != null) 'cronSchedule': cronSchedule,
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (executionTemplate != null)
+          'executionTemplate': executionTemplate.toJson(),
+        if (name != null) 'name': name,
+        if (state != null) 'state': state,
+        if (timeZone != null) 'timeZone': timeZone,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Definition of a hardware accelerator.
@@ -4289,16 +3983,10 @@ class SchedulerAcceleratorConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (coreCount != null) {
-      _json['coreCount'] = coreCount;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (coreCount != null) 'coreCount': coreCount,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -4319,13 +4007,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+      };
 }
 
 /// Request for setting instance accelerator.
@@ -4371,16 +4055,10 @@ class SetInstanceAcceleratorRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (coreCount != null) {
-      _json['coreCount'] = coreCount;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (coreCount != null) 'coreCount': coreCount,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Request for setting instance labels.
@@ -4404,13 +4082,9 @@ class SetInstanceLabelsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (labels != null) 'labels': labels,
+      };
 }
 
 /// Request for setting instance machine type.
@@ -4429,13 +4103,9 @@ class SetInstanceMachineTypeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (machineType != null) {
-      _json['machineType'] = machineType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (machineType != null) 'machineType': machineType,
+      };
 }
 
 /// A set of Shielded Instance options.
@@ -4478,19 +4148,12 @@ class ShieldedInstanceConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enableIntegrityMonitoring != null) {
-      _json['enableIntegrityMonitoring'] = enableIntegrityMonitoring;
-    }
-    if (enableSecureBoot != null) {
-      _json['enableSecureBoot'] = enableSecureBoot;
-    }
-    if (enableVtpm != null) {
-      _json['enableVtpm'] = enableVtpm;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enableIntegrityMonitoring != null)
+          'enableIntegrityMonitoring': enableIntegrityMonitoring,
+        if (enableSecureBoot != null) 'enableSecureBoot': enableSecureBoot,
+        if (enableVtpm != null) 'enableVtpm': enableVtpm,
+      };
 }
 
 /// Request for starting a notebook instance
@@ -4501,10 +4164,7 @@ class StartInstanceRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -4554,19 +4214,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Request for stopping a notebook instance
@@ -4577,10 +4229,7 @@ class StopInstanceRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -4602,13 +4251,9 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -4627,13 +4272,9 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Request for created scheduled notebooks
@@ -4644,10 +4285,7 @@ class TriggerScheduleRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The entry of VM image upgrade history.
@@ -4724,37 +4362,17 @@ class UpgradeHistoryEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (action != null) {
-      _json['action'] = action;
-    }
-    if (containerImage != null) {
-      _json['containerImage'] = containerImage;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (framework != null) {
-      _json['framework'] = framework;
-    }
-    if (snapshot != null) {
-      _json['snapshot'] = snapshot;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (targetImage != null) {
-      _json['targetImage'] = targetImage;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    if (vmImage != null) {
-      _json['vmImage'] = vmImage;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (action != null) 'action': action,
+        if (containerImage != null) 'containerImage': containerImage,
+        if (createTime != null) 'createTime': createTime,
+        if (framework != null) 'framework': framework,
+        if (snapshot != null) 'snapshot': snapshot,
+        if (state != null) 'state': state,
+        if (targetImage != null) 'targetImage': targetImage,
+        if (version != null) 'version': version,
+        if (vmImage != null) 'vmImage': vmImage,
+      };
 }
 
 /// Request for upgrading a notebook instance from within the VM
@@ -4774,13 +4392,9 @@ class UpgradeInstanceInternalRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (vmId != null) {
-      _json['vmId'] = vmId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (vmId != null) 'vmId': vmId,
+      };
 }
 
 /// Request for upgrading a notebook instance
@@ -4791,10 +4405,7 @@ class UpgradeInstanceRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Definition of a custom Compute Engine virtual machine image for starting a
@@ -4828,17 +4439,9 @@ class VmImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (imageFamily != null) {
-      _json['imageFamily'] = imageFamily;
-    }
-    if (imageName != null) {
-      _json['imageName'] = imageName;
-    }
-    if (project != null) {
-      _json['project'] = project;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (imageFamily != null) 'imageFamily': imageFamily,
+        if (imageName != null) 'imageName': imageName,
+        if (project != null) 'project': project,
+      };
 }

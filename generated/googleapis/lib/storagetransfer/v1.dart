@@ -623,16 +623,10 @@ class AwsAccessKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessKeyId != null) {
-      _json['accessKeyId'] = accessKeyId;
-    }
-    if (secretAccessKey != null) {
-      _json['secretAccessKey'] = secretAccessKey;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessKeyId != null) 'accessKeyId': accessKeyId,
+        if (secretAccessKey != null) 'secretAccessKey': secretAccessKey,
+      };
 }
 
 /// An AwsS3Data resource can be a data source, but not a data sink.
@@ -678,19 +672,11 @@ class AwsS3Data {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (awsAccessKey != null) {
-      _json['awsAccessKey'] = awsAccessKey.toJson();
-    }
-    if (bucketName != null) {
-      _json['bucketName'] = bucketName;
-    }
-    if (path != null) {
-      _json['path'] = path;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (awsAccessKey != null) 'awsAccessKey': awsAccessKey.toJson(),
+        if (bucketName != null) 'bucketName': bucketName,
+        if (path != null) 'path': path,
+      };
 }
 
 /// An AzureBlobStorageData resource can be a data source, but not a data sink.
@@ -745,22 +731,13 @@ class AzureBlobStorageData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (azureCredentials != null) {
-      _json['azureCredentials'] = azureCredentials.toJson();
-    }
-    if (container != null) {
-      _json['container'] = container;
-    }
-    if (path != null) {
-      _json['path'] = path;
-    }
-    if (storageAccount != null) {
-      _json['storageAccount'] = storageAccount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (azureCredentials != null)
+          'azureCredentials': azureCredentials.toJson(),
+        if (container != null) 'container': container,
+        if (path != null) 'path': path,
+        if (storageAccount != null) 'storageAccount': storageAccount,
+      };
 }
 
 /// Azure credentials For information on our data retention policy for user
@@ -784,13 +761,9 @@ class AzureCredentials {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sasToken != null) {
-      _json['sasToken'] = sasToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sasToken != null) 'sasToken': sasToken,
+      };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -801,10 +774,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.
@@ -847,19 +817,11 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (day != null) {
-      _json['day'] = day;
-    }
-    if (month != null) {
-      _json['month'] = month;
-    }
-    if (year != null) {
-      _json['year'] = year;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (day != null) 'day': day,
+        if (month != null) 'month': month,
+        if (year != null) 'year': year,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -876,10 +838,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// An entry describing an error that has occurred.
@@ -906,16 +865,10 @@ class ErrorLogEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errorDetails != null) {
-      _json['errorDetails'] = errorDetails;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errorDetails != null) 'errorDetails': errorDetails,
+        if (url != null) 'url': url,
+      };
 }
 
 /// A summary of errors by error code, plus a count and sample error log
@@ -1032,20 +985,13 @@ class ErrorSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errorCode != null) {
-      _json['errorCode'] = errorCode;
-    }
-    if (errorCount != null) {
-      _json['errorCount'] = errorCount;
-    }
-    if (errorLogEntries != null) {
-      _json['errorLogEntries'] =
-          errorLogEntries.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errorCode != null) 'errorCode': errorCode,
+        if (errorCount != null) 'errorCount': errorCount,
+        if (errorLogEntries != null)
+          'errorLogEntries':
+              errorLogEntries.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// In a GcsData resource, an object's name is the Cloud Storage object's name
@@ -1078,16 +1024,10 @@ class GcsData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bucketName != null) {
-      _json['bucketName'] = bucketName;
-    }
-    if (path != null) {
-      _json['path'] = path;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bucketName != null) 'bucketName': bucketName,
+        if (path != null) 'path': path,
+      };
 }
 
 /// Google service account
@@ -1103,13 +1043,9 @@ class GoogleServiceAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountEmail != null) {
-      _json['accountEmail'] = accountEmail;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountEmail != null) 'accountEmail': accountEmail,
+      };
 }
 
 /// An HttpData resource specifies a list of objects on the web to be
@@ -1154,13 +1090,9 @@ class HttpData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (listUrl != null) {
-      _json['listUrl'] = listUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (listUrl != null) 'listUrl': listUrl,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -1185,16 +1117,11 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response from ListTransferJobs.
@@ -1219,17 +1146,11 @@ class ListTransferJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (transferJobs != null) {
-      _json['transferJobs'] =
-          transferJobs.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (transferJobs != null)
+          'transferJobs': transferJobs.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Specification to configure notifications published to Cloud Pub/Sub.
@@ -1285,19 +1206,11 @@ class NotificationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (eventTypes != null) {
-      _json['eventTypes'] = eventTypes;
-    }
-    if (payloadFormat != null) {
-      _json['payloadFormat'] = payloadFormat;
-    }
-    if (pubsubTopic != null) {
-      _json['pubsubTopic'] = pubsubTopic;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (eventTypes != null) 'eventTypes': eventTypes,
+        if (payloadFormat != null) 'payloadFormat': payloadFormat,
+        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic,
+      };
 }
 
 /// Conditions that determine which objects will be transferred.
@@ -1413,30 +1326,19 @@ class ObjectConditions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (excludePrefixes != null) {
-      _json['excludePrefixes'] = excludePrefixes;
-    }
-    if (includePrefixes != null) {
-      _json['includePrefixes'] = includePrefixes;
-    }
-    if (lastModifiedBefore != null) {
-      _json['lastModifiedBefore'] = lastModifiedBefore;
-    }
-    if (lastModifiedSince != null) {
-      _json['lastModifiedSince'] = lastModifiedSince;
-    }
-    if (maxTimeElapsedSinceLastModification != null) {
-      _json['maxTimeElapsedSinceLastModification'] =
-          maxTimeElapsedSinceLastModification;
-    }
-    if (minTimeElapsedSinceLastModification != null) {
-      _json['minTimeElapsedSinceLastModification'] =
-          minTimeElapsedSinceLastModification;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (excludePrefixes != null) 'excludePrefixes': excludePrefixes,
+        if (includePrefixes != null) 'includePrefixes': includePrefixes,
+        if (lastModifiedBefore != null)
+          'lastModifiedBefore': lastModifiedBefore,
+        if (lastModifiedSince != null) 'lastModifiedSince': lastModifiedSince,
+        if (maxTimeElapsedSinceLastModification != null)
+          'maxTimeElapsedSinceLastModification':
+              maxTimeElapsedSinceLastModification,
+        if (minTimeElapsedSinceLastModification != null)
+          'minTimeElapsedSinceLastModification':
+              minTimeElapsedSinceLastModification,
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -1512,25 +1414,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// Request passed to PauseTransferOperation.
@@ -1541,10 +1431,7 @@ class PauseTransferOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Request passed to ResumeTransferOperation.
@@ -1555,10 +1442,7 @@ class ResumeTransferOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Transfers can be scheduled to recur or to run just once.
@@ -1642,25 +1526,15 @@ class Schedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTimeOfDay != null) {
-      _json['endTimeOfDay'] = endTimeOfDay.toJson();
-    }
-    if (repeatInterval != null) {
-      _json['repeatInterval'] = repeatInterval;
-    }
-    if (scheduleEndDate != null) {
-      _json['scheduleEndDate'] = scheduleEndDate.toJson();
-    }
-    if (scheduleStartDate != null) {
-      _json['scheduleStartDate'] = scheduleStartDate.toJson();
-    }
-    if (startTimeOfDay != null) {
-      _json['startTimeOfDay'] = startTimeOfDay.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTimeOfDay != null) 'endTimeOfDay': endTimeOfDay.toJson(),
+        if (repeatInterval != null) 'repeatInterval': repeatInterval,
+        if (scheduleEndDate != null)
+          'scheduleEndDate': scheduleEndDate.toJson(),
+        if (scheduleStartDate != null)
+          'scheduleStartDate': scheduleStartDate.toJson(),
+        if (startTimeOfDay != null) 'startTimeOfDay': startTimeOfDay.toJson(),
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -1710,19 +1584,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Represents a time of day.
@@ -1770,22 +1636,12 @@ class TimeOfDay {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hours != null) {
-      _json['hours'] = hours;
-    }
-    if (minutes != null) {
-      _json['minutes'] = minutes;
-    }
-    if (nanos != null) {
-      _json['nanos'] = nanos;
-    }
-    if (seconds != null) {
-      _json['seconds'] = seconds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hours != null) 'hours': hours,
+        if (minutes != null) 'minutes': minutes,
+        if (nanos != null) 'nanos': nanos,
+        if (seconds != null) 'seconds': seconds,
+      };
 }
 
 /// A collection of counters that report the progress of a transfer operation.
@@ -1905,58 +1761,39 @@ class TransferCounters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bytesCopiedToSink != null) {
-      _json['bytesCopiedToSink'] = bytesCopiedToSink;
-    }
-    if (bytesDeletedFromSink != null) {
-      _json['bytesDeletedFromSink'] = bytesDeletedFromSink;
-    }
-    if (bytesDeletedFromSource != null) {
-      _json['bytesDeletedFromSource'] = bytesDeletedFromSource;
-    }
-    if (bytesFailedToDeleteFromSink != null) {
-      _json['bytesFailedToDeleteFromSink'] = bytesFailedToDeleteFromSink;
-    }
-    if (bytesFoundFromSource != null) {
-      _json['bytesFoundFromSource'] = bytesFoundFromSource;
-    }
-    if (bytesFoundOnlyFromSink != null) {
-      _json['bytesFoundOnlyFromSink'] = bytesFoundOnlyFromSink;
-    }
-    if (bytesFromSourceFailed != null) {
-      _json['bytesFromSourceFailed'] = bytesFromSourceFailed;
-    }
-    if (bytesFromSourceSkippedBySync != null) {
-      _json['bytesFromSourceSkippedBySync'] = bytesFromSourceSkippedBySync;
-    }
-    if (objectsCopiedToSink != null) {
-      _json['objectsCopiedToSink'] = objectsCopiedToSink;
-    }
-    if (objectsDeletedFromSink != null) {
-      _json['objectsDeletedFromSink'] = objectsDeletedFromSink;
-    }
-    if (objectsDeletedFromSource != null) {
-      _json['objectsDeletedFromSource'] = objectsDeletedFromSource;
-    }
-    if (objectsFailedToDeleteFromSink != null) {
-      _json['objectsFailedToDeleteFromSink'] = objectsFailedToDeleteFromSink;
-    }
-    if (objectsFoundFromSource != null) {
-      _json['objectsFoundFromSource'] = objectsFoundFromSource;
-    }
-    if (objectsFoundOnlyFromSink != null) {
-      _json['objectsFoundOnlyFromSink'] = objectsFoundOnlyFromSink;
-    }
-    if (objectsFromSourceFailed != null) {
-      _json['objectsFromSourceFailed'] = objectsFromSourceFailed;
-    }
-    if (objectsFromSourceSkippedBySync != null) {
-      _json['objectsFromSourceSkippedBySync'] = objectsFromSourceSkippedBySync;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bytesCopiedToSink != null) 'bytesCopiedToSink': bytesCopiedToSink,
+        if (bytesDeletedFromSink != null)
+          'bytesDeletedFromSink': bytesDeletedFromSink,
+        if (bytesDeletedFromSource != null)
+          'bytesDeletedFromSource': bytesDeletedFromSource,
+        if (bytesFailedToDeleteFromSink != null)
+          'bytesFailedToDeleteFromSink': bytesFailedToDeleteFromSink,
+        if (bytesFoundFromSource != null)
+          'bytesFoundFromSource': bytesFoundFromSource,
+        if (bytesFoundOnlyFromSink != null)
+          'bytesFoundOnlyFromSink': bytesFoundOnlyFromSink,
+        if (bytesFromSourceFailed != null)
+          'bytesFromSourceFailed': bytesFromSourceFailed,
+        if (bytesFromSourceSkippedBySync != null)
+          'bytesFromSourceSkippedBySync': bytesFromSourceSkippedBySync,
+        if (objectsCopiedToSink != null)
+          'objectsCopiedToSink': objectsCopiedToSink,
+        if (objectsDeletedFromSink != null)
+          'objectsDeletedFromSink': objectsDeletedFromSink,
+        if (objectsDeletedFromSource != null)
+          'objectsDeletedFromSource': objectsDeletedFromSource,
+        if (objectsFailedToDeleteFromSink != null)
+          'objectsFailedToDeleteFromSink': objectsFailedToDeleteFromSink,
+        if (objectsFoundFromSource != null)
+          'objectsFoundFromSource': objectsFoundFromSource,
+        if (objectsFoundOnlyFromSink != null)
+          'objectsFoundOnlyFromSink': objectsFoundOnlyFromSink,
+        if (objectsFromSourceFailed != null)
+          'objectsFromSourceFailed': objectsFromSourceFailed,
+        if (objectsFromSourceSkippedBySync != null)
+          'objectsFromSourceSkippedBySync': objectsFromSourceSkippedBySync,
+      };
 }
 
 /// This resource represents the configuration of a transfer job that runs
@@ -2071,43 +1908,22 @@ class TransferJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (creationTime != null) {
-      _json['creationTime'] = creationTime;
-    }
-    if (deletionTime != null) {
-      _json['deletionTime'] = deletionTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (lastModificationTime != null) {
-      _json['lastModificationTime'] = lastModificationTime;
-    }
-    if (latestOperationName != null) {
-      _json['latestOperationName'] = latestOperationName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (notificationConfig != null) {
-      _json['notificationConfig'] = notificationConfig.toJson();
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (schedule != null) {
-      _json['schedule'] = schedule.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (transferSpec != null) {
-      _json['transferSpec'] = transferSpec.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (creationTime != null) 'creationTime': creationTime,
+        if (deletionTime != null) 'deletionTime': deletionTime,
+        if (description != null) 'description': description,
+        if (lastModificationTime != null)
+          'lastModificationTime': lastModificationTime,
+        if (latestOperationName != null)
+          'latestOperationName': latestOperationName,
+        if (name != null) 'name': name,
+        if (notificationConfig != null)
+          'notificationConfig': notificationConfig.toJson(),
+        if (projectId != null) 'projectId': projectId,
+        if (schedule != null) 'schedule': schedule.toJson(),
+        if (status != null) 'status': status,
+        if (transferSpec != null) 'transferSpec': transferSpec.toJson(),
+      };
 }
 
 /// A description of the execution of a transfer.
@@ -2192,41 +2008,21 @@ class TransferOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (counters != null) {
-      _json['counters'] = counters.toJson();
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (errorBreakdowns != null) {
-      _json['errorBreakdowns'] =
-          errorBreakdowns.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (notificationConfig != null) {
-      _json['notificationConfig'] = notificationConfig.toJson();
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (transferJobName != null) {
-      _json['transferJobName'] = transferJobName;
-    }
-    if (transferSpec != null) {
-      _json['transferSpec'] = transferSpec.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (counters != null) 'counters': counters.toJson(),
+        if (endTime != null) 'endTime': endTime,
+        if (errorBreakdowns != null)
+          'errorBreakdowns':
+              errorBreakdowns.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (notificationConfig != null)
+          'notificationConfig': notificationConfig.toJson(),
+        if (projectId != null) 'projectId': projectId,
+        if (startTime != null) 'startTime': startTime,
+        if (status != null) 'status': status,
+        if (transferJobName != null) 'transferJobName': transferJobName,
+        if (transferSpec != null) 'transferSpec': transferSpec.toJson(),
+      };
 }
 
 /// TransferOptions define the actions to be performed on objects in a transfer.
@@ -2268,21 +2064,16 @@ class TransferOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deleteObjectsFromSourceAfterTransfer != null) {
-      _json['deleteObjectsFromSourceAfterTransfer'] =
-          deleteObjectsFromSourceAfterTransfer;
-    }
-    if (deleteObjectsUniqueInSink != null) {
-      _json['deleteObjectsUniqueInSink'] = deleteObjectsUniqueInSink;
-    }
-    if (overwriteObjectsAlreadyExistingInSink != null) {
-      _json['overwriteObjectsAlreadyExistingInSink'] =
-          overwriteObjectsAlreadyExistingInSink;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deleteObjectsFromSourceAfterTransfer != null)
+          'deleteObjectsFromSourceAfterTransfer':
+              deleteObjectsFromSourceAfterTransfer,
+        if (deleteObjectsUniqueInSink != null)
+          'deleteObjectsUniqueInSink': deleteObjectsUniqueInSink,
+        if (overwriteObjectsAlreadyExistingInSink != null)
+          'overwriteObjectsAlreadyExistingInSink':
+              overwriteObjectsAlreadyExistingInSink,
+      };
 }
 
 /// Configuration for running a transfer.
@@ -2348,31 +2139,19 @@ class TransferSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (awsS3DataSource != null) {
-      _json['awsS3DataSource'] = awsS3DataSource.toJson();
-    }
-    if (azureBlobStorageDataSource != null) {
-      _json['azureBlobStorageDataSource'] = azureBlobStorageDataSource.toJson();
-    }
-    if (gcsDataSink != null) {
-      _json['gcsDataSink'] = gcsDataSink.toJson();
-    }
-    if (gcsDataSource != null) {
-      _json['gcsDataSource'] = gcsDataSource.toJson();
-    }
-    if (httpDataSource != null) {
-      _json['httpDataSource'] = httpDataSource.toJson();
-    }
-    if (objectConditions != null) {
-      _json['objectConditions'] = objectConditions.toJson();
-    }
-    if (transferOptions != null) {
-      _json['transferOptions'] = transferOptions.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (awsS3DataSource != null)
+          'awsS3DataSource': awsS3DataSource.toJson(),
+        if (azureBlobStorageDataSource != null)
+          'azureBlobStorageDataSource': azureBlobStorageDataSource.toJson(),
+        if (gcsDataSink != null) 'gcsDataSink': gcsDataSink.toJson(),
+        if (gcsDataSource != null) 'gcsDataSource': gcsDataSource.toJson(),
+        if (httpDataSource != null) 'httpDataSource': httpDataSource.toJson(),
+        if (objectConditions != null)
+          'objectConditions': objectConditions.toJson(),
+        if (transferOptions != null)
+          'transferOptions': transferOptions.toJson(),
+      };
 }
 
 /// Request passed to UpdateTransferJob.
@@ -2419,17 +2198,10 @@ class UpdateTransferJobRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (transferJob != null) {
-      _json['transferJob'] = transferJob.toJson();
-    }
-    if (updateTransferJobFieldMask != null) {
-      _json['updateTransferJobFieldMask'] = updateTransferJobFieldMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (projectId != null) 'projectId': projectId,
+        if (transferJob != null) 'transferJob': transferJob.toJson(),
+        if (updateTransferJobFieldMask != null)
+          'updateTransferJobFieldMask': updateTransferJobFieldMask,
+      };
 }

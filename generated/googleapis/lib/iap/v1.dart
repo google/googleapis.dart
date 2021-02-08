@@ -762,13 +762,10 @@ class AccessDeniedPageSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessDeniedPageUri != null) {
-      _json['accessDeniedPageUri'] = accessDeniedPageUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessDeniedPageUri != null)
+          'accessDeniedPageUri': accessDeniedPageUri,
+      };
 }
 
 /// Access related settings for IAP protected apps.
@@ -810,22 +807,13 @@ class AccessSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (corsSettings != null) {
-      _json['corsSettings'] = corsSettings.toJson();
-    }
-    if (gcipSettings != null) {
-      _json['gcipSettings'] = gcipSettings.toJson();
-    }
-    if (oauthSettings != null) {
-      _json['oauthSettings'] = oauthSettings.toJson();
-    }
-    if (policyDelegationSettings != null) {
-      _json['policyDelegationSettings'] = policyDelegationSettings.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (corsSettings != null) 'corsSettings': corsSettings.toJson(),
+        if (gcipSettings != null) 'gcipSettings': gcipSettings.toJson(),
+        if (oauthSettings != null) 'oauthSettings': oauthSettings.toJson(),
+        if (policyDelegationSettings != null)
+          'policyDelegationSettings': policyDelegationSettings.toJson(),
+      };
 }
 
 /// Wrapper over application specific settings for IAP.
@@ -859,19 +847,12 @@ class ApplicationSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessDeniedPageSettings != null) {
-      _json['accessDeniedPageSettings'] = accessDeniedPageSettings.toJson();
-    }
-    if (cookieDomain != null) {
-      _json['cookieDomain'] = cookieDomain;
-    }
-    if (csmSettings != null) {
-      _json['csmSettings'] = csmSettings.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessDeniedPageSettings != null)
+          'accessDeniedPageSettings': accessDeniedPageSettings.toJson(),
+        if (cookieDomain != null) 'cookieDomain': cookieDomain,
+        if (csmSettings != null) 'csmSettings': csmSettings.toJson(),
+      };
 }
 
 /// Associates `members` with a `role`.
@@ -940,19 +921,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// OAuth brand data.
@@ -996,22 +969,12 @@ class Brand {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (applicationTitle != null) {
-      _json['applicationTitle'] = applicationTitle;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (orgInternalOnly != null) {
-      _json['orgInternalOnly'] = orgInternalOnly;
-    }
-    if (supportEmail != null) {
-      _json['supportEmail'] = supportEmail;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (applicationTitle != null) 'applicationTitle': applicationTitle,
+        if (name != null) 'name': name,
+        if (orgInternalOnly != null) 'orgInternalOnly': orgInternalOnly,
+        if (supportEmail != null) 'supportEmail': supportEmail,
+      };
 }
 
 /// Allows customers to configure HTTP request paths that'll allow HTTP OPTIONS
@@ -1030,13 +993,9 @@ class CorsSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowHttpOptions != null) {
-      _json['allowHttpOptions'] = allowHttpOptions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowHttpOptions != null) 'allowHttpOptions': allowHttpOptions,
+      };
 }
 
 /// Configuration for RCTokens generated for CSM workloads protected by IAP.
@@ -1058,13 +1017,9 @@ class CsmSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (rctokenAud != null) {
-      _json['rctokenAud'] = rctokenAud;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (rctokenAud != null) 'rctokenAud': rctokenAud,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1081,10 +1036,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1148,22 +1100,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Allows customers to configure tenant_id for GCIP instance per-app.
@@ -1196,16 +1138,10 @@ class GcipSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (loginPageUri != null) {
-      _json['loginPageUri'] = loginPageUri;
-    }
-    if (tenantIds != null) {
-      _json['tenantIds'] = tenantIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (loginPageUri != null) 'loginPageUri': loginPageUri,
+        if (tenantIds != null) 'tenantIds': tenantIds,
+      };
 }
 
 /// Request message for `GetIamPolicy` method.
@@ -1223,13 +1159,9 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (options != null) {
-      _json['options'] = options.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (options != null) 'options': options.toJson(),
+      };
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
@@ -1254,13 +1186,10 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (requestedPolicyVersion != null) {
-      _json['requestedPolicyVersion'] = requestedPolicyVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (requestedPolicyVersion != null)
+          'requestedPolicyVersion': requestedPolicyVersion,
+      };
 }
 
 /// The IAP configurable settings.
@@ -1292,19 +1221,12 @@ class IapSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessSettings != null) {
-      _json['accessSettings'] = accessSettings.toJson();
-    }
-    if (applicationSettings != null) {
-      _json['applicationSettings'] = applicationSettings.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessSettings != null) 'accessSettings': accessSettings.toJson(),
+        if (applicationSettings != null)
+          'applicationSettings': applicationSettings.toJson(),
+        if (name != null) 'name': name,
+      };
 }
 
 /// Contains the data that describes an Identity Aware Proxy owned client.
@@ -1336,19 +1258,11 @@ class IdentityAwareProxyClient {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (secret != null) {
-      _json['secret'] = secret;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (secret != null) 'secret': secret,
+      };
 }
 
 /// Response message for ListBrands.
@@ -1367,13 +1281,10 @@ class ListBrandsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (brands != null) {
-      _json['brands'] = brands.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (brands != null)
+          'brands': brands.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for ListIdentityAwareProxyClients.
@@ -1402,17 +1313,12 @@ class ListIdentityAwareProxyClientsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (identityAwareProxyClients != null) {
-      _json['identityAwareProxyClients'] =
-          identityAwareProxyClients.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (identityAwareProxyClients != null)
+          'identityAwareProxyClients':
+              identityAwareProxyClients.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Configuration for OAuth login&consent flow behavior as well as for OAuth
@@ -1434,13 +1340,9 @@ class OAuthSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (loginHint != null) {
-      _json['loginHint'] = loginHint;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (loginHint != null) 'loginHint': loginHint,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -1538,19 +1440,12 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// PolicyDelegationConfig allows google-internal teams to use IAP for apps
@@ -1595,22 +1490,12 @@ class PolicyDelegationSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (iamPermission != null) {
-      _json['iamPermission'] = iamPermission;
-    }
-    if (iamServiceName != null) {
-      _json['iamServiceName'] = iamServiceName;
-    }
-    if (policyName != null) {
-      _json['policyName'] = policyName.toJson();
-    }
-    if (resource != null) {
-      _json['resource'] = resource.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (iamPermission != null) 'iamPermission': iamPermission,
+        if (iamServiceName != null) 'iamServiceName': iamServiceName,
+        if (policyName != null) 'policyName': policyName.toJson(),
+        if (resource != null) 'resource': resource.toJson(),
+      };
 }
 
 class PolicyName {
@@ -1641,19 +1526,11 @@ class PolicyName {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (region != null) {
-      _json['region'] = region;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (region != null) 'region': region,
+        if (type != null) 'type': type,
+      };
 }
 
 /// The request sent to ResetIdentityAwareProxyClientSecret.
@@ -1664,10 +1541,7 @@ class ResetIdentityAwareProxyClientSecretRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 class Resource {
@@ -1742,22 +1616,12 @@ class Resource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+        if (service != null) 'service': service,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -1778,13 +1642,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+      };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -1806,13 +1666,9 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -1831,11 +1687,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }

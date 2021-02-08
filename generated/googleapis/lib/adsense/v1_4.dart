@@ -2607,32 +2607,16 @@ class Account {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (creationTime != null) {
-      _json['creation_time'] = creationTime;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (premium != null) {
-      _json['premium'] = premium;
-    }
-    if (subAccounts != null) {
-      _json['subAccounts'] =
-          subAccounts.map((value) => value.toJson()).toList();
-    }
-    if (timezone != null) {
-      _json['timezone'] = timezone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (creationTime != null) 'creation_time': creationTime,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+        if (premium != null) 'premium': premium,
+        if (subAccounts != null)
+          'subAccounts': subAccounts.map((value) => value.toJson()).toList(),
+        if (timezone != null) 'timezone': timezone,
+      };
 }
 
 class Accounts {
@@ -2671,22 +2655,13 @@ class Accounts {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class AdClient {
@@ -2726,25 +2701,13 @@ class AdClient {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (arcOptIn != null) {
-      _json['arcOptIn'] = arcOptIn;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (productCode != null) {
-      _json['productCode'] = productCode;
-    }
-    if (supportsReporting != null) {
-      _json['supportsReporting'] = supportsReporting;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (arcOptIn != null) 'arcOptIn': arcOptIn,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (productCode != null) 'productCode': productCode,
+        if (supportsReporting != null) 'supportsReporting': supportsReporting,
+      };
 }
 
 class AdClients {
@@ -2783,22 +2746,13 @@ class AdClients {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class AdCode {
@@ -2833,22 +2787,12 @@ class AdCode {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adCode != null) {
-      _json['adCode'] = adCode;
-    }
-    if (ampBody != null) {
-      _json['ampBody'] = ampBody;
-    }
-    if (ampHead != null) {
-      _json['ampHead'] = ampHead;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adCode != null) 'adCode': adCode,
+        if (ampBody != null) 'ampBody': ampBody,
+        if (ampHead != null) 'ampHead': ampHead,
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// The colors which are included in the style.
@@ -2891,25 +2835,13 @@ class AdStyleColors {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (background != null) {
-      _json['background'] = background;
-    }
-    if (border != null) {
-      _json['border'] = border;
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (background != null) 'background': background,
+        if (border != null) 'border': border,
+        if (text != null) 'text': text,
+        if (title != null) 'title': title,
+        if (url != null) 'url': url,
+      };
 }
 
 /// The font which is included in the style.
@@ -2931,16 +2863,10 @@ class AdStyleFont {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (family != null) {
-      _json['family'] = family;
-    }
-    if (size != null) {
-      _json['size'] = size;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (family != null) 'family': family,
+        if (size != null) 'size': size,
+      };
 }
 
 class AdStyle {
@@ -2978,22 +2904,12 @@ class AdStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (colors != null) {
-      _json['colors'] = colors.toJson();
-    }
-    if (corners != null) {
-      _json['corners'] = corners;
-    }
-    if (font != null) {
-      _json['font'] = font.toJson();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (colors != null) 'colors': colors.toJson(),
+        if (corners != null) 'corners': corners,
+        if (font != null) 'font': font.toJson(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// The backup option to be used in instances where no ad is available.
@@ -3023,19 +2939,11 @@ class AdUnitContentAdsSettingsBackupOption {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (color != null) {
-      _json['color'] = color;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (color != null) 'color': color,
+        if (type != null) 'type': type,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Settings specific to content ads (AFC) and highend mobile content ads (AFMC
@@ -3065,19 +2973,11 @@ class AdUnitContentAdsSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backupOption != null) {
-      _json['backupOption'] = backupOption.toJson();
-    }
-    if (size != null) {
-      _json['size'] = size;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backupOption != null) 'backupOption': backupOption.toJson(),
+        if (size != null) 'size': size,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Settings specific to feed ads (AFF) - deprecated.
@@ -3112,22 +3012,12 @@ class AdUnitFeedAdsSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adPosition != null) {
-      _json['adPosition'] = adPosition;
-    }
-    if (frequency != null) {
-      _json['frequency'] = frequency;
-    }
-    if (minimumWordCount != null) {
-      _json['minimumWordCount'] = minimumWordCount;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adPosition != null) 'adPosition': adPosition,
+        if (frequency != null) 'frequency': frequency,
+        if (minimumWordCount != null) 'minimumWordCount': minimumWordCount,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Settings specific to WAP mobile content ads (AFMC) - deprecated.
@@ -3161,22 +3051,12 @@ class AdUnitMobileContentAdsSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (markupLanguage != null) {
-      _json['markupLanguage'] = markupLanguage;
-    }
-    if (scriptingLanguage != null) {
-      _json['scriptingLanguage'] = scriptingLanguage;
-    }
-    if (size != null) {
-      _json['size'] = size;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (markupLanguage != null) 'markupLanguage': markupLanguage,
+        if (scriptingLanguage != null) 'scriptingLanguage': scriptingLanguage,
+        if (size != null) 'size': size,
+        if (type != null) 'type': type,
+      };
 }
 
 class AdUnit {
@@ -3264,40 +3144,21 @@ class AdUnit {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (contentAdsSettings != null) {
-      _json['contentAdsSettings'] = contentAdsSettings.toJson();
-    }
-    if (customStyle != null) {
-      _json['customStyle'] = customStyle.toJson();
-    }
-    if (feedAdsSettings != null) {
-      _json['feedAdsSettings'] = feedAdsSettings.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (mobileContentAdsSettings != null) {
-      _json['mobileContentAdsSettings'] = mobileContentAdsSettings.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (savedStyleId != null) {
-      _json['savedStyleId'] = savedStyleId;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (contentAdsSettings != null)
+          'contentAdsSettings': contentAdsSettings.toJson(),
+        if (customStyle != null) 'customStyle': customStyle.toJson(),
+        if (feedAdsSettings != null)
+          'feedAdsSettings': feedAdsSettings.toJson(),
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (mobileContentAdsSettings != null)
+          'mobileContentAdsSettings': mobileContentAdsSettings.toJson(),
+        if (name != null) 'name': name,
+        if (savedStyleId != null) 'savedStyleId': savedStyleId,
+        if (status != null) 'status': status,
+      };
 }
 
 class AdUnits {
@@ -3336,22 +3197,13 @@ class AdUnits {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class AdsenseReportsGenerateResponseHeaders {
@@ -3381,19 +3233,11 @@ class AdsenseReportsGenerateResponseHeaders {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (currency != null) {
-      _json['currency'] = currency;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (currency != null) 'currency': currency,
+        if (name != null) 'name': name,
+        if (type != null) 'type': type,
+      };
 }
 
 class AdsenseReportsGenerateResponse {
@@ -3486,37 +3330,18 @@ class AdsenseReportsGenerateResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (averages != null) {
-      _json['averages'] = averages;
-    }
-    if (endDate != null) {
-      _json['endDate'] = endDate;
-    }
-    if (headers != null) {
-      _json['headers'] = headers.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (rows != null) {
-      _json['rows'] = rows;
-    }
-    if (startDate != null) {
-      _json['startDate'] = startDate;
-    }
-    if (totalMatchedRows != null) {
-      _json['totalMatchedRows'] = totalMatchedRows;
-    }
-    if (totals != null) {
-      _json['totals'] = totals;
-    }
-    if (warnings != null) {
-      _json['warnings'] = warnings;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (averages != null) 'averages': averages,
+        if (endDate != null) 'endDate': endDate,
+        if (headers != null)
+          'headers': headers.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (rows != null) 'rows': rows,
+        if (startDate != null) 'startDate': startDate,
+        if (totalMatchedRows != null) 'totalMatchedRows': totalMatchedRows,
+        if (totals != null) 'totals': totals,
+        if (warnings != null) 'warnings': warnings,
+      };
 }
 
 class Alert {
@@ -3570,28 +3395,14 @@ class Alert {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (isDismissible != null) {
-      _json['isDismissible'] = isDismissible;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    if (severity != null) {
-      _json['severity'] = severity;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (isDismissible != null) 'isDismissible': isDismissible,
+        if (kind != null) 'kind': kind,
+        if (message != null) 'message': message,
+        if (severity != null) 'severity': severity,
+        if (type != null) 'type': type,
+      };
 }
 
 class Alerts {
@@ -3615,16 +3426,11 @@ class Alerts {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// The targeting information of this custom channel, if activated.
@@ -3664,22 +3470,12 @@ class CustomChannelTargetingInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adsAppearOn != null) {
-      _json['adsAppearOn'] = adsAppearOn;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (siteLanguage != null) {
-      _json['siteLanguage'] = siteLanguage;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adsAppearOn != null) 'adsAppearOn': adsAppearOn,
+        if (description != null) 'description': description,
+        if (location != null) 'location': location,
+        if (siteLanguage != null) 'siteLanguage': siteLanguage,
+      };
 }
 
 class CustomChannel {
@@ -3722,25 +3518,13 @@ class CustomChannel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (targetingInfo != null) {
-      _json['targetingInfo'] = targetingInfo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+        if (targetingInfo != null) 'targetingInfo': targetingInfo.toJson(),
+      };
 }
 
 class CustomChannels {
@@ -3779,22 +3563,13 @@ class CustomChannels {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class Metadata {
@@ -3818,16 +3593,11 @@ class Metadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 class Payment {
@@ -3868,25 +3638,14 @@ class Payment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (paymentAmount != null) {
-      _json['paymentAmount'] = paymentAmount;
-    }
-    if (paymentAmountCurrencyCode != null) {
-      _json['paymentAmountCurrencyCode'] = paymentAmountCurrencyCode;
-    }
-    if (paymentDate != null) {
-      _json['paymentDate'] = paymentDate;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (paymentAmount != null) 'paymentAmount': paymentAmount,
+        if (paymentAmountCurrencyCode != null)
+          'paymentAmountCurrencyCode': paymentAmountCurrencyCode,
+        if (paymentDate != null) 'paymentDate': paymentDate,
+      };
 }
 
 class Payments {
@@ -3913,16 +3672,11 @@ class Payments {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 class ReportingMetadataEntry {
@@ -3998,31 +3752,17 @@ class ReportingMetadataEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (compatibleDimensions != null) {
-      _json['compatibleDimensions'] = compatibleDimensions;
-    }
-    if (compatibleMetrics != null) {
-      _json['compatibleMetrics'] = compatibleMetrics;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (requiredDimensions != null) {
-      _json['requiredDimensions'] = requiredDimensions;
-    }
-    if (requiredMetrics != null) {
-      _json['requiredMetrics'] = requiredMetrics;
-    }
-    if (supportedProducts != null) {
-      _json['supportedProducts'] = supportedProducts;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (compatibleDimensions != null)
+          'compatibleDimensions': compatibleDimensions,
+        if (compatibleMetrics != null) 'compatibleMetrics': compatibleMetrics,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (requiredDimensions != null)
+          'requiredDimensions': requiredDimensions,
+        if (requiredMetrics != null) 'requiredMetrics': requiredMetrics,
+        if (supportedProducts != null) 'supportedProducts': supportedProducts,
+      };
 }
 
 class SavedAdStyle {
@@ -4059,22 +3799,12 @@ class SavedAdStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adStyle != null) {
-      _json['adStyle'] = adStyle.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adStyle != null) 'adStyle': adStyle.toJson(),
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+      };
 }
 
 class SavedAdStyles {
@@ -4113,22 +3843,13 @@ class SavedAdStyles {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class SavedReport {
@@ -4155,19 +3876,11 @@ class SavedReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+      };
 }
 
 class SavedReports {
@@ -4206,22 +3919,13 @@ class SavedReports {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class UrlChannel {
@@ -4253,19 +3957,11 @@ class UrlChannel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (urlPattern != null) {
-      _json['urlPattern'] = urlPattern;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (urlPattern != null) 'urlPattern': urlPattern,
+      };
 }
 
 class UrlChannels {
@@ -4304,20 +4000,11 @@ class UrlChannels {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }

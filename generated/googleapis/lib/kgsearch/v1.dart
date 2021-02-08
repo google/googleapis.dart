@@ -177,17 +177,9 @@ class SearchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (P_context != null) {
-      _json['@context'] = P_context;
-    }
-    if (P_type != null) {
-      _json['@type'] = P_type;
-    }
-    if (itemListElement != null) {
-      _json['itemListElement'] = itemListElement;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (P_context != null) '@context': P_context,
+        if (P_type != null) '@type': P_type,
+        if (itemListElement != null) 'itemListElement': itemListElement,
+      };
 }

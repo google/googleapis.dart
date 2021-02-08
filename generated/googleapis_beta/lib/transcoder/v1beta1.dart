@@ -490,13 +490,9 @@ class AdBreak {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (startTimeOffset != null) {
-      _json['startTimeOffset'] = startTimeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset,
+      };
 }
 
 /// Configuration for AES-128 encryption.
@@ -516,13 +512,9 @@ class Aes128Encryption {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (keyUri != null) {
-      _json['keyUri'] = keyUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (keyUri != null) 'keyUri': keyUri,
+      };
 }
 
 /// Animation types.
@@ -553,19 +545,12 @@ class Animation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (animationEnd != null) {
-      _json['animationEnd'] = animationEnd.toJson();
-    }
-    if (animationFade != null) {
-      _json['animationFade'] = animationFade.toJson();
-    }
-    if (animationStatic != null) {
-      _json['animationStatic'] = animationStatic.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (animationEnd != null) 'animationEnd': animationEnd.toJson(),
+        if (animationFade != null) 'animationFade': animationFade.toJson(),
+        if (animationStatic != null)
+          'animationStatic': animationStatic.toJson(),
+      };
 }
 
 /// End previous overlay animation from the video.
@@ -586,13 +571,9 @@ class AnimationEnd {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (startTimeOffset != null) {
-      _json['startTimeOffset'] = startTimeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset,
+      };
 }
 
 /// Display overlay object with fade animation.
@@ -642,22 +623,12 @@ class AnimationFade {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTimeOffset != null) {
-      _json['endTimeOffset'] = endTimeOffset;
-    }
-    if (fadeType != null) {
-      _json['fadeType'] = fadeType;
-    }
-    if (startTimeOffset != null) {
-      _json['startTimeOffset'] = startTimeOffset;
-    }
-    if (xy != null) {
-      _json['xy'] = xy.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTimeOffset != null) 'endTimeOffset': endTimeOffset,
+        if (fadeType != null) 'fadeType': fadeType,
+        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset,
+        if (xy != null) 'xy': xy.toJson(),
+      };
 }
 
 /// Display static overlay object.
@@ -687,16 +658,10 @@ class AnimationStatic {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (startTimeOffset != null) {
-      _json['startTimeOffset'] = startTimeOffset;
-    }
-    if (xy != null) {
-      _json['xy'] = xy.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset,
+        if (xy != null) 'xy': xy.toJson(),
+      };
 }
 
 /// Audio preprocessing configuration.
@@ -736,19 +701,11 @@ class Audio {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (highBoost != null) {
-      _json['highBoost'] = highBoost;
-    }
-    if (lowBoost != null) {
-      _json['lowBoost'] = lowBoost;
-    }
-    if (lufs != null) {
-      _json['lufs'] = lufs;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (highBoost != null) 'highBoost': highBoost,
+        if (lowBoost != null) 'lowBoost': lowBoost,
+        if (lufs != null) 'lufs': lufs,
+      };
 }
 
 /// The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
@@ -778,16 +735,11 @@ class AudioAtom {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channels != null) {
-      _json['channels'] = channels.map((value) => value.toJson()).toList();
-    }
-    if (key != null) {
-      _json['key'] = key;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (channels != null)
+          'channels': channels.map((value) => value.toJson()).toList(),
+        if (key != null) 'key': key,
+      };
 }
 
 /// The audio channel.
@@ -806,13 +758,10 @@ class AudioChannel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (inputs != null) {
-      _json['inputs'] = inputs.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (inputs != null)
+          'inputs': inputs.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Identifies which input file, track, and channel should be used.
@@ -855,22 +804,12 @@ class AudioChannelInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channel != null) {
-      _json['channel'] = channel;
-    }
-    if (gainDb != null) {
-      _json['gainDb'] = gainDb;
-    }
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (track != null) {
-      _json['track'] = track;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (channel != null) 'channel': channel,
+        if (gainDb != null) 'gainDb': gainDb,
+        if (key != null) 'key': key,
+        if (track != null) 'track': track,
+      };
 }
 
 /// Audio stream resource.
@@ -938,28 +877,15 @@ class AudioStream {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bitrateBps != null) {
-      _json['bitrateBps'] = bitrateBps;
-    }
-    if (channelCount != null) {
-      _json['channelCount'] = channelCount;
-    }
-    if (channelLayout != null) {
-      _json['channelLayout'] = channelLayout;
-    }
-    if (codec != null) {
-      _json['codec'] = codec;
-    }
-    if (mapping != null) {
-      _json['mapping'] = mapping.map((value) => value.toJson()).toList();
-    }
-    if (sampleRateHertz != null) {
-      _json['sampleRateHertz'] = sampleRateHertz;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bitrateBps != null) 'bitrateBps': bitrateBps,
+        if (channelCount != null) 'channelCount': channelCount,
+        if (channelLayout != null) 'channelLayout': channelLayout,
+        if (codec != null) 'codec': codec,
+        if (mapping != null)
+          'mapping': mapping.map((value) => value.toJson()).toList(),
+        if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz,
+      };
 }
 
 /// Color preprocessing configuration.
@@ -996,19 +922,11 @@ class Color {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (brightness != null) {
-      _json['brightness'] = brightness;
-    }
-    if (contrast != null) {
-      _json['contrast'] = contrast;
-    }
-    if (saturation != null) {
-      _json['saturation'] = saturation;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (brightness != null) 'brightness': brightness,
+        if (contrast != null) 'contrast': contrast,
+        if (saturation != null) 'saturation': saturation,
+      };
 }
 
 /// Video cropping configuration for the input video.
@@ -1052,22 +970,12 @@ class Crop {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bottomPixels != null) {
-      _json['bottomPixels'] = bottomPixels;
-    }
-    if (leftPixels != null) {
-      _json['leftPixels'] = leftPixels;
-    }
-    if (rightPixels != null) {
-      _json['rightPixels'] = rightPixels;
-    }
-    if (topPixels != null) {
-      _json['topPixels'] = topPixels;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bottomPixels != null) 'bottomPixels': bottomPixels,
+        if (leftPixels != null) 'leftPixels': leftPixels,
+        if (rightPixels != null) 'rightPixels': rightPixels,
+        if (topPixels != null) 'topPixels': topPixels,
+      };
 }
 
 /// Deblock preprocessing configuration.
@@ -1094,16 +1002,10 @@ class Deblock {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    if (strength != null) {
-      _json['strength'] = strength;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enabled != null) 'enabled': enabled,
+        if (strength != null) 'strength': strength,
+      };
 }
 
 /// Denoise preprocessing configuration.
@@ -1131,16 +1033,10 @@ class Denoise {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (strength != null) {
-      _json['strength'] = strength;
-    }
-    if (tune != null) {
-      _json['tune'] = tune;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (strength != null) 'strength': strength,
+        if (tune != null) 'tune': tune,
+      };
 }
 
 /// Edit atom.
@@ -1185,22 +1081,12 @@ class EditAtom {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTimeOffset != null) {
-      _json['endTimeOffset'] = endTimeOffset;
-    }
-    if (inputs != null) {
-      _json['inputs'] = inputs;
-    }
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (startTimeOffset != null) {
-      _json['startTimeOffset'] = startTimeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTimeOffset != null) 'endTimeOffset': endTimeOffset,
+        if (inputs != null) 'inputs': inputs,
+        if (key != null) 'key': key,
+        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset,
+      };
 }
 
 /// Encoding of an input file such as an audio, video, or text track.
@@ -1242,22 +1128,12 @@ class ElementaryStream {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audioStream != null) {
-      _json['audioStream'] = audioStream.toJson();
-    }
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (textStream != null) {
-      _json['textStream'] = textStream.toJson();
-    }
-    if (videoStream != null) {
-      _json['videoStream'] = videoStream.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audioStream != null) 'audioStream': audioStream.toJson(),
+        if (key != null) 'key': key,
+        if (textStream != null) 'textStream': textStream.toJson(),
+        if (videoStream != null) 'videoStream': videoStream.toJson(),
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1274,10 +1150,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Encryption settings.
@@ -1325,25 +1198,13 @@ class Encryption {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aes128 != null) {
-      _json['aes128'] = aes128.toJson();
-    }
-    if (iv != null) {
-      _json['iv'] = iv;
-    }
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (mpegCenc != null) {
-      _json['mpegCenc'] = mpegCenc.toJson();
-    }
-    if (sampleAes != null) {
-      _json['sampleAes'] = sampleAes.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aes128 != null) 'aes128': aes128.toJson(),
+        if (iv != null) 'iv': iv,
+        if (key != null) 'key': key,
+        if (mpegCenc != null) 'mpegCenc': mpegCenc.toJson(),
+        if (sampleAes != null) 'sampleAes': sampleAes.toJson(),
+      };
 }
 
 /// Additional information about the reasons for the failure.
@@ -1359,13 +1220,9 @@ class FailureDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+      };
 }
 
 /// Overlaid jpeg image.
@@ -1404,19 +1261,11 @@ class Image {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alpha != null) {
-      _json['alpha'] = alpha;
-    }
-    if (resolution != null) {
-      _json['resolution'] = resolution.toJson();
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alpha != null) 'alpha': alpha,
+        if (resolution != null) 'resolution': resolution.toJson(),
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// Input asset.
@@ -1451,19 +1300,12 @@ class Input {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (preprocessingConfig != null) {
-      _json['preprocessingConfig'] = preprocessingConfig.toJson();
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (preprocessingConfig != null)
+          'preprocessingConfig': preprocessingConfig.toJson(),
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// Transcoding job resource.
@@ -1624,56 +1466,26 @@ class Job {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (config != null) {
-      _json['config'] = config.toJson();
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (failureDetails != null) {
-      _json['failureDetails'] =
-          failureDetails.map((value) => value.toJson()).toList();
-    }
-    if (failureReason != null) {
-      _json['failureReason'] = failureReason;
-    }
-    if (inputUri != null) {
-      _json['inputUri'] = inputUri;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (originUri != null) {
-      _json['originUri'] = originUri.toJson();
-    }
-    if (outputUri != null) {
-      _json['outputUri'] = outputUri;
-    }
-    if (priority != null) {
-      _json['priority'] = priority;
-    }
-    if (progress != null) {
-      _json['progress'] = progress.toJson();
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (templateId != null) {
-      _json['templateId'] = templateId;
-    }
-    if (ttlAfterCompletionDays != null) {
-      _json['ttlAfterCompletionDays'] = ttlAfterCompletionDays;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (config != null) 'config': config.toJson(),
+        if (createTime != null) 'createTime': createTime,
+        if (endTime != null) 'endTime': endTime,
+        if (failureDetails != null)
+          'failureDetails':
+              failureDetails.map((value) => value.toJson()).toList(),
+        if (failureReason != null) 'failureReason': failureReason,
+        if (inputUri != null) 'inputUri': inputUri,
+        if (name != null) 'name': name,
+        if (originUri != null) 'originUri': originUri.toJson(),
+        if (outputUri != null) 'outputUri': outputUri,
+        if (priority != null) 'priority': priority,
+        if (progress != null) 'progress': progress.toJson(),
+        if (startTime != null) 'startTime': startTime,
+        if (state != null) 'state': state,
+        if (templateId != null) 'templateId': templateId,
+        if (ttlAfterCompletionDays != null)
+          'ttlAfterCompletionDays': ttlAfterCompletionDays,
+      };
 }
 
 /// Job configuration
@@ -1773,42 +1585,28 @@ class JobConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adBreaks != null) {
-      _json['adBreaks'] = adBreaks.map((value) => value.toJson()).toList();
-    }
-    if (editList != null) {
-      _json['editList'] = editList.map((value) => value.toJson()).toList();
-    }
-    if (elementaryStreams != null) {
-      _json['elementaryStreams'] =
-          elementaryStreams.map((value) => value.toJson()).toList();
-    }
-    if (inputs != null) {
-      _json['inputs'] = inputs.map((value) => value.toJson()).toList();
-    }
-    if (manifests != null) {
-      _json['manifests'] = manifests.map((value) => value.toJson()).toList();
-    }
-    if (muxStreams != null) {
-      _json['muxStreams'] = muxStreams.map((value) => value.toJson()).toList();
-    }
-    if (output != null) {
-      _json['output'] = output.toJson();
-    }
-    if (overlays != null) {
-      _json['overlays'] = overlays.map((value) => value.toJson()).toList();
-    }
-    if (pubsubDestination != null) {
-      _json['pubsubDestination'] = pubsubDestination.toJson();
-    }
-    if (spriteSheets != null) {
-      _json['spriteSheets'] =
-          spriteSheets.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adBreaks != null)
+          'adBreaks': adBreaks.map((value) => value.toJson()).toList(),
+        if (editList != null)
+          'editList': editList.map((value) => value.toJson()).toList(),
+        if (elementaryStreams != null)
+          'elementaryStreams':
+              elementaryStreams.map((value) => value.toJson()).toList(),
+        if (inputs != null)
+          'inputs': inputs.map((value) => value.toJson()).toList(),
+        if (manifests != null)
+          'manifests': manifests.map((value) => value.toJson()).toList(),
+        if (muxStreams != null)
+          'muxStreams': muxStreams.map((value) => value.toJson()).toList(),
+        if (output != null) 'output': output.toJson(),
+        if (overlays != null)
+          'overlays': overlays.map((value) => value.toJson()).toList(),
+        if (pubsubDestination != null)
+          'pubsubDestination': pubsubDestination.toJson(),
+        if (spriteSheets != null)
+          'spriteSheets': spriteSheets.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Transcoding job template resource.
@@ -1834,16 +1632,10 @@ class JobTemplate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (config != null) {
-      _json['config'] = config.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (config != null) 'config': config.toJson(),
+        if (name != null) 'name': name,
+      };
 }
 
 /// Response message for `TranscoderService.ListJobTemplates`.
@@ -1868,17 +1660,11 @@ class ListJobTemplatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (jobTemplates != null) {
-      _json['jobTemplates'] =
-          jobTemplates.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (jobTemplates != null)
+          'jobTemplates': jobTemplates.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message for `TranscoderService.ListJobs`.
@@ -1903,16 +1689,10 @@ class ListJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (jobs != null) {
-      _json['jobs'] = jobs.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (jobs != null) 'jobs': jobs.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Manifest configuration.
@@ -1959,19 +1739,11 @@ class Manifest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fileName != null) {
-      _json['fileName'] = fileName;
-    }
-    if (muxStreams != null) {
-      _json['muxStreams'] = muxStreams;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fileName != null) 'fileName': fileName,
+        if (muxStreams != null) 'muxStreams': muxStreams,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Configuration for MPEG Common Encryption (MPEG-CENC).
@@ -2000,16 +1772,10 @@ class MpegCommonEncryption {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (keyId != null) {
-      _json['keyId'] = keyId;
-    }
-    if (scheme != null) {
-      _json['scheme'] = scheme;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (keyId != null) 'keyId': keyId,
+        if (scheme != null) 'scheme': scheme,
+      };
 }
 
 /// Multiplexing settings for output stream.
@@ -2070,28 +1836,15 @@ class MuxStream {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (container != null) {
-      _json['container'] = container;
-    }
-    if (elementaryStreams != null) {
-      _json['elementaryStreams'] = elementaryStreams;
-    }
-    if (encryption != null) {
-      _json['encryption'] = encryption.toJson();
-    }
-    if (fileName != null) {
-      _json['fileName'] = fileName;
-    }
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (segmentSettings != null) {
-      _json['segmentSettings'] = segmentSettings.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (container != null) 'container': container,
+        if (elementaryStreams != null) 'elementaryStreams': elementaryStreams,
+        if (encryption != null) 'encryption': encryption.toJson(),
+        if (fileName != null) 'fileName': fileName,
+        if (key != null) 'key': key,
+        if (segmentSettings != null)
+          'segmentSettings': segmentSettings.toJson(),
+      };
 }
 
 /// 2D normalized coordinates.
@@ -2115,16 +1868,10 @@ class NormalizedCoordinate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+      };
 }
 
 /// Represents the metadata of the long-running operation.
@@ -2194,31 +1941,15 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiVersion != null) {
-      _json['apiVersion'] = apiVersion;
-    }
-    if (cancelRequested != null) {
-      _json['cancelRequested'] = cancelRequested;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (statusDetail != null) {
-      _json['statusDetail'] = statusDetail;
-    }
-    if (target != null) {
-      _json['target'] = target;
-    }
-    if (verb != null) {
-      _json['verb'] = verb;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion,
+        if (cancelRequested != null) 'cancelRequested': cancelRequested,
+        if (createTime != null) 'createTime': createTime,
+        if (endTime != null) 'endTime': endTime,
+        if (statusDetail != null) 'statusDetail': statusDetail,
+        if (target != null) 'target': target,
+        if (verb != null) 'verb': verb,
+      };
 }
 
 /// The origin URI.
@@ -2244,16 +1975,10 @@ class OriginUri {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dash != null) {
-      _json['dash'] = dash;
-    }
-    if (hls != null) {
-      _json['hls'] = hls;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dash != null) 'dash': dash,
+        if (hls != null) 'hls': hls,
+      };
 }
 
 /// Location of output file(s) in a Cloud Storage bucket.
@@ -2272,13 +1997,9 @@ class Output {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// Overlay configuration.
@@ -2306,16 +2027,11 @@ class Overlay {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (animations != null) {
-      _json['animations'] = animations.map((value) => value.toJson()).toList();
-    }
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (animations != null)
+          'animations': animations.map((value) => value.toJson()).toList(),
+        if (image != null) 'image': image.toJson(),
+      };
 }
 
 /// Preprocessing configurations.
@@ -2360,25 +2076,13 @@ class PreprocessingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audio != null) {
-      _json['audio'] = audio.toJson();
-    }
-    if (color != null) {
-      _json['color'] = color.toJson();
-    }
-    if (crop != null) {
-      _json['crop'] = crop.toJson();
-    }
-    if (deblock != null) {
-      _json['deblock'] = deblock.toJson();
-    }
-    if (denoise != null) {
-      _json['denoise'] = denoise.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audio != null) 'audio': audio.toJson(),
+        if (color != null) 'color': color.toJson(),
+        if (crop != null) 'crop': crop.toJson(),
+        if (deblock != null) 'deblock': deblock.toJson(),
+        if (denoise != null) 'denoise': denoise.toJson(),
+      };
 }
 
 /// Estimated fractional progress for each step, from `0` to `1`.
@@ -2412,22 +2116,12 @@ class Progress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (analyzed != null) {
-      _json['analyzed'] = analyzed;
-    }
-    if (encoded != null) {
-      _json['encoded'] = encoded;
-    }
-    if (notified != null) {
-      _json['notified'] = notified;
-    }
-    if (uploaded != null) {
-      _json['uploaded'] = uploaded;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (analyzed != null) 'analyzed': analyzed,
+        if (encoded != null) 'encoded': encoded,
+        if (notified != null) 'notified': notified,
+        if (uploaded != null) 'uploaded': uploaded,
+      };
 }
 
 /// A Pub/Sub destination.
@@ -2445,13 +2139,9 @@ class PubsubDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (topic != null) {
-      _json['topic'] = topic;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (topic != null) 'topic': topic,
+      };
 }
 
 /// Configuration for SAMPLE-AES encryption.
@@ -2471,13 +2161,9 @@ class SampleAesEncryption {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (keyUri != null) {
-      _json['keyUri'] = keyUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (keyUri != null) 'keyUri': keyUri,
+      };
 }
 
 /// Segment settings for `"ts"`, `"fmp4"` and `"vtt"`.
@@ -2507,16 +2193,11 @@ class SegmentSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (individualSegments != null) {
-      _json['individualSegments'] = individualSegments;
-    }
-    if (segmentDuration != null) {
-      _json['segmentDuration'] = segmentDuration;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (individualSegments != null)
+          'individualSegments': individualSegments,
+        if (segmentDuration != null) 'segmentDuration': segmentDuration,
+      };
 }
 
 /// Sprite sheet configuration.
@@ -2616,40 +2297,19 @@ class SpriteSheet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columnCount != null) {
-      _json['columnCount'] = columnCount;
-    }
-    if (endTimeOffset != null) {
-      _json['endTimeOffset'] = endTimeOffset;
-    }
-    if (filePrefix != null) {
-      _json['filePrefix'] = filePrefix;
-    }
-    if (format != null) {
-      _json['format'] = format;
-    }
-    if (interval != null) {
-      _json['interval'] = interval;
-    }
-    if (rowCount != null) {
-      _json['rowCount'] = rowCount;
-    }
-    if (spriteHeightPixels != null) {
-      _json['spriteHeightPixels'] = spriteHeightPixels;
-    }
-    if (spriteWidthPixels != null) {
-      _json['spriteWidthPixels'] = spriteWidthPixels;
-    }
-    if (startTimeOffset != null) {
-      _json['startTimeOffset'] = startTimeOffset;
-    }
-    if (totalCount != null) {
-      _json['totalCount'] = totalCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columnCount != null) 'columnCount': columnCount,
+        if (endTimeOffset != null) 'endTimeOffset': endTimeOffset,
+        if (filePrefix != null) 'filePrefix': filePrefix,
+        if (format != null) 'format': format,
+        if (interval != null) 'interval': interval,
+        if (rowCount != null) 'rowCount': rowCount,
+        if (spriteHeightPixels != null)
+          'spriteHeightPixels': spriteHeightPixels,
+        if (spriteWidthPixels != null) 'spriteWidthPixels': spriteWidthPixels,
+        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset,
+        if (totalCount != null) 'totalCount': totalCount,
+      };
 }
 
 /// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
@@ -2679,16 +2339,11 @@ class TextAtom {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (inputs != null) {
-      _json['inputs'] = inputs.map((value) => value.toJson()).toList();
-    }
-    if (key != null) {
-      _json['key'] = key;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (inputs != null)
+          'inputs': inputs.map((value) => value.toJson()).toList(),
+        if (key != null) 'key': key,
+      };
 }
 
 /// Identifies which input file and track should be used.
@@ -2714,16 +2369,10 @@ class TextInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (track != null) {
-      _json['track'] = track;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (track != null) 'track': track,
+      };
 }
 
 /// Encoding of a text stream.
@@ -2764,19 +2413,12 @@ class TextStream {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (codec != null) {
-      _json['codec'] = codec;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (mapping != null) {
-      _json['mapping'] = mapping.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (codec != null) 'codec': codec,
+        if (languageCode != null) 'languageCode': languageCode,
+        if (mapping != null)
+          'mapping': mapping.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Video stream resource.
@@ -2996,71 +2638,27 @@ class VideoStream {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowOpenGop != null) {
-      _json['allowOpenGop'] = allowOpenGop;
-    }
-    if (aqStrength != null) {
-      _json['aqStrength'] = aqStrength;
-    }
-    if (bFrameCount != null) {
-      _json['bFrameCount'] = bFrameCount;
-    }
-    if (bPyramid != null) {
-      _json['bPyramid'] = bPyramid;
-    }
-    if (bitrateBps != null) {
-      _json['bitrateBps'] = bitrateBps;
-    }
-    if (codec != null) {
-      _json['codec'] = codec;
-    }
-    if (crfLevel != null) {
-      _json['crfLevel'] = crfLevel;
-    }
-    if (enableTwoPass != null) {
-      _json['enableTwoPass'] = enableTwoPass;
-    }
-    if (entropyCoder != null) {
-      _json['entropyCoder'] = entropyCoder;
-    }
-    if (frameRate != null) {
-      _json['frameRate'] = frameRate;
-    }
-    if (gopDuration != null) {
-      _json['gopDuration'] = gopDuration;
-    }
-    if (gopFrameCount != null) {
-      _json['gopFrameCount'] = gopFrameCount;
-    }
-    if (heightPixels != null) {
-      _json['heightPixels'] = heightPixels;
-    }
-    if (pixelFormat != null) {
-      _json['pixelFormat'] = pixelFormat;
-    }
-    if (preset != null) {
-      _json['preset'] = preset;
-    }
-    if (profile != null) {
-      _json['profile'] = profile;
-    }
-    if (rateControlMode != null) {
-      _json['rateControlMode'] = rateControlMode;
-    }
-    if (tune != null) {
-      _json['tune'] = tune;
-    }
-    if (vbvFullnessBits != null) {
-      _json['vbvFullnessBits'] = vbvFullnessBits;
-    }
-    if (vbvSizeBits != null) {
-      _json['vbvSizeBits'] = vbvSizeBits;
-    }
-    if (widthPixels != null) {
-      _json['widthPixels'] = widthPixels;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowOpenGop != null) 'allowOpenGop': allowOpenGop,
+        if (aqStrength != null) 'aqStrength': aqStrength,
+        if (bFrameCount != null) 'bFrameCount': bFrameCount,
+        if (bPyramid != null) 'bPyramid': bPyramid,
+        if (bitrateBps != null) 'bitrateBps': bitrateBps,
+        if (codec != null) 'codec': codec,
+        if (crfLevel != null) 'crfLevel': crfLevel,
+        if (enableTwoPass != null) 'enableTwoPass': enableTwoPass,
+        if (entropyCoder != null) 'entropyCoder': entropyCoder,
+        if (frameRate != null) 'frameRate': frameRate,
+        if (gopDuration != null) 'gopDuration': gopDuration,
+        if (gopFrameCount != null) 'gopFrameCount': gopFrameCount,
+        if (heightPixels != null) 'heightPixels': heightPixels,
+        if (pixelFormat != null) 'pixelFormat': pixelFormat,
+        if (preset != null) 'preset': preset,
+        if (profile != null) 'profile': profile,
+        if (rateControlMode != null) 'rateControlMode': rateControlMode,
+        if (tune != null) 'tune': tune,
+        if (vbvFullnessBits != null) 'vbvFullnessBits': vbvFullnessBits,
+        if (vbvSizeBits != null) 'vbvSizeBits': vbvSizeBits,
+        if (widthPixels != null) 'widthPixels': widthPixels,
+      };
 }

@@ -836,25 +836,15 @@ class BuildBazelRemoteExecutionV2Action {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (commandDigest != null) {
-      _json['commandDigest'] = commandDigest.toJson();
-    }
-    if (doNotCache != null) {
-      _json['doNotCache'] = doNotCache;
-    }
-    if (inputRootDigest != null) {
-      _json['inputRootDigest'] = inputRootDigest.toJson();
-    }
-    if (outputNodeProperties != null) {
-      _json['outputNodeProperties'] = outputNodeProperties;
-    }
-    if (timeout != null) {
-      _json['timeout'] = timeout;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (commandDigest != null) 'commandDigest': commandDigest.toJson(),
+        if (doNotCache != null) 'doNotCache': doNotCache,
+        if (inputRootDigest != null)
+          'inputRootDigest': inputRootDigest.toJson(),
+        if (outputNodeProperties != null)
+          'outputNodeProperties': outputNodeProperties,
+        if (timeout != null) 'timeout': timeout,
+      };
 }
 
 /// Describes the server/instance capabilities for updating the action cache.
@@ -870,13 +860,9 @@ class BuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (updateEnabled != null) {
-      _json['updateEnabled'] = updateEnabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (updateEnabled != null) 'updateEnabled': updateEnabled,
+      };
 }
 
 /// An ActionResult represents the result of an Action being run.
@@ -1075,48 +1061,29 @@ class BuildBazelRemoteExecutionV2ActionResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (executionMetadata != null) {
-      _json['executionMetadata'] = executionMetadata.toJson();
-    }
-    if (exitCode != null) {
-      _json['exitCode'] = exitCode;
-    }
-    if (outputDirectories != null) {
-      _json['outputDirectories'] =
-          outputDirectories.map((value) => value.toJson()).toList();
-    }
-    if (outputDirectorySymlinks != null) {
-      _json['outputDirectorySymlinks'] =
-          outputDirectorySymlinks.map((value) => value.toJson()).toList();
-    }
-    if (outputFileSymlinks != null) {
-      _json['outputFileSymlinks'] =
-          outputFileSymlinks.map((value) => value.toJson()).toList();
-    }
-    if (outputFiles != null) {
-      _json['outputFiles'] =
-          outputFiles.map((value) => value.toJson()).toList();
-    }
-    if (outputSymlinks != null) {
-      _json['outputSymlinks'] =
-          outputSymlinks.map((value) => value.toJson()).toList();
-    }
-    if (stderrDigest != null) {
-      _json['stderrDigest'] = stderrDigest.toJson();
-    }
-    if (stderrRaw != null) {
-      _json['stderrRaw'] = stderrRaw;
-    }
-    if (stdoutDigest != null) {
-      _json['stdoutDigest'] = stdoutDigest.toJson();
-    }
-    if (stdoutRaw != null) {
-      _json['stdoutRaw'] = stdoutRaw;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (executionMetadata != null)
+          'executionMetadata': executionMetadata.toJson(),
+        if (exitCode != null) 'exitCode': exitCode,
+        if (outputDirectories != null)
+          'outputDirectories':
+              outputDirectories.map((value) => value.toJson()).toList(),
+        if (outputDirectorySymlinks != null)
+          'outputDirectorySymlinks':
+              outputDirectorySymlinks.map((value) => value.toJson()).toList(),
+        if (outputFileSymlinks != null)
+          'outputFileSymlinks':
+              outputFileSymlinks.map((value) => value.toJson()).toList(),
+        if (outputFiles != null)
+          'outputFiles': outputFiles.map((value) => value.toJson()).toList(),
+        if (outputSymlinks != null)
+          'outputSymlinks':
+              outputSymlinks.map((value) => value.toJson()).toList(),
+        if (stderrDigest != null) 'stderrDigest': stderrDigest.toJson(),
+        if (stderrRaw != null) 'stderrRaw': stderrRaw,
+        if (stdoutDigest != null) 'stdoutDigest': stdoutDigest.toJson(),
+        if (stdoutRaw != null) 'stdoutRaw': stdoutRaw,
+      };
 }
 
 /// A request message for ContentAddressableStorage.BatchReadBlobs.
@@ -1136,13 +1103,10 @@ class BuildBazelRemoteExecutionV2BatchReadBlobsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (digests != null) {
-      _json['digests'] = digests.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (digests != null)
+          'digests': digests.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A response message for ContentAddressableStorage.BatchReadBlobs.
@@ -1164,13 +1128,10 @@ class BuildBazelRemoteExecutionV2BatchReadBlobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (responses != null) {
-      _json['responses'] = responses.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (responses != null)
+          'responses': responses.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A response corresponding to a single blob that the client tried to download.
@@ -1207,19 +1168,11 @@ class BuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (data != null) {
-      _json['data'] = data;
-    }
-    if (digest != null) {
-      _json['digest'] = digest.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (data != null) 'data': data,
+        if (digest != null) 'digest': digest.toJson(),
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 /// A request message for ContentAddressableStorage.BatchUpdateBlobs.
@@ -1240,13 +1193,10 @@ class BuildBazelRemoteExecutionV2BatchUpdateBlobsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (requests != null) {
-      _json['requests'] = requests.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (requests != null)
+          'requests': requests.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A request corresponding to a single blob that the client wants to upload.
@@ -1278,16 +1228,10 @@ class BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (data != null) {
-      _json['data'] = data;
-    }
-    if (digest != null) {
-      _json['digest'] = digest.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (data != null) 'data': data,
+        if (digest != null) 'digest': digest.toJson(),
+      };
 }
 
 /// A response message for ContentAddressableStorage.BatchUpdateBlobs.
@@ -1309,13 +1253,10 @@ class BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (responses != null) {
-      _json['responses'] = responses.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (responses != null)
+          'responses': responses.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A response corresponding to a single blob that the client tried to upload.
@@ -1340,16 +1281,10 @@ class BuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (digest != null) {
-      _json['digest'] = digest.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (digest != null) 'digest': digest.toJson(),
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 /// Capabilities of the remote cache system.
@@ -1411,26 +1346,18 @@ class BuildBazelRemoteExecutionV2CacheCapabilities {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actionCacheUpdateCapabilities != null) {
-      _json['actionCacheUpdateCapabilities'] =
-          actionCacheUpdateCapabilities.toJson();
-    }
-    if (cachePriorityCapabilities != null) {
-      _json['cachePriorityCapabilities'] = cachePriorityCapabilities.toJson();
-    }
-    if (digestFunction != null) {
-      _json['digestFunction'] = digestFunction;
-    }
-    if (maxBatchTotalSizeBytes != null) {
-      _json['maxBatchTotalSizeBytes'] = maxBatchTotalSizeBytes;
-    }
-    if (symlinkAbsolutePathStrategy != null) {
-      _json['symlinkAbsolutePathStrategy'] = symlinkAbsolutePathStrategy;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actionCacheUpdateCapabilities != null)
+          'actionCacheUpdateCapabilities':
+              actionCacheUpdateCapabilities.toJson(),
+        if (cachePriorityCapabilities != null)
+          'cachePriorityCapabilities': cachePriorityCapabilities.toJson(),
+        if (digestFunction != null) 'digestFunction': digestFunction,
+        if (maxBatchTotalSizeBytes != null)
+          'maxBatchTotalSizeBytes': maxBatchTotalSizeBytes,
+        if (symlinkAbsolutePathStrategy != null)
+          'symlinkAbsolutePathStrategy': symlinkAbsolutePathStrategy,
+      };
 }
 
 /// A `Command` is the actual command executed by a worker running an Action and
@@ -1581,32 +1508,17 @@ class BuildBazelRemoteExecutionV2Command {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (arguments != null) {
-      _json['arguments'] = arguments;
-    }
-    if (environmentVariables != null) {
-      _json['environmentVariables'] =
-          environmentVariables.map((value) => value.toJson()).toList();
-    }
-    if (outputDirectories != null) {
-      _json['outputDirectories'] = outputDirectories;
-    }
-    if (outputFiles != null) {
-      _json['outputFiles'] = outputFiles;
-    }
-    if (outputPaths != null) {
-      _json['outputPaths'] = outputPaths;
-    }
-    if (platform != null) {
-      _json['platform'] = platform.toJson();
-    }
-    if (workingDirectory != null) {
-      _json['workingDirectory'] = workingDirectory;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (arguments != null) 'arguments': arguments,
+        if (environmentVariables != null)
+          'environmentVariables':
+              environmentVariables.map((value) => value.toJson()).toList(),
+        if (outputDirectories != null) 'outputDirectories': outputDirectories,
+        if (outputFiles != null) 'outputFiles': outputFiles,
+        if (outputPaths != null) 'outputPaths': outputPaths,
+        if (platform != null) 'platform': platform.toJson(),
+        if (workingDirectory != null) 'workingDirectory': workingDirectory,
+      };
 }
 
 /// An `EnvironmentVariable` is one variable to set in the running program's
@@ -1630,16 +1542,10 @@ class BuildBazelRemoteExecutionV2CommandEnvironmentVariable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (value != null) 'value': value,
+      };
 }
 
 /// A content digest.
@@ -1689,16 +1595,10 @@ class BuildBazelRemoteExecutionV2Digest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hash != null) {
-      _json['hash'] = hash;
-    }
-    if (sizeBytes != null) {
-      _json['sizeBytes'] = sizeBytes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hash != null) 'hash': hash,
+        if (sizeBytes != null) 'sizeBytes': sizeBytes,
+      };
 }
 
 /// A `Directory` represents a directory node in a file tree, containing zero or
@@ -1776,24 +1676,17 @@ class BuildBazelRemoteExecutionV2Directory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (directories != null) {
-      _json['directories'] =
-          directories.map((value) => value.toJson()).toList();
-    }
-    if (files != null) {
-      _json['files'] = files.map((value) => value.toJson()).toList();
-    }
-    if (nodeProperties != null) {
-      _json['nodeProperties'] =
-          nodeProperties.map((value) => value.toJson()).toList();
-    }
-    if (symlinks != null) {
-      _json['symlinks'] = symlinks.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (directories != null)
+          'directories': directories.map((value) => value.toJson()).toList(),
+        if (files != null)
+          'files': files.map((value) => value.toJson()).toList(),
+        if (nodeProperties != null)
+          'nodeProperties':
+              nodeProperties.map((value) => value.toJson()).toList(),
+        if (symlinks != null)
+          'symlinks': symlinks.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A `DirectoryNode` represents a child of a Directory which is itself a
@@ -1820,16 +1713,10 @@ class BuildBazelRemoteExecutionV2DirectoryNode {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (digest != null) {
-      _json['digest'] = digest.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (digest != null) 'digest': digest.toJson(),
+        if (name != null) 'name': name,
+      };
 }
 
 /// Metadata about an ongoing execution, which will be contained in the metadata
@@ -1873,22 +1760,12 @@ class BuildBazelRemoteExecutionV2ExecuteOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actionDigest != null) {
-      _json['actionDigest'] = actionDigest.toJson();
-    }
-    if (stage != null) {
-      _json['stage'] = stage;
-    }
-    if (stderrStreamName != null) {
-      _json['stderrStreamName'] = stderrStreamName;
-    }
-    if (stdoutStreamName != null) {
-      _json['stdoutStreamName'] = stdoutStreamName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actionDigest != null) 'actionDigest': actionDigest.toJson(),
+        if (stage != null) 'stage': stage,
+        if (stderrStreamName != null) 'stderrStreamName': stderrStreamName,
+        if (stdoutStreamName != null) 'stdoutStreamName': stdoutStreamName,
+      };
 }
 
 /// A request message for Execution.Execute.
@@ -1945,22 +1822,14 @@ class BuildBazelRemoteExecutionV2ExecuteRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actionDigest != null) {
-      _json['actionDigest'] = actionDigest.toJson();
-    }
-    if (executionPolicy != null) {
-      _json['executionPolicy'] = executionPolicy.toJson();
-    }
-    if (resultsCachePolicy != null) {
-      _json['resultsCachePolicy'] = resultsCachePolicy.toJson();
-    }
-    if (skipCacheLookup != null) {
-      _json['skipCacheLookup'] = skipCacheLookup;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actionDigest != null) 'actionDigest': actionDigest.toJson(),
+        if (executionPolicy != null)
+          'executionPolicy': executionPolicy.toJson(),
+        if (resultsCachePolicy != null)
+          'resultsCachePolicy': resultsCachePolicy.toJson(),
+        if (skipCacheLookup != null) 'skipCacheLookup': skipCacheLookup,
+      };
 }
 
 /// The response message for Execution.Execute, which will be contained in the
@@ -2028,26 +1897,15 @@ class BuildBazelRemoteExecutionV2ExecuteResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cachedResult != null) {
-      _json['cachedResult'] = cachedResult;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    if (result != null) {
-      _json['result'] = result.toJson();
-    }
-    if (serverLogs != null) {
-      _json['serverLogs'] =
-          serverLogs.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cachedResult != null) 'cachedResult': cachedResult,
+        if (message != null) 'message': message,
+        if (result != null) 'result': result.toJson(),
+        if (serverLogs != null)
+          'serverLogs':
+              serverLogs.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 /// ExecutedActionMetadata contains details about a completed execution.
@@ -2123,40 +1981,26 @@ class BuildBazelRemoteExecutionV2ExecutedActionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (executionCompletedTimestamp != null) {
-      _json['executionCompletedTimestamp'] = executionCompletedTimestamp;
-    }
-    if (executionStartTimestamp != null) {
-      _json['executionStartTimestamp'] = executionStartTimestamp;
-    }
-    if (inputFetchCompletedTimestamp != null) {
-      _json['inputFetchCompletedTimestamp'] = inputFetchCompletedTimestamp;
-    }
-    if (inputFetchStartTimestamp != null) {
-      _json['inputFetchStartTimestamp'] = inputFetchStartTimestamp;
-    }
-    if (outputUploadCompletedTimestamp != null) {
-      _json['outputUploadCompletedTimestamp'] = outputUploadCompletedTimestamp;
-    }
-    if (outputUploadStartTimestamp != null) {
-      _json['outputUploadStartTimestamp'] = outputUploadStartTimestamp;
-    }
-    if (queuedTimestamp != null) {
-      _json['queuedTimestamp'] = queuedTimestamp;
-    }
-    if (worker != null) {
-      _json['worker'] = worker;
-    }
-    if (workerCompletedTimestamp != null) {
-      _json['workerCompletedTimestamp'] = workerCompletedTimestamp;
-    }
-    if (workerStartTimestamp != null) {
-      _json['workerStartTimestamp'] = workerStartTimestamp;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (executionCompletedTimestamp != null)
+          'executionCompletedTimestamp': executionCompletedTimestamp,
+        if (executionStartTimestamp != null)
+          'executionStartTimestamp': executionStartTimestamp,
+        if (inputFetchCompletedTimestamp != null)
+          'inputFetchCompletedTimestamp': inputFetchCompletedTimestamp,
+        if (inputFetchStartTimestamp != null)
+          'inputFetchStartTimestamp': inputFetchStartTimestamp,
+        if (outputUploadCompletedTimestamp != null)
+          'outputUploadCompletedTimestamp': outputUploadCompletedTimestamp,
+        if (outputUploadStartTimestamp != null)
+          'outputUploadStartTimestamp': outputUploadStartTimestamp,
+        if (queuedTimestamp != null) 'queuedTimestamp': queuedTimestamp,
+        if (worker != null) 'worker': worker,
+        if (workerCompletedTimestamp != null)
+          'workerCompletedTimestamp': workerCompletedTimestamp,
+        if (workerStartTimestamp != null)
+          'workerStartTimestamp': workerStartTimestamp,
+      };
 }
 
 /// Capabilities of the remote execution system.
@@ -2205,23 +2049,15 @@ class BuildBazelRemoteExecutionV2ExecutionCapabilities {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (digestFunction != null) {
-      _json['digestFunction'] = digestFunction;
-    }
-    if (execEnabled != null) {
-      _json['execEnabled'] = execEnabled;
-    }
-    if (executionPriorityCapabilities != null) {
-      _json['executionPriorityCapabilities'] =
-          executionPriorityCapabilities.toJson();
-    }
-    if (supportedNodeProperties != null) {
-      _json['supportedNodeProperties'] = supportedNodeProperties;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (digestFunction != null) 'digestFunction': digestFunction,
+        if (execEnabled != null) 'execEnabled': execEnabled,
+        if (executionPriorityCapabilities != null)
+          'executionPriorityCapabilities':
+              executionPriorityCapabilities.toJson(),
+        if (supportedNodeProperties != null)
+          'supportedNodeProperties': supportedNodeProperties,
+      };
 }
 
 /// An `ExecutionPolicy` can be used to control the scheduling of the action.
@@ -2246,13 +2082,9 @@ class BuildBazelRemoteExecutionV2ExecutionPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (priority != null) {
-      _json['priority'] = priority;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (priority != null) 'priority': priority,
+      };
 }
 
 /// A `FileNode` represents a single file and associated metadata.
@@ -2291,23 +2123,14 @@ class BuildBazelRemoteExecutionV2FileNode {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (digest != null) {
-      _json['digest'] = digest.toJson();
-    }
-    if (isExecutable != null) {
-      _json['isExecutable'] = isExecutable;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (nodeProperties != null) {
-      _json['nodeProperties'] =
-          nodeProperties.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (digest != null) 'digest': digest.toJson(),
+        if (isExecutable != null) 'isExecutable': isExecutable,
+        if (name != null) 'name': name,
+        if (nodeProperties != null)
+          'nodeProperties':
+              nodeProperties.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A request message for ContentAddressableStorage.FindMissingBlobs.
@@ -2327,14 +2150,10 @@ class BuildBazelRemoteExecutionV2FindMissingBlobsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blobDigests != null) {
-      _json['blobDigests'] =
-          blobDigests.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blobDigests != null)
+          'blobDigests': blobDigests.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A response message for ContentAddressableStorage.FindMissingBlobs.
@@ -2354,14 +2173,11 @@ class BuildBazelRemoteExecutionV2FindMissingBlobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (missingBlobDigests != null) {
-      _json['missingBlobDigests'] =
-          missingBlobDigests.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (missingBlobDigests != null)
+          'missingBlobDigests':
+              missingBlobDigests.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A response message for ContentAddressableStorage.GetTree.
@@ -2390,17 +2206,11 @@ class BuildBazelRemoteExecutionV2GetTreeResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (directories != null) {
-      _json['directories'] =
-          directories.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (directories != null)
+          'directories': directories.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// A `LogFile` is a log stored in the CAS.
@@ -2429,16 +2239,10 @@ class BuildBazelRemoteExecutionV2LogFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (digest != null) {
-      _json['digest'] = digest.toJson();
-    }
-    if (humanReadable != null) {
-      _json['humanReadable'] = humanReadable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (digest != null) 'digest': digest.toJson(),
+        if (humanReadable != null) 'humanReadable': humanReadable,
+      };
 }
 
 /// A single property for FileNodes, DirectoryNodes, and SymlinkNodes.
@@ -2464,16 +2268,10 @@ class BuildBazelRemoteExecutionV2NodeProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (value != null) 'value': value,
+      };
 }
 
 /// An `OutputDirectory` is the output in an `ActionResult` corresponding to a
@@ -2501,16 +2299,10 @@ class BuildBazelRemoteExecutionV2OutputDirectory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (path != null) {
-      _json['path'] = path;
-    }
-    if (treeDigest != null) {
-      _json['treeDigest'] = treeDigest.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (path != null) 'path': path,
+        if (treeDigest != null) 'treeDigest': treeDigest.toJson(),
+      };
 }
 
 /// An `OutputFile` is similar to a FileNode, but it is used as an output in an
@@ -2574,26 +2366,15 @@ class BuildBazelRemoteExecutionV2OutputFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contents != null) {
-      _json['contents'] = contents;
-    }
-    if (digest != null) {
-      _json['digest'] = digest.toJson();
-    }
-    if (isExecutable != null) {
-      _json['isExecutable'] = isExecutable;
-    }
-    if (nodeProperties != null) {
-      _json['nodeProperties'] =
-          nodeProperties.map((value) => value.toJson()).toList();
-    }
-    if (path != null) {
-      _json['path'] = path;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contents != null) 'contents': contents,
+        if (digest != null) 'digest': digest.toJson(),
+        if (isExecutable != null) 'isExecutable': isExecutable,
+        if (nodeProperties != null)
+          'nodeProperties':
+              nodeProperties.map((value) => value.toJson()).toList(),
+        if (path != null) 'path': path,
+      };
 }
 
 /// An `OutputSymlink` is similar to a Symlink, but it is used as an output in
@@ -2640,20 +2421,13 @@ class BuildBazelRemoteExecutionV2OutputSymlink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nodeProperties != null) {
-      _json['nodeProperties'] =
-          nodeProperties.map((value) => value.toJson()).toList();
-    }
-    if (path != null) {
-      _json['path'] = path;
-    }
-    if (target != null) {
-      _json['target'] = target;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nodeProperties != null)
+          'nodeProperties':
+              nodeProperties.map((value) => value.toJson()).toList(),
+        if (path != null) 'path': path,
+        if (target != null) 'target': target,
+      };
 }
 
 /// A `Platform` is a set of requirements, such as hardware, operating system,
@@ -2682,13 +2456,10 @@ class BuildBazelRemoteExecutionV2Platform {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (properties != null) {
-      _json['properties'] = properties.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (properties != null)
+          'properties': properties.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A single property for the environment.
@@ -2722,16 +2493,10 @@ class BuildBazelRemoteExecutionV2PlatformProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Allowed values for priority in ResultsCachePolicy Used for querying both
@@ -2753,13 +2518,10 @@ class BuildBazelRemoteExecutionV2PriorityCapabilities {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (priorities != null) {
-      _json['priorities'] = priorities.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (priorities != null)
+          'priorities': priorities.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Supported range of priorities, including boundaries.
@@ -2779,16 +2541,10 @@ class BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maxPriority != null) {
-      _json['maxPriority'] = maxPriority;
-    }
-    if (minPriority != null) {
-      _json['minPriority'] = minPriority;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maxPriority != null) 'maxPriority': maxPriority,
+        if (minPriority != null) 'minPriority': minPriority,
+      };
 }
 
 /// An optional Metadata to attach to any RPC request to tell the server about
@@ -2842,22 +2598,13 @@ class BuildBazelRemoteExecutionV2RequestMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actionId != null) {
-      _json['actionId'] = actionId;
-    }
-    if (correlatedInvocationsId != null) {
-      _json['correlatedInvocationsId'] = correlatedInvocationsId;
-    }
-    if (toolDetails != null) {
-      _json['toolDetails'] = toolDetails.toJson();
-    }
-    if (toolInvocationId != null) {
-      _json['toolInvocationId'] = toolInvocationId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actionId != null) 'actionId': actionId,
+        if (correlatedInvocationsId != null)
+          'correlatedInvocationsId': correlatedInvocationsId,
+        if (toolDetails != null) 'toolDetails': toolDetails.toJson(),
+        if (toolInvocationId != null) 'toolInvocationId': toolInvocationId,
+      };
 }
 
 /// A `ResultsCachePolicy` is used for fine-grained control over how action
@@ -2881,13 +2628,9 @@ class BuildBazelRemoteExecutionV2ResultsCachePolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (priority != null) {
-      _json['priority'] = priority;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (priority != null) 'priority': priority,
+      };
 }
 
 /// A response message for Capabilities.GetCapabilities.
@@ -2934,25 +2677,16 @@ class BuildBazelRemoteExecutionV2ServerCapabilities {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cacheCapabilities != null) {
-      _json['cacheCapabilities'] = cacheCapabilities.toJson();
-    }
-    if (deprecatedApiVersion != null) {
-      _json['deprecatedApiVersion'] = deprecatedApiVersion.toJson();
-    }
-    if (executionCapabilities != null) {
-      _json['executionCapabilities'] = executionCapabilities.toJson();
-    }
-    if (highApiVersion != null) {
-      _json['highApiVersion'] = highApiVersion.toJson();
-    }
-    if (lowApiVersion != null) {
-      _json['lowApiVersion'] = lowApiVersion.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cacheCapabilities != null)
+          'cacheCapabilities': cacheCapabilities.toJson(),
+        if (deprecatedApiVersion != null)
+          'deprecatedApiVersion': deprecatedApiVersion.toJson(),
+        if (executionCapabilities != null)
+          'executionCapabilities': executionCapabilities.toJson(),
+        if (highApiVersion != null) 'highApiVersion': highApiVersion.toJson(),
+        if (lowApiVersion != null) 'lowApiVersion': lowApiVersion.toJson(),
+      };
 }
 
 /// A `SymlinkNode` represents a symbolic link.
@@ -2991,20 +2725,13 @@ class BuildBazelRemoteExecutionV2SymlinkNode {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (nodeProperties != null) {
-      _json['nodeProperties'] =
-          nodeProperties.map((value) => value.toJson()).toList();
-    }
-    if (target != null) {
-      _json['target'] = target;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (nodeProperties != null)
+          'nodeProperties':
+              nodeProperties.map((value) => value.toJson()).toList(),
+        if (target != null) 'target': target,
+      };
 }
 
 /// Details for the tool used to call the API.
@@ -3026,16 +2753,10 @@ class BuildBazelRemoteExecutionV2ToolDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (toolName != null) {
-      _json['toolName'] = toolName;
-    }
-    if (toolVersion != null) {
-      _json['toolVersion'] = toolVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (toolName != null) 'toolName': toolName,
+        if (toolVersion != null) 'toolVersion': toolVersion,
+      };
 }
 
 /// A `Tree` contains all the Directory protos in a single directory Merkle
@@ -3068,16 +2789,11 @@ class BuildBazelRemoteExecutionV2Tree {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (children != null) {
-      _json['children'] = children.map((value) => value.toJson()).toList();
-    }
-    if (root != null) {
-      _json['root'] = root.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (children != null)
+          'children': children.map((value) => value.toJson()).toList(),
+        if (root != null) 'root': root.toJson(),
+      };
 }
 
 /// A request message for WaitExecution.
@@ -3088,10 +2804,7 @@ class BuildBazelRemoteExecutionV2WaitExecutionRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The full version of a given tool.
@@ -3129,22 +2842,12 @@ class BuildBazelSemverSemVer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (major != null) {
-      _json['major'] = major;
-    }
-    if (minor != null) {
-      _json['minor'] = minor;
-    }
-    if (patch != null) {
-      _json['patch'] = patch;
-    }
-    if (prerelease != null) {
-      _json['prerelease'] = prerelease;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (major != null) 'major': major,
+        if (minor != null) 'minor': minor,
+        if (patch != null) 'patch': patch,
+        if (prerelease != null) 'prerelease': prerelease,
+      };
 }
 
 /// CommandDuration contains the various duration metrics tracked when a bot
@@ -3230,46 +2933,22 @@ class GoogleDevtoolsRemotebuildbotCommandDurations {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cmWaitForAssignment != null) {
-      _json['cmWaitForAssignment'] = cmWaitForAssignment;
-    }
-    if (dockerPrep != null) {
-      _json['dockerPrep'] = dockerPrep;
-    }
-    if (dockerPrepStartTime != null) {
-      _json['dockerPrepStartTime'] = dockerPrepStartTime;
-    }
-    if (download != null) {
-      _json['download'] = download;
-    }
-    if (downloadStartTime != null) {
-      _json['downloadStartTime'] = downloadStartTime;
-    }
-    if (execStartTime != null) {
-      _json['execStartTime'] = execStartTime;
-    }
-    if (execution != null) {
-      _json['execution'] = execution;
-    }
-    if (isoPrepDone != null) {
-      _json['isoPrepDone'] = isoPrepDone;
-    }
-    if (overall != null) {
-      _json['overall'] = overall;
-    }
-    if (stdout != null) {
-      _json['stdout'] = stdout;
-    }
-    if (upload != null) {
-      _json['upload'] = upload;
-    }
-    if (uploadStartTime != null) {
-      _json['uploadStartTime'] = uploadStartTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cmWaitForAssignment != null)
+          'cmWaitForAssignment': cmWaitForAssignment,
+        if (dockerPrep != null) 'dockerPrep': dockerPrep,
+        if (dockerPrepStartTime != null)
+          'dockerPrepStartTime': dockerPrepStartTime,
+        if (download != null) 'download': download,
+        if (downloadStartTime != null) 'downloadStartTime': downloadStartTime,
+        if (execStartTime != null) 'execStartTime': execStartTime,
+        if (execution != null) 'execution': execution,
+        if (isoPrepDone != null) 'isoPrepDone': isoPrepDone,
+        if (overall != null) 'overall': overall,
+        if (stdout != null) 'stdout': stdout,
+        if (upload != null) 'upload': upload,
+        if (uploadStartTime != null) 'uploadStartTime': uploadStartTime,
+      };
 }
 
 /// CommandEvents contains counters for the number of warnings and errors that
@@ -3317,28 +2996,15 @@ class GoogleDevtoolsRemotebuildbotCommandEvents {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dockerCacheHit != null) {
-      _json['dockerCacheHit'] = dockerCacheHit;
-    }
-    if (dockerImageName != null) {
-      _json['dockerImageName'] = dockerImageName;
-    }
-    if (inputCacheMiss != null) {
-      _json['inputCacheMiss'] = inputCacheMiss;
-    }
-    if (numErrors != null) {
-      _json['numErrors'] = numErrors;
-    }
-    if (numWarnings != null) {
-      _json['numWarnings'] = numWarnings;
-    }
-    if (usedAsyncContainer != null) {
-      _json['usedAsyncContainer'] = usedAsyncContainer;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dockerCacheHit != null) 'dockerCacheHit': dockerCacheHit,
+        if (dockerImageName != null) 'dockerImageName': dockerImageName,
+        if (inputCacheMiss != null) 'inputCacheMiss': inputCacheMiss,
+        if (numErrors != null) 'numErrors': numErrors,
+        if (numWarnings != null) 'numWarnings': numWarnings,
+        if (usedAsyncContainer != null)
+          'usedAsyncContainer': usedAsyncContainer,
+      };
 }
 
 /// The internal status of the command result.
@@ -3424,16 +3090,10 @@ class GoogleDevtoolsRemotebuildbotCommandStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (message != null) 'message': message,
+      };
 }
 
 /// ResourceUsage is the system resource usage of the host machine.
@@ -3458,19 +3118,11 @@ class GoogleDevtoolsRemotebuildbotResourceUsage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cpuUsedPercent != null) {
-      _json['cpuUsedPercent'] = cpuUsedPercent;
-    }
-    if (diskUsage != null) {
-      _json['diskUsage'] = diskUsage.toJson();
-    }
-    if (memoryUsage != null) {
-      _json['memoryUsage'] = memoryUsage.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cpuUsedPercent != null) 'cpuUsedPercent': cpuUsedPercent,
+        if (diskUsage != null) 'diskUsage': diskUsage.toJson(),
+        if (memoryUsage != null) 'memoryUsage': memoryUsage.toJson(),
+      };
 }
 
 class GoogleDevtoolsRemotebuildbotResourceUsageStat {
@@ -3488,16 +3140,10 @@ class GoogleDevtoolsRemotebuildbotResourceUsageStat {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (total != null) {
-      _json['total'] = total;
-    }
-    if (used != null) {
-      _json['used'] = used;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (total != null) 'total': total,
+        if (used != null) 'used': used,
+      };
 }
 
 /// AcceleratorConfig defines the accelerator cards to attach to the VM.
@@ -3521,16 +3167,10 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (acceleratorCount != null) {
-      _json['acceleratorCount'] = acceleratorCount;
-    }
-    if (acceleratorType != null) {
-      _json['acceleratorType'] = acceleratorType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (acceleratorCount != null) 'acceleratorCount': acceleratorCount,
+        if (acceleratorType != null) 'acceleratorType': acceleratorType,
+      };
 }
 
 /// Autoscale defines the autoscaling policy of a worker pool.
@@ -3557,16 +3197,10 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maxSize != null) {
-      _json['maxSize'] = maxSize;
-    }
-    if (minSize != null) {
-      _json['minSize'] = minSize;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maxSize != null) 'maxSize': maxSize,
+        if (minSize != null) 'minSize': minSize,
+      };
 }
 
 /// The request used for `CreateInstance`.
@@ -3605,19 +3239,11 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (instance != null) {
-      _json['instance'] = instance.toJson();
-    }
-    if (instanceId != null) {
-      _json['instanceId'] = instanceId;
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (instance != null) 'instance': instance.toJson(),
+        if (instanceId != null) 'instanceId': instanceId,
+        if (parent != null) 'parent': parent,
+      };
 }
 
 /// The request used for `CreateWorkerPool`.
@@ -3656,19 +3282,11 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    if (poolId != null) {
-      _json['poolId'] = poolId;
-    }
-    if (workerPool != null) {
-      _json['workerPool'] = workerPool.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (parent != null) 'parent': parent,
+        if (poolId != null) 'poolId': poolId,
+        if (workerPool != null) 'workerPool': workerPool.toJson(),
+      };
 }
 
 /// The request used for `DeleteInstance`.
@@ -3687,13 +3305,9 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+      };
 }
 
 /// The request used for DeleteWorkerPool.
@@ -3713,13 +3327,9 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteWorkerPoolRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+      };
 }
 
 /// FeaturePolicy defines features allowed to be used on RBE instances, as well
@@ -3839,37 +3449,23 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (containerImageSources != null) {
-      _json['containerImageSources'] = containerImageSources.toJson();
-    }
-    if (dockerAddCapabilities != null) {
-      _json['dockerAddCapabilities'] = dockerAddCapabilities.toJson();
-    }
-    if (dockerChrootPath != null) {
-      _json['dockerChrootPath'] = dockerChrootPath.toJson();
-    }
-    if (dockerNetwork != null) {
-      _json['dockerNetwork'] = dockerNetwork.toJson();
-    }
-    if (dockerPrivileged != null) {
-      _json['dockerPrivileged'] = dockerPrivileged.toJson();
-    }
-    if (dockerRunAsRoot != null) {
-      _json['dockerRunAsRoot'] = dockerRunAsRoot.toJson();
-    }
-    if (dockerRuntime != null) {
-      _json['dockerRuntime'] = dockerRuntime.toJson();
-    }
-    if (dockerSiblingContainers != null) {
-      _json['dockerSiblingContainers'] = dockerSiblingContainers.toJson();
-    }
-    if (linuxIsolation != null) {
-      _json['linuxIsolation'] = linuxIsolation;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (containerImageSources != null)
+          'containerImageSources': containerImageSources.toJson(),
+        if (dockerAddCapabilities != null)
+          'dockerAddCapabilities': dockerAddCapabilities.toJson(),
+        if (dockerChrootPath != null)
+          'dockerChrootPath': dockerChrootPath.toJson(),
+        if (dockerNetwork != null) 'dockerNetwork': dockerNetwork.toJson(),
+        if (dockerPrivileged != null)
+          'dockerPrivileged': dockerPrivileged.toJson(),
+        if (dockerRunAsRoot != null)
+          'dockerRunAsRoot': dockerRunAsRoot.toJson(),
+        if (dockerRuntime != null) 'dockerRuntime': dockerRuntime.toJson(),
+        if (dockerSiblingContainers != null)
+          'dockerSiblingContainers': dockerSiblingContainers.toJson(),
+        if (linuxIsolation != null) 'linuxIsolation': linuxIsolation,
+      };
 }
 
 /// Defines whether a feature can be used or what values are accepted.
@@ -3905,16 +3501,10 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowedValues != null) {
-      _json['allowedValues'] = allowedValues;
-    }
-    if (policy != null) {
-      _json['policy'] = policy;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowedValues != null) 'allowedValues': allowedValues,
+        if (policy != null) 'policy': policy,
+      };
 }
 
 /// The request used for `GetInstance`.
@@ -3933,13 +3523,9 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+      };
 }
 
 /// The request used for GetWorkerPool.
@@ -3959,13 +3545,9 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetWorkerPoolRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+      };
 }
 
 /// Instance conceptually encapsulates all Remote Build Execution resources for
@@ -4037,25 +3619,13 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (featurePolicy != null) {
-      _json['featurePolicy'] = featurePolicy.toJson();
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (loggingEnabled != null) {
-      _json['loggingEnabled'] = loggingEnabled;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (featurePolicy != null) 'featurePolicy': featurePolicy.toJson(),
+        if (location != null) 'location': location,
+        if (loggingEnabled != null) 'loggingEnabled': loggingEnabled,
+        if (name != null) 'name': name,
+        if (state != null) 'state': state,
+      };
 }
 
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesRequest {
@@ -4073,13 +3643,9 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (parent != null) 'parent': parent,
+      };
 }
 
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse {
@@ -4099,13 +3665,10 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (instances != null) {
-      _json['instances'] = instances.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (instances != null)
+          'instances': instances.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest {
@@ -4146,16 +3709,10 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filter != null) 'filter': filter,
+        if (parent != null) 'parent': parent,
+      };
 }
 
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse {
@@ -4177,14 +3734,10 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (workerPools != null) {
-      _json['workerPools'] =
-          workerPools.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (workerPools != null)
+          'workerPools': workerPools.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The request used for `UpdateInstance`.
@@ -4233,22 +3786,12 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (instance != null) {
-      _json['instance'] = instance.toJson();
-    }
-    if (loggingEnabled != null) {
-      _json['loggingEnabled'] = loggingEnabled;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (instance != null) 'instance': instance.toJson(),
+        if (loggingEnabled != null) 'loggingEnabled': loggingEnabled,
+        if (name != null) 'name': name,
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// The request used for UpdateWorkerPool.
@@ -4280,16 +3823,10 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    if (workerPool != null) {
-      _json['workerPool'] = workerPool.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (updateMask != null) 'updateMask': updateMask,
+        if (workerPool != null) 'workerPool': workerPool.toJson(),
+      };
 }
 
 /// Defines the configuration to be used for creating workers in the worker
@@ -4409,43 +3946,21 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accelerator != null) {
-      _json['accelerator'] = accelerator.toJson();
-    }
-    if (diskSizeGb != null) {
-      _json['diskSizeGb'] = diskSizeGb;
-    }
-    if (diskType != null) {
-      _json['diskType'] = diskType;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (machineType != null) {
-      _json['machineType'] = machineType;
-    }
-    if (maxConcurrentActions != null) {
-      _json['maxConcurrentActions'] = maxConcurrentActions;
-    }
-    if (minCpuPlatform != null) {
-      _json['minCpuPlatform'] = minCpuPlatform;
-    }
-    if (networkAccess != null) {
-      _json['networkAccess'] = networkAccess;
-    }
-    if (reserved != null) {
-      _json['reserved'] = reserved;
-    }
-    if (soleTenantNodeType != null) {
-      _json['soleTenantNodeType'] = soleTenantNodeType;
-    }
-    if (vmImage != null) {
-      _json['vmImage'] = vmImage;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accelerator != null) 'accelerator': accelerator.toJson(),
+        if (diskSizeGb != null) 'diskSizeGb': diskSizeGb,
+        if (diskType != null) 'diskType': diskType,
+        if (labels != null) 'labels': labels,
+        if (machineType != null) 'machineType': machineType,
+        if (maxConcurrentActions != null)
+          'maxConcurrentActions': maxConcurrentActions,
+        if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform,
+        if (networkAccess != null) 'networkAccess': networkAccess,
+        if (reserved != null) 'reserved': reserved,
+        if (soleTenantNodeType != null)
+          'soleTenantNodeType': soleTenantNodeType,
+        if (vmImage != null) 'vmImage': vmImage,
+      };
 }
 
 /// A worker pool resource in the Remote Build Execution API.
@@ -4520,28 +4035,14 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (autoscale != null) {
-      _json['autoscale'] = autoscale.toJson();
-    }
-    if (channel != null) {
-      _json['channel'] = channel;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (workerConfig != null) {
-      _json['workerConfig'] = workerConfig.toJson();
-    }
-    if (workerCount != null) {
-      _json['workerCount'] = workerCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (autoscale != null) 'autoscale': autoscale.toJson(),
+        if (channel != null) 'channel': channel,
+        if (name != null) 'name': name,
+        if (state != null) 'state': state,
+        if (workerConfig != null) 'workerConfig': workerConfig.toJson(),
+        if (workerCount != null) 'workerCount': workerCount,
+      };
 }
 
 /// AdminTemp is a prelimiary set of administration tasks.
@@ -4583,16 +4084,10 @@ class GoogleDevtoolsRemoteworkersV1test2AdminTemp {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (arg != null) {
-      _json['arg'] = arg;
-    }
-    if (command != null) {
-      _json['command'] = command;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (arg != null) 'arg': arg,
+        if (command != null) 'command': command,
+      };
 }
 
 /// Describes a blob of binary content with its digest.
@@ -4623,16 +4118,10 @@ class GoogleDevtoolsRemoteworkersV1test2Blob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contents != null) {
-      _json['contents'] = contents;
-    }
-    if (digest != null) {
-      _json['digest'] = digest.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contents != null) 'contents': contents,
+        if (digest != null) 'digest': digest.toJson(),
+      };
 }
 
 /// DEPRECATED - use CommandResult instead.
@@ -4665,16 +4154,10 @@ class GoogleDevtoolsRemoteworkersV1test2CommandOutputs {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exitCode != null) {
-      _json['exitCode'] = exitCode;
-    }
-    if (outputs != null) {
-      _json['outputs'] = outputs.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exitCode != null) 'exitCode': exitCode,
+        if (outputs != null) 'outputs': outputs.toJson(),
+      };
 }
 
 /// DEPRECATED - use CommandResult instead.
@@ -4703,16 +4186,10 @@ class GoogleDevtoolsRemoteworkersV1test2CommandOverhead {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (duration != null) {
-      _json['duration'] = duration;
-    }
-    if (overhead != null) {
-      _json['overhead'] = overhead;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (duration != null) 'duration': duration,
+        if (overhead != null) 'overhead': overhead,
+      };
 }
 
 /// All information about the execution of a command, suitable for providing as
@@ -4793,28 +4270,14 @@ class GoogleDevtoolsRemoteworkersV1test2CommandResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (duration != null) {
-      _json['duration'] = duration;
-    }
-    if (exitCode != null) {
-      _json['exitCode'] = exitCode;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (outputs != null) {
-      _json['outputs'] = outputs.toJson();
-    }
-    if (overhead != null) {
-      _json['overhead'] = overhead;
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (duration != null) 'duration': duration,
+        if (exitCode != null) 'exitCode': exitCode,
+        if (metadata != null) 'metadata': metadata,
+        if (outputs != null) 'outputs': outputs.toJson(),
+        if (overhead != null) 'overhead': overhead,
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 /// Describes a shell-style task to execute, suitable for providing as the Bots
@@ -4847,19 +4310,12 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTask {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (expectedOutputs != null) {
-      _json['expectedOutputs'] = expectedOutputs.toJson();
-    }
-    if (inputs != null) {
-      _json['inputs'] = inputs.toJson();
-    }
-    if (timeouts != null) {
-      _json['timeouts'] = timeouts.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (expectedOutputs != null)
+          'expectedOutputs': expectedOutputs.toJson(),
+        if (inputs != null) 'inputs': inputs.toJson(),
+        if (timeouts != null) 'timeouts': timeouts.toJson(),
+      };
 }
 
 /// Describes the inputs to a shell-style task.
@@ -4941,27 +4397,17 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (arguments != null) {
-      _json['arguments'] = arguments;
-    }
-    if (environmentVariables != null) {
-      _json['environmentVariables'] =
-          environmentVariables.map((value) => value.toJson()).toList();
-    }
-    if (files != null) {
-      _json['files'] = files.map((value) => value.toJson()).toList();
-    }
-    if (inlineBlobs != null) {
-      _json['inlineBlobs'] =
-          inlineBlobs.map((value) => value.toJson()).toList();
-    }
-    if (workingDirectory != null) {
-      _json['workingDirectory'] = workingDirectory;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (arguments != null) 'arguments': arguments,
+        if (environmentVariables != null)
+          'environmentVariables':
+              environmentVariables.map((value) => value.toJson()).toList(),
+        if (files != null)
+          'files': files.map((value) => value.toJson()).toList(),
+        if (inlineBlobs != null)
+          'inlineBlobs': inlineBlobs.map((value) => value.toJson()).toList(),
+        if (workingDirectory != null) 'workingDirectory': workingDirectory,
+      };
 }
 
 /// An environment variable required by this task.
@@ -4984,16 +4430,10 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Describes the expected outputs of the command.
@@ -5046,22 +4486,12 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (directories != null) {
-      _json['directories'] = directories;
-    }
-    if (files != null) {
-      _json['files'] = files;
-    }
-    if (stderrDestination != null) {
-      _json['stderrDestination'] = stderrDestination;
-    }
-    if (stdoutDestination != null) {
-      _json['stdoutDestination'] = stdoutDestination;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (directories != null) 'directories': directories,
+        if (files != null) 'files': files,
+        if (stderrDestination != null) 'stderrDestination': stderrDestination,
+        if (stdoutDestination != null) 'stdoutDestination': stdoutDestination,
+      };
 }
 
 /// Describes the timeouts associated with this task.
@@ -5103,19 +4533,11 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (execution != null) {
-      _json['execution'] = execution;
-    }
-    if (idle != null) {
-      _json['idle'] = idle;
-    }
-    if (shutdown != null) {
-      _json['shutdown'] = shutdown;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (execution != null) 'execution': execution,
+        if (idle != null) 'idle': idle,
+        if (shutdown != null) 'shutdown': shutdown,
+      };
 }
 
 /// The CommandTask and CommandResult messages assume the existence of a service
@@ -5151,16 +4573,10 @@ class GoogleDevtoolsRemoteworkersV1test2Digest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hash != null) {
-      _json['hash'] = hash;
-    }
-    if (sizeBytes != null) {
-      _json['sizeBytes'] = sizeBytes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hash != null) 'hash': hash,
+        if (sizeBytes != null) 'sizeBytes': sizeBytes,
+      };
 }
 
 /// The contents of a directory.
@@ -5192,17 +4608,12 @@ class GoogleDevtoolsRemoteworkersV1test2Directory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (directories != null) {
-      _json['directories'] =
-          directories.map((value) => value.toJson()).toList();
-    }
-    if (files != null) {
-      _json['files'] = files.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (directories != null)
+          'directories': directories.map((value) => value.toJson()).toList(),
+        if (files != null)
+          'files': files.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The metadata for a directory.
@@ -5228,16 +4639,10 @@ class GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (digest != null) {
-      _json['digest'] = digest.toJson();
-    }
-    if (path != null) {
-      _json['path'] = path;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (digest != null) 'digest': digest.toJson(),
+        if (path != null) 'path': path,
+      };
 }
 
 /// The metadata for a file.
@@ -5290,22 +4695,12 @@ class GoogleDevtoolsRemoteworkersV1test2FileMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contents != null) {
-      _json['contents'] = contents;
-    }
-    if (digest != null) {
-      _json['digest'] = digest.toJson();
-    }
-    if (isExecutable != null) {
-      _json['isExecutable'] = isExecutable;
-    }
-    if (path != null) {
-      _json['path'] = path;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contents != null) 'contents': contents,
+        if (digest != null) 'digest': digest.toJson(),
+        if (isExecutable != null) 'isExecutable': isExecutable,
+        if (path != null) 'path': path,
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -5384,25 +4779,13 @@ class GoogleLongrunningOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -5452,17 +4835,9 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }

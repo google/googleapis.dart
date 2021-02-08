@@ -1975,10 +1975,7 @@ class CheckValidCredsRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A response indicating whether the credentials exist and are valid.
@@ -1994,13 +1991,9 @@ class CheckValidCredsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hasValidCreds != null) {
-      _json['hasValidCreds'] = hasValidCreds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hasValidCreds != null) 'hasValidCreds': hasValidCreds,
+      };
 }
 
 /// Represents data source metadata.
@@ -2175,64 +2168,33 @@ class DataSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (authorizationType != null) {
-      _json['authorizationType'] = authorizationType;
-    }
-    if (clientId != null) {
-      _json['clientId'] = clientId;
-    }
-    if (dataRefreshType != null) {
-      _json['dataRefreshType'] = dataRefreshType;
-    }
-    if (dataSourceId != null) {
-      _json['dataSourceId'] = dataSourceId;
-    }
-    if (defaultDataRefreshWindowDays != null) {
-      _json['defaultDataRefreshWindowDays'] = defaultDataRefreshWindowDays;
-    }
-    if (defaultSchedule != null) {
-      _json['defaultSchedule'] = defaultSchedule;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (helpUrl != null) {
-      _json['helpUrl'] = helpUrl;
-    }
-    if (manualRunsDisabled != null) {
-      _json['manualRunsDisabled'] = manualRunsDisabled;
-    }
-    if (minimumScheduleInterval != null) {
-      _json['minimumScheduleInterval'] = minimumScheduleInterval;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parameters != null) {
-      _json['parameters'] = parameters.map((value) => value.toJson()).toList();
-    }
-    if (scopes != null) {
-      _json['scopes'] = scopes;
-    }
-    if (supportsCustomSchedule != null) {
-      _json['supportsCustomSchedule'] = supportsCustomSchedule;
-    }
-    if (supportsMultipleTransfers != null) {
-      _json['supportsMultipleTransfers'] = supportsMultipleTransfers;
-    }
-    if (transferType != null) {
-      _json['transferType'] = transferType;
-    }
-    if (updateDeadlineSeconds != null) {
-      _json['updateDeadlineSeconds'] = updateDeadlineSeconds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (authorizationType != null) 'authorizationType': authorizationType,
+        if (clientId != null) 'clientId': clientId,
+        if (dataRefreshType != null) 'dataRefreshType': dataRefreshType,
+        if (dataSourceId != null) 'dataSourceId': dataSourceId,
+        if (defaultDataRefreshWindowDays != null)
+          'defaultDataRefreshWindowDays': defaultDataRefreshWindowDays,
+        if (defaultSchedule != null) 'defaultSchedule': defaultSchedule,
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (helpUrl != null) 'helpUrl': helpUrl,
+        if (manualRunsDisabled != null)
+          'manualRunsDisabled': manualRunsDisabled,
+        if (minimumScheduleInterval != null)
+          'minimumScheduleInterval': minimumScheduleInterval,
+        if (name != null) 'name': name,
+        if (parameters != null)
+          'parameters': parameters.map((value) => value.toJson()).toList(),
+        if (scopes != null) 'scopes': scopes,
+        if (supportsCustomSchedule != null)
+          'supportsCustomSchedule': supportsCustomSchedule,
+        if (supportsMultipleTransfers != null)
+          'supportsMultipleTransfers': supportsMultipleTransfers,
+        if (transferType != null) 'transferType': transferType,
+        if (updateDeadlineSeconds != null)
+          'updateDeadlineSeconds': updateDeadlineSeconds,
+      };
 }
 
 /// Represents a data source parameter with validation rules, so that parameters
@@ -2366,58 +2328,26 @@ class DataSourceParameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowedValues != null) {
-      _json['allowedValues'] = allowedValues;
-    }
-    if (deprecated != null) {
-      _json['deprecated'] = deprecated;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (fields != null) {
-      _json['fields'] = fields.map((value) => value.toJson()).toList();
-    }
-    if (immutable != null) {
-      _json['immutable'] = immutable;
-    }
-    if (maxValue != null) {
-      _json['maxValue'] = maxValue;
-    }
-    if (minValue != null) {
-      _json['minValue'] = minValue;
-    }
-    if (paramId != null) {
-      _json['paramId'] = paramId;
-    }
-    if (recurse != null) {
-      _json['recurse'] = recurse;
-    }
-    if (repeated != null) {
-      _json['repeated'] = repeated;
-    }
-    if (required != null) {
-      _json['required'] = required;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (validationDescription != null) {
-      _json['validationDescription'] = validationDescription;
-    }
-    if (validationHelpUrl != null) {
-      _json['validationHelpUrl'] = validationHelpUrl;
-    }
-    if (validationRegex != null) {
-      _json['validationRegex'] = validationRegex;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowedValues != null) 'allowedValues': allowedValues,
+        if (deprecated != null) 'deprecated': deprecated,
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (fields != null)
+          'fields': fields.map((value) => value.toJson()).toList(),
+        if (immutable != null) 'immutable': immutable,
+        if (maxValue != null) 'maxValue': maxValue,
+        if (minValue != null) 'minValue': minValue,
+        if (paramId != null) 'paramId': paramId,
+        if (recurse != null) 'recurse': recurse,
+        if (repeated != null) 'repeated': repeated,
+        if (required != null) 'required': required,
+        if (type != null) 'type': type,
+        if (validationDescription != null)
+          'validationDescription': validationDescription,
+        if (validationHelpUrl != null) 'validationHelpUrl': validationHelpUrl,
+        if (validationRegex != null) 'validationRegex': validationRegex,
+      };
 }
 
 /// Represents preferences for sending email notifications for transfer run
@@ -2434,13 +2364,10 @@ class EmailPreferences {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enableFailureEmail != null) {
-      _json['enableFailureEmail'] = enableFailureEmail;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enableFailureEmail != null)
+          'enableFailureEmail': enableFailureEmail,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2457,10 +2384,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Returns list of supported data sources and their metadata.
@@ -2491,17 +2415,11 @@ class ListDataSourcesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataSources != null) {
-      _json['dataSources'] =
-          dataSources.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataSources != null)
+          'dataSources': dataSources.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Locations.ListLocations.
@@ -2526,16 +2444,11 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The returned list of pipelines in the project.
@@ -2568,17 +2481,12 @@ class ListTransferConfigsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (transferConfigs != null) {
-      _json['transferConfigs'] =
-          transferConfigs.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (transferConfigs != null)
+          'transferConfigs':
+              transferConfigs.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The returned list transfer run messages.
@@ -2611,17 +2519,12 @@ class ListTransferLogsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (transferMessages != null) {
-      _json['transferMessages'] =
-          transferMessages.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (transferMessages != null)
+          'transferMessages':
+              transferMessages.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The returned list of pipelines in the project.
@@ -2654,17 +2557,11 @@ class ListTransferRunsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (transferRuns != null) {
-      _json['transferRuns'] =
-          transferRuns.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (transferRuns != null)
+          'transferRuns': transferRuns.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A resource that represents Google Cloud Platform location.
@@ -2729,25 +2626,13 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (labels != null) 'labels': labels,
+        if (locationId != null) 'locationId': locationId,
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Options customizing the data transfer schedule.
@@ -2789,19 +2674,12 @@ class ScheduleOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (disableAutoScheduling != null) {
-      _json['disableAutoScheduling'] = disableAutoScheduling;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (disableAutoScheduling != null)
+          'disableAutoScheduling': disableAutoScheduling,
+        if (endTime != null) 'endTime': endTime,
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// A request to schedule transfer runs for a time range.
@@ -2831,16 +2709,10 @@ class ScheduleTransferRunsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// A response to schedule transfer runs for a time range.
@@ -2859,13 +2731,9 @@ class ScheduleTransferRunsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (runs != null) {
-      _json['runs'] = runs.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (runs != null) 'runs': runs.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A request to start manual transfer runs.
@@ -2890,16 +2758,11 @@ class StartManualTransferRunsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (requestedRunTime != null) {
-      _json['requestedRunTime'] = requestedRunTime;
-    }
-    if (requestedTimeRange != null) {
-      _json['requestedTimeRange'] = requestedTimeRange.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (requestedRunTime != null) 'requestedRunTime': requestedRunTime,
+        if (requestedTimeRange != null)
+          'requestedTimeRange': requestedTimeRange.toJson(),
+      };
 }
 
 /// A response to start manual transfer runs.
@@ -2918,13 +2781,9 @@ class StartManualTransferRunsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (runs != null) {
-      _json['runs'] = runs.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (runs != null) 'runs': runs.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -2974,19 +2833,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// A specification for a time range, this will request transfer runs with
@@ -3017,16 +2868,10 @@ class TimeRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// Represents a data transfer configuration.
@@ -3195,58 +3040,29 @@ class TransferConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataRefreshWindowDays != null) {
-      _json['dataRefreshWindowDays'] = dataRefreshWindowDays;
-    }
-    if (dataSourceId != null) {
-      _json['dataSourceId'] = dataSourceId;
-    }
-    if (datasetRegion != null) {
-      _json['datasetRegion'] = datasetRegion;
-    }
-    if (destinationDatasetId != null) {
-      _json['destinationDatasetId'] = destinationDatasetId;
-    }
-    if (disabled != null) {
-      _json['disabled'] = disabled;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (emailPreferences != null) {
-      _json['emailPreferences'] = emailPreferences.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (nextRunTime != null) {
-      _json['nextRunTime'] = nextRunTime;
-    }
-    if (notificationPubsubTopic != null) {
-      _json['notificationPubsubTopic'] = notificationPubsubTopic;
-    }
-    if (params != null) {
-      _json['params'] = params;
-    }
-    if (schedule != null) {
-      _json['schedule'] = schedule;
-    }
-    if (scheduleOptions != null) {
-      _json['scheduleOptions'] = scheduleOptions.toJson();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    if (userId != null) {
-      _json['userId'] = userId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataRefreshWindowDays != null)
+          'dataRefreshWindowDays': dataRefreshWindowDays,
+        if (dataSourceId != null) 'dataSourceId': dataSourceId,
+        if (datasetRegion != null) 'datasetRegion': datasetRegion,
+        if (destinationDatasetId != null)
+          'destinationDatasetId': destinationDatasetId,
+        if (disabled != null) 'disabled': disabled,
+        if (displayName != null) 'displayName': displayName,
+        if (emailPreferences != null)
+          'emailPreferences': emailPreferences.toJson(),
+        if (name != null) 'name': name,
+        if (nextRunTime != null) 'nextRunTime': nextRunTime,
+        if (notificationPubsubTopic != null)
+          'notificationPubsubTopic': notificationPubsubTopic,
+        if (params != null) 'params': params,
+        if (schedule != null) 'schedule': schedule,
+        if (scheduleOptions != null)
+          'scheduleOptions': scheduleOptions.toJson(),
+        if (state != null) 'state': state,
+        if (updateTime != null) 'updateTime': updateTime,
+        if (userId != null) 'userId': userId,
+      };
 }
 
 /// Represents a user facing message for a particular data transfer run.
@@ -3279,19 +3095,11 @@ class TransferMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (messageText != null) {
-      _json['messageText'] = messageText;
-    }
-    if (messageTime != null) {
-      _json['messageTime'] = messageTime;
-    }
-    if (severity != null) {
-      _json['severity'] = severity;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (messageText != null) 'messageText': messageText,
+        if (messageTime != null) 'messageTime': messageTime,
+        if (severity != null) 'severity': severity,
+      };
 }
 
 /// Represents a data transfer run.
@@ -3449,53 +3257,24 @@ class TransferRun {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataSourceId != null) {
-      _json['dataSourceId'] = dataSourceId;
-    }
-    if (destinationDatasetId != null) {
-      _json['destinationDatasetId'] = destinationDatasetId;
-    }
-    if (emailPreferences != null) {
-      _json['emailPreferences'] = emailPreferences.toJson();
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (errorStatus != null) {
-      _json['errorStatus'] = errorStatus.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (notificationPubsubTopic != null) {
-      _json['notificationPubsubTopic'] = notificationPubsubTopic;
-    }
-    if (params != null) {
-      _json['params'] = params;
-    }
-    if (runTime != null) {
-      _json['runTime'] = runTime;
-    }
-    if (schedule != null) {
-      _json['schedule'] = schedule;
-    }
-    if (scheduleTime != null) {
-      _json['scheduleTime'] = scheduleTime;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    if (userId != null) {
-      _json['userId'] = userId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataSourceId != null) 'dataSourceId': dataSourceId,
+        if (destinationDatasetId != null)
+          'destinationDatasetId': destinationDatasetId,
+        if (emailPreferences != null)
+          'emailPreferences': emailPreferences.toJson(),
+        if (endTime != null) 'endTime': endTime,
+        if (errorStatus != null) 'errorStatus': errorStatus.toJson(),
+        if (name != null) 'name': name,
+        if (notificationPubsubTopic != null)
+          'notificationPubsubTopic': notificationPubsubTopic,
+        if (params != null) 'params': params,
+        if (runTime != null) 'runTime': runTime,
+        if (schedule != null) 'schedule': schedule,
+        if (scheduleTime != null) 'scheduleTime': scheduleTime,
+        if (startTime != null) 'startTime': startTime,
+        if (state != null) 'state': state,
+        if (updateTime != null) 'updateTime': updateTime,
+        if (userId != null) 'userId': userId,
+      };
 }
