@@ -2,13 +2,13 @@ name: googleapis_generator_dependency
 publish_to: none
 
 environment:
-  sdk: '>=2.10.0 <3.0.0'
+  sdk: '>=2.12.0-0 <3.0.0'
 
 dependencies:
   discoveryapis_generator: any
   io: ^0.3.3
   pool: ^1.4.0
-  yaml: ^2.1.0
+  yaml: '>=2.1.0 <4.0.0'
 
 dependency_overrides:
   _discoveryapis_commons:
