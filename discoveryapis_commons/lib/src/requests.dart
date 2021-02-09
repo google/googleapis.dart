@@ -172,9 +172,8 @@ class DetailedApiRequestError extends ApiRequestError {
       'DetailedApiRequestError(status: $status, message: $message)';
 }
 
-/// Instances of this class can be added to an `RpcError` to provide detailed
-/// information.
-/// They will be sent back to the client in the `errors` field.
+/// Instances of this class can be added to a [DetailedApiRequestError] to
+/// provide detailed information.
 ///
 /// This follows the Google JSON style guide:
 /// https://google.github.io/styleguide/jsoncstyleguide.xml
@@ -184,7 +183,9 @@ class ApiRequestErrorDetail {
   /// calendar) from general protocol errors (i.e. file not found).
   final core.String? domain;
 
-  /// Unique identifier for this error.
+  /// Unique identifier for this error. Different from the
+  /// [DetailedApiRequestError.status] property in that this is not an http
+  /// response code.
   final core.String? reason;
 
   /// A human readable message providing more details about the error. If there
