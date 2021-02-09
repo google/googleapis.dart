@@ -42,7 +42,7 @@ Future<void> main(List<String> args) async {
 Iterable<Configuration> _configs(String version, String path) sync* {
   stderr.writeln('file: $version');
   final fileContents = File(path).readAsStringSync();
-  final yaml = loadYaml(fileContents, sourceUrl: path) as YamlMap;
+  final yaml = loadYaml(fileContents, sourceUrl: Uri.parse(path)) as YamlMap;
   final packages = yaml['packages'] as YamlList;
 
   for (var name in _names) {

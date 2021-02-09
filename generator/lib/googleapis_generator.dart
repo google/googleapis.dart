@@ -61,7 +61,7 @@ Future<List<RestDescription>> fetchDiscoveryDocuments({
 
   Future<RestDescription> download(DirectoryListItems item) async {
     try {
-      final result = await client.get(item.discoveryRestUrl);
+      final result = await client.get(Uri.parse(item.discoveryRestUrl));
 
       if (result.statusCode != 200) {
         throw StateError(
