@@ -797,7 +797,7 @@
             }
         }
     },
-    "revision": "20210127",
+    "revision": "20210213",
     "rootUrl": "https://androiddeviceprovisioning.googleapis.com/",
     "schemas": {
         "ClaimDeviceRequest": {

@@ -12,7 +12,6 @@ packages:
     extraDevDependencies:
         googleapis_auth: ^0.2.12
     apis:
-    - oauth2:v2 # Note: this is used many places and sometimes the document is missing
     - abusiveexperiencereport:v1 # https://developers.google.com/abusive-experience-report/
     - acceleratedmobilepageurl:v1 # https://developers.google.com/amp/cache/
     - accessapproval:v1
@@ -47,12 +46,14 @@ packages:
     - books:v1 # https://developers.google.com/books/
     - calendar:v3 # https://developers.google.com/google-apps/calendar/
     - chat:v1 # https://developers.google.com/hangouts/chat
+    - chromemanagement:v1
     - chromeuxreport:v1
     - civicinfo:v2 # https://developers.google.com/civic-information/
     - classroom:v1 # https://developers.google.com/classroom/
     - cloudasset:v1
     - cloudbilling:v1 # https://cloud.google.com/billing/
     - cloudbuild:v1 # https://cloud.google.com/container-builder/docs/
+    - cloudchannel:v1
     - clouddebugger:v2 # https://cloud.google.com/tools/cloud-debugger
     - cloudfunctions:v1 # https://cloud.google.com/functions/docs/
     - cloudidentity:v1 # https://cloud.google.com/identity/
@@ -101,8 +102,8 @@ packages:
     - fitness:v1 # https://developers.google.com/fitness/
     - games:v1 # https://developers.google.com/games/services/
     - gamesConfiguration:v1configuration # https://developers.google.com/games/services/publishing/api/
-    - gameservices:v1
     - gamesManagement:v1management # https://developers.google.com/games/services/management/api/
+    - gameservices:v1
     - genomics:v1 # https://cloud.google.com/genomics/
     - gmail:v1 # https://developers.google.com/gmail/
     - gmailpostmastertools:v1
@@ -130,6 +131,7 @@ packages:
     - monitoring:v3 # https://cloud.google.com/monitoring/api/
     - networkmanagement:v1
     - notebooks:v1
+    - oauth2:v2 # Note: this is used many places and sometimes the document is missing
     - osconfig:v1
     - oslogin:v1 # https://cloud.google.com/compute/docs/oslogin/rest/
     - pagespeedonline:v5 # https://developers.google.com/speed/docs/insights/about
@@ -187,6 +189,8 @@ packages:
     - webfonts:v1 # https://developers.google.com/fonts/docs/developer_api
     - webmasters:v3 # https://developers.google.com/webmaster-tools/
     - websecurityscanner:v1
+    - workflowexecutions:v1
+    - workflows:v1
     - youtube:v3 # https://developers.google.com/youtube/
     - youtubeAnalytics:v2 # https://developers.google.com/youtube/analytics/
     - youtubereporting:v1 # https://developers.google.com/youtube/reporting/v1/reports/
@@ -226,8 +230,6 @@ packages:
     - sqladmin:v1beta4
     - toolresults:v1beta3 # https://developers.google.com/cloud-test-lab/
     - transcoder:v1beta1
-    - workflowexecutions:v1beta
-    - workflows:v1beta
 
 # APIs that we do not wish to include in this package
 skipped_apis:
@@ -252,7 +254,7 @@ skipped_apis:
 - cloudbuild:v1alpha1 # v1 included
 - cloudbuild:v1alpha2 # v1 included
 - cloudidentity:v1beta1 # v1 included
-- cloudresourcemanager:v1beta1 # https://cloud.google.com/resource-manager
+- cloudresourcemanager:v1beta1 # v1 included
 - cloudresourcemanager:v2beta1 # v2 included
 - cloudscheduler:v1beta1
 - cloudshell:v1alpha1 # v1 included
@@ -273,7 +275,7 @@ skipped_apis:
 - deploymentmanager:alpha # v2beta # v1 included
 - deploymentmanager:v2beta # v1 included
 - dfareporting:v3.3 # v3.4 included
-- dialogflow:v2beta1 # https://cloud.google.com/dialogflow-enterprise/
+- dialogflow:v2beta1 # v2 included
 - dialogflow:v3beta1 # v3 included
 - dns:v1beta2 # v1 included
 - documentai:v1beta2 # v1beta3 included
@@ -292,8 +294,8 @@ skipped_apis:
 - healthcare:v1beta1 # v1 included
 - iap:v1beta1 # v1 included
 - jobs:v3p1beta1 # v3 included
-- language:v1beta1 # https://cloud.google.com/natural-language/
-- language:v1beta2 # https://cloud.google.com/natural-language/
+- language:v1beta1 # v1 included
+- language:v1beta2 # v1 included
 - managedidentities:v1alpha1 # v1 included
 - managedidentities:v1beta1 # v1 included
 - memcache:v1beta2 # v1 included
@@ -338,3 +340,5 @@ skipped_apis:
 - vision:v1p2beta1 # v1 included
 - websecurityscanner:v1alpha # v1 included
 - websecurityscanner:v1beta # v1 included
+- workflowexecutions:v1beta # v1 included
+- workflows:v1beta # v1 included

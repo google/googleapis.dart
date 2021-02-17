@@ -177,7 +177,7 @@
             }
         }
     },
-    "revision": "20210129",
+    "revision": "20210205",
     "rootUrl": "https://cloudtrace.googleapis.com/",
     "schemas": {
         "Annotation": {
