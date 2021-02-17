@@ -220,15 +220,3 @@ This API converts video files into formats suitable for consumer distribution.
 
 Official API documentation: https://cloud.google.com/transcoder/docs/
 
-#### Workflow Executions API - workflowexecutions v1beta
-
-Execute workflows created with Workflows API.
-
-Official API documentation: https://cloud.google.com/workflows
-
-#### Workflows API - workflows v1beta
-
-Orchestrate Workflows consisting of Google Cloud APIs, SaaS APIs or private API endpoints.
-
-Official API documentation: https://cloud.google.com/workflows
-

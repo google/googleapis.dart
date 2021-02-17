@@ -5397,6 +5397,13 @@ class V1DefaultIdentity {
   /// `services/serviceconsumermanagement.googleapis.com/projects/123/defaultIdentity`
   core.String name;
 
+  /// The Default Identity tag.
+  ///
+  /// If specified when creating the account, the tag must be present in
+  /// activation_grants. If not specified when creating the account, the tag is
+  /// set to the tag specified in activation_grants.
+  core.String tag;
+
   /// The unique and stable id of the default identity.
   core.String uniqueId;
 
@@ -5409,6 +5416,9 @@ class V1DefaultIdentity {
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
+    if (_json.containsKey('tag')) {
+      tag = _json['tag'] as core.String;
+    }
     if (_json.containsKey('uniqueId')) {
       uniqueId = _json['uniqueId'] as core.String;
     }
@@ -5417,6 +5427,7 @@ class V1DefaultIdentity {
   core.Map<core.String, core.Object> toJson() => {
         if (email != null) 'email': email,
         if (name != null) 'name': name,
+        if (tag != null) 'tag': tag,
         if (uniqueId != null) 'uniqueId': uniqueId,
       };
 }

@@ -12977,7 +12977,7 @@ class PlaylistItemListResponse {
 
 /// Basic details about a playlist, including title, description and thumbnails.
 ///
-/// Basic details of a YouTube Playlist item provided by the author. Next ID: 13
+/// Basic details of a YouTube Playlist item provided by the author. Next ID: 15
 class PlaylistItemSnippet {
   /// The ID that YouTube uses to uniquely identify the user that added the item
   /// to the playlist.
@@ -13016,6 +13016,12 @@ class PlaylistItemSnippet {
   /// The item's title.
   core.String title;
 
+  /// Channel id for the channel this video belongs to.
+  core.String videoOwnerChannelId;
+
+  /// Channel title for the channel this video belongs to.
+  core.String videoOwnerChannelTitle;
+
   PlaylistItemSnippet();
 
   PlaylistItemSnippet.fromJson(core.Map _json) {
@@ -13048,6 +13054,12 @@ class PlaylistItemSnippet {
     if (_json.containsKey('title')) {
       title = _json['title'] as core.String;
     }
+    if (_json.containsKey('videoOwnerChannelId')) {
+      videoOwnerChannelId = _json['videoOwnerChannelId'] as core.String;
+    }
+    if (_json.containsKey('videoOwnerChannelTitle')) {
+      videoOwnerChannelTitle = _json['videoOwnerChannelTitle'] as core.String;
+    }
   }
 
   core.Map<core.String, core.Object> toJson() => {
@@ -13060,6 +13072,10 @@ class PlaylistItemSnippet {
         if (resourceId != null) 'resourceId': resourceId.toJson(),
         if (thumbnails != null) 'thumbnails': thumbnails.toJson(),
         if (title != null) 'title': title,
+        if (videoOwnerChannelId != null)
+          'videoOwnerChannelId': videoOwnerChannelId,
+        if (videoOwnerChannelTitle != null)
+          'videoOwnerChannelTitle': videoOwnerChannelTitle,
       };
 }
 
@@ -13233,6 +13249,18 @@ class PlaylistSnippet {
   /// Keyword tags associated with the playlist.
   core.List<core.String> tags;
 
+  /// Note: if the playlist has a custom thumbnail, this field will not be
+  /// populated.
+  ///
+  /// The video id selected by the user that will be used as the thumbnail of
+  /// this playlist. This field defaults to the first publicly viewable video in
+  /// the playlist, if: 1. The user has never selected a video to be the
+  /// thumbnail of the playlist. 2. The user selects a video to be the
+  /// thumbnail, and then removes that video from the playlist. 3. The user
+  /// selects a non-owned video to be the thumbnail, but that video becomes
+  /// private, or gets deleted.
+  core.String thumbnailVideoId;
+
   /// A map of thumbnail images associated with the playlist.
   ///
   /// For each object in the map, the key is the name of the thumbnail image,
@@ -13270,6 +13298,9 @@ class PlaylistSnippet {
           .map<core.String>((value) => value as core.String)
           .toList();
     }
+    if (_json.containsKey('thumbnailVideoId')) {
+      thumbnailVideoId = _json['thumbnailVideoId'] as core.String;
+    }
     if (_json.containsKey('thumbnails')) {
       thumbnails = ThumbnailDetails.fromJson(
           _json['thumbnails'] as core.Map<core.String, core.dynamic>);
@@ -13287,6 +13318,7 @@ class PlaylistSnippet {
         if (localized != null) 'localized': localized.toJson(),
         if (publishedAt != null) 'publishedAt': (publishedAt).toIso8601String(),
         if (tags != null) 'tags': tags,
+        if (thumbnailVideoId != null) 'thumbnailVideoId': thumbnailVideoId,
         if (thumbnails != null) 'thumbnails': thumbnails.toJson(),
         if (title != null) 'title': title,
       };

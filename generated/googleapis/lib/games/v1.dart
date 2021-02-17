@@ -52,7 +52,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// The Google Play games service allows developers to enhance games with social
 /// leaderboards, achievements, game state, sign-in with Google, and more.
 class GamesApi {
-  /// View and manage its own configuration data in your Google Drive
+  /// See, create, and delete its own configuration data in your Google Drive
   static const driveAppdataScope =
       'https://www.googleapis.com/auth/drive.appdata';
 

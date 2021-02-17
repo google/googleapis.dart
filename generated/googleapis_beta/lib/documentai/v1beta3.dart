@@ -766,404 +766,20 @@ class GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionMetadata {
 
 /// Metadata of the EvaluateProcessorVersion method.
 class GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionResponse {
-  /// The evaluation result.
-  GoogleCloudDocumentaiUiv1beta3Evaluation evaluation;
+  /// The resource name of the created evaluation.
+  core.String evaluation;
 
   GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionResponse();
 
   GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionResponse.fromJson(
       core.Map _json) {
     if (_json.containsKey('evaluation')) {
-      evaluation = GoogleCloudDocumentaiUiv1beta3Evaluation.fromJson(
-          _json['evaluation'] as core.Map<core.String, core.dynamic>);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() => {
-        if (evaluation != null) 'evaluation': evaluation.toJson(),
-      };
-}
-
-/// An evaluation of a ProcessorVersion's performance.
-class GoogleCloudDocumentaiUiv1beta3Evaluation {
-  /// Metrics for all the entities in aggregate.
-  GoogleCloudDocumentaiUiv1beta3EvaluationMultiConfidenceMetrics
-      allEntitiesMetrics;
-
-  /// The time that the evaluation was created.
-  core.String createTime;
-
-  /// Metrics across confidence levels, for different entities.
-  core.Map<core.String,
-          GoogleCloudDocumentaiUiv1beta3EvaluationMultiConfidenceMetrics>
-      entityMetrics;
-
-  /// The resource name of the evaluation.
-  ///
-  /// Format:
-  /// projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}/evaluations/{evaluation}
-  core.String name;
-
-  GoogleCloudDocumentaiUiv1beta3Evaluation();
-
-  GoogleCloudDocumentaiUiv1beta3Evaluation.fromJson(core.Map _json) {
-    if (_json.containsKey('allEntitiesMetrics')) {
-      allEntitiesMetrics =
-          GoogleCloudDocumentaiUiv1beta3EvaluationMultiConfidenceMetrics
-              .fromJson(_json['allEntitiesMetrics']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('entityMetrics')) {
-      entityMetrics = (_json['entityMetrics'] as core.Map)
-          .cast<core.String, core.Map>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              GoogleCloudDocumentaiUiv1beta3EvaluationMultiConfidenceMetrics
-                  .fromJson(item as core.Map<core.String, core.dynamic>),
-            ),
-          );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() => {
-        if (allEntitiesMetrics != null)
-          'allEntitiesMetrics': allEntitiesMetrics.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (entityMetrics != null)
-          'entityMetrics': entityMetrics
-              .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (name != null) 'name': name,
-      };
-}
-
-/// Evaluations metrics, at a specific confidence level.
-class GoogleCloudDocumentaiUiv1beta3EvaluationConfidenceLevelMetrics {
-  /// The confidence level.
-  core.double confidenceLevel;
-
-  /// The metrics at the specific confidence level.
-  GoogleCloudDocumentaiUiv1beta3EvaluationMetrics metrics;
-
-  GoogleCloudDocumentaiUiv1beta3EvaluationConfidenceLevelMetrics();
-
-  GoogleCloudDocumentaiUiv1beta3EvaluationConfidenceLevelMetrics.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('confidenceLevel')) {
-      confidenceLevel = (_json['confidenceLevel'] as core.num).toDouble();
-    }
-    if (_json.containsKey('metrics')) {
-      metrics = GoogleCloudDocumentaiUiv1beta3EvaluationMetrics.fromJson(
-          _json['metrics'] as core.Map<core.String, core.dynamic>);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() => {
-        if (confidenceLevel != null) 'confidenceLevel': confidenceLevel,
-        if (metrics != null) 'metrics': metrics.toJson(),
-      };
-}
-
-/// Evaluation metrics, either in aggregate or about a specific entity.
-class GoogleCloudDocumentaiUiv1beta3EvaluationMetrics {
-  /// The calculated f1 score.
-  core.double f1Score;
-
-  /// The calculated precision.
-  core.double precision;
-
-  /// The calculated recall.
-  core.double recall;
-
-  GoogleCloudDocumentaiUiv1beta3EvaluationMetrics();
-
-  GoogleCloudDocumentaiUiv1beta3EvaluationMetrics.fromJson(core.Map _json) {
-    if (_json.containsKey('f1Score')) {
-      f1Score = (_json['f1Score'] as core.num).toDouble();
-    }
-    if (_json.containsKey('precision')) {
-      precision = (_json['precision'] as core.num).toDouble();
-    }
-    if (_json.containsKey('recall')) {
-      recall = (_json['recall'] as core.num).toDouble();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() => {
-        if (f1Score != null) 'f1Score': f1Score,
-        if (precision != null) 'precision': precision,
-        if (recall != null) 'recall': recall,
-      };
-}
-
-/// Metrics across multiple confidence levels.
-class GoogleCloudDocumentaiUiv1beta3EvaluationMultiConfidenceMetrics {
-  /// Metrics across confidence levels.
-  core.List<GoogleCloudDocumentaiUiv1beta3EvaluationConfidenceLevelMetrics>
-      confidenceLevelMetrics;
-
-  GoogleCloudDocumentaiUiv1beta3EvaluationMultiConfidenceMetrics();
-
-  GoogleCloudDocumentaiUiv1beta3EvaluationMultiConfidenceMetrics.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('confidenceLevelMetrics')) {
-      confidenceLevelMetrics = (_json['confidenceLevelMetrics'] as core.List)
-          .map<GoogleCloudDocumentaiUiv1beta3EvaluationConfidenceLevelMetrics>(
-              (value) =>
-                  GoogleCloudDocumentaiUiv1beta3EvaluationConfidenceLevelMetrics
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() => {
-        if (confidenceLevelMetrics != null)
-          'confidenceLevelMetrics':
-              confidenceLevelMetrics.map((value) => value.toJson()).toList(),
-      };
-}
-
-/// Gives a short summary of an evaluation, and links to the evaluation itself.
-class GoogleCloudDocumentaiUiv1beta3EvaluationReference {
-  /// An aggregate of the statistics for the evaluation.
-  GoogleCloudDocumentaiUiv1beta3EvaluationMetrics aggregateMetrics;
-
-  /// The resource name of the evaluation.
-  core.String evaluation;
-
-  /// The resource name of the Long Running Operation for the evaluation.
-  core.String operation;
-
-  GoogleCloudDocumentaiUiv1beta3EvaluationReference();
-
-  GoogleCloudDocumentaiUiv1beta3EvaluationReference.fromJson(core.Map _json) {
-    if (_json.containsKey('aggregateMetrics')) {
-      aggregateMetrics =
-          GoogleCloudDocumentaiUiv1beta3EvaluationMetrics.fromJson(
-              _json['aggregateMetrics'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('evaluation')) {
       evaluation = _json['evaluation'] as core.String;
     }
-    if (_json.containsKey('operation')) {
-      operation = _json['operation'] as core.String;
-    }
   }
 
   core.Map<core.String, core.Object> toJson() => {
-        if (aggregateMetrics != null)
-          'aggregateMetrics': aggregateMetrics.toJson(),
         if (evaluation != null) 'evaluation': evaluation,
-        if (operation != null) 'operation': operation,
-      };
-}
-
-/// A processor version is an implementation of a processor.
-///
-/// Each processor can have multiple versions, pre-trained by Google internally
-/// or up-trained by the customer. At a time, a processor can only have one
-/// default version version. So the processor's behavior (when processing
-/// documents) is defined by a default version.
-class GoogleCloudDocumentaiUiv1beta3ProcessorVersion {
-  /// The time the processor version was created.
-  core.String createTime;
-
-  /// The display name of the processor version.
-  core.String displayName;
-
-  /// The most recently invoked evaluation for the processor version.
-  GoogleCloudDocumentaiUiv1beta3EvaluationReference latestEvaluation;
-
-  /// The resource name of the processor version.
-  ///
-  /// Format:
-  /// projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}
-  core.String name;
-
-  /// The schema of the processor version.
-  ///
-  /// Describes the output.
-  GoogleCloudDocumentaiUiv1beta3Schema schema;
-
-  /// The state of the processor version.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : The processor version is in an unspecified state.
-  /// - "DEPLOYED" : The processor version is deployed and can be used for
-  /// processing.
-  /// - "DEPLOYING" : The processor version is being deployed.
-  /// - "UNDEPLOYED" : The processor version is not deployed and cannot be used
-  /// for processing.
-  /// - "UNDEPLOYING" : The processor version is being undeployed.
-  /// - "CREATING" : The processor version is being created.
-  /// - "DELETING" : The processor version is being deleted.
-  /// - "FAILED" : The processor version failed and is in an indeterminate
-  /// state.
-  core.String state;
-
-  GoogleCloudDocumentaiUiv1beta3ProcessorVersion();
-
-  GoogleCloudDocumentaiUiv1beta3ProcessorVersion.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('latestEvaluation')) {
-      latestEvaluation =
-          GoogleCloudDocumentaiUiv1beta3EvaluationReference.fromJson(
-              _json['latestEvaluation'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('schema')) {
-      schema = GoogleCloudDocumentaiUiv1beta3Schema.fromJson(
-          _json['schema'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (displayName != null) 'displayName': displayName,
-        if (latestEvaluation != null)
-          'latestEvaluation': latestEvaluation.toJson(),
-        if (name != null) 'name': name,
-        if (schema != null) 'schema': schema.toJson(),
-        if (state != null) 'state': state,
-      };
-}
-
-/// The schema defines the output of the processed document by a processor.
-class GoogleCloudDocumentaiUiv1beta3Schema {
-  /// Description of the schema.
-  core.String description;
-
-  /// Display name to show to users.
-  core.String displayName;
-
-  /// Entity types of the schema.
-  core.List<GoogleCloudDocumentaiUiv1beta3SchemaEntityType> entityTypes;
-
-  GoogleCloudDocumentaiUiv1beta3Schema();
-
-  GoogleCloudDocumentaiUiv1beta3Schema.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('entityTypes')) {
-      entityTypes = (_json['entityTypes'] as core.List)
-          .map<GoogleCloudDocumentaiUiv1beta3SchemaEntityType>((value) =>
-              GoogleCloudDocumentaiUiv1beta3SchemaEntityType.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
-        if (entityTypes != null)
-          'entityTypes': entityTypes.map((value) => value.toJson()).toList(),
-      };
-}
-
-/// EntityType is the wrapper of a label of the corresponding model with
-/// detailed attributes and limitations for entity-based processors.
-///
-/// Multiple types can also compose a dependency tree to represent nested types.
-class GoogleCloudDocumentaiUiv1beta3SchemaEntityType {
-  /// Type of the entity.
-  ///
-  /// It can be either a value type (such as "text", "numeric", "date" and
-  /// "address"), or an object type which may contain nested entities (such as
-  /// "document" and "table").
-  core.String baseType;
-
-  /// Description of the entity type.
-  core.String description;
-
-  /// Occurrence type limits the number of times an entity type appears in the
-  /// document.
-  /// Possible string values are:
-  /// - "OCCURRENCE_TYPE_UNSPECIFIED" : Unspecified occurrence type.
-  /// - "OPTIONAL_ONCE" : The entity type will appear zero times or once.
-  /// - "OPTIONAL_MULTIPLE" : The entity type will appear zero or multiple
-  /// times.
-  /// - "REQUIRED_ONCE" : The entity type will only appear exactly once.
-  /// - "REQUIRED_MULTIPLE" : The entity type will appear once or more times.
-  core.String occurrenceType;
-
-  /// Describing the nested structure of an entity.
-  ///
-  /// An EntityType may consist of several other EntityTypes. For example, in a
-  /// document there can be an EntityType 'ID', which consists of EntityType
-  /// 'name' and 'address', with corresponding attributes, such as TEXT for both
-  /// types and ONCE for occurrence types.
-  core.List<GoogleCloudDocumentaiUiv1beta3SchemaEntityType> properties;
-
-  /// Source of this entity type.
-  /// Possible string values are:
-  /// - "SOURCE_UNSPECIFIED" : Unspecified source.
-  /// - "PREDEFINED" : The entity type is in the predefined schema of a
-  /// pretrained version of a processor.
-  /// - "USER_INPUT" : The entity type is added by the users either: - during an
-  /// uptraining of an existing processor, or - during the process of creating a
-  /// customized processor.
-  core.String source;
-
-  /// Name of the type.
-  ///
-  /// It must be unique within the set of same level types.
-  core.String type;
-
-  GoogleCloudDocumentaiUiv1beta3SchemaEntityType();
-
-  GoogleCloudDocumentaiUiv1beta3SchemaEntityType.fromJson(core.Map _json) {
-    if (_json.containsKey('baseType')) {
-      baseType = _json['baseType'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('occurrenceType')) {
-      occurrenceType = _json['occurrenceType'] as core.String;
-    }
-    if (_json.containsKey('properties')) {
-      properties = (_json['properties'] as core.List)
-          .map<GoogleCloudDocumentaiUiv1beta3SchemaEntityType>((value) =>
-              GoogleCloudDocumentaiUiv1beta3SchemaEntityType.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('source')) {
-      source = _json['source'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() => {
-        if (baseType != null) 'baseType': baseType,
-        if (description != null) 'description': description,
-        if (occurrenceType != null) 'occurrenceType': occurrenceType,
-        if (properties != null)
-          'properties': properties.map((value) => value.toJson()).toList(),
-        if (source != null) 'source': source,
-        if (type != null) 'type': type,
       };
 }
 
@@ -1171,6 +787,14 @@ class GoogleCloudDocumentaiUiv1beta3SchemaEntityType {
 class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadata {
   /// The basic metadata of the long running operation.
   GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata commonMetadata;
+
+  /// The test dataset validation information.
+  GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation
+      testDatasetValidation;
+
+  /// The training dataset validation information.
+  GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation
+      trainingDatasetValidation;
 
   GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadata();
 
@@ -1181,32 +805,89 @@ class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadata {
           GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata.fromJson(
               _json['commonMetadata'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('testDatasetValidation')) {
+      testDatasetValidation =
+          GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation
+              .fromJson(_json['testDatasetValidation']
+                  as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('trainingDatasetValidation')) {
+      trainingDatasetValidation =
+          GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation
+              .fromJson(_json['trainingDatasetValidation']
+                  as core.Map<core.String, core.dynamic>);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() => {
         if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+        if (testDatasetValidation != null)
+          'testDatasetValidation': testDatasetValidation.toJson(),
+        if (trainingDatasetValidation != null)
+          'trainingDatasetValidation': trainingDatasetValidation.toJson(),
+      };
+}
+
+/// The dataset validation information.
+///
+/// This includes any and all errors with documents and the dataset.
+class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation {
+  /// Error information for the dataset as a whole.
+  ///
+  /// A maximum of 10 dataset errors will be returned. A single dataset error is
+  /// terminal for training.
+  core.List<GoogleRpcStatus> datasetErrors;
+
+  /// Error information pertaining to specific documents.
+  ///
+  /// A maximum of 10 document errors will be returned. Any document with errors
+  /// will not be used throughout training.
+  core.List<GoogleRpcStatus> documentErrors;
+
+  GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation();
+
+  GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('datasetErrors')) {
+      datasetErrors = (_json['datasetErrors'] as core.List)
+          .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('documentErrors')) {
+      documentErrors = (_json['documentErrors'] as core.List)
+          .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (datasetErrors != null)
+          'datasetErrors':
+              datasetErrors.map((value) => value.toJson()).toList(),
+        if (documentErrors != null)
+          'documentErrors':
+              documentErrors.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The response for the TrainProcessorVersion method.
 class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionResponse {
-  /// The processor version produced by training.
-  GoogleCloudDocumentaiUiv1beta3ProcessorVersion processorVersion;
+  /// The resource name of the processor version produced by training.
+  core.String processorVersion;
 
   GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionResponse();
 
   GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionResponse.fromJson(
       core.Map _json) {
     if (_json.containsKey('processorVersion')) {
-      processorVersion =
-          GoogleCloudDocumentaiUiv1beta3ProcessorVersion.fromJson(
-              _json['processorVersion'] as core.Map<core.String, core.dynamic>);
+      processorVersion = _json['processorVersion'] as core.String;
     }
   }
 
   core.Map<core.String, core.Object> toJson() => {
-        if (processorVersion != null)
-          'processorVersion': processorVersion.toJson(),
+        if (processorVersion != null) 'processorVersion': processorVersion,
       };
 }
 
@@ -1462,17 +1143,18 @@ class GoogleCloudDocumentaiV1CommonOperationMetadata {
 class GoogleCloudDocumentaiV1HumanReviewStatus {
   /// The name of the operation triggered by the processed document.
   ///
-  /// Non-empty only when the \[state\] is \[HUMAN_REVIEW_IN_PROGRESS\]. It has
-  /// the same response type and metadata as the long running operation returned
-  /// by \[ReviewDocument\] method.
+  /// This field is populated only when the \[state\] is
+  /// \[HUMAN_REVIEW_IN_PROGRESS\]. It has the same response type and metadata
+  /// as the long running operation returned by \[ReviewDocument\] method.
   core.String humanReviewOperation;
 
   /// The state of human review on the processing request.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : State unspecified.
-  /// - "HUMAN_REVIEW_SKIPPED" : Human review is skipped for the document, it's
-  /// either due to the human review is not enabled on the processor or the
-  /// processing request sets to skip it.
+  /// - "STATE_UNSPECIFIED" : Human review state is unspecified. Most likely due
+  /// to an internal error.
+  /// - "HUMAN_REVIEW_SKIPPED" : Human review is skipped for the document. This
+  /// can happen because human review is not enabled on the processor or the
+  /// processing request has been set to skip this document.
   /// - "HUMAN_REVIEW_VALIDATION_PASSED" : Human review validation is triggered
   /// and passed, so no review is needed.
   /// - "HUMAN_REVIEW_IN_PROGRESS" : Human review validation is triggered and
@@ -5885,7 +5567,7 @@ class GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus {
   ///
   /// If the human review process is not triggered, this field will be empty. It
   /// has the same response type and metadata as the long running operation
-  /// returned by ReviewDocument method. .
+  /// returned by ReviewDocument method.
   core.String humanReviewOperation;
 
   /// The status of human review on the processed document.
@@ -7994,17 +7676,18 @@ class GoogleCloudDocumentaiV1beta3DocumentTranslation {
 class GoogleCloudDocumentaiV1beta3HumanReviewStatus {
   /// The name of the operation triggered by the processed document.
   ///
-  /// Non-empty only when the \[state\] is \[HUMAN_REVIEW_IN_PROGRESS\]. It has
-  /// the same response type and metadata as the long running operation returned
-  /// by \[ReviewDocument\] method.
+  /// This field is populated only when the \[state\] is
+  /// \[HUMAN_REVIEW_IN_PROGRESS\]. It has the same response type and metadata
+  /// as the long running operation returned by \[ReviewDocument\] method.
   core.String humanReviewOperation;
 
   /// The state of human review on the processing request.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : State unspecified.
-  /// - "HUMAN_REVIEW_SKIPPED" : Human review is skipped for the document, it's
-  /// either due to the human review is not enabled on the processor or the
-  /// processing request sets to skip it.
+  /// - "STATE_UNSPECIFIED" : Human review state is unspecified. Most likely due
+  /// to an internal error.
+  /// - "HUMAN_REVIEW_SKIPPED" : Human review is skipped for the document. This
+  /// can happen because human review is not enabled on the processor or the
+  /// processing request has been set to skip this document.
   /// - "HUMAN_REVIEW_VALIDATION_PASSED" : Human review validation is triggered
   /// and passed, so no review is needed.
   /// - "HUMAN_REVIEW_IN_PROGRESS" : Human review validation is triggered and
@@ -8121,7 +7804,7 @@ class GoogleCloudDocumentaiV1beta3ProcessResponse {
   ///
   /// If the human review process is not triggered, this field will be empty. It
   /// has the same response type and metadata as the long running operation
-  /// returned by ReviewDocument method. .
+  /// returned by ReviewDocument method.
   core.String humanReviewOperation;
 
   /// The status of human review on the processed document.

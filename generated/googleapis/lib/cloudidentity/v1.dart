@@ -4273,13 +4273,19 @@ class UpdateMembershipRolesParams {
       };
 }
 
-/// UserInvitation to join a Google Workspace organization.
+/// The `UserInvitation` resource represents an email sent to an unmanaged user
+/// account (an email address that shares the domain of the Google Workspace
+/// customer but is not managed by it yet), inviting them to join the customer’s
+/// domain.
+///
+/// If the user accepts the `UserInvitation`, the account will become a managed
+/// account.
 class UserInvitation {
   /// Number of invitation emails sent to the user.
   core.String mailsSentCount;
 
   /// Shall be of the form
-  /// `customers/{customer}/userinvitations/{user_email_address}`
+  /// `customers/{customer}/userinvitations/{user_email_address}`.
   core.String name;
 
   /// State of the `UserInvitation`.

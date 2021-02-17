@@ -1329,6 +1329,10 @@ class Metadata {
   /// The pipeline this operation represents.
   Pipeline pipeline;
 
+  /// The name of the Cloud Pub/Sub topic where notifications of operation
+  /// status changes are sent.
+  core.String pubSubTopic;
+
   /// The first time at which resources were allocated to execute the pipeline.
   core.String startTime;
 
@@ -1360,6 +1364,9 @@ class Metadata {
       pipeline = Pipeline.fromJson(
           _json['pipeline'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('pubSubTopic')) {
+      pubSubTopic = _json['pubSubTopic'] as core.String;
+    }
     if (_json.containsKey('startTime')) {
       startTime = _json['startTime'] as core.String;
     }
@@ -1372,6 +1379,7 @@ class Metadata {
           'events': events.map((value) => value.toJson()).toList(),
         if (labels != null) 'labels': labels,
         if (pipeline != null) 'pipeline': pipeline.toJson(),
+        if (pubSubTopic != null) 'pubSubTopic': pubSubTopic,
         if (startTime != null) 'startTime': startTime,
       };
 }
@@ -1749,6 +1757,14 @@ class RunPipelineRequest {
   /// Required.
   Pipeline pipeline;
 
+  /// The name of an existing Pub/Sub topic.
+  ///
+  /// The server will publish messages to this topic whenever the status of the
+  /// operation changes. The Life Sciences Service Agent account must have
+  /// publisher permissions to the specified topic or notifications will not be
+  /// sent.
+  core.String pubSubTopic;
+
   RunPipelineRequest();
 
   RunPipelineRequest.fromJson(core.Map _json) {
@@ -1765,11 +1781,15 @@ class RunPipelineRequest {
       pipeline = Pipeline.fromJson(
           _json['pipeline'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('pubSubTopic')) {
+      pubSubTopic = _json['pubSubTopic'] as core.String;
+    }
   }
 
   core.Map<core.String, core.Object> toJson() => {
         if (labels != null) 'labels': labels,
         if (pipeline != null) 'pipeline': pipeline.toJson(),
+        if (pubSubTopic != null) 'pubSubTopic': pubSubTopic,
       };
 }
 

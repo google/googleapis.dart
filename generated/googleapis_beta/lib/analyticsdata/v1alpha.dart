@@ -1050,13 +1050,6 @@ class Filter {
   /// A filter for in list values.
   InListFilter inListFilter;
 
-  /// A filter for null values.
-  ///
-  /// If True, a null dimension value is matched by this filter. Null filter is
-  /// commonly used inside a NOT filter expression. For example, a NOT
-  /// expression of a null filter removes rows when a dimension is null.
-  core.bool nullFilter;
-
   /// A filter for numeric or date values.
   NumericFilter numericFilter;
 
@@ -1077,9 +1070,6 @@ class Filter {
       inListFilter = InListFilter.fromJson(
           _json['inListFilter'] as core.Map<core.String, core.dynamic>);
     }
-    if (_json.containsKey('nullFilter')) {
-      nullFilter = _json['nullFilter'] as core.bool;
-    }
     if (_json.containsKey('numericFilter')) {
       numericFilter = NumericFilter.fromJson(
           _json['numericFilter'] as core.Map<core.String, core.dynamic>);
@@ -1094,7 +1084,6 @@ class Filter {
         if (betweenFilter != null) 'betweenFilter': betweenFilter.toJson(),
         if (fieldName != null) 'fieldName': fieldName,
         if (inListFilter != null) 'inListFilter': inListFilter.toJson(),
-        if (nullFilter != null) 'nullFilter': nullFilter,
         if (numericFilter != null) 'numericFilter': numericFilter.toJson(),
         if (stringFilter != null) 'stringFilter': stringFilter.toJson(),
       };
@@ -1578,8 +1567,9 @@ class Pivot {
   /// The number of rows to return in this pivot.
   ///
   /// If the `limit` parameter is unspecified, up to 10,000 rows are returned.
-  /// The API returns a maximum of 100,000 rows per request, no matter how many
-  /// you ask for.
+  /// The product of the `limit` for each `pivot` in a `RunPivotReportRequest`
+  /// must not exceed 100,000. For example, a two pivot request with `limit:
+  /// 1000` in each pivot will fail because the product is `1,000,000`.
   core.String limit;
 
   /// Aggregate the metrics by dimensions in this pivot using the specified

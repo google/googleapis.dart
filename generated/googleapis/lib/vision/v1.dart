@@ -13442,6 +13442,9 @@ class ImageContext {
   /// Parameters for product search.
   ProductSearchParams productSearchParams;
 
+  /// Parameters for text detection and document text detection.
+  TextDetectionParams textDetectionParams;
+
   /// Parameters for web detection.
   WebDetectionParams webDetectionParams;
 
@@ -13465,6 +13468,10 @@ class ImageContext {
       productSearchParams = ProductSearchParams.fromJson(
           _json['productSearchParams'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('textDetectionParams')) {
+      textDetectionParams = TextDetectionParams.fromJson(
+          _json['textDetectionParams'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('webDetectionParams')) {
       webDetectionParams = WebDetectionParams.fromJson(
           _json['webDetectionParams'] as core.Map<core.String, core.dynamic>);
@@ -13478,6 +13485,8 @@ class ImageContext {
         if (latLongRect != null) 'latLongRect': latLongRect.toJson(),
         if (productSearchParams != null)
           'productSearchParams': productSearchParams.toJson(),
+        if (textDetectionParams != null)
+          'textDetectionParams': textDetectionParams.toJson(),
         if (webDetectionParams != null)
           'webDetectionParams': webDetectionParams.toJson(),
       };
@@ -15167,6 +15176,33 @@ class TextAnnotation {
         if (pages != null)
           'pages': pages.map((value) => value.toJson()).toList(),
         if (text != null) 'text': text,
+      };
+}
+
+/// Parameters for text detections.
+///
+/// This is used to control TEXT_DETECTION and DOCUMENT_TEXT_DETECTION features.
+class TextDetectionParams {
+  /// By default, Cloud Vision API only includes confidence score for
+  /// DOCUMENT_TEXT_DETECTION result.
+  ///
+  /// Set the flag to true to include confidence score for TEXT_DETECTION as
+  /// well.
+  core.bool enableTextDetectionConfidenceScore;
+
+  TextDetectionParams();
+
+  TextDetectionParams.fromJson(core.Map _json) {
+    if (_json.containsKey('enableTextDetectionConfidenceScore')) {
+      enableTextDetectionConfidenceScore =
+          _json['enableTextDetectionConfidenceScore'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (enableTextDetectionConfidenceScore != null)
+          'enableTextDetectionConfidenceScore':
+              enableTextDetectionConfidenceScore,
       };
 }
 

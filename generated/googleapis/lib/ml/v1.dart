@@ -3009,10 +3009,10 @@ class GoogleCloudMlV1AcceleratorConfig {
   /// to no GPU.
   /// - "NVIDIA_TESLA_K80" : Nvidia Tesla K80 GPU.
   /// - "NVIDIA_TESLA_P100" : Nvidia Tesla P100 GPU.
-  /// - "NVIDIA_TESLA_V100" : Nvidia Tesla V100 GPU.
+  /// - "NVIDIA_TESLA_V100" : Nvidia V100 GPU.
   /// - "NVIDIA_TESLA_P4" : Nvidia Tesla P4 GPU.
-  /// - "NVIDIA_TESLA_T4" : Nvidia Tesla T4 GPU.
-  /// - "NVIDIA_TESLA_A100" : Nvidia Tesla A100 GPU.
+  /// - "NVIDIA_TESLA_T4" : Nvidia T4 GPU.
+  /// - "NVIDIA_TESLA_A100" : Nvidia A100 GPU.
   /// - "TPU_V2" : TPU v2.
   /// - "TPU_V3" : TPU v3.
   core.String type;
@@ -3584,7 +3584,7 @@ class GoogleCloudMlV1DiskConfig {
   /// Size in GB of the boot disk (default is 100GB).
   core.int bootDiskSizeGb;
 
-  /// Type of the boot disk (default is "pd-standard").
+  /// Type of the boot disk (default is "pd-ssd").
   ///
   /// Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or
   /// "pd-standard" (Persistent Disk Hard Disk Drive).
@@ -5788,24 +5788,16 @@ class GoogleCloudMlV1TrainingInput {
   /// master worker.
   ///
   /// You must specify this field when `scaleTier` is set to `CUSTOM`. You can
-  /// use certain Compute Engine machine types directly in this field. The
-  /// following types are supported: - `n1-standard-4` - `n1-standard-8` -
-  /// `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96`
-  /// - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` -
-  /// `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` -
-  /// `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Learn more about
-  /// \[using Compute Engine machine
-  /// types\](/ml-engine/docs/machine-types#compute-engine-machine-types).
-  /// Alternatively, you can use the following legacy machine types: -
-  /// `standard` - `large_model` - `complex_model_s` - `complex_model_m` -
-  /// `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` -
-  /// `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` -
-  /// `standard_v100` - `large_model_v100` - `complex_model_m_v100` -
-  /// `complex_model_l_v100` Learn more about \[using legacy machine
-  /// types\](/ml-engine/docs/machine-types#legacy-machine-types). Finally, if
-  /// you want to use a TPU for training, specify `cloud_tpu` in this field.
-  /// Learn more about the \[special configuration options for training with
-  /// TPUs\](/ml-engine/docs/tensorflow/using-tpus#configuring_a_custom_tpu_machine).
+  /// use certain Compute Engine machine types directly in this field. See the
+  /// \[list of compatible Compute Engine machine
+  /// types\](/ai-platform/training/docs/machine-types#compute-engine-machine-types).
+  /// Alternatively, you can use the certain legacy machine types in this field.
+  /// See the \[list of legacy machine
+  /// types\](/ai-platform/training/docs/machine-types#legacy-machine-types).
+  /// Finally, if you want to use a TPU for training, specify `cloud_tpu` in
+  /// this field. Learn more about the \[special configuration options for
+  /// training with
+  /// TPUs\](/ai-platform/training/docs/using-tpus#configuring_a_custom_tpu_machine).
   ///
   /// Optional.
   core.String masterType;

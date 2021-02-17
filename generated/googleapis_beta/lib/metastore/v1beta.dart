@@ -1971,6 +1971,11 @@ class MetadataManagementActivity {
   /// Output only.
   core.List<MetadataExport> metadataExports;
 
+  /// The latest restores of the metastore service.
+  ///
+  /// Output only.
+  core.List<Restore> restores;
+
   MetadataManagementActivity();
 
   MetadataManagementActivity.fromJson(core.Map _json) {
@@ -1980,12 +1985,20 @@ class MetadataManagementActivity {
               value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('restores')) {
+      restores = (_json['restores'] as core.List)
+          .map<Restore>((value) =>
+              Restore.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() => {
         if (metadataExports != null)
           'metadataExports':
               metadataExports.map((value) => value.toJson()).toList(),
+        if (restores != null)
+          'restores': restores.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2186,6 +2199,74 @@ class Policy {
       };
 }
 
+/// The details of a metadata restore operation.
+class Restore {
+  /// The relative resource name of the metastore service backup to restore
+  /// from, in the following
+  /// form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}
+  ///
+  /// Output only.
+  core.String backup;
+
+  /// The time when the restore ended.
+  ///
+  /// Output only.
+  core.String endTime;
+
+  /// The time when the restore started.
+  ///
+  /// Output only.
+  core.String startTime;
+
+  /// The current state of the restore.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state of the metadata restore is unknown.
+  /// - "RUNNING" : The metadata restore is running.
+  /// - "SUCCEEDED" : The metadata restore completed successfully.
+  /// - "FAILED" : The metadata restore failed.
+  /// - "CANCELLED" : The metadata restore is cancelled.
+  core.String state;
+
+  /// The type of restore.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "RESTORE_TYPE_UNSPECIFIED" : The restore type is unknown.
+  /// - "FULL" : The service's metadata and configuration are restored.
+  /// - "METADATA_ONLY" : Only the service's metadata is restored.
+  core.String type;
+
+  Restore();
+
+  Restore.fromJson(core.Map _json) {
+    if (_json.containsKey('backup')) {
+      backup = _json['backup'] as core.String;
+    }
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'] as core.String;
+    }
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'] as core.String;
+    }
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
+    if (_json.containsKey('type')) {
+      type = _json['type'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (backup != null) 'backup': backup,
+        if (endTime != null) 'endTime': endTime,
+        if (startTime != null) 'startTime': startTime,
+        if (state != null) 'state': state,
+        if (type != null) 'type': type,
+      };
+}
+
 /// A securely stored value.
 class Secret {
   /// The relative resource name of a Secret Manager secret version, in the
@@ -2255,8 +2336,7 @@ class Service {
   /// The relative resource name of the VPC network on which the instance can be
   /// accessed.
   ///
-  /// The network must belong to the same project as the metastore instance. It
-  /// is specified in the following
+  /// It is specified in the following
   /// form:"projects/{project_number}/global/networks/{network_id}".
   ///
   /// Immutable.

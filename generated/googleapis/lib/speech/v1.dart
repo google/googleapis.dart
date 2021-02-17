@@ -24,9 +24,6 @@
 /// Create an instance of [SpeechApi] to access these resources:
 ///
 /// - [OperationsResource]
-/// - [ProjectsResource]
-///   - [ProjectsLocationsResource]
-///     - [ProjectsLocationsOperationsResource]
 /// - [SpeechResource]
 library speech.v1;
 
@@ -51,7 +48,6 @@ class SpeechApi {
   final commons.ApiRequester _requester;
 
   OperationsResource get operations => OperationsResource(_requester);
-  ProjectsResource get projects => ProjectsResource(_requester);
   SpeechResource get speech => SpeechResource(_requester);
 
   SpeechApi(http.Client client,
@@ -155,134 +151,6 @@ class OperationsResource {
     };
 
     const _url = 'v1/operations';
-
-    final _response = await _requester.request(
-      _url,
-      'GET',
-      queryParams: _queryParams,
-    );
-    return ListOperationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class ProjectsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsResource get locations =>
-      ProjectsLocationsResource(_requester);
-
-  ProjectsResource(commons.ApiRequester client) : _requester = client;
-}
-
-class ProjectsLocationsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsOperationsResource get operations =>
-      ProjectsLocationsOperationsResource(_requester);
-
-  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
-}
-
-class ProjectsLocationsOperationsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Gets the latest state of a long-running operation.
-  ///
-  /// Clients can use this method to poll the operation result at intervals as
-  /// recommended by the API service.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Operation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String $fields,
-  }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'GET',
-      queryParams: _queryParams,
-    );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Lists operations that match the specified filter in the request.
-  ///
-  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [filter] - The standard list filter.
-  ///
-  /// [pageSize] - The standard list page size.
-  ///
-  /// [pageToken] - The standard list page token.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListOperationsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListOperationsResponse> list(
-    core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
-  }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
-    final _queryParams = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url =
-        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
 
     final _response = await _requester.request(
       _url,

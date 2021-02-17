@@ -16,7 +16,8 @@
 
 /// Campaign Manager 360 API - v3.4
 ///
-/// Manage your DoubleClick Campaign Manager ad campaigns and reports.
+/// Build applications to efficiently manage large or complex trafficking,
+/// reporting, and attribution workflows for Campaign Manager 360.
 ///
 /// For more information, see
 /// <https://developers.google.com/doubleclick-advertisers/>
@@ -108,7 +109,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         PartialDownloadOptions,
         ByteRange;
 
-/// Manage your DoubleClick Campaign Manager ad campaigns and reports.
+/// Build applications to efficiently manage large or complex trafficking,
+/// reporting, and attribution workflows for Campaign Manager 360.
 class DfareportingApi {
   /// Manage DoubleClick Digital Marketing conversions
   static const ddmconversionsScope =
@@ -19048,7 +19050,7 @@ class CustomFloodlightVariable {
 
   /// The value of the custom floodlight variable.
   ///
-  /// The length of string must not exceed 50 characters.
+  /// The length of string must not exceed 100 characters.
   core.String value;
 
   CustomFloodlightVariable();
@@ -26551,14 +26553,14 @@ class ReportPathCriteria {
 
 /// The properties of the report.
 class ReportPathToConversionCriteriaReportProperties {
-  /// DFA checks to see if a click interaction occurred within the specified
+  /// CM360 checks to see if a click interaction occurred within the specified
   /// period of time before a conversion.
   ///
   /// By default the value is pulled from Floodlight or you can manually enter a
   /// custom value. Valid values: 1-90.
   core.int clicksLookbackWindow;
 
-  /// DFA checks to see if an impression interaction occurred within the
+  /// CM360 checks to see if an impression interaction occurred within the
   /// specified period of time before a conversion.
   ///
   /// By default the value is pulled from Floodlight or you can manually enter a

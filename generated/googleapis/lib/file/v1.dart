@@ -1554,10 +1554,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
   /// schedule_deadline_time is the time deadline any schedule start time cannot
   /// go beyond, including reschedule.
   ///
-  /// It's normally the initial schedule start time plus a week. If the
-  /// reschedule type is next window, simply take this value as start time. If
-  /// reschedule type is IMMEDIATELY or BY_TIME, current or selected time cannot
-  /// go beyond this deadline.
+  /// It's normally the initial schedule start time plus maintenance window
+  /// length (1 day or 1 week). Maintenance cannot be scheduled to start beyond
+  /// this deadline.
   core.String scheduleDeadlineTime;
 
   /// The scheduled start time for the maintenance.
@@ -1609,6 +1608,11 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
   /// Optional.
   core.bool exclude;
 
+  /// If the update call is triggered from rollback, set the value as true.
+  ///
+  /// Optional.
+  core.bool isRollback;
+
   /// The MaintenancePolicies that have been attached to the instance.
   ///
   /// The key must be of the type name of the oneof policy name defined in
@@ -1628,6 +1632,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
     if (_json.containsKey('exclude')) {
       exclude = _json['exclude'] as core.bool;
     }
+    if (_json.containsKey('isRollback')) {
+      isRollback = _json['isRollback'] as core.bool;
+    }
     if (_json.containsKey('maintenancePolicies')) {
       maintenancePolicies = (_json['maintenancePolicies'] as core.Map)
           .cast<core.String, core.Map>()
@@ -1643,6 +1650,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
 
   core.Map<core.String, core.Object> toJson() => {
         if (exclude != null) 'exclude': exclude,
+        if (isRollback != null) 'isRollback': isRollback,
         if (maintenancePolicies != null)
           'maintenancePolicies': maintenancePolicies
               .map((key, item) => core.MapEntry(key, item.toJson())),
@@ -1697,6 +1705,50 @@ class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
           'exclusions': exclusions.map((value) => value.toJson()).toList(),
         if (location != null) 'location': location,
         if (nodeId != null) 'nodeId': nodeId,
+      };
+}
+
+/// PerSliSloEligibility is a mapping from an SLI name to eligibility.
+class GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility {
+  /// An entry in the eligibilities map specifies an eligibility for a
+  /// particular SLI for the given instance.
+  ///
+  /// The SLI key in the name must be a valid SLI name specified in the
+  /// Eligibility Exporter binary flags otherwise an error will be emitted by
+  /// Eligibility Exporter and the oncaller will be alerted. If an SLI has been
+  /// defined in the binary flags but the eligibilities map does not contain it,
+  /// the corresponding SLI time series will not be emitted by the Eligibility
+  /// Exporter. This ensures a smooth rollout and compatibility between the data
+  /// produced by different versions of the Eligibility Exporters. If
+  /// eligibilities map contains a key for an SLI which has not been declared in
+  /// the binary flags, there will be an error message emitted in the
+  /// Eligibility Exporter log and the metric for the SLI in question will not
+  /// be emitted.
+  core.Map<core.String,
+          GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility>
+      eligibilities;
+
+  GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility();
+
+  GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('eligibilities')) {
+      eligibilities = (_json['eligibilities'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
+                  .fromJson(item as core.Map<core.String, core.dynamic>),
+            ),
+          );
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (eligibilities != null)
+          'eligibilities': eligibilities
+              .map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }
 
@@ -1788,7 +1840,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion {
   /// Name of an SLI that this exclusion applies to.
   ///
   /// Can be left empty, signaling that the instance should be excluded from all
-  /// SLIs defined in the service SLO configuration.
+  /// SLIs.
   core.String sliName;
 
   /// Start time of the exclusion.
@@ -1825,7 +1877,10 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion {
 /// SloMetadata contains resources required for proper SLO classification of the
 /// instance.
 class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
-  /// User-defined instance eligibility.
+  /// Global per-instance SLI eligibility which applies to all defined SLIs.
+  ///
+  /// Exactly one of 'eligibility' and 'per_sli_eligibility' fields must be
+  /// used.
   ///
   /// Optional.
   GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility eligibility;
@@ -1855,6 +1910,15 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
   /// Optional.
   core.List<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>
       nodes;
+
+  /// Multiple per-instance SLI eligibilities which apply for individual SLIs.
+  ///
+  /// Exactly one of 'eligibility' and 'per_sli_eligibility' fields must be
+  /// used.
+  ///
+  /// Optional.
+  GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility
+      perSliEligibility;
 
   /// Name of the SLO tier the Instance belongs to.
   ///
@@ -1888,6 +1952,12 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
                       .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('perSliEligibility')) {
+      perSliEligibility =
+          GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility
+              .fromJson(_json['perSliEligibility']
+                  as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('tier')) {
       tier = _json['tier'] as core.String;
     }
@@ -1899,6 +1969,8 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
           'exclusions': exclusions.map((value) => value.toJson()).toList(),
         if (nodes != null)
           'nodes': nodes.map((value) => value.toJson()).toList(),
+        if (perSliEligibility != null)
+          'perSliEligibility': perSliEligibility.toJson(),
         if (tier != null) 'tier': tier,
       };
 }

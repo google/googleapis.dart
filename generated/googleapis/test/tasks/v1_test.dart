@@ -50,14 +50,14 @@ void checkTaskLinks(api.TaskLinks o) {
   buildCounterTaskLinks--;
 }
 
-core.List<api.TaskLinks> buildUnnamed6749() {
+core.List<api.TaskLinks> buildUnnamed6803() {
   var o = <api.TaskLinks>[];
   o.add(buildTaskLinks());
   o.add(buildTaskLinks());
   return o;
 }
 
-void checkUnnamed6749(core.List<api.TaskLinks> o) {
+void checkUnnamed6803(core.List<api.TaskLinks> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTaskLinks(o[0] as api.TaskLinks);
   checkTaskLinks(o[1] as api.TaskLinks);
@@ -75,7 +75,7 @@ api.Task buildTask() {
     o.hidden = true;
     o.id = 'foo';
     o.kind = 'foo';
-    o.links = buildUnnamed6749();
+    o.links = buildUnnamed6803();
     o.notes = 'foo';
     o.parent = 'foo';
     o.position = 'foo';
@@ -98,7 +98,7 @@ void checkTask(api.Task o) {
     unittest.expect(o.hidden, unittest.isTrue);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed6749(o.links);
+    checkUnnamed6803(o.links);
     unittest.expect(o.notes, unittest.equals('foo'));
     unittest.expect(o.parent, unittest.equals('foo'));
     unittest.expect(o.position, unittest.equals('foo'));
@@ -139,14 +139,14 @@ void checkTaskList(api.TaskList o) {
   buildCounterTaskList--;
 }
 
-core.List<api.TaskList> buildUnnamed6750() {
+core.List<api.TaskList> buildUnnamed6804() {
   var o = <api.TaskList>[];
   o.add(buildTaskList());
   o.add(buildTaskList());
   return o;
 }
 
-void checkUnnamed6750(core.List<api.TaskList> o) {
+void checkUnnamed6804(core.List<api.TaskList> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTaskList(o[0] as api.TaskList);
   checkTaskList(o[1] as api.TaskList);
@@ -158,7 +158,7 @@ api.TaskLists buildTaskLists() {
   buildCounterTaskLists++;
   if (buildCounterTaskLists < 3) {
     o.etag = 'foo';
-    o.items = buildUnnamed6750();
+    o.items = buildUnnamed6804();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -170,21 +170,21 @@ void checkTaskLists(api.TaskLists o) {
   buildCounterTaskLists++;
   if (buildCounterTaskLists < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed6750(o.items);
+    checkUnnamed6804(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterTaskLists--;
 }
 
-core.List<api.Task> buildUnnamed6751() {
+core.List<api.Task> buildUnnamed6805() {
   var o = <api.Task>[];
   o.add(buildTask());
   o.add(buildTask());
   return o;
 }
 
-void checkUnnamed6751(core.List<api.Task> o) {
+void checkUnnamed6805(core.List<api.Task> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTask(o[0] as api.Task);
   checkTask(o[1] as api.Task);
@@ -196,7 +196,7 @@ api.Tasks buildTasks() {
   buildCounterTasks++;
   if (buildCounterTasks < 3) {
     o.etag = 'foo';
-    o.items = buildUnnamed6751();
+    o.items = buildUnnamed6805();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -208,7 +208,7 @@ void checkTasks(api.Tasks o) {
   buildCounterTasks++;
   if (buildCounterTasks < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed6751(o.items);
+    checkUnnamed6805(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }

@@ -4196,8 +4196,8 @@ class NetworkInfo {
   /// Provides telephony information associated with each SIM card on the
   /// device.
   ///
-  /// Only supported on fully managed devices starting from Android API level 23
-  /// and above.
+  /// Only supported on fully managed devices starting from Android API level
+  /// 23.
   core.List<TelephonyInfo> telephonyInfos;
 
   /// Wi-Fi MAC address of the device.
@@ -4833,6 +4833,8 @@ class PersonalUsagePolicies {
   core.bool cameraDisabled;
 
   /// Controls how long the work profile can stay off.
+  ///
+  /// The duration must be at least 3 days.
   core.int maxDaysWithWorkOff;
 
   /// Policy applied to applications in the personal profile.
@@ -4913,6 +4915,8 @@ class Policy {
   core.bool addUserDisabled;
 
   /// Whether adjusting the master volume is disabled.
+  ///
+  /// Also mutes the device.
   core.bool adjustVolumeDisabled;
 
   /// Security policies set to the most secure values by default.
@@ -6530,8 +6534,7 @@ class SystemUpdateInfo {
 
 /// Telephony information associated with a given SIM card on the device.
 ///
-/// Only supported on fully managed devices starting from Android API level 23
-/// and above.
+/// Only supported on fully managed devices starting from Android API level 23.
 class TelephonyInfo {
   /// The carrier name associated with this SIM card.
   core.String carrierName;

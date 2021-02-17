@@ -469,6 +469,10 @@ class TablesRowsResource {
   /// [parent] - Required. The parent table. Format: tables/{table}
   /// Value must have pattern `^tables/\[^/\]+$`.
   ///
+  /// [filter] - Optional. Raw text query to search for in rows of the table.
+  /// Special characters must be escaped. Logical operators and field specific
+  /// filtering not supported.
+  ///
   /// [pageSize] - The maximum number of rows to return. The service may return
   /// fewer than this value. If unspecified, at most 50 rows are returned. The
   /// maximum value is 1,000; values above 1,000 are coerced to 1,000.
@@ -497,6 +501,7 @@ class TablesRowsResource {
   /// this method will complete with the same error.
   async.Future<ListRowsResponse> list(
     core.String parent, {
+    core.String filter,
     core.int pageSize,
     core.String pageToken,
     core.String view,
@@ -506,6 +511,7 @@ class TablesRowsResource {
       throw core.ArgumentError('Parameter parent is required.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
