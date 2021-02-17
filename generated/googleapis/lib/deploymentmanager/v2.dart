@@ -2434,6 +2434,12 @@ class Operation {
   /// Output only.
   core.String name;
 
+  /// An ID that represents a group of operations, such as when a group of
+  /// operations results from a `bulkInsert` API request.
+  ///
+  /// Output only.
+  core.String operationGroupId;
+
   /// The type of operation, such as `insert`, `update`, or `delete`, and so on.
   ///
   /// Output only.
@@ -2552,6 +2558,9 @@ class Operation {
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
+    if (_json.containsKey('operationGroupId')) {
+      operationGroupId = _json['operationGroupId'] as core.String;
+    }
     if (_json.containsKey('operationType')) {
       operationType = _json['operationType'] as core.String;
     }
@@ -2606,6 +2615,7 @@ class Operation {
         if (insertTime != null) 'insertTime': insertTime,
         if (kind != null) 'kind': kind,
         if (name != null) 'name': name,
+        if (operationGroupId != null) 'operationGroupId': operationGroupId,
         if (operationType != null) 'operationType': operationType,
         if (progress != null) 'progress': progress,
         if (region != null) 'region': region,

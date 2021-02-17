@@ -3970,6 +3970,14 @@ class DataSplitResult {
 }
 
 class DatasetAccess {
+  /// \[Pick one\] A grant authorizing all resources of a particular type in a
+  /// particular dataset access to this dataset.
+  ///
+  /// Only views are supported for now. The role field is not required when this
+  /// field is set. If that dataset is deleted and re-created, its access needs
+  /// to be granted again via an update operation.
+  DatasetAccessEntry dataset;
+
   /// \[Pick one\] A domain to grant access to.
   ///
   /// Any users signed in with the domain specified will be granted the
@@ -4032,6 +4040,10 @@ class DatasetAccess {
   DatasetAccess();
 
   DatasetAccess.fromJson(core.Map _json) {
+    if (_json.containsKey('dataset')) {
+      dataset = DatasetAccessEntry.fromJson(
+          _json['dataset'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('domain')) {
       domain = _json['domain'] as core.String;
     }
@@ -4061,6 +4073,7 @@ class DatasetAccess {
   }
 
   core.Map<core.String, core.Object> toJson() => {
+        if (dataset != null) 'dataset': dataset.toJson(),
         if (domain != null) 'domain': domain,
         if (groupByEmail != null) 'groupByEmail': groupByEmail,
         if (iamMember != null) 'iamMember': iamMember,
@@ -4268,6 +4281,59 @@ class Dataset {
         if (location != null) 'location': location,
         if (satisfiesPZS != null) 'satisfiesPZS': satisfiesPZS,
         if (selfLink != null) 'selfLink': selfLink,
+      };
+}
+
+class DatasetAccessEntryTargetTypes {
+  /// Which resources in the dataset this entry applies to.
+  ///
+  /// Currently, only views are supported, but additional target types may be
+  /// added in the future. Possible values: VIEWS: This entry applies to all
+  /// views in the dataset.
+  ///
+  /// Required.
+  core.String targetType;
+
+  DatasetAccessEntryTargetTypes();
+
+  DatasetAccessEntryTargetTypes.fromJson(core.Map _json) {
+    if (_json.containsKey('targetType')) {
+      targetType = _json['targetType'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (targetType != null) 'targetType': targetType,
+      };
+}
+
+class DatasetAccessEntry {
+  /// The dataset this entry applies to.
+  ///
+  /// Required.
+  DatasetReference dataset;
+  core.List<DatasetAccessEntryTargetTypes> targetTypes;
+
+  DatasetAccessEntry();
+
+  DatasetAccessEntry.fromJson(core.Map _json) {
+    if (_json.containsKey('dataset')) {
+      dataset = DatasetReference.fromJson(
+          _json['dataset'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('target_types')) {
+      targetTypes = (_json['target_types'] as core.List)
+          .map<DatasetAccessEntryTargetTypes>((value) =>
+              DatasetAccessEntryTargetTypes.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataset != null) 'dataset': dataset.toJson(),
+        if (targetTypes != null)
+          'target_types': targetTypes.map((value) => value.toJson()).toList(),
       };
 }
 

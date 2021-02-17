@@ -39,7 +39,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Reads and writes Google Docs documents.
 class DocsApi {
-  /// View and manage your Google Docs documents
+  /// See, create, and edit all Google Docs documents you have access to
   static const documentsScope = 'https://www.googleapis.com/auth/documents';
 
   /// View your Google Docs documents

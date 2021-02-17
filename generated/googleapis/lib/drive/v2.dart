@@ -81,7 +81,7 @@ class DriveApi {
   static const driveMetadataScope =
       'https://www.googleapis.com/auth/drive.metadata';
 
-  /// View metadata for files in your Google Drive
+  /// See information about your Google Drive files
   static const driveMetadataReadonlyScope =
       'https://www.googleapis.com/auth/drive.metadata.readonly';
 

@@ -1821,6 +1821,12 @@ class Secret {
   /// Required. Immutable.
   Replication replication;
 
+  /// A list of up to 10 Pub/Sub topics to which messages are published when
+  /// control plane operations are called on the secret or its versions.
+  ///
+  /// Optional.
+  core.List<Topic> topics;
+
   /// Input only.
   ///
   /// The TTL for the Secret.
@@ -1851,6 +1857,12 @@ class Secret {
       replication = Replication.fromJson(
           _json['replication'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('topics')) {
+      topics = (_json['topics'] as core.List)
+          .map<Topic>((value) =>
+              Topic.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('ttl')) {
       ttl = _json['ttl'] as core.String;
     }
@@ -1862,6 +1874,8 @@ class Secret {
         if (labels != null) 'labels': labels,
         if (name != null) 'name': name,
         if (replication != null) 'replication': replication.toJson(),
+        if (topics != null)
+          'topics': topics.map((value) => value.toJson()).toList(),
         if (ttl != null) 'ttl': ttl,
       };
 }
@@ -2039,6 +2053,31 @@ class TestIamPermissionsResponse {
 
   core.Map<core.String, core.Object> toJson() => {
         if (permissions != null) 'permissions': permissions,
+      };
+}
+
+/// A Pub/Sub topic which SM will publish to when control plane events occur on
+/// this secret.
+class Topic {
+  /// The resource name of the Pub/Sub topic that will be published to, in the
+  /// following format: `projects / * /topics / * `.
+  ///
+  /// For publication to succeed, the Secret Manager P4SA must have
+  /// `pubsub.publisher` permissions on the topic.
+  ///
+  /// Required.
+  core.String name;
+
+  Topic();
+
+  Topic.fromJson(core.Map _json) {
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
       };
 }
 

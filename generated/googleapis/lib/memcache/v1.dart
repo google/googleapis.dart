@@ -1318,6 +1318,11 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
   /// Optional.
   core.bool exclude;
 
+  /// If the update call is triggered from rollback, set the value as true.
+  ///
+  /// Optional.
+  core.bool isRollback;
+
   /// The MaintenancePolicies that have been attached to the instance.
   ///
   /// The key must be of the type name of the oneof policy name defined in
@@ -1337,6 +1342,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
     if (_json.containsKey('exclude')) {
       exclude = _json['exclude'] as core.bool;
     }
+    if (_json.containsKey('isRollback')) {
+      isRollback = _json['isRollback'] as core.bool;
+    }
     if (_json.containsKey('maintenancePolicies')) {
       maintenancePolicies = (_json['maintenancePolicies'] as core.Map)
           .cast<core.String, core.Map>()
@@ -1352,6 +1360,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
 
   core.Map<core.String, core.Object> toJson() => {
         if (exclude != null) 'exclude': exclude,
+        if (isRollback != null) 'isRollback': isRollback,
         if (maintenancePolicies != null)
           'maintenancePolicies': maintenancePolicies
               .map((key, item) => core.MapEntry(key, item.toJson())),

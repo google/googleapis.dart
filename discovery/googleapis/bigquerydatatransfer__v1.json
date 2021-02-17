@@ -1269,7 +1269,7 @@
             }
         }
     },
-    "revision": "20210130",
+    "revision": "20210206",
     "rootUrl": "https://bigquerydatatransfer.googleapis.com/",
     "schemas": {
         "CheckValidCredsRequest": {

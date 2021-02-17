@@ -213,13 +213,18 @@ class ProjectsEventsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Report an individual error event.
+  /// Report an individual error event and record the event to a log.
   ///
   /// This endpoint accepts **either** an OAuth token, **or** an
   /// [API key](https://support.google.com/cloud/answer/6158862) for
   /// authentication. To use an API key, append it to the URL as the value of a
   /// `key` parameter. For example: `POST
   /// https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456`
+  /// **Note:** \[Error Reporting\](/error-reporting) is a global service built
+  /// on Cloud Logging and doesn't analyze logs stored in regional log buckets
+  /// or logs routed to other Google Cloud projects. For more information, see
+  /// \[Using Error Reporting with regionalized
+  /// logs\](/error-reporting/docs/regionalization).
   ///
   /// [request] - The metadata request object.
   ///
@@ -280,9 +285,10 @@ class ProjectsGroupStatsResource {
   /// Request parameters:
   ///
   /// [projectName] - Required. The resource name of the Google Cloud Platform
-  /// project. Written as `projects/{projectID}`, where `{projectID}` is the
-  /// [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840).
-  /// Example: `projects/my-project-123`.
+  /// project. Written as `projects/{projectID}` or `projects/{projectNumber}`,
+  /// where `{projectID}` and `{projectNumber}` can be found in the
+  /// [Google Cloud Console](https://support.google.com/cloud/answer/6158840).
+  /// Examples: `projects/my-project-123`, `projects/5551234`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [alignment] - Optional. The alignment of the timed counts to be returned.
@@ -645,7 +651,8 @@ class ErrorGroup {
   ///
   /// An unspecified resolution status will be interpreted as OPEN
   /// Possible string values are:
-  /// - "RESOLUTION_STATUS_UNSPECIFIED" : Status is unknown.
+  /// - "RESOLUTION_STATUS_UNSPECIFIED" : Status is unknown. When left
+  /// unspecified in requests, it is treated like OPEN.
   /// - "OPEN" : The error group is not being addressed. This is the default for
   /// new groups. It is also used for errors re-occurring after marked RESOLVED.
   /// - "ACKNOWLEDGED" : Error Group manually acknowledged, it can have an issue

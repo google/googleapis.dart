@@ -353,7 +353,8 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   /// Product to delete does not exist, a NOT_FOUND error is returned. The
   /// Product to delete can neither be a Product.Type.COLLECTION Product member
   /// nor a Product.Type.PRIMARY Product with more than one variants. Otherwise,
-  /// an INVALID_ARGUMENT error is returned.
+  /// an INVALID_ARGUMENT error is returned. All inventory information for the
+  /// named Product will be deleted.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/branches/\[^/\]+/products/.*$`.
   ///
@@ -2245,8 +2246,7 @@ class GoogleCloudRetailV2Product {
   /// The available quantity of the item.
   core.int availableQuantity;
 
-  /// The timestamp when this Product becomes available recommendation and
-  /// search.
+  /// The timestamp when this Product becomes available for recommendation.
   core.String availableTime;
 
   /// Product categories.
@@ -2292,7 +2292,8 @@ class GoogleCloudRetailV2Product {
   /// Immutable.
   core.String id;
 
-  /// Product images for the product.
+  /// Product images for the product.Highly recommended to put the main image to
+  /// the first.
   ///
   /// A maximum of 300 images are allowed. Google Merchant Center property
   /// [image_link](https://support.google.com/merchants/answer/6324350).

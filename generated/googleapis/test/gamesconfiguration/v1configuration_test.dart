@@ -91,14 +91,14 @@ void checkAchievementConfigurationDetail(api.AchievementConfigurationDetail o) {
   buildCounterAchievementConfigurationDetail--;
 }
 
-core.List<api.AchievementConfiguration> buildUnnamed3117() {
+core.List<api.AchievementConfiguration> buildUnnamed3166() {
   var o = <api.AchievementConfiguration>[];
   o.add(buildAchievementConfiguration());
   o.add(buildAchievementConfiguration());
   return o;
 }
 
-void checkUnnamed3117(core.List<api.AchievementConfiguration> o) {
+void checkUnnamed3166(core.List<api.AchievementConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAchievementConfiguration(o[0] as api.AchievementConfiguration);
   checkAchievementConfiguration(o[1] as api.AchievementConfiguration);
@@ -110,7 +110,7 @@ api.AchievementConfigurationListResponse
   var o = api.AchievementConfigurationListResponse();
   buildCounterAchievementConfigurationListResponse++;
   if (buildCounterAchievementConfigurationListResponse < 3) {
-    o.items = buildUnnamed3117();
+    o.items = buildUnnamed3166();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -122,7 +122,7 @@ void checkAchievementConfigurationListResponse(
     api.AchievementConfigurationListResponse o) {
   buildCounterAchievementConfigurationListResponse++;
   if (buildCounterAchievementConfigurationListResponse < 3) {
-    checkUnnamed3117(o.items);
+    checkUnnamed3166(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -272,14 +272,14 @@ void checkLeaderboardConfigurationDetail(api.LeaderboardConfigurationDetail o) {
   buildCounterLeaderboardConfigurationDetail--;
 }
 
-core.List<api.LeaderboardConfiguration> buildUnnamed3118() {
+core.List<api.LeaderboardConfiguration> buildUnnamed3167() {
   var o = <api.LeaderboardConfiguration>[];
   o.add(buildLeaderboardConfiguration());
   o.add(buildLeaderboardConfiguration());
   return o;
 }
 
-void checkUnnamed3118(core.List<api.LeaderboardConfiguration> o) {
+void checkUnnamed3167(core.List<api.LeaderboardConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLeaderboardConfiguration(o[0] as api.LeaderboardConfiguration);
   checkLeaderboardConfiguration(o[1] as api.LeaderboardConfiguration);
@@ -291,7 +291,7 @@ api.LeaderboardConfigurationListResponse
   var o = api.LeaderboardConfigurationListResponse();
   buildCounterLeaderboardConfigurationListResponse++;
   if (buildCounterLeaderboardConfigurationListResponse < 3) {
-    o.items = buildUnnamed3118();
+    o.items = buildUnnamed3167();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -303,7 +303,7 @@ void checkLeaderboardConfigurationListResponse(
     api.LeaderboardConfigurationListResponse o) {
   buildCounterLeaderboardConfigurationListResponse++;
   if (buildCounterLeaderboardConfigurationListResponse < 3) {
-    checkUnnamed3118(o.items);
+    checkUnnamed3167(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -333,14 +333,14 @@ void checkLocalizedString(api.LocalizedString o) {
   buildCounterLocalizedString--;
 }
 
-core.List<api.LocalizedString> buildUnnamed3119() {
+core.List<api.LocalizedString> buildUnnamed3168() {
   var o = <api.LocalizedString>[];
   o.add(buildLocalizedString());
   o.add(buildLocalizedString());
   return o;
 }
 
-void checkUnnamed3119(core.List<api.LocalizedString> o) {
+void checkUnnamed3168(core.List<api.LocalizedString> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocalizedString(o[0] as api.LocalizedString);
   checkLocalizedString(o[1] as api.LocalizedString);
@@ -352,7 +352,7 @@ api.LocalizedStringBundle buildLocalizedStringBundle() {
   buildCounterLocalizedStringBundle++;
   if (buildCounterLocalizedStringBundle < 3) {
     o.kind = 'foo';
-    o.translations = buildUnnamed3119();
+    o.translations = buildUnnamed3168();
   }
   buildCounterLocalizedStringBundle--;
   return o;
@@ -362,7 +362,7 @@ void checkLocalizedStringBundle(api.LocalizedStringBundle o) {
   buildCounterLocalizedStringBundle++;
   if (buildCounterLocalizedStringBundle < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed3119(o.translations);
+    checkUnnamed3168(o.translations);
   }
   buildCounterLocalizedStringBundle--;
 }

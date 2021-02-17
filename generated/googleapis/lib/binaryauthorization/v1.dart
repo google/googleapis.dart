@@ -834,7 +834,7 @@ class SystempolicyResource {
 /// creation request must be attested to by one or more attestors, that all pod
 /// creations will be allowed, or that all pod creations will be denied.
 ///
-/// Images matching an admission whitelist pattern are exempted from admission
+/// Images matching an admission allowlist pattern are exempted from admission
 /// rules and will never block a pod creation.
 class AdmissionRule {
   /// The action when a pod creation is denied by the admission rule.
@@ -897,7 +897,7 @@ class AdmissionRule {
       };
 }
 
-/// An admission whitelist pattern exempts images from checks by admission
+/// An admission allowlist pattern exempts images from checks by admission
 /// rules.
 class AdmissionWhitelistPattern {
   /// An image name pattern to allowlist, in the form `registry/path/to/image`.

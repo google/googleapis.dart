@@ -97,14 +97,14 @@ void checkSiteVerificationWebResourceGettokenResponse(
   buildCounterSiteVerificationWebResourceGettokenResponse--;
 }
 
-core.List<api.SiteVerificationWebResourceResource> buildUnnamed4787() {
+core.List<api.SiteVerificationWebResourceResource> buildUnnamed4837() {
   var o = <api.SiteVerificationWebResourceResource>[];
   o.add(buildSiteVerificationWebResourceResource());
   o.add(buildSiteVerificationWebResourceResource());
   return o;
 }
 
-void checkUnnamed4787(core.List<api.SiteVerificationWebResourceResource> o) {
+void checkUnnamed4837(core.List<api.SiteVerificationWebResourceResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSiteVerificationWebResourceResource(
       o[0] as api.SiteVerificationWebResourceResource);
@@ -118,7 +118,7 @@ api.SiteVerificationWebResourceListResponse
   var o = api.SiteVerificationWebResourceListResponse();
   buildCounterSiteVerificationWebResourceListResponse++;
   if (buildCounterSiteVerificationWebResourceListResponse < 3) {
-    o.items = buildUnnamed4787();
+    o.items = buildUnnamed4837();
   }
   buildCounterSiteVerificationWebResourceListResponse--;
   return o;
@@ -128,19 +128,19 @@ void checkSiteVerificationWebResourceListResponse(
     api.SiteVerificationWebResourceListResponse o) {
   buildCounterSiteVerificationWebResourceListResponse++;
   if (buildCounterSiteVerificationWebResourceListResponse < 3) {
-    checkUnnamed4787(o.items);
+    checkUnnamed4837(o.items);
   }
   buildCounterSiteVerificationWebResourceListResponse--;
 }
 
-core.List<core.String> buildUnnamed4788() {
+core.List<core.String> buildUnnamed4838() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed4788(core.List<core.String> o) {
+void checkUnnamed4838(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -176,7 +176,7 @@ api.SiteVerificationWebResourceResource
   buildCounterSiteVerificationWebResourceResource++;
   if (buildCounterSiteVerificationWebResourceResource < 3) {
     o.id = 'foo';
-    o.owners = buildUnnamed4788();
+    o.owners = buildUnnamed4838();
     o.site = buildSiteVerificationWebResourceResourceSite();
   }
   buildCounterSiteVerificationWebResourceResource--;
@@ -188,7 +188,7 @@ void checkSiteVerificationWebResourceResource(
   buildCounterSiteVerificationWebResourceResource++;
   if (buildCounterSiteVerificationWebResourceResource < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed4788(o.owners);
+    checkUnnamed4838(o.owners);
     checkSiteVerificationWebResourceResourceSite(
         o.site as api.SiteVerificationWebResourceResourceSite);
   }

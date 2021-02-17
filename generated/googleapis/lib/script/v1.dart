@@ -62,7 +62,7 @@ class ScriptApi {
   static const adminDirectoryUserScope =
       'https://www.googleapis.com/auth/admin.directory.user';
 
-  /// View and manage your Google Docs documents
+  /// See, create, and edit all Google Docs documents you have access to
   static const documentsScope = 'https://www.googleapis.com/auth/documents';
 
   /// See, edit, create, and delete all of your Google Drive files

@@ -2505,21 +2505,35 @@ class Orientation {
 
 /// The currently provided software environment on the devices under test.
 class ProvidedSoftwareCatalog {
-  /// A string representing the current version of Android Test Orchestrator
-  /// that is provided by TestExecutionService.
+  /// A string representing the current version of AndroidX Test Orchestrator
+  /// that is used in the environment.
   ///
-  /// Example: "1.0.2 beta".
+  /// The package is available at
+  /// https://maven.google.com/web/index.html#androidx.test:orchestrator.
+  core.String androidxOrchestratorVersion;
+
+  /// A string representing the current version of Android Test Orchestrator
+  /// that is used in the environment.
+  ///
+  /// The package is available at
+  /// https://maven.google.com/web/index.html#com.android.support.test:orchestrator.
   core.String orchestratorVersion;
 
   ProvidedSoftwareCatalog();
 
   ProvidedSoftwareCatalog.fromJson(core.Map _json) {
+    if (_json.containsKey('androidxOrchestratorVersion')) {
+      androidxOrchestratorVersion =
+          _json['androidxOrchestratorVersion'] as core.String;
+    }
     if (_json.containsKey('orchestratorVersion')) {
       orchestratorVersion = _json['orchestratorVersion'] as core.String;
     }
   }
 
   core.Map<core.String, core.Object> toJson() => {
+        if (androidxOrchestratorVersion != null)
+          'androidxOrchestratorVersion': androidxOrchestratorVersion,
         if (orchestratorVersion != null)
           'orchestratorVersion': orchestratorVersion,
       };

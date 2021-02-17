@@ -69,14 +69,14 @@ void checkDisableDatabaseInstanceRequest(api.DisableDatabaseInstanceRequest o) {
   buildCounterDisableDatabaseInstanceRequest--;
 }
 
-core.List<api.DatabaseInstance> buildUnnamed7712() {
+core.List<api.DatabaseInstance> buildUnnamed7753() {
   var o = <api.DatabaseInstance>[];
   o.add(buildDatabaseInstance());
   o.add(buildDatabaseInstance());
   return o;
 }
 
-void checkUnnamed7712(core.List<api.DatabaseInstance> o) {
+void checkUnnamed7753(core.List<api.DatabaseInstance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDatabaseInstance(o[0] as api.DatabaseInstance);
   checkDatabaseInstance(o[1] as api.DatabaseInstance);
@@ -87,7 +87,7 @@ api.ListDatabaseInstancesResponse buildListDatabaseInstancesResponse() {
   var o = api.ListDatabaseInstancesResponse();
   buildCounterListDatabaseInstancesResponse++;
   if (buildCounterListDatabaseInstancesResponse < 3) {
-    o.instances = buildUnnamed7712();
+    o.instances = buildUnnamed7753();
     o.nextPageToken = 'foo';
   }
   buildCounterListDatabaseInstancesResponse--;
@@ -97,7 +97,7 @@ api.ListDatabaseInstancesResponse buildListDatabaseInstancesResponse() {
 void checkListDatabaseInstancesResponse(api.ListDatabaseInstancesResponse o) {
   buildCounterListDatabaseInstancesResponse++;
   if (buildCounterListDatabaseInstancesResponse < 3) {
-    checkUnnamed7712(o.instances);
+    checkUnnamed7753(o.instances);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListDatabaseInstancesResponse--;

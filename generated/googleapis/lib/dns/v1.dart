@@ -2799,9 +2799,6 @@ class Project {
 class Quota {
   /// Maximum allowed number of DnsKeys per ManagedZone.
   core.int dnsKeysPerManagedZone;
-
-  /// Maximum allowed number of GKE clusters per policy.
-  core.int gkeClustersPerPolicy;
   core.String kind;
 
   /// Maximum allowed number of managed zones in the project.
@@ -2853,9 +2850,6 @@ class Quota {
   Quota.fromJson(core.Map _json) {
     if (_json.containsKey('dnsKeysPerManagedZone')) {
       dnsKeysPerManagedZone = _json['dnsKeysPerManagedZone'] as core.int;
-    }
-    if (_json.containsKey('gkeClustersPerPolicy')) {
-      gkeClustersPerPolicy = _json['gkeClustersPerPolicy'] as core.int;
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -2909,8 +2903,6 @@ class Quota {
   core.Map<core.String, core.Object> toJson() => {
         if (dnsKeysPerManagedZone != null)
           'dnsKeysPerManagedZone': dnsKeysPerManagedZone,
-        if (gkeClustersPerPolicy != null)
-          'gkeClustersPerPolicy': gkeClustersPerPolicy,
         if (kind != null) 'kind': kind,
         if (managedZones != null) 'managedZones': managedZones,
         if (managedZonesPerNetwork != null)
@@ -2939,209 +2931,12 @@ class Quota {
       };
 }
 
-/// A RRSetRoutingPolicy represents ResourceRecordSet data that will be returned
-/// dynamically with the response varying based on configured properties such as
-/// geolocation or by weighted random selection.
-class RRSetRoutingPolicy {
-  RRSetRoutingPolicyGeoPolicy geoPolicy;
-  core.String kind;
-  RRSetRoutingPolicyWrrPolicy wrrPolicy;
-
-  RRSetRoutingPolicy();
-
-  RRSetRoutingPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey('geoPolicy')) {
-      geoPolicy = RRSetRoutingPolicyGeoPolicy.fromJson(
-          _json['geoPolicy'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('wrrPolicy')) {
-      wrrPolicy = RRSetRoutingPolicyWrrPolicy.fromJson(
-          _json['wrrPolicy'] as core.Map<core.String, core.dynamic>);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() => {
-        if (geoPolicy != null) 'geoPolicy': geoPolicy.toJson(),
-        if (kind != null) 'kind': kind,
-        if (wrrPolicy != null) 'wrrPolicy': wrrPolicy.toJson(),
-      };
-}
-
-class RRSetRoutingPolicyGeoPolicy {
-  /// If the health check for the primary target for a geo location returns an
-  /// unhealthy status, the failover target is returned instead.
-  ///
-  /// This failover configuration is not mandatory. If a failover is not
-  /// provided, the primary target won't be healthchecked - we'll return the
-  /// primarily configured rrdata irrespective of whether it is healthy or not.
-  core.List<RRSetRoutingPolicyGeoPolicyGeoPolicyItem> failovers;
-
-  /// The primary geo routing configuration.
-  ///
-  /// If there are multiple items with the same location, an error is returned
-  /// instead.
-  core.List<RRSetRoutingPolicyGeoPolicyGeoPolicyItem> items;
-  core.String kind;
-
-  RRSetRoutingPolicyGeoPolicy();
-
-  RRSetRoutingPolicyGeoPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey('failovers')) {
-      failovers = (_json['failovers'] as core.List)
-          .map<RRSetRoutingPolicyGeoPolicyGeoPolicyItem>((value) =>
-              RRSetRoutingPolicyGeoPolicyGeoPolicyItem.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<RRSetRoutingPolicyGeoPolicyGeoPolicyItem>((value) =>
-              RRSetRoutingPolicyGeoPolicyGeoPolicyItem.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() => {
-        if (failovers != null)
-          'failovers': failovers.map((value) => value.toJson()).toList(),
-        if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-      };
-}
-
-class RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
-  core.String kind;
-
-  /// The geo-location granularity is a GCP region.
-  ///
-  /// This location string should correspond to a GCP region. e.g "us-east1",
-  /// "southamerica-east1", "asia-east1", etc.
-  core.String location;
-  core.List<core.String> rrdatas;
-
-  /// DNSSEC generated signatures for the above geo_rrdata.
-  core.List<core.String> signatureRrdatas;
-
-  RRSetRoutingPolicyGeoPolicyGeoPolicyItem();
-
-  RRSetRoutingPolicyGeoPolicyGeoPolicyItem.fromJson(core.Map _json) {
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('rrdatas')) {
-      rrdatas = (_json['rrdatas'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('signatureRrdatas')) {
-      signatureRrdatas = (_json['signatureRrdatas'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (location != null) 'location': location,
-        if (rrdatas != null) 'rrdatas': rrdatas,
-        if (signatureRrdatas != null) 'signatureRrdatas': signatureRrdatas,
-      };
-}
-
-class RRSetRoutingPolicyWrrPolicy {
-  core.List<RRSetRoutingPolicyWrrPolicyWrrPolicyItem> items;
-  core.String kind;
-
-  RRSetRoutingPolicyWrrPolicy();
-
-  RRSetRoutingPolicyWrrPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>((value) =>
-              RRSetRoutingPolicyWrrPolicyWrrPolicyItem.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() => {
-        if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-      };
-}
-
-class RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
-  core.String kind;
-  core.List<core.String> rrdatas;
-
-  /// DNSSEC generated signatures for the above wrr_rrdata.
-  core.List<core.String> signatureRrdatas;
-
-  /// The weight corresponding to this subset of rrdata.
-  ///
-  /// When multiple WeightedRoundRobinPolicyItems are configured, the
-  /// probability of returning an rrset is proportional to its weight relative
-  /// to the sum of weights configured for all items. This weight should be a
-  /// decimal in the range \[0,1\].
-  core.double weight;
-
-  RRSetRoutingPolicyWrrPolicyWrrPolicyItem();
-
-  RRSetRoutingPolicyWrrPolicyWrrPolicyItem.fromJson(core.Map _json) {
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('rrdatas')) {
-      rrdatas = (_json['rrdatas'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('signatureRrdatas')) {
-      signatureRrdatas = (_json['signatureRrdatas'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('weight')) {
-      weight = (_json['weight'] as core.num).toDouble();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (rrdatas != null) 'rrdatas': rrdatas,
-        if (signatureRrdatas != null) 'signatureRrdatas': signatureRrdatas,
-        if (weight != null) 'weight': weight,
-      };
-}
-
 /// A unit of data that will be returned by the DNS servers.
 class ResourceRecordSet {
   core.String kind;
 
   /// For example, www.example.com.
   core.String name;
-
-  /// Configures dynamic query responses based on geo location of querying user
-  /// or a weighted round robin based routing policy.
-  ///
-  /// A ResourceRecordSet should only have either rrdata (static) or
-  /// routing_policy(dynamic). An error is returned otherwise.
-  RRSetRoutingPolicy routingPolicy;
 
   /// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see
   /// examples.
@@ -3167,10 +2962,6 @@ class ResourceRecordSet {
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
-    if (_json.containsKey('routingPolicy')) {
-      routingPolicy = RRSetRoutingPolicy.fromJson(
-          _json['routingPolicy'] as core.Map<core.String, core.dynamic>);
-    }
     if (_json.containsKey('rrdatas')) {
       rrdatas = (_json['rrdatas'] as core.List)
           .map<core.String>((value) => value as core.String)
@@ -3192,7 +2983,6 @@ class ResourceRecordSet {
   core.Map<core.String, core.Object> toJson() => {
         if (kind != null) 'kind': kind,
         if (name != null) 'name': name,
-        if (routingPolicy != null) 'routingPolicy': routingPolicy.toJson(),
         if (rrdatas != null) 'rrdatas': rrdatas,
         if (signatureRrdatas != null) 'signatureRrdatas': signatureRrdatas,
         if (ttl != null) 'ttl': ttl,

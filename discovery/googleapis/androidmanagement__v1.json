@@ -974,7 +974,7 @@
             }
         }
     },
-    "revision": "20210127",
+    "revision": "20210208",
     "rootUrl": "https://androidmanagement.googleapis.com/",
     "schemas": {
         "AdvancedSecurityOverrides": {
@@ -2661,7 +2661,7 @@
                     "type": "string"
                 },
                 "telephonyInfos": {
-                    "description": "Provides telephony information associated with each SIM card on the device. Only supported on fully managed devices starting from Android API level 23 and above.",
+                    "description": "Provides telephony information associated with each SIM card on the device. Only supported on fully managed devices starting from Android API level 23.",
                     "items": {
                         "$ref": "TelephonyInfo"
                     },
@@ -3053,7 +3053,7 @@
                     "type": "boolean"
                 },
                 "maxDaysWithWorkOff": {
-                    "description": "Controls how long the work profile can stay off.",
+                    "description": "Controls how long the work profile can stay off. The duration must be at least 3 days.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -3103,7 +3103,7 @@
                     "type": "boolean"
                 },
                 "adjustVolumeDisabled": {
-                    "description": "Whether adjusting the master volume is disabled.",
+                    "description": "Whether adjusting the master volume is disabled. Also mutes the device.",
                     "type": "boolean"
                 },
                 "advancedSecurityOverrides": {
@@ -4006,7 +4006,7 @@
             "type": "object"
         },
         "TelephonyInfo": {
-            "description": "Telephony information associated with a given SIM card on the device. Only supported on fully managed devices starting from Android API level 23 and above.",
+            "description": "Telephony information associated with a given SIM card on the device. Only supported on fully managed devices starting from Android API level 23.",
             "id": "TelephonyInfo",
             "properties": {
                 "carrierName": {

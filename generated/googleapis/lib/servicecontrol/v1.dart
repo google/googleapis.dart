@@ -2868,8 +2868,8 @@ class Request {
   /// If unknown, it must be -1.
   core.String size;
 
-  /// The timestamp when the `destination` service receives the first byte of
-  /// the request.
+  /// The timestamp when the `destination` service receives the last byte of the
+  /// request.
   core.String time;
 
   Request();

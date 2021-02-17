@@ -6973,11 +6973,11 @@ class OrganizationsEnvironmentsOptimizedStatsResource {
   ///
   /// [name] - Required. The resource name for which the interactive query will
   /// be executed. Must be of the form
-  /// `organizations/{organization_id}/environments/{environment_id/stats/{dimensions}`
+  /// `organizations/{organization_id}/environments/{environment_id/optimizedStats/{dimensions}`
   /// Dimensions let you view metrics in meaningful groupings. E.g. apiproxy,
   /// target_host. The value of dimensions should be comma separated list as
   /// shown below
-  /// `organizations/{org}/environments/{env}/stats/apiproxy,request_verb`
+  /// `organizations/{org}/environments/{env}/optimizedStats/apiproxy,request_verb`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/environments/\[^/\]+/optimizedStats/.*$`.
   ///
@@ -8700,10 +8700,10 @@ class OrganizationsHostStatsResource {
   ///
   /// [name] - Required. The resource name for which the interactive query will
   /// be executed. Must be of the form
-  /// `organizations/{organization_id}/stats/{dimensions}`. Dimensions let you
-  /// view metrics in meaningful groupings. E.g. apiproxy, target_host. The
+  /// `organizations/{organization_id}/hostStats/{dimensions}`. Dimensions let
+  /// you view metrics in meaningful groupings. E.g. apiproxy, target_host. The
   /// value of dimensions should be comma separated list as shown below
-  /// `organizations/{org}/stats/apiproxy,request_verb`
+  /// `organizations/{org}/hostStats/apiproxy,request_verb`
   /// Value must have pattern `^organizations/\[^/\]+/hostStats/.*$`.
   ///
   /// [accuracy] - Legacy field: not used anymore.
@@ -9824,10 +9824,10 @@ class OrganizationsOptimizedHostStatsResource {
   ///
   /// [name] - Required. The resource name for which the interactive query will
   /// be executed. Must be of the form
-  /// `organizations/{organization_id}/stats/{dimensions}`. Dimensions let you
-  /// view metrics in meaningful groupings. E.g. apiproxy, target_host. The
-  /// value of dimensions should be comma separated list as shown below
-  /// `organizations/{org}/stats/apiproxy,request_verb`
+  /// `organizations/{organization_id}/optimizedHostStats/{dimensions}`.
+  /// Dimensions let you view metrics in meaningful groupings. E.g. apiproxy,
+  /// target_host. The value of dimensions should be comma separated list as
+  /// shown below `organizations/{org}/optimizedHostStats/apiproxy,request_verb`
   /// Value must have pattern `^organizations/\[^/\]+/optimizedHostStats/.*$`.
   ///
   /// [accuracy] - Legacy field: not used anymore.
@@ -13986,6 +13986,13 @@ class GoogleCloudApigeeV1DeveloperAppKey {
   /// Time the developer app expires in milliseconds since epoch.
   core.String expiresAt;
 
+  /// Input only.
+  ///
+  /// Expiration time, in seconds, for the consumer key. If not set or left to
+  /// the default value of `-1`, the API key never expires. The expiration time
+  /// can't be updated after it is set.
+  core.String expiresInSeconds;
+
   /// Time the developer app was created in milliseconds since epoch.
   core.String issuedAt;
 
@@ -14024,6 +14031,9 @@ class GoogleCloudApigeeV1DeveloperAppKey {
     if (_json.containsKey('expiresAt')) {
       expiresAt = _json['expiresAt'] as core.String;
     }
+    if (_json.containsKey('expiresInSeconds')) {
+      expiresInSeconds = _json['expiresInSeconds'] as core.String;
+    }
     if (_json.containsKey('issuedAt')) {
       issuedAt = _json['issuedAt'] as core.String;
     }
@@ -14044,6 +14054,7 @@ class GoogleCloudApigeeV1DeveloperAppKey {
         if (consumerKey != null) 'consumerKey': consumerKey,
         if (consumerSecret != null) 'consumerSecret': consumerSecret,
         if (expiresAt != null) 'expiresAt': expiresAt,
+        if (expiresInSeconds != null) 'expiresInSeconds': expiresInSeconds,
         if (issuedAt != null) 'issuedAt': issuedAt,
         if (scopes != null) 'scopes': scopes,
         if (status != null) 'status': status,
@@ -14919,6 +14930,17 @@ class GoogleCloudApigeeV1Instance {
   /// Required.
   core.String name;
 
+  /// The size of the CIDR block range that will be reserved by the instance.
+  ///
+  /// If not specified, default to SLASH_16.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CIDR_RANGE_UNSPECIFIED" : Range not specified.
+  /// - "SLASH_16" : The "/16" CIDR range.
+  /// - "SLASH_20" : The "/20" CIDR range.
+  core.String peeringCidrRange;
+
   /// Port number of the exposed Apigee endpoint.
   ///
   /// Output only.
@@ -14963,6 +14985,9 @@ class GoogleCloudApigeeV1Instance {
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
+    if (_json.containsKey('peeringCidrRange')) {
+      peeringCidrRange = _json['peeringCidrRange'] as core.String;
+    }
     if (_json.containsKey('port')) {
       port = _json['port'] as core.String;
     }
@@ -14981,6 +15006,7 @@ class GoogleCloudApigeeV1Instance {
         if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
         if (location != null) 'location': location,
         if (name != null) 'name': name,
+        if (peeringCidrRange != null) 'peeringCidrRange': peeringCidrRange,
         if (port != null) 'port': port,
         if (state != null) 'state': state,
       };
@@ -16278,9 +16304,15 @@ class GoogleCloudApigeeV1Organization {
   ///
   /// See
   /// [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
-  /// Valid only when \[RuntimeType\] is set to CLOUD. The value can be updated
-  /// only when there are no runtime instances. For example: "default".
-  /// **Note:** Not supported for Apigee hybrid.
+  /// Valid only when \[RuntimeType\](#RuntimeType) is set to `CLOUD`. The value
+  /// can be updated only when there are no runtime instances. For example:
+  /// `default`. Apigee also supports shared VPC (that is, the host network
+  /// project is not the same as the one that is peering with Apigee). See
+  /// [Shared VPC overview](https://cloud.google.com/vpc/docs/shared-vpc). To
+  /// use a shared VPC network, use the following format:
+  /// `projects/{host-project-id}/{region}/networks/{network-name}`. For
+  /// example: `projects/my-sharedvpc-host/global/networks/mynetwork` **Note:**
+  /// Not supported for Apigee hybrid.
   core.String authorizedNetwork;
 
   /// Billing type of the Apigee organization.
@@ -16298,7 +16330,7 @@ class GoogleCloudApigeeV1Organization {
   /// Base64-encoded public certificate for the root CA of the Apigee
   /// organization.
   ///
-  /// Valid only when \[RuntimeType\] is CLOUD.
+  /// Valid only when \[RuntimeType\](#RuntimeType) is `CLOUD`.
   ///
   /// Output only.
   core.String caCertificate;
@@ -16338,7 +16370,7 @@ class GoogleCloudApigeeV1Organization {
   /// Output only.
   core.String name;
 
-  /// The project ID associated with the Apigee organization.
+  /// Project ID associated with the Apigee organization.
   core.String projectId;
 
   /// Properties defined in the Apigee organization profile.
@@ -16349,7 +16381,7 @@ class GoogleCloudApigeeV1Organization {
   ///
   /// Update is not allowed after the organization is created. If not specified,
   /// a Google-Managed encryption key will be used. Valid only when
-  /// \[RuntimeType\] is CLOUD. For example:
+  /// \[RuntimeType\](#RuntimeType) is `CLOUD`. For example:
   /// "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not
   /// supported for Apigee hybrid.
   core.String runtimeDatabaseEncryptionKeyName;

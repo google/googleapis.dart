@@ -19,7 +19,7 @@
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
     },
-    "id": "workflowexecutions:v1beta",
+    "id": "workflowexecutions:v1",
     "kind": "discovery#restDescription",
     "name": "workflowexecutions",
     "ownerDomain": "google.com",
@@ -127,7 +127,7 @@
                                                     "type": "string"
                                                 }
                                             },
-                                            "path": "v1beta/{+name}:cancel",
+                                            "path": "v1/{+name}:cancel",
                                             "request": {
                                                 "$ref": "CancelExecutionRequest"
                                             },
@@ -154,7 +154,7 @@
                                                     "type": "string"
                                                 }
                                             },
-                                            "path": "v1beta/{+parent}/executions",
+                                            "path": "v1/{+parent}/executions",
                                             "request": {
                                                 "$ref": "Execution"
                                             },
@@ -196,7 +196,7 @@
                                                     "type": "string"
                                                 }
                                             },
-                                            "path": "v1beta/{+name}",
+                                            "path": "v1/{+name}",
                                             "response": {
                                                 "$ref": "Execution"
                                             },
@@ -246,7 +246,7 @@
                                                     "type": "string"
                                                 }
                                             },
-                                            "path": "v1beta/{+parent}/executions",
+                                            "path": "v1/{+parent}/executions",
                                             "response": {
                                                 "$ref": "ListExecutionsResponse"
                                             },
@@ -277,22 +277,18 @@
             "id": "Error",
             "properties": {
                 "context": {
-                    "description": "Human readable stack trace string.",
+                    "description": "Human readable error context, helpful for debugging purposes.",
                     "type": "string"
                 },
                 "payload": {
-                    "description": "Error message and data returned represented as a JSON string.",
+                    "description": "Error payload returned by the execution, represented as a JSON string.",
                     "type": "string"
-                },
-                "stackTrace": {
-                    "$ref": "StackTrace",
-                    "description": "Stack trace with detailed information of where error was generated."
                 }
             },
             "type": "object"
         },
         "Execution": {
-            "description": "A running instance of a [Workflow](/workflows/docs/reference/rest/v1beta/projects.locations.workflows).",
+            "description": "A running instance of a [Workflow](/workflows/docs/reference/rest/v1/projects.locations.workflows).",
             "id": "Execution",
             "properties": {
                 "argument": {
@@ -370,49 +366,10 @@
                 }
             },
             "type": "object"
-        },
-        "StackTrace": {
-            "description": "A collection of stack elements (frames) where an error occurred.",
-            "id": "StackTrace",
-            "properties": {
-                "elements": {
-                    "description": "An array of Stack elements.",
-                    "items": {
-                        "$ref": "StackTraceElement"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "StackTraceElement": {
-            "description": "A single stack element (frame) where an error occurred.",
-            "id": "StackTraceElement",
-            "properties": {
-                "column": {
-                    "description": "The source code column position (of the line) the current instruction was generated from.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "line": {
-                    "description": "The source code line number the current instruction was generated from.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "routine": {
-                    "description": "The routine where the error occurred.",
-                    "type": "string"
-                },
-                "step": {
-                    "description": "The step the error occurred at.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
         }
     },
     "servicePath": "",
     "title": "Workflow Executions API",
-    "version": "v1beta",
+    "version": "v1",
     "version_module": true
 }

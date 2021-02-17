@@ -402,7 +402,7 @@
             }
         }
     },
-    "revision": "20210206",
+    "revision": "20210213",
     "rootUrl": "https://youtubereporting.googleapis.com/",
     "schemas": {
         "Empty": {

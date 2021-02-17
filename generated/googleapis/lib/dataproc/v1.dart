@@ -6196,6 +6196,11 @@ class JobMetadata {
 
 /// Dataproc job config.
 class JobPlacement {
+  /// Cluster labels to identify a cluster where the job will be submitted.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String> clusterLabels;
+
   /// The name of the cluster where the job will be submitted.
   ///
   /// Required.
@@ -6210,6 +6215,16 @@ class JobPlacement {
   JobPlacement();
 
   JobPlacement.fromJson(core.Map _json) {
+    if (_json.containsKey('clusterLabels')) {
+      clusterLabels = (_json['clusterLabels'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
+    }
     if (_json.containsKey('clusterName')) {
       clusterName = _json['clusterName'] as core.String;
     }
@@ -6219,6 +6234,7 @@ class JobPlacement {
   }
 
   core.Map<core.String, core.Object> toJson() => {
+        if (clusterLabels != null) 'clusterLabels': clusterLabels,
         if (clusterName != null) 'clusterName': clusterName,
         if (clusterUuid != null) 'clusterUuid': clusterUuid,
       };
@@ -7764,9 +7780,11 @@ class ReservationAffinity {
       };
 }
 
-/// Security related configuration, including Kerberos.
+/// Security related configuration, including encryption, Kerberos, etc.
 class SecurityConfig {
   /// Kerberos related configuration.
+  ///
+  /// Optional.
   KerberosConfig kerberosConfig;
 
   SecurityConfig();

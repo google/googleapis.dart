@@ -47,6 +47,7 @@
 /// - [PubsubnotificationsettingsResource]
 /// - [RegionalinventoryResource]
 /// - [RegionsResource]
+/// - [ReportsResource]
 /// - [RepricingrulesResource]
 ///   - [RepricingrulesRepricingreportsResource]
 /// - [ReturnaddressResource]
@@ -104,6 +105,7 @@ class ShoppingContentApi {
   RegionalinventoryResource get regionalinventory =>
       RegionalinventoryResource(_requester);
   RegionsResource get regions => RegionsResource(_requester);
+  ReportsResource get reports => ReportsResource(_requester);
   RepricingrulesResource get repricingrules =>
       RepricingrulesResource(_requester);
   ReturnaddressResource get returnaddress => ReturnaddressResource(_requester);
@@ -6238,6 +6240,60 @@ class RegionsResource {
   }
 }
 
+class ReportsResource {
+  final commons.ApiRequester _requester;
+
+  ReportsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Retrieves merchant performance mertrics matching the search query and
+  /// optionally segmented by selected dimensions.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. Id of the merchant making the call. Must be a
+  /// standalone account or an MCA subaccount.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchResponse> search(
+    SearchRequest request,
+    core.String merchantId, {
+    core.String $fields,
+  }) async {
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
+    if (merchantId == null) {
+      throw core.ArgumentError('Parameter merchantId is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/reports/search';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return SearchResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class RepricingrulesResource {
   final commons.ApiRequester _requester;
 
@@ -9510,7 +9566,7 @@ class Collection {
   /// Label that you assign to a collection to help organize bidding and
   /// reporting in Shopping campaigns.
   ///
-  /// Custom label
+  /// [Custom label](https://support.google.com/merchants/answer/9674217)
   core.String customLabel0;
 
   /// Label that you assign to a collection to help organize bidding and
@@ -9534,47 +9590,49 @@ class Collection {
   /// Used as a lookup to the corresponding product ID in your product feeds.
   /// Provide a maximum of 100 featuredProduct (for collections). Provide up to
   /// 10 featuredProduct (for Shoppable Images only) with ID and X and Y
-  /// coordinates. featured_product attribute
+  /// coordinates.
+  /// [featured_product attribute](https://support.google.com/merchants/answer/9703736)
   core.List<CollectionFeaturedProduct> featuredProduct;
 
   /// Your collection's name.
   ///
-  /// headline attribute
+  /// [headline attribute](https://support.google.com/merchants/answer/9673580)
   core.List<core.String> headline;
 
   /// The REST ID of the collection.
   ///
   /// Content API methods that operate on collections take this as their
   /// collectionId parameter. The REST ID for a collection is of the form
-  /// collectionId. id attribute
+  /// collectionId.
+  /// [id attribute](https://support.google.com/merchants/answer/9649290)
   ///
   /// Required.
   core.String id;
 
   /// The URL of a collection’s image.
   ///
-  /// image_link attribute
+  /// [image_link attribute](https://support.google.com/merchants/answer/9703236)
   core.List<core.String> imageLink;
 
   /// The language of a collection and the language of any featured products
   /// linked to the collection.
   ///
-  /// language attribute
+  /// [language attribute](https://support.google.com/merchants/answer/9673781)
   core.String language;
 
   /// A collection’s landing page.
   ///
-  /// URL directly linking to your collection's page on your website. link
-  /// attribute
+  /// URL directly linking to your collection's page on your website.
+  /// [link attribute](https://support.google.com/merchants/answer/9673983)
   core.String link;
 
   /// A collection’s mobile-optimized landing page when you have a different URL
   /// for mobile and desktop traffic.
   ///
-  /// mobile_link attribute
+  /// [mobile_link attribute](https://support.google.com/merchants/answer/9646123)
   core.String mobileLink;
 
-  /// product_country attribute
+  /// [product_country attribute](https://support.google.com/merchants/answer/9674155)
   core.String productCountry;
 
   Collection();
@@ -9650,7 +9708,7 @@ class Collection {
 
 /// The message for FeaturedProduct.
 ///
-/// FeaturedProduct
+/// [FeaturedProduct](https://support.google.com/merchants/answer/9703736)
 class CollectionFeaturedProduct {
   /// The unique identifier for the product item.
   core.String offerId;
@@ -13132,6 +13190,42 @@ class MerchantRejectionReason {
   core.Map<core.String, core.Object> toJson() => {
         if (description != null) 'description': description,
         if (reasonCode != null) 'reasonCode': reasonCode,
+      };
+}
+
+/// Performance metrics.
+///
+/// Values are only set for metrics requested explicitly in the request's search
+/// query.
+class Metrics {
+  /// Number of clicks.
+  core.String clicks;
+
+  /// Number of clicks merchant's products receive (clicks) divided by the
+  /// number of times the products are shown (impressions).
+  core.double ctr;
+
+  /// Number of times merchant's products are shown.
+  core.String impressions;
+
+  Metrics();
+
+  Metrics.fromJson(core.Map _json) {
+    if (_json.containsKey('clicks')) {
+      clicks = _json['clicks'] as core.String;
+    }
+    if (_json.containsKey('ctr')) {
+      ctr = (_json['ctr'] as core.num).toDouble();
+    }
+    if (_json.containsKey('impressions')) {
+      impressions = _json['impressions'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (clicks != null) 'clicks': clicks,
+        if (ctr != null) 'ctr': ctr,
+        if (impressions != null) 'impressions': impressions,
       };
 }
 
@@ -21025,6 +21119,38 @@ class RegionalinventoryCustomBatchResponseEntry {
       };
 }
 
+/// Result row returned from the search query.
+class ReportRow {
+  /// Metrics requested by the merchant in the query.
+  ///
+  /// Metric values are only set for metrics requested explicitly in the query.
+  Metrics metrics;
+
+  /// Segmentation dimensions requested by the merchant in the query.
+  ///
+  /// Dimension values are only set for dimensions requested explicitly in the
+  /// query.
+  Segments segments;
+
+  ReportRow();
+
+  ReportRow.fromJson(core.Map _json) {
+    if (_json.containsKey('metrics')) {
+      metrics = Metrics.fromJson(
+          _json['metrics'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('segments')) {
+      segments = Segments.fromJson(
+          _json['segments'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (metrics != null) 'metrics': metrics.toJson(),
+        if (segments != null) 'segments': segments.toJson(),
+      };
+}
+
 /// Resource that represents a daily Repricing product report.
 ///
 /// Each report contains stats for a single type of Repricing rule for a single
@@ -22587,6 +22713,125 @@ class Row {
   core.Map<core.String, core.Object> toJson() => {
         if (cells != null)
           'cells': cells.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// Request message for the ReportService.Search method.
+class SearchRequest {
+  /// Number of ReportRows to retrieve in a single page.
+  ///
+  /// Defaults to the maximum of 1000. Values above 1000 are coerced to 1000.
+  core.int pageSize;
+
+  /// Token of the page to retrieve.
+  ///
+  /// If not specified, the first page of results is returned. In order to
+  /// request the next page of results, the value obtained from
+  /// `next_page_token` in the previous response should be used.
+  core.String pageToken;
+
+  /// Search query that defines performance metrics to retrieve and dimensions
+  /// according to which the metrics are to be segmented.
+  ///
+  ///
+  ///
+  /// Required.
+  core.String query;
+
+  SearchRequest();
+
+  SearchRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('pageSize')) {
+      pageSize = _json['pageSize'] as core.int;
+    }
+    if (_json.containsKey('pageToken')) {
+      pageToken = _json['pageToken'] as core.String;
+    }
+    if (_json.containsKey('query')) {
+      query = _json['query'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (pageSize != null) 'pageSize': pageSize,
+        if (pageToken != null) 'pageToken': pageToken,
+        if (query != null) 'query': query,
+      };
+}
+
+/// Response message for the ReportService.Search method.
+class SearchResponse {
+  /// Token which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If omitted, there are no subsequent pages.
+  core.String nextPageToken;
+
+  /// Rows that matched the search query.
+  core.List<ReportRow> results;
+
+  SearchResponse();
+
+  SearchResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('results')) {
+      results = (_json['results'] as core.List)
+          .map<ReportRow>((value) =>
+              ReportRow.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// Dimensions according to which metrics are segmented in the response.
+///
+/// Values of product dimensions, e.g., offer id, reflect the state of a product
+/// at the time of the corresponding event, e.g., impression or order. Segment
+/// fields cannot be selected in queries without also selecting at least one
+/// metric field. Values are only set for dimensions requested explicitly in the
+/// request's search query.
+class Segments {
+  /// Date in the merchant timezone to which metrics apply.
+  Date date;
+
+  /// Merchant-provided id of the product.
+  core.String offerId;
+
+  /// Program to which metrics apply, e.g., Free Product Listing.
+  /// Possible string values are:
+  /// - "PROGRAM_UNSPECIFIED" : Not specified.
+  /// - "SHOPPING_ADS" : Shopping Ads.
+  /// - "FREE_PRODUCT_LISTING" : Free Product Listing.
+  /// - "FREE_LOCAL_PRODUCT_LISTING" : Free Local Product Listing.
+  /// - "BUY_ON_GOOGLE_LISTING" : Buy on Google Listing.
+  core.String program;
+
+  Segments();
+
+  Segments.fromJson(core.Map _json) {
+    if (_json.containsKey('date')) {
+      date =
+          Date.fromJson(_json['date'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('offerId')) {
+      offerId = _json['offerId'] as core.String;
+    }
+    if (_json.containsKey('program')) {
+      program = _json['program'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (date != null) 'date': date.toJson(),
+        if (offerId != null) 'offerId': offerId,
+        if (program != null) 'program': program,
       };
 }
 

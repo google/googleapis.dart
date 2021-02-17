@@ -1103,8 +1103,8 @@ class Request {
   /// If unknown, it must be -1.
   core.String size;
 
-  /// The timestamp when the `destination` service receives the first byte of
-  /// the request.
+  /// The timestamp when the `destination` service receives the last byte of the
+  /// request.
   core.String time;
 
   Request();
@@ -1499,6 +1499,14 @@ class ResourceLocation {
 ///
 /// It generally models semantics of an HTTP response.
 class Response {
+  /// The length of time it takes the backend service to fully respond to a
+  /// request.
+  ///
+  /// Measured from when the destination service starts to send the request to
+  /// the backend until when the destination service receives the complete
+  /// response from the backend.
+  core.String backendLatency;
+
   /// The HTTP response status code, such as `200` and `404`.
   core.String code;
 
@@ -1514,13 +1522,16 @@ class Response {
   /// If unknown, it must be -1.
   core.String size;
 
-  /// The timestamp when the `destination` service generates the first byte of
-  /// the response.
+  /// The timestamp when the `destination` service sends the last byte of the
+  /// response.
   core.String time;
 
   Response();
 
   Response.fromJson(core.Map _json) {
+    if (_json.containsKey('backendLatency')) {
+      backendLatency = _json['backendLatency'] as core.String;
+    }
     if (_json.containsKey('code')) {
       code = _json['code'] as core.String;
     }
@@ -1542,6 +1553,7 @@ class Response {
   }
 
   core.Map<core.String, core.Object> toJson() => {
+        if (backendLatency != null) 'backendLatency': backendLatency,
         if (code != null) 'code': code,
         if (headers != null) 'headers': headers,
         if (size != null) 'size': size,

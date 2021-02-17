@@ -955,8 +955,8 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The Data Catalog resource name of the entry in URL format.
-  /// Example: *
+  /// [name] - Output only. The Data Catalog resource name of the entry in URL
+  /// format. Example: *
   /// projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}
   /// Note that this Entry and its child resources may not actually be stored in
   /// the location in this name.
@@ -3513,7 +3513,6 @@ class GoogleCloudDatacatalogV1beta1Entry {
   /// - "INTEGRATED_SYSTEM_UNSPECIFIED" : Default unknown system.
   /// - "BIGQUERY" : BigQuery.
   /// - "CLOUD_PUBSUB" : Cloud Pub/Sub.
-  /// - "DPMS" : Dataproc Metastore - Managed Hive Metastore.
   core.String integratedSystem;
 
   /// The resource this metadata entry refers to.
@@ -3534,6 +3533,8 @@ class GoogleCloudDatacatalogV1beta1Entry {
   /// projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}
   /// Note that this Entry and its child resources may not actually be stored in
   /// the location in this name.
+  ///
+  /// Output only.
   core.String name;
 
   /// Schema of the entry.

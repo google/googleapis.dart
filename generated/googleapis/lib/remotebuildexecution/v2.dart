@@ -2932,6 +2932,16 @@ class GoogleDevtoolsRemotebuildbotCommandDurations {
 /// CommandEvents contains counters for the number of warnings and errors that
 /// occurred during the execution of a command.
 class GoogleDevtoolsRemotebuildbotCommandEvents {
+  /// Indicates if and how Container Manager is being used for task execution.
+  /// Possible string values are:
+  /// - "NONE" : Container Manager is disabled or not running for this
+  /// execution.
+  /// - "CONFIG_MATCH" : Container Manager is enabled and there was a matching
+  /// container available for use during execution.
+  /// - "CONFIG_MISMATCH" : Container Manager is enabled, but there was no
+  /// matching container available for execution.
+  core.String cmUsage;
+
   /// Indicates whether we are using a cached Docker image (true) or had to pull
   /// the Docker image (false) for this command.
   core.bool dockerCacheHit;
@@ -2954,6 +2964,9 @@ class GoogleDevtoolsRemotebuildbotCommandEvents {
   GoogleDevtoolsRemotebuildbotCommandEvents();
 
   GoogleDevtoolsRemotebuildbotCommandEvents.fromJson(core.Map _json) {
+    if (_json.containsKey('cmUsage')) {
+      cmUsage = _json['cmUsage'] as core.String;
+    }
     if (_json.containsKey('dockerCacheHit')) {
       dockerCacheHit = _json['dockerCacheHit'] as core.bool;
     }
@@ -2975,6 +2988,7 @@ class GoogleDevtoolsRemotebuildbotCommandEvents {
   }
 
   core.Map<core.String, core.Object> toJson() => {
+        if (cmUsage != null) 'cmUsage': cmUsage,
         if (dockerCacheHit != null) 'dockerCacheHit': dockerCacheHit,
         if (dockerImageName != null) 'dockerImageName': dockerImageName,
         if (inputCacheMiss != null) 'inputCacheMiss': inputCacheMiss,

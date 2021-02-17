@@ -6027,6 +6027,13 @@ class GoogleCloudDialogflowCxV3WebhookRequest {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> payload;
 
+  /// The sentiment analysis result of the current user request.
+  ///
+  /// The field is filled when sentiment analysis is configured to be enabled
+  /// for the request.
+  GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult
+      sentimentAnalysisResult;
+
   /// Information about session status.
   GoogleCloudDialogflowCxV3SessionInfo sessionInfo;
 
@@ -6065,6 +6072,12 @@ class GoogleCloudDialogflowCxV3WebhookRequest {
                 ),
               );
     }
+    if (_json.containsKey('sentimentAnalysisResult')) {
+      sentimentAnalysisResult =
+          GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult
+              .fromJson(_json['sentimentAnalysisResult']
+                  as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('sessionInfo')) {
       sessionInfo = GoogleCloudDialogflowCxV3SessionInfo.fromJson(
           _json['sessionInfo'] as core.Map<core.String, core.dynamic>);
@@ -6081,6 +6094,8 @@ class GoogleCloudDialogflowCxV3WebhookRequest {
           'messages': messages.map((value) => value.toJson()).toList(),
         if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
         if (payload != null) 'payload': payload,
+        if (sentimentAnalysisResult != null)
+          'sentimentAnalysisResult': sentimentAnalysisResult.toJson(),
         if (sessionInfo != null) 'sessionInfo': sessionInfo.toJson(),
       };
 }
@@ -6197,6 +6212,35 @@ class GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue {
   core.Map<core.String, core.Object> toJson() => {
         if (originalValue != null) 'originalValue': originalValue,
         if (resolvedValue != null) 'resolvedValue': resolvedValue,
+      };
+}
+
+/// Represents the result of sentiment analysis.
+class GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult {
+  /// A non-negative number in the \[0, +inf) range, which represents the
+  /// absolute magnitude of sentiment, regardless of score (positive or
+  /// negative).
+  core.double magnitude;
+
+  /// Sentiment score between -1.0 (negative sentiment) and 1.0 (positive
+  /// sentiment).
+  core.double score;
+
+  GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult();
+
+  GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('magnitude')) {
+      magnitude = (_json['magnitude'] as core.num).toDouble();
+    }
+    if (_json.containsKey('score')) {
+      score = (_json['score'] as core.num).toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (magnitude != null) 'magnitude': magnitude,
+        if (score != null) 'score': score,
       };
 }
 
@@ -9078,6 +9122,13 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> payload;
 
+  /// The sentiment analysis result of the current user request.
+  ///
+  /// The field is filled when sentiment analysis is configured to be enabled
+  /// for the request.
+  GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult
+      sentimentAnalysisResult;
+
   /// Information about session status.
   GoogleCloudDialogflowCxV3beta1SessionInfo sessionInfo;
 
@@ -9117,6 +9168,12 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
                 ),
               );
     }
+    if (_json.containsKey('sentimentAnalysisResult')) {
+      sentimentAnalysisResult =
+          GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult
+              .fromJson(_json['sentimentAnalysisResult']
+                  as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('sessionInfo')) {
       sessionInfo = GoogleCloudDialogflowCxV3beta1SessionInfo.fromJson(
           _json['sessionInfo'] as core.Map<core.String, core.dynamic>);
@@ -9133,6 +9190,8 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
           'messages': messages.map((value) => value.toJson()).toList(),
         if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
         if (payload != null) 'payload': payload,
+        if (sentimentAnalysisResult != null)
+          'sentimentAnalysisResult': sentimentAnalysisResult.toJson(),
         if (sessionInfo != null) 'sessionInfo': sessionInfo.toJson(),
       };
 }
@@ -9250,6 +9309,35 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue
   core.Map<core.String, core.Object> toJson() => {
         if (originalValue != null) 'originalValue': originalValue,
         if (resolvedValue != null) 'resolvedValue': resolvedValue,
+      };
+}
+
+/// Represents the result of sentiment analysis.
+class GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult {
+  /// A non-negative number in the \[0, +inf) range, which represents the
+  /// absolute magnitude of sentiment, regardless of score (positive or
+  /// negative).
+  core.double magnitude;
+
+  /// Sentiment score between -1.0 (negative sentiment) and 1.0 (positive
+  /// sentiment).
+  core.double score;
+
+  GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult();
+
+  GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('magnitude')) {
+      magnitude = (_json['magnitude'] as core.num).toDouble();
+    }
+    if (_json.containsKey('score')) {
+      score = (_json['score'] as core.num).toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (magnitude != null) 'magnitude': magnitude,
+        if (score != null) 'score': score,
       };
 }
 

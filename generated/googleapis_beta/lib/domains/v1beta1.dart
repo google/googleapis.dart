@@ -1310,7 +1310,7 @@ class Binding {
 class ConfigureContactSettingsRequest {
   /// The list of contact notices that the caller acknowledges.
   ///
-  /// The notices required here depend on the values specified in
+  /// The notices needed here depend on the values specified in
   /// `contact_settings`.
   core.List<core.String> contactNotices;
 
@@ -2586,7 +2586,7 @@ class PostalAddress {
 class RegisterDomainRequest {
   /// The list of contact notices that the caller acknowledges.
   ///
-  /// The notices required here depend on the values specified in
+  /// The notices needed here depend on the values specified in
   /// `registration.contact_settings`.
   core.List<core.String> contactNotices;
 

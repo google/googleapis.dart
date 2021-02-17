@@ -27,14 +27,14 @@ import 'package:googleapis_beta/area120tables/v1alpha1.dart' as api;
 
 import '../test_shared.dart';
 
-core.List<api.CreateRowRequest> buildUnnamed7526() {
+core.List<api.CreateRowRequest> buildUnnamed7567() {
   var o = <api.CreateRowRequest>[];
   o.add(buildCreateRowRequest());
   o.add(buildCreateRowRequest());
   return o;
 }
 
-void checkUnnamed7526(core.List<api.CreateRowRequest> o) {
+void checkUnnamed7567(core.List<api.CreateRowRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCreateRowRequest(o[0] as api.CreateRowRequest);
   checkCreateRowRequest(o[1] as api.CreateRowRequest);
@@ -45,7 +45,7 @@ api.BatchCreateRowsRequest buildBatchCreateRowsRequest() {
   var o = api.BatchCreateRowsRequest();
   buildCounterBatchCreateRowsRequest++;
   if (buildCounterBatchCreateRowsRequest < 3) {
-    o.requests = buildUnnamed7526();
+    o.requests = buildUnnamed7567();
   }
   buildCounterBatchCreateRowsRequest--;
   return o;
@@ -54,19 +54,19 @@ api.BatchCreateRowsRequest buildBatchCreateRowsRequest() {
 void checkBatchCreateRowsRequest(api.BatchCreateRowsRequest o) {
   buildCounterBatchCreateRowsRequest++;
   if (buildCounterBatchCreateRowsRequest < 3) {
-    checkUnnamed7526(o.requests);
+    checkUnnamed7567(o.requests);
   }
   buildCounterBatchCreateRowsRequest--;
 }
 
-core.List<api.Row> buildUnnamed7527() {
+core.List<api.Row> buildUnnamed7568() {
   var o = <api.Row>[];
   o.add(buildRow());
   o.add(buildRow());
   return o;
 }
 
-void checkUnnamed7527(core.List<api.Row> o) {
+void checkUnnamed7568(core.List<api.Row> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRow(o[0] as api.Row);
   checkRow(o[1] as api.Row);
@@ -77,7 +77,7 @@ api.BatchCreateRowsResponse buildBatchCreateRowsResponse() {
   var o = api.BatchCreateRowsResponse();
   buildCounterBatchCreateRowsResponse++;
   if (buildCounterBatchCreateRowsResponse < 3) {
-    o.rows = buildUnnamed7527();
+    o.rows = buildUnnamed7568();
   }
   buildCounterBatchCreateRowsResponse--;
   return o;
@@ -86,19 +86,19 @@ api.BatchCreateRowsResponse buildBatchCreateRowsResponse() {
 void checkBatchCreateRowsResponse(api.BatchCreateRowsResponse o) {
   buildCounterBatchCreateRowsResponse++;
   if (buildCounterBatchCreateRowsResponse < 3) {
-    checkUnnamed7527(o.rows);
+    checkUnnamed7568(o.rows);
   }
   buildCounterBatchCreateRowsResponse--;
 }
 
-core.List<core.String> buildUnnamed7528() {
+core.List<core.String> buildUnnamed7569() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7528(core.List<core.String> o) {
+void checkUnnamed7569(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -109,7 +109,7 @@ api.BatchDeleteRowsRequest buildBatchDeleteRowsRequest() {
   var o = api.BatchDeleteRowsRequest();
   buildCounterBatchDeleteRowsRequest++;
   if (buildCounterBatchDeleteRowsRequest < 3) {
-    o.names = buildUnnamed7528();
+    o.names = buildUnnamed7569();
   }
   buildCounterBatchDeleteRowsRequest--;
   return o;
@@ -118,19 +118,19 @@ api.BatchDeleteRowsRequest buildBatchDeleteRowsRequest() {
 void checkBatchDeleteRowsRequest(api.BatchDeleteRowsRequest o) {
   buildCounterBatchDeleteRowsRequest++;
   if (buildCounterBatchDeleteRowsRequest < 3) {
-    checkUnnamed7528(o.names);
+    checkUnnamed7569(o.names);
   }
   buildCounterBatchDeleteRowsRequest--;
 }
 
-core.List<api.UpdateRowRequest> buildUnnamed7529() {
+core.List<api.UpdateRowRequest> buildUnnamed7570() {
   var o = <api.UpdateRowRequest>[];
   o.add(buildUpdateRowRequest());
   o.add(buildUpdateRowRequest());
   return o;
 }
 
-void checkUnnamed7529(core.List<api.UpdateRowRequest> o) {
+void checkUnnamed7570(core.List<api.UpdateRowRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUpdateRowRequest(o[0] as api.UpdateRowRequest);
   checkUpdateRowRequest(o[1] as api.UpdateRowRequest);
@@ -141,7 +141,7 @@ api.BatchUpdateRowsRequest buildBatchUpdateRowsRequest() {
   var o = api.BatchUpdateRowsRequest();
   buildCounterBatchUpdateRowsRequest++;
   if (buildCounterBatchUpdateRowsRequest < 3) {
-    o.requests = buildUnnamed7529();
+    o.requests = buildUnnamed7570();
   }
   buildCounterBatchUpdateRowsRequest--;
   return o;
@@ -150,19 +150,19 @@ api.BatchUpdateRowsRequest buildBatchUpdateRowsRequest() {
 void checkBatchUpdateRowsRequest(api.BatchUpdateRowsRequest o) {
   buildCounterBatchUpdateRowsRequest++;
   if (buildCounterBatchUpdateRowsRequest < 3) {
-    checkUnnamed7529(o.requests);
+    checkUnnamed7570(o.requests);
   }
   buildCounterBatchUpdateRowsRequest--;
 }
 
-core.List<api.Row> buildUnnamed7530() {
+core.List<api.Row> buildUnnamed7571() {
   var o = <api.Row>[];
   o.add(buildRow());
   o.add(buildRow());
   return o;
 }
 
-void checkUnnamed7530(core.List<api.Row> o) {
+void checkUnnamed7571(core.List<api.Row> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRow(o[0] as api.Row);
   checkRow(o[1] as api.Row);
@@ -173,7 +173,7 @@ api.BatchUpdateRowsResponse buildBatchUpdateRowsResponse() {
   var o = api.BatchUpdateRowsResponse();
   buildCounterBatchUpdateRowsResponse++;
   if (buildCounterBatchUpdateRowsResponse < 3) {
-    o.rows = buildUnnamed7530();
+    o.rows = buildUnnamed7571();
   }
   buildCounterBatchUpdateRowsResponse--;
   return o;
@@ -182,19 +182,19 @@ api.BatchUpdateRowsResponse buildBatchUpdateRowsResponse() {
 void checkBatchUpdateRowsResponse(api.BatchUpdateRowsResponse o) {
   buildCounterBatchUpdateRowsResponse++;
   if (buildCounterBatchUpdateRowsResponse < 3) {
-    checkUnnamed7530(o.rows);
+    checkUnnamed7571(o.rows);
   }
   buildCounterBatchUpdateRowsResponse--;
 }
 
-core.List<api.LabeledItem> buildUnnamed7531() {
+core.List<api.LabeledItem> buildUnnamed7572() {
   var o = <api.LabeledItem>[];
   o.add(buildLabeledItem());
   o.add(buildLabeledItem());
   return o;
 }
 
-void checkUnnamed7531(core.List<api.LabeledItem> o) {
+void checkUnnamed7572(core.List<api.LabeledItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLabeledItem(o[0] as api.LabeledItem);
   checkLabeledItem(o[1] as api.LabeledItem);
@@ -207,7 +207,7 @@ api.ColumnDescription buildColumnDescription() {
   if (buildCounterColumnDescription < 3) {
     o.dataType = 'foo';
     o.id = 'foo';
-    o.labels = buildUnnamed7531();
+    o.labels = buildUnnamed7572();
     o.lookupDetails = buildLookupDetails();
     o.name = 'foo';
     o.relationshipDetails = buildRelationshipDetails();
@@ -221,7 +221,7 @@ void checkColumnDescription(api.ColumnDescription o) {
   if (buildCounterColumnDescription < 3) {
     unittest.expect(o.dataType, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed7531(o.labels);
+    checkUnnamed7572(o.labels);
     checkLookupDetails(o.lookupDetails as api.LookupDetails);
     unittest.expect(o.name, unittest.equals('foo'));
     checkRelationshipDetails(o.relationshipDetails as api.RelationshipDetails);
@@ -288,14 +288,14 @@ void checkLabeledItem(api.LabeledItem o) {
   buildCounterLabeledItem--;
 }
 
-core.List<api.Row> buildUnnamed7532() {
+core.List<api.Row> buildUnnamed7573() {
   var o = <api.Row>[];
   o.add(buildRow());
   o.add(buildRow());
   return o;
 }
 
-void checkUnnamed7532(core.List<api.Row> o) {
+void checkUnnamed7573(core.List<api.Row> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRow(o[0] as api.Row);
   checkRow(o[1] as api.Row);
@@ -307,7 +307,7 @@ api.ListRowsResponse buildListRowsResponse() {
   buildCounterListRowsResponse++;
   if (buildCounterListRowsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.rows = buildUnnamed7532();
+    o.rows = buildUnnamed7573();
   }
   buildCounterListRowsResponse--;
   return o;
@@ -317,19 +317,19 @@ void checkListRowsResponse(api.ListRowsResponse o) {
   buildCounterListRowsResponse++;
   if (buildCounterListRowsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed7532(o.rows);
+    checkUnnamed7573(o.rows);
   }
   buildCounterListRowsResponse--;
 }
 
-core.List<api.Table> buildUnnamed7533() {
+core.List<api.Table> buildUnnamed7574() {
   var o = <api.Table>[];
   o.add(buildTable());
   o.add(buildTable());
   return o;
 }
 
-void checkUnnamed7533(core.List<api.Table> o) {
+void checkUnnamed7574(core.List<api.Table> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTable(o[0] as api.Table);
   checkTable(o[1] as api.Table);
@@ -341,7 +341,7 @@ api.ListTablesResponse buildListTablesResponse() {
   buildCounterListTablesResponse++;
   if (buildCounterListTablesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.tables = buildUnnamed7533();
+    o.tables = buildUnnamed7574();
   }
   buildCounterListTablesResponse--;
   return o;
@@ -351,19 +351,19 @@ void checkListTablesResponse(api.ListTablesResponse o) {
   buildCounterListTablesResponse++;
   if (buildCounterListTablesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed7533(o.tables);
+    checkUnnamed7574(o.tables);
   }
   buildCounterListTablesResponse--;
 }
 
-core.List<api.Workspace> buildUnnamed7534() {
+core.List<api.Workspace> buildUnnamed7575() {
   var o = <api.Workspace>[];
   o.add(buildWorkspace());
   o.add(buildWorkspace());
   return o;
 }
 
-void checkUnnamed7534(core.List<api.Workspace> o) {
+void checkUnnamed7575(core.List<api.Workspace> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWorkspace(o[0] as api.Workspace);
   checkWorkspace(o[1] as api.Workspace);
@@ -375,7 +375,7 @@ api.ListWorkspacesResponse buildListWorkspacesResponse() {
   buildCounterListWorkspacesResponse++;
   if (buildCounterListWorkspacesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.workspaces = buildUnnamed7534();
+    o.workspaces = buildUnnamed7575();
   }
   buildCounterListWorkspacesResponse--;
   return o;
@@ -385,7 +385,7 @@ void checkListWorkspacesResponse(api.ListWorkspacesResponse o) {
   buildCounterListWorkspacesResponse++;
   if (buildCounterListWorkspacesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed7534(o.workspaces);
+    checkUnnamed7575(o.workspaces);
   }
   buildCounterListWorkspacesResponse--;
 }
@@ -430,7 +430,7 @@ void checkRelationshipDetails(api.RelationshipDetails o) {
   buildCounterRelationshipDetails--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed7535() {
+core.Map<core.String, core.Object> buildUnnamed7576() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -445,7 +445,7 @@ core.Map<core.String, core.Object> buildUnnamed7535() {
   return o;
 }
 
-void checkUnnamed7535(core.Map<core.String, core.Object> o) {
+void checkUnnamed7576(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -465,7 +465,7 @@ api.Row buildRow() {
   buildCounterRow++;
   if (buildCounterRow < 3) {
     o.name = 'foo';
-    o.values = buildUnnamed7535();
+    o.values = buildUnnamed7576();
   }
   buildCounterRow--;
   return o;
@@ -475,19 +475,19 @@ void checkRow(api.Row o) {
   buildCounterRow++;
   if (buildCounterRow < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed7535(o.values);
+    checkUnnamed7576(o.values);
   }
   buildCounterRow--;
 }
 
-core.List<api.ColumnDescription> buildUnnamed7536() {
+core.List<api.ColumnDescription> buildUnnamed7577() {
   var o = <api.ColumnDescription>[];
   o.add(buildColumnDescription());
   o.add(buildColumnDescription());
   return o;
 }
 
-void checkUnnamed7536(core.List<api.ColumnDescription> o) {
+void checkUnnamed7577(core.List<api.ColumnDescription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkColumnDescription(o[0] as api.ColumnDescription);
   checkColumnDescription(o[1] as api.ColumnDescription);
@@ -498,7 +498,7 @@ api.Table buildTable() {
   var o = api.Table();
   buildCounterTable++;
   if (buildCounterTable < 3) {
-    o.columns = buildUnnamed7536();
+    o.columns = buildUnnamed7577();
     o.displayName = 'foo';
     o.name = 'foo';
   }
@@ -509,7 +509,7 @@ api.Table buildTable() {
 void checkTable(api.Table o) {
   buildCounterTable++;
   if (buildCounterTable < 3) {
-    checkUnnamed7536(o.columns);
+    checkUnnamed7577(o.columns);
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
   }
@@ -539,14 +539,14 @@ void checkUpdateRowRequest(api.UpdateRowRequest o) {
   buildCounterUpdateRowRequest--;
 }
 
-core.List<api.Table> buildUnnamed7537() {
+core.List<api.Table> buildUnnamed7578() {
   var o = <api.Table>[];
   o.add(buildTable());
   o.add(buildTable());
   return o;
 }
 
-void checkUnnamed7537(core.List<api.Table> o) {
+void checkUnnamed7578(core.List<api.Table> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTable(o[0] as api.Table);
   checkTable(o[1] as api.Table);
@@ -559,7 +559,7 @@ api.Workspace buildWorkspace() {
   if (buildCounterWorkspace < 3) {
     o.displayName = 'foo';
     o.name = 'foo';
-    o.tables = buildUnnamed7537();
+    o.tables = buildUnnamed7578();
   }
   buildCounterWorkspace--;
   return o;
@@ -570,7 +570,7 @@ void checkWorkspace(api.Workspace o) {
   if (buildCounterWorkspace < 3) {
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed7537(o.tables);
+    checkUnnamed7578(o.tables);
   }
   buildCounterWorkspace--;
 }
@@ -1141,6 +1141,7 @@ void main() {
       var mock = HttpServerMock();
       var res = api.Area120TablesApi(mock).tables.rows;
       var arg_parent = 'foo';
+      var arg_filter = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_view = 'foo';
@@ -1173,6 +1174,7 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
@@ -1188,6 +1190,7 @@ void main() {
       }), true);
       res
           .list(arg_parent,
+              filter: arg_filter,
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               view: arg_view,

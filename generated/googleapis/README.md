@@ -268,6 +268,12 @@ Enables bots to fetch information and perform actions in Google Chat.
 
 Official API documentation: https://developers.google.com/hangouts/chat
 
+#### Chrome Management API - chromemanagement v1
+
+The Chrome Management API is a suite of services that allows GSuite domain administrators to view, manage and gain insights on their Chrome OS and Chrome Browser devices and users.
+
+Official API documentation: http://developers.google.com/chrome/management/
+
 #### Chrome UX Report API - chromeuxreport v1
 
 The Chrome UX Report API lets you view real user experience data for millions of websites. 
@@ -303,6 +309,10 @@ Official API documentation: https://cloud.google.com/billing/
 Creates and manages builds on Google Cloud Platform.
 
 Official API documentation: https://cloud.google.com/cloud-build/docs/
+
+#### Cloud Channel API - cloudchannel v1
+
+Official API documentation: https://cloud.google.com/channel
 
 #### Cloud Debugger API - clouddebugger v2
 
@@ -438,7 +448,7 @@ Official API documentation: https://cloud.google.com/deployment-manager
 
 #### Campaign Manager 360 API - dfareporting v3.4
 
-Manage your DoubleClick Campaign Manager ad campaigns and reports.
+Build applications to efficiently manage large or complex trafficking, reporting, and attribution workflows for Campaign Manager 360.
 
 Official API documentation: https://developers.google.com/doubleclick-advertisers/
 
@@ -1095,6 +1105,18 @@ Official API documentation: https://developers.google.com/webmaster-tools/
 Scans your Compute and App Engine apps for common web vulnerabilities.
 
 Official API documentation: https://cloud.google.com/security-command-center/docs/concepts-web-security-scanner-overview/
+
+#### Workflow Executions API - workflowexecutions v1
+
+Execute workflows created with Workflows API.
+
+Official API documentation: https://cloud.google.com/workflows
+
+#### Workflows API - workflows v1
+
+Orchestrate Workflows consisting of Google Cloud APIs, SaaS APIs or private API endpoints.
+
+Official API documentation: https://cloud.google.com/workflows
 
 #### YouTube Data API v3 - youtube v3
 

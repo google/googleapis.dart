@@ -61,7 +61,10 @@ class V1Resource {
   /// Exchanges a credential for a Google OAuth 2.0 access token.
   ///
   /// The token asserts an external identity within a workload identity pool, or
-  /// it applies a Credential Access Boundary to a Google access token.
+  /// it applies a Credential Access Boundary to a Google access token. When you
+  /// call this method, do not send the `Authorization` HTTP header in the
+  /// request. This method does not require the `Authorization` header, and
+  /// using the header can cause the request to fail.
   ///
   /// [request] - The metadata request object.
   ///

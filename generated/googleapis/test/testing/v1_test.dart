@@ -1713,6 +1713,7 @@ api.ProvidedSoftwareCatalog buildProvidedSoftwareCatalog() {
   var o = api.ProvidedSoftwareCatalog();
   buildCounterProvidedSoftwareCatalog++;
   if (buildCounterProvidedSoftwareCatalog < 3) {
+    o.androidxOrchestratorVersion = 'foo';
     o.orchestratorVersion = 'foo';
   }
   buildCounterProvidedSoftwareCatalog--;
@@ -1722,6 +1723,7 @@ api.ProvidedSoftwareCatalog buildProvidedSoftwareCatalog() {
 void checkProvidedSoftwareCatalog(api.ProvidedSoftwareCatalog o) {
   buildCounterProvidedSoftwareCatalog++;
   if (buildCounterProvidedSoftwareCatalog < 3) {
+    unittest.expect(o.androidxOrchestratorVersion, unittest.equals('foo'));
     unittest.expect(o.orchestratorVersion, unittest.equals('foo'));
   }
   buildCounterProvidedSoftwareCatalog--;
