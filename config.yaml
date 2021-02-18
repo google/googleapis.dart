@@ -3,7 +3,7 @@
 packages:
 - googleapis:
     version: 1.0.0
-    respository: https://github.com/dart-lang/googleapis
+    repository: https://github.com/dart-lang/googleapis
     readme: resources/README.md
     license: resources/LICENSE
     changelog: resources/googleapis/CHANGELOG.md
@@ -197,7 +197,7 @@ packages:
 
 - googleapis_beta:
     version: 1.0.0
-    respository: https://github.com/dart-lang/googleapis
+    repository: https://github.com/dart-lang/googleapis
     readme: resources/README.md
     license: resources/LICENSE
     changelog: resources/googleapis_beta/CHANGELOG.md
