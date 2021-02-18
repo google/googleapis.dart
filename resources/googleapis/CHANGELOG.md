@@ -1,4 +1,4 @@
-## 1.0.0-beta.0
+## 1.0.0
 
 ### BREAKING changes to API shape
 
@@ -15,7 +15,9 @@
 - `artifactregistry` - new
 - `assuredworkloads` - new
 - `billingbudgets` - new
+- `chromemanagement` - new
 - `chromeuxreport` - new
+- `cloudchannel` - new
 - `datafusion` - new
 - `dialogflow` - added v3 API
 - `eventarc` - new
@@ -37,6 +39,8 @@
 - `sts` - new
 - `trafficdirector` - new
 - `vectortile` - new
+- `workflowexecutions` - new
+- `workflows` - new
 - `youtubeAnalytics` - dropped v1 API
 
 ## 0.56.1

@@ -56,8 +56,7 @@ class DiscoveryPackagesConfiguration {
   ///     packages:
   ///     - googleapis:
   ///         version: 0.1.0
-  ///         author: Dart Team <misc@dartlang.org>
-  ///         homepage: http://www.dartlang.org
+  ///         repository: https://github.com/dart-lang/googleapis
   ///         readme: resources/README.md
   ///         license: resources/LICENSE
   ///         apis:
@@ -65,8 +64,7 @@ class DiscoveryPackagesConfiguration {
   ///         -  bigquery:v2
   ///     - googleapis_beta:
   ///         version: 0.1.0
-  ///         author: Dart Team <misc@dartlang.org>
-  ///         homepage: http://www.dartlang.org
+  ///         repository: https://github.com/dart-lang/googleapis
   ///         readme: resources/README.md
   ///         license: resources/LICENSE
   ///         apis:
@@ -304,7 +302,7 @@ package.
     final apis = _listFromYaml(values['apis'] as List).cast<String>();
     final version = values['version'] as String ?? '0.1.0-dev';
     final author = values['author'] as String;
-    final homepage = values['homepage'] as String;
+    final repository = values['repository'] as String;
 
     Map<String, String> extraDevDependencies;
     if (values.containsKey('extraDevDependencies')) {
@@ -369,7 +367,7 @@ package.
       version,
       description,
       author: author,
-      homepage: homepage,
+      repository: repository,
       extraDevDependencies: extraDevDependencies,
     );
     return Package(

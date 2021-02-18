@@ -39,8 +39,8 @@ you need to create a project, create the authentication credentials,
 and activate the API you want to use, all of which you do at
 <a href="https://console.developers.google.com">Google Developers Console</a>.
 
-Support for Google APIs is in two packages—<a href="https://pub.dartlang.org/packages/googleapis">googleapis</a> and
-<a href="https://pub.dartlang.org/packages/googleapis_beta">googleapis_beta</a>.
+Support for Google APIs is in two packages—<a href="https://pub.dev/packages/googleapis">googleapis</a> and
+<a href="https://pub.dev/packages/googleapis_beta">googleapis_beta</a>.
 The googleapis package contains the APIs for all
 the APIs that are available in a stable version.
 The googleapis_beta
@@ -48,7 +48,7 @@ package contains the APIs that are currently in
 beta and possibly only available through a Limited Preview program.
 
 A third package,
-<a href="https://pub.dartlang.org/packages/googleapis_auth">googleapis_auth</a>,
+<a href="https://pub.dev/packages/googleapis_auth">googleapis_auth</a>,
 provides a way to obtain OAuth 2.0 credentials and an authenticated HTTP client
 required to use these APIs.
 
@@ -105,8 +105,8 @@ or a commmand-line tool.
 </dl>
 
 You can see the full list of APIs at
-<a href="https://pub.dartlang.org/packages/googleapis">googleapis</a> and
-<a href="https://pub.dartlang.org/packages/googleapis_beta">googleapis_beta</a>.
+<a href="https://pub.dev/packages/googleapis">googleapis</a> and
+<a href="https://pub.dev/packages/googleapis_beta">googleapis_beta</a>.
 
 ## OAuth 2.0
 
@@ -169,20 +169,20 @@ provides different means for creating an HTTP client that can handle the
 authorization. This HTTP client is then passed to the API objects and takes care
 of augmenting the communication with the required authorization information.
 The Dart googleapis_auth client library is available at
-<a href="https://pub.dartlang.org/packages/googleapis_auth">pub.dartlang.org/packages/googleapis_auth</a>.
+<a href="https://pub.dev/packages/googleapis_auth">pub.dev/packages/googleapis_auth</a>.
 There you can find a detailed README file with code examples
 and explanatory text.
 </dd>
 
 <dt><strong>The googleapis or googleapis_beta package</strong></dt>
 <dd> These packages are publicly available at
-<a href="https://pub.dartlang.org/packages/googleapis">pub.dartlang.org/packages/googleapis</a> and
-<a href="https://pub.dartlang.org/packages/googleapis_beta">pub.dartlang.org/packages/googleapis_beta</a>.
+<a href="https://pub.dev/packages/googleapis">pub.dev/packages/googleapis</a> and
+<a href="https://pub.dev/packages/googleapis_beta">pub.dev/packages/googleapis_beta</a>.
 Later, you'll see an example of how to use them in your Dart program.
 </dd>
 
 <dt><strong>Dart</strong></dt>
-<dd> Get Dart from <a href="https://www.dartlang.org/downloads/">the download page</a>.
+<dd> Get Dart from <a href="https://dart.dev/get-dart">the download page</a>.
 </dd>
 
 </dl>
@@ -466,9 +466,9 @@ Here's a convenient list of the resources you might need:
 * <a href="https://console.developers.google.com">Google Developers Console</a>
 * <a href="https://developers.google.com/console/help/new/">Google Developers Console Help</a>
 * <a href="https://developers.google.com/accounts/docs/OAuth2">Using OAuth 2.0 to Access Google Apis</a>
-* <a href="https://pub.dartlang.org/packages/googleapis">googleapis</a>
-* <a href="https://pub.dartlang.org/packages/googleapis_auth">googleapis_auth</a>
-* <a href="https://pub.dartlang.org/packages/googleapis_beta">googleapis_beta</a>
+* <a href="https://pub.dev/packages/googleapis">googleapis</a>
+* <a href="https://pub.dev/packages/googleapis_auth">googleapis_auth</a>
+* <a href="https://pub.dev/packages/googleapis_beta">googleapis_beta</a>
 * <a href="https://github.com/dart-lang/googleapis_examples">googleapis_examples</a>
 
 ## Contribute
@@ -529,12 +529,12 @@ or [prediction](https://cloud.google.com/prediction/docs/developer-guide).
 
 ## What next?
 
-* Read the README and the code for the packages on pub.dartlang.org:
-<a href="https://pub.dartlang.org/packages/googleapis_auth">googleapis_auth</a>.
+* Read the README and the code for the packages on pub.dev:
+<a href="https://pub.dev/packages/googleapis_auth">googleapis_auth</a>.
 
 * Check out additional APIs that are currently in beta and possibly
 only available through a Limited Preview program:
-<a href="https://pub.dartlang.org/packages/googleapis_beta">googleapis_beta</a>.
+<a href="https://pub.dev/packages/googleapis_beta">googleapis_beta</a>.
 
 * Play with some <a href="https://github.com/dart-lang/googleapis_examples">examples</a>.
 

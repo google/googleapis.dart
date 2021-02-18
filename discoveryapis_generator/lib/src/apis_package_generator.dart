@@ -169,8 +169,8 @@ const userAgent = 'Dart package:${pubspec.name} / ${pubspec.version}';
       sink.writeln('author: ${pubspec.author}');
     }
     sink.writeln('description: ${pubspec.description}');
-    if (pubspec.homepage != null) {
-      sink.writeln('homepage: ${pubspec.homepage}');
+    if (pubspec.repository != null) {
+      sink.writeln('repository: ${pubspec.repository}');
     }
     sink.writeln('environment:');
     sink.writeln("  sdk: '${pubspec.sdkConstraint}'");

@@ -1,4 +1,4 @@
-## 1.0.0-beta.0
+## 1.0.0
 
 ### BREAKING changes to API shape
 
@@ -44,8 +44,6 @@ for the stable versions of the changed APIs.
 * `speech` - removed. Use stable.
 * `tpu` - removed. Use stable.
 * `transcoder` - new
-* `workflowexecutions` - new
-* `workflows` - new
 
 ## 0.51.0
  * [api-new] artifactregistry:v1beta1
