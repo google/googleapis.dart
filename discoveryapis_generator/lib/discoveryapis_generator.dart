@@ -10,7 +10,6 @@ import 'dart:io';
 import 'src/apis_files_generator.dart';
 import 'src/apis_package_generator.dart';
 import 'src/generated_googleapis/discovery/v1.dart';
-import 'src/null_safety.dart' as null_safety;
 import 'src/pubspec.dart';
 import 'src/utils.dart';
 
@@ -38,11 +37,8 @@ List<GenerateResult> generateAllLibraries(
   String inputDirectory,
   String outputDirectory,
   Pubspec pubspec, {
-  bool generateNullSafe = false,
   bool deleteExisting = true,
 }) {
-  null_safety.generateNullSafeCode = generateNullSafe;
-
   final apiDescriptions = Directory(inputDirectory)
       .listSync()
       .whereType<File>()

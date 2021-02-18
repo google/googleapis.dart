@@ -158,7 +158,11 @@ class DartResourceMethod {
     var genericReturnType = '<void>';
     // NOTE: Media downloads are optional, so we cannot return [Media] as type.
     if (mediaDownload) {
-      genericReturnType = '<${imports.core.ref()}Object>';
+      if (returnType == null) {
+        genericReturnType = '<${imports.commons.ref()}Media?>';
+      } else {
+        genericReturnType = '<${imports.core.ref()}Object>';
+      }
     } else if (returnType != null) {
       genericReturnType = '<${returnType.declaration}>';
     }
@@ -233,8 +237,7 @@ class DartResourceMethod {
       final parameterEncode =
           requestParameter.type.jsonEncode('${requestParameter.name}');
       params.write(
-        'final _body = ${requestParameter.name} == null ? '
-        'null :${imports.convert.ref()}json.encode($parameterEncode);',
+        'final _body = ${imports.convert.ref()}json.encode($parameterEncode);',
       );
     }
 
@@ -293,15 +296,13 @@ class DartResourceMethod {
 
       if (param.required) {
         if (param.type is UnnamedArrayType) {
+          params.writeln('if (${param.name}.isEmpty) {');
           params.writeln(
-              '    if (${param.name} == null || ${param.name}.isEmpty) {');
-        } else {
-          params.writeln('    if (${param.name} == null) {');
+            'throw ${imports.core.ref()}ArgumentError'
+            "('Parameter ${param.name} cannot be empty.');",
+          );
+          params.writeln('}');
         }
-        params.writeln('      throw ${imports.core.ref()}ArgumentError'
-            "('Parameter ${param.name} is required.');");
-        params.writeln('    }');
-
         queryParams.add(propertyAssignment);
       } else {
         queryParams.add('if (${param.name} != null) $propertyAssignment');
@@ -408,7 +409,7 @@ $urlPatternCode
     if (downloadOptions.isMetadataDownload) {
       return $plainResponse;
     } else {
-      return _response;
+      return _response as ${imports.commons}.Media;
     }
 ''');
     } else if (returnType != null) {

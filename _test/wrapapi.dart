@@ -49,8 +49,7 @@ class WrapApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<WrapResponse> helloPost(WrapRequest request) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     const _url = 'helloPost';
 
     final _response = await _requester.request(
@@ -77,12 +76,12 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 class WrapRequest {
-  core.int age;
-  core.String name;
+  core.int? age;
+  core.String? name;
 
   WrapRequest();
 
@@ -95,14 +94,14 @@ class WrapRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (age != null) 'age': age,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (age != null) 'age': age!,
+        if (name != null) 'name': name!,
       };
 }
 
 class WrapResponse {
-  core.String result;
+  core.String? result;
 
   WrapResponse();
 
@@ -112,7 +111,7 @@ class WrapResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (result != null) 'result': result,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (result != null) 'result': result!,
       };
 }

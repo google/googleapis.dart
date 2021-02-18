@@ -10,6 +10,7 @@ import 'dart_api_library.dart';
 import 'dart_resources.dart';
 import 'dart_schemas.dart';
 import 'namer.dart';
+import 'null_safety.dart';
 import 'uri_template.dart';
 import 'utils.dart';
 
@@ -121,7 +122,7 @@ import '../$testSharedDartFileName';
 
 const testSharedDartFileName = 'test_shared.dart';
 
-const testHelperLibraryContent = '''
+String get testHelperLibraryContent => '''
 import 'dart:async' as async;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
@@ -129,14 +130,14 @@ import 'dart:core' as core;
 import 'package:http/http.dart' as http;
 
 class HttpServerMock extends http.BaseClient {
-  core.Future<http.StreamedResponse> Function(http.BaseRequest, core.Object)
-      _callback;
-  core.bool _expectJson;
+  ${lateQualifier}core.Future<http.StreamedResponse> Function(
+      http.BaseRequest, core.Object$orNull) _callback;
+  ${lateQualifier}core.bool _expectJson;
 
   void register(
     core.Future<http.StreamedResponse> Function(
-      http.BaseRequest bob,
-      core.Object foo,
+      http.BaseRequest,
+      core.Object$orNull,
     )
         callback,
     core.bool expectJson,
@@ -149,7 +150,7 @@ class HttpServerMock extends http.BaseClient {
   async.Future<http.StreamedResponse> send(http.BaseRequest request) async {
     if (_expectJson) {
       final jsonString =
-          await request.finalize().transform(convert.utf8.decoder).join('');
+          await request.finalize().transform(convert.utf8.decoder).join();
       if (jsonString.isEmpty) {
         return _callback(request, null);
       } else {
@@ -157,12 +158,8 @@ class HttpServerMock extends http.BaseClient {
       }
     } else {
       final stream = request.finalize();
-      if (stream == null) {
-        return _callback(request, []);
-      } else {
-        final data = await stream.toBytes();
-        return _callback(request, data);
-      }
+      final data = await stream.toBytes();
+      return _callback(request, data);
     }
   }
 }
@@ -457,7 +454,7 @@ core.bool parseBool(n) {
     void checkParameter(MethodParameter p) {
       final name = parameterValues[p];
       final type = p.type;
-      final queryMapValue = 'queryMap["${escapeString(p.jsonName)}"]';
+      final queryMapValue = 'queryMap["${escapeString(p.jsonName)}"]!';
 
       if (!p.encodedInPath) {
         if (type is IntegerType || type is StringIntegerType) {
@@ -745,8 +742,8 @@ class UnnamedMapTest extends UnnamedSchemaTest<UnnamedMapType> {
     final sb = StringBuffer();
     withFunc(0, sb, 'void checkUnnamed$_id', '$declaration o', () {
       sb.writeln('  ${expectHasLength('o', '2')}');
-      sb.writeln('  ${innerTest.checkSchemaStatement("o['x']")}');
-      sb.writeln('  ${innerTest.checkSchemaStatement("o['y']")}');
+      sb.writeln('  ${innerTest.checkSchemaStatement("o['x']!")}');
+      sb.writeln('  ${innerTest.checkSchemaStatement("o['y']!")}');
     });
     return '$sb';
   }
@@ -870,7 +867,7 @@ class ObjectSchemaTest extends NamedSchemaTest<ObjectType> {
         if (!schema.isVariantDiscriminator(prop)) {
           final propertyTest = apiTestLibrary.schemaTests[prop.type];
           final name = prop.name.name;
-          sb.writeln('    ${propertyTest.checkSchemaStatement('o.$name')}');
+          sb.writeln('    ${propertyTest.checkSchemaStatement('o.$name!')}');
         }
       }
       sb.writeln('  }');
@@ -937,8 +934,8 @@ class NamedMapSchemaTest extends NamedSchemaTest<NamedMapType> {
     final sb = StringBuffer();
     withFunc(0, sb, 'void check${schema.className.name}', '$declaration o', () {
       sb.writeln('  ${expectHasLength('o', '2')}');
-      sb.writeln('  ${innerTest.checkSchemaStatement('o["a"]')}');
-      sb.writeln('  ${innerTest.checkSchemaStatement('o["b"]')}');
+      sb.writeln('  ${innerTest.checkSchemaStatement('o["a"]!')}');
+      sb.writeln('  ${innerTest.checkSchemaStatement('o["b"]!')}');
     });
     return '$sb';
   }
@@ -1064,7 +1061,7 @@ class TestHelper {
   }
 
   String expectEqual(String a, Object b) =>
-      'unittest.expect($a, unittest.equals($b));';
+      'unittest.expect($a, unittest.equals($b),);';
 
   String expectIsTrue(String a) => 'unittest.expect($a, unittest.isTrue);';
 

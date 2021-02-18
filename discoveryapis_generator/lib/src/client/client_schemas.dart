@@ -9,6 +9,7 @@ import '../dart_comments.dart';
 import '../dart_schemas.dart';
 import '../generated_googleapis/discovery/v1.dart';
 import '../namer.dart';
+import '../null_safety.dart';
 import '../utils.dart';
 
 /// Represents a named custom dart class with a number of properties.
@@ -55,9 +56,10 @@ class ClientObjectType extends ObjectType {
 
     for (var property in properties) {
       toJsonString.writeln('    if (message.${property.name} != null) {');
-      toJsonString
-          .writeln("      _json['${escapeString(property.jsonName)}'] = "
-              '${property.type.jsonEncode('message.${property.name}')};');
+      toJsonString.writeln(
+        "      _json['${escapeString(property.jsonName)}'] = "
+        '${property.type.jsonEncode('message.${property.name}$notNull')};',
+      );
       toJsonString.writeln('    }');
     }
     toJsonString.writeln('    return _json;');

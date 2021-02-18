@@ -3,32 +3,32 @@
 // BSD-style license that can be found in the LICENSE file.
 
 class ToyResponse {
-  String result;
+  String? result;
   ToyResponse();
 }
 
 class ToyResourceResponse {
-  String result;
+  String? result;
   ToyResourceResponse();
 }
 
 class NestedResponse {
-  String nestedResult;
+  String? nestedResult;
   NestedResponse();
 }
 
 class ToyMapResponse {
-  String result;
-  Map<String, NestedResponse> mapResult;
+  String? result;
+  Map<String, NestedResponse>? mapResult;
 
   ToyMapResponse();
 }
 
 class ToyRequest {
-  String name;
-  int age;
+  String? name;
+  int? age;
 }
 
 class ToyAgeRequest {
-  int age;
+  int? age;
 }

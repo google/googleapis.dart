@@ -1,5 +1,5 @@
 /// Whether to generate null safe code.
-bool generateNullSafeCode = false;
+const generateNullSafeCode = true;
 
 /// String representing `?` in optionally-null-safe code.
 ///
@@ -10,3 +10,5 @@ String get orNull => generateNullSafeCode ? '?' : '';
 ///
 /// If generating null safe code, returns `!`. Otherwise returns ``.
 String get notNull => generateNullSafeCode ? '!' : '';
+
+String get lateQualifier => generateNullSafeCode ? 'late ' : '';

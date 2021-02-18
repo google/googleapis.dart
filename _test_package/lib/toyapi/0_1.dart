@@ -83,7 +83,7 @@ class ToyApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<void> failing({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -112,7 +112,7 @@ class ToyApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ToyResponse> hello({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -145,10 +145,9 @@ class ToyApi {
   /// this method will complete with the same error.
   async.Future<MapOfToyResponse> helloListOfClass(
     ListOfToyRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -181,10 +180,9 @@ class ToyApi {
   /// this method will complete with the same error.
   async.Future<MapOfToyResponse> helloListOfListOfClass(
     ListOfListOfToyRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -217,9 +215,9 @@ class ToyApi {
   /// this method will complete with the same error.
   async.Future<MapOfint> helloMap(
     MapOfint request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body = request == null ? null : convert.json.encode(request);
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -254,14 +252,8 @@ class ToyApi {
   async.Future<ToyResponse> helloNameAge(
     core.String name,
     core.int age, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
-    if (age == null) {
-      throw core.ArgumentError('Parameter age is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -299,13 +291,9 @@ class ToyApi {
   async.Future<ToyResponse> helloNamePostAge(
     ToyAgeRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -343,15 +331,9 @@ class ToyApi {
   async.Future<ToyResponse> helloNameQueryAgeFoo(
     core.String foo,
     core.String name, {
-    core.int age,
-    core.String $fields,
+    core.int? age,
+    core.String? $fields,
   }) async {
-    if (foo == null) {
-      throw core.ArgumentError('Parameter foo is required.');
-    }
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'foo': [foo],
       if (age != null) 'age': ['${age}'],
@@ -385,9 +367,9 @@ class ToyApi {
   /// this method will complete with the same error.
   async.Future<ListOfListOfString> helloNestedListList(
     ListOfListOfint request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body = request == null ? null : convert.json.encode(request);
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -419,9 +401,9 @@ class ToyApi {
   /// this method will complete with the same error.
   async.Future<ListOfMapOfListOfString> helloNestedListMapList(
     ListOfMapOfListOfint request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body = request == null ? null : convert.json.encode(request);
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -450,7 +432,7 @@ class ToyApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ToyMapResponse> helloNestedMap({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -483,9 +465,9 @@ class ToyApi {
   /// this method will complete with the same error.
   async.Future<MapOfListOfMapOfbool> helloNestedMapListMap(
     MapOfListOfMapOfint request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body = request == null ? null : convert.json.encode(request);
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -518,9 +500,9 @@ class ToyApi {
   /// this method will complete with the same error.
   async.Future<MapOfMapOfbool> helloNestedMapMap(
     MapOfMapOfint request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body = request == null ? null : convert.json.encode(request);
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -553,10 +535,9 @@ class ToyApi {
   /// this method will complete with the same error.
   async.Future<ToyResponse> helloPost(
     ToyRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -586,7 +567,7 @@ class ToyApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ToyResponse> helloReturnNull({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -616,7 +597,7 @@ class ToyApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ToyResponse> helloVoid({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -644,7 +625,7 @@ class ToyApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<void> noop({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -676,9 +657,9 @@ class ToyApi {
   /// this method will complete with the same error.
   async.Future<ListOfString> reverseList(
     ListOfString request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body = request == null ? null : convert.json.encode(request);
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -730,12 +711,9 @@ class ComputeResource {
   /// this method will complete with the same error.
   async.Future<core.Object> download(
     core.String resourceName, {
-    core.String $fields,
+    core.String? $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
-    if (resourceName == null) {
-      throw core.ArgumentError('Parameter resourceName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -753,7 +731,7 @@ class ComputeResource {
       return ToyResourceResponse.fromJson(
           _response as core.Map<core.String, core.dynamic>);
     } else {
-      return _response;
+      return _response as commons.Media;
     }
   }
 
@@ -780,18 +758,12 @@ class ComputeResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<core.Object> export(
+  async.Future<commons.Media?> export(
     core.String fileId,
     core.String mimeType, {
-    core.String $fields,
+    core.String? $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
-    if (mimeType == null) {
-      throw core.ArgumentError('Parameter mimeType is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'mimeType': [mimeType],
       if ($fields != null) 'fields': [$fields],
@@ -809,7 +781,7 @@ class ComputeResource {
     if (downloadOptions.isMetadataDownload) {
       return null;
     } else {
-      return _response;
+      return _response as commons.Media;
     }
   }
 
@@ -833,14 +805,8 @@ class ComputeResource {
   async.Future<ToyResourceResponse> get(
     core.String resource,
     core.String compute, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
-    if (compute == null) {
-      throw core.ArgumentError('Parameter compute is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -886,14 +852,8 @@ class StorageResource {
   async.Future<ToyResourceResponse> get(
     core.String resource,
     core.String storage, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
-    if (storage == null) {
-      throw core.ArgumentError('Parameter storage is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -960,7 +920,7 @@ class ListOfListOfToyRequest
                 .toList())
             .toList();
 
-  core.List<core.List<core.Map<core.String, core.Object>>> toJson() {
+  core.List<core.List<core.Map<core.String, core.Object?>>> toJson() {
     return _inner
         .map((value) => value.map((value) => value.toJson()).toList())
         .toList();
@@ -1024,18 +984,19 @@ class ListOfMapOfListOfString
 
   ListOfMapOfListOfString.fromJson(core.List json)
       : _inner = json
-            .map((value) =>
-                (value as core.Map).cast<core.String, core.List>().map(
-                      (key, item) => core.MapEntry(
-                        key,
-                        (item as core.List)
-                            .map<core.String>((value) => value as core.String)
-                            .toList(),
-                      ),
-                    ))
+            .map((value) => (value as core.Map)
+                .cast<core.String, core.List<core.String>>()
+                .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    (item as core.List)
+                        .map<core.String>((value) => value as core.String)
+                        .toList(),
+                  ),
+                ))
             .toList();
 
-  core.List<core.Map<core.String, core.List<core.String>>> toJson() {
+  core.List<core.Map<core.String, core.List<core.String>?>> toJson() {
     return _inner.map((value) => value).toList();
   }
 
@@ -1066,18 +1027,19 @@ class ListOfMapOfListOfint
 
   ListOfMapOfListOfint.fromJson(core.List json)
       : _inner = json
-            .map((value) =>
-                (value as core.Map).cast<core.String, core.List>().map(
-                      (key, item) => core.MapEntry(
-                        key,
-                        (item as core.List)
-                            .map<core.int>((value) => value as core.int)
-                            .toList(),
-                      ),
-                    ))
+            .map((value) => (value as core.Map)
+                .cast<core.String, core.List<core.int>>()
+                .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    (item as core.List)
+                        .map<core.int>((value) => value as core.int)
+                        .toList(),
+                  ),
+                ))
             .toList();
 
-  core.List<core.Map<core.String, core.List<core.int>>> toJson() {
+  core.List<core.Map<core.String, core.List<core.int>?>> toJson() {
     return _inner.map((value) => value).toList();
   }
 
@@ -1140,7 +1102,7 @@ class ListOfToyRequest extends collection.ListBase<ToyRequest> {
                 value as core.Map<core.String, core.dynamic>))
             .toList();
 
-  core.List<core.Map<core.String, core.Object>> toJson() {
+  core.List<core.Map<core.String, core.Object?>> toJson() {
     return _inner.map((value) => value.toJson()).toList();
   }
 
@@ -1186,7 +1148,7 @@ class MapOfListOfMapOfbool extends collection
       core.Map<core.String, core.dynamic>.of(this);
 
   @core.override
-  core.List<core.Map<core.String, core.bool>> operator [](core.Object key) =>
+  core.List<core.Map<core.String, core.bool>>? operator [](core.Object? key) =>
       _innerMap[key];
 
   @core.override
@@ -1204,7 +1166,7 @@ class MapOfListOfMapOfbool extends collection
   core.Iterable<core.String> get keys => _innerMap.keys;
 
   @core.override
-  core.List<core.Map<core.String, core.bool>> remove(core.Object key) =>
+  core.List<core.Map<core.String, core.bool>>? remove(core.Object? key) =>
       _innerMap.remove(key);
 }
 
@@ -1232,7 +1194,7 @@ class MapOfListOfMapOfint extends collection
       core.Map<core.String, core.dynamic>.of(this);
 
   @core.override
-  core.List<core.Map<core.String, core.int>> operator [](core.Object key) =>
+  core.List<core.Map<core.String, core.int>>? operator [](core.Object? key) =>
       _innerMap[key];
 
   @core.override
@@ -1250,7 +1212,7 @@ class MapOfListOfMapOfint extends collection
   core.Iterable<core.String> get keys => _innerMap.keys;
 
   @core.override
-  core.List<core.Map<core.String, core.int>> remove(core.Object key) =>
+  core.List<core.Map<core.String, core.int>>? remove(core.Object? key) =>
       _innerMap.remove(key);
 }
 
@@ -1275,7 +1237,7 @@ class MapOfMapOfbool
       core.Map<core.String, core.dynamic>.of(this);
 
   @core.override
-  core.Map<core.String, core.bool> operator [](core.Object key) =>
+  core.Map<core.String, core.bool>? operator [](core.Object? key) =>
       _innerMap[key];
 
   @core.override
@@ -1292,7 +1254,7 @@ class MapOfMapOfbool
   core.Iterable<core.String> get keys => _innerMap.keys;
 
   @core.override
-  core.Map<core.String, core.bool> remove(core.Object key) =>
+  core.Map<core.String, core.bool>? remove(core.Object? key) =>
       _innerMap.remove(key);
 }
 
@@ -1317,7 +1279,7 @@ class MapOfMapOfint
       core.Map<core.String, core.dynamic>.of(this);
 
   @core.override
-  core.Map<core.String, core.int> operator [](core.Object key) =>
+  core.Map<core.String, core.int>? operator [](core.Object? key) =>
       _innerMap[key];
 
   @core.override
@@ -1334,7 +1296,7 @@ class MapOfMapOfint
   core.Iterable<core.String> get keys => _innerMap.keys;
 
   @core.override
-  core.Map<core.String, core.int> remove(core.Object key) =>
+  core.Map<core.String, core.int>? remove(core.Object? key) =>
       _innerMap.remove(key);
 }
 
@@ -1354,7 +1316,7 @@ class MapOfToyResponse extends collection.MapBase<core.String, ToyResponse> {
       core.Map<core.String, core.dynamic>.of(this);
 
   @core.override
-  ToyResponse operator [](core.Object key) => _innerMap[key];
+  ToyResponse? operator [](core.Object? key) => _innerMap[key];
 
   @core.override
   void operator []=(core.String key, ToyResponse value) {
@@ -1370,7 +1332,7 @@ class MapOfToyResponse extends collection.MapBase<core.String, ToyResponse> {
   core.Iterable<core.String> get keys => _innerMap.keys;
 
   @core.override
-  ToyResponse remove(core.Object key) => _innerMap.remove(key);
+  ToyResponse? remove(core.Object? key) => _innerMap.remove(key);
 }
 
 class MapOfint extends collection.MapBase<core.String, core.int> {
@@ -1388,7 +1350,7 @@ class MapOfint extends collection.MapBase<core.String, core.int> {
       core.Map<core.String, core.dynamic>.of(this);
 
   @core.override
-  core.int operator [](core.Object key) => _innerMap[key];
+  core.int? operator [](core.Object? key) => _innerMap[key];
 
   @core.override
   void operator []=(core.String key, core.int value) {
@@ -1404,11 +1366,11 @@ class MapOfint extends collection.MapBase<core.String, core.int> {
   core.Iterable<core.String> get keys => _innerMap.keys;
 
   @core.override
-  core.int remove(core.Object key) => _innerMap.remove(key);
+  core.int? remove(core.Object? key) => _innerMap.remove(key);
 }
 
 class NestedResponse {
-  core.String nestedResult;
+  core.String? nestedResult;
 
   NestedResponse();
 
@@ -1418,13 +1380,13 @@ class NestedResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nestedResult != null) 'nestedResult': nestedResult,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nestedResult != null) 'nestedResult': nestedResult!,
       };
 }
 
 class ToyAgeRequest {
-  core.int age;
+  core.int? age;
 
   ToyAgeRequest();
 
@@ -1434,44 +1396,45 @@ class ToyAgeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (age != null) 'age': age,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (age != null) 'age': age!,
       };
 }
 
 class ToyMapResponse {
-  core.Map<core.String, NestedResponse> mapResult;
-  core.String result;
+  core.Map<core.String, NestedResponse>? mapResult;
+  core.String? result;
 
   ToyMapResponse();
 
   ToyMapResponse.fromJson(core.Map _json) {
     if (_json.containsKey('mapResult')) {
-      mapResult =
-          (_json['mapResult'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  NestedResponse.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      mapResult = (_json['mapResult'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              NestedResponse.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('result')) {
       result = _json['result'] as core.String;
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (mapResult != null)
           'mapResult':
-              mapResult.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (result != null) 'result': result,
+              mapResult!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (result != null) 'result': result!,
       };
 }
 
 class ToyRequest {
-  core.int age;
-  core.String name;
+  core.int? age;
+  core.String? name;
 
   ToyRequest();
 
@@ -1484,14 +1447,14 @@ class ToyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (age != null) 'age': age,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (age != null) 'age': age!,
+        if (name != null) 'name': name!,
       };
 }
 
 class ToyResourceResponse {
-  core.String result;
+  core.String? result;
 
   ToyResourceResponse();
 
@@ -1501,13 +1464,13 @@ class ToyResourceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (result != null) 'result': result,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (result != null) 'result': result!,
       };
 }
 
 class ToyResponse {
-  core.String result;
+  core.String? result;
 
   ToyResponse();
 
@@ -1517,7 +1480,7 @@ class ToyResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (result != null) 'result': result,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (result != null) 'result': result!,
       };
 }

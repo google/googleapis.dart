@@ -197,7 +197,6 @@ Future downloadFromConfiguration(String configFile) async {
 
 void generateFromConfiguration(
   String configFile,
-  bool generateNullSafe,
   bool deleteExisting,
 ) {
   final configuration = DiscoveryPackagesConfiguration(configFile);
@@ -207,7 +206,6 @@ void generateFromConfiguration(
   return configuration.generate(
     configFileUri.resolve('discovery').path,
     configFileUri.resolve('generated').path,
-    generateNullSafe,
     deleteExisting,
   );
 }

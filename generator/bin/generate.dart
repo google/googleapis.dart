@@ -22,7 +22,6 @@ ArgParser runConfigCommandArgParser() => ArgParser()
     help: 'Configuration file describing package generation.',
     defaultsTo: 'config.yaml',
   )
-  ..addFlag('generate-null-safe', help: 'Whether to generate null safe code.')
   ..addFlag('delete-existing', defaultsTo: true);
 
 ArgParser globalArgParser() => ArgParser()
@@ -87,7 +86,6 @@ void main(List<String> arguments) {
       }
 
       final configFile = commandOptions['config-file'] as String;
-      final generateNullSafe = commandOptions['generate-null-safe'] as bool;
       final deleteExisting = commandOptions['delete-existing'] as bool;
       switch (commandOptions.command.name) {
         case 'download':
@@ -96,7 +94,6 @@ void main(List<String> arguments) {
         case 'generate':
           generateFromConfiguration(
             configFile,
-            generateNullSafe,
             deleteExisting,
           );
           print('Done');

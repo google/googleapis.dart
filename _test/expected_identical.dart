@@ -67,7 +67,7 @@ class ToyApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<void> failing({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -96,7 +96,7 @@ class ToyApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ToyResponse> hello({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -129,12 +129,10 @@ class ToyApi {
   /// this method will complete with the same error.
   async.Future<core.Map<core.String, ToyResponse>> helloListOfClass(
     core.List<ToyRequest> request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body = request == null
-        ? null
-        : convert.json.encode(
-            request.map((value) => ToyRequestFactory.toJson(value)).toList());
+    final _body = convert.json.encode(
+        request.map((value) => ToyRequestFactory.toJson(value)).toList());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -147,7 +145,9 @@ class ToyApi {
       body: _body,
       queryParams: _queryParams,
     );
-    return (_response as core.Map).cast<core.String, core.Map>().map(
+    return (_response as core.Map)
+        .cast<core.String, core.Map<core.String, core.Object?>>()
+        .map(
           (key, item) => core.MapEntry(
             key,
             ToyResponseFactory.fromJson(
@@ -172,14 +172,12 @@ class ToyApi {
   /// this method will complete with the same error.
   async.Future<core.Map<core.String, ToyResponse>> helloListOfListOfClass(
     core.List<core.List<ToyRequest>> request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body = request == null
-        ? null
-        : convert.json.encode(request
-            .map((value) =>
-                value.map((value) => ToyRequestFactory.toJson(value)).toList())
-            .toList());
+    final _body = convert.json.encode(request
+        .map((value) =>
+            value.map((value) => ToyRequestFactory.toJson(value)).toList())
+        .toList());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -192,7 +190,9 @@ class ToyApi {
       body: _body,
       queryParams: _queryParams,
     );
-    return (_response as core.Map).cast<core.String, core.Map>().map(
+    return (_response as core.Map)
+        .cast<core.String, core.Map<core.String, core.Object?>>()
+        .map(
           (key, item) => core.MapEntry(
             key,
             ToyResponseFactory.fromJson(
@@ -217,9 +217,9 @@ class ToyApi {
   /// this method will complete with the same error.
   async.Future<core.Map<core.String, core.int>> helloMap(
     core.Map<core.String, core.int> request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body = request == null ? null : convert.json.encode(request);
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -259,14 +259,8 @@ class ToyApi {
   async.Future<ToyResponse> helloNameAge(
     core.String name,
     core.int age, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
-    if (age == null) {
-      throw core.ArgumentError('Parameter age is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -304,14 +298,9 @@ class ToyApi {
   async.Future<ToyResponse> helloNamePostAge(
     ToyAgeRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body = request == null
-        ? null
-        : convert.json.encode(ToyAgeRequestFactory.toJson(request));
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(ToyAgeRequestFactory.toJson(request));
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -349,15 +338,9 @@ class ToyApi {
   async.Future<ToyResponse> helloNameQueryAgeFoo(
     core.String foo,
     core.String name, {
-    core.int age,
-    core.String $fields,
+    core.int? age,
+    core.String? $fields,
   }) async {
-    if (foo == null) {
-      throw core.ArgumentError('Parameter foo is required.');
-    }
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'foo': [foo],
       if (age != null) 'age': ['${age}'],
@@ -391,9 +374,9 @@ class ToyApi {
   /// this method will complete with the same error.
   async.Future<core.List<core.List<core.String>>> helloNestedListList(
     core.List<core.List<core.int>> request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body = request == null ? null : convert.json.encode(request);
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -431,9 +414,9 @@ class ToyApi {
   async.Future<core.List<core.Map<core.String, core.List<core.String>>>>
       helloNestedListMapList(
     core.List<core.Map<core.String, core.List<core.int>>> request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body = request == null ? null : convert.json.encode(request);
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -447,8 +430,8 @@ class ToyApi {
       queryParams: _queryParams,
     );
     return (_response as core.List)
-        .map<core.Map<core.String, core.List<core.String>>>(
-            (value) => (value as core.Map).cast<core.String, core.List>().map(
+        .map<core.Map<core.String, core.List<core.String>>>((value) =>
+            (value as core.Map).cast<core.String, core.List<core.String>>().map(
                   (key, item) => core.MapEntry(
                     key,
                     (item as core.List)
@@ -472,7 +455,7 @@ class ToyApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ToyMapResponse> helloNestedMap({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -508,9 +491,9 @@ class ToyApi {
           core.Map<core.String, core.List<core.Map<core.String, core.bool>>>>
       helloNestedMapListMap(
     core.Map<core.String, core.List<core.Map<core.String, core.int>>> request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body = request == null ? null : convert.json.encode(request);
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -523,7 +506,9 @@ class ToyApi {
       body: _body,
       queryParams: _queryParams,
     );
-    return (_response as core.Map).cast<core.String, core.List>().map(
+    return (_response as core.Map)
+        .cast<core.String, core.List<core.Map<core.String, core.bool?>>>()
+        .map(
           (key, item) => core.MapEntry(
             key,
             (item as core.List)
@@ -557,9 +542,9 @@ class ToyApi {
   async.Future<core.Map<core.String, core.Map<core.String, core.bool>>>
       helloNestedMapMap(
     core.Map<core.String, core.Map<core.String, core.int>> request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body = request == null ? null : convert.json.encode(request);
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -572,7 +557,9 @@ class ToyApi {
       body: _body,
       queryParams: _queryParams,
     );
-    return (_response as core.Map).cast<core.String, core.Map>().map(
+    return (_response as core.Map)
+        .cast<core.String, core.Map<core.String, core.bool?>>()
+        .map(
           (key, item) => core.MapEntry(
             key,
             (item as core.Map).cast<core.String, core.bool>().map(
@@ -601,11 +588,9 @@ class ToyApi {
   /// this method will complete with the same error.
   async.Future<ToyResponse> helloPost(
     ToyRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body = request == null
-        ? null
-        : convert.json.encode(ToyRequestFactory.toJson(request));
+    final _body = convert.json.encode(ToyRequestFactory.toJson(request));
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -635,7 +620,7 @@ class ToyApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ToyResponse> helloReturnNull({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -665,7 +650,7 @@ class ToyApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ToyResponse> helloVoid({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -693,7 +678,7 @@ class ToyApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<void> noop({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -725,9 +710,9 @@ class ToyApi {
   /// this method will complete with the same error.
   async.Future<core.List<core.String>> reverseList(
     core.List<core.String> request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body = request == null ? null : convert.json.encode(request);
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -781,12 +766,9 @@ class ComputeResource {
   /// this method will complete with the same error.
   async.Future<core.Object> download(
     core.String resourceName, {
-    core.String $fields,
+    core.String? $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
-    if (resourceName == null) {
-      throw core.ArgumentError('Parameter resourceName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -804,7 +786,7 @@ class ComputeResource {
       return ToyResourceResponseFactory.fromJson(
           _response as core.Map<core.String, core.dynamic>);
     } else {
-      return _response;
+      return _response as commons.Media;
     }
   }
 
@@ -831,18 +813,12 @@ class ComputeResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<core.Object> export(
+  async.Future<commons.Media?> export(
     core.String fileId,
     core.String mimeType, {
-    core.String $fields,
+    core.String? $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
-    if (mimeType == null) {
-      throw core.ArgumentError('Parameter mimeType is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'mimeType': [mimeType],
       if ($fields != null) 'fields': [$fields],
@@ -860,7 +836,7 @@ class ComputeResource {
     if (downloadOptions.isMetadataDownload) {
       return null;
     } else {
-      return _response;
+      return _response as commons.Media;
     }
   }
 
@@ -884,14 +860,8 @@ class ComputeResource {
   async.Future<ToyResourceResponse> get(
     core.String resource,
     core.String compute, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
-    if (compute == null) {
-      throw core.ArgumentError('Parameter compute is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -937,14 +907,8 @@ class StorageResource {
   async.Future<ToyResourceResponse> get(
     core.String resource,
     core.String storage, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
-    if (storage == null) {
-      throw core.ArgumentError('Parameter storage is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -976,7 +940,7 @@ class NestedResponseFactory {
   static core.Map<core.String, core.dynamic> toJson(NestedResponse message) {
     final _json = <core.String, core.dynamic>{};
     if (message.nestedResult != null) {
-      _json['nestedResult'] = message.nestedResult;
+      _json['nestedResult'] = message.nestedResult!;
     }
     return _json;
   }
@@ -994,7 +958,7 @@ class ToyAgeRequestFactory {
   static core.Map<core.String, core.dynamic> toJson(ToyAgeRequest message) {
     final _json = <core.String, core.dynamic>{};
     if (message.age != null) {
-      _json['age'] = message.age;
+      _json['age'] = message.age!;
     }
     return _json;
   }
@@ -1004,14 +968,15 @@ class ToyMapResponseFactory {
   static ToyMapResponse fromJson(core.Map _json) {
     final message = ToyMapResponse();
     if (_json.containsKey('mapResult')) {
-      message.mapResult =
-          (_json['mapResult'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  NestedResponseFactory.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      message.mapResult = (_json['mapResult'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              NestedResponseFactory.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('result')) {
       message.result = _json['result'] as core.String;
@@ -1022,11 +987,11 @@ class ToyMapResponseFactory {
   static core.Map<core.String, core.dynamic> toJson(ToyMapResponse message) {
     final _json = <core.String, core.dynamic>{};
     if (message.mapResult != null) {
-      _json['mapResult'] = message.mapResult.map((key, item) =>
+      _json['mapResult'] = message.mapResult!.map((key, item) =>
           core.MapEntry(key, NestedResponseFactory.toJson(item)));
     }
     if (message.result != null) {
-      _json['result'] = message.result;
+      _json['result'] = message.result!;
     }
     return _json;
   }
@@ -1047,10 +1012,10 @@ class ToyRequestFactory {
   static core.Map<core.String, core.dynamic> toJson(ToyRequest message) {
     final _json = <core.String, core.dynamic>{};
     if (message.age != null) {
-      _json['age'] = message.age;
+      _json['age'] = message.age!;
     }
     if (message.name != null) {
-      _json['name'] = message.name;
+      _json['name'] = message.name!;
     }
     return _json;
   }
@@ -1069,7 +1034,7 @@ class ToyResourceResponseFactory {
       ToyResourceResponse message) {
     final _json = <core.String, core.dynamic>{};
     if (message.result != null) {
-      _json['result'] = message.result;
+      _json['result'] = message.result!;
     }
     return _json;
   }
@@ -1087,7 +1052,7 @@ class ToyResponseFactory {
   static core.Map<core.String, core.dynamic> toJson(ToyResponse message) {
     final _json = <core.String, core.dynamic>{};
     if (message.result != null) {
-      _json['result'] = message.result;
+      _json['result'] = message.result!;
     }
     return _json;
   }

@@ -146,7 +146,6 @@ class DiscoveryPackagesConfiguration {
   void generate(
     String discoveryDocsDir,
     String generatedApisDir,
-    bool generateNullSafe,
     bool deleteExisting,
   ) {
     // Delete all downloaded discovery documents.
@@ -171,7 +170,6 @@ class DiscoveryPackagesConfiguration {
         '$discoveryDocsDir/$name',
         '$generatedApisDir/$name',
         package.pubspec,
-        generateNullSafe: generateNullSafe,
         deleteExisting: deleteExisting,
       );
       for (final result in results) {

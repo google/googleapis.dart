@@ -556,7 +556,7 @@ $decode
 $encode
 
   @${core}override
-  $type$orNull operator [](${imports.core.ref()}int key) => _inner[key];
+  $type operator [](${imports.core.ref()}int key) => _inner[key];
 
   @${core}override
   void operator []=(${imports.core.ref()}int key, $type value) {
