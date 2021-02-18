@@ -34,7 +34,7 @@ discovery documents. It takes the following options:
                              (defaults to "Auto-generated client libraries.")
 
     --package-author         Author of the generated API package.
-    --package-homepage       Homepage of the generated API package.
+    --package-repository     Homepage of the generated API package.
 
 The 'files' subcommand generates API files into an existing package from already
 downloaded discovery documents. One file per API. It takes the following

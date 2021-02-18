@@ -1,6 +1,7 @@
 name: googleapis_beta
 version: 1.0.0
 description: Auto-generated client libraries for accessing Google APIs described through the API discovery service.
+repository: https://github.com/dart-lang/googleapis
 environment:
   sdk: '>=2.10.0 <3.0.0'
 dependencies:

@@ -25,7 +25,7 @@ ArgParser packageCommandArgParser() => ArgParser()
       help: 'Description of the generated API package.',
       defaultsTo: 'Auto-generated client libraries.')
   ..addOption('package-author', help: 'Author of the generated API package.')
-  ..addOption('package-homepage',
+  ..addOption('package-repository',
       help: 'Homepage of the generated API package.');
 
 ArgParser filesCommandArgParser() => ArgParser()
@@ -100,7 +100,7 @@ void main(List<String> arguments) {
         commandOptions['package-version'] as String,
         commandOptions['package-description'] as String,
         author: commandOptions['package-author'] as String,
-        repository: commandOptions['package-homepage'] as String,
+        repository: commandOptions['package-repository'] as String,
       );
       printResults(generateAllLibraries(
         commandOptions['input-dir'] as String,
