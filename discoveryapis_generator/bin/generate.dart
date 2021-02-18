@@ -100,7 +100,7 @@ void main(List<String> arguments) {
         commandOptions['package-version'] as String,
         commandOptions['package-description'] as String,
         author: commandOptions['package-author'] as String,
-        homepage: commandOptions['package-homepage'] as String,
+        repository: commandOptions['package-homepage'] as String,
       );
       printResults(generateAllLibraries(
         commandOptions['input-dir'] as String,
