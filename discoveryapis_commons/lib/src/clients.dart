@@ -19,8 +19,8 @@ const contentTypeJsonUtf8 = 'application/json; charset=utf-8';
 /// In a browser context we're not allowed to set `user-agent` and
 /// `content-length` headers.
 const _forbiddenHeaders = bool.fromEnvironment('dart.library.html')
-    ? <String>['user-agent', 'content-length']
-    : <String>[];
+    ? <String>{'user-agent', 'content-length'}
+    : <String>{};
 
 /// Base class for all API clients, offering generic methods for
 /// HTTP Requests to the API
@@ -202,23 +202,15 @@ class ApiRequester {
       }
       bodyController.close();
 
-      Map<String, String> headers;
-      if (downloadRange != null) {
-        headers = {
-          'user-agent': _userAgent,
-          'content-type': contentTypeJsonUtf8,
-          'content-length': '$length',
+      final headers = {
+        'user-agent': _userAgent,
+        'content-type': contentTypeJsonUtf8,
+        'content-length': '$length',
+        if (downloadRange != null)
           'range': 'bytes=${downloadRange.start}-${downloadRange.end}',
-          'x-goog-api-client': 'gl-dart/$dartVersion',
-        };
-      } else {
-        headers = {
-          'user-agent': _userAgent,
-          'content-type': contentTypeJsonUtf8,
-          'content-length': '$length',
-          'x-goog-api-client': 'gl-dart/$dartVersion',
-        };
-      }
+        'x-goog-api-client': 'gl-dart/$dartVersion',
+      };
+
       // Filter out headers forbidden in the browser (in calling in browser).
       // If we don't do this, the browser will complain that we're attempting
       // to set a header that we're not allowed to set.
