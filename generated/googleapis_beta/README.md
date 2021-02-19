@@ -185,6 +185,10 @@ The Network Connectivity API will be home to various services which provide info
 
 Official API documentation: https://cloud.google.com/network-connectivity/docs
 
+#### Policy Simulator API - policysimulator v1beta1
+
+Official API documentation: https://cloud.google.com/iam/docs/simulating-access
+
 #### Certificate Authority API - privateca v1beta1
 
 The Certificate Authority Service API is a highly-available, scalable service that enables you to simplify and automate the management of private certificate authorities (CAs) while staying in control of your private keys." 

@@ -3155,8 +3155,7 @@ class Asset {
   /// SecurityMarks resource that belongs to the asset.
   SecurityMarks securityMarks;
 
-  /// The time at which the asset was last updated, added, or deleted in
-  /// Security Command Center.
+  /// The time at which the asset was last updated or added in Cloud SCC.
   core.String updateTime;
 
   Asset();

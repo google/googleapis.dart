@@ -30,6 +30,8 @@
 ///     - [AdvertisersChannelsSitesResource]
 ///   - [AdvertisersCreativesResource]
 ///   - [AdvertisersInsertionOrdersResource]
+///     - [AdvertisersInsertionOrdersTargetingTypesResource]
+/// - [AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource]
 ///   - [AdvertisersLineItemsResource]
 ///     - [AdvertisersLineItemsTargetingTypesResource]
 /// - [AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource]
@@ -95,7 +97,8 @@ class DisplayVideoApi {
   static const displayVideoMediaplanningScope =
       'https://www.googleapis.com/auth/display-video-mediaplanning';
 
-  /// New Service: https://www.googleapis.com/auth/display-video-user-management
+  /// Private Service:
+  /// https://www.googleapis.com/auth/display-video-user-management
   static const displayVideoUserManagementScope =
       'https://www.googleapis.com/auth/display-video-user-management';
 
@@ -1816,8 +1819,101 @@ class AdvertisersCreativesResource {
 class AdvertisersInsertionOrdersResource {
   final commons.ApiRequester _requester;
 
+  AdvertisersInsertionOrdersTargetingTypesResource get targetingTypes =>
+      AdvertisersInsertionOrdersTargetingTypesResource(_requester);
+
   AdvertisersInsertionOrdersResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Lists assigned targeting options of an insertion order across targeting
+  /// types.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser the insertion order
+  /// belongs to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [insertionOrderId] - Required. The ID of the insertion order to list
+  /// assigned targeting options for.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [filter] - Allows filtering by assigned targeting option properties.
+  /// Supported syntax: * Filter expressions are made up of one or more
+  /// restrictions. * Restrictions can be combined by the logical operator `OR`
+  /// on the same field. * A restriction has the form of `{field} {operator}
+  /// {value}`. * The operator must be `EQUALS (=)`. * Supported fields: -
+  /// `targetingType` - `inheritance` Examples: * AssignedTargetingOptions of
+  /// targeting type TARGETING_TYPE_PROXIMITY_LOCATION_LIST or
+  /// TARGETING_TYPE_CHANNEL
+  /// `targetingType="TARGETING_TYPE_PROXIMITY_LOCATION_LIST" OR
+  /// targetingType="TARGETING_TYPE_CHANNEL"` * AssignedTargetingOptions with
+  /// inheritance status of NOT_INHERITED or INHERITED_FROM_PARTNER
+  /// `inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The
+  /// length of this field should be no more than 500 characters.
+  ///
+  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
+  /// `targetingType` (default) The default sorting order is ascending. To
+  /// specify descending order for a field, a suffix "desc" should be added to
+  /// the field name. Example: `targetingType desc`.
+  ///
+  /// [pageSize] - Requested page size. The size must be an integer between `1`
+  /// and `5000`. If unspecified, the default is `5000`. Returns error code
+  /// `INVALID_ARGUMENT` if an invalid value is specified.
+  ///
+  /// [pageToken] - A token that lets the client fetch the next page of results.
+  /// Typically, this is the value of next_page_token returned from the previous
+  /// call to `BulkListInsertionOrderAssignedTargetingOptions` method. If not
+  /// specified, the first page of results will be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BulkListInsertionOrderAssignedTargetingOptionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BulkListInsertionOrderAssignedTargetingOptionsResponse>
+      bulkListInsertionOrderAssignedTargetingOptions(
+    core.String advertiserId,
+    core.String insertionOrderId, {
+    core.String filter,
+    core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) async {
+    if (advertiserId == null) {
+      throw core.ArgumentError('Parameter advertiserId is required.');
+    }
+    if (insertionOrderId == null) {
+      throw core.ArgumentError('Parameter insertionOrderId is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/advertisers/' +
+        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        '/insertionOrders/' +
+        commons.Escaper.ecapeVariableReserved('$insertionOrderId') +
+        ':bulkListInsertionOrderAssignedTargetingOptions';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return BulkListInsertionOrderAssignedTargetingOptionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 
   /// Creates a new insertion order.
   ///
@@ -2127,6 +2223,353 @@ class AdvertisersInsertionOrdersResource {
       queryParams: _queryParams,
     );
     return InsertionOrder.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class AdvertisersInsertionOrdersTargetingTypesResource {
+  final commons.ApiRequester _requester;
+
+  AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource
+      get assignedTargetingOptions =>
+          AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource(
+              _requester);
+
+  AdvertisersInsertionOrdersTargetingTypesResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
+  final commons.ApiRequester _requester;
+
+  AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets a single targeting option assigned to an insertion order.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser the insertion order
+  /// belongs to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [insertionOrderId] - Required. The ID of the insertion order the assigned
+  /// targeting option belongs to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [targetingType] - Required. Identifies the type of this assigned targeting
+  /// option.
+  /// Value must have pattern `^\[^/\]+$`.
+  /// Possible string values are:
+  /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
+  /// or is unknown in this version.
+  /// - "TARGETING_TYPE_CHANNEL" : Target a channel (a custom group of related
+  /// websites or apps).
+  /// - "TARGETING_TYPE_APP_CATEGORY" : Target an app category (for example,
+  /// education or puzzle games).
+  /// - "TARGETING_TYPE_APP" : Target a specific app (for example, Angry Birds).
+  /// - "TARGETING_TYPE_URL" : Target a specific url (for example, quora.com).
+  /// - "TARGETING_TYPE_DAY_AND_TIME" : Target ads during a chosen time period
+  /// on a specific day.
+  /// - "TARGETING_TYPE_AGE_RANGE" : Target ads to a specific age range (for
+  /// example, 18-24).
+  /// - "TARGETING_TYPE_REGIONAL_LOCATION_LIST" : Target ads to the specified
+  /// regions on a regional location list.
+  /// - "TARGETING_TYPE_PROXIMITY_LOCATION_LIST" : Target ads to the specified
+  /// points of interest on a proximity location list.
+  /// - "TARGETING_TYPE_GENDER" : Target ads to a specific gender (for example,
+  /// female or male).
+  /// - "TARGETING_TYPE_VIDEO_PLAYER_SIZE" : Target a specific video player size
+  /// for video ads.
+  /// - "TARGETING_TYPE_USER_REWARDED_CONTENT" : Target user rewarded content
+  /// for video ads.
+  /// - "TARGETING_TYPE_PARENTAL_STATUS" : Target ads to a specific parental
+  /// status (for example, parent or not a parent).
+  /// - "TARGETING_TYPE_CONTENT_INSTREAM_POSITION" : Target video or audio ads
+  /// in a specific content instream position (for example, pre-roll, mid-roll,
+  /// or post-roll).
+  /// - "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION" : Target ads in a specific
+  /// content outstream position.
+  /// - "TARGETING_TYPE_DEVICE_TYPE" : Target ads to a specific device type (for
+  /// example, tablet or connected TV).
+  /// - "TARGETING_TYPE_AUDIENCE_GROUP" : Target ads to an audience or groups of
+  /// audiences. Singleton field, at most one can exist on a single Lineitem at
+  /// a time.
+  /// - "TARGETING_TYPE_BROWSER" : Target ads to specific web browsers (for
+  /// example, Chrome).
+  /// - "TARGETING_TYPE_HOUSEHOLD_INCOME" : Target ads to a specific household
+  /// income range (for example, top 10%).
+  /// - "TARGETING_TYPE_ON_SCREEN_POSITION" : Target ads in a specific on screen
+  /// position.
+  /// - "TARGETING_TYPE_THIRD_PARTY_VERIFIER" : Filter web sites through third
+  /// party verification (for example, IAS or DoubleVerify).
+  /// - "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION" : Filter web sites by
+  /// specific digital content label ratings (for example, DL-MA: suitable only
+  /// for mature audiences).
+  /// - "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION" : Filter website content
+  /// by sensitive categories (for example, adult).
+  /// - "TARGETING_TYPE_ENVIRONMENT" : Target ads to a specific environment (for
+  /// example, web or app).
+  /// - "TARGETING_TYPE_CARRIER_AND_ISP" : Target ads to a specific network
+  /// carrier or internet service provider (ISP) (for example, Comcast or
+  /// Orange).
+  /// - "TARGETING_TYPE_OPERATING_SYSTEM" : Target ads to a specific operating
+  /// system (for example, macOS).
+  /// - "TARGETING_TYPE_DEVICE_MAKE_MODEL" : Target ads to a specific device
+  /// make or model (for example, Roku or Samsung).
+  /// - "TARGETING_TYPE_KEYWORD" : Target ads to a specific keyword (for
+  /// example, dog or retriever).
+  /// - "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST" : Target ads to a specific
+  /// negative keyword list.
+  /// - "TARGETING_TYPE_VIEWABILITY" : Target ads to a specific viewability (for
+  /// example, 80% viewable).
+  /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
+  /// (for example, arts & entertainment).
+  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
+  /// deals and auction packages.
+  /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
+  /// example, English or Japanese).
+  /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
+  /// authorized sellers.
+  /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
+  /// (for example, a city or state).
+  /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
+  /// group of deals and auction packages.
+  /// - "TARGETING_TYPE_EXCHANGE" : Purchase impressions from specific
+  /// exchanges.
+  /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
+  /// sub-exchanges.
+  ///
+  /// [assignedTargetingOptionId] - Required. An identifier unique to the
+  /// targeting type in this insertion order that identifies the assigned
+  /// targeting option being requested.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AssignedTargetingOption].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AssignedTargetingOption> get(
+    core.String advertiserId,
+    core.String insertionOrderId,
+    core.String targetingType,
+    core.String assignedTargetingOptionId, {
+    core.String $fields,
+  }) async {
+    if (advertiserId == null) {
+      throw core.ArgumentError('Parameter advertiserId is required.');
+    }
+    if (insertionOrderId == null) {
+      throw core.ArgumentError('Parameter insertionOrderId is required.');
+    }
+    if (targetingType == null) {
+      throw core.ArgumentError('Parameter targetingType is required.');
+    }
+    if (assignedTargetingOptionId == null) {
+      throw core.ArgumentError(
+          'Parameter assignedTargetingOptionId is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/advertisers/' +
+        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        '/insertionOrders/' +
+        commons.Escaper.ecapeVariableReserved('$insertionOrderId') +
+        '/targetingTypes/' +
+        commons.Escaper.ecapeVariableReserved('$targetingType') +
+        '/assignedTargetingOptions/' +
+        commons.Escaper.ecapeVariableReserved('$assignedTargetingOptionId');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return AssignedTargetingOption.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the targeting options assigned to an insertion order.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser the insertion order
+  /// belongs to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [insertionOrderId] - Required. The ID of the insertion order to list
+  /// assigned targeting options for.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [targetingType] - Required. Identifies the type of assigned targeting
+  /// options to list.
+  /// Value must have pattern `^\[^/\]+$`.
+  /// Possible string values are:
+  /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
+  /// or is unknown in this version.
+  /// - "TARGETING_TYPE_CHANNEL" : Target a channel (a custom group of related
+  /// websites or apps).
+  /// - "TARGETING_TYPE_APP_CATEGORY" : Target an app category (for example,
+  /// education or puzzle games).
+  /// - "TARGETING_TYPE_APP" : Target a specific app (for example, Angry Birds).
+  /// - "TARGETING_TYPE_URL" : Target a specific url (for example, quora.com).
+  /// - "TARGETING_TYPE_DAY_AND_TIME" : Target ads during a chosen time period
+  /// on a specific day.
+  /// - "TARGETING_TYPE_AGE_RANGE" : Target ads to a specific age range (for
+  /// example, 18-24).
+  /// - "TARGETING_TYPE_REGIONAL_LOCATION_LIST" : Target ads to the specified
+  /// regions on a regional location list.
+  /// - "TARGETING_TYPE_PROXIMITY_LOCATION_LIST" : Target ads to the specified
+  /// points of interest on a proximity location list.
+  /// - "TARGETING_TYPE_GENDER" : Target ads to a specific gender (for example,
+  /// female or male).
+  /// - "TARGETING_TYPE_VIDEO_PLAYER_SIZE" : Target a specific video player size
+  /// for video ads.
+  /// - "TARGETING_TYPE_USER_REWARDED_CONTENT" : Target user rewarded content
+  /// for video ads.
+  /// - "TARGETING_TYPE_PARENTAL_STATUS" : Target ads to a specific parental
+  /// status (for example, parent or not a parent).
+  /// - "TARGETING_TYPE_CONTENT_INSTREAM_POSITION" : Target video or audio ads
+  /// in a specific content instream position (for example, pre-roll, mid-roll,
+  /// or post-roll).
+  /// - "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION" : Target ads in a specific
+  /// content outstream position.
+  /// - "TARGETING_TYPE_DEVICE_TYPE" : Target ads to a specific device type (for
+  /// example, tablet or connected TV).
+  /// - "TARGETING_TYPE_AUDIENCE_GROUP" : Target ads to an audience or groups of
+  /// audiences. Singleton field, at most one can exist on a single Lineitem at
+  /// a time.
+  /// - "TARGETING_TYPE_BROWSER" : Target ads to specific web browsers (for
+  /// example, Chrome).
+  /// - "TARGETING_TYPE_HOUSEHOLD_INCOME" : Target ads to a specific household
+  /// income range (for example, top 10%).
+  /// - "TARGETING_TYPE_ON_SCREEN_POSITION" : Target ads in a specific on screen
+  /// position.
+  /// - "TARGETING_TYPE_THIRD_PARTY_VERIFIER" : Filter web sites through third
+  /// party verification (for example, IAS or DoubleVerify).
+  /// - "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION" : Filter web sites by
+  /// specific digital content label ratings (for example, DL-MA: suitable only
+  /// for mature audiences).
+  /// - "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION" : Filter website content
+  /// by sensitive categories (for example, adult).
+  /// - "TARGETING_TYPE_ENVIRONMENT" : Target ads to a specific environment (for
+  /// example, web or app).
+  /// - "TARGETING_TYPE_CARRIER_AND_ISP" : Target ads to a specific network
+  /// carrier or internet service provider (ISP) (for example, Comcast or
+  /// Orange).
+  /// - "TARGETING_TYPE_OPERATING_SYSTEM" : Target ads to a specific operating
+  /// system (for example, macOS).
+  /// - "TARGETING_TYPE_DEVICE_MAKE_MODEL" : Target ads to a specific device
+  /// make or model (for example, Roku or Samsung).
+  /// - "TARGETING_TYPE_KEYWORD" : Target ads to a specific keyword (for
+  /// example, dog or retriever).
+  /// - "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST" : Target ads to a specific
+  /// negative keyword list.
+  /// - "TARGETING_TYPE_VIEWABILITY" : Target ads to a specific viewability (for
+  /// example, 80% viewable).
+  /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
+  /// (for example, arts & entertainment).
+  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
+  /// deals and auction packages.
+  /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
+  /// example, English or Japanese).
+  /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
+  /// authorized sellers.
+  /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
+  /// (for example, a city or state).
+  /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
+  /// group of deals and auction packages.
+  /// - "TARGETING_TYPE_EXCHANGE" : Purchase impressions from specific
+  /// exchanges.
+  /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
+  /// sub-exchanges.
+  ///
+  /// [filter] - Allows filtering by assigned targeting option properties.
+  /// Supported syntax: * Filter expressions are made up of one or more
+  /// restrictions. * Restrictions can be combined by the logical operator `OR`.
+  /// * A restriction has the form of `{field} {operator} {value}`. * The
+  /// operator must be `EQUALS (=)`. * Supported fields: -
+  /// `assignedTargetingOptionId` - `inheritance` Examples: *
+  /// AssignedTargetingOptions with ID 1 or 2 `assignedTargetingOptionId="1" OR
+  /// assignedTargetingOptionId="2"` * AssignedTargetingOptions with inheritance
+  /// status of NOT_INHERITED or INHERITED_FROM_PARTNER
+  /// `inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The
+  /// length of this field should be no more than 500 characters.
+  ///
+  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
+  /// `assignedTargetingOptionId` (default) The default sorting order is
+  /// ascending. To specify descending order for a field, a suffix "desc" should
+  /// be added to the field name. Example: `assignedTargetingOptionId desc`.
+  ///
+  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
+  /// if an invalid value is specified.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of next_page_token returned from the
+  /// previous call to `ListInsertionOrderAssignedTargetingOptions` method. If
+  /// not specified, the first page of results will be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListInsertionOrderAssignedTargetingOptionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListInsertionOrderAssignedTargetingOptionsResponse> list(
+    core.String advertiserId,
+    core.String insertionOrderId,
+    core.String targetingType, {
+    core.String filter,
+    core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) async {
+    if (advertiserId == null) {
+      throw core.ArgumentError('Parameter advertiserId is required.');
+    }
+    if (insertionOrderId == null) {
+      throw core.ArgumentError('Parameter insertionOrderId is required.');
+    }
+    if (targetingType == null) {
+      throw core.ArgumentError('Parameter targetingType is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/advertisers/' +
+        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        '/insertionOrders/' +
+        commons.Escaper.ecapeVariableReserved('$insertionOrderId') +
+        '/targetingTypes/' +
+        commons.Escaper.ecapeVariableReserved('$targetingType') +
+        '/assignedTargetingOptions';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListInsertionOrderAssignedTargetingOptionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -11668,6 +12111,46 @@ class BulkListAdvertiserAssignedTargetingOptionsResponse {
       };
 }
 
+/// Response message for BulkListInsertionOrderAssignedTargetingOptions.
+class BulkListInsertionOrderAssignedTargetingOptionsResponse {
+  /// The list of assigned targeting options.
+  ///
+  /// This list will be absent if empty.
+  core.List<AssignedTargetingOption> assignedTargetingOptions;
+
+  /// A token identifying the next page of results.
+  ///
+  /// This value should be specified as the pageToken in a subsequent
+  /// BulkListInsertionOrderAssignedTargetingOptionsRequest to fetch the next
+  /// page of results. This token will be absent if there are no more
+  /// assigned_targeting_options to return.
+  core.String nextPageToken;
+
+  BulkListInsertionOrderAssignedTargetingOptionsResponse();
+
+  BulkListInsertionOrderAssignedTargetingOptionsResponse.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('assignedTargetingOptions')) {
+      assignedTargetingOptions =
+          (_json['assignedTargetingOptions'] as core.List)
+              .map<AssignedTargetingOption>((value) =>
+                  AssignedTargetingOption.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (assignedTargetingOptions != null)
+          'assignedTargetingOptions':
+              assignedTargetingOptions.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
+}
+
 class BulkListLineItemAssignedTargetingOptionsResponse {
   /// The list of assigned targeting options.
   ///
@@ -12364,6 +12847,26 @@ class CombinedAudienceTargetingSetting {
 /// This will be populated in the content_instream_position_details field when
 /// targeting_type is `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`.
 class ContentInstreamPositionAssignedTargetingOptionDetails {
+  /// The ad type to target.
+  ///
+  /// Only applicable to insertion order targeting and new line items supporting
+  /// the specified ad type will inherit this targeting option by default.
+  /// Possible values are: * `AD_TYPE_VIDEO`, the setting will be inherited by
+  /// new line item when line_item_type is `LINE_ITEM_TYPE_VIDEO_DEFAULT`. *
+  /// `AD_TYPE_AUDIO`, the setting will be inherited by new line item when
+  /// line_item_type is `LINE_ITEM_TYPE_AUDIO_DEFAULT`.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "AD_TYPE_UNSPECIFIED" : Ad type is not specified or is unknown in this
+  /// version.
+  /// - "AD_TYPE_DISPLAY" : Display creatives, e.g. image and HTML5.
+  /// - "AD_TYPE_VIDEO" : Video creatives, e.g. video ads that play during
+  /// streaming content in video players.
+  /// - "AD_TYPE_AUDIO" : Audio creatives, e.g. audio ads that play during audio
+  /// content.
+  core.String adType;
+
   /// The content instream position for video or audio ads.
   ///
   /// Output only.
@@ -12377,6 +12880,7 @@ class ContentInstreamPositionAssignedTargetingOptionDetails {
   /// beginning and end of streaming content.
   /// - "CONTENT_INSTREAM_POSITION_POST_ROLL" : Ads that play at the end of
   /// streaming content.
+  /// - "CONTENT_INSTREAM_POSITION_UNKNOWN" : Ads instream position is unknown.
   core.String contentInstreamPosition;
 
   /// The targeting_option_id field when targeting_type is
@@ -12389,6 +12893,9 @@ class ContentInstreamPositionAssignedTargetingOptionDetails {
 
   ContentInstreamPositionAssignedTargetingOptionDetails.fromJson(
       core.Map _json) {
+    if (_json.containsKey('adType')) {
+      adType = _json['adType'] as core.String;
+    }
     if (_json.containsKey('contentInstreamPosition')) {
       contentInstreamPosition = _json['contentInstreamPosition'] as core.String;
     }
@@ -12398,6 +12905,7 @@ class ContentInstreamPositionAssignedTargetingOptionDetails {
   }
 
   core.Map<core.String, core.Object> toJson() => {
+        if (adType != null) 'adType': adType,
         if (contentInstreamPosition != null)
           'contentInstreamPosition': contentInstreamPosition,
         if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
@@ -12423,6 +12931,7 @@ class ContentInstreamPositionTargetingOptionDetails {
   /// beginning and end of streaming content.
   /// - "CONTENT_INSTREAM_POSITION_POST_ROLL" : Ads that play at the end of
   /// streaming content.
+  /// - "CONTENT_INSTREAM_POSITION_UNKNOWN" : Ads instream position is unknown.
   core.String contentInstreamPosition;
 
   ContentInstreamPositionTargetingOptionDetails();
@@ -12444,6 +12953,26 @@ class ContentInstreamPositionTargetingOptionDetails {
 /// This will be populated in the content_outstream_position_details field when
 /// targeting_type is `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`.
 class ContentOutstreamPositionAssignedTargetingOptionDetails {
+  /// The ad type to target.
+  ///
+  /// Only applicable to insertion order targeting and new line items supporting
+  /// the specified ad type will inherit this targeting option by default.
+  /// Possible values are: * `AD_TYPE_DISPLAY`, the setting will be inherited by
+  /// new line item when line_item_type is `LINE_ITEM_TYPE_DISPLAY_DEFAULT`. *
+  /// `AD_TYPE_VIDEO`, the setting will be inherited by new line item when
+  /// line_item_type is `LINE_ITEM_TYPE_VIDEO_DEFAULT`.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "AD_TYPE_UNSPECIFIED" : Ad type is not specified or is unknown in this
+  /// version.
+  /// - "AD_TYPE_DISPLAY" : Display creatives, e.g. image and HTML5.
+  /// - "AD_TYPE_VIDEO" : Video creatives, e.g. video ads that play during
+  /// streaming content in video players.
+  /// - "AD_TYPE_AUDIO" : Audio creatives, e.g. audio ads that play during audio
+  /// content.
+  core.String adType;
+
   /// The content outstream position.
   ///
   /// Output only.
@@ -12474,6 +13003,9 @@ class ContentOutstreamPositionAssignedTargetingOptionDetails {
 
   ContentOutstreamPositionAssignedTargetingOptionDetails.fromJson(
       core.Map _json) {
+    if (_json.containsKey('adType')) {
+      adType = _json['adType'] as core.String;
+    }
     if (_json.containsKey('contentOutstreamPosition')) {
       contentOutstreamPosition =
           _json['contentOutstreamPosition'] as core.String;
@@ -12484,6 +13016,7 @@ class ContentOutstreamPositionAssignedTargetingOptionDetails {
   }
 
   core.Map<core.String, core.Object> toJson() => {
+        if (adType != null) 'adType': adType,
         if (contentOutstreamPosition != null)
           'contentOutstreamPosition': contentOutstreamPosition,
         if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
@@ -13145,6 +13678,16 @@ class Creative {
   /// Output only.
   core.String mediaDuration;
 
+  /// Indicates the third-party audio creative supports MP3.
+  ///
+  /// Output only and only valid for third-party audio creatives. Third-party
+  /// audio creatives are creatives with following hosting_source: *
+  /// `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: *
+  /// `CREATIVE_TYPE_AUDIO`
+  ///
+  /// Output only.
+  core.bool mp3Audio;
+
   /// The resource name of the creative.
   ///
   /// Output only.
@@ -13160,6 +13703,16 @@ class Creative {
   /// This field is only supported in following creative_type: *
   /// `CREATIVE_TYPE_VIDEO`
   ObaIcon obaIcon;
+
+  /// Indicates the third-party audio creative supports OGG.
+  ///
+  /// Output only and only valid for third-party audio creatives. Third-party
+  /// audio creatives are creatives with following hosting_source: *
+  /// `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: *
+  /// `CREATIVE_TYPE_AUDIO`
+  ///
+  /// Output only.
+  core.bool oggAudio;
 
   /// Amount of time to play the video before counting a view.
   ///
@@ -13412,6 +13965,9 @@ class Creative {
     if (_json.containsKey('mediaDuration')) {
       mediaDuration = _json['mediaDuration'] as core.String;
     }
+    if (_json.containsKey('mp3Audio')) {
+      mp3Audio = _json['mp3Audio'] as core.bool;
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
@@ -13421,6 +13977,9 @@ class Creative {
     if (_json.containsKey('obaIcon')) {
       obaIcon = ObaIcon.fromJson(
           _json['obaIcon'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('oggAudio')) {
+      oggAudio = _json['oggAudio'] as core.bool;
     }
     if (_json.containsKey('progressOffset')) {
       progressOffset = AudioVideoOffset.fromJson(
@@ -13525,9 +14084,11 @@ class Creative {
         if (jsTrackerUrl != null) 'jsTrackerUrl': jsTrackerUrl,
         if (lineItemIds != null) 'lineItemIds': lineItemIds,
         if (mediaDuration != null) 'mediaDuration': mediaDuration,
+        if (mp3Audio != null) 'mp3Audio': mp3Audio,
         if (name != null) 'name': name,
         if (notes != null) 'notes': notes,
         if (obaIcon != null) 'obaIcon': obaIcon.toJson(),
+        if (oggAudio != null) 'oggAudio': oggAudio,
         if (progressOffset != null) 'progressOffset': progressOffset.toJson(),
         if (requireHtml5 != null) 'requireHtml5': requireHtml5,
         if (requireMraid != null) 'requireMraid': requireMraid,
@@ -18253,6 +18814,45 @@ class ListGoogleAudiencesResponse {
       };
 }
 
+/// Response message for ListInsertionOrderAssignedTargetingOptions.
+class ListInsertionOrderAssignedTargetingOptionsResponse {
+  /// The list of assigned targeting options.
+  ///
+  /// This list will be absent if empty.
+  core.List<AssignedTargetingOption> assignedTargetingOptions;
+
+  /// A token identifying the next page of results.
+  ///
+  /// This value should be specified as the pageToken in a subsequent
+  /// ListInsertionOrderAssignedTargetingOptionsRequest to fetch the next page
+  /// of results. This token will be absent if there are no more
+  /// assigned_targeting_options to return.
+  core.String nextPageToken;
+
+  ListInsertionOrderAssignedTargetingOptionsResponse();
+
+  ListInsertionOrderAssignedTargetingOptionsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('assignedTargetingOptions')) {
+      assignedTargetingOptions =
+          (_json['assignedTargetingOptions'] as core.List)
+              .map<AssignedTargetingOption>((value) =>
+                  AssignedTargetingOption.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (assignedTargetingOptions != null)
+          'assignedTargetingOptions':
+              assignedTargetingOptions.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
+}
+
 class ListInsertionOrdersResponse {
   /// The list of insertion orders.
   ///
@@ -19328,6 +19928,26 @@ class ObaIcon {
 /// This will be populated in the on_screen_position_details field when
 /// targeting_type is `TARGETING_TYPE_ON_SCREEN_POSITION`.
 class OnScreenPositionAssignedTargetingOptionDetails {
+  /// The ad type to target.
+  ///
+  /// Only applicable to insertion order targeting and new line items supporting
+  /// the specified ad type will inherit this targeting option by default.
+  /// Possible values are: * `AD_TYPE_DISPLAY`, the setting will be inherited by
+  /// new line item when line_item_type is `LINE_ITEM_TYPE_DISPLAY_DEFAULT`. *
+  /// `AD_TYPE_VIDEO`, the setting will be inherited by new line item when
+  /// line_item_type is `LINE_ITEM_TYPE_VIDEO_DEFAULT`.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "AD_TYPE_UNSPECIFIED" : Ad type is not specified or is unknown in this
+  /// version.
+  /// - "AD_TYPE_DISPLAY" : Display creatives, e.g. image and HTML5.
+  /// - "AD_TYPE_VIDEO" : Video creatives, e.g. video ads that play during
+  /// streaming content in video players.
+  /// - "AD_TYPE_AUDIO" : Audio creatives, e.g. audio ads that play during audio
+  /// content.
+  core.String adType;
+
   /// The on screen position.
   ///
   /// Output only.
@@ -19349,6 +19969,9 @@ class OnScreenPositionAssignedTargetingOptionDetails {
   OnScreenPositionAssignedTargetingOptionDetails();
 
   OnScreenPositionAssignedTargetingOptionDetails.fromJson(core.Map _json) {
+    if (_json.containsKey('adType')) {
+      adType = _json['adType'] as core.String;
+    }
     if (_json.containsKey('onScreenPosition')) {
       onScreenPosition = _json['onScreenPosition'] as core.String;
     }
@@ -19358,6 +19981,7 @@ class OnScreenPositionAssignedTargetingOptionDetails {
   }
 
   core.Map<core.String, core.Object> toJson() => {
+        if (adType != null) 'adType': adType,
         if (onScreenPosition != null) 'onScreenPosition': onScreenPosition,
         if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
       };
@@ -20131,15 +20755,20 @@ class PerformanceGoal {
   ///
   /// Applicable when performance_goal_type is one of: *
   /// `PERFORMANCE_GOAL_TYPE_CPM` * `PERFORMANCE_GOAL_TYPE_CPC` *
-  /// `PERFORMANCE_GOAL_TYPE_CPA` * `PERFORMANCE_GOAL_TYPE_CPIAVC` For example
-  /// 1500000 represents 1.5 standard units of the currency.
+  /// `PERFORMANCE_GOAL_TYPE_CPA` * `PERFORMANCE_GOAL_TYPE_CPIAVC` *
+  /// `PERFORMANCE_GOAL_TYPE_VCPM` For example 1500000 represents 1.5 standard
+  /// units of the currency.
   core.String performanceGoalAmountMicros;
 
   /// The decimal representation of the goal percentage in micros.
   ///
   /// Applicable when performance_goal_type is one of: *
-  /// `PERFORMANCE_GOAL_TYPE_CTR` * `PERFORMANCE_GOAL_TYPE_VIEWABILITY` For
-  /// example, 70000 represents 7% (decimal 0.07).
+  /// `PERFORMANCE_GOAL_TYPE_CTR` * `PERFORMANCE_GOAL_TYPE_VIEWABILITY` *
+  /// `PERFORMANCE_GOAL_TYPE_CLICK_CVR` * `PERFORMANCE_GOAL_TYPE_IMPRESSION_CVR`
+  /// * `PERFORMANCE_GOAL_TYPE_VTR` *
+  /// `PERFORMANCE_GOAL_TYPE_AUDIO_COMPLETION_RATE` *
+  /// `PERFORMANCE_GOAL_TYPE_VIDEO_COMPLETION_RATE` For example, 70000
+  /// represents 7% (decimal 0.07).
   core.String performanceGoalPercentageMicros;
 
   /// A key performance indicator (KPI) string, which can be empty.
@@ -20169,6 +20798,20 @@ class PerformanceGoal {
   /// (cost per impression audible and visible at completion).
   /// - "PERFORMANCE_GOAL_TYPE_CPE" : The performance goal is set in CPE (cost
   /// per engagement).
+  /// - "PERFORMANCE_GOAL_TYPE_CLICK_CVR" : The performance goal is set in click
+  /// conversion rate (conversions per click) percentage.
+  /// - "PERFORMANCE_GOAL_TYPE_IMPRESSION_CVR" : The performance goal is set in
+  /// impression conversion rate (conversions per impression) percentage.
+  /// - "PERFORMANCE_GOAL_TYPE_VCPM" : The performance goal is set in VCPM (cost
+  /// per thousand viewable impressions).
+  /// - "PERFORMANCE_GOAL_TYPE_VTR" : The performance goal is set in YouTube
+  /// view rate (YouTube views per impression) percentage.
+  /// - "PERFORMANCE_GOAL_TYPE_AUDIO_COMPLETION_RATE" : The performance goal is
+  /// set in audio completion rate (complete audio listens per impression)
+  /// percentage.
+  /// - "PERFORMANCE_GOAL_TYPE_VIDEO_COMPLETION_RATE" : The performance goal is
+  /// set in video completion rate (complete video views per impression)
+  /// percentage.
   /// - "PERFORMANCE_GOAL_TYPE_OTHER" : The performance goal is set to Other.
   core.String performanceGoalType;
 

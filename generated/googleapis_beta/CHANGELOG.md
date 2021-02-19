@@ -1,3 +1,9 @@
+## 2.0.0-dev
+
+- `policysimulator` - new!
+- `workflowexecution` - removed. Now stable.
+- `workflows` - removed. Now stable.
+
 ## 1.0.0
 
 ### BREAKING changes to API shape

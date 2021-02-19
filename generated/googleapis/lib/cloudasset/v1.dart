@@ -4780,8 +4780,8 @@ class ResourceSearchResult {
   ///
   /// This field is available when the resource belongs to one or more folders.
   /// To search against `folders`: * use a field query. Example: `folders:(123
-  /// OR 456)` * specify the `scope` field as this folder in your search
-  /// request.
+  /// OR 456)` * use a free text query. Example: `123` * specify the `scope`
+  /// field as this folder in your search request.
   core.List<core.String> folders;
 
   /// The Cloud KMS
@@ -4841,16 +4841,27 @@ class ResourceSearchResult {
   ///
   /// This field is available when the resource belongs to an organization. To
   /// search against `organization`: * use a field query. Example:
-  /// `organization:123` * specify the `scope` field as this organization in
-  /// your search request.
+  /// `organization:123` * use a free text query. Example: `123` * specify the
+  /// `scope` field as this organization in your search request.
   core.String organization;
+
+  /// The type of this resource's immediate parent, if there is one.
+  ///
+  /// To search against the `parent_asset_type`: * use a field query. Example:
+  /// `parentAssetType:"cloudresourcemanager.googleapis.com/Project"` * use a
+  /// free text query. Example: `cloudresourcemanager.googleapis.com/Project`
+  core.String parentAssetType;
+
+  /// The full resource name of this resource's parent, if it has one.
+  core.String parentFullResourceName;
 
   /// The project that this resource belongs to, in the form of
   /// projects/{PROJECT_NUMBER}.
   ///
   /// This field is available when the resource belongs to a project. To search
-  /// against `project`: * use a field query. Example: `project:12345` * specify
-  /// the `scope` field as this project in your search request.
+  /// against `project`: * use a field query. Example: `project:12345` * use a
+  /// free text query. Example: `12345` * specify the `scope` field as this
+  /// project in your search request.
   core.String project;
 
   /// The state of this resource.
@@ -4935,6 +4946,12 @@ class ResourceSearchResult {
     if (_json.containsKey('organization')) {
       organization = _json['organization'] as core.String;
     }
+    if (_json.containsKey('parentAssetType')) {
+      parentAssetType = _json['parentAssetType'] as core.String;
+    }
+    if (_json.containsKey('parentFullResourceName')) {
+      parentFullResourceName = _json['parentFullResourceName'] as core.String;
+    }
     if (_json.containsKey('project')) {
       project = _json['project'] as core.String;
     }
@@ -4960,6 +4977,9 @@ class ResourceSearchResult {
         if (name != null) 'name': name,
         if (networkTags != null) 'networkTags': networkTags,
         if (organization != null) 'organization': organization,
+        if (parentAssetType != null) 'parentAssetType': parentAssetType,
+        if (parentFullResourceName != null)
+          'parentFullResourceName': parentFullResourceName,
         if (project != null) 'project': project,
         if (state != null) 'state': state,
         if (updateTime != null) 'updateTime': updateTime,

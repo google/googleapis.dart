@@ -7284,6 +7284,11 @@ class JobStatistics2 {
   /// target.
   core.String ddlOperationPerformed;
 
+  /// \[Output-only\] The DDL target dataset.
+  ///
+  /// Present only for CREATE/ALTER/DROP SCHEMA queries.
+  DatasetReference ddlTargetDataset;
+
   /// The DDL target routine.
   ///
   /// Present only for CREATE/DROP FUNCTION/PROCEDURE queries.
@@ -7404,6 +7409,10 @@ class JobStatistics2 {
     if (_json.containsKey('ddlOperationPerformed')) {
       ddlOperationPerformed = _json['ddlOperationPerformed'] as core.String;
     }
+    if (_json.containsKey('ddlTargetDataset')) {
+      ddlTargetDataset = DatasetReference.fromJson(
+          _json['ddlTargetDataset'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('ddlTargetRoutine')) {
       ddlTargetRoutine = RoutineReference.fromJson(
           _json['ddlTargetRoutine'] as core.Map<core.String, core.dynamic>);
@@ -7506,6 +7515,8 @@ class JobStatistics2 {
           'ddlAffectedRowAccessPolicyCount': ddlAffectedRowAccessPolicyCount,
         if (ddlOperationPerformed != null)
           'ddlOperationPerformed': ddlOperationPerformed,
+        if (ddlTargetDataset != null)
+          'ddlTargetDataset': ddlTargetDataset.toJson(),
         if (ddlTargetRoutine != null)
           'ddlTargetRoutine': ddlTargetRoutine.toJson(),
         if (ddlTargetRowAccessPolicy != null)

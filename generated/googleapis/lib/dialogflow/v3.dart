@@ -4128,7 +4128,8 @@ class ProjectsLocationsAgentsTestCasesResource {
   /// Possible string values are:
   /// - "COVERAGE_TYPE_UNSPECIFIED" : Should never be used.
   /// - "INTENT" : Intent coverage.
-  /// - "PAGE_TRANSITION" : Page transition coverage
+  /// - "PAGE_TRANSITION" : Page transition coverage.
+  /// - "TRANSITION_ROUTE_GROUP" : Transition route group coverage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4484,11 +4485,10 @@ class ProjectsLocationsAgentsTestCasesResource {
   ///
   /// Request parameters:
   ///
-  /// [projectsId] - null
-  ///
-  /// [locationsId] - null
-  ///
-  /// [agentsId] - null
+  /// [name] - Required. Format of test case name to run: `projects//locations/
+  /// /agents//testCases/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/testCases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4502,33 +4502,20 @@ class ProjectsLocationsAgentsTestCasesResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> run(
     GoogleCloudDialogflowCxV3RunTestCaseRequest request,
-    core.String projectsId,
-    core.String locationsId,
-    core.String agentsId, {
+    core.String name, {
     core.String $fields,
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    if (projectsId == null) {
-      throw core.ArgumentError('Parameter projectsId is required.');
-    }
-    if (locationsId == null) {
-      throw core.ArgumentError('Parameter locationsId is required.');
-    }
-    if (agentsId == null) {
-      throw core.ArgumentError('Parameter agentsId is required.');
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/projects/' +
-        commons.Escaper.ecapeVariable('$projectsId') +
-        '/locations/' +
-        commons.Escaper.ecapeVariable('$locationsId') +
-        '/agents/' +
-        commons.Escaper.ecapeVariable('$agentsId') +
-        '/testCases:run';
+    final _url =
+        'v3/' + commons.Escaper.ecapeVariableReserved('$name') + ':run';
 
     final _response = await _requester.request(
       _url,
@@ -5751,7 +5738,10 @@ class GoogleCloudDialogflowCxV3CalculateCoverageResponse {
   /// Intent coverage.
   GoogleCloudDialogflowCxV3IntentCoverage intentCoverage;
 
-  /// Transition coverage.
+  /// Transition route group coverage.
+  GoogleCloudDialogflowCxV3TransitionRouteGroupCoverage routeGroupCoverage;
+
+  /// Transition (excluding transition route groups) coverage.
   GoogleCloudDialogflowCxV3TransitionCoverage transitionCoverage;
 
   GoogleCloudDialogflowCxV3CalculateCoverageResponse();
@@ -5764,6 +5754,12 @@ class GoogleCloudDialogflowCxV3CalculateCoverageResponse {
       intentCoverage = GoogleCloudDialogflowCxV3IntentCoverage.fromJson(
           _json['intentCoverage'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('routeGroupCoverage')) {
+      routeGroupCoverage =
+          GoogleCloudDialogflowCxV3TransitionRouteGroupCoverage.fromJson(
+              _json['routeGroupCoverage']
+                  as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('transitionCoverage')) {
       transitionCoverage = GoogleCloudDialogflowCxV3TransitionCoverage.fromJson(
           _json['transitionCoverage'] as core.Map<core.String, core.dynamic>);
@@ -5773,6 +5769,8 @@ class GoogleCloudDialogflowCxV3CalculateCoverageResponse {
   core.Map<core.String, core.Object> toJson() => {
         if (agent != null) 'agent': agent,
         if (intentCoverage != null) 'intentCoverage': intentCoverage.toJson(),
+        if (routeGroupCoverage != null)
+          'routeGroupCoverage': routeGroupCoverage.toJson(),
         if (transitionCoverage != null)
           'transitionCoverage': transitionCoverage.toJson(),
       };
@@ -5863,7 +5861,7 @@ class GoogleCloudDialogflowCxV3ConversationTurnUserInput {
 class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
   /// The Page on which the utterance was spoken.
   ///
-  /// Only some fields such as name and displayname will be set.
+  /// Only name and displayName will be set.
   GoogleCloudDialogflowCxV3Page currentPage;
 
   /// Input only.
@@ -5898,7 +5896,7 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
 
   /// The Intent that triggered the response.
   ///
-  /// Only some fields such as name and displayname will be set.
+  /// Only name and displayName will be set.
   GoogleCloudDialogflowCxV3Intent triggeredIntent;
 
   GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput();
@@ -10294,26 +10292,16 @@ class GoogleCloudDialogflowCxV3RunTestCaseRequest {
   /// Optional.
   core.String environment;
 
-  /// Format of test case name to run: `projects//locations/
-  /// /agents//testCases/`.
-  ///
-  /// Required.
-  core.String name;
-
   GoogleCloudDialogflowCxV3RunTestCaseRequest();
 
   GoogleCloudDialogflowCxV3RunTestCaseRequest.fromJson(core.Map _json) {
     if (_json.containsKey('environment')) {
       environment = _json['environment'] as core.String;
     }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
   }
 
   core.Map<core.String, core.Object> toJson() => {
         if (environment != null) 'environment': environment,
-        if (name != null) 'name': name,
       };
 }
 
@@ -11013,8 +11001,9 @@ class GoogleCloudDialogflowCxV3TrainFlowRequest {
   core.Map<core.String, core.Object> toJson() => {};
 }
 
-/// Transition coverage represents the percentage of all possible transitions
-/// present within any of a parent's test cases.
+/// Transition coverage represents the percentage of all possible page
+/// transitions (page-level transition routes and event handlers, excluding
+/// transition route groups) present within any of a parent's test cases.
 class GoogleCloudDialogflowCxV3TransitionCoverage {
   /// The percent of transitions in the agent that are covered.
   core.double coverageScore;
@@ -11044,7 +11033,7 @@ class GoogleCloudDialogflowCxV3TransitionCoverage {
       };
 }
 
-/// A transition in the agent's graph.
+/// A transition in a page.
 class GoogleCloudDialogflowCxV3TransitionCoverageTransition {
   /// Whether or not the transition is covered by at least one of the agent's
   /// test cases.
@@ -11269,6 +11258,117 @@ class GoogleCloudDialogflowCxV3TransitionRouteGroup {
         if (transitionRoutes != null)
           'transitionRoutes':
               transitionRoutes.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// Transition route group coverage represents the percentage of all possible
+/// transition routes present within any of a parent's test cases.
+///
+/// The results are grouped by the transition route group.
+class GoogleCloudDialogflowCxV3TransitionRouteGroupCoverage {
+  /// The percent of transition routes in all the transition route groups that
+  /// are covered.
+  core.double coverageScore;
+
+  /// Transition route group coverages.
+  core.List<GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage>
+      coverages;
+
+  GoogleCloudDialogflowCxV3TransitionRouteGroupCoverage();
+
+  GoogleCloudDialogflowCxV3TransitionRouteGroupCoverage.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('coverageScore')) {
+      coverageScore = (_json['coverageScore'] as core.num).toDouble();
+    }
+    if (_json.containsKey('coverages')) {
+      coverages = (_json['coverages'] as core.List)
+          .map<GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage>(
+              (value) =>
+                  GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (coverageScore != null) 'coverageScore': coverageScore,
+        if (coverages != null)
+          'coverages': coverages.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// Coverage result message for one transition route group.
+class GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage {
+  /// The percent of transition routes in the transition route group that are
+  /// covered.
+  core.double coverageScore;
+
+  /// Transition route group metadata.
+  ///
+  /// Only name and displayName will be set.
+  GoogleCloudDialogflowCxV3TransitionRouteGroup routeGroup;
+
+  /// The list of transition routes and coverage in the transition route group.
+  core.List<
+          GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition>
+      transitions;
+
+  GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage();
+
+  GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('coverageScore')) {
+      coverageScore = (_json['coverageScore'] as core.num).toDouble();
+    }
+    if (_json.containsKey('routeGroup')) {
+      routeGroup = GoogleCloudDialogflowCxV3TransitionRouteGroup.fromJson(
+          _json['routeGroup'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('transitions')) {
+      transitions = (_json['transitions'] as core.List)
+          .map<GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition>(
+              (value) =>
+                  GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (coverageScore != null) 'coverageScore': coverageScore,
+        if (routeGroup != null) 'routeGroup': routeGroup.toJson(),
+        if (transitions != null)
+          'transitions': transitions.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// A transition coverage in a transition route group.
+class GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition {
+  /// Whether or not the transition route is covered by at least one of the
+  /// agent's test cases.
+  core.bool covered;
+
+  /// Intent route or condition route.
+  GoogleCloudDialogflowCxV3TransitionRoute transitionRoute;
+
+  GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition();
+
+  GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('covered')) {
+      covered = _json['covered'] as core.bool;
+    }
+    if (_json.containsKey('transitionRoute')) {
+      transitionRoute = GoogleCloudDialogflowCxV3TransitionRoute.fromJson(
+          _json['transitionRoute'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (covered != null) 'covered': covered,
+        if (transitionRoute != null)
+          'transitionRoute': transitionRoute.toJson(),
       };
 }
 
@@ -12272,7 +12372,7 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput {
 class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput {
   /// The Page on which the utterance was spoken.
   ///
-  /// Only some fields such as name and displayname will be set.
+  /// Only name and displayName will be set.
   GoogleCloudDialogflowCxV3beta1Page currentPage;
 
   /// Input only.
@@ -12307,7 +12407,7 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput {
 
   /// The Intent that triggered the response.
   ///
-  /// Only some fields such as name and displayname will be set.
+  /// Only name and displayName will be set.
   GoogleCloudDialogflowCxV3beta1Intent triggeredIntent;
 
   GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput();

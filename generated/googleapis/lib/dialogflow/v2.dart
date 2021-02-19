@@ -1319,8 +1319,9 @@ class ProjectsAgentEnvironmentsUsersSessionsResource {
   /// [session] - Required. The name of the session this query is sent to.
   /// Format: `projects//agent/sessions/`, or
   /// `projects//agent/environments//users//sessions/`. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment. If `User ID` is not
-  /// specified, we are using "-". It's up to the API caller to choose an
+  /// not specified, we assume default 'draft' environment (`Environment ID`
+  /// might be referred to as environment name at some places). If `User ID` is
+  /// not specified, we are using "-". It's up to the API caller to choose an
   /// appropriate `Session ID` and `User Id`. They can be a random number or
   /// some type of user and session identifiers (preferably hashed). The length
   /// of the `Session ID` and `User ID` must not exceed 36 characters. For more
@@ -2385,8 +2386,9 @@ class ProjectsAgentSessionsResource {
   /// [session] - Required. The name of the session this query is sent to.
   /// Format: `projects//agent/sessions/`, or
   /// `projects//agent/environments//users//sessions/`. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment. If `User ID` is not
-  /// specified, we are using "-". It's up to the API caller to choose an
+  /// not specified, we assume default 'draft' environment (`Environment ID`
+  /// might be referred to as environment name at some places). If `User ID` is
+  /// not specified, we are using "-". It's up to the API caller to choose an
   /// appropriate `Session ID` and `User Id`. They can be a random number or
   /// some type of user and session identifiers (preferably hashed). The length
   /// of the `Session ID` and `User ID` must not exceed 36 characters. For more
@@ -3475,7 +3477,7 @@ class GoogleCloudDialogflowCxV3ConversationTurnUserInput {
 class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
   /// The Page on which the utterance was spoken.
   ///
-  /// Only some fields such as name and displayname will be set.
+  /// Only name and displayName will be set.
   GoogleCloudDialogflowCxV3Page currentPage;
 
   /// Input only.
@@ -3510,7 +3512,7 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
 
   /// The Intent that triggered the response.
   ///
-  /// Only some fields such as name and displayname will be set.
+  /// Only name and displayName will be set.
   GoogleCloudDialogflowCxV3Intent triggeredIntent;
 
   GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput();
@@ -6541,7 +6543,7 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput {
 class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput {
   /// The Page on which the utterance was spoken.
   ///
-  /// Only some fields such as name and displayname will be set.
+  /// Only name and displayName will be set.
   GoogleCloudDialogflowCxV3beta1Page currentPage;
 
   /// Input only.
@@ -6576,7 +6578,7 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput {
 
   /// The Intent that triggered the response.
   ///
-  /// Only some fields such as name and displayname will be set.
+  /// Only name and displayName will be set.
   GoogleCloudDialogflowCxV3beta1Intent triggeredIntent;
 
   GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput();

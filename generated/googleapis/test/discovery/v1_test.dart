@@ -48,14 +48,14 @@ void checkDirectoryListItemsIcons(api.DirectoryListItemsIcons o) {
   buildCounterDirectoryListItemsIcons--;
 }
 
-core.List<core.String> buildUnnamed664() {
+core.List<core.String> buildUnnamed665() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed664(core.List<core.String> o) {
+void checkUnnamed665(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -73,7 +73,7 @@ api.DirectoryListItems buildDirectoryListItems() {
     o.icons = buildDirectoryListItemsIcons();
     o.id = 'foo';
     o.kind = 'foo';
-    o.labels = buildUnnamed664();
+    o.labels = buildUnnamed665();
     o.name = 'foo';
     o.preferred = true;
     o.title = 'foo';
@@ -93,7 +93,7 @@ void checkDirectoryListItems(api.DirectoryListItems o) {
     checkDirectoryListItemsIcons(o.icons as api.DirectoryListItemsIcons);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed664(o.labels);
+    checkUnnamed665(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.preferred, unittest.isTrue);
     unittest.expect(o.title, unittest.equals('foo'));
@@ -102,14 +102,14 @@ void checkDirectoryListItems(api.DirectoryListItems o) {
   buildCounterDirectoryListItems--;
 }
 
-core.List<api.DirectoryListItems> buildUnnamed665() {
+core.List<api.DirectoryListItems> buildUnnamed666() {
   var o = <api.DirectoryListItems>[];
   o.add(buildDirectoryListItems());
   o.add(buildDirectoryListItems());
   return o;
 }
 
-void checkUnnamed665(core.List<api.DirectoryListItems> o) {
+void checkUnnamed666(core.List<api.DirectoryListItems> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDirectoryListItems(o[0] as api.DirectoryListItems);
   checkDirectoryListItems(o[1] as api.DirectoryListItems);
@@ -121,7 +121,7 @@ api.DirectoryList buildDirectoryList() {
   buildCounterDirectoryList++;
   if (buildCounterDirectoryList < 3) {
     o.discoveryVersion = 'foo';
-    o.items = buildUnnamed665();
+    o.items = buildUnnamed666();
     o.kind = 'foo';
   }
   buildCounterDirectoryList--;
@@ -132,42 +132,10 @@ void checkDirectoryList(api.DirectoryList o) {
   buildCounterDirectoryList++;
   if (buildCounterDirectoryList < 3) {
     unittest.expect(o.discoveryVersion, unittest.equals('foo'));
-    checkUnnamed665(o.items);
+    checkUnnamed666(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterDirectoryList--;
-}
-
-core.List<core.String> buildUnnamed666() {
-  var o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
-
-void checkUnnamed666(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-core.int buildCounterJsonSchemaAnnotations = 0;
-api.JsonSchemaAnnotations buildJsonSchemaAnnotations() {
-  var o = api.JsonSchemaAnnotations();
-  buildCounterJsonSchemaAnnotations++;
-  if (buildCounterJsonSchemaAnnotations < 3) {
-    o.required = buildUnnamed666();
-  }
-  buildCounterJsonSchemaAnnotations--;
-  return o;
-}
-
-void checkJsonSchemaAnnotations(api.JsonSchemaAnnotations o) {
-  buildCounterJsonSchemaAnnotations++;
-  if (buildCounterJsonSchemaAnnotations < 3) {
-    checkUnnamed666(o.required);
-  }
-  buildCounterJsonSchemaAnnotations--;
 }
 
 core.List<core.String> buildUnnamed667() {
@@ -183,6 +151,25 @@ void checkUnnamed667(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
+core.int buildCounterJsonSchemaAnnotations = 0;
+api.JsonSchemaAnnotations buildJsonSchemaAnnotations() {
+  var o = api.JsonSchemaAnnotations();
+  buildCounterJsonSchemaAnnotations++;
+  if (buildCounterJsonSchemaAnnotations < 3) {
+    o.required = buildUnnamed667();
+  }
+  buildCounterJsonSchemaAnnotations--;
+  return o;
+}
+
+void checkJsonSchemaAnnotations(api.JsonSchemaAnnotations o) {
+  buildCounterJsonSchemaAnnotations++;
+  if (buildCounterJsonSchemaAnnotations < 3) {
+    checkUnnamed667(o.required);
+  }
+  buildCounterJsonSchemaAnnotations--;
+}
+
 core.List<core.String> buildUnnamed668() {
   var o = <core.String>[];
   o.add('foo');
@@ -196,14 +183,27 @@ void checkUnnamed668(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.Map<core.String, api.JsonSchema> buildUnnamed669() {
+core.List<core.String> buildUnnamed669() {
+  var o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed669(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.Map<core.String, api.JsonSchema> buildUnnamed670() {
   var o = <core.String, api.JsonSchema>{};
   o['x'] = buildJsonSchema();
   o['y'] = buildJsonSchema();
   return o;
 }
 
-void checkUnnamed669(core.Map<core.String, api.JsonSchema> o) {
+void checkUnnamed670(core.Map<core.String, api.JsonSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJsonSchema(o['x'] as api.JsonSchema);
   checkJsonSchema(o['y'] as api.JsonSchema);
@@ -230,14 +230,14 @@ void checkJsonSchemaVariantMap(api.JsonSchemaVariantMap o) {
   buildCounterJsonSchemaVariantMap--;
 }
 
-core.List<api.JsonSchemaVariantMap> buildUnnamed670() {
+core.List<api.JsonSchemaVariantMap> buildUnnamed671() {
   var o = <api.JsonSchemaVariantMap>[];
   o.add(buildJsonSchemaVariantMap());
   o.add(buildJsonSchemaVariantMap());
   return o;
 }
 
-void checkUnnamed670(core.List<api.JsonSchemaVariantMap> o) {
+void checkUnnamed671(core.List<api.JsonSchemaVariantMap> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJsonSchemaVariantMap(o[0] as api.JsonSchemaVariantMap);
   checkJsonSchemaVariantMap(o[1] as api.JsonSchemaVariantMap);
@@ -249,7 +249,7 @@ api.JsonSchemaVariant buildJsonSchemaVariant() {
   buildCounterJsonSchemaVariant++;
   if (buildCounterJsonSchemaVariant < 3) {
     o.discriminant = 'foo';
-    o.map = buildUnnamed670();
+    o.map = buildUnnamed671();
   }
   buildCounterJsonSchemaVariant--;
   return o;
@@ -259,7 +259,7 @@ void checkJsonSchemaVariant(api.JsonSchemaVariant o) {
   buildCounterJsonSchemaVariant++;
   if (buildCounterJsonSchemaVariant < 3) {
     unittest.expect(o.discriminant, unittest.equals('foo'));
-    checkUnnamed670(o.map);
+    checkUnnamed671(o.map);
   }
   buildCounterJsonSchemaVariant--;
 }
@@ -274,8 +274,8 @@ api.JsonSchema buildJsonSchema() {
     o.annotations = buildJsonSchemaAnnotations();
     o.default_ = 'foo';
     o.description = 'foo';
-    o.enum_ = buildUnnamed667();
-    o.enumDescriptions = buildUnnamed668();
+    o.enum_ = buildUnnamed668();
+    o.enumDescriptions = buildUnnamed669();
     o.format = 'foo';
     o.id = 'foo';
     o.items = buildJsonSchema();
@@ -283,7 +283,7 @@ api.JsonSchema buildJsonSchema() {
     o.maximum = 'foo';
     o.minimum = 'foo';
     o.pattern = 'foo';
-    o.properties = buildUnnamed669();
+    o.properties = buildUnnamed670();
     o.readOnly = true;
     o.repeated = true;
     o.required = true;
@@ -302,8 +302,8 @@ void checkJsonSchema(api.JsonSchema o) {
     checkJsonSchemaAnnotations(o.annotations as api.JsonSchemaAnnotations);
     unittest.expect(o.default_, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed667(o.enum_);
-    checkUnnamed668(o.enumDescriptions);
+    checkUnnamed668(o.enum_);
+    checkUnnamed669(o.enumDescriptions);
     unittest.expect(o.format, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     checkJsonSchema(o.items as api.JsonSchema);
@@ -311,7 +311,7 @@ void checkJsonSchema(api.JsonSchema o) {
     unittest.expect(o.maximum, unittest.equals('foo'));
     unittest.expect(o.minimum, unittest.equals('foo'));
     unittest.expect(o.pattern, unittest.equals('foo'));
-    checkUnnamed669(o.properties);
+    checkUnnamed670(o.properties);
     unittest.expect(o.readOnly, unittest.isTrue);
     unittest.expect(o.repeated, unittest.isTrue);
     unittest.expect(o.required, unittest.isTrue);
@@ -343,14 +343,14 @@ void checkRestDescriptionAuthOauth2ScopesValue(
 }
 
 core.Map<core.String, api.RestDescriptionAuthOauth2ScopesValue>
-    buildUnnamed671() {
+    buildUnnamed672() {
   var o = <core.String, api.RestDescriptionAuthOauth2ScopesValue>{};
   o['x'] = buildRestDescriptionAuthOauth2ScopesValue();
   o['y'] = buildRestDescriptionAuthOauth2ScopesValue();
   return o;
 }
 
-void checkUnnamed671(
+void checkUnnamed672(
     core.Map<core.String, api.RestDescriptionAuthOauth2ScopesValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRestDescriptionAuthOauth2ScopesValue(
@@ -364,7 +364,7 @@ api.RestDescriptionAuthOauth2 buildRestDescriptionAuthOauth2() {
   var o = api.RestDescriptionAuthOauth2();
   buildCounterRestDescriptionAuthOauth2++;
   if (buildCounterRestDescriptionAuthOauth2 < 3) {
-    o.scopes = buildUnnamed671();
+    o.scopes = buildUnnamed672();
   }
   buildCounterRestDescriptionAuthOauth2--;
   return o;
@@ -373,7 +373,7 @@ api.RestDescriptionAuthOauth2 buildRestDescriptionAuthOauth2() {
 void checkRestDescriptionAuthOauth2(api.RestDescriptionAuthOauth2 o) {
   buildCounterRestDescriptionAuthOauth2++;
   if (buildCounterRestDescriptionAuthOauth2 < 3) {
-    checkUnnamed671(o.scopes);
+    checkUnnamed672(o.scopes);
   }
   buildCounterRestDescriptionAuthOauth2--;
 }
@@ -397,14 +397,14 @@ void checkRestDescriptionAuth(api.RestDescriptionAuth o) {
   buildCounterRestDescriptionAuth--;
 }
 
-core.List<core.String> buildUnnamed672() {
+core.List<core.String> buildUnnamed673() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed672(core.List<core.String> o) {
+void checkUnnamed673(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -431,66 +431,66 @@ void checkRestDescriptionIcons(api.RestDescriptionIcons o) {
   buildCounterRestDescriptionIcons--;
 }
 
-core.List<core.String> buildUnnamed673() {
+core.List<core.String> buildUnnamed674() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed673(core.List<core.String> o) {
+void checkUnnamed674(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.Map<core.String, api.RestMethod> buildUnnamed674() {
+core.Map<core.String, api.RestMethod> buildUnnamed675() {
   var o = <core.String, api.RestMethod>{};
   o['x'] = buildRestMethod();
   o['y'] = buildRestMethod();
   return o;
 }
 
-void checkUnnamed674(core.Map<core.String, api.RestMethod> o) {
+void checkUnnamed675(core.Map<core.String, api.RestMethod> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRestMethod(o['x'] as api.RestMethod);
   checkRestMethod(o['y'] as api.RestMethod);
 }
 
-core.Map<core.String, api.JsonSchema> buildUnnamed675() {
+core.Map<core.String, api.JsonSchema> buildUnnamed676() {
   var o = <core.String, api.JsonSchema>{};
   o['x'] = buildJsonSchema();
   o['y'] = buildJsonSchema();
   return o;
 }
 
-void checkUnnamed675(core.Map<core.String, api.JsonSchema> o) {
+void checkUnnamed676(core.Map<core.String, api.JsonSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJsonSchema(o['x'] as api.JsonSchema);
   checkJsonSchema(o['y'] as api.JsonSchema);
 }
 
-core.Map<core.String, api.RestResource> buildUnnamed676() {
+core.Map<core.String, api.RestResource> buildUnnamed677() {
   var o = <core.String, api.RestResource>{};
   o['x'] = buildRestResource();
   o['y'] = buildRestResource();
   return o;
 }
 
-void checkUnnamed676(core.Map<core.String, api.RestResource> o) {
+void checkUnnamed677(core.Map<core.String, api.RestResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRestResource(o['x'] as api.RestResource);
   checkRestResource(o['y'] as api.RestResource);
 }
 
-core.Map<core.String, api.JsonSchema> buildUnnamed677() {
+core.Map<core.String, api.JsonSchema> buildUnnamed678() {
   var o = <core.String, api.JsonSchema>{};
   o['x'] = buildJsonSchema();
   o['y'] = buildJsonSchema();
   return o;
 }
 
-void checkUnnamed677(core.Map<core.String, api.JsonSchema> o) {
+void checkUnnamed678(core.Map<core.String, api.JsonSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJsonSchema(o['x'] as api.JsonSchema);
   checkJsonSchema(o['y'] as api.JsonSchema);
@@ -511,22 +511,22 @@ api.RestDescription buildRestDescription() {
     o.documentationLink = 'foo';
     o.etag = 'foo';
     o.exponentialBackoffDefault = true;
-    o.features = buildUnnamed672();
+    o.features = buildUnnamed673();
     o.icons = buildRestDescriptionIcons();
     o.id = 'foo';
     o.kind = 'foo';
-    o.labels = buildUnnamed673();
-    o.methods = buildUnnamed674();
+    o.labels = buildUnnamed674();
+    o.methods = buildUnnamed675();
     o.name = 'foo';
     o.ownerDomain = 'foo';
     o.ownerName = 'foo';
     o.packagePath = 'foo';
-    o.parameters = buildUnnamed675();
+    o.parameters = buildUnnamed676();
     o.protocol = 'foo';
-    o.resources = buildUnnamed676();
+    o.resources = buildUnnamed677();
     o.revision = 'foo';
     o.rootUrl = 'foo';
-    o.schemas = buildUnnamed677();
+    o.schemas = buildUnnamed678();
     o.servicePath = 'foo';
     o.title = 'foo';
     o.version = 'foo';
@@ -549,22 +549,22 @@ void checkRestDescription(api.RestDescription o) {
     unittest.expect(o.documentationLink, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.exponentialBackoffDefault, unittest.isTrue);
-    checkUnnamed672(o.features);
+    checkUnnamed673(o.features);
     checkRestDescriptionIcons(o.icons as api.RestDescriptionIcons);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed673(o.labels);
-    checkUnnamed674(o.methods);
+    checkUnnamed674(o.labels);
+    checkUnnamed675(o.methods);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.ownerDomain, unittest.equals('foo'));
     unittest.expect(o.ownerName, unittest.equals('foo'));
     unittest.expect(o.packagePath, unittest.equals('foo'));
-    checkUnnamed675(o.parameters);
+    checkUnnamed676(o.parameters);
     unittest.expect(o.protocol, unittest.equals('foo'));
-    checkUnnamed676(o.resources);
+    checkUnnamed677(o.resources);
     unittest.expect(o.revision, unittest.equals('foo'));
     unittest.expect(o.rootUrl, unittest.equals('foo'));
-    checkUnnamed677(o.schemas);
+    checkUnnamed678(o.schemas);
     unittest.expect(o.servicePath, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals('foo'));
@@ -573,14 +573,14 @@ void checkRestDescription(api.RestDescription o) {
   buildCounterRestDescription--;
 }
 
-core.List<core.String> buildUnnamed678() {
+core.List<core.String> buildUnnamed679() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed678(core.List<core.String> o) {
+void checkUnnamed679(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -660,7 +660,7 @@ api.RestMethodMediaUpload buildRestMethodMediaUpload() {
   var o = api.RestMethodMediaUpload();
   buildCounterRestMethodMediaUpload++;
   if (buildCounterRestMethodMediaUpload < 3) {
-    o.accept = buildUnnamed678();
+    o.accept = buildUnnamed679();
     o.maxSize = 'foo';
     o.protocols = buildRestMethodMediaUploadProtocols();
   }
@@ -671,7 +671,7 @@ api.RestMethodMediaUpload buildRestMethodMediaUpload() {
 void checkRestMethodMediaUpload(api.RestMethodMediaUpload o) {
   buildCounterRestMethodMediaUpload++;
   if (buildCounterRestMethodMediaUpload < 3) {
-    checkUnnamed678(o.accept);
+    checkUnnamed679(o.accept);
     unittest.expect(o.maxSize, unittest.equals('foo'));
     checkRestMethodMediaUploadProtocols(
         o.protocols as api.RestMethodMediaUploadProtocols);
@@ -679,27 +679,27 @@ void checkRestMethodMediaUpload(api.RestMethodMediaUpload o) {
   buildCounterRestMethodMediaUpload--;
 }
 
-core.List<core.String> buildUnnamed679() {
+core.List<core.String> buildUnnamed680() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed679(core.List<core.String> o) {
+void checkUnnamed680(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.Map<core.String, api.JsonSchema> buildUnnamed680() {
+core.Map<core.String, api.JsonSchema> buildUnnamed681() {
   var o = <core.String, api.JsonSchema>{};
   o['x'] = buildJsonSchema();
   o['y'] = buildJsonSchema();
   return o;
 }
 
-void checkUnnamed680(core.Map<core.String, api.JsonSchema> o) {
+void checkUnnamed681(core.Map<core.String, api.JsonSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJsonSchema(o['x'] as api.JsonSchema);
   checkJsonSchema(o['y'] as api.JsonSchema);
@@ -745,14 +745,14 @@ void checkRestMethodResponse(api.RestMethodResponse o) {
   buildCounterRestMethodResponse--;
 }
 
-core.List<core.String> buildUnnamed681() {
+core.List<core.String> buildUnnamed682() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed681(core.List<core.String> o) {
+void checkUnnamed682(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -768,12 +768,12 @@ api.RestMethod buildRestMethod() {
     o.httpMethod = 'foo';
     o.id = 'foo';
     o.mediaUpload = buildRestMethodMediaUpload();
-    o.parameterOrder = buildUnnamed679();
-    o.parameters = buildUnnamed680();
+    o.parameterOrder = buildUnnamed680();
+    o.parameters = buildUnnamed681();
     o.path = 'foo';
     o.request = buildRestMethodRequest();
     o.response = buildRestMethodResponse();
-    o.scopes = buildUnnamed681();
+    o.scopes = buildUnnamed682();
     o.supportsMediaDownload = true;
     o.supportsMediaUpload = true;
     o.supportsSubscription = true;
@@ -791,12 +791,12 @@ void checkRestMethod(api.RestMethod o) {
     unittest.expect(o.httpMethod, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     checkRestMethodMediaUpload(o.mediaUpload as api.RestMethodMediaUpload);
-    checkUnnamed679(o.parameterOrder);
-    checkUnnamed680(o.parameters);
+    checkUnnamed680(o.parameterOrder);
+    checkUnnamed681(o.parameters);
     unittest.expect(o.path, unittest.equals('foo'));
     checkRestMethodRequest(o.request as api.RestMethodRequest);
     checkRestMethodResponse(o.response as api.RestMethodResponse);
-    checkUnnamed681(o.scopes);
+    checkUnnamed682(o.scopes);
     unittest.expect(o.supportsMediaDownload, unittest.isTrue);
     unittest.expect(o.supportsMediaUpload, unittest.isTrue);
     unittest.expect(o.supportsSubscription, unittest.isTrue);
@@ -805,27 +805,27 @@ void checkRestMethod(api.RestMethod o) {
   buildCounterRestMethod--;
 }
 
-core.Map<core.String, api.RestMethod> buildUnnamed682() {
+core.Map<core.String, api.RestMethod> buildUnnamed683() {
   var o = <core.String, api.RestMethod>{};
   o['x'] = buildRestMethod();
   o['y'] = buildRestMethod();
   return o;
 }
 
-void checkUnnamed682(core.Map<core.String, api.RestMethod> o) {
+void checkUnnamed683(core.Map<core.String, api.RestMethod> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRestMethod(o['x'] as api.RestMethod);
   checkRestMethod(o['y'] as api.RestMethod);
 }
 
-core.Map<core.String, api.RestResource> buildUnnamed683() {
+core.Map<core.String, api.RestResource> buildUnnamed684() {
   var o = <core.String, api.RestResource>{};
   o['x'] = buildRestResource();
   o['y'] = buildRestResource();
   return o;
 }
 
-void checkUnnamed683(core.Map<core.String, api.RestResource> o) {
+void checkUnnamed684(core.Map<core.String, api.RestResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRestResource(o['x'] as api.RestResource);
   checkRestResource(o['y'] as api.RestResource);
@@ -836,8 +836,8 @@ api.RestResource buildRestResource() {
   var o = api.RestResource();
   buildCounterRestResource++;
   if (buildCounterRestResource < 3) {
-    o.methods = buildUnnamed682();
-    o.resources = buildUnnamed683();
+    o.methods = buildUnnamed683();
+    o.resources = buildUnnamed684();
   }
   buildCounterRestResource--;
   return o;
@@ -846,8 +846,8 @@ api.RestResource buildRestResource() {
 void checkRestResource(api.RestResource o) {
   buildCounterRestResource++;
   if (buildCounterRestResource < 3) {
-    checkUnnamed682(o.methods);
-    checkUnnamed683(o.resources);
+    checkUnnamed683(o.methods);
+    checkUnnamed684(o.resources);
   }
   buildCounterRestResource--;
 }

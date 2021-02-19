@@ -27,14 +27,14 @@ import 'package:googleapis/cloudresourcemanager/v2.dart' as api;
 
 import '../test_shared.dart';
 
-core.List<api.AuditLogConfig> buildUnnamed3150() {
+core.List<api.AuditLogConfig> buildUnnamed3175() {
   var o = <api.AuditLogConfig>[];
   o.add(buildAuditLogConfig());
   o.add(buildAuditLogConfig());
   return o;
 }
 
-void checkUnnamed3150(core.List<api.AuditLogConfig> o) {
+void checkUnnamed3175(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditLogConfig(o[0] as api.AuditLogConfig);
   checkAuditLogConfig(o[1] as api.AuditLogConfig);
@@ -45,7 +45,7 @@ api.AuditConfig buildAuditConfig() {
   var o = api.AuditConfig();
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    o.auditLogConfigs = buildUnnamed3150();
+    o.auditLogConfigs = buildUnnamed3175();
     o.service = 'foo';
   }
   buildCounterAuditConfig--;
@@ -55,20 +55,20 @@ api.AuditConfig buildAuditConfig() {
 void checkAuditConfig(api.AuditConfig o) {
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    checkUnnamed3150(o.auditLogConfigs);
+    checkUnnamed3175(o.auditLogConfigs);
     unittest.expect(o.service, unittest.equals('foo'));
   }
   buildCounterAuditConfig--;
 }
 
-core.List<core.String> buildUnnamed3151() {
+core.List<core.String> buildUnnamed3176() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3151(core.List<core.String> o) {
+void checkUnnamed3176(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -79,7 +79,7 @@ api.AuditLogConfig buildAuditLogConfig() {
   var o = api.AuditLogConfig();
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    o.exemptedMembers = buildUnnamed3151();
+    o.exemptedMembers = buildUnnamed3176();
     o.logType = 'foo';
   }
   buildCounterAuditLogConfig--;
@@ -89,20 +89,20 @@ api.AuditLogConfig buildAuditLogConfig() {
 void checkAuditLogConfig(api.AuditLogConfig o) {
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    checkUnnamed3151(o.exemptedMembers);
+    checkUnnamed3176(o.exemptedMembers);
     unittest.expect(o.logType, unittest.equals('foo'));
   }
   buildCounterAuditLogConfig--;
 }
 
-core.List<core.String> buildUnnamed3152() {
+core.List<core.String> buildUnnamed3177() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3152(core.List<core.String> o) {
+void checkUnnamed3177(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -114,7 +114,7 @@ api.Binding buildBinding() {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     o.condition = buildExpr();
-    o.members = buildUnnamed3152();
+    o.members = buildUnnamed3177();
     o.role = 'foo';
   }
   buildCounterBinding--;
@@ -125,7 +125,7 @@ void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     checkExpr(o.condition as api.Expr);
-    checkUnnamed3152(o.members);
+    checkUnnamed3177(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterBinding--;
@@ -197,50 +197,6 @@ void checkCloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation(
   buildCounterCloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation--;
 }
 
-core.int buildCounterCreateFolderMetadata = 0;
-api.CreateFolderMetadata buildCreateFolderMetadata() {
-  var o = api.CreateFolderMetadata();
-  buildCounterCreateFolderMetadata++;
-  if (buildCounterCreateFolderMetadata < 3) {
-    o.displayName = 'foo';
-    o.parent = 'foo';
-  }
-  buildCounterCreateFolderMetadata--;
-  return o;
-}
-
-void checkCreateFolderMetadata(api.CreateFolderMetadata o) {
-  buildCounterCreateFolderMetadata++;
-  if (buildCounterCreateFolderMetadata < 3) {
-    unittest.expect(o.displayName, unittest.equals('foo'));
-    unittest.expect(o.parent, unittest.equals('foo'));
-  }
-  buildCounterCreateFolderMetadata--;
-}
-
-core.int buildCounterCreateProjectMetadata = 0;
-api.CreateProjectMetadata buildCreateProjectMetadata() {
-  var o = api.CreateProjectMetadata();
-  buildCounterCreateProjectMetadata++;
-  if (buildCounterCreateProjectMetadata < 3) {
-    o.createTime = 'foo';
-    o.gettable = true;
-    o.ready = true;
-  }
-  buildCounterCreateProjectMetadata--;
-  return o;
-}
-
-void checkCreateProjectMetadata(api.CreateProjectMetadata o) {
-  buildCounterCreateProjectMetadata++;
-  if (buildCounterCreateProjectMetadata < 3) {
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.gettable, unittest.isTrue);
-    unittest.expect(o.ready, unittest.isTrue);
-  }
-  buildCounterCreateProjectMetadata--;
-}
-
 core.int buildCounterCreateTagKeyMetadata = 0;
 api.CreateTagKeyMetadata buildCreateTagKeyMetadata() {
   var o = api.CreateTagKeyMetadata();
@@ -269,51 +225,6 @@ void checkCreateTagValueMetadata(api.CreateTagValueMetadata o) {
   buildCounterCreateTagValueMetadata++;
   if (buildCounterCreateTagValueMetadata < 3) {}
   buildCounterCreateTagValueMetadata--;
-}
-
-core.int buildCounterDeleteFolderMetadata = 0;
-api.DeleteFolderMetadata buildDeleteFolderMetadata() {
-  var o = api.DeleteFolderMetadata();
-  buildCounterDeleteFolderMetadata++;
-  if (buildCounterDeleteFolderMetadata < 3) {}
-  buildCounterDeleteFolderMetadata--;
-  return o;
-}
-
-void checkDeleteFolderMetadata(api.DeleteFolderMetadata o) {
-  buildCounterDeleteFolderMetadata++;
-  if (buildCounterDeleteFolderMetadata < 3) {}
-  buildCounterDeleteFolderMetadata--;
-}
-
-core.int buildCounterDeleteOrganizationMetadata = 0;
-api.DeleteOrganizationMetadata buildDeleteOrganizationMetadata() {
-  var o = api.DeleteOrganizationMetadata();
-  buildCounterDeleteOrganizationMetadata++;
-  if (buildCounterDeleteOrganizationMetadata < 3) {}
-  buildCounterDeleteOrganizationMetadata--;
-  return o;
-}
-
-void checkDeleteOrganizationMetadata(api.DeleteOrganizationMetadata o) {
-  buildCounterDeleteOrganizationMetadata++;
-  if (buildCounterDeleteOrganizationMetadata < 3) {}
-  buildCounterDeleteOrganizationMetadata--;
-}
-
-core.int buildCounterDeleteProjectMetadata = 0;
-api.DeleteProjectMetadata buildDeleteProjectMetadata() {
-  var o = api.DeleteProjectMetadata();
-  buildCounterDeleteProjectMetadata++;
-  if (buildCounterDeleteProjectMetadata < 3) {}
-  buildCounterDeleteProjectMetadata--;
-  return o;
-}
-
-void checkDeleteProjectMetadata(api.DeleteProjectMetadata o) {
-  buildCounterDeleteProjectMetadata++;
-  if (buildCounterDeleteProjectMetadata < 3) {}
-  buildCounterDeleteProjectMetadata--;
 }
 
 core.int buildCounterDeleteTagKeyMetadata = 0;
@@ -480,14 +391,14 @@ void checkGetPolicyOptions(api.GetPolicyOptions o) {
   buildCounterGetPolicyOptions--;
 }
 
-core.List<api.Folder> buildUnnamed3153() {
+core.List<api.Folder> buildUnnamed3178() {
   var o = <api.Folder>[];
   o.add(buildFolder());
   o.add(buildFolder());
   return o;
 }
 
-void checkUnnamed3153(core.List<api.Folder> o) {
+void checkUnnamed3178(core.List<api.Folder> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFolder(o[0] as api.Folder);
   checkFolder(o[1] as api.Folder);
@@ -498,7 +409,7 @@ api.ListFoldersResponse buildListFoldersResponse() {
   var o = api.ListFoldersResponse();
   buildCounterListFoldersResponse++;
   if (buildCounterListFoldersResponse < 3) {
-    o.folders = buildUnnamed3153();
+    o.folders = buildUnnamed3178();
     o.nextPageToken = 'foo';
   }
   buildCounterListFoldersResponse--;
@@ -508,33 +419,10 @@ api.ListFoldersResponse buildListFoldersResponse() {
 void checkListFoldersResponse(api.ListFoldersResponse o) {
   buildCounterListFoldersResponse++;
   if (buildCounterListFoldersResponse < 3) {
-    checkUnnamed3153(o.folders);
+    checkUnnamed3178(o.folders);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListFoldersResponse--;
-}
-
-core.int buildCounterMoveFolderMetadata = 0;
-api.MoveFolderMetadata buildMoveFolderMetadata() {
-  var o = api.MoveFolderMetadata();
-  buildCounterMoveFolderMetadata++;
-  if (buildCounterMoveFolderMetadata < 3) {
-    o.destinationParent = 'foo';
-    o.displayName = 'foo';
-    o.sourceParent = 'foo';
-  }
-  buildCounterMoveFolderMetadata--;
-  return o;
-}
-
-void checkMoveFolderMetadata(api.MoveFolderMetadata o) {
-  buildCounterMoveFolderMetadata++;
-  if (buildCounterMoveFolderMetadata < 3) {
-    unittest.expect(o.destinationParent, unittest.equals('foo'));
-    unittest.expect(o.displayName, unittest.equals('foo'));
-    unittest.expect(o.sourceParent, unittest.equals('foo'));
-  }
-  buildCounterMoveFolderMetadata--;
 }
 
 core.int buildCounterMoveFolderRequest = 0;
@@ -556,22 +444,7 @@ void checkMoveFolderRequest(api.MoveFolderRequest o) {
   buildCounterMoveFolderRequest--;
 }
 
-core.int buildCounterMoveProjectMetadata = 0;
-api.MoveProjectMetadata buildMoveProjectMetadata() {
-  var o = api.MoveProjectMetadata();
-  buildCounterMoveProjectMetadata++;
-  if (buildCounterMoveProjectMetadata < 3) {}
-  buildCounterMoveProjectMetadata--;
-  return o;
-}
-
-void checkMoveProjectMetadata(api.MoveProjectMetadata o) {
-  buildCounterMoveProjectMetadata++;
-  if (buildCounterMoveProjectMetadata < 3) {}
-  buildCounterMoveProjectMetadata--;
-}
-
-core.Map<core.String, core.Object> buildUnnamed3154() {
+core.Map<core.String, core.Object> buildUnnamed3179() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -586,7 +459,7 @@ core.Map<core.String, core.Object> buildUnnamed3154() {
   return o;
 }
 
-void checkUnnamed3154(core.Map<core.String, core.Object> o) {
+void checkUnnamed3179(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -600,7 +473,7 @@ void checkUnnamed3154(core.Map<core.String, core.Object> o) {
   unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
-core.Map<core.String, core.Object> buildUnnamed3155() {
+core.Map<core.String, core.Object> buildUnnamed3180() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -615,7 +488,7 @@ core.Map<core.String, core.Object> buildUnnamed3155() {
   return o;
 }
 
-void checkUnnamed3155(core.Map<core.String, core.Object> o) {
+void checkUnnamed3180(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -636,9 +509,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed3154();
+    o.metadata = buildUnnamed3179();
     o.name = 'foo';
-    o.response = buildUnnamed3155();
+    o.response = buildUnnamed3180();
   }
   buildCounterOperation--;
   return o;
@@ -649,34 +522,34 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
     checkStatus(o.error as api.Status);
-    checkUnnamed3154(o.metadata);
+    checkUnnamed3179(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed3155(o.response);
+    checkUnnamed3180(o.response);
   }
   buildCounterOperation--;
 }
 
-core.List<api.AuditConfig> buildUnnamed3156() {
+core.List<api.AuditConfig> buildUnnamed3181() {
   var o = <api.AuditConfig>[];
   o.add(buildAuditConfig());
   o.add(buildAuditConfig());
   return o;
 }
 
-void checkUnnamed3156(core.List<api.AuditConfig> o) {
+void checkUnnamed3181(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditConfig(o[0] as api.AuditConfig);
   checkAuditConfig(o[1] as api.AuditConfig);
 }
 
-core.List<api.Binding> buildUnnamed3157() {
+core.List<api.Binding> buildUnnamed3182() {
   var o = <api.Binding>[];
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-void checkUnnamed3157(core.List<api.Binding> o) {
+void checkUnnamed3182(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0] as api.Binding);
   checkBinding(o[1] as api.Binding);
@@ -687,8 +560,8 @@ api.Policy buildPolicy() {
   var o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.auditConfigs = buildUnnamed3156();
-    o.bindings = buildUnnamed3157();
+    o.auditConfigs = buildUnnamed3181();
+    o.bindings = buildUnnamed3182();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -699,8 +572,8 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed3156(o.auditConfigs);
-    checkUnnamed3157(o.bindings);
+    checkUnnamed3181(o.auditConfigs);
+    checkUnnamed3182(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals(42));
   }
@@ -753,14 +626,14 @@ void checkSearchFoldersRequest(api.SearchFoldersRequest o) {
   buildCounterSearchFoldersRequest--;
 }
 
-core.List<api.Folder> buildUnnamed3158() {
+core.List<api.Folder> buildUnnamed3183() {
   var o = <api.Folder>[];
   o.add(buildFolder());
   o.add(buildFolder());
   return o;
 }
 
-void checkUnnamed3158(core.List<api.Folder> o) {
+void checkUnnamed3183(core.List<api.Folder> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFolder(o[0] as api.Folder);
   checkFolder(o[1] as api.Folder);
@@ -771,7 +644,7 @@ api.SearchFoldersResponse buildSearchFoldersResponse() {
   var o = api.SearchFoldersResponse();
   buildCounterSearchFoldersResponse++;
   if (buildCounterSearchFoldersResponse < 3) {
-    o.folders = buildUnnamed3158();
+    o.folders = buildUnnamed3183();
     o.nextPageToken = 'foo';
   }
   buildCounterSearchFoldersResponse--;
@@ -781,7 +654,7 @@ api.SearchFoldersResponse buildSearchFoldersResponse() {
 void checkSearchFoldersResponse(api.SearchFoldersResponse o) {
   buildCounterSearchFoldersResponse++;
   if (buildCounterSearchFoldersResponse < 3) {
-    checkUnnamed3158(o.folders);
+    checkUnnamed3183(o.folders);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterSearchFoldersResponse--;
@@ -808,7 +681,7 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed3159() {
+core.Map<core.String, core.Object> buildUnnamed3184() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -823,7 +696,7 @@ core.Map<core.String, core.Object> buildUnnamed3159() {
   return o;
 }
 
-void checkUnnamed3159(core.Map<core.String, core.Object> o) {
+void checkUnnamed3184(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -837,17 +710,17 @@ void checkUnnamed3159(core.Map<core.String, core.Object> o) {
   unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed3160() {
+core.List<core.Map<core.String, core.Object>> buildUnnamed3185() {
   var o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed3159());
-  o.add(buildUnnamed3159());
+  o.add(buildUnnamed3184());
+  o.add(buildUnnamed3184());
   return o;
 }
 
-void checkUnnamed3160(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed3185(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed3159(o[0]);
-  checkUnnamed3159(o[1]);
+  checkUnnamed3184(o[0]);
+  checkUnnamed3184(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -856,7 +729,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed3160();
+    o.details = buildUnnamed3185();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -867,20 +740,20 @@ void checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed3160(o.details);
+    checkUnnamed3185(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;
 }
 
-core.List<core.String> buildUnnamed3161() {
+core.List<core.String> buildUnnamed3186() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3161(core.List<core.String> o) {
+void checkUnnamed3186(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -891,7 +764,7 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
   var o = api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed3161();
+    o.permissions = buildUnnamed3186();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -900,19 +773,19 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
 void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed3161(o.permissions);
+    checkUnnamed3186(o.permissions);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed3162() {
+core.List<core.String> buildUnnamed3187() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3162(core.List<core.String> o) {
+void checkUnnamed3187(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -923,7 +796,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   var o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed3162();
+    o.permissions = buildUnnamed3187();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -932,24 +805,9 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed3162(o.permissions);
+    checkUnnamed3187(o.permissions);
   }
   buildCounterTestIamPermissionsResponse--;
-}
-
-core.int buildCounterUndeleteFolderMetadata = 0;
-api.UndeleteFolderMetadata buildUndeleteFolderMetadata() {
-  var o = api.UndeleteFolderMetadata();
-  buildCounterUndeleteFolderMetadata++;
-  if (buildCounterUndeleteFolderMetadata < 3) {}
-  buildCounterUndeleteFolderMetadata--;
-  return o;
-}
-
-void checkUndeleteFolderMetadata(api.UndeleteFolderMetadata o) {
-  buildCounterUndeleteFolderMetadata++;
-  if (buildCounterUndeleteFolderMetadata < 3) {}
-  buildCounterUndeleteFolderMetadata--;
 }
 
 core.int buildCounterUndeleteFolderRequest = 0;
@@ -965,66 +823,6 @@ void checkUndeleteFolderRequest(api.UndeleteFolderRequest o) {
   buildCounterUndeleteFolderRequest++;
   if (buildCounterUndeleteFolderRequest < 3) {}
   buildCounterUndeleteFolderRequest--;
-}
-
-core.int buildCounterUndeleteOrganizationMetadata = 0;
-api.UndeleteOrganizationMetadata buildUndeleteOrganizationMetadata() {
-  var o = api.UndeleteOrganizationMetadata();
-  buildCounterUndeleteOrganizationMetadata++;
-  if (buildCounterUndeleteOrganizationMetadata < 3) {}
-  buildCounterUndeleteOrganizationMetadata--;
-  return o;
-}
-
-void checkUndeleteOrganizationMetadata(api.UndeleteOrganizationMetadata o) {
-  buildCounterUndeleteOrganizationMetadata++;
-  if (buildCounterUndeleteOrganizationMetadata < 3) {}
-  buildCounterUndeleteOrganizationMetadata--;
-}
-
-core.int buildCounterUndeleteProjectMetadata = 0;
-api.UndeleteProjectMetadata buildUndeleteProjectMetadata() {
-  var o = api.UndeleteProjectMetadata();
-  buildCounterUndeleteProjectMetadata++;
-  if (buildCounterUndeleteProjectMetadata < 3) {}
-  buildCounterUndeleteProjectMetadata--;
-  return o;
-}
-
-void checkUndeleteProjectMetadata(api.UndeleteProjectMetadata o) {
-  buildCounterUndeleteProjectMetadata++;
-  if (buildCounterUndeleteProjectMetadata < 3) {}
-  buildCounterUndeleteProjectMetadata--;
-}
-
-core.int buildCounterUpdateFolderMetadata = 0;
-api.UpdateFolderMetadata buildUpdateFolderMetadata() {
-  var o = api.UpdateFolderMetadata();
-  buildCounterUpdateFolderMetadata++;
-  if (buildCounterUpdateFolderMetadata < 3) {}
-  buildCounterUpdateFolderMetadata--;
-  return o;
-}
-
-void checkUpdateFolderMetadata(api.UpdateFolderMetadata o) {
-  buildCounterUpdateFolderMetadata++;
-  if (buildCounterUpdateFolderMetadata < 3) {}
-  buildCounterUpdateFolderMetadata--;
-}
-
-core.int buildCounterUpdateProjectMetadata = 0;
-api.UpdateProjectMetadata buildUpdateProjectMetadata() {
-  var o = api.UpdateProjectMetadata();
-  buildCounterUpdateProjectMetadata++;
-  if (buildCounterUpdateProjectMetadata < 3) {}
-  buildCounterUpdateProjectMetadata--;
-  return o;
-}
-
-void checkUpdateProjectMetadata(api.UpdateProjectMetadata o) {
-  buildCounterUpdateProjectMetadata++;
-  if (buildCounterUpdateProjectMetadata < 3) {}
-  buildCounterUpdateProjectMetadata--;
 }
 
 core.int buildCounterUpdateTagKeyMetadata = 0;
@@ -1112,22 +910,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-CreateFolderMetadata', () {
-    unittest.test('to-json--from-json', () {
-      var o = buildCreateFolderMetadata();
-      var od = api.CreateFolderMetadata.fromJson(o.toJson());
-      checkCreateFolderMetadata(od as api.CreateFolderMetadata);
-    });
-  });
-
-  unittest.group('obj-schema-CreateProjectMetadata', () {
-    unittest.test('to-json--from-json', () {
-      var o = buildCreateProjectMetadata();
-      var od = api.CreateProjectMetadata.fromJson(o.toJson());
-      checkCreateProjectMetadata(od as api.CreateProjectMetadata);
-    });
-  });
-
   unittest.group('obj-schema-CreateTagKeyMetadata', () {
     unittest.test('to-json--from-json', () {
       var o = buildCreateTagKeyMetadata();
@@ -1141,30 +923,6 @@ void main() {
       var o = buildCreateTagValueMetadata();
       var od = api.CreateTagValueMetadata.fromJson(o.toJson());
       checkCreateTagValueMetadata(od as api.CreateTagValueMetadata);
-    });
-  });
-
-  unittest.group('obj-schema-DeleteFolderMetadata', () {
-    unittest.test('to-json--from-json', () {
-      var o = buildDeleteFolderMetadata();
-      var od = api.DeleteFolderMetadata.fromJson(o.toJson());
-      checkDeleteFolderMetadata(od as api.DeleteFolderMetadata);
-    });
-  });
-
-  unittest.group('obj-schema-DeleteOrganizationMetadata', () {
-    unittest.test('to-json--from-json', () {
-      var o = buildDeleteOrganizationMetadata();
-      var od = api.DeleteOrganizationMetadata.fromJson(o.toJson());
-      checkDeleteOrganizationMetadata(od as api.DeleteOrganizationMetadata);
-    });
-  });
-
-  unittest.group('obj-schema-DeleteProjectMetadata', () {
-    unittest.test('to-json--from-json', () {
-      var o = buildDeleteProjectMetadata();
-      var od = api.DeleteProjectMetadata.fromJson(o.toJson());
-      checkDeleteProjectMetadata(od as api.DeleteProjectMetadata);
     });
   });
 
@@ -1240,27 +998,11 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-MoveFolderMetadata', () {
-    unittest.test('to-json--from-json', () {
-      var o = buildMoveFolderMetadata();
-      var od = api.MoveFolderMetadata.fromJson(o.toJson());
-      checkMoveFolderMetadata(od as api.MoveFolderMetadata);
-    });
-  });
-
   unittest.group('obj-schema-MoveFolderRequest', () {
     unittest.test('to-json--from-json', () {
       var o = buildMoveFolderRequest();
       var od = api.MoveFolderRequest.fromJson(o.toJson());
       checkMoveFolderRequest(od as api.MoveFolderRequest);
-    });
-  });
-
-  unittest.group('obj-schema-MoveProjectMetadata', () {
-    unittest.test('to-json--from-json', () {
-      var o = buildMoveProjectMetadata();
-      var od = api.MoveProjectMetadata.fromJson(o.toJson());
-      checkMoveProjectMetadata(od as api.MoveProjectMetadata);
     });
   });
 
@@ -1336,51 +1078,11 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-UndeleteFolderMetadata', () {
-    unittest.test('to-json--from-json', () {
-      var o = buildUndeleteFolderMetadata();
-      var od = api.UndeleteFolderMetadata.fromJson(o.toJson());
-      checkUndeleteFolderMetadata(od as api.UndeleteFolderMetadata);
-    });
-  });
-
   unittest.group('obj-schema-UndeleteFolderRequest', () {
     unittest.test('to-json--from-json', () {
       var o = buildUndeleteFolderRequest();
       var od = api.UndeleteFolderRequest.fromJson(o.toJson());
       checkUndeleteFolderRequest(od as api.UndeleteFolderRequest);
-    });
-  });
-
-  unittest.group('obj-schema-UndeleteOrganizationMetadata', () {
-    unittest.test('to-json--from-json', () {
-      var o = buildUndeleteOrganizationMetadata();
-      var od = api.UndeleteOrganizationMetadata.fromJson(o.toJson());
-      checkUndeleteOrganizationMetadata(od as api.UndeleteOrganizationMetadata);
-    });
-  });
-
-  unittest.group('obj-schema-UndeleteProjectMetadata', () {
-    unittest.test('to-json--from-json', () {
-      var o = buildUndeleteProjectMetadata();
-      var od = api.UndeleteProjectMetadata.fromJson(o.toJson());
-      checkUndeleteProjectMetadata(od as api.UndeleteProjectMetadata);
-    });
-  });
-
-  unittest.group('obj-schema-UpdateFolderMetadata', () {
-    unittest.test('to-json--from-json', () {
-      var o = buildUpdateFolderMetadata();
-      var od = api.UpdateFolderMetadata.fromJson(o.toJson());
-      checkUpdateFolderMetadata(od as api.UpdateFolderMetadata);
-    });
-  });
-
-  unittest.group('obj-schema-UpdateProjectMetadata', () {
-    unittest.test('to-json--from-json', () {
-      var o = buildUpdateProjectMetadata();
-      var od = api.UpdateProjectMetadata.fromJson(o.toJson());
-      checkUpdateProjectMetadata(od as api.UpdateProjectMetadata);
     });
   });
 

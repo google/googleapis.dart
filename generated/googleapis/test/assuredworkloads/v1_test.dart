@@ -58,14 +58,14 @@ void checkGoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata(
   buildCounterGoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata--;
 }
 
-core.List<api.GoogleCloudAssuredworkloadsV1Workload> buildUnnamed553() {
+core.List<api.GoogleCloudAssuredworkloadsV1Workload> buildUnnamed554() {
   var o = <api.GoogleCloudAssuredworkloadsV1Workload>[];
   o.add(buildGoogleCloudAssuredworkloadsV1Workload());
   o.add(buildGoogleCloudAssuredworkloadsV1Workload());
   return o;
 }
 
-void checkUnnamed553(core.List<api.GoogleCloudAssuredworkloadsV1Workload> o) {
+void checkUnnamed554(core.List<api.GoogleCloudAssuredworkloadsV1Workload> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAssuredworkloadsV1Workload(
       o[0] as api.GoogleCloudAssuredworkloadsV1Workload);
@@ -80,7 +80,7 @@ api.GoogleCloudAssuredworkloadsV1ListWorkloadsResponse
   buildCounterGoogleCloudAssuredworkloadsV1ListWorkloadsResponse++;
   if (buildCounterGoogleCloudAssuredworkloadsV1ListWorkloadsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.workloads = buildUnnamed553();
+    o.workloads = buildUnnamed554();
   }
   buildCounterGoogleCloudAssuredworkloadsV1ListWorkloadsResponse--;
   return o;
@@ -91,33 +91,33 @@ void checkGoogleCloudAssuredworkloadsV1ListWorkloadsResponse(
   buildCounterGoogleCloudAssuredworkloadsV1ListWorkloadsResponse++;
   if (buildCounterGoogleCloudAssuredworkloadsV1ListWorkloadsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed553(o.workloads);
+    checkUnnamed554(o.workloads);
   }
   buildCounterGoogleCloudAssuredworkloadsV1ListWorkloadsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed554() {
+core.Map<core.String, core.String> buildUnnamed555() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed554(core.Map<core.String, core.String> o) {
+void checkUnnamed555(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x'], unittest.equals('foo'));
   unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.List<api.GoogleCloudAssuredworkloadsV1WorkloadResourceInfo>
-    buildUnnamed555() {
+    buildUnnamed556() {
   var o = <api.GoogleCloudAssuredworkloadsV1WorkloadResourceInfo>[];
   o.add(buildGoogleCloudAssuredworkloadsV1WorkloadResourceInfo());
   o.add(buildGoogleCloudAssuredworkloadsV1WorkloadResourceInfo());
   return o;
 }
 
-void checkUnnamed555(
+void checkUnnamed556(
     core.List<api.GoogleCloudAssuredworkloadsV1WorkloadResourceInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAssuredworkloadsV1WorkloadResourceInfo(
@@ -138,10 +138,10 @@ api.GoogleCloudAssuredworkloadsV1Workload
     o.displayName = 'foo';
     o.etag = 'foo';
     o.kmsSettings = buildGoogleCloudAssuredworkloadsV1WorkloadKMSSettings();
-    o.labels = buildUnnamed554();
+    o.labels = buildUnnamed555();
     o.name = 'foo';
     o.provisionedResourcesParent = 'foo';
-    o.resources = buildUnnamed555();
+    o.resources = buildUnnamed556();
   }
   buildCounterGoogleCloudAssuredworkloadsV1Workload--;
   return o;
@@ -158,10 +158,10 @@ void checkGoogleCloudAssuredworkloadsV1Workload(
     unittest.expect(o.etag, unittest.equals('foo'));
     checkGoogleCloudAssuredworkloadsV1WorkloadKMSSettings(
         o.kmsSettings as api.GoogleCloudAssuredworkloadsV1WorkloadKMSSettings);
-    checkUnnamed554(o.labels);
+    checkUnnamed555(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.provisionedResourcesParent, unittest.equals('foo'));
-    checkUnnamed555(o.resources);
+    checkUnnamed556(o.resources);
   }
   buildCounterGoogleCloudAssuredworkloadsV1Workload--;
 }
@@ -244,28 +244,28 @@ void checkGoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata(
   buildCounterGoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata--;
 }
 
-core.Map<core.String, core.String> buildUnnamed556() {
+core.Map<core.String, core.String> buildUnnamed557() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed556(core.Map<core.String, core.String> o) {
+void checkUnnamed557(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x'], unittest.equals('foo'));
   unittest.expect(o['y'], unittest.equals('foo'));
 }
 
 core.List<api.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo>
-    buildUnnamed557() {
+    buildUnnamed558() {
   var o = <api.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo>[];
   o.add(buildGoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo());
   o.add(buildGoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo());
   return o;
 }
 
-void checkUnnamed557(
+void checkUnnamed558(
     core.List<api.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo(
@@ -295,10 +295,10 @@ api.GoogleCloudAssuredworkloadsV1beta1Workload
         buildGoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings();
     o.kmsSettings =
         buildGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings();
-    o.labels = buildUnnamed556();
+    o.labels = buildUnnamed557();
     o.name = 'foo';
     o.provisionedResourcesParent = 'foo';
-    o.resources = buildUnnamed557();
+    o.resources = buildUnnamed558();
   }
   buildCounterGoogleCloudAssuredworkloadsV1beta1Workload--;
   return o;
@@ -325,10 +325,10 @@ void checkGoogleCloudAssuredworkloadsV1beta1Workload(
         as api.GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings);
     checkGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings(o.kmsSettings
         as api.GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings);
-    checkUnnamed556(o.labels);
+    checkUnnamed557(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.provisionedResourcesParent, unittest.equals('foo'));
-    checkUnnamed557(o.resources);
+    checkUnnamed558(o.resources);
   }
   buildCounterGoogleCloudAssuredworkloadsV1beta1Workload--;
 }
@@ -480,14 +480,14 @@ void checkGoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo(
   buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed558() {
+core.List<api.GoogleLongrunningOperation> buildUnnamed559() {
   var o = <api.GoogleLongrunningOperation>[];
   o.add(buildGoogleLongrunningOperation());
   o.add(buildGoogleLongrunningOperation());
   return o;
 }
 
-void checkUnnamed558(core.List<api.GoogleLongrunningOperation> o) {
+void checkUnnamed559(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0] as api.GoogleLongrunningOperation);
   checkGoogleLongrunningOperation(o[1] as api.GoogleLongrunningOperation);
@@ -500,7 +500,7 @@ api.GoogleLongrunningListOperationsResponse
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed558();
+    o.operations = buildUnnamed559();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -511,38 +511,9 @@ void checkGoogleLongrunningListOperationsResponse(
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed558(o.operations);
+    checkUnnamed559(o.operations);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
-}
-
-core.Map<core.String, core.Object> buildUnnamed559() {
-  var o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
-
-void checkUnnamed559(core.Map<core.String, core.Object> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o['x']) as core.Map;
-  unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1['bool'], unittest.equals(true));
-  unittest.expect(casted1['string'], unittest.equals('foo'));
-  var casted2 = (o['y']) as core.Map;
-  unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2['bool'], unittest.equals(true));
-  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object> buildUnnamed560() {
@@ -561,6 +532,35 @@ core.Map<core.String, core.Object> buildUnnamed560() {
 }
 
 void checkUnnamed560(core.Map<core.String, core.Object> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted1 = (o['x']) as core.Map;
+  unittest.expect(casted1, unittest.hasLength(3));
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
+  var casted2 = (o['y']) as core.Map;
+  unittest.expect(casted2, unittest.hasLength(3));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
+}
+
+core.Map<core.String, core.Object> buildUnnamed561() {
+  var o = <core.String, core.Object>{};
+  o['x'] = {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo'
+  };
+  o['y'] = {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo'
+  };
+  return o;
+}
+
+void checkUnnamed561(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -581,9 +581,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed559();
+    o.metadata = buildUnnamed560();
     o.name = 'foo';
-    o.response = buildUnnamed560();
+    o.response = buildUnnamed561();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -594,9 +594,9 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
     checkGoogleRpcStatus(o.error as api.GoogleRpcStatus);
-    checkUnnamed559(o.metadata);
+    checkUnnamed560(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed560(o.response);
+    checkUnnamed561(o.response);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -616,7 +616,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed561() {
+core.Map<core.String, core.Object> buildUnnamed562() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -631,7 +631,7 @@ core.Map<core.String, core.Object> buildUnnamed561() {
   return o;
 }
 
-void checkUnnamed561(core.Map<core.String, core.Object> o) {
+void checkUnnamed562(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -645,17 +645,17 @@ void checkUnnamed561(core.Map<core.String, core.Object> o) {
   unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed562() {
+core.List<core.Map<core.String, core.Object>> buildUnnamed563() {
   var o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed561());
-  o.add(buildUnnamed561());
+  o.add(buildUnnamed562());
+  o.add(buildUnnamed562());
   return o;
 }
 
-void checkUnnamed562(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed563(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed561(o[0]);
-  checkUnnamed561(o[1]);
+  checkUnnamed562(o[0]);
+  checkUnnamed562(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -664,7 +664,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed562();
+    o.details = buildUnnamed563();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -675,7 +675,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed562(o.details);
+    checkUnnamed563(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterGoogleRpcStatus--;

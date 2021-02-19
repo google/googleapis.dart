@@ -73,14 +73,14 @@ void checkGoogleCloudRecommenderV1Impact(api.GoogleCloudRecommenderV1Impact o) {
 }
 
 core.List<api.GoogleCloudRecommenderV1InsightRecommendationReference>
-    buildUnnamed6737() {
+    buildUnnamed6781() {
   var o = <api.GoogleCloudRecommenderV1InsightRecommendationReference>[];
   o.add(buildGoogleCloudRecommenderV1InsightRecommendationReference());
   o.add(buildGoogleCloudRecommenderV1InsightRecommendationReference());
   return o;
 }
 
-void checkUnnamed6737(
+void checkUnnamed6781(
     core.List<api.GoogleCloudRecommenderV1InsightRecommendationReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommenderV1InsightRecommendationReference(
@@ -89,7 +89,7 @@ void checkUnnamed6737(
       o[1] as api.GoogleCloudRecommenderV1InsightRecommendationReference);
 }
 
-core.Map<core.String, core.Object> buildUnnamed6738() {
+core.Map<core.String, core.Object> buildUnnamed6782() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -104,7 +104,7 @@ core.Map<core.String, core.Object> buildUnnamed6738() {
   return o;
 }
 
-void checkUnnamed6738(core.Map<core.String, core.Object> o) {
+void checkUnnamed6782(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -118,14 +118,14 @@ void checkUnnamed6738(core.Map<core.String, core.Object> o) {
   unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed6739() {
+core.List<core.String> buildUnnamed6783() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6739(core.List<core.String> o) {
+void checkUnnamed6783(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -136,9 +136,9 @@ api.GoogleCloudRecommenderV1Insight buildGoogleCloudRecommenderV1Insight() {
   var o = api.GoogleCloudRecommenderV1Insight();
   buildCounterGoogleCloudRecommenderV1Insight++;
   if (buildCounterGoogleCloudRecommenderV1Insight < 3) {
-    o.associatedRecommendations = buildUnnamed6737();
+    o.associatedRecommendations = buildUnnamed6781();
     o.category = 'foo';
-    o.content = buildUnnamed6738();
+    o.content = buildUnnamed6782();
     o.description = 'foo';
     o.etag = 'foo';
     o.insightSubtype = 'foo';
@@ -146,7 +146,7 @@ api.GoogleCloudRecommenderV1Insight buildGoogleCloudRecommenderV1Insight() {
     o.name = 'foo';
     o.observationPeriod = 'foo';
     o.stateInfo = buildGoogleCloudRecommenderV1InsightStateInfo();
-    o.targetResources = buildUnnamed6739();
+    o.targetResources = buildUnnamed6783();
   }
   buildCounterGoogleCloudRecommenderV1Insight--;
   return o;
@@ -156,9 +156,9 @@ void checkGoogleCloudRecommenderV1Insight(
     api.GoogleCloudRecommenderV1Insight o) {
   buildCounterGoogleCloudRecommenderV1Insight++;
   if (buildCounterGoogleCloudRecommenderV1Insight < 3) {
-    checkUnnamed6737(o.associatedRecommendations);
+    checkUnnamed6781(o.associatedRecommendations);
     unittest.expect(o.category, unittest.equals('foo'));
-    checkUnnamed6738(o.content);
+    checkUnnamed6782(o.content);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.insightSubtype, unittest.equals('foo'));
@@ -167,7 +167,7 @@ void checkGoogleCloudRecommenderV1Insight(
     unittest.expect(o.observationPeriod, unittest.equals('foo'));
     checkGoogleCloudRecommenderV1InsightStateInfo(
         o.stateInfo as api.GoogleCloudRecommenderV1InsightStateInfo);
-    checkUnnamed6739(o.targetResources);
+    checkUnnamed6783(o.targetResources);
   }
   buildCounterGoogleCloudRecommenderV1Insight--;
 }
@@ -193,14 +193,14 @@ void checkGoogleCloudRecommenderV1InsightRecommendationReference(
   buildCounterGoogleCloudRecommenderV1InsightRecommendationReference--;
 }
 
-core.Map<core.String, core.String> buildUnnamed6740() {
+core.Map<core.String, core.String> buildUnnamed6784() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed6740(core.Map<core.String, core.String> o) {
+void checkUnnamed6784(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x'], unittest.equals('foo'));
   unittest.expect(o['y'], unittest.equals('foo'));
@@ -213,7 +213,7 @@ api.GoogleCloudRecommenderV1InsightStateInfo
   buildCounterGoogleCloudRecommenderV1InsightStateInfo++;
   if (buildCounterGoogleCloudRecommenderV1InsightStateInfo < 3) {
     o.state = 'foo';
-    o.stateMetadata = buildUnnamed6740();
+    o.stateMetadata = buildUnnamed6784();
   }
   buildCounterGoogleCloudRecommenderV1InsightStateInfo--;
   return o;
@@ -224,19 +224,19 @@ void checkGoogleCloudRecommenderV1InsightStateInfo(
   buildCounterGoogleCloudRecommenderV1InsightStateInfo++;
   if (buildCounterGoogleCloudRecommenderV1InsightStateInfo < 3) {
     unittest.expect(o.state, unittest.equals('foo'));
-    checkUnnamed6740(o.stateMetadata);
+    checkUnnamed6784(o.stateMetadata);
   }
   buildCounterGoogleCloudRecommenderV1InsightStateInfo--;
 }
 
-core.List<api.GoogleCloudRecommenderV1Insight> buildUnnamed6741() {
+core.List<api.GoogleCloudRecommenderV1Insight> buildUnnamed6785() {
   var o = <api.GoogleCloudRecommenderV1Insight>[];
   o.add(buildGoogleCloudRecommenderV1Insight());
   o.add(buildGoogleCloudRecommenderV1Insight());
   return o;
 }
 
-void checkUnnamed6741(core.List<api.GoogleCloudRecommenderV1Insight> o) {
+void checkUnnamed6785(core.List<api.GoogleCloudRecommenderV1Insight> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommenderV1Insight(
       o[0] as api.GoogleCloudRecommenderV1Insight);
@@ -250,7 +250,7 @@ api.GoogleCloudRecommenderV1ListInsightsResponse
   var o = api.GoogleCloudRecommenderV1ListInsightsResponse();
   buildCounterGoogleCloudRecommenderV1ListInsightsResponse++;
   if (buildCounterGoogleCloudRecommenderV1ListInsightsResponse < 3) {
-    o.insights = buildUnnamed6741();
+    o.insights = buildUnnamed6785();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudRecommenderV1ListInsightsResponse--;
@@ -261,20 +261,20 @@ void checkGoogleCloudRecommenderV1ListInsightsResponse(
     api.GoogleCloudRecommenderV1ListInsightsResponse o) {
   buildCounterGoogleCloudRecommenderV1ListInsightsResponse++;
   if (buildCounterGoogleCloudRecommenderV1ListInsightsResponse < 3) {
-    checkUnnamed6741(o.insights);
+    checkUnnamed6785(o.insights);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleCloudRecommenderV1ListInsightsResponse--;
 }
 
-core.List<api.GoogleCloudRecommenderV1Recommendation> buildUnnamed6742() {
+core.List<api.GoogleCloudRecommenderV1Recommendation> buildUnnamed6786() {
   var o = <api.GoogleCloudRecommenderV1Recommendation>[];
   o.add(buildGoogleCloudRecommenderV1Recommendation());
   o.add(buildGoogleCloudRecommenderV1Recommendation());
   return o;
 }
 
-void checkUnnamed6742(core.List<api.GoogleCloudRecommenderV1Recommendation> o) {
+void checkUnnamed6786(core.List<api.GoogleCloudRecommenderV1Recommendation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommenderV1Recommendation(
       o[0] as api.GoogleCloudRecommenderV1Recommendation);
@@ -289,7 +289,7 @@ api.GoogleCloudRecommenderV1ListRecommendationsResponse
   buildCounterGoogleCloudRecommenderV1ListRecommendationsResponse++;
   if (buildCounterGoogleCloudRecommenderV1ListRecommendationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.recommendations = buildUnnamed6742();
+    o.recommendations = buildUnnamed6786();
   }
   buildCounterGoogleCloudRecommenderV1ListRecommendationsResponse--;
   return o;
@@ -300,19 +300,19 @@ void checkGoogleCloudRecommenderV1ListRecommendationsResponse(
   buildCounterGoogleCloudRecommenderV1ListRecommendationsResponse++;
   if (buildCounterGoogleCloudRecommenderV1ListRecommendationsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed6742(o.recommendations);
+    checkUnnamed6786(o.recommendations);
   }
   buildCounterGoogleCloudRecommenderV1ListRecommendationsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed6743() {
+core.Map<core.String, core.String> buildUnnamed6787() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed6743(core.Map<core.String, core.String> o) {
+void checkUnnamed6787(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x'], unittest.equals('foo'));
   unittest.expect(o['y'], unittest.equals('foo'));
@@ -325,7 +325,7 @@ api.GoogleCloudRecommenderV1MarkInsightAcceptedRequest
   buildCounterGoogleCloudRecommenderV1MarkInsightAcceptedRequest++;
   if (buildCounterGoogleCloudRecommenderV1MarkInsightAcceptedRequest < 3) {
     o.etag = 'foo';
-    o.stateMetadata = buildUnnamed6743();
+    o.stateMetadata = buildUnnamed6787();
   }
   buildCounterGoogleCloudRecommenderV1MarkInsightAcceptedRequest--;
   return o;
@@ -336,19 +336,19 @@ void checkGoogleCloudRecommenderV1MarkInsightAcceptedRequest(
   buildCounterGoogleCloudRecommenderV1MarkInsightAcceptedRequest++;
   if (buildCounterGoogleCloudRecommenderV1MarkInsightAcceptedRequest < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed6743(o.stateMetadata);
+    checkUnnamed6787(o.stateMetadata);
   }
   buildCounterGoogleCloudRecommenderV1MarkInsightAcceptedRequest--;
 }
 
-core.Map<core.String, core.String> buildUnnamed6744() {
+core.Map<core.String, core.String> buildUnnamed6788() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed6744(core.Map<core.String, core.String> o) {
+void checkUnnamed6788(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x'], unittest.equals('foo'));
   unittest.expect(o['y'], unittest.equals('foo'));
@@ -363,7 +363,7 @@ api.GoogleCloudRecommenderV1MarkRecommendationClaimedRequest
   if (buildCounterGoogleCloudRecommenderV1MarkRecommendationClaimedRequest <
       3) {
     o.etag = 'foo';
-    o.stateMetadata = buildUnnamed6744();
+    o.stateMetadata = buildUnnamed6788();
   }
   buildCounterGoogleCloudRecommenderV1MarkRecommendationClaimedRequest--;
   return o;
@@ -375,19 +375,19 @@ void checkGoogleCloudRecommenderV1MarkRecommendationClaimedRequest(
   if (buildCounterGoogleCloudRecommenderV1MarkRecommendationClaimedRequest <
       3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed6744(o.stateMetadata);
+    checkUnnamed6788(o.stateMetadata);
   }
   buildCounterGoogleCloudRecommenderV1MarkRecommendationClaimedRequest--;
 }
 
-core.Map<core.String, core.String> buildUnnamed6745() {
+core.Map<core.String, core.String> buildUnnamed6789() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed6745(core.Map<core.String, core.String> o) {
+void checkUnnamed6789(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x'], unittest.equals('foo'));
   unittest.expect(o['y'], unittest.equals('foo'));
@@ -401,7 +401,7 @@ api.GoogleCloudRecommenderV1MarkRecommendationFailedRequest
   buildCounterGoogleCloudRecommenderV1MarkRecommendationFailedRequest++;
   if (buildCounterGoogleCloudRecommenderV1MarkRecommendationFailedRequest < 3) {
     o.etag = 'foo';
-    o.stateMetadata = buildUnnamed6745();
+    o.stateMetadata = buildUnnamed6789();
   }
   buildCounterGoogleCloudRecommenderV1MarkRecommendationFailedRequest--;
   return o;
@@ -412,19 +412,19 @@ void checkGoogleCloudRecommenderV1MarkRecommendationFailedRequest(
   buildCounterGoogleCloudRecommenderV1MarkRecommendationFailedRequest++;
   if (buildCounterGoogleCloudRecommenderV1MarkRecommendationFailedRequest < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed6745(o.stateMetadata);
+    checkUnnamed6789(o.stateMetadata);
   }
   buildCounterGoogleCloudRecommenderV1MarkRecommendationFailedRequest--;
 }
 
-core.Map<core.String, core.String> buildUnnamed6746() {
+core.Map<core.String, core.String> buildUnnamed6790() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed6746(core.Map<core.String, core.String> o) {
+void checkUnnamed6790(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x'], unittest.equals('foo'));
   unittest.expect(o['y'], unittest.equals('foo'));
@@ -439,7 +439,7 @@ api.GoogleCloudRecommenderV1MarkRecommendationSucceededRequest
   if (buildCounterGoogleCloudRecommenderV1MarkRecommendationSucceededRequest <
       3) {
     o.etag = 'foo';
-    o.stateMetadata = buildUnnamed6746();
+    o.stateMetadata = buildUnnamed6790();
   }
   buildCounterGoogleCloudRecommenderV1MarkRecommendationSucceededRequest--;
   return o;
@@ -451,12 +451,12 @@ void checkGoogleCloudRecommenderV1MarkRecommendationSucceededRequest(
   if (buildCounterGoogleCloudRecommenderV1MarkRecommendationSucceededRequest <
       3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed6746(o.stateMetadata);
+    checkUnnamed6790(o.stateMetadata);
   }
   buildCounterGoogleCloudRecommenderV1MarkRecommendationSucceededRequest--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed6747() {
+core.Map<core.String, core.Object> buildUnnamed6791() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -471,7 +471,7 @@ core.Map<core.String, core.Object> buildUnnamed6747() {
   return o;
 }
 
-void checkUnnamed6747(core.Map<core.String, core.Object> o) {
+void checkUnnamed6791(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -486,14 +486,14 @@ void checkUnnamed6747(core.Map<core.String, core.Object> o) {
 }
 
 core.Map<core.String, api.GoogleCloudRecommenderV1ValueMatcher>
-    buildUnnamed6748() {
+    buildUnnamed6792() {
   var o = <core.String, api.GoogleCloudRecommenderV1ValueMatcher>{};
   o['x'] = buildGoogleCloudRecommenderV1ValueMatcher();
   o['y'] = buildGoogleCloudRecommenderV1ValueMatcher();
   return o;
 }
 
-void checkUnnamed6748(
+void checkUnnamed6792(
     core.Map<core.String, api.GoogleCloudRecommenderV1ValueMatcher> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommenderV1ValueMatcher(
@@ -509,8 +509,8 @@ api.GoogleCloudRecommenderV1Operation buildGoogleCloudRecommenderV1Operation() {
   if (buildCounterGoogleCloudRecommenderV1Operation < 3) {
     o.action = 'foo';
     o.path = 'foo';
-    o.pathFilters = buildUnnamed6747();
-    o.pathValueMatchers = buildUnnamed6748();
+    o.pathFilters = buildUnnamed6791();
+    o.pathValueMatchers = buildUnnamed6792();
     o.resource = 'foo';
     o.resourceType = 'foo';
     o.sourcePath = 'foo';
@@ -532,8 +532,8 @@ void checkGoogleCloudRecommenderV1Operation(
   if (buildCounterGoogleCloudRecommenderV1Operation < 3) {
     unittest.expect(o.action, unittest.equals('foo'));
     unittest.expect(o.path, unittest.equals('foo'));
-    checkUnnamed6747(o.pathFilters);
-    checkUnnamed6748(o.pathValueMatchers);
+    checkUnnamed6791(o.pathFilters);
+    checkUnnamed6792(o.pathValueMatchers);
     unittest.expect(o.resource, unittest.equals('foo'));
     unittest.expect(o.resourceType, unittest.equals('foo'));
     unittest.expect(o.sourcePath, unittest.equals('foo'));
@@ -549,14 +549,14 @@ void checkGoogleCloudRecommenderV1Operation(
   buildCounterGoogleCloudRecommenderV1Operation--;
 }
 
-core.List<api.GoogleCloudRecommenderV1Operation> buildUnnamed6749() {
+core.List<api.GoogleCloudRecommenderV1Operation> buildUnnamed6793() {
   var o = <api.GoogleCloudRecommenderV1Operation>[];
   o.add(buildGoogleCloudRecommenderV1Operation());
   o.add(buildGoogleCloudRecommenderV1Operation());
   return o;
 }
 
-void checkUnnamed6749(core.List<api.GoogleCloudRecommenderV1Operation> o) {
+void checkUnnamed6793(core.List<api.GoogleCloudRecommenderV1Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommenderV1Operation(
       o[0] as api.GoogleCloudRecommenderV1Operation);
@@ -570,7 +570,7 @@ api.GoogleCloudRecommenderV1OperationGroup
   var o = api.GoogleCloudRecommenderV1OperationGroup();
   buildCounterGoogleCloudRecommenderV1OperationGroup++;
   if (buildCounterGoogleCloudRecommenderV1OperationGroup < 3) {
-    o.operations = buildUnnamed6749();
+    o.operations = buildUnnamed6793();
   }
   buildCounterGoogleCloudRecommenderV1OperationGroup--;
   return o;
@@ -580,19 +580,19 @@ void checkGoogleCloudRecommenderV1OperationGroup(
     api.GoogleCloudRecommenderV1OperationGroup o) {
   buildCounterGoogleCloudRecommenderV1OperationGroup++;
   if (buildCounterGoogleCloudRecommenderV1OperationGroup < 3) {
-    checkUnnamed6749(o.operations);
+    checkUnnamed6793(o.operations);
   }
   buildCounterGoogleCloudRecommenderV1OperationGroup--;
 }
 
-core.List<api.GoogleCloudRecommenderV1Impact> buildUnnamed6750() {
+core.List<api.GoogleCloudRecommenderV1Impact> buildUnnamed6794() {
   var o = <api.GoogleCloudRecommenderV1Impact>[];
   o.add(buildGoogleCloudRecommenderV1Impact());
   o.add(buildGoogleCloudRecommenderV1Impact());
   return o;
 }
 
-void checkUnnamed6750(core.List<api.GoogleCloudRecommenderV1Impact> o) {
+void checkUnnamed6794(core.List<api.GoogleCloudRecommenderV1Impact> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommenderV1Impact(
       o[0] as api.GoogleCloudRecommenderV1Impact);
@@ -601,14 +601,14 @@ void checkUnnamed6750(core.List<api.GoogleCloudRecommenderV1Impact> o) {
 }
 
 core.List<api.GoogleCloudRecommenderV1RecommendationInsightReference>
-    buildUnnamed6751() {
+    buildUnnamed6795() {
   var o = <api.GoogleCloudRecommenderV1RecommendationInsightReference>[];
   o.add(buildGoogleCloudRecommenderV1RecommendationInsightReference());
   o.add(buildGoogleCloudRecommenderV1RecommendationInsightReference());
   return o;
 }
 
-void checkUnnamed6751(
+void checkUnnamed6795(
     core.List<api.GoogleCloudRecommenderV1RecommendationInsightReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommenderV1RecommendationInsightReference(
@@ -623,8 +623,8 @@ api.GoogleCloudRecommenderV1Recommendation
   var o = api.GoogleCloudRecommenderV1Recommendation();
   buildCounterGoogleCloudRecommenderV1Recommendation++;
   if (buildCounterGoogleCloudRecommenderV1Recommendation < 3) {
-    o.additionalImpact = buildUnnamed6750();
-    o.associatedInsights = buildUnnamed6751();
+    o.additionalImpact = buildUnnamed6794();
+    o.associatedInsights = buildUnnamed6795();
     o.content = buildGoogleCloudRecommenderV1RecommendationContent();
     o.description = 'foo';
     o.etag = 'foo';
@@ -642,8 +642,8 @@ void checkGoogleCloudRecommenderV1Recommendation(
     api.GoogleCloudRecommenderV1Recommendation o) {
   buildCounterGoogleCloudRecommenderV1Recommendation++;
   if (buildCounterGoogleCloudRecommenderV1Recommendation < 3) {
-    checkUnnamed6750(o.additionalImpact);
-    checkUnnamed6751(o.associatedInsights);
+    checkUnnamed6794(o.additionalImpact);
+    checkUnnamed6795(o.associatedInsights);
     checkGoogleCloudRecommenderV1RecommendationContent(
         o.content as api.GoogleCloudRecommenderV1RecommendationContent);
     unittest.expect(o.description, unittest.equals('foo'));
@@ -659,14 +659,14 @@ void checkGoogleCloudRecommenderV1Recommendation(
   buildCounterGoogleCloudRecommenderV1Recommendation--;
 }
 
-core.List<api.GoogleCloudRecommenderV1OperationGroup> buildUnnamed6752() {
+core.List<api.GoogleCloudRecommenderV1OperationGroup> buildUnnamed6796() {
   var o = <api.GoogleCloudRecommenderV1OperationGroup>[];
   o.add(buildGoogleCloudRecommenderV1OperationGroup());
   o.add(buildGoogleCloudRecommenderV1OperationGroup());
   return o;
 }
 
-void checkUnnamed6752(core.List<api.GoogleCloudRecommenderV1OperationGroup> o) {
+void checkUnnamed6796(core.List<api.GoogleCloudRecommenderV1OperationGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommenderV1OperationGroup(
       o[0] as api.GoogleCloudRecommenderV1OperationGroup);
@@ -680,7 +680,7 @@ api.GoogleCloudRecommenderV1RecommendationContent
   var o = api.GoogleCloudRecommenderV1RecommendationContent();
   buildCounterGoogleCloudRecommenderV1RecommendationContent++;
   if (buildCounterGoogleCloudRecommenderV1RecommendationContent < 3) {
-    o.operationGroups = buildUnnamed6752();
+    o.operationGroups = buildUnnamed6796();
   }
   buildCounterGoogleCloudRecommenderV1RecommendationContent--;
   return o;
@@ -690,7 +690,7 @@ void checkGoogleCloudRecommenderV1RecommendationContent(
     api.GoogleCloudRecommenderV1RecommendationContent o) {
   buildCounterGoogleCloudRecommenderV1RecommendationContent++;
   if (buildCounterGoogleCloudRecommenderV1RecommendationContent < 3) {
-    checkUnnamed6752(o.operationGroups);
+    checkUnnamed6796(o.operationGroups);
   }
   buildCounterGoogleCloudRecommenderV1RecommendationContent--;
 }
@@ -716,14 +716,14 @@ void checkGoogleCloudRecommenderV1RecommendationInsightReference(
   buildCounterGoogleCloudRecommenderV1RecommendationInsightReference--;
 }
 
-core.Map<core.String, core.String> buildUnnamed6753() {
+core.Map<core.String, core.String> buildUnnamed6797() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed6753(core.Map<core.String, core.String> o) {
+void checkUnnamed6797(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x'], unittest.equals('foo'));
   unittest.expect(o['y'], unittest.equals('foo'));
@@ -736,7 +736,7 @@ api.GoogleCloudRecommenderV1RecommendationStateInfo
   buildCounterGoogleCloudRecommenderV1RecommendationStateInfo++;
   if (buildCounterGoogleCloudRecommenderV1RecommendationStateInfo < 3) {
     o.state = 'foo';
-    o.stateMetadata = buildUnnamed6753();
+    o.stateMetadata = buildUnnamed6797();
   }
   buildCounterGoogleCloudRecommenderV1RecommendationStateInfo--;
   return o;
@@ -747,7 +747,7 @@ void checkGoogleCloudRecommenderV1RecommendationStateInfo(
   buildCounterGoogleCloudRecommenderV1RecommendationStateInfo++;
   if (buildCounterGoogleCloudRecommenderV1RecommendationStateInfo < 3) {
     unittest.expect(o.state, unittest.equals('foo'));
-    checkUnnamed6753(o.stateMetadata);
+    checkUnnamed6797(o.stateMetadata);
   }
   buildCounterGoogleCloudRecommenderV1RecommendationStateInfo--;
 }

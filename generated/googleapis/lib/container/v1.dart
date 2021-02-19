@@ -4149,6 +4149,26 @@ class AutoUpgradeOptions {
       };
 }
 
+/// Autopilot is the configuration for Autopilot settings on the cluster.
+///
+/// It is the official product name of what is previously known as AutoGKE
+class Autopilot {
+  /// Enable Autopilot
+  core.bool enabled;
+
+  Autopilot();
+
+  Autopilot.fromJson(core.Map _json) {
+    if (_json.containsKey('enabled')) {
+      enabled = _json['enabled'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (enabled != null) 'enabled': enabled,
+      };
+}
+
 /// AutoprovisioningNodePoolDefaults contains defaults for a node pool created
 /// by NAP.
 class AutoprovisioningNodePoolDefaults {
@@ -4428,6 +4448,11 @@ class Cluster {
 
   /// Configuration controlling RBAC group membership information.
   AuthenticatorGroupsConfig authenticatorGroupsConfig;
+
+  /// Autopilot configuration for the cluster.
+  ///
+  /// It has the same semantics as AutoGKE and overrides the setting in autogke.
+  Autopilot autopilot;
 
   /// Cluster-level autoscaling configuration.
   ClusterAutoscaling autoscaling;
@@ -4759,6 +4784,10 @@ class Cluster {
           _json['authenticatorGroupsConfig']
               as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('autopilot')) {
+      autopilot = Autopilot.fromJson(
+          _json['autopilot'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('autoscaling')) {
       autoscaling = ClusterAutoscaling.fromJson(
           _json['autoscaling'] as core.Map<core.String, core.dynamic>);
@@ -4956,6 +4985,7 @@ class Cluster {
         if (addonsConfig != null) 'addonsConfig': addonsConfig.toJson(),
         if (authenticatorGroupsConfig != null)
           'authenticatorGroupsConfig': authenticatorGroupsConfig.toJson(),
+        if (autopilot != null) 'autopilot': autopilot.toJson(),
         if (autoscaling != null) 'autoscaling': autoscaling.toJson(),
         if (binaryAuthorization != null)
           'binaryAuthorization': binaryAuthorization.toJson(),
@@ -6228,6 +6258,36 @@ class LegacyAbac {
       };
 }
 
+/// Parameters that can be configured on Linux nodes.
+class LinuxNodeConfig {
+  /// The Linux kernel parameters to be applied to the nodes and all pods
+  /// running on the nodes.
+  ///
+  /// The following parameters are supported. net.core.netdev_max_backlog
+  /// net.core.rmem_max net.core.wmem_default net.core.wmem_max
+  /// net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem
+  /// net.ipv4.tcp_tw_reuse
+  core.Map<core.String, core.String> sysctls;
+
+  LinuxNodeConfig();
+
+  LinuxNodeConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('sysctls')) {
+      sysctls =
+          (_json['sysctls'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (sysctls != null) 'sysctls': sysctls,
+      };
+}
+
 /// ListClustersResponse is the result of ListClustersRequest.
 class ListClustersResponse {
   /// A list of clusters in the project in the specified zone, or across all
@@ -6777,6 +6837,9 @@ class NodeConfig {
   /// Note that for a given image type, the latest version of it will be used.
   core.String imageType;
 
+  /// Node kubelet configs.
+  NodeKubeletConfig kubeletConfig;
+
   /// The map of Kubernetes labels (key/value pairs) to be applied to each node.
   ///
   /// These will added in addition to any default label(s) that Kubernetes may
@@ -6786,6 +6849,9 @@ class NodeConfig {
   /// information, including usage and the valid values, see:
   /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
   core.Map<core.String, core.String> labels;
+
+  /// Parameters that can be configured on Linux nodes.
+  LinuxNodeConfig linuxNodeConfig;
 
   /// The number of local SSD disks to be attached to the node.
   ///
@@ -6910,6 +6976,10 @@ class NodeConfig {
     if (_json.containsKey('imageType')) {
       imageType = _json['imageType'] as core.String;
     }
+    if (_json.containsKey('kubeletConfig')) {
+      kubeletConfig = NodeKubeletConfig.fromJson(
+          _json['kubeletConfig'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('labels')) {
       labels =
           (_json['labels'] as core.Map).cast<core.String, core.String>().map(
@@ -6918,6 +6988,10 @@ class NodeConfig {
                   item as core.String,
                 ),
               );
+    }
+    if (_json.containsKey('linuxNodeConfig')) {
+      linuxNodeConfig = LinuxNodeConfig.fromJson(
+          _json['linuxNodeConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('localSsdCount')) {
       localSsdCount = _json['localSsdCount'] as core.int;
@@ -6989,7 +7063,10 @@ class NodeConfig {
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb,
         if (diskType != null) 'diskType': diskType,
         if (imageType != null) 'imageType': imageType,
+        if (kubeletConfig != null) 'kubeletConfig': kubeletConfig.toJson(),
         if (labels != null) 'labels': labels,
+        if (linuxNodeConfig != null)
+          'linuxNodeConfig': linuxNodeConfig.toJson(),
         if (localSsdCount != null) 'localSsdCount': localSsdCount,
         if (machineType != null) 'machineType': machineType,
         if (metadata != null) 'metadata': metadata,
@@ -7008,6 +7085,57 @@ class NodeConfig {
           'taints': taints.map((value) => value.toJson()).toList(),
         if (workloadMetadataConfig != null)
           'workloadMetadataConfig': workloadMetadataConfig.toJson(),
+      };
+}
+
+/// Node kubelet configs.
+class NodeKubeletConfig {
+  /// Enable CPU CFS quota enforcement for containers that specify CPU limits.
+  ///
+  /// This option is enabled by default which makes kubelet use CFS quota
+  /// (https://www.kernel.org/doc/Documentation/scheduler/sched-bwc.txt) to
+  /// enforce container CPU limits. Otherwise, CPU limits will not be enforced
+  /// at all. Disable this option to mitigate CPU throttling problems while
+  /// still having your pods to be in Guaranteed QoS class by specifying the CPU
+  /// limits. The default value is 'true' if unspecified.
+  core.bool cpuCfsQuota;
+
+  /// Set the CPU CFS quota period value 'cpu.cfs_period_us'.
+  ///
+  /// The string must be a sequence of decimal numbers, each with optional
+  /// fraction and a unit suffix, such as "300ms". Valid time units are "ns",
+  /// "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive
+  /// duration.
+  core.String cpuCfsQuotaPeriod;
+
+  /// Control the CPU management policy on the node.
+  ///
+  /// See
+  /// https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/
+  /// The following values are allowed. - "none": the default, which represents
+  /// the existing scheduling behavior. - "static": allows pods with certain
+  /// resource characteristics to be granted increased CPU affinity and
+  /// exclusivity on the node. The default value is 'none' if unspecified.
+  core.String cpuManagerPolicy;
+
+  NodeKubeletConfig();
+
+  NodeKubeletConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('cpuCfsQuota')) {
+      cpuCfsQuota = _json['cpuCfsQuota'] as core.bool;
+    }
+    if (_json.containsKey('cpuCfsQuotaPeriod')) {
+      cpuCfsQuotaPeriod = _json['cpuCfsQuotaPeriod'] as core.String;
+    }
+    if (_json.containsKey('cpuManagerPolicy')) {
+      cpuManagerPolicy = _json['cpuManagerPolicy'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (cpuCfsQuota != null) 'cpuCfsQuota': cpuCfsQuota,
+        if (cpuCfsQuotaPeriod != null) 'cpuCfsQuotaPeriod': cpuCfsQuotaPeriod,
+        if (cpuManagerPolicy != null) 'cpuManagerPolicy': cpuManagerPolicy,
       };
 }
 
@@ -9327,6 +9455,12 @@ class UpdateNodePoolRequest {
   /// Required.
   core.String imageType;
 
+  /// Node kubelet configs.
+  NodeKubeletConfig kubeletConfig;
+
+  /// Parameters that can be configured on Linux nodes.
+  LinuxNodeConfig linuxNodeConfig;
+
   /// The desired list of Google Compute Engine
   /// [zones](https://cloud.google.com/compute/docs/zones#available) in which
   /// the node pool's nodes should be located.
@@ -9394,6 +9528,14 @@ class UpdateNodePoolRequest {
     if (_json.containsKey('imageType')) {
       imageType = _json['imageType'] as core.String;
     }
+    if (_json.containsKey('kubeletConfig')) {
+      kubeletConfig = NodeKubeletConfig.fromJson(
+          _json['kubeletConfig'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('linuxNodeConfig')) {
+      linuxNodeConfig = LinuxNodeConfig.fromJson(
+          _json['linuxNodeConfig'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('locations')) {
       locations = (_json['locations'] as core.List)
           .map<core.String>((value) => value as core.String)
@@ -9428,6 +9570,9 @@ class UpdateNodePoolRequest {
   core.Map<core.String, core.Object> toJson() => {
         if (clusterId != null) 'clusterId': clusterId,
         if (imageType != null) 'imageType': imageType,
+        if (kubeletConfig != null) 'kubeletConfig': kubeletConfig.toJson(),
+        if (linuxNodeConfig != null)
+          'linuxNodeConfig': linuxNodeConfig.toJson(),
         if (locations != null) 'locations': locations,
         if (name != null) 'name': name,
         if (nodePoolId != null) 'nodePoolId': nodePoolId,

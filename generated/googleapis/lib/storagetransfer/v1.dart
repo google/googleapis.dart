@@ -310,6 +310,55 @@ class TransferJobsResource {
     return TransferJob.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
+
+  /// Attempts to start a new TransferOperation for the current TransferJob.
+  ///
+  /// A TransferJob has a maximum of one active TransferOperation. If this
+  /// method is called while a TransferOperation is active, an error wil be
+  /// returned.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [jobName] - Required. The name of the transfer job.
+  /// Value must have pattern `^transferJobs/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> run(
+    RunTransferJobRequest request,
+    core.String jobName, {
+    core.String $fields,
+  }) async {
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
+    if (jobName == null) {
+      throw core.ArgumentError('Parameter jobName is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$jobName') + ':run';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class TransferOperationsResource {
@@ -423,9 +472,12 @@ class TransferOperationsResource {
 
   /// Lists transfer operations.
   ///
+  /// Operations are ordered by their creation time in reverse chronological
+  /// order.
+  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The value `transferOperations`.
+  /// [name] - Not used.
   /// Value must have pattern `^transferOperations$`.
   ///
   /// [filter] - Required. A list of query parameters specified as JSON text in
@@ -1343,11 +1395,9 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
-  /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it.
+  /// The server-assigned unique name.
   ///
-  /// If you use the default HTTP mapping, the `name` should have the format of
-  /// `transferOperations/some/unique/name`.
+  /// The format of `name` is `transferOperations/some/unique/name`.
   core.String name;
 
   /// The normal response of the operation in case of success.
@@ -1425,6 +1475,27 @@ class ResumeTransferOperationRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() => {};
+}
+
+/// Request passed to RunTransferJob.
+class RunTransferJobRequest {
+  /// The ID of the Google Cloud Platform Console project that owns the transfer
+  /// job.
+  ///
+  /// Required.
+  core.String projectId;
+
+  RunTransferJobRequest();
+
+  RunTransferJobRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('projectId')) {
+      projectId = _json['projectId'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (projectId != null) 'projectId': projectId,
+      };
 }
 
 /// Transfers can be scheduled to recur or to run just once.

@@ -24,6 +24,7 @@
 /// Create an instance of [PubsubApi] to access these resources:
 ///
 /// - [ProjectsResource]
+///   - [ProjectsSchemasResource]
 ///   - [ProjectsSnapshotsResource]
 ///   - [ProjectsSubscriptionsResource]
 ///   - [ProjectsTopicsResource]
@@ -67,6 +68,7 @@ class PubsubApi {
 class ProjectsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsSchemasResource get schemas => ProjectsSchemasResource(_requester);
   ProjectsSnapshotsResource get snapshots =>
       ProjectsSnapshotsResource(_requester);
   ProjectsSubscriptionsResource get subscriptions =>
@@ -74,6 +76,314 @@ class ProjectsResource {
   ProjectsTopicsResource get topics => ProjectsTopicsResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsSchemasResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsSchemasResource(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a schema.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the project in which to create the
+  /// schema. Format is `projects/{project-id}`.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [schemaId] - The ID to use for the schema, which will become the final
+  /// component of the schema's resource name. See
+  /// https://cloud.google.com/pubsub/docs/admin#resource_names for resource
+  /// name constraints.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Schema].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Schema> create(
+    Schema request,
+    core.String parent, {
+    core.String schemaId,
+    core.String $fields,
+  }) async {
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (schemaId != null) 'schemaId': [schemaId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/schemas';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Schema.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a schema.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the schema to delete. Format is
+  /// `projects/{project}/schemas/{schema}`.
+  /// Value must have pattern `^projects/\[^/\]+/schemas/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) async {
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a schema.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the schema to get. Format is
+  /// `projects/{project}/schemas/{schema}`.
+  /// Value must have pattern `^projects/\[^/\]+/schemas/\[^/\]+$`.
+  ///
+  /// [view] - The set of fields to return in the response. If not set, returns
+  /// a Schema with `name` and `type`, but not `definition`. Set to `FULL` to
+  /// retrieve all fields.
+  /// Possible string values are:
+  /// - "SCHEMA_VIEW_UNSPECIFIED" : The default / unset value. The API will
+  /// default to the BASIC view.
+  /// - "BASIC" : Include the name and type of the schema, but not the
+  /// definition.
+  /// - "FULL" : Include all Schema object fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Schema].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Schema> get(
+    core.String name, {
+    core.String view,
+    core.String $fields,
+  }) async {
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Schema.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists schemas in a project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the project in which to list schemas.
+  /// Format is `projects/{project-id}`.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [pageSize] - Maximum number of schemas to return.
+  ///
+  /// [pageToken] - The value returned by the last `ListSchemasResponse`;
+  /// indicates that this is a continuation of a prior `ListSchemas` call, and
+  /// that the system should return the next page of data.
+  ///
+  /// [view] - The set of Schema fields to return in the response. If not set,
+  /// returns Schemas with `name` and `type`, but not `definition`. Set to
+  /// `FULL` to retrieve all fields.
+  /// Possible string values are:
+  /// - "SCHEMA_VIEW_UNSPECIFIED" : The default / unset value. The API will
+  /// default to the BASIC view.
+  /// - "BASIC" : Include the name and type of the schema, but not the
+  /// definition.
+  /// - "FULL" : Include all Schema object fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSchemasResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSchemasResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String view,
+    core.String $fields,
+  }) async {
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/schemas';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListSchemasResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Validates a schema.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the project in which to validate schemas.
+  /// Format is `projects/{project-id}`.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ValidateSchemaResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ValidateSchemaResponse> validate(
+    ValidateSchemaRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) async {
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/schemas:validate';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ValidateSchemaResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Validates a message against a schema.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the project in which to validate schemas.
+  /// Format is `projects/{project-id}`.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ValidateMessageResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ValidateMessageResponse> validateMessage(
+    ValidateMessageRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) async {
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/schemas:validateMessage';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ValidateMessageResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsSnapshotsResource {
@@ -2123,6 +2433,36 @@ class Expr {
       };
 }
 
+/// Response for the `ListSchemas` method.
+class ListSchemasResponse {
+  /// If not empty, indicates that there may be more schemas that match the
+  /// request; this value should be passed in a new `ListSchemasRequest`.
+  core.String nextPageToken;
+
+  /// The resulting schemas.
+  core.List<Schema> schemas;
+
+  ListSchemasResponse();
+
+  ListSchemasResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('schemas')) {
+      schemas = (_json['schemas'] as core.List)
+          .map<Schema>((value) =>
+              Schema.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (schemas != null)
+          'schemas': schemas.map((value) => value.toJson()).toList(),
+      };
+}
+
 /// Response for the `ListSnapshots` method.
 class ListSnapshotsResponse {
   /// If not empty, indicates that there may be more snapshot that match the
@@ -2848,6 +3188,85 @@ class RetryPolicy {
       };
 }
 
+/// A schema resource.
+class Schema {
+  /// The definition of the schema.
+  ///
+  /// This should contain a string representing the full definition of the
+  /// schema that is a valid schema definition of the type specified in `type`.
+  core.String definition;
+
+  /// Name of the schema.
+  ///
+  /// Format is `projects/{project}/schemas/{schema}`.
+  ///
+  /// Required.
+  core.String name;
+
+  /// The type of the schema definition.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "PROTOCOL_BUFFER" : A Protocol Buffer schema definition.
+  /// - "AVRO" : An Avro schema definition.
+  core.String type;
+
+  Schema();
+
+  Schema.fromJson(core.Map _json) {
+    if (_json.containsKey('definition')) {
+      definition = _json['definition'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('type')) {
+      type = _json['type'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (definition != null) 'definition': definition,
+        if (name != null) 'name': name,
+        if (type != null) 'type': type,
+      };
+}
+
+/// Settings for validating messages published against a schema.
+class SchemaSettings {
+  /// The encoding of messages validated against `schema`.
+  /// Possible string values are:
+  /// - "ENCODING_UNSPECIFIED" : Unspecified
+  /// - "JSON" : JSON encoding
+  /// - "BINARY" : Binary encoding, as defined by the schema type. For some
+  /// schema types, binary encoding may not be available.
+  core.String encoding;
+
+  /// The name of the schema that messages published should be validated
+  /// against.
+  ///
+  /// Format is `projects/{project}/schemas/{schema}`. The value of this field
+  /// will be `_deleted-schema_` if the schema has been deleted.
+  ///
+  /// Required.
+  core.String schema;
+
+  SchemaSettings();
+
+  SchemaSettings.fromJson(core.Map _json) {
+    if (_json.containsKey('encoding')) {
+      encoding = _json['encoding'] as core.String;
+    }
+    if (_json.containsKey('schema')) {
+      schema = _json['schema'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (encoding != null) 'encoding': encoding,
+        if (schema != null) 'schema': schema,
+      };
+}
+
 /// Request for the `Seek` method.
 class SeekRequest {
   /// The snapshot to seek to.
@@ -3261,6 +3680,9 @@ class Topic {
   /// is set in any requests.
   core.bool satisfiesPzs;
 
+  /// Settings for validating messages published against a schema.
+  SchemaSettings schemaSettings;
+
   Topic();
 
   Topic.fromJson(core.Map _json) {
@@ -3286,6 +3708,10 @@ class Topic {
     if (_json.containsKey('satisfiesPzs')) {
       satisfiesPzs = _json['satisfiesPzs'] as core.bool;
     }
+    if (_json.containsKey('schemaSettings')) {
+      schemaSettings = SchemaSettings.fromJson(
+          _json['schemaSettings'] as core.Map<core.String, core.dynamic>);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() => {
@@ -3295,6 +3721,7 @@ class Topic {
           'messageStoragePolicy': messageStoragePolicy.toJson(),
         if (name != null) 'name': name,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs,
+        if (schemaSettings != null) 'schemaSettings': schemaSettings.toJson(),
       };
 }
 
@@ -3395,4 +3822,104 @@ class UpdateTopicRequest {
         if (topic != null) 'topic': topic.toJson(),
         if (updateMask != null) 'updateMask': updateMask,
       };
+}
+
+/// Request for the `ValidateMessage` method.
+class ValidateMessageRequest {
+  /// The encoding expected for messages
+  /// Possible string values are:
+  /// - "ENCODING_UNSPECIFIED" : Unspecified
+  /// - "JSON" : JSON encoding
+  /// - "BINARY" : Binary encoding, as defined by the schema type. For some
+  /// schema types, binary encoding may not be available.
+  core.String encoding;
+
+  /// Message to validate against the provided `schema_spec`.
+  core.String message;
+  core.List<core.int> get messageAsBytes => convert.base64.decode(message);
+
+  set messageAsBytes(core.List<core.int> _bytes) {
+    message =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Name of the schema against which to validate.
+  ///
+  /// Format is `projects/{project}/schemas/{schema}`.
+  core.String name;
+
+  /// Ad-hoc schema against which to validate
+  Schema schema;
+
+  ValidateMessageRequest();
+
+  ValidateMessageRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('encoding')) {
+      encoding = _json['encoding'] as core.String;
+    }
+    if (_json.containsKey('message')) {
+      message = _json['message'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('schema')) {
+      schema = Schema.fromJson(
+          _json['schema'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (encoding != null) 'encoding': encoding,
+        if (message != null) 'message': message,
+        if (name != null) 'name': name,
+        if (schema != null) 'schema': schema.toJson(),
+      };
+}
+
+/// Response for the `ValidateMessage` method.
+///
+/// Empty for now.
+class ValidateMessageResponse {
+  ValidateMessageResponse();
+
+  ValidateMessageResponse.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.Object> toJson() => {};
+}
+
+/// Request for the `ValidateSchema` method.
+class ValidateSchemaRequest {
+  /// The schema object to validate.
+  ///
+  /// Required.
+  Schema schema;
+
+  ValidateSchemaRequest();
+
+  ValidateSchemaRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('schema')) {
+      schema = Schema.fromJson(
+          _json['schema'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (schema != null) 'schema': schema.toJson(),
+      };
+}
+
+/// Response for the `ValidateSchema` method.
+///
+/// Empty for now.
+class ValidateSchemaResponse {
+  ValidateSchemaResponse();
+
+  ValidateSchemaResponse.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.Object> toJson() => {};
 }

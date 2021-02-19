@@ -187,14 +187,14 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-core.List<api.PartitionCursor> buildUnnamed6590() {
+core.List<api.PartitionCursor> buildUnnamed6630() {
   var o = <api.PartitionCursor>[];
   o.add(buildPartitionCursor());
   o.add(buildPartitionCursor());
   return o;
 }
 
-void checkUnnamed6590(core.List<api.PartitionCursor> o) {
+void checkUnnamed6630(core.List<api.PartitionCursor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPartitionCursor(o[0] as api.PartitionCursor);
   checkPartitionCursor(o[1] as api.PartitionCursor);
@@ -206,7 +206,7 @@ api.ListPartitionCursorsResponse buildListPartitionCursorsResponse() {
   buildCounterListPartitionCursorsResponse++;
   if (buildCounterListPartitionCursorsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.partitionCursors = buildUnnamed6590();
+    o.partitionCursors = buildUnnamed6630();
   }
   buildCounterListPartitionCursorsResponse--;
   return o;
@@ -216,19 +216,19 @@ void checkListPartitionCursorsResponse(api.ListPartitionCursorsResponse o) {
   buildCounterListPartitionCursorsResponse++;
   if (buildCounterListPartitionCursorsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed6590(o.partitionCursors);
+    checkUnnamed6630(o.partitionCursors);
   }
   buildCounterListPartitionCursorsResponse--;
 }
 
-core.List<api.Subscription> buildUnnamed6591() {
+core.List<api.Subscription> buildUnnamed6631() {
   var o = <api.Subscription>[];
   o.add(buildSubscription());
   o.add(buildSubscription());
   return o;
 }
 
-void checkUnnamed6591(core.List<api.Subscription> o) {
+void checkUnnamed6631(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscription(o[0] as api.Subscription);
   checkSubscription(o[1] as api.Subscription);
@@ -240,7 +240,7 @@ api.ListSubscriptionsResponse buildListSubscriptionsResponse() {
   buildCounterListSubscriptionsResponse++;
   if (buildCounterListSubscriptionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.subscriptions = buildUnnamed6591();
+    o.subscriptions = buildUnnamed6631();
   }
   buildCounterListSubscriptionsResponse--;
   return o;
@@ -250,19 +250,19 @@ void checkListSubscriptionsResponse(api.ListSubscriptionsResponse o) {
   buildCounterListSubscriptionsResponse++;
   if (buildCounterListSubscriptionsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed6591(o.subscriptions);
+    checkUnnamed6631(o.subscriptions);
   }
   buildCounterListSubscriptionsResponse--;
 }
 
-core.List<core.String> buildUnnamed6592() {
+core.List<core.String> buildUnnamed6632() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6592(core.List<core.String> o) {
+void checkUnnamed6632(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -274,7 +274,7 @@ api.ListTopicSubscriptionsResponse buildListTopicSubscriptionsResponse() {
   buildCounterListTopicSubscriptionsResponse++;
   if (buildCounterListTopicSubscriptionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.subscriptions = buildUnnamed6592();
+    o.subscriptions = buildUnnamed6632();
   }
   buildCounterListTopicSubscriptionsResponse--;
   return o;
@@ -284,19 +284,19 @@ void checkListTopicSubscriptionsResponse(api.ListTopicSubscriptionsResponse o) {
   buildCounterListTopicSubscriptionsResponse++;
   if (buildCounterListTopicSubscriptionsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed6592(o.subscriptions);
+    checkUnnamed6632(o.subscriptions);
   }
   buildCounterListTopicSubscriptionsResponse--;
 }
 
-core.List<api.Topic> buildUnnamed6593() {
+core.List<api.Topic> buildUnnamed6633() {
   var o = <api.Topic>[];
   o.add(buildTopic());
   o.add(buildTopic());
   return o;
 }
 
-void checkUnnamed6593(core.List<api.Topic> o) {
+void checkUnnamed6633(core.List<api.Topic> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTopic(o[0] as api.Topic);
   checkTopic(o[1] as api.Topic);
@@ -308,7 +308,7 @@ api.ListTopicsResponse buildListTopicsResponse() {
   buildCounterListTopicsResponse++;
   if (buildCounterListTopicsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.topics = buildUnnamed6593();
+    o.topics = buildUnnamed6633();
   }
   buildCounterListTopicsResponse--;
   return o;
@@ -318,7 +318,7 @@ void checkListTopicsResponse(api.ListTopicsResponse o) {
   buildCounterListTopicsResponse++;
   if (buildCounterListTopicsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed6593(o.topics);
+    checkUnnamed6633(o.topics);
   }
   buildCounterListTopicsResponse--;
 }

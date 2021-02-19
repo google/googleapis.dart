@@ -273,7 +273,7 @@ Official API documentation: https://developers.google.com/hangouts/chat
 
 #### Chrome Management API - chromemanagement v1
 
-The Chrome Management API is a suite of services that allows GSuite domain administrators to view, manage and gain insights on their Chrome OS and Chrome Browser devices and users.
+The Chrome Management API is a suite of services that allows Chrome administrators to view, manage and gain insights on their Chrome OS The Chrome Management API is a suite of services that allows GSuite domain administrators to view, manage and gain insights on their Chrome OS and Chrome Browser devices and users.
 
 Official API documentation: http://developers.google.com/chrome/management/
 
@@ -360,6 +360,12 @@ Creates, reads, and updates metadata for Google Cloud Platform resource containe
 Official API documentation: https://cloud.google.com/resource-manager
 
 #### Cloud Resource Manager API - cloudresourcemanager v2
+
+Creates, reads, and updates metadata for Google Cloud Platform resource containers.
+
+Official API documentation: https://cloud.google.com/resource-manager
+
+#### Cloud Resource Manager API - cloudresourcemanager v3
 
 Creates, reads, and updates metadata for Google Cloud Platform resource containers.
 
@@ -758,6 +764,12 @@ Official API documentation: https://cloud.google.com/ml/
 Manages your Cloud Monitoring data and configurations. Most projects must be associated with a Workspace, with a few exceptions as noted on the individual method pages. The table entries below are presented in alphabetical order, not in order of common use. For explanations of the concepts found in the table entries, read the Cloud Monitoring documentation.
 
 Official API documentation: https://cloud.google.com/monitoring/api/
+
+#### My Business Account Management API - mybusinessaccountmanagement v1
+
+The My Business Account Management API provides an interface for managing access to a location on Google.
+
+Official API documentation: https://developers.google.com/my-business/
 
 #### Network Management API - networkmanagement v1
 
