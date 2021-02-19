@@ -229,7 +229,7 @@
             }
         }
     },
-    "revision": "20210210",
+    "revision": "20210222",
     "rootUrl": "https://admob.googleapis.com/",
     "schemas": {
         "Date": {

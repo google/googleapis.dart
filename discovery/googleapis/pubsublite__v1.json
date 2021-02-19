@@ -610,7 +610,7 @@
             }
         }
     },
-    "revision": "20210209",
+    "revision": "20210213",
     "rootUrl": "https://pubsublite.googleapis.com/",
     "schemas": {
         "Capacity": {

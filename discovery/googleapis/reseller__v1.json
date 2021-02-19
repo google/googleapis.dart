@@ -612,7 +612,7 @@
             }
         }
     },
-    "revision": "20210214",
+    "revision": "20210216",
     "rootUrl": "https://reseller.googleapis.com/",
     "schemas": {
         "Address": {
