@@ -1315,7 +1315,7 @@
             }
         }
     },
-    "revision": "20210211",
+    "revision": "20210216",
     "rootUrl": "https://cloudchannel.googleapis.com/",
     "schemas": {
         "GoogleCloudChannelV1ActivateEntitlementRequest": {

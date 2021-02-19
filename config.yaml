@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 1.0.0
+    version: 2.0.0-dev
     repository: https://github.com/dart-lang/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -62,6 +62,7 @@ packages:
     - cloudprofiler:v2 # https://cloud.google.com/profiler/
     - cloudresourcemanager:v1 # https://cloud.google.com/resource-manager/
     - cloudresourcemanager:v2 # https://cloud.google.com/resource-manager/
+    - cloudresourcemanager:v3
     - cloudscheduler:v1
     - cloudsearch:v1 # https://gsuite.google.com/products/cloud-search/
     - cloudshell:v1 # https://cloud.google.com/shell/docs/
@@ -129,6 +130,7 @@ packages:
     - memcache:v1
     - ml:v1 # https://cloud.google.com/ml-engine/
     - monitoring:v3 # https://cloud.google.com/monitoring/api/
+    - mybusinessaccountmanagement:v1
     - networkmanagement:v1
     - notebooks:v1
     - oauth2:v2 # Note: this is used many places and sometimes the document is missing
@@ -196,7 +198,7 @@ packages:
     - youtubereporting:v1 # https://developers.google.com/youtube/reporting/v1/reports/
 
 - googleapis_beta:
-    version: 1.0.0
+    version: 2.0.0-dev
     repository: https://github.com/dart-lang/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -223,6 +225,7 @@ packages:
     - lifesciences:v2beta
     - metastore:v1beta
     - networkconnectivity:v1alpha1
+    - policysimulator:v1beta1
     - privateca:v1beta1
     - prod_tt_sasportal:v1alpha1
     - recommendationengine:v1beta1
@@ -316,7 +319,6 @@ skipped_apis:
 - retail:v2alpha # v2 included
 - retail:v2beta # v2 included
 - run:v1alpha1 #v1 included
-- run:v1beta1 #v1 included
 - runtimeconfig:v1beta1 # v1 included
 - secretmanager:v1beta1 # v1 included
 - securitycenter:v1beta1 # v1 included
