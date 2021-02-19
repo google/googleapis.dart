@@ -13,14 +13,17 @@ final _credentials = ServiceAccountCredentials.fromJson(r'''
 
 const _scopes = [StorageApi.devstorageReadOnlyScope];
 
-void main() {
-  clientViaServiceAccount(_credentials, _scopes).then((httpClient) {
+Future<void> main() async {
+  final httpClient = await clientViaServiceAccount(_credentials, _scopes);
+  try {
     final storage = StorageApi(httpClient);
-    storage.buckets.list('dart-on-cloud').then((buckets) {
-      print('Received ${buckets.items.length} bucket names:');
-      for (var file in buckets.items) {
-        print(file.name);
-      }
-    });
-  });
+
+    final buckets = await storage.buckets.list('dart-on-cloud');
+    print('Received ${buckets.items.length} bucket names:');
+    for (var file in buckets.items) {
+      print(file.name);
+    }
+  } finally {
+    httpClient.close();
+  }
 }
