@@ -9,15 +9,15 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:discoveryapis_generator/discoveryapis_generator.dart';
-import 'package:http/http.dart' as http;
 import 'package:io/ansi.dart' as ansi;
 import 'package:pool/pool.dart';
 
+import 'src/client.dart';
 import 'src/package_configuration.dart';
 import 'src/utils.dart';
 
 Future<List<DirectoryListItems>> _listAllApis() async {
-  final client = http.Client();
+  final client = CustomHttpClient();
   try {
     final result = await DiscoveryApi(client).apis.list();
     return result.items;
@@ -57,7 +57,7 @@ void writeDiscoveryDocuments(
 Future<List<RestDescription>> fetchDiscoveryDocuments({
   Map<String, String> existingRevisions,
 }) async {
-  final client = http.Client();
+  final client = CustomHttpClient();
 
   Future<RestDescription> download(DirectoryListItems item) async {
     try {
