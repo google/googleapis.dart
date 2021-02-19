@@ -72,9 +72,13 @@ void writeString(String path, String content) {
 }
 
 void writeFile(String path, void Function(StringSink sink) writer) {
-  final sink = StringBuffer();
+  final file = File(path);
+  if (!file.existsSync()) {
+    file.createSync(recursive: true);
+  }
+  final sink = file.openWrite();
   writer(sink);
-  writeString(path, sink.toString());
+  sink.flush().then((value) => sink.close());
 }
 
 String findPackageRoot(String path) {
