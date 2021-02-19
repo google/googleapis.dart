@@ -1,3 +1,8 @@
+## 2.0.0-dev
+
+- `cloudresourcemanager` - added v3
+- `mybusinessaccountmanagement` - added v1
+
 ## 1.0.0
 
 ### BREAKING changes to API shape

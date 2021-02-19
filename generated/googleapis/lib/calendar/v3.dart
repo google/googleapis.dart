@@ -3146,6 +3146,9 @@ class Channel {
   core.String token;
 
   /// The type of delivery mechanism used for this channel.
+  ///
+  /// Valid values are "web_hook" (or "webhook"). Both values refer to a channel
+  /// where Http requests are used to deliver messages.
   core.String type;
 
   Channel();

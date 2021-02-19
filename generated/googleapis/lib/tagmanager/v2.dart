@@ -4271,6 +4271,12 @@ class Client {
   /// tagmanager.accounts.containers.workspaces.clients.update
   core.String name;
 
+  /// User notes on how to apply this tag in the container.
+  ///
+  /// @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.update
+  core.String notes;
+
   /// The client's parameters.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.clients.create @mutable
@@ -4319,6 +4325,9 @@ class Client {
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
+    if (_json.containsKey('notes')) {
+      notes = _json['notes'] as core.String;
+    }
     if (_json.containsKey('parameter')) {
       parameter = (_json['parameter'] as core.List)
           .map<Parameter>((value) =>
@@ -4351,6 +4360,7 @@ class Client {
         if (containerId != null) 'containerId': containerId,
         if (fingerprint != null) 'fingerprint': fingerprint,
         if (name != null) 'name': name,
+        if (notes != null) 'notes': notes,
         if (parameter != null)
           'parameter': parameter.map((value) => value.toJson()).toList(),
         if (parentFolderId != null) 'parentFolderId': parentFolderId,

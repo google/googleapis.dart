@@ -654,6 +654,305 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
 
   ProjectsLocationsWorkloadIdentityPoolsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Creates a new WorkloadIdentityPool.
+  ///
+  /// You cannot reuse the name of a deleted pool until 30 days after deletion.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource to create the pool in. The only
+  /// supported location is `global`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [workloadIdentityPoolId] - Required. The ID to use for the pool, which
+  /// becomes the final component of the resource name. This value should be
+  /// 4-32 characters, and may contain the characters \[a-z0-9-\]. The prefix
+  /// `gcp-` is reserved for use by Google, and may not be specified.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    WorkloadIdentityPool request,
+    core.String parent, {
+    core.String workloadIdentityPoolId,
+    core.String $fields,
+  }) async {
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (workloadIdentityPoolId != null)
+        'workloadIdentityPoolId': [workloadIdentityPoolId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/workloadIdentityPools';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a WorkloadIdentityPool.
+  ///
+  /// You cannot use a deleted pool to exchange external credentials for Google
+  /// Cloud credentials. However, deletion does not revoke credentials that have
+  /// already been issued. Credentials issued for a deleted pool do not grant
+  /// access to resources. If the pool is undeleted, and the credentials are not
+  /// expired, they grant access again. You can undelete a pool for 30 days.
+  /// After 30 days, deletion is permanent. You cannot update deleted pools.
+  /// However, you can view and list them.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the pool to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String $fields,
+  }) async {
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an individual WorkloadIdentityPool.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the pool to retrieve.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkloadIdentityPool].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkloadIdentityPool> get(
+    core.String name, {
+    core.String $fields,
+  }) async {
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return WorkloadIdentityPool.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all non-deleted WorkloadIdentityPools in a project.
+  ///
+  /// If `show_deleted` is set to `true`, then deleted pools are also listed.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource to list pools for.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of pools to return. If unspecified, at
+  /// most 50 pools are returned. The maximum value is 1000; values above are
+  /// 1000 truncated to 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListWorkloadIdentityPools` call. Provide this to retrieve the subsequent
+  /// page.
+  ///
+  /// [showDeleted] - Whether to return soft-deleted pools.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListWorkloadIdentityPoolsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListWorkloadIdentityPoolsResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.bool showDeleted,
+    core.String $fields,
+  }) async {
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/workloadIdentityPools';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListWorkloadIdentityPoolsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing WorkloadIdentityPool.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name of the pool.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    WorkloadIdentityPool request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) async {
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Undeletes a WorkloadIdentityPool, as long as it was deleted fewer than 30
+  /// days ago.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the pool to undelete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> undelete(
+    UndeleteWorkloadIdentityPoolRequest request,
+    core.String name, {
+    core.String $fields,
+  }) async {
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsWorkloadIdentityPoolsOperationsResource {
@@ -717,6 +1016,304 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersResource {
   ProjectsLocationsWorkloadIdentityPoolsProvidersResource(
       commons.ApiRequester client)
       : _requester = client;
+
+  /// Creates a new WorkloadIdentityPoolProvider in a WorkloadIdentityPool.
+  ///
+  /// You cannot reuse the name of a deleted provider until 30 days after
+  /// deletion.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The pool to create this provider in.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+$`.
+  ///
+  /// [workloadIdentityPoolProviderId] - Required. The ID for the provider,
+  /// which becomes the final component of the resource name. This value must be
+  /// 4-32 characters, and may contain the characters \[a-z0-9-\]. The prefix
+  /// `gcp-` is reserved for use by Google, and may not be specified.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    WorkloadIdentityPoolProvider request,
+    core.String parent, {
+    core.String workloadIdentityPoolProviderId,
+    core.String $fields,
+  }) async {
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (workloadIdentityPoolProviderId != null)
+        'workloadIdentityPoolProviderId': [workloadIdentityPoolProviderId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/providers';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a WorkloadIdentityPoolProvider.
+  ///
+  /// Deleting a provider does not revoke credentials that have already been
+  /// issued; they continue to grant access. You can undelete a provider for 30
+  /// days. After 30 days, deletion is permanent. You cannot update deleted
+  /// providers. However, you can view and list them.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the provider to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/providers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String $fields,
+  }) async {
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an individual WorkloadIdentityPoolProvider.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the provider to retrieve.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/providers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkloadIdentityPoolProvider].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkloadIdentityPoolProvider> get(
+    core.String name, {
+    core.String $fields,
+  }) async {
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return WorkloadIdentityPoolProvider.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all non-deleted WorkloadIdentityPoolProviders in a
+  /// WorkloadIdentityPool.
+  ///
+  /// If `show_deleted` is set to `true`, then deleted providers are also
+  /// listed.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The pool to list providers for.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of providers to return. If unspecified, at
+  /// most 50 providers are returned. The maximum value is 100; values above 100
+  /// are truncated to 100.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListWorkloadIdentityPoolProviders` call. Provide this to retrieve the
+  /// subsequent page.
+  ///
+  /// [showDeleted] - Whether to return soft-deleted providers.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListWorkloadIdentityPoolProvidersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListWorkloadIdentityPoolProvidersResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.bool showDeleted,
+    core.String $fields,
+  }) async {
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/providers';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListWorkloadIdentityPoolProvidersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing WorkloadIdentityPoolProvider.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name of the provider.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/providers/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    WorkloadIdentityPoolProvider request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) async {
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Undeletes a WorkloadIdentityPoolProvider, as long as it was deleted fewer
+  /// than 30 days ago.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the provider to undelete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/providers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> undelete(
+    UndeleteWorkloadIdentityPoolProviderRequest request,
+    core.String name, {
+    core.String $fields,
+  }) async {
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsWorkloadIdentityPoolsProvidersOperationsResource {
@@ -2551,6 +3148,26 @@ class AuditableService {
       };
 }
 
+/// Represents an Amazon Web Services identity provider.
+class Aws {
+  /// The AWS account ID.
+  ///
+  /// Required.
+  core.String accountId;
+
+  Aws();
+
+  Aws.fromJson(core.Map _json) {
+    if (_json.containsKey('accountId')) {
+      accountId = _json['accountId'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+      };
+}
+
 /// Associates `members` with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
@@ -3117,6 +3734,112 @@ class ListServiceAccountsResponse {
         if (accounts != null)
           'accounts': accounts.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
+}
+
+/// Response message for ListWorkloadIdentityPoolProviders.
+class ListWorkloadIdentityPoolProvidersResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String nextPageToken;
+
+  /// A list of providers.
+  core.List<WorkloadIdentityPoolProvider> workloadIdentityPoolProviders;
+
+  ListWorkloadIdentityPoolProvidersResponse();
+
+  ListWorkloadIdentityPoolProvidersResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('workloadIdentityPoolProviders')) {
+      workloadIdentityPoolProviders =
+          (_json['workloadIdentityPoolProviders'] as core.List)
+              .map<WorkloadIdentityPoolProvider>((value) =>
+                  WorkloadIdentityPoolProvider.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (workloadIdentityPoolProviders != null)
+          'workloadIdentityPoolProviders': workloadIdentityPoolProviders
+              .map((value) => value.toJson())
+              .toList(),
+      };
+}
+
+/// Response message for ListWorkloadIdentityPools.
+class ListWorkloadIdentityPoolsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String nextPageToken;
+
+  /// A list of pools.
+  core.List<WorkloadIdentityPool> workloadIdentityPools;
+
+  ListWorkloadIdentityPoolsResponse();
+
+  ListWorkloadIdentityPoolsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('workloadIdentityPools')) {
+      workloadIdentityPools = (_json['workloadIdentityPools'] as core.List)
+          .map<WorkloadIdentityPool>((value) => WorkloadIdentityPool.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (workloadIdentityPools != null)
+          'workloadIdentityPools':
+              workloadIdentityPools.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// Represents an OpenId Connect 1.0 identity provider.
+class Oidc {
+  /// Acceptable values for the `aud` field (audience) in the OIDC token.
+  ///
+  /// Token exchange requests are rejected if the token audience does not match
+  /// one of the configured values. Each audience may be at most 256 characters.
+  /// A maximum of 10 audiences may be configured. If this list is empty, the
+  /// OIDC token audience must be equal to the full canonical resource name of
+  /// the WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For
+  /// example: ```
+  /// //iam.googleapis.com/projects//locations//workloadIdentityPools//providers/
+  /// https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/
+  /// ```
+  core.List<core.String> allowedAudiences;
+
+  /// The OIDC issuer URL.
+  ///
+  /// Required.
+  core.String issuerUri;
+
+  Oidc();
+
+  Oidc.fromJson(core.Map _json) {
+    if (_json.containsKey('allowedAudiences')) {
+      allowedAudiences = (_json['allowedAudiences'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('issuerUri')) {
+      issuerUri = _json['issuerUri'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowedAudiences != null) 'allowedAudiences': allowedAudiences,
+        if (issuerUri != null) 'issuerUri': issuerUri,
       };
 }
 
@@ -4377,6 +5100,28 @@ class UndeleteServiceAccountResponse {
       };
 }
 
+/// Request message for UndeleteWorkloadIdentityPoolProvider.
+class UndeleteWorkloadIdentityPoolProviderRequest {
+  UndeleteWorkloadIdentityPoolProviderRequest();
+
+  UndeleteWorkloadIdentityPoolProviderRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.Object> toJson() => {};
+}
+
+/// Request message for UndeleteWorkloadIdentityPool.
+class UndeleteWorkloadIdentityPoolRequest {
+  UndeleteWorkloadIdentityPoolRequest();
+
+  UndeleteWorkloadIdentityPoolRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.Object> toJson() => {};
+}
+
 /// The service account key upload request.
 class UploadServiceAccountKeyRequest {
   /// A field that allows clients to upload their own public key.
@@ -4403,5 +5148,233 @@ class UploadServiceAccountKeyRequest {
 
   core.Map<core.String, core.Object> toJson() => {
         if (publicKeyData != null) 'publicKeyData': publicKeyData,
+      };
+}
+
+/// Represents a collection of external workload identities.
+///
+/// You can define IAM policies to grant these identities access to Google Cloud
+/// resources.
+class WorkloadIdentityPool {
+  /// A description of the pool.
+  ///
+  /// Cannot exceed 256 characters.
+  core.String description;
+
+  /// Whether the pool is disabled.
+  ///
+  /// You cannot use a disabled pool to exchange tokens, or use existing tokens
+  /// to access resources. If the pool is re-enabled, existing tokens grant
+  /// access again.
+  core.bool disabled;
+
+  /// A display name for the pool.
+  ///
+  /// Cannot exceed 32 characters.
+  core.String displayName;
+
+  /// The resource name of the pool.
+  ///
+  /// Output only.
+  core.String name;
+
+  /// The state of the pool.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State unspecified.
+  /// - "ACTIVE" : The pool is active, and may be used in Google Cloud policies.
+  /// - "DELETED" : The pool is soft-deleted. Soft-deleted pools are permanently
+  /// deleted after approximately 30 days. You can restore a soft-deleted pool
+  /// using UndeleteWorkloadIdentityPool. You cannot reuse the ID of a
+  /// soft-deleted pool until it is permanently deleted. While a pool is
+  /// deleted, you cannot use it to exchange tokens, or use existing tokens to
+  /// access resources. If the pool is undeleted, existing tokens grant access
+  /// again.
+  core.String state;
+
+  WorkloadIdentityPool();
+
+  WorkloadIdentityPool.fromJson(core.Map _json) {
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('disabled')) {
+      disabled = _json['disabled'] as core.bool;
+    }
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (disabled != null) 'disabled': disabled,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (state != null) 'state': state,
+      };
+}
+
+/// A configuration for an external identity provider.
+class WorkloadIdentityPoolProvider {
+  /// [A Common Expression Language](https://opensource.google/projects/cel)
+  /// expression, in plain text, to restrict what otherwise valid authentication
+  /// credentials issued by the provider should not be accepted.
+  ///
+  /// The expression must output a boolean representing whether to allow the
+  /// federation. The following keywords may be referenced in the expressions: *
+  /// `assertion`: JSON representing the authentication credential issued by the
+  /// provider. * `google`: The Google attributes mapped from the assertion in
+  /// the `attribute_mappings`. * `attribute`: The custom attributes mapped from
+  /// the assertion in the `attribute_mappings`. The maximum length of the
+  /// attribute condition expression is 4096 characters. If unspecified, all
+  /// valid authentication credential are accepted. The following example shows
+  /// how to only allow credentials with a mapped `google.groups` value of
+  /// `admins`: ``` "'admins' in google.groups" ```
+  core.String attributeCondition;
+
+  /// Maps attributes from authentication credentials issued by an external
+  /// identity provider to Google Cloud attributes, such as `subject` and
+  /// `segment`.
+  ///
+  /// Each key must be a string specifying the Google Cloud IAM attribute to map
+  /// to. The following keys are supported: * `google.subject`: The principal
+  /// IAM is authenticating. You can reference this value in IAM bindings. This
+  /// is also the subject that appears in Cloud Logging logs. Cannot exceed 127
+  /// characters. * `google.groups`: Groups the external identity belongs to.
+  /// You can grant groups access to resources using an IAM `principalSet`
+  /// binding; access applies to all members of the group. You can also provide
+  /// custom attributes by specifying `attribute.{custom_attribute}`, where
+  /// `{custom_attribute}` is the name of the custom attribute to be mapped. You
+  /// can define a maximum of 50 custom attributes. The maximum length of a
+  /// mapped attribute key is 100 characters, and the key may only contain the
+  /// characters \[a-z0-9_\]. You can reference these attributes in IAM policies
+  /// to define fine-grained access for a workload to Google Cloud resources.
+  /// For example: * `google.subject`:
+  /// `principal://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/subject/{value}`
+  /// * `google.groups`:
+  /// `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/group/{value}`
+  /// * `attribute.{custom_attribute}`:
+  /// `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/attribute.{custom_attribute}/{value}`
+  /// Each value must be a
+  /// [Common Expression Language](https://opensource.google/projects/cel)
+  /// function that maps an identity provider credential to the normalized
+  /// attribute specified by the corresponding map key. You can use the
+  /// `assertion` keyword in the expression to access a JSON representation of
+  /// the authentication credential issued by the provider. The maximum length
+  /// of an attribute mapping expression is 2048 characters. When evaluated, the
+  /// total size of all mapped attributes must not exceed 8KB. For AWS
+  /// providers, if no attribute mapping is defined, the following default
+  /// mapping applies: ``` { "google.subject":"assertion.arn",
+  /// "attribute.aws_role": "assertion.arn.contains('assumed-role')" " ?
+  /// assertion.arn.extract('{account_arn}assumed-role/')" " + 'assumed-role/'"
+  /// " + assertion.arn.extract('assumed-role/{role_name}/')" " :
+  /// assertion.arn", } ``` If any custom attribute mappings are defined, they
+  /// must include a mapping to the `google.subject` attribute. For OIDC
+  /// providers, you must supply a custom mapping, which must include the
+  /// `google.subject` attribute. For example, the following maps the `sub`
+  /// claim of the incoming credential to the `subject` attribute on a Google
+  /// token: ``` {"google.subject": "assertion.sub"} ```
+  core.Map<core.String, core.String> attributeMapping;
+
+  /// An Amazon Web Services identity provider.
+  Aws aws;
+
+  /// A description for the provider.
+  ///
+  /// Cannot exceed 256 characters.
+  core.String description;
+
+  /// Whether the provider is disabled.
+  ///
+  /// You cannot use a disabled provider to exchange tokens. However, existing
+  /// tokens still grant access.
+  core.bool disabled;
+
+  /// A display name for the provider.
+  ///
+  /// Cannot exceed 32 characters.
+  core.String displayName;
+
+  /// The resource name of the provider.
+  ///
+  /// Output only.
+  core.String name;
+
+  /// An OpenId Connect 1.0 identity provider.
+  Oidc oidc;
+
+  /// The state of the provider.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State unspecified.
+  /// - "ACTIVE" : The provider is active, and may be used to validate
+  /// authentication credentials.
+  /// - "DELETED" : The provider is soft-deleted. Soft-deleted providers are
+  /// permanently deleted after approximately 30 days. You can restore a
+  /// soft-deleted provider using UndeleteWorkloadIdentityPoolProvider. You
+  /// cannot reuse the ID of a soft-deleted provider until it is permanently
+  /// deleted.
+  core.String state;
+
+  WorkloadIdentityPoolProvider();
+
+  WorkloadIdentityPoolProvider.fromJson(core.Map _json) {
+    if (_json.containsKey('attributeCondition')) {
+      attributeCondition = _json['attributeCondition'] as core.String;
+    }
+    if (_json.containsKey('attributeMapping')) {
+      attributeMapping = (_json['attributeMapping'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
+    }
+    if (_json.containsKey('aws')) {
+      aws = Aws.fromJson(_json['aws'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('disabled')) {
+      disabled = _json['disabled'] as core.bool;
+    }
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('oidc')) {
+      oidc =
+          Oidc.fromJson(_json['oidc'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributeCondition != null)
+          'attributeCondition': attributeCondition,
+        if (attributeMapping != null) 'attributeMapping': attributeMapping,
+        if (aws != null) 'aws': aws.toJson(),
+        if (description != null) 'description': description,
+        if (disabled != null) 'disabled': disabled,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (oidc != null) 'oidc': oidc.toJson(),
+        if (state != null) 'state': state,
       };
 }

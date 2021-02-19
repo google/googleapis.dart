@@ -338,8 +338,8 @@ class BillingAccountsBudgetsResource {
 /// projects, plus the rules to execute as spend is tracked against that plan,
 /// (for example, send an alert when 90% of the target spend is met).
 ///
-/// Currently all plans are monthly budgets so the usage period(s) tracked are
-/// implied (calendar months of usage back-to-back).
+/// The budget time period is configurable, with options such as month
+/// (default), quarter, year, or custom time period.
 class GoogleCloudBillingBudgetsV1Budget {
   /// Budgeted amount.
   ///
@@ -434,6 +434,8 @@ class GoogleCloudBillingBudgetsV1Budget {
 /// The budgeted amount for each usage period.
 class GoogleCloudBillingBudgetsV1BudgetAmount {
   /// Use the last period's actual spend as the budget for the present period.
+  ///
+  /// Cannot be set in combination with Filter.custom_period.
   GoogleCloudBillingBudgetsV1LastPeriodAmount lastPeriodAmount;
 
   /// A specified amount to use as the budget.
@@ -465,8 +467,58 @@ class GoogleCloudBillingBudgetsV1BudgetAmount {
       };
 }
 
+/// All date times begin at 12 AM US and Canadian Pacific Time (UTC-8).
+class GoogleCloudBillingBudgetsV1CustomPeriod {
+  /// The end date of the time period.
+  ///
+  /// If unset, specifies to track all usage incurred since the start_date.
+  ///
+  /// Optional.
+  GoogleTypeDate endDate;
+
+  /// The start date must be after January 1, 2017.
+  ///
+  /// Required.
+  GoogleTypeDate startDate;
+
+  GoogleCloudBillingBudgetsV1CustomPeriod();
+
+  GoogleCloudBillingBudgetsV1CustomPeriod.fromJson(core.Map _json) {
+    if (_json.containsKey('endDate')) {
+      endDate = GoogleTypeDate.fromJson(
+          _json['endDate'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('startDate')) {
+      startDate = GoogleTypeDate.fromJson(
+          _json['startDate'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (endDate != null) 'endDate': endDate.toJson(),
+        if (startDate != null) 'startDate': startDate.toJson(),
+      };
+}
+
 /// A filter for a budget, limiting the scope of the cost to calculate.
 class GoogleCloudBillingBudgetsV1Filter {
+  /// Specifies to track usage for recurring calendar period.
+  ///
+  /// E.g. Assume that CalendarPeriod.QUARTER is set. The budget will track
+  /// usage from April 1 to June 30, when current calendar month is April, May,
+  /// June. After that, it will track usage from July 1 to September 30 when
+  /// current calendar month is July, August, September, and so on.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CALENDAR_PERIOD_UNSPECIFIED"
+  /// - "MONTH" : A month. Month starts on the first day of each month, such as
+  /// January 1, February 1, March 1, and so on.
+  /// - "QUARTER" : A quarter. Quarters start on dates January 1, April 1, July
+  /// 1, and October 1 of each year.
+  /// - "YEAR" : A year. Year starts on January 1.
+  core.String calendarPeriod;
+
   /// If Filter.credit_types_treatment is INCLUDE_SPECIFIED_CREDITS, this is a
   /// list of credit types to be subtracted from gross cost to determine the
   /// spend for threshold calculations.
@@ -491,6 +543,12 @@ class GoogleCloudBillingBudgetsV1Filter {
   /// field are subtracted from the gross cost to determine the spend for
   /// threshold calculations.
   core.String creditTypesTreatment;
+
+  /// Specifies to track usage from any start date (required) to any end date
+  /// (optional).
+  ///
+  /// Optional.
+  GoogleCloudBillingBudgetsV1CustomPeriod customPeriod;
 
   /// A single label and value pair specifying that usage from only this set of
   /// labeled resources should be included in the budget.
@@ -538,6 +596,9 @@ class GoogleCloudBillingBudgetsV1Filter {
   GoogleCloudBillingBudgetsV1Filter();
 
   GoogleCloudBillingBudgetsV1Filter.fromJson(core.Map _json) {
+    if (_json.containsKey('calendarPeriod')) {
+      calendarPeriod = _json['calendarPeriod'] as core.String;
+    }
     if (_json.containsKey('creditTypes')) {
       creditTypes = (_json['creditTypes'] as core.List)
           .map<core.String>((value) => value as core.String)
@@ -545,6 +606,10 @@ class GoogleCloudBillingBudgetsV1Filter {
     }
     if (_json.containsKey('creditTypesTreatment')) {
       creditTypesTreatment = _json['creditTypesTreatment'] as core.String;
+    }
+    if (_json.containsKey('customPeriod')) {
+      customPeriod = GoogleCloudBillingBudgetsV1CustomPeriod.fromJson(
+          _json['customPeriod'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labels')) {
       labels = (_json['labels'] as core.Map).cast<core.String, core.List>().map(
@@ -574,9 +639,11 @@ class GoogleCloudBillingBudgetsV1Filter {
   }
 
   core.Map<core.String, core.Object> toJson() => {
+        if (calendarPeriod != null) 'calendarPeriod': calendarPeriod,
         if (creditTypes != null) 'creditTypes': creditTypes,
         if (creditTypesTreatment != null)
           'creditTypesTreatment': creditTypesTreatment,
+        if (customPeriod != null) 'customPeriod': customPeriod.toJson(),
         if (labels != null) 'labels': labels,
         if (projects != null) 'projects': projects,
         if (services != null) 'services': services,
@@ -730,7 +797,8 @@ class GoogleCloudBillingBudgetsV1ThresholdRule {
   /// - "CURRENT_SPEND" : Use current spend as the basis for comparison against
   /// the threshold.
   /// - "FORECASTED_SPEND" : Use forecasted spend for the period as the basis
-  /// for comparison against the threshold.
+  /// for comparison against the threshold. Cannot be set in combination with
+  /// Filter.custom_period.
   core.String spendBasis;
 
   /// Send an alert when this threshold is exceeded.
@@ -773,6 +841,53 @@ class GoogleProtobufEmpty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() => {};
+}
+
+/// Represents a whole or partial calendar date, such as a birthday.
+///
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: * A full date, with non-zero year, month,
+/// and day values * A month and day value, with a zero year, such as an
+/// anniversary * A year on its own, with zero month and day values * A year and
+/// month value, with a zero day, such as a credit card expiration date Related
+/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+class GoogleTypeDate {
+  /// Day of a month.
+  ///
+  /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
+  /// year by itself or a year and month where the day isn't significant.
+  core.int day;
+
+  /// Month of a year.
+  ///
+  /// Must be from 1 to 12, or 0 to specify a year without a month and day.
+  core.int month;
+
+  /// Year of the date.
+  ///
+  /// Must be from 1 to 9999, or 0 to specify a date without a year.
+  core.int year;
+
+  GoogleTypeDate();
+
+  GoogleTypeDate.fromJson(core.Map _json) {
+    if (_json.containsKey('day')) {
+      day = _json['day'] as core.int;
+    }
+    if (_json.containsKey('month')) {
+      month = _json['month'] as core.int;
+    }
+    if (_json.containsKey('year')) {
+      year = _json['year'] as core.int;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (day != null) 'day': day,
+        if (month != null) 'month': month,
+        if (year != null) 'year': year,
+      };
 }
 
 /// Represents an amount of money with its currency type.

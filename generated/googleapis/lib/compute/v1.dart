@@ -336,8 +336,7 @@ class AcceleratorTypesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -504,8 +503,7 @@ class AcceleratorTypesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -626,8 +624,7 @@ class AddressesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -938,8 +935,7 @@ class AddressesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1060,8 +1056,7 @@ class AutoscalersResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1375,8 +1370,7 @@ class AutoscalersResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1975,8 +1969,7 @@ class BackendBucketsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2311,8 +2304,7 @@ class BackendServicesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2735,8 +2727,7 @@ class BackendServicesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3071,8 +3062,7 @@ class DiskTypesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3239,8 +3229,7 @@ class DiskTypesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3445,8 +3434,7 @@ class DisksResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3926,8 +3914,7 @@ class DisksResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4602,8 +4589,7 @@ class ExternalVpnGatewaysResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5307,8 +5293,7 @@ class FirewallPoliciesResource {
   /// [parentId] - Parent ID for this request.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6023,8 +6008,7 @@ class FirewallsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6287,8 +6271,7 @@ class ForwardingRulesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6601,8 +6584,7 @@ class ForwardingRulesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7147,8 +7129,7 @@ class GlobalAddressesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7438,8 +7419,7 @@ class GlobalForwardingRulesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8081,8 +8061,7 @@ class GlobalNetworkEndpointGroupsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8187,8 +8166,7 @@ class GlobalNetworkEndpointGroupsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8309,8 +8287,7 @@ class GlobalOperationsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8514,8 +8491,7 @@ class GlobalOperationsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8775,8 +8751,7 @@ class GlobalOrganizationOperationsResource {
   /// [parentId] - Parent ID for this request.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8888,8 +8863,7 @@ class HealthChecksResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9174,8 +9148,7 @@ class HealthChecksResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9611,8 +9584,7 @@ class HttpHealthChecksResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10048,8 +10020,7 @@ class HttpsHealthChecksResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10676,8 +10647,7 @@ class ImagesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11135,8 +11105,7 @@ class InstanceGroupManagersResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11768,8 +11737,7 @@ class InstanceGroupManagersResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11887,8 +11855,7 @@ class InstanceGroupManagersResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -12011,8 +11978,7 @@ class InstanceGroupManagersResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -12135,8 +12101,7 @@ class InstanceGroupManagersResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -12958,8 +12923,7 @@ class InstanceGroupsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -13276,8 +13240,7 @@ class InstanceGroupsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -13393,8 +13356,7 @@ class InstanceGroupsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -13928,8 +13890,7 @@ class InstanceTemplatesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -14335,8 +14296,7 @@ class InstancesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -14783,6 +14743,74 @@ class InstancesResource {
       queryParams: _queryParams,
     );
     return Instance.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns effective firewalls applied to an interface of the instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [instance] - Name of the instance scoping this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [networkInterface] - The name of the network interface to get the
+  /// effective firewalls.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InstancesGetEffectiveFirewallsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InstancesGetEffectiveFirewallsResponse> getEffectiveFirewalls(
+    core.String project,
+    core.String zone,
+    core.String instance,
+    core.String networkInterface, {
+    core.String $fields,
+  }) async {
+    if (project == null) {
+      throw core.ArgumentError('Parameter project is required.');
+    }
+    if (zone == null) {
+      throw core.ArgumentError('Parameter zone is required.');
+    }
+    if (instance == null) {
+      throw core.ArgumentError('Parameter instance is required.');
+    }
+    if (networkInterface == null) {
+      throw core.ArgumentError('Parameter networkInterface is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'networkInterface': [networkInterface],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/instances/' +
+        commons.Escaper.ecapeVariable('$instance') +
+        '/getEffectiveFirewalls';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return InstancesGetEffectiveFirewallsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the specified guest attributes entry.
@@ -15269,8 +15297,7 @@ class InstancesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -15390,8 +15417,7 @@ class InstancesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -17499,8 +17525,7 @@ class InterconnectAttachmentsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -17817,8 +17842,7 @@ class InterconnectAttachmentsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -18071,8 +18095,7 @@ class InterconnectLocationsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -18412,8 +18435,7 @@ class InterconnectsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -18969,8 +18991,7 @@ class LicensesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -19206,8 +19227,7 @@ class MachineTypesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -19375,8 +19395,7 @@ class MachineTypesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -19498,8 +19517,7 @@ class NetworkEndpointGroupsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -19979,8 +19997,7 @@ class NetworkEndpointGroupsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -20096,8 +20113,7 @@ class NetworkEndpointGroupsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -20422,6 +20438,57 @@ class NetworksResource {
     return Network.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Returns the effective firewalls on a given network.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [network] - Name of the network for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NetworksGetEffectiveFirewallsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NetworksGetEffectiveFirewallsResponse> getEffectiveFirewalls(
+    core.String project,
+    core.String network, {
+    core.String $fields,
+  }) async {
+    if (project == null) {
+      throw core.ArgumentError('Parameter project is required.');
+    }
+    if (network == null) {
+      throw core.ArgumentError('Parameter network is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/networks/' +
+        commons.Escaper.ecapeVariable('$network') +
+        '/getEffectiveFirewalls';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return NetworksGetEffectiveFirewallsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates a network in the specified project using the data included in the
   /// request.
   ///
@@ -20539,8 +20606,7 @@ class NetworksResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -20655,8 +20721,7 @@ class NetworksResource {
   /// routes, static routes and dynamic routes in the region.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -21153,8 +21218,7 @@ class NodeGroupsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -21625,8 +21689,7 @@ class NodeGroupsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -21740,8 +21803,7 @@ class NodeGroupsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -22164,8 +22226,7 @@ class NodeTemplatesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -22546,8 +22607,7 @@ class NodeTemplatesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -22803,8 +22863,7 @@ class NodeTypesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -22971,8 +23030,7 @@ class NodeTypesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -23093,8 +23151,7 @@ class PacketMirroringsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -23407,8 +23464,7 @@ class PacketMirroringsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -23993,8 +24049,7 @@ class ProjectsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -24097,8 +24152,7 @@ class ProjectsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -24736,8 +24790,7 @@ class RegionAutoscalersResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -25291,8 +25344,7 @@ class RegionBackendServicesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -25581,8 +25633,7 @@ class RegionCommitmentsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -25822,8 +25873,7 @@ class RegionCommitmentsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -26001,8 +26051,7 @@ class RegionDiskTypesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -26564,8 +26613,7 @@ class RegionDisksResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -27264,8 +27312,7 @@ class RegionHealthCheckServicesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -27673,8 +27720,7 @@ class RegionHealthChecksResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -28565,8 +28611,7 @@ class RegionInstanceGroupManagersResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -28684,8 +28729,7 @@ class RegionInstanceGroupManagersResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -28806,8 +28850,7 @@ class RegionInstanceGroupManagersResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -28930,8 +28973,7 @@ class RegionInstanceGroupManagersResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -29708,8 +29750,7 @@ class RegionInstanceGroupsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -29828,8 +29869,7 @@ class RegionInstanceGroupsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -30246,8 +30286,7 @@ class RegionNetworkEndpointGroupsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -30572,8 +30611,7 @@ class RegionNotificationEndpointsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -30806,8 +30844,7 @@ class RegionOperationsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -31207,8 +31244,7 @@ class RegionSslCertificatesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -31534,8 +31570,7 @@ class RegionTargetHttpProxiesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -31942,8 +31977,7 @@ class RegionTargetHttpsProxiesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -32410,8 +32444,7 @@ class RegionUrlMapsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -32791,8 +32824,7 @@ class RegionsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -32906,8 +32938,7 @@ class ReservationsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -33288,8 +33319,7 @@ class ReservationsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -33627,8 +33657,7 @@ class ResourcePoliciesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -34007,8 +34036,7 @@ class ResourcePoliciesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -34264,8 +34292,7 @@ class RoutersResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -34511,8 +34538,7 @@ class RoutersResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -34761,8 +34787,7 @@ class RoutersResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -35293,8 +35318,7 @@ class RoutesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -35693,8 +35717,7 @@ class SecurityPoliciesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -35796,8 +35819,7 @@ class SecurityPoliciesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -36279,8 +36301,7 @@ class SnapshotsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -36572,8 +36593,7 @@ class SslCertificatesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -36858,8 +36878,7 @@ class SslCertificatesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -37147,8 +37166,7 @@ class SslPoliciesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -37250,8 +37268,7 @@ class SslPoliciesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -37436,8 +37453,7 @@ class SubnetworksResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -37899,8 +37915,7 @@ class SubnetworksResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -38007,8 +38022,7 @@ class SubnetworksResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -38607,8 +38621,7 @@ class TargetGrpcProxiesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -38799,8 +38812,7 @@ class TargetHttpProxiesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -39085,8 +39097,7 @@ class TargetHttpProxiesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -39349,8 +39360,7 @@ class TargetHttpsProxiesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -39635,8 +39645,7 @@ class TargetHttpsProxiesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -40120,8 +40129,7 @@ class TargetInstancesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -40436,8 +40444,7 @@ class TargetInstancesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -40720,8 +40727,7 @@ class TargetPoolsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -41105,8 +41111,7 @@ class TargetPoolsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -41648,8 +41653,7 @@ class TargetSslProxiesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -42232,8 +42236,7 @@ class TargetTcpProxiesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -42494,8 +42497,7 @@ class TargetVpnGatewaysResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -42810,8 +42812,7 @@ class TargetVpnGatewaysResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -42933,8 +42934,7 @@ class UrlMapsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -43293,8 +43293,7 @@ class UrlMapsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -43617,8 +43616,7 @@ class VpnGatewaysResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -43994,8 +43992,7 @@ class VpnGatewaysResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -44266,8 +44263,7 @@ class VpnTunnelsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -44581,8 +44577,7 @@ class VpnTunnelsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -44815,8 +44810,7 @@ class ZoneOperationsResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -45055,8 +45049,7 @@ class ZonesResource {
   /// of results.
   ///
   /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case of failure. The default value is false
-  /// and the logic is the same as today.
+  /// provides partial results in case of failure. The default value is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -45993,14 +45986,15 @@ class Address {
   /// - "DNS_RESOLVER"
   /// - "GCE_ENDPOINT"
   /// - "NAT_AUTO"
+  /// - "PRIVATE_SERVICE_CONNECT"
   /// - "SHARED_LOADBALANCER_VIP"
   /// - "VPC_PEERING"
   core.String purpose;
 
-  /// The URL of the region where the regional address resides.
+  /// The URL of the region where a regional address resides.
   ///
-  /// This field is not applicable to global addresses. You must specify this
-  /// field as part of the HTTP request URL.
+  /// For regional addresses, you must specify the region as a path parameter in
+  /// the HTTP request URL. This field is not applicable to global addresses.
   ///
   /// Output only.
   core.String region;
@@ -46752,6 +46746,12 @@ class AllocationSpecificSKUAllocationReservedInstanceProperties {
           AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk>
       localSsds;
 
+  /// An opaque location hint used to place the allocation close to other
+  /// resources.
+  ///
+  /// This field is for use by internal tools that use the public API.
+  core.String locationHint;
+
   /// Specifies type of machine (name only) which has fixed number of vCPUs and
   /// fixed amount of memory.
   ///
@@ -46780,6 +46780,9 @@ class AllocationSpecificSKUAllocationReservedInstanceProperties {
                       .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('locationHint')) {
+      locationHint = _json['locationHint'] as core.String;
+    }
     if (_json.containsKey('machineType')) {
       machineType = _json['machineType'] as core.String;
     }
@@ -46794,6 +46797,7 @@ class AllocationSpecificSKUAllocationReservedInstanceProperties {
               guestAccelerators.map((value) => value.toJson()).toList(),
         if (localSsds != null)
           'localSsds': localSsds.map((value) => value.toJson()).toList(),
+        if (locationHint != null) 'locationHint': locationHint,
         if (machineType != null) 'machineType': machineType,
         if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform,
       };
@@ -47112,6 +47116,9 @@ class AttachedDiskInitializeParams {
   /// - "USE_EXISTING_DISK"
   core.String onUpdateAction;
 
+  /// Indicates how many IOPS must be provisioned for the disk.
+  core.String provisionedIops;
+
   /// Resource policies applied to this disk for automatic snapshot creations.
   ///
   /// Specified using the full or partial URL. For instance template, specify
@@ -47202,6 +47209,9 @@ class AttachedDiskInitializeParams {
     if (_json.containsKey('onUpdateAction')) {
       onUpdateAction = _json['onUpdateAction'] as core.String;
     }
+    if (_json.containsKey('provisionedIops')) {
+      provisionedIops = _json['provisionedIops'] as core.String;
+    }
     if (_json.containsKey('resourcePolicies')) {
       resourcePolicies = (_json['resourcePolicies'] as core.List)
           .map<core.String>((value) => value as core.String)
@@ -47232,6 +47242,7 @@ class AttachedDiskInitializeParams {
         if (diskType != null) 'diskType': diskType,
         if (labels != null) 'labels': labels,
         if (onUpdateAction != null) 'onUpdateAction': onUpdateAction,
+        if (provisionedIops != null) 'provisionedIops': provisionedIops,
         if (resourcePolicies != null) 'resourcePolicies': resourcePolicies,
         if (sourceImage != null) 'sourceImage': sourceImage,
         if (sourceImageEncryptionKey != null)
@@ -49098,8 +49109,7 @@ class BackendService {
 
   /// Cloud CDN configuration for this BackendService.
   ///
-  /// Not available for Internal TCP/UDP Load Balancing and Network Load
-  /// Balancing.
+  /// Only available for  external HTTP(S) Load Balancing.
   BackendServiceCdnPolicy cdnPolicy;
 
   /// Settings controlling the volume of connections to a backend service.
@@ -49318,8 +49328,8 @@ class BackendService {
   ///
   /// The TCP port to connect on the backend. The default value is 80.
   ///
-  /// This cannot be used if the loadBalancingScheme is INTERNAL (Internal
-  /// TCP/UDP Load Balancing).
+  /// Backend services for Internal TCP/UDP Load Balancing and Network Load
+  /// Balancing require you omit port.
   core.int port;
 
   /// A named port on a backend instance group representing the port for
@@ -51984,6 +51994,9 @@ class Disk {
   /// values for the caller's project.
   core.String physicalBlockSizeBytes;
 
+  /// Indicates how many IOPS must be provisioned for the disk.
+  core.String provisionedIops;
+
   /// URL of the region where the disk resides.
   ///
   /// Only applicable for regional resources. You must specify this field as
@@ -52223,6 +52236,9 @@ class Disk {
     if (_json.containsKey('physicalBlockSizeBytes')) {
       physicalBlockSizeBytes = _json['physicalBlockSizeBytes'] as core.String;
     }
+    if (_json.containsKey('provisionedIops')) {
+      provisionedIops = _json['provisionedIops'] as core.String;
+    }
     if (_json.containsKey('region')) {
       region = _json['region'] as core.String;
     }
@@ -52315,6 +52331,7 @@ class Disk {
         if (options != null) 'options': options,
         if (physicalBlockSizeBytes != null)
           'physicalBlockSizeBytes': physicalBlockSizeBytes,
+        if (provisionedIops != null) 'provisionedIops': provisionedIops,
         if (region != null) 'region': region,
         if (replicaZones != null) 'replicaZones': replicaZones,
         if (resourcePolicies != null) 'resourcePolicies': resourcePolicies,
@@ -55520,9 +55537,7 @@ class FirewallPolicyRule {
   /// are 403, 404, and 502.
   core.String action;
 
-  /// An optional description of this resource.
-  ///
-  /// Provide this property when you create the resource.
+  /// An optional description for this resource.
   core.String description;
 
   /// The direction in which this rule applies.
@@ -56105,6 +56120,11 @@ class ForwardingRule {
   /// specifications\](/load-balancing/docs/forwarding-rule-concepts#port_specifications).
   core.List<core.String> ports;
 
+  /// The PSC connection id of the PSC Forwarding Rule.
+  ///
+  /// Output only.
+  core.String pscConnectionId;
+
   /// URL of the region where the regional forwarding rule resides.
   ///
   /// This field is not applicable to global forwarding rules. You must specify
@@ -56118,6 +56138,15 @@ class ForwardingRule {
   ///
   /// Output only.
   core.String selfLink;
+
+  /// Service Directory resources to register this forwarding rule with.
+  ///
+  /// Currently, only supports a single Service Directory resource.
+  ///
+  /// It is only supported for Internal TCP/UDP Load Balancing and Internal
+  /// HTTP(S) Load Balancing.
+  core.List<ForwardingRuleServiceDirectoryRegistration>
+      serviceDirectoryRegistrations;
 
   /// An optional prefix to the service name for this Forwarding Rule.
   ///
@@ -56239,11 +56268,22 @@ class ForwardingRule {
           .map<core.String>((value) => value as core.String)
           .toList();
     }
+    if (_json.containsKey('pscConnectionId')) {
+      pscConnectionId = _json['pscConnectionId'] as core.String;
+    }
     if (_json.containsKey('region')) {
       region = _json['region'] as core.String;
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
+    }
+    if (_json.containsKey('serviceDirectoryRegistrations')) {
+      serviceDirectoryRegistrations =
+          (_json['serviceDirectoryRegistrations'] as core.List)
+              .map<ForwardingRuleServiceDirectoryRegistration>((value) =>
+                  ForwardingRuleServiceDirectoryRegistration.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList();
     }
     if (_json.containsKey('serviceLabel')) {
       serviceLabel = _json['serviceLabel'] as core.String;
@@ -56285,8 +56325,13 @@ class ForwardingRule {
         if (networkTier != null) 'networkTier': networkTier,
         if (portRange != null) 'portRange': portRange,
         if (ports != null) 'ports': ports,
+        if (pscConnectionId != null) 'pscConnectionId': pscConnectionId,
         if (region != null) 'region': region,
         if (selfLink != null) 'selfLink': selfLink,
+        if (serviceDirectoryRegistrations != null)
+          'serviceDirectoryRegistrations': serviceDirectoryRegistrations
+              .map((value) => value.toJson())
+              .toList(),
         if (serviceLabel != null) 'serviceLabel': serviceLabel,
         if (serviceName != null) 'serviceName': serviceName,
         if (subnetwork != null) 'subnetwork': subnetwork,
@@ -56688,6 +56733,48 @@ class ForwardingRuleReference {
 
   core.Map<core.String, core.Object> toJson() => {
         if (forwardingRule != null) 'forwardingRule': forwardingRule,
+      };
+}
+
+/// Describes the auto-registration of the Forwarding Rule to Service Directory.
+///
+/// The region and project of the Service Directory resource generated from this
+/// registration will be the same as this Forwarding Rule.
+class ForwardingRuleServiceDirectoryRegistration {
+  /// Service Directory namespace to register the forwarding rule under.
+  core.String namespace;
+
+  /// Service Directory service to register the forwarding rule under.
+  core.String service;
+
+  /// Service Directory region to register this global forwarding rule under.
+  ///
+  /// Default to "us-central1". Only used for PSC for Google APIs. All PSC for
+  /// Google APIs Forwarding Rules on the same network should use the same
+  /// Service Directory region.
+  ///
+  /// Optional.
+  core.String serviceDirectoryRegion;
+
+  ForwardingRuleServiceDirectoryRegistration();
+
+  ForwardingRuleServiceDirectoryRegistration.fromJson(core.Map _json) {
+    if (_json.containsKey('namespace')) {
+      namespace = _json['namespace'] as core.String;
+    }
+    if (_json.containsKey('service')) {
+      service = _json['service'] as core.String;
+    }
+    if (_json.containsKey('serviceDirectoryRegion')) {
+      serviceDirectoryRegion = _json['serviceDirectoryRegion'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (namespace != null) 'namespace': namespace,
+        if (service != null) 'service': service,
+        if (serviceDirectoryRegion != null)
+          'serviceDirectoryRegion': serviceDirectoryRegion,
       };
 }
 
@@ -58698,7 +58785,10 @@ class HealthStatus {
   /// URL of the instance resource.
   core.String instance;
 
-  /// A forwarding rule IP address assigned to this instance.
+  /// For target pool based Network Load Balancing, it indicates the forwarding
+  /// rule's IP address assigned to this instance.
+  ///
+  /// For other types of load balancing, the field indicates VM internal ip.
   core.String ipAddress;
 
   /// The named port of the instance group, not necessarily the port that is
@@ -60553,6 +60643,11 @@ class Image {
   /// The parameters of the raw disk image.
   ImageRawDisk rawDisk;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool satisfiesPzs;
+
   /// Server-defined URL for the resource.
   ///
   /// Output only.
@@ -60727,6 +60822,9 @@ class Image {
       rawDisk = ImageRawDisk.fromJson(
           _json['rawDisk'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('satisfiesPzs')) {
+      satisfiesPzs = _json['satisfiesPzs'] as core.bool;
+    }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
     }
@@ -60801,6 +60899,7 @@ class Image {
         if (licenses != null) 'licenses': licenses,
         if (name != null) 'name': name,
         if (rawDisk != null) 'rawDisk': rawDisk.toJson(),
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs,
         if (selfLink != null) 'selfLink': selfLink,
         if (shieldedInstanceInitialState != null)
           'shieldedInstanceInitialState': shieldedInstanceInitialState.toJson(),
@@ -65676,6 +65775,94 @@ class InstancesAddResourcePoliciesRequest {
 
   core.Map<core.String, core.Object> toJson() => {
         if (resourcePolicies != null) 'resourcePolicies': resourcePolicies,
+      };
+}
+
+class InstancesGetEffectiveFirewallsResponse {
+  /// Effective firewalls from firewall policies.
+  core.List<InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>
+      firewallPolicys;
+
+  /// Effective firewalls on the instance.
+  core.List<Firewall> firewalls;
+
+  InstancesGetEffectiveFirewallsResponse();
+
+  InstancesGetEffectiveFirewallsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('firewallPolicys')) {
+      firewallPolicys = (_json['firewallPolicys'] as core.List)
+          .map<InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>(
+              (value) =>
+                  InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('firewalls')) {
+      firewalls = (_json['firewalls'] as core.List)
+          .map<Firewall>((value) =>
+              Firewall.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (firewallPolicys != null)
+          'firewallPolicys':
+              firewallPolicys.map((value) => value.toJson()).toList(),
+        if (firewalls != null)
+          'firewalls': firewalls.map((value) => value.toJson()).toList(),
+      };
+}
+
+class InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy {
+  /// The display name of the firewall policy.
+  ///
+  /// Output only.
+  core.String displayName;
+
+  /// The name of the firewall policy.
+  ///
+  /// Output only.
+  core.String name;
+
+  /// The rules that apply to the network.
+  core.List<FirewallPolicyRule> rules;
+
+  /// The type of the firewall policy.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "HIERARCHY"
+  /// - "UNSPECIFIED"
+  core.String type;
+
+  InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy();
+
+  InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('rules')) {
+      rules = (_json['rules'] as core.List)
+          .map<FirewallPolicyRule>((value) => FirewallPolicyRule.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('type')) {
+      type = _json['type'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (rules != null)
+          'rules': rules.map((value) => value.toJson()).toList(),
+        if (type != null) 'type': type,
       };
 }
 
@@ -70583,6 +70770,7 @@ class NetworkEndpointGroup {
   /// Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT,
   /// INTERNET_IP_PORT, or SERVERLESS.
   /// Possible string values are:
+  /// - "GCE_VM_IP"
   /// - "GCE_VM_IP_PORT"
   /// - "INTERNET_FQDN_PORT"
   /// - "INTERNET_IP_PORT"
@@ -72227,6 +72415,95 @@ class NetworksAddPeeringRequest {
       };
 }
 
+class NetworksGetEffectiveFirewallsResponse {
+  /// Effective firewalls from firewall policy.
+  core.List<NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy>
+      firewallPolicys;
+
+  /// Effective firewalls on the network.
+  core.List<Firewall> firewalls;
+
+  NetworksGetEffectiveFirewallsResponse();
+
+  NetworksGetEffectiveFirewallsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('firewallPolicys')) {
+      firewallPolicys = (_json['firewallPolicys'] as core.List)
+          .map<NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy>(
+              (value) =>
+                  NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('firewalls')) {
+      firewalls = (_json['firewalls'] as core.List)
+          .map<Firewall>((value) =>
+              Firewall.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (firewallPolicys != null)
+          'firewallPolicys':
+              firewallPolicys.map((value) => value.toJson()).toList(),
+        if (firewalls != null)
+          'firewalls': firewalls.map((value) => value.toJson()).toList(),
+      };
+}
+
+class NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy {
+  /// The display name of the firewall policy.
+  ///
+  /// Output only.
+  core.String displayName;
+
+  /// The name of the firewall policy.
+  ///
+  /// Output only.
+  core.String name;
+
+  /// The rules that apply to the network.
+  core.List<FirewallPolicyRule> rules;
+
+  /// The type of the firewall policy.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "HIERARCHY"
+  /// - "NETWORK"
+  /// - "UNSPECIFIED"
+  core.String type;
+
+  NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy();
+
+  NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('rules')) {
+      rules = (_json['rules'] as core.List)
+          .map<FirewallPolicyRule>((value) => FirewallPolicyRule.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('type')) {
+      type = _json['type'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (rules != null)
+          'rules': rules.map((value) => value.toJson()).toList(),
+        if (type != null) 'type': type,
+      };
+}
+
 class NetworksRemovePeeringRequest {
   /// Name of the peering, which should conform to RFC1035.
   core.String name;
@@ -72306,6 +72583,13 @@ class NodeGroup {
   /// Output only.
   core.String kind;
 
+  /// An opaque location hint used to place the Node close to other resources.
+  ///
+  /// This field is for use by internal tools that use the public API. The
+  /// location hint here on the NodeGroup overrides any location_hint present in
+  /// the NodeTemplate.
+  core.String locationHint;
+
   /// Specifies how to handle instances when a node in the group undergoes
   /// maintenance.
   ///
@@ -72379,6 +72663,9 @@ class NodeGroup {
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
+    if (_json.containsKey('locationHint')) {
+      locationHint = _json['locationHint'] as core.String;
+    }
     if (_json.containsKey('maintenancePolicy')) {
       maintenancePolicy = _json['maintenancePolicy'] as core.String;
     }
@@ -72414,6 +72701,7 @@ class NodeGroup {
         if (fingerprint != null) 'fingerprint': fingerprint,
         if (id != null) 'id': id,
         if (kind != null) 'kind': kind,
+        if (locationHint != null) 'locationHint': locationHint,
         if (maintenancePolicy != null) 'maintenancePolicy': maintenancePolicy,
         if (maintenanceWindow != null)
           'maintenanceWindow': maintenanceWindow.toJson(),
@@ -72907,6 +73195,11 @@ class NodeGroupNode {
   /// The type of this node.
   core.String nodeType;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool satisfiesPzs;
+
   /// Binding properties for the physical server.
   ServerBinding serverBinding;
 
@@ -72951,6 +73244,9 @@ class NodeGroupNode {
     if (_json.containsKey('nodeType')) {
       nodeType = _json['nodeType'] as core.String;
     }
+    if (_json.containsKey('satisfiesPzs')) {
+      satisfiesPzs = _json['satisfiesPzs'] as core.bool;
+    }
     if (_json.containsKey('serverBinding')) {
       serverBinding = ServerBinding.fromJson(
           _json['serverBinding'] as core.Map<core.String, core.dynamic>);
@@ -72972,6 +73268,7 @@ class NodeGroupNode {
         if (instances != null) 'instances': instances,
         if (name != null) 'name': name,
         if (nodeType != null) 'nodeType': nodeType,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs,
         if (serverBinding != null) 'serverBinding': serverBinding.toJson(),
         if (serverId != null) 'serverId': serverId,
         if (status != null) 'status': status,
@@ -78021,6 +78318,7 @@ class Quota {
   /// - "COMMITTED_A2_CPUS"
   /// - "COMMITTED_C2_CPUS"
   /// - "COMMITTED_CPUS"
+  /// - "COMMITTED_E2_CPUS"
   /// - "COMMITTED_LICENSES"
   /// - "COMMITTED_LOCAL_SSD_TOTAL_GB"
   /// - "COMMITTED_MEMORY_OPTIMIZED_CPUS"
@@ -80302,6 +80600,11 @@ class Reservation {
   /// dash.
   core.String name;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool satisfiesPzs;
+
   /// Server-defined fully-qualified URL for this resource.
   ///
   /// Output only.
@@ -80354,6 +80657,9 @@ class Reservation {
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
+    if (_json.containsKey('satisfiesPzs')) {
+      satisfiesPzs = _json['satisfiesPzs'] as core.bool;
+    }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
     }
@@ -80380,6 +80686,7 @@ class Reservation {
         if (id != null) 'id': id,
         if (kind != null) 'kind': kind,
         if (name != null) 'name': name,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs,
         if (selfLink != null) 'selfLink': selfLink,
         if (specificReservation != null)
           'specificReservation': specificReservation.toJson(),
@@ -81210,6 +81517,9 @@ class ResourcePolicy {
   /// Output only.
   core.String id;
 
+  /// Resource policy for scheduling instance operations.
+  ResourcePolicyInstanceSchedulePolicy instanceSchedulePolicy;
+
   /// Type of the resource.
   ///
   /// Always compute#resource_policies for resource policies.
@@ -81229,6 +81539,11 @@ class ResourcePolicy {
   core.String name;
   core.String region;
 
+  /// The system status of the resource policy.
+  ///
+  /// Output only.
+  ResourcePolicyResourceStatus resourceStatus;
+
   /// Server-defined fully-qualified URL for this resource.
   ///
   /// Output only.
@@ -81243,6 +81558,7 @@ class ResourcePolicy {
   /// Possible string values are:
   /// - "CREATING"
   /// - "DELETING"
+  /// - "EXPIRED"
   /// - "INVALID"
   /// - "READY"
   core.String status;
@@ -81263,6 +81579,11 @@ class ResourcePolicy {
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
     }
+    if (_json.containsKey('instanceSchedulePolicy')) {
+      instanceSchedulePolicy = ResourcePolicyInstanceSchedulePolicy.fromJson(
+          _json['instanceSchedulePolicy']
+              as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
@@ -81271,6 +81592,10 @@ class ResourcePolicy {
     }
     if (_json.containsKey('region')) {
       region = _json['region'] as core.String;
+    }
+    if (_json.containsKey('resourceStatus')) {
+      resourceStatus = ResourcePolicyResourceStatus.fromJson(
+          _json['resourceStatus'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
@@ -81291,9 +81616,12 @@ class ResourcePolicy {
         if (groupPlacementPolicy != null)
           'groupPlacementPolicy': groupPlacementPolicy.toJson(),
         if (id != null) 'id': id,
+        if (instanceSchedulePolicy != null)
+          'instanceSchedulePolicy': instanceSchedulePolicy.toJson(),
         if (kind != null) 'kind': kind,
         if (name != null) 'name': name,
         if (region != null) 'region': region,
+        if (resourceStatus != null) 'resourceStatus': resourceStatus.toJson(),
         if (selfLink != null) 'selfLink': selfLink,
         if (snapshotSchedulePolicy != null)
           'snapshotSchedulePolicy': snapshotSchedulePolicy.toJson(),
@@ -81623,6 +81951,81 @@ class ResourcePolicyHourlyCycle {
       };
 }
 
+/// An InstanceSchedulePolicy specifies when and how frequent certain operations
+/// are performed on the instance.
+class ResourcePolicyInstanceSchedulePolicy {
+  /// The expiration time of the schedule.
+  ///
+  /// The timestamp is an RFC3339 string.
+  core.String expirationTime;
+
+  /// The start time of the schedule.
+  ///
+  /// The timestamp is an RFC3339 string.
+  core.String startTime;
+
+  /// Specifies the time zone to be used in interpreting Schedule.schedule.
+  ///
+  /// The value of this field must be a time zone name from the tz database:
+  /// http://en.wikipedia.org/wiki/Tz_database.
+  core.String timeZone;
+
+  /// Specifies the schedule for starting instances.
+  ResourcePolicyInstanceSchedulePolicySchedule vmStartSchedule;
+
+  /// Specifies the schedule for stopping instances.
+  ResourcePolicyInstanceSchedulePolicySchedule vmStopSchedule;
+
+  ResourcePolicyInstanceSchedulePolicy();
+
+  ResourcePolicyInstanceSchedulePolicy.fromJson(core.Map _json) {
+    if (_json.containsKey('expirationTime')) {
+      expirationTime = _json['expirationTime'] as core.String;
+    }
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'] as core.String;
+    }
+    if (_json.containsKey('timeZone')) {
+      timeZone = _json['timeZone'] as core.String;
+    }
+    if (_json.containsKey('vmStartSchedule')) {
+      vmStartSchedule = ResourcePolicyInstanceSchedulePolicySchedule.fromJson(
+          _json['vmStartSchedule'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('vmStopSchedule')) {
+      vmStopSchedule = ResourcePolicyInstanceSchedulePolicySchedule.fromJson(
+          _json['vmStopSchedule'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (expirationTime != null) 'expirationTime': expirationTime,
+        if (startTime != null) 'startTime': startTime,
+        if (timeZone != null) 'timeZone': timeZone,
+        if (vmStartSchedule != null)
+          'vmStartSchedule': vmStartSchedule.toJson(),
+        if (vmStopSchedule != null) 'vmStopSchedule': vmStopSchedule.toJson(),
+      };
+}
+
+/// Schedule for an instance operation.
+class ResourcePolicyInstanceSchedulePolicySchedule {
+  /// Specifies the frequency for the operation, using the unix-cron format.
+  core.String schedule;
+
+  ResourcePolicyInstanceSchedulePolicySchedule();
+
+  ResourcePolicyInstanceSchedulePolicySchedule.fromJson(core.Map _json) {
+    if (_json.containsKey('schedule')) {
+      schedule = _json['schedule'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (schedule != null) 'schedule': schedule,
+      };
+}
+
 class ResourcePolicyListWarningData {
   /// A key that provides more detail on the warning being returned.
   ///
@@ -81814,6 +82217,72 @@ class ResourcePolicyList {
         if (nextPageToken != null) 'nextPageToken': nextPageToken,
         if (selfLink != null) 'selfLink': selfLink,
         if (warning != null) 'warning': warning.toJson(),
+      };
+}
+
+/// Contains output only fields.
+///
+/// Use this sub-message for all output fields set on ResourcePolicy. The
+/// internal structure of this "status" field should mimic the structure of
+/// ResourcePolicy proto specification.
+class ResourcePolicyResourceStatus {
+  /// Specifies a set of output values reffering to the instance_schedule_policy
+  /// system status.
+  ///
+  /// This field should have the same name as corresponding policy field.
+  ///
+  /// Output only.
+  ResourcePolicyResourceStatusInstanceSchedulePolicyStatus
+      instanceSchedulePolicy;
+
+  ResourcePolicyResourceStatus();
+
+  ResourcePolicyResourceStatus.fromJson(core.Map _json) {
+    if (_json.containsKey('instanceSchedulePolicy')) {
+      instanceSchedulePolicy =
+          ResourcePolicyResourceStatusInstanceSchedulePolicyStatus.fromJson(
+              _json['instanceSchedulePolicy']
+                  as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (instanceSchedulePolicy != null)
+          'instanceSchedulePolicy': instanceSchedulePolicy.toJson(),
+      };
+}
+
+class ResourcePolicyResourceStatusInstanceSchedulePolicyStatus {
+  /// The last time the schedule successfully ran.
+  ///
+  /// The timestamp is an RFC3339 string.
+  ///
+  /// Output only.
+  core.String lastRunStartTime;
+
+  /// The next time the schedule is planned to run.
+  ///
+  /// The actual time might be slightly different. The timestamp is an RFC3339
+  /// string.
+  ///
+  /// Output only.
+  core.String nextRunStartTime;
+
+  ResourcePolicyResourceStatusInstanceSchedulePolicyStatus();
+
+  ResourcePolicyResourceStatusInstanceSchedulePolicyStatus.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('lastRunStartTime')) {
+      lastRunStartTime = _json['lastRunStartTime'] as core.String;
+    }
+    if (_json.containsKey('nextRunStartTime')) {
+      nextRunStartTime = _json['nextRunStartTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (lastRunStartTime != null) 'lastRunStartTime': lastRunStartTime,
+        if (nextRunStartTime != null) 'nextRunStartTime': nextRunStartTime,
       };
 }
 
@@ -84246,7 +84715,7 @@ class SSLHealthCheck {
 
 /// Sets the scheduling options for an Instance.
 ///
-/// NextID: 13
+/// NextID: 17
 class Scheduling {
   /// Specifies whether the instance should be automatically restarted if it is
   /// terminated by Compute Engine (not terminated by a user).
@@ -91796,6 +92265,21 @@ class TargetTcpProxy {
   /// letter, or digit, except the last character, which cannot be a dash.
   core.String name;
 
+  /// This field only applies when the forwarding rule that references this
+  /// target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+  ///
+  /// When this field is set to true, Envoy proxies set up inbound traffic
+  /// interception and bind to the IP address and port specified in the
+  /// forwarding rule.
+  ///
+  /// This is generally useful when using Traffic Director to configure Envoy as
+  /// a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy
+  /// proxy listens for inbound requests and handles requests when it receives
+  /// them.
+  ///
+  /// The default is false.
+  core.bool proxyBind;
+
   /// Specifies the type of proxy header to append before sending data to the
   /// backend, either NONE or PROXY_V1.
   ///
@@ -91831,6 +92315,9 @@ class TargetTcpProxy {
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
+    if (_json.containsKey('proxyBind')) {
+      proxyBind = _json['proxyBind'] as core.bool;
+    }
     if (_json.containsKey('proxyHeader')) {
       proxyHeader = _json['proxyHeader'] as core.String;
     }
@@ -91848,6 +92335,7 @@ class TargetTcpProxy {
         if (id != null) 'id': id,
         if (kind != null) 'kind': kind,
         if (name != null) 'name': name,
+        if (proxyBind != null) 'proxyBind': proxyBind,
         if (proxyHeader != null) 'proxyHeader': proxyHeader,
         if (selfLink != null) 'selfLink': selfLink,
         if (service != null) 'service': service,

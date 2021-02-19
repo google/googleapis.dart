@@ -2458,71 +2458,6 @@ class Constraint {
       };
 }
 
-/// Metadata pertaining to the Folder creation process.
-class CreateFolderMetadata {
-  /// The display name of the folder.
-  core.String displayName;
-
-  /// The resource name of the folder or organization we are creating the folder
-  /// under.
-  core.String parent;
-
-  CreateFolderMetadata();
-
-  CreateFolderMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('parent')) {
-      parent = _json['parent'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (parent != null) 'parent': parent,
-      };
-}
-
-/// A status object which is used as the `metadata` field for the Operation
-/// returned by CreateProject.
-///
-/// It provides insight for when significant phases of Project creation have
-/// completed.
-class CreateProjectMetadata {
-  /// Creation time of the project creation workflow.
-  core.String createTime;
-
-  /// True if the project can be retrieved using GetProject.
-  ///
-  /// No other operations on the project are guaranteed to work until the
-  /// project creation is complete.
-  core.bool gettable;
-
-  /// True if the project creation process is complete.
-  core.bool ready;
-
-  CreateProjectMetadata();
-
-  CreateProjectMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('gettable')) {
-      gettable = _json['gettable'] as core.bool;
-    }
-    if (_json.containsKey('ready')) {
-      ready = _json['ready'] as core.bool;
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (gettable != null) 'gettable': gettable,
-        if (ready != null) 'ready': ready,
-      };
-}
-
 /// Runtime operation information for creating a TagKey.
 class CreateTagKeyMetadata {
   CreateTagKeyMetadata();
@@ -2539,42 +2474,6 @@ class CreateTagValueMetadata {
   CreateTagValueMetadata();
 
   CreateTagValueMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.Object> toJson() => {};
-}
-
-/// A status object which is used as the `metadata` field for the Operation
-/// returned by DeleteFolder.
-class DeleteFolderMetadata {
-  DeleteFolderMetadata();
-
-  DeleteFolderMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.Object> toJson() => {};
-}
-
-/// A status object which is used as the `metadata` field for the Operation
-/// returned by DeleteOrganization.
-class DeleteOrganizationMetadata {
-  DeleteOrganizationMetadata();
-
-  DeleteOrganizationMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.Object> toJson() => {};
-}
-
-/// A status object which is used as the `metadata` field for the Operation
-/// returned by DeleteProject.
-class DeleteProjectMetadata {
-  DeleteProjectMetadata();
-
-  DeleteProjectMetadata.fromJson(
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
@@ -3345,50 +3244,6 @@ class ListProjectsResponse {
         if (projects != null)
           'projects': projects.map((value) => value.toJson()).toList(),
       };
-}
-
-/// Metadata pertaining to the Folder move process.
-class MoveFolderMetadata {
-  /// The resource name of the folder or organization to move the folder to.
-  core.String destinationParent;
-
-  /// The display name of the folder.
-  core.String displayName;
-
-  /// The resource name of the folder's parent.
-  core.String sourceParent;
-
-  MoveFolderMetadata();
-
-  MoveFolderMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('destinationParent')) {
-      destinationParent = _json['destinationParent'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('sourceParent')) {
-      sourceParent = _json['sourceParent'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() => {
-        if (destinationParent != null) 'destinationParent': destinationParent,
-        if (displayName != null) 'displayName': displayName,
-        if (sourceParent != null) 'sourceParent': sourceParent,
-      };
-}
-
-/// A status object which is used as the `metadata` field for the Operation
-/// returned by MoveProject.
-class MoveProjectMetadata {
-  MoveProjectMetadata();
-
-  MoveProjectMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -4211,71 +4066,11 @@ class TestIamPermissionsResponse {
       };
 }
 
-/// A status object which is used as the `metadata` field for the Operation
-/// returned by UndeleteFolder.
-class UndeleteFolderMetadata {
-  UndeleteFolderMetadata();
-
-  UndeleteFolderMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.Object> toJson() => {};
-}
-
-/// A status object which is used as the `metadata` field for the Operation
-/// returned by UndeleteOrganization.
-class UndeleteOrganizationMetadata {
-  UndeleteOrganizationMetadata();
-
-  UndeleteOrganizationMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.Object> toJson() => {};
-}
-
-/// A status object which is used as the `metadata` field for the Operation
-/// returned by UndeleteProject.
-class UndeleteProjectMetadata {
-  UndeleteProjectMetadata();
-
-  UndeleteProjectMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.Object> toJson() => {};
-}
-
 /// The request sent to the UndeleteProject method.
 class UndeleteProjectRequest {
   UndeleteProjectRequest();
 
   UndeleteProjectRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.Object> toJson() => {};
-}
-
-/// A status object which is used as the `metadata` field for the Operation
-/// returned by UpdateFolder.
-class UpdateFolderMetadata {
-  UpdateFolderMetadata();
-
-  UpdateFolderMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.Object> toJson() => {};
-}
-
-/// A status object which is used as the `metadata` field for the Operation
-/// returned by UpdateProject.
-class UpdateProjectMetadata {
-  UpdateProjectMetadata();
-
-  UpdateProjectMetadata.fromJson(
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 

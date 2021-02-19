@@ -661,12 +661,12 @@ class Audio {
   /// Specify audio loudness normalization in loudness units relative to full
   /// scale (LUFS).
   ///
-  /// Enter a value between -24 and 0, where -24 is the Advanced Television
-  /// Systems Committee (ATSC A/85), -23 is the EU R128 broadcast standard, -19
-  /// is the prior standard for online mono audio, -18 is the ReplayGain
-  /// standard, -16 is the prior standard for stereo audio, -14 is the new
-  /// online audio standard recommended by Spotify, as well as Amazon Echo, and
-  /// 0 disables normalization. The default is 0.
+  /// Enter a value between -24 and 0 (the default), where: * -24 is the
+  /// Advanced Television Systems Committee (ATSC A/85) standard * -23 is the EU
+  /// R128 broadcast standard * -19 is the prior standard for online mono audio
+  /// * -18 is the ReplayGain standard * -16 is the prior standard for stereo
+  /// audio * -14 is the new online audio standard recommended by Spotify, as
+  /// well as Amazon Echo * 0 disables normalization
   core.double lufs;
 
   Audio();
@@ -2016,6 +2016,56 @@ class Overlay {
       };
 }
 
+/// Pad filter configuration for the input video.
+///
+/// The padded input video is scaled after padding with black to match the
+/// output resolution.
+class Pad {
+  /// The number of pixels to add to the bottom.
+  ///
+  /// The default is 0.
+  core.int bottomPixels;
+
+  /// The number of pixels to add to the left.
+  ///
+  /// The default is 0.
+  core.int leftPixels;
+
+  /// The number of pixels to add to the right.
+  ///
+  /// The default is 0.
+  core.int rightPixels;
+
+  /// The number of pixels to add to the top.
+  ///
+  /// The default is 0.
+  core.int topPixels;
+
+  Pad();
+
+  Pad.fromJson(core.Map _json) {
+    if (_json.containsKey('bottomPixels')) {
+      bottomPixels = _json['bottomPixels'] as core.int;
+    }
+    if (_json.containsKey('leftPixels')) {
+      leftPixels = _json['leftPixels'] as core.int;
+    }
+    if (_json.containsKey('rightPixels')) {
+      rightPixels = _json['rightPixels'] as core.int;
+    }
+    if (_json.containsKey('topPixels')) {
+      topPixels = _json['topPixels'] as core.int;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (bottomPixels != null) 'bottomPixels': bottomPixels,
+        if (leftPixels != null) 'leftPixels': leftPixels,
+        if (rightPixels != null) 'rightPixels': rightPixels,
+        if (topPixels != null) 'topPixels': topPixels,
+      };
+}
+
 /// Preprocessing configurations.
 class PreprocessingConfig {
   /// Audio preprocessing configuration.
@@ -2032,6 +2082,9 @@ class PreprocessingConfig {
 
   /// Denoise preprocessing configuration.
   Denoise denoise;
+
+  /// Specify the video pad filter configuration.
+  Pad pad;
 
   PreprocessingConfig();
 
@@ -2056,6 +2109,9 @@ class PreprocessingConfig {
       denoise = Denoise.fromJson(
           _json['denoise'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('pad')) {
+      pad = Pad.fromJson(_json['pad'] as core.Map<core.String, core.dynamic>);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() => {
@@ -2064,6 +2120,7 @@ class PreprocessingConfig {
         if (crop != null) 'crop': crop.toJson(),
         if (deblock != null) 'deblock': deblock.toJson(),
         if (denoise != null) 'denoise': denoise.toJson(),
+        if (pad != null) 'pad': pad.toJson(),
       };
 }
 
@@ -2213,6 +2270,13 @@ class SpriteSheet {
   /// Specify the interval value in seconds.
   core.String interval;
 
+  /// The quality of the generated sprite sheet.
+  ///
+  /// Enter a value between 1 and 100, where 1 is the lowest quality and 100 is
+  /// the highest quality. The default is 100. A high quality value corresponds
+  /// to a low image data compression ratio.
+  core.int quality;
+
   /// The maximum number of rows per sprite sheet.
   ///
   /// When the sprite sheet is full, a new sprite sheet is created. The default
@@ -2262,6 +2326,9 @@ class SpriteSheet {
     if (_json.containsKey('interval')) {
       interval = _json['interval'] as core.String;
     }
+    if (_json.containsKey('quality')) {
+      quality = _json['quality'] as core.int;
+    }
     if (_json.containsKey('rowCount')) {
       rowCount = _json['rowCount'] as core.int;
     }
@@ -2285,6 +2352,7 @@ class SpriteSheet {
         if (filePrefix != null) 'filePrefix': filePrefix,
         if (format != null) 'format': format,
         if (interval != null) 'interval': interval,
+        if (quality != null) 'quality': quality,
         if (rowCount != null) 'rowCount': rowCount,
         if (spriteHeightPixels != null)
           'spriteHeightPixels': spriteHeightPixels,

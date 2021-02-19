@@ -1112,11 +1112,17 @@ class RelationshipDetails {
 
 /// A single row in a table.
 class Row {
+  /// Time when the row was created.
+  core.String createTime;
+
   /// The resource name of the row.
   ///
   /// Row names have the form `tables/{table}/rows/{row}`. The name is ignored
   /// when creating a row.
   core.String name;
+
+  /// Time when the row was last updated.
+  core.String updateTime;
 
   /// The values of the row.
   ///
@@ -1130,8 +1136,14 @@ class Row {
   Row();
 
   Row.fromJson(core.Map _json) {
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'] as core.String;
     }
     if (_json.containsKey('values')) {
       values =
@@ -1145,7 +1157,9 @@ class Row {
   }
 
   core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
         if (name != null) 'name': name,
+        if (updateTime != null) 'updateTime': updateTime,
         if (values != null) 'values': values,
       };
 }
@@ -1157,6 +1171,9 @@ class Table {
   /// Order of columns matches the display order.
   core.List<ColumnDescription> columns;
 
+  /// Time when the table was created.
+  core.String createTime;
+
   /// The human readable title of the table.
   core.String displayName;
 
@@ -1164,6 +1181,9 @@ class Table {
   ///
   /// Table names have the form `tables/{table}`.
   core.String name;
+
+  /// Time when the table was last updated excluding updates to individual rows
+  core.String updateTime;
 
   Table();
 
@@ -1174,19 +1194,27 @@ class Table {
               value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
     if (_json.containsKey('displayName')) {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'] as core.String;
+    }
   }
 
   core.Map<core.String, core.Object> toJson() => {
         if (columns != null)
           'columns': columns.map((value) => value.toJson()).toList(),
+        if (createTime != null) 'createTime': createTime,
         if (displayName != null) 'displayName': displayName,
         if (name != null) 'name': name,
+        if (updateTime != null) 'updateTime': updateTime,
       };
 }
 
@@ -1234,6 +1262,9 @@ class UpdateRowRequest {
 
 /// A single workspace.
 class Workspace {
+  /// Time when the workspace was created.
+  core.String createTime;
+
   /// The human readable title of the workspace.
   core.String displayName;
 
@@ -1245,9 +1276,15 @@ class Workspace {
   /// The list of tables in the workspace.
   core.List<Table> tables;
 
+  /// Time when the workspace was last updated.
+  core.String updateTime;
+
   Workspace();
 
   Workspace.fromJson(core.Map _json) {
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
     if (_json.containsKey('displayName')) {
       displayName = _json['displayName'] as core.String;
     }
@@ -1260,12 +1297,17 @@ class Workspace {
               Table.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'] as core.String;
+    }
   }
 
   core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
         if (displayName != null) 'displayName': displayName,
         if (name != null) 'name': name,
         if (tables != null)
           'tables': tables.map((value) => value.toJson()).toList(),
+        if (updateTime != null) 'updateTime': updateTime,
       };
 }

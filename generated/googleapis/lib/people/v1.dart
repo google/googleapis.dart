@@ -66,7 +66,7 @@ class PeopleServiceApi {
   static const userBirthdayReadScope =
       'https://www.googleapis.com/auth/user.birthday.read';
 
-  /// View your email addresses
+  /// See and download all of your Google Account email addresses
   static const userEmailsReadScope =
       'https://www.googleapis.com/auth/user.emails.read';
 

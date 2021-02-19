@@ -52,6 +52,7 @@
 ///   - [RepricingrulesRepricingreportsResource]
 /// - [ReturnaddressResource]
 /// - [ReturnpolicyResource]
+/// - [ReturnpolicyonlineResource]
 /// - [SettlementreportsResource]
 /// - [SettlementtransactionsResource]
 /// - [ShippingsettingsResource]
@@ -110,6 +111,8 @@ class ShoppingContentApi {
       RepricingrulesResource(_requester);
   ReturnaddressResource get returnaddress => ReturnaddressResource(_requester);
   ReturnpolicyResource get returnpolicy => ReturnpolicyResource(_requester);
+  ReturnpolicyonlineResource get returnpolicyonline =>
+      ReturnpolicyonlineResource(_requester);
   SettlementreportsResource get settlementreports =>
       SettlementreportsResource(_requester);
   SettlementtransactionsResource get settlementtransactions =>
@@ -6453,8 +6456,9 @@ class RepricingrulesResource {
   /// [merchantId] - Required. The id of the merchant who owns the repricing
   /// rule.
   ///
-  /// [countryCode] - CLDR country code (e.g. "US"), used as a filter on
-  /// repricing rules.
+  /// [countryCode] -
+  /// [CLDR country code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
+  /// (e.g. "US"), used as a filter on repricing rules.
   ///
   /// [languageCode] - The two-letter ISO 639-1 language code associated with
   /// the repricing rule, used as a filter.
@@ -7106,6 +7110,247 @@ class ReturnpolicyResource {
       queryParams: _queryParams,
     );
     return ReturnpolicyListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ReturnpolicyonlineResource {
+  final commons.ApiRequester _requester;
+
+  ReturnpolicyonlineResource(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a new return policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The id of the merchant for which to retrieve the
+  /// return policy online object.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ReturnPolicyOnline].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ReturnPolicyOnline> create(
+    ReturnPolicyOnline request,
+    core.String merchantId, {
+    core.String $fields,
+  }) async {
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
+    if (merchantId == null) {
+      throw core.ArgumentError('Parameter merchantId is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/returnpolicyonline';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ReturnPolicyOnline.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an existing return policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The id of the merchant for which to retrieve the
+  /// return policy online object.
+  ///
+  /// [returnPolicyId] - Required. The id of the return policy to delete.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> delete(
+    core.String merchantId,
+    core.String returnPolicyId, {
+    core.String $fields,
+  }) async {
+    if (merchantId == null) {
+      throw core.ArgumentError('Parameter merchantId is required.');
+    }
+    if (returnPolicyId == null) {
+      throw core.ArgumentError('Parameter returnPolicyId is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/returnpolicyonline/' +
+        commons.Escaper.ecapeVariable('$returnPolicyId');
+
+    await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+      downloadOptions: null,
+    );
+  }
+
+  /// Gets an existing return policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The id of the merchant for which to retrieve the
+  /// return policy online object.
+  ///
+  /// [returnPolicyId] - Required. The id of the return policy to retrieve.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ReturnPolicyOnline].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ReturnPolicyOnline> get(
+    core.String merchantId,
+    core.String returnPolicyId, {
+    core.String $fields,
+  }) async {
+    if (merchantId == null) {
+      throw core.ArgumentError('Parameter merchantId is required.');
+    }
+    if (returnPolicyId == null) {
+      throw core.ArgumentError('Parameter returnPolicyId is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/returnpolicyonline/' +
+        commons.Escaper.ecapeVariable('$returnPolicyId');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ReturnPolicyOnline.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all existing return policies.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The id of the merchant for which to retrieve the
+  /// return policy online object.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListReturnPolicyOnlineResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListReturnPolicyOnlineResponse> list(
+    core.String merchantId, {
+    core.String $fields,
+  }) async {
+    if (merchantId == null) {
+      throw core.ArgumentError('Parameter merchantId is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/returnpolicyonline';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListReturnPolicyOnlineResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing return policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The id of the merchant for which to retrieve the
+  /// return policy online object.
+  ///
+  /// [returnPolicyId] - Required. The id of the return policy to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ReturnPolicyOnline].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ReturnPolicyOnline> patch(
+    ReturnPolicyOnline request,
+    core.String merchantId,
+    core.String returnPolicyId, {
+    core.String $fields,
+  }) async {
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
+    if (merchantId == null) {
+      throw core.ArgumentError('Parameter merchantId is required.');
+    }
+    if (returnPolicyId == null) {
+      throw core.ArgumentError('Parameter returnPolicyId is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/returnpolicyonline/' +
+        commons.Escaper.ecapeVariable('$returnPolicyId');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ReturnPolicyOnline.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -8760,8 +9005,7 @@ class AccountsCustomBatchRequestEntryLinkRequest {
   /// Provided services.
   ///
   /// Acceptable values are: - "`shoppingAdsProductManagement`" -
-  /// "`shoppingAdsOther`" - "`shoppingActionsProductManagement`" -
-  /// "`shoppingActionsOrderManagement`" - "`shoppingActionsOther`"
+  /// "`shoppingActionsProductManagement`" - "`shoppingActionsOrderManagement`"
   core.List<core.String> services;
 
   AccountsCustomBatchRequestEntryLinkRequest();
@@ -12676,6 +12920,29 @@ class ListRepricingRulesResponse {
         if (repricingRules != null)
           'repricingRules':
               repricingRules.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// Response message for the `ListReturnPolicyOnline` method.
+class ListReturnPolicyOnlineResponse {
+  /// The retrieved return policies.
+  core.List<ReturnPolicyOnline> returnPolicies;
+
+  ListReturnPolicyOnlineResponse();
+
+  ListReturnPolicyOnlineResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('returnPolicies')) {
+      returnPolicies = (_json['returnPolicies'] as core.List)
+          .map<ReturnPolicyOnline>((value) => ReturnPolicyOnline.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (returnPolicies != null)
+          'returnPolicies':
+              returnPolicies.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -21309,7 +21576,8 @@ class RepricingRule {
   /// Required when the rule type is TYPE_COGS_BASED.
   RepricingRuleCostOfGoodsSaleRule cogsBasedRule;
 
-  /// CLDR country code (e.g. "US").
+  /// [CLDR country code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
+  /// (e.g. "US").
   ///
   /// Required. Immutable.
   core.String countryCode;
@@ -22094,6 +22362,276 @@ class ReturnPolicy {
       };
 }
 
+/// Return policy online object.
+///
+/// This is currently used to represent return policies for ads and free
+/// listings programs.
+class ReturnPolicyOnline {
+  /// The countries of sale where the return policy is applicable.
+  ///
+  /// The values must be a valid 2 letter ISO 3166 code, e.g. "US".
+  core.List<core.String> countries;
+
+  /// The item conditions that are accepted for returns.
+  ///
+  /// This is required to not be empty unless the type of return policy is
+  /// noReturns.
+  core.List<core.String> itemConditions;
+
+  /// The unique user-defined label of the return policy.
+  ///
+  /// The same label cannot be used in different return policies for the same
+  /// country. Policies with the label 'default' will apply to all products,
+  /// unless a product specifies a return_policy_label attribute.
+  core.String label;
+
+  /// The name of the policy as shown in Merchant Center.
+  core.String name;
+
+  /// The return policy.
+  ReturnPolicyOnlinePolicy policy;
+
+  /// The restocking fee that applies to all return reason categories.
+  ///
+  /// This would be treated as a free restocking fee if the value is not set.
+  ReturnPolicyOnlineRestockingFee restockingFee;
+
+  /// The return methods of how customers can return an item.
+  ///
+  /// This value is required to not be empty unless the type of return policy is
+  /// noReturns.
+  core.List<core.String> returnMethods;
+
+  /// Return policy ID generated by Google.
+  ///
+  /// Output only.
+  core.String returnPolicyId;
+
+  /// The return policy uri.
+  ///
+  /// This can used by Google to do a sanity check for the policy.
+  core.String returnPolicyUri;
+
+  /// The return reason category information.
+  ///
+  /// This required to not be empty unless the type of return policy is
+  /// noReturns.
+  core.List<ReturnPolicyOnlineReturnReasonCategoryInfo>
+      returnReasonCategoryInfo;
+
+  ReturnPolicyOnline();
+
+  ReturnPolicyOnline.fromJson(core.Map _json) {
+    if (_json.containsKey('countries')) {
+      countries = (_json['countries'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('itemConditions')) {
+      itemConditions = (_json['itemConditions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('label')) {
+      label = _json['label'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('policy')) {
+      policy = ReturnPolicyOnlinePolicy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('restockingFee')) {
+      restockingFee = ReturnPolicyOnlineRestockingFee.fromJson(
+          _json['restockingFee'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('returnMethods')) {
+      returnMethods = (_json['returnMethods'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('returnPolicyId')) {
+      returnPolicyId = _json['returnPolicyId'] as core.String;
+    }
+    if (_json.containsKey('returnPolicyUri')) {
+      returnPolicyUri = _json['returnPolicyUri'] as core.String;
+    }
+    if (_json.containsKey('returnReasonCategoryInfo')) {
+      returnReasonCategoryInfo =
+          (_json['returnReasonCategoryInfo'] as core.List)
+              .map<ReturnPolicyOnlineReturnReasonCategoryInfo>((value) =>
+                  ReturnPolicyOnlineReturnReasonCategoryInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (countries != null) 'countries': countries,
+        if (itemConditions != null) 'itemConditions': itemConditions,
+        if (label != null) 'label': label,
+        if (name != null) 'name': name,
+        if (policy != null) 'policy': policy.toJson(),
+        if (restockingFee != null) 'restockingFee': restockingFee.toJson(),
+        if (returnMethods != null) 'returnMethods': returnMethods,
+        if (returnPolicyId != null) 'returnPolicyId': returnPolicyId,
+        if (returnPolicyUri != null) 'returnPolicyUri': returnPolicyUri,
+        if (returnReasonCategoryInfo != null)
+          'returnReasonCategoryInfo':
+              returnReasonCategoryInfo.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// The available policies.
+class ReturnPolicyOnlinePolicy {
+  /// The number of days items can be returned after delivery, where one day is
+  /// defined to be 24 hours after the delivery timestamp.
+  ///
+  /// Required for `numberOfDaysAfterDelivery` returns.
+  core.String days;
+
+  /// Policy type.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "NUMBER_OF_DAYS_AFTER_DELIVERY" : Number of days after a return is
+  /// delivered.
+  /// - "NO_RETURNS" : No returns.
+  /// - "LIFETIME_RETURNS" : Life time returns.
+  core.String type;
+
+  ReturnPolicyOnlinePolicy();
+
+  ReturnPolicyOnlinePolicy.fromJson(core.Map _json) {
+    if (_json.containsKey('days')) {
+      days = _json['days'] as core.String;
+    }
+    if (_json.containsKey('type')) {
+      type = _json['type'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (days != null) 'days': days,
+        if (type != null) 'type': type,
+      };
+}
+
+/// The restocking fee.
+///
+/// This can either be a fixed fee or a micro percent.
+class ReturnPolicyOnlineRestockingFee {
+  /// Fixed restocking fee.
+  PriceAmount fixedFee;
+
+  /// Percent of total price in micros.
+  ///
+  /// 15,000,000 means 15% of the total price would be charged.
+  core.int microPercent;
+
+  ReturnPolicyOnlineRestockingFee();
+
+  ReturnPolicyOnlineRestockingFee.fromJson(core.Map _json) {
+    if (_json.containsKey('fixedFee')) {
+      fixedFee = PriceAmount.fromJson(
+          _json['fixedFee'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('microPercent')) {
+      microPercent = _json['microPercent'] as core.int;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (fixedFee != null) 'fixedFee': fixedFee.toJson(),
+        if (microPercent != null) 'microPercent': microPercent,
+      };
+}
+
+/// The return reason category info wrapper.
+class ReturnPolicyOnlineReturnReasonCategoryInfo {
+  /// The corresponding return label source.
+  /// Possible string values are:
+  /// - "RETURN_LABEL_SOURCE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "DOWNLOAD_AND_PRINT" : Download and print the label.
+  /// - "IN_THE_BOX" : Label in the box.
+  /// - "CUSTOMER_RESPONSIBILITY" : Customers' responsibility to get the label.
+  core.String returnLabelSource;
+
+  /// The return reason category.
+  /// Possible string values are:
+  /// - "RETURN_REASON_CATEGORY_UNSPECIFIED" : Default value. This value is
+  /// unused.
+  /// - "BUYER_REMORSE" : Buyer remorse.
+  /// - "ITEM_DEFECT" : Item defect.
+  core.String returnReasonCategory;
+
+  /// The corresponding return shipping fee.
+  ///
+  /// This is only applicable when returnLabelSource is not the customer's
+  /// responsibility.
+  ReturnPolicyOnlineReturnShippingFee returnShippingFee;
+
+  ReturnPolicyOnlineReturnReasonCategoryInfo();
+
+  ReturnPolicyOnlineReturnReasonCategoryInfo.fromJson(core.Map _json) {
+    if (_json.containsKey('returnLabelSource')) {
+      returnLabelSource = _json['returnLabelSource'] as core.String;
+    }
+    if (_json.containsKey('returnReasonCategory')) {
+      returnReasonCategory = _json['returnReasonCategory'] as core.String;
+    }
+    if (_json.containsKey('returnShippingFee')) {
+      returnShippingFee = ReturnPolicyOnlineReturnShippingFee.fromJson(
+          _json['returnShippingFee'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (returnLabelSource != null) 'returnLabelSource': returnLabelSource,
+        if (returnReasonCategory != null)
+          'returnReasonCategory': returnReasonCategory,
+        if (returnShippingFee != null)
+          'returnShippingFee': returnShippingFee.toJson(),
+      };
+}
+
+/// The return shipping fee.
+///
+/// This can either be a fixed fee or a boolean to indicate that the customer
+/// pays the actual shipping cost.
+class ReturnPolicyOnlineReturnShippingFee {
+  /// Fixed return shipping fee amount.
+  ///
+  /// This value is only applicable when type is FIXED. We will treat the return
+  /// shipping fee as free if type is FIXED and this value is not set.
+  PriceAmount fixedFee;
+
+  /// Type of return shipping fee.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "FIXED" : The return shipping fee is a fixed value.
+  /// - "CUSTOMER_PAYING_ACTUAL_FEE" : Customer will pay the actual return
+  /// shipping fee.
+  core.String type;
+
+  ReturnPolicyOnlineReturnShippingFee();
+
+  ReturnPolicyOnlineReturnShippingFee.fromJson(core.Map _json) {
+    if (_json.containsKey('fixedFee')) {
+      fixedFee = PriceAmount.fromJson(
+          _json['fixedFee'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('type')) {
+      type = _json['type'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (fixedFee != null) 'fixedFee': fixedFee.toJson(),
+        if (type != null) 'type': type,
+      };
+}
+
 class ReturnPolicyPolicy {
   /// Last day for returning the items.
   ///
@@ -22730,7 +23268,7 @@ class SearchRequest {
   /// `next_page_token` in the previous response should be used.
   core.String pageToken;
 
-  /// Search query that defines performance metrics to retrieve and dimensions
+  /// Query that defines performance metrics to retrieve and dimensions
   /// according to which the metrics are to be segmented.
   ///
   ///
@@ -23257,7 +23795,8 @@ class SettlementTransactionTransaction {
   /// "`reversalRefund`" - "`issueRelatedRefundAndReplacement`" -
   /// "`returnLabelShippingFeeTransaction`" -
   /// "`reversalIssueRelatedRefundAndReplacement`" -
-  /// "`reversalReturnLabelShippingFeeTransaction`"
+  /// "`reversalReturnLabelShippingFeeTransaction`" -
+  /// "`lumpSumCorrectionTransaction`"
   core.String type;
 
   SettlementTransactionTransaction();

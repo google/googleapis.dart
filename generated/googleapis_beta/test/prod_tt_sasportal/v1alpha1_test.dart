@@ -27,14 +27,14 @@ import 'package:googleapis_beta/prod_tt_sasportal/v1alpha1.dart' as api;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed7164() {
+core.List<core.String> buildUnnamed7208() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7164(core.List<core.String> o) {
+void checkUnnamed7208(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -45,7 +45,7 @@ api.SasPortalAssignment buildSasPortalAssignment() {
   var o = api.SasPortalAssignment();
   buildCounterSasPortalAssignment++;
   if (buildCounterSasPortalAssignment < 3) {
-    o.members = buildUnnamed7164();
+    o.members = buildUnnamed7208();
     o.role = 'foo';
   }
   buildCounterSasPortalAssignment--;
@@ -55,7 +55,7 @@ api.SasPortalAssignment buildSasPortalAssignment() {
 void checkSasPortalAssignment(api.SasPortalAssignment o) {
   buildCounterSasPortalAssignment++;
   if (buildCounterSasPortalAssignment < 3) {
-    checkUnnamed7164(o.members);
+    checkUnnamed7208(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterSasPortalAssignment--;
@@ -84,14 +84,14 @@ void checkSasPortalCreateSignedDeviceRequest(
   buildCounterSasPortalCreateSignedDeviceRequest--;
 }
 
-core.List<core.String> buildUnnamed7165() {
+core.List<core.String> buildUnnamed7209() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7165(core.List<core.String> o) {
+void checkUnnamed7209(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -104,7 +104,7 @@ api.SasPortalCustomer buildSasPortalCustomer() {
   if (buildCounterSasPortalCustomer < 3) {
     o.displayName = 'foo';
     o.name = 'foo';
-    o.sasUserIds = buildUnnamed7165();
+    o.sasUserIds = buildUnnamed7209();
   }
   buildCounterSasPortalCustomer--;
   return o;
@@ -115,32 +115,32 @@ void checkSasPortalCustomer(api.SasPortalCustomer o) {
   if (buildCounterSasPortalCustomer < 3) {
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed7165(o.sasUserIds);
+    checkUnnamed7209(o.sasUserIds);
   }
   buildCounterSasPortalCustomer--;
 }
 
-core.List<core.String> buildUnnamed7166() {
+core.List<core.String> buildUnnamed7210() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7166(core.List<core.String> o) {
+void checkUnnamed7210(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed7167() {
+core.List<core.String> buildUnnamed7211() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7167(core.List<core.String> o) {
+void checkUnnamed7211(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -151,11 +151,11 @@ api.SasPortalDeployment buildSasPortalDeployment() {
   var o = api.SasPortalDeployment();
   buildCounterSasPortalDeployment++;
   if (buildCounterSasPortalDeployment < 3) {
-    o.allowedBillingModes = buildUnnamed7166();
+    o.allowedBillingModes = buildUnnamed7210();
     o.defaultBillingMode = 'foo';
     o.displayName = 'foo';
     o.name = 'foo';
-    o.sasUserIds = buildUnnamed7167();
+    o.sasUserIds = buildUnnamed7211();
   }
   buildCounterSasPortalDeployment--;
   return o;
@@ -164,36 +164,36 @@ api.SasPortalDeployment buildSasPortalDeployment() {
 void checkSasPortalDeployment(api.SasPortalDeployment o) {
   buildCounterSasPortalDeployment++;
   if (buildCounterSasPortalDeployment < 3) {
-    checkUnnamed7166(o.allowedBillingModes);
+    checkUnnamed7210(o.allowedBillingModes);
     unittest.expect(o.defaultBillingMode, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed7167(o.sasUserIds);
+    checkUnnamed7211(o.sasUserIds);
   }
   buildCounterSasPortalDeployment--;
 }
 
-core.List<api.SasPortalFrequencyRange> buildUnnamed7168() {
+core.List<api.SasPortalFrequencyRange> buildUnnamed7212() {
   var o = <api.SasPortalFrequencyRange>[];
   o.add(buildSasPortalFrequencyRange());
   o.add(buildSasPortalFrequencyRange());
   return o;
 }
 
-void checkUnnamed7168(core.List<api.SasPortalFrequencyRange> o) {
+void checkUnnamed7212(core.List<api.SasPortalFrequencyRange> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSasPortalFrequencyRange(o[0] as api.SasPortalFrequencyRange);
   checkSasPortalFrequencyRange(o[1] as api.SasPortalFrequencyRange);
 }
 
-core.List<api.SasPortalDeviceGrant> buildUnnamed7169() {
+core.List<api.SasPortalDeviceGrant> buildUnnamed7213() {
   var o = <api.SasPortalDeviceGrant>[];
   o.add(buildSasPortalDeviceGrant());
   o.add(buildSasPortalDeviceGrant());
   return o;
 }
 
-void checkUnnamed7169(core.List<api.SasPortalDeviceGrant> o) {
+void checkUnnamed7213(core.List<api.SasPortalDeviceGrant> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSasPortalDeviceGrant(o[0] as api.SasPortalDeviceGrant);
   checkSasPortalDeviceGrant(o[1] as api.SasPortalDeviceGrant);
@@ -208,8 +208,8 @@ api.SasPortalDevice buildSasPortalDevice() {
     o.deviceMetadata = buildSasPortalDeviceMetadata();
     o.displayName = 'foo';
     o.fccId = 'foo';
-    o.grantRangeAllowlists = buildUnnamed7168();
-    o.grants = buildUnnamed7169();
+    o.grantRangeAllowlists = buildUnnamed7212();
+    o.grants = buildUnnamed7213();
     o.name = 'foo';
     o.preloadedConfig = buildSasPortalDeviceConfig();
     o.serialNumber = 'foo';
@@ -227,8 +227,8 @@ void checkSasPortalDevice(api.SasPortalDevice o) {
         o.deviceMetadata as api.SasPortalDeviceMetadata);
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.fccId, unittest.equals('foo'));
-    checkUnnamed7168(o.grantRangeAllowlists);
-    checkUnnamed7169(o.grants);
+    checkUnnamed7212(o.grantRangeAllowlists);
+    checkUnnamed7213(o.grants);
     unittest.expect(o.name, unittest.equals('foo'));
     checkSasPortalDeviceConfig(o.preloadedConfig as api.SasPortalDeviceConfig);
     unittest.expect(o.serialNumber, unittest.equals('foo'));
@@ -258,14 +258,14 @@ void checkSasPortalDeviceAirInterface(api.SasPortalDeviceAirInterface o) {
   buildCounterSasPortalDeviceAirInterface--;
 }
 
-core.List<core.String> buildUnnamed7170() {
+core.List<core.String> buildUnnamed7214() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7170(core.List<core.String> o) {
+void checkUnnamed7214(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -281,7 +281,7 @@ api.SasPortalDeviceConfig buildSasPortalDeviceConfig() {
     o.category = 'foo';
     o.installationParams = buildSasPortalInstallationParams();
     o.isSigned = true;
-    o.measurementCapabilities = buildUnnamed7170();
+    o.measurementCapabilities = buildUnnamed7214();
     o.model = buildSasPortalDeviceModel();
     o.state = 'foo';
     o.updateTime = 'foo';
@@ -301,7 +301,7 @@ void checkSasPortalDeviceConfig(api.SasPortalDeviceConfig o) {
     checkSasPortalInstallationParams(
         o.installationParams as api.SasPortalInstallationParams);
     unittest.expect(o.isSigned, unittest.isTrue);
-    checkUnnamed7170(o.measurementCapabilities);
+    checkUnnamed7214(o.measurementCapabilities);
     checkSasPortalDeviceModel(o.model as api.SasPortalDeviceModel);
     unittest.expect(o.state, unittest.equals('foo'));
     unittest.expect(o.updateTime, unittest.equals('foo'));
@@ -310,27 +310,27 @@ void checkSasPortalDeviceConfig(api.SasPortalDeviceConfig o) {
   buildCounterSasPortalDeviceConfig--;
 }
 
-core.List<api.SasPortalDpaMoveList> buildUnnamed7171() {
+core.List<api.SasPortalDpaMoveList> buildUnnamed7215() {
   var o = <api.SasPortalDpaMoveList>[];
   o.add(buildSasPortalDpaMoveList());
   o.add(buildSasPortalDpaMoveList());
   return o;
 }
 
-void checkUnnamed7171(core.List<api.SasPortalDpaMoveList> o) {
+void checkUnnamed7215(core.List<api.SasPortalDpaMoveList> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSasPortalDpaMoveList(o[0] as api.SasPortalDpaMoveList);
   checkSasPortalDpaMoveList(o[1] as api.SasPortalDpaMoveList);
 }
 
-core.List<core.String> buildUnnamed7172() {
+core.List<core.String> buildUnnamed7216() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7172(core.List<core.String> o) {
+void checkUnnamed7216(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -346,9 +346,9 @@ api.SasPortalDeviceGrant buildSasPortalDeviceGrant() {
     o.frequencyRange = buildSasPortalFrequencyRange();
     o.grantId = 'foo';
     o.maxEirp = 42.0;
-    o.moveList = buildUnnamed7171();
+    o.moveList = buildUnnamed7215();
     o.state = 'foo';
-    o.suspensionReason = buildUnnamed7172();
+    o.suspensionReason = buildUnnamed7216();
   }
   buildCounterSasPortalDeviceGrant--;
   return o;
@@ -363,9 +363,9 @@ void checkSasPortalDeviceGrant(api.SasPortalDeviceGrant o) {
         o.frequencyRange as api.SasPortalFrequencyRange);
     unittest.expect(o.grantId, unittest.equals('foo'));
     unittest.expect(o.maxEirp, unittest.equals(42.0));
-    checkUnnamed7171(o.moveList);
+    checkUnnamed7215(o.moveList);
     unittest.expect(o.state, unittest.equals('foo'));
-    checkUnnamed7172(o.suspensionReason);
+    checkUnnamed7216(o.suspensionReason);
   }
   buildCounterSasPortalDeviceGrant--;
 }
@@ -569,14 +569,14 @@ void checkSasPortalInstallationParams(api.SasPortalInstallationParams o) {
   buildCounterSasPortalInstallationParams--;
 }
 
-core.List<api.SasPortalCustomer> buildUnnamed7173() {
+core.List<api.SasPortalCustomer> buildUnnamed7217() {
   var o = <api.SasPortalCustomer>[];
   o.add(buildSasPortalCustomer());
   o.add(buildSasPortalCustomer());
   return o;
 }
 
-void checkUnnamed7173(core.List<api.SasPortalCustomer> o) {
+void checkUnnamed7217(core.List<api.SasPortalCustomer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSasPortalCustomer(o[0] as api.SasPortalCustomer);
   checkSasPortalCustomer(o[1] as api.SasPortalCustomer);
@@ -587,7 +587,7 @@ api.SasPortalListCustomersResponse buildSasPortalListCustomersResponse() {
   var o = api.SasPortalListCustomersResponse();
   buildCounterSasPortalListCustomersResponse++;
   if (buildCounterSasPortalListCustomersResponse < 3) {
-    o.customers = buildUnnamed7173();
+    o.customers = buildUnnamed7217();
     o.nextPageToken = 'foo';
   }
   buildCounterSasPortalListCustomersResponse--;
@@ -597,20 +597,20 @@ api.SasPortalListCustomersResponse buildSasPortalListCustomersResponse() {
 void checkSasPortalListCustomersResponse(api.SasPortalListCustomersResponse o) {
   buildCounterSasPortalListCustomersResponse++;
   if (buildCounterSasPortalListCustomersResponse < 3) {
-    checkUnnamed7173(o.customers);
+    checkUnnamed7217(o.customers);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterSasPortalListCustomersResponse--;
 }
 
-core.List<api.SasPortalDeployment> buildUnnamed7174() {
+core.List<api.SasPortalDeployment> buildUnnamed7218() {
   var o = <api.SasPortalDeployment>[];
   o.add(buildSasPortalDeployment());
   o.add(buildSasPortalDeployment());
   return o;
 }
 
-void checkUnnamed7174(core.List<api.SasPortalDeployment> o) {
+void checkUnnamed7218(core.List<api.SasPortalDeployment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSasPortalDeployment(o[0] as api.SasPortalDeployment);
   checkSasPortalDeployment(o[1] as api.SasPortalDeployment);
@@ -621,7 +621,7 @@ api.SasPortalListDeploymentsResponse buildSasPortalListDeploymentsResponse() {
   var o = api.SasPortalListDeploymentsResponse();
   buildCounterSasPortalListDeploymentsResponse++;
   if (buildCounterSasPortalListDeploymentsResponse < 3) {
-    o.deployments = buildUnnamed7174();
+    o.deployments = buildUnnamed7218();
     o.nextPageToken = 'foo';
   }
   buildCounterSasPortalListDeploymentsResponse--;
@@ -632,20 +632,20 @@ void checkSasPortalListDeploymentsResponse(
     api.SasPortalListDeploymentsResponse o) {
   buildCounterSasPortalListDeploymentsResponse++;
   if (buildCounterSasPortalListDeploymentsResponse < 3) {
-    checkUnnamed7174(o.deployments);
+    checkUnnamed7218(o.deployments);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterSasPortalListDeploymentsResponse--;
 }
 
-core.List<api.SasPortalDevice> buildUnnamed7175() {
+core.List<api.SasPortalDevice> buildUnnamed7219() {
   var o = <api.SasPortalDevice>[];
   o.add(buildSasPortalDevice());
   o.add(buildSasPortalDevice());
   return o;
 }
 
-void checkUnnamed7175(core.List<api.SasPortalDevice> o) {
+void checkUnnamed7219(core.List<api.SasPortalDevice> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSasPortalDevice(o[0] as api.SasPortalDevice);
   checkSasPortalDevice(o[1] as api.SasPortalDevice);
@@ -656,7 +656,7 @@ api.SasPortalListDevicesResponse buildSasPortalListDevicesResponse() {
   var o = api.SasPortalListDevicesResponse();
   buildCounterSasPortalListDevicesResponse++;
   if (buildCounterSasPortalListDevicesResponse < 3) {
-    o.devices = buildUnnamed7175();
+    o.devices = buildUnnamed7219();
     o.nextPageToken = 'foo';
   }
   buildCounterSasPortalListDevicesResponse--;
@@ -666,20 +666,20 @@ api.SasPortalListDevicesResponse buildSasPortalListDevicesResponse() {
 void checkSasPortalListDevicesResponse(api.SasPortalListDevicesResponse o) {
   buildCounterSasPortalListDevicesResponse++;
   if (buildCounterSasPortalListDevicesResponse < 3) {
-    checkUnnamed7175(o.devices);
+    checkUnnamed7219(o.devices);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterSasPortalListDevicesResponse--;
 }
 
-core.List<api.SasPortalNode> buildUnnamed7176() {
+core.List<api.SasPortalNode> buildUnnamed7220() {
   var o = <api.SasPortalNode>[];
   o.add(buildSasPortalNode());
   o.add(buildSasPortalNode());
   return o;
 }
 
-void checkUnnamed7176(core.List<api.SasPortalNode> o) {
+void checkUnnamed7220(core.List<api.SasPortalNode> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSasPortalNode(o[0] as api.SasPortalNode);
   checkSasPortalNode(o[1] as api.SasPortalNode);
@@ -691,7 +691,7 @@ api.SasPortalListNodesResponse buildSasPortalListNodesResponse() {
   buildCounterSasPortalListNodesResponse++;
   if (buildCounterSasPortalListNodesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.nodes = buildUnnamed7176();
+    o.nodes = buildUnnamed7220();
   }
   buildCounterSasPortalListNodesResponse--;
   return o;
@@ -701,7 +701,7 @@ void checkSasPortalListNodesResponse(api.SasPortalListNodesResponse o) {
   buildCounterSasPortalListNodesResponse++;
   if (buildCounterSasPortalListNodesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed7176(o.nodes);
+    checkUnnamed7220(o.nodes);
   }
   buildCounterSasPortalListNodesResponse--;
 }
@@ -763,14 +763,14 @@ void checkSasPortalMoveNodeRequest(api.SasPortalMoveNodeRequest o) {
   buildCounterSasPortalMoveNodeRequest--;
 }
 
-core.List<core.String> buildUnnamed7177() {
+core.List<core.String> buildUnnamed7221() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7177(core.List<core.String> o) {
+void checkUnnamed7221(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -783,7 +783,7 @@ api.SasPortalNode buildSasPortalNode() {
   if (buildCounterSasPortalNode < 3) {
     o.displayName = 'foo';
     o.name = 'foo';
-    o.sasUserIds = buildUnnamed7177();
+    o.sasUserIds = buildUnnamed7221();
   }
   buildCounterSasPortalNode--;
   return o;
@@ -794,12 +794,12 @@ void checkSasPortalNode(api.SasPortalNode o) {
   if (buildCounterSasPortalNode < 3) {
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed7177(o.sasUserIds);
+    checkUnnamed7221(o.sasUserIds);
   }
   buildCounterSasPortalNode--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed7178() {
+core.Map<core.String, core.Object> buildUnnamed7222() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -814,7 +814,7 @@ core.Map<core.String, core.Object> buildUnnamed7178() {
   return o;
 }
 
-void checkUnnamed7178(core.Map<core.String, core.Object> o) {
+void checkUnnamed7222(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -828,7 +828,7 @@ void checkUnnamed7178(core.Map<core.String, core.Object> o) {
   unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
-core.Map<core.String, core.Object> buildUnnamed7179() {
+core.Map<core.String, core.Object> buildUnnamed7223() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -843,7 +843,7 @@ core.Map<core.String, core.Object> buildUnnamed7179() {
   return o;
 }
 
-void checkUnnamed7179(core.Map<core.String, core.Object> o) {
+void checkUnnamed7223(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -864,9 +864,9 @@ api.SasPortalOperation buildSasPortalOperation() {
   if (buildCounterSasPortalOperation < 3) {
     o.done = true;
     o.error = buildSasPortalStatus();
-    o.metadata = buildUnnamed7178();
+    o.metadata = buildUnnamed7222();
     o.name = 'foo';
-    o.response = buildUnnamed7179();
+    o.response = buildUnnamed7223();
   }
   buildCounterSasPortalOperation--;
   return o;
@@ -877,21 +877,21 @@ void checkSasPortalOperation(api.SasPortalOperation o) {
   if (buildCounterSasPortalOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
     checkSasPortalStatus(o.error as api.SasPortalStatus);
-    checkUnnamed7178(o.metadata);
+    checkUnnamed7222(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed7179(o.response);
+    checkUnnamed7223(o.response);
   }
   buildCounterSasPortalOperation--;
 }
 
-core.List<api.SasPortalAssignment> buildUnnamed7180() {
+core.List<api.SasPortalAssignment> buildUnnamed7224() {
   var o = <api.SasPortalAssignment>[];
   o.add(buildSasPortalAssignment());
   o.add(buildSasPortalAssignment());
   return o;
 }
 
-void checkUnnamed7180(core.List<api.SasPortalAssignment> o) {
+void checkUnnamed7224(core.List<api.SasPortalAssignment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSasPortalAssignment(o[0] as api.SasPortalAssignment);
   checkSasPortalAssignment(o[1] as api.SasPortalAssignment);
@@ -902,7 +902,7 @@ api.SasPortalPolicy buildSasPortalPolicy() {
   var o = api.SasPortalPolicy();
   buildCounterSasPortalPolicy++;
   if (buildCounterSasPortalPolicy < 3) {
-    o.assignments = buildUnnamed7180();
+    o.assignments = buildUnnamed7224();
     o.etag = 'foo';
   }
   buildCounterSasPortalPolicy--;
@@ -912,7 +912,7 @@ api.SasPortalPolicy buildSasPortalPolicy() {
 void checkSasPortalPolicy(api.SasPortalPolicy o) {
   buildCounterSasPortalPolicy++;
   if (buildCounterSasPortalPolicy < 3) {
-    checkUnnamed7180(o.assignments);
+    checkUnnamed7224(o.assignments);
     unittest.expect(o.etag, unittest.equals('foo'));
   }
   buildCounterSasPortalPolicy--;
@@ -958,7 +958,7 @@ void checkSasPortalSignDeviceRequest(api.SasPortalSignDeviceRequest o) {
   buildCounterSasPortalSignDeviceRequest--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed7181() {
+core.Map<core.String, core.Object> buildUnnamed7225() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -973,7 +973,7 @@ core.Map<core.String, core.Object> buildUnnamed7181() {
   return o;
 }
 
-void checkUnnamed7181(core.Map<core.String, core.Object> o) {
+void checkUnnamed7225(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -987,17 +987,17 @@ void checkUnnamed7181(core.Map<core.String, core.Object> o) {
   unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed7182() {
+core.List<core.Map<core.String, core.Object>> buildUnnamed7226() {
   var o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed7181());
-  o.add(buildUnnamed7181());
+  o.add(buildUnnamed7225());
+  o.add(buildUnnamed7225());
   return o;
 }
 
-void checkUnnamed7182(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed7226(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed7181(o[0]);
-  checkUnnamed7181(o[1]);
+  checkUnnamed7225(o[0]);
+  checkUnnamed7225(o[1]);
 }
 
 core.int buildCounterSasPortalStatus = 0;
@@ -1006,7 +1006,7 @@ api.SasPortalStatus buildSasPortalStatus() {
   buildCounterSasPortalStatus++;
   if (buildCounterSasPortalStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed7182();
+    o.details = buildUnnamed7226();
     o.message = 'foo';
   }
   buildCounterSasPortalStatus--;
@@ -1017,20 +1017,20 @@ void checkSasPortalStatus(api.SasPortalStatus o) {
   buildCounterSasPortalStatus++;
   if (buildCounterSasPortalStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed7182(o.details);
+    checkUnnamed7226(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterSasPortalStatus--;
 }
 
-core.List<core.String> buildUnnamed7183() {
+core.List<core.String> buildUnnamed7227() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7183(core.List<core.String> o) {
+void checkUnnamed7227(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1041,7 +1041,7 @@ api.SasPortalTestPermissionsRequest buildSasPortalTestPermissionsRequest() {
   var o = api.SasPortalTestPermissionsRequest();
   buildCounterSasPortalTestPermissionsRequest++;
   if (buildCounterSasPortalTestPermissionsRequest < 3) {
-    o.permissions = buildUnnamed7183();
+    o.permissions = buildUnnamed7227();
     o.resource = 'foo';
   }
   buildCounterSasPortalTestPermissionsRequest--;
@@ -1052,20 +1052,20 @@ void checkSasPortalTestPermissionsRequest(
     api.SasPortalTestPermissionsRequest o) {
   buildCounterSasPortalTestPermissionsRequest++;
   if (buildCounterSasPortalTestPermissionsRequest < 3) {
-    checkUnnamed7183(o.permissions);
+    checkUnnamed7227(o.permissions);
     unittest.expect(o.resource, unittest.equals('foo'));
   }
   buildCounterSasPortalTestPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed7184() {
+core.List<core.String> buildUnnamed7228() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7184(core.List<core.String> o) {
+void checkUnnamed7228(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1076,7 +1076,7 @@ api.SasPortalTestPermissionsResponse buildSasPortalTestPermissionsResponse() {
   var o = api.SasPortalTestPermissionsResponse();
   buildCounterSasPortalTestPermissionsResponse++;
   if (buildCounterSasPortalTestPermissionsResponse < 3) {
-    o.permissions = buildUnnamed7184();
+    o.permissions = buildUnnamed7228();
   }
   buildCounterSasPortalTestPermissionsResponse--;
   return o;
@@ -1086,7 +1086,7 @@ void checkSasPortalTestPermissionsResponse(
     api.SasPortalTestPermissionsResponse o) {
   buildCounterSasPortalTestPermissionsResponse++;
   if (buildCounterSasPortalTestPermissionsResponse < 3) {
-    checkUnnamed7184(o.permissions);
+    checkUnnamed7228(o.permissions);
   }
   buildCounterSasPortalTestPermissionsResponse--;
 }

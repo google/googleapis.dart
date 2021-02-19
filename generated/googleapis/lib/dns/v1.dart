@@ -82,7 +82,7 @@ class ChangesResource {
 
   ChangesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Atomically update the ResourceRecordSet collection.
+  /// Atomically updates the ResourceRecordSet collection.
   ///
   /// [request] - The metadata request object.
   ///
@@ -142,7 +142,7 @@ class ChangesResource {
     return Change.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Fetch the representation of an existing Change.
+  /// Fetches the representation of an existing Change.
   ///
   /// Request parameters:
   ///
@@ -204,7 +204,7 @@ class ChangesResource {
     return Change.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Enumerate Changes to a ResourceRecordSet collection.
+  /// Enumerates Changes to a ResourceRecordSet collection.
   ///
   /// Request parameters:
   ///
@@ -214,7 +214,7 @@ class ChangesResource {
   /// be the managed zone name or ID.
   ///
   /// [maxResults] - Optional. Maximum number of results to be returned. If
-  /// unspecified, the server will decide how many results to return.
+  /// unspecified, the server decides how many results to return.
   ///
   /// [pageToken] - Optional. A tag returned by a previous list request that was
   /// truncated. Use this parameter to continue a previous list request.
@@ -296,7 +296,7 @@ class DnsKeysResource {
   ///
   /// [digestType] - An optional comma-separated list of digest types to compute
   /// and display for key signing keys. If omitted, the recommended digest type
-  /// will be computed and displayed.
+  /// is computed and displayed.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -357,10 +357,10 @@ class DnsKeysResource {
   ///
   /// [digestType] - An optional comma-separated list of digest types to compute
   /// and display for key signing keys. If omitted, the recommended digest type
-  /// will be computed and displayed.
+  /// is computed and displayed.
   ///
   /// [maxResults] - Optional. Maximum number of results to be returned. If
-  /// unspecified, the server will decide how many results to return.
+  /// unspecified, the server decides how many results to return.
   ///
   /// [pageToken] - Optional. A tag returned by a previous list request that was
   /// truncated. Use this parameter to continue a previous list request.
@@ -418,7 +418,7 @@ class ManagedZoneOperationsResource {
   ManagedZoneOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Fetch the representation of an existing Operation.
+  /// Fetches the representation of an existing Operation.
   ///
   /// Request parameters:
   ///
@@ -426,7 +426,8 @@ class ManagedZoneOperationsResource {
   ///
   /// [managedZone] - Identifies the managed zone addressed by this request.
   ///
-  /// [operation] - Identifies the operation addressed by this request.
+  /// [operation] - Identifies the operation addressed by this request (ID of
+  /// the operation).
   ///
   /// [clientOperationId] - For mutating operation requests only. An optional
   /// identifier specified by the client. Must be unique for operation resources
@@ -478,7 +479,7 @@ class ManagedZoneOperationsResource {
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Enumerate Operations for the given ManagedZone.
+  /// Enumerates Operations for the given ManagedZone.
   ///
   /// Request parameters:
   ///
@@ -487,7 +488,7 @@ class ManagedZoneOperationsResource {
   /// [managedZone] - Identifies the managed zone addressed by this request.
   ///
   /// [maxResults] - Optional. Maximum number of results to be returned. If
-  /// unspecified, the server will decide how many results to return.
+  /// unspecified, the server decides how many results to return.
   ///
   /// [pageToken] - Optional. A tag returned by a previous list request that was
   /// truncated. Use this parameter to continue a previous list request.
@@ -716,7 +717,7 @@ class ManagedZonesResource {
   /// [dnsName] - Restricts the list to return only zones with this domain name.
   ///
   /// [maxResults] - Optional. Maximum number of results to be returned. If
-  /// unspecified, the server will decide how many results to return.
+  /// unspecified, the server decides how many results to return.
   ///
   /// [pageToken] - Optional. A tag returned by a previous list request that was
   /// truncated. Use this parameter to continue a previous list request.
@@ -885,7 +886,7 @@ class PoliciesResource {
 
   PoliciesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Create a new Policy
+  /// Creates a new Policy
   ///
   /// [request] - The metadata request object.
   ///
@@ -938,7 +939,7 @@ class PoliciesResource {
 
   /// Delete a previously created Policy.
   ///
-  /// Will fail if the policy is still being referenced by a network.
+  /// Fails if the policy is still being referenced by a network.
   ///
   /// Request parameters:
   ///
@@ -989,7 +990,7 @@ class PoliciesResource {
     );
   }
 
-  /// Fetch the representation of an existing Policy.
+  /// Fetches the representation of an existing Policy.
   ///
   /// Request parameters:
   ///
@@ -1042,14 +1043,14 @@ class PoliciesResource {
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Enumerate all Policies associated with a project.
+  /// Enumerates all Policies associated with a project.
   ///
   /// Request parameters:
   ///
   /// [project] - Identifies the project addressed by this request.
   ///
   /// [maxResults] - Optional. Maximum number of results to be returned. If
-  /// unspecified, the server will decide how many results to return.
+  /// unspecified, the server decides how many results to return.
   ///
   /// [pageToken] - Optional. A tag returned by a previous list request that was
   /// truncated. Use this parameter to continue a previous list request.
@@ -1267,7 +1268,7 @@ class ResourceRecordSetsResource {
 
   ResourceRecordSetsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Enumerate ResourceRecordSets that have been created but not yet deleted.
+  /// Enumerate ResourceRecordSets that you have created but not yet deleted.
   ///
   /// Request parameters:
   ///
@@ -1277,7 +1278,7 @@ class ResourceRecordSetsResource {
   /// be the managed zone name or ID.
   ///
   /// [maxResults] - Optional. Maximum number of results to be returned. If
-  /// unspecified, the server will decide how many results to return.
+  /// unspecified, the server decides how many results to return.
   ///
   /// [name] - Restricts the list to return only records with this fully
   /// qualified domain name.
@@ -1435,9 +1436,9 @@ class ChangesListResponse {
   /// pagination token. In this way you can retrieve the complete contents of
   /// even very large collections one page at a time. However, if the contents
   /// of the collection change between the first and last paginated list
-  /// request, the set of all elements returned will be an inconsistent view of
-  /// the collection. There is no way to retrieve a "snapshot" of collections
-  /// larger than the maximum page size.
+  /// request, the set of all elements returned are an inconsistent view of the
+  /// collection. There is no way to retrieve a "snapshot" of collections larger
+  /// than the maximum page size.
   core.String nextPageToken;
 
   ChangesListResponse();
@@ -1504,7 +1505,7 @@ class DnsKey {
   /// Unique identifier for the resource; defined by the server (output only).
   core.String id;
 
-  /// Active keys will be used to sign subsequent changes to the ManagedZone.
+  /// Active keys are used to sign subsequent changes to the ManagedZone.
   ///
   /// Inactive keys will still be present as DNSKEY Resource Records for the use
   /// of resolvers validating existing signatures.
@@ -1512,7 +1513,7 @@ class DnsKey {
 
   /// Length of the key in bits.
   ///
-  /// Specified at creation time then immutable.
+  /// Specified at creation time, then immutable.
   core.int keyLength;
 
   /// The key tag is a non-cryptographic hash of the a DNSKEY resource record
@@ -1534,10 +1535,10 @@ class DnsKey {
   /// One of "KEY_SIGNING" or "ZONE_SIGNING".
   ///
   /// Keys of type KEY_SIGNING have the Secure Entry Point flag set and, when
-  /// active, will be used to sign only resource record sets of type DNSKEY.
-  /// Otherwise, the Secure Entry Point flag will be cleared and this key will
-  /// be used to sign only resource record sets of other types. Immutable after
-  /// creation time.
+  /// active, are used to sign only resource record sets of type DNSKEY.
+  /// Otherwise, the Secure Entry Point flag is cleared and this key is used to
+  /// sign only resource record sets of other types. Immutable after creation
+  /// time.
   /// Possible string values are:
   /// - "keySigning"
   /// - "zoneSigning"
@@ -1651,9 +1652,9 @@ class DnsKeySpec {
   /// (ZSK).
   ///
   /// Key signing keys have the Secure Entry Point flag set and, when active,
-  /// will only be used to sign resource record sets of type DNSKEY. Zone
-  /// signing keys do not have the Secure Entry Point flag set and will be used
-  /// to sign all other types of resource record sets.
+  /// are only used to sign resource record sets of type DNSKEY. Zone signing
+  /// keys do not have the Secure Entry Point flag set and are used to sign all
+  /// other types of resource record sets.
   /// Possible string values are:
   /// - "keySigning"
   /// - "zoneSigning"
@@ -1701,9 +1702,9 @@ class DnsKeysListResponse {
   /// pagination token. In this way you can retrieve the complete contents of
   /// even very large collections one page at a time. However, if the contents
   /// of the collection change between the first and last paginated list
-  /// request, the set of all elements returned will be an inconsistent view of
-  /// the collection. There is no way to retrieve a "snapshot" of collections
-  /// larger than the maximum page size.
+  /// request, the set of all elements returned are an inconsistent view of the
+  /// collection. There is no way to retrieve a "snapshot" of collections larger
+  /// than the maximum page size.
   core.String nextPageToken;
 
   DnsKeysListResponse();
@@ -1782,7 +1783,8 @@ class ManagedZone {
   /// Optionally specifies the NameServerSet for this ManagedZone.
   ///
   /// A NameServerSet is a set of DNS name servers that all host the same
-  /// ManagedZones. Most users will leave this field unset.
+  /// ManagedZones. Most users will leave this field unset. If you need to use
+  /// this field, please reach out to your account team.
   core.String nameServerSet;
 
   /// Delegate your managed_zone to these virtual name servers; defined by the
@@ -1800,7 +1802,7 @@ class ManagedZone {
   ManagedZonePrivateVisibilityConfig privateVisibilityConfig;
 
   /// The presence of this field indicates that this is a managed reverse lookup
-  /// zone and Cloud DNS will resolve reverse lookup queries using automatically
+  /// zone and Cloud DNS resolves reverse lookup queries using automatically
   /// configured records for VPC resources.
   ///
   /// This only applies to networks listed under private_visibility_config.
@@ -1968,8 +1970,8 @@ class ManagedZoneForwardingConfig {
 
   /// List of target name servers to forward to.
   ///
-  /// Cloud DNS will select the best available name server if more than one
-  /// target is given.
+  /// Cloud DNS selects the best available name server if more than one target
+  /// is given.
   core.List<ManagedZoneForwardingConfigNameServerTarget> targetNameServers;
 
   ManagedZoneForwardingConfig();
@@ -1998,16 +2000,15 @@ class ManagedZoneForwardingConfig {
 class ManagedZoneForwardingConfigNameServerTarget {
   /// Forwarding path for this NameServerTarget.
   ///
-  /// If unset or set to DEFAULT, Cloud DNS will make forwarding decision based
-  /// on address ranges, i.e. RFC1918 addresses go to the VPC, non-RFC1918
-  /// addresses go to the Internet. When set to PRIVATE, Cloud DNS will always
-  /// send queries through VPC for this target.
+  /// If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on
+  /// address ranges; that is, RFC1918 addresses go to the VPC, non-RFC1918
+  /// addresses go to the internet. When set to PRIVATE, Cloud DNS always sends
+  /// queries through VPC for this target.
   /// Possible string values are:
-  /// - "default" : Cloud DNS will make forwarding decision based on address
-  /// ranges, i.e. RFC1918 addresses forward to the target through the VPC and
-  /// non-RFC1918 addresses will forward to the target through the Internet
-  /// - "private" : Cloud DNS will always forward to this target through the
-  /// VPC.
+  /// - "default" : Cloud DNS makes forwarding decisions based on address
+  /// ranges; that is, RFC1918 addresses forward to the target through the VPC
+  /// and non-RFC1918 addresses forward to the target through the internet
+  /// - "private" : Cloud DNS always forwards to this target through the VPC.
   core.String forwardingPath;
 
   /// IPv4 address of a target name server.
@@ -2046,9 +2047,9 @@ class ManagedZoneOperationsListResponse {
   /// token. In this way you can retrieve the complete contents of even very
   /// large collections one page at a time. However, if the contents of the
   /// collection change between the first and last paginated list request, the
-  /// set of all elements returned will be an inconsistent view of the
-  /// collection. There is no way to retrieve a consistent snapshot of a
-  /// collection larger than the maximum page size.
+  /// set of all elements returned are an inconsistent view of the collection.
+  /// There is no way to retrieve a consistent snapshot of a collection larger
+  /// than the maximum page size.
   core.String nextPageToken;
 
   /// The operation resources.
@@ -2291,9 +2292,9 @@ class ManagedZonesListResponse {
   /// token. In this way you can retrieve the complete contents of even very
   /// large collections one page at a time. However, if the contents of the
   /// collection change between the first and last paginated list request, the
-  /// set of all elements returned will be an inconsistent view of the
-  /// collection. There is no way to retrieve a consistent snapshot of a
-  /// collection larger than the maximum page size.
+  /// set of all elements returned are an inconsistent view of the collection.
+  /// There is no way to retrieve a consistent snapshot of a collection larger
+  /// than the maximum page size.
   core.String nextPageToken;
 
   ManagedZonesListResponse();
@@ -2482,9 +2483,9 @@ class PoliciesListResponse {
   /// token. In this way you can retrieve the complete contents of even very
   /// large collections one page at a time. However, if the contents of the
   /// collection change between the first and last paginated list request, the
-  /// set of all elements returned will be an inconsistent view of the
-  /// collection. There is no way to retrieve a consistent snapshot of a
-  /// collection larger than the maximum page size.
+  /// set of all elements returned are an inconsistent view of the collection.
+  /// There is no way to retrieve a consistent snapshot of a collection larger
+  /// than the maximum page size.
   core.String nextPageToken;
 
   /// The policy resources.
@@ -2585,7 +2586,7 @@ class Policy {
   /// Allows networks bound to this policy to receive DNS queries sent by VMs or
   /// applications over VPN connections.
   ///
-  /// When enabled, a virtual IP address will be allocated from each of the
+  /// When enabled, a virtual IP address is allocated from each of the
   /// sub-networks that are bound to this policy.
   core.bool enableInboundForwarding;
 
@@ -2598,7 +2599,7 @@ class Policy {
   core.String id;
   core.String kind;
 
-  /// User assigned name for this policy.
+  /// User-assigned name for this policy.
   core.String name;
 
   /// List of network names specifying networks to which this policy is applied.
@@ -2690,14 +2691,14 @@ class PolicyAlternativeNameServerConfig {
 class PolicyAlternativeNameServerConfigTargetNameServer {
   /// Forwarding path for this TargetNameServer.
   ///
-  /// If unset or set to DEFAULT, Cloud DNS will make forwarding decision based
-  /// on address ranges, i.e. RFC1918 addresses go to the VPC, non-RFC1918
-  /// addresses go to the Internet. When set to PRIVATE, Cloud DNS will always
-  /// send queries through VPC for this target.
+  /// If unset or set to DEFAULT, Cloud DNS makes forwarding decision based on
+  /// address ranges; that is, RFC1918 addresses go to the VPC, non-RFC1918
+  /// addresses go to the internet. When set to PRIVATE, Cloud DNS always sends
+  /// queries through VPC for this target.
   /// Possible string values are:
   /// - "default" : Cloud DNS will make forwarding decision based on address
-  /// ranges, i.e. RFC1918 addresses forward to the target through the VPC and
-  /// non-RFC1918 addresses will forward to the target through the Internet
+  /// ranges; that is, RFC1918 addresses forward to the target through the VPC
+  /// and non-RFC1918 addresses forward to the target through the internet
   /// - "private" : Cloud DNS will always forward to this target through the
   /// VPC.
   core.String forwardingPath;
@@ -3000,12 +3001,12 @@ class ResourceRecordSetsListResponse {
   /// following your last page of results in pagination order.
   ///
   /// To fetch them, make another list request using this value as your
-  /// pagination token. In this way you can retrieve the complete contents of
-  /// even very large collections one page at a time. However, if the contents
-  /// of the collection change between the first and last paginated list
-  /// request, the set of all elements returned will be an inconsistent view of
-  /// the collection. There is no way to retrieve a consistent snapshot of a
-  /// collection larger than the maximum page size.
+  /// pagination token. This lets you retrieve complete contents of even larger
+  /// collections, one page at a time. However, if the contents of the
+  /// collection change between the first and last paginated list request, the
+  /// set of elements returned are an inconsistent view of the collection. You
+  /// cannot retrieve a consistent snapshot of a collection larger than the
+  /// maximum page size.
   core.String nextPageToken;
 
   /// The resource record set resources.

@@ -16,7 +16,9 @@
 
 /// Chrome Management API - v1
 ///
-/// The Chrome Management API is a suite of services that allows GSuite domain
+/// The Chrome Management API is a suite of services that allows Chrome
+/// administrators to view, manage and gain insights on their Chrome OS The
+/// Chrome Management API is a suite of services that allows GSuite domain
 /// administrators to view, manage and gain insights on their Chrome OS and
 /// Chrome Browser devices and users.
 ///
@@ -39,7 +41,9 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// The Chrome Management API is a suite of services that allows GSuite domain
+/// The Chrome Management API is a suite of services that allows Chrome
+/// administrators to view, manage and gain insights on their Chrome OS The
+/// Chrome Management API is a suite of services that allows GSuite domain
 /// administrators to view, manage and gain insights on their Chrome OS and
 /// Chrome Browser devices and users.
 class ChromeManagementApi {

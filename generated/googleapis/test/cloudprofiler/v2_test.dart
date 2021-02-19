@@ -27,14 +27,14 @@ import 'package:googleapis/cloudprofiler/v2.dart' as api;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed2521() {
+core.List<core.String> buildUnnamed2546() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed2521(core.List<core.String> o) {
+void checkUnnamed2546(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -46,7 +46,7 @@ api.CreateProfileRequest buildCreateProfileRequest() {
   buildCounterCreateProfileRequest++;
   if (buildCounterCreateProfileRequest < 3) {
     o.deployment = buildDeployment();
-    o.profileType = buildUnnamed2521();
+    o.profileType = buildUnnamed2546();
   }
   buildCounterCreateProfileRequest--;
   return o;
@@ -56,19 +56,19 @@ void checkCreateProfileRequest(api.CreateProfileRequest o) {
   buildCounterCreateProfileRequest++;
   if (buildCounterCreateProfileRequest < 3) {
     checkDeployment(o.deployment as api.Deployment);
-    checkUnnamed2521(o.profileType);
+    checkUnnamed2546(o.profileType);
   }
   buildCounterCreateProfileRequest--;
 }
 
-core.Map<core.String, core.String> buildUnnamed2522() {
+core.Map<core.String, core.String> buildUnnamed2547() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed2522(core.Map<core.String, core.String> o) {
+void checkUnnamed2547(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x'], unittest.equals('foo'));
   unittest.expect(o['y'], unittest.equals('foo'));
@@ -79,7 +79,7 @@ api.Deployment buildDeployment() {
   var o = api.Deployment();
   buildCounterDeployment++;
   if (buildCounterDeployment < 3) {
-    o.labels = buildUnnamed2522();
+    o.labels = buildUnnamed2547();
     o.projectId = 'foo';
     o.target = 'foo';
   }
@@ -90,21 +90,21 @@ api.Deployment buildDeployment() {
 void checkDeployment(api.Deployment o) {
   buildCounterDeployment++;
   if (buildCounterDeployment < 3) {
-    checkUnnamed2522(o.labels);
+    checkUnnamed2547(o.labels);
     unittest.expect(o.projectId, unittest.equals('foo'));
     unittest.expect(o.target, unittest.equals('foo'));
   }
   buildCounterDeployment--;
 }
 
-core.Map<core.String, core.String> buildUnnamed2523() {
+core.Map<core.String, core.String> buildUnnamed2548() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed2523(core.Map<core.String, core.String> o) {
+void checkUnnamed2548(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x'], unittest.equals('foo'));
   unittest.expect(o['y'], unittest.equals('foo'));
@@ -117,7 +117,7 @@ api.Profile buildProfile() {
   if (buildCounterProfile < 3) {
     o.deployment = buildDeployment();
     o.duration = 'foo';
-    o.labels = buildUnnamed2523();
+    o.labels = buildUnnamed2548();
     o.name = 'foo';
     o.profileBytes = 'foo';
     o.profileType = 'foo';
@@ -131,7 +131,7 @@ void checkProfile(api.Profile o) {
   if (buildCounterProfile < 3) {
     checkDeployment(o.deployment as api.Deployment);
     unittest.expect(o.duration, unittest.equals('foo'));
-    checkUnnamed2523(o.labels);
+    checkUnnamed2548(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.profileBytes, unittest.equals('foo'));
     unittest.expect(o.profileType, unittest.equals('foo'));

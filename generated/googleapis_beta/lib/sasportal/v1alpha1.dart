@@ -4018,6 +4018,9 @@ class SasPortalDevice {
   /// The FCC identifier of the device.
   core.String fccId;
 
+  /// Only ranges within the allowlists are available for new grants.
+  core.List<SasPortalFrequencyRange> grantRangeAllowlists;
+
   /// Grants held by the device.
   ///
   /// Output only.
@@ -4062,6 +4065,13 @@ class SasPortalDevice {
     if (_json.containsKey('fccId')) {
       fccId = _json['fccId'] as core.String;
     }
+    if (_json.containsKey('grantRangeAllowlists')) {
+      grantRangeAllowlists = (_json['grantRangeAllowlists'] as core.List)
+          .map<SasPortalFrequencyRange>((value) =>
+              SasPortalFrequencyRange.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('grants')) {
       grants = (_json['grants'] as core.List)
           .map<SasPortalDeviceGrant>((value) => SasPortalDeviceGrant.fromJson(
@@ -4088,6 +4098,9 @@ class SasPortalDevice {
         if (deviceMetadata != null) 'deviceMetadata': deviceMetadata.toJson(),
         if (displayName != null) 'displayName': displayName,
         if (fccId != null) 'fccId': fccId,
+        if (grantRangeAllowlists != null)
+          'grantRangeAllowlists':
+              grantRangeAllowlists.map((value) => value.toJson()).toList(),
         if (grants != null)
           'grants': grants.map((value) => value.toJson()).toList(),
         if (name != null) 'name': name,
