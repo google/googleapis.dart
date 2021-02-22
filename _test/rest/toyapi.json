@@ -511,6 +511,58 @@
      "response": {
       "$ref": "ToyResourceResponse"
      }
+    },
+    "download": {
+     "description": "Downloads media. Download is supported on the URI `/v1/media/{+name}?alt=media`.",
+     "httpMethod": "GET",
+     "id": "ToyApi.compute.download",
+     "parameterOrder": [
+      "resourceName"
+     ],
+     "parameters": {
+      "resourceName": {
+       "description": "Name of the media that is being downloaded. See ReadRequest.resource_name.",
+       "location": "path",
+       "pattern": "^.*$",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "v1/media/{+resourceName}",
+     "response": {
+      "$ref": "ToyResourceResponse"
+     },
+     "supportsMediaDownload": true
+    },
+    "export": {
+     "description": "Exports a Google Doc to the requested MIME type and returns the exported content. Please note that the exported content is limited to 10MB.",
+     "httpMethod": "GET",
+     "id": "ToyApi.compute.export",
+     "parameterOrder": [
+      "fileId",
+      "mimeType"
+     ],
+     "parameters": {
+      "fileId": {
+       "description": "The ID of the file.",
+       "location": "path",
+       "required": true,
+       "type": "string"
+      },
+      "mimeType": {
+       "description": "The MIME type of the format requested for this export.",
+       "location": "query",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "files/{fileId}/export",
+     "scopes": [
+      "https://www.googleapis.com/auth/drive",
+      "https://www.googleapis.com/auth/drive.file",
+      "https://www.googleapis.com/auth/drive.readonly"
+     ],
+     "supportsMediaDownload": true
     }
    },
    "resources": {}

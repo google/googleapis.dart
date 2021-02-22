@@ -21,3 +21,7 @@ dev_dependencies:
 
 executables:
   discoveryapis_generator: generate
+
+dependency_overrides:
+  _discoveryapis_commons:
+    path: ../discoveryapis_commons

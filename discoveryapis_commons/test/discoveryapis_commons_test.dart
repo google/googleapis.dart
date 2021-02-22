@@ -245,10 +245,10 @@ void main() {
       expect(() => ByteRange(-1, 1), throwsA(anything));
 
       // Tests for [DownloadOptions]
-      expect(DownloadOptions.Metadata.isMetadataDownload, isTrue);
+      expect(DownloadOptions.metadata.isMetadataDownload, isTrue);
 
-      expect(DownloadOptions.FullMedia.isFullDownload, isTrue);
-      expect(DownloadOptions.FullMedia.isMetadataDownload, isFalse);
+      expect(DownloadOptions.fullMedia.isFullDownload, isTrue);
+      expect(DownloadOptions.fullMedia.isMetadataDownload, isFalse);
 
       // Tests for [Media]
       final stream = StreamController<List<int>>().stream;
@@ -364,7 +364,7 @@ void main() {
           }), false);
 
           final result = await requester.request('abc', 'GET',
-              body: '', downloadOptions: DownloadOptions.FullMedia);
+              body: '', downloadOptions: DownloadOptions.fullMedia);
 
           final media = result as Media;
           expect(media.contentType, equals('foobar'));
@@ -428,7 +428,7 @@ void main() {
 
           final result = await requester.request('abc', 'GET',
               body: json.encode(['a', 1]),
-              downloadOptions: DownloadOptions.FullMedia);
+              downloadOptions: DownloadOptions.fullMedia);
           final media = result as Media;
           expect(media.contentType, equals('foobar'));
           expect(media.length, equals(_data256.length));
@@ -926,7 +926,7 @@ void main() {
           expect(requester.request('abc', 'GET'), throwsA(isApiRequestError));
         });
 
-        final options = DownloadOptions.FullMedia;
+        final options = DownloadOptions.fullMedia;
         test('media-http-client', () {
           makeTestError();
           expect(requester.request('abc', 'GET', downloadOptions: options),

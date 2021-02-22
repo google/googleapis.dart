@@ -57,9 +57,9 @@ class ApiRequester {
       client_requests.Media? uploadMedia,
       client_requests.UploadOptions? uploadOptions,
       client_requests.DownloadOptions? downloadOptions =
-          client_requests.DownloadOptions.Metadata}) async {
+          client_requests.DownloadOptions.metadata}) async {
     if (uploadMedia != null &&
-        downloadOptions != client_requests.DownloadOptions.Metadata) {
+        downloadOptions != client_requests.DownloadOptions.metadata) {
       throw ArgumentError('When uploading a [Media] you cannot download a '
           '[Media] at the same time!');
     }
@@ -79,7 +79,7 @@ class ApiRequester {
       // If no download options are given, the response is of no interest
       // and we will drain the stream.
       return response.stream.drain();
-    } else if (downloadOptions == client_requests.DownloadOptions.Metadata) {
+    } else if (downloadOptions == client_requests.DownloadOptions.metadata) {
       // Downloading JSON Metadata
       final stringStream = _decodeStreamAsText(response);
       if (stringStream == null) {
@@ -134,7 +134,7 @@ class ApiRequester {
       client_requests.DownloadOptions? downloadOptions,
       client_requests.ByteRange? downloadRange) {
     final downloadAsMedia = downloadOptions != null &&
-        downloadOptions != client_requests.DownloadOptions.Metadata;
+        downloadOptions != client_requests.DownloadOptions.metadata;
 
     queryParams ??= {};
 
@@ -403,102 +403,107 @@ class ResumableMediaUploader {
   /// completes with an error otherwise.
   ///
   /// The returned response stream has not been listened to.
-  Future<http.StreamedResponse> upload() =>
-      _startSession().then((Uri uploadUri) {
-        late StreamSubscription subscription;
+  Future<http.StreamedResponse> upload() async {
+    final uploadUri = await _startSession();
 
-        final completer = Completer<http.StreamedResponse>();
-        var completed = false;
+    late StreamSubscription subscription;
 
-        final chunkStack = ChunkStack(_options.chunkSize);
-        subscription = _uploadMedia.stream.listen((List<int> bytes) {
-          chunkStack.addBytes(bytes);
+    final completer = Completer<http.StreamedResponse>();
+    var completed = false;
 
-          // Upload all but the last chunk.
-          // The final send will be done in the [onDone] handler.
-          final hasPartialChunk = chunkStack.hasPartialChunk;
-          if (chunkStack.length > 1 ||
-              (chunkStack.length == 1 && hasPartialChunk)) {
-            // Pause the input stream.
-            subscription.pause();
+    final chunkStack = ChunkStack(_options.chunkSize);
+    subscription = _uploadMedia.stream.listen((List<int> bytes) {
+      chunkStack.addBytes(bytes);
 
-            // Upload all chunks except the last one.
-            Iterable<ResumableChunk> fullChunks;
-            if (hasPartialChunk) {
-              fullChunks = chunkStack.removeSublist(0, chunkStack.length);
-            } else {
-              fullChunks = chunkStack.removeSublist(0, chunkStack.length - 1);
-            }
-            Future.forEach(fullChunks,
-                    (ResumableChunk c) => _uploadChunkDrained(uploadUri, c))
-                .then((_) {
-              // All chunks uploaded, we can continue consuming data.
-              subscription.resume();
-            }).catchError((Object? error, StackTrace stack) {
-              subscription.cancel();
-              completed = true;
-              completer.completeError(error ?? NullThrownError(), stack);
-            });
-          }
-        }, onError: (Object? error, StackTrace stack) {
+      // Upload all but the last chunk.
+      // The final send will be done in the [onDone] handler.
+      final hasPartialChunk = chunkStack.hasPartialChunk;
+      if (chunkStack.length > 1 ||
+          (chunkStack.length == 1 && hasPartialChunk)) {
+        // Pause the input stream.
+        subscription.pause();
+
+        // Upload all chunks except the last one.
+        Iterable<ResumableChunk> fullChunks;
+        if (hasPartialChunk) {
+          fullChunks = chunkStack.removeSublist(0, chunkStack.length);
+        } else {
+          fullChunks = chunkStack.removeSublist(0, chunkStack.length - 1);
+        }
+
+        Future.forEach(
+          fullChunks,
+          (ResumableChunk c) => _uploadChunkDrained(uploadUri, c),
+        ).then((_) {
+          // All chunks uploaded, we can continue consuming data.
+          subscription.resume();
+        }).catchError((Object? error, StackTrace stack) {
           subscription.cancel();
-          if (!completed) {
-            completed = true;
-            completer.completeError(error ?? NullThrownError(), stack);
-          }
-        }, onDone: () {
-          if (!completed) {
-            chunkStack.finalize();
-
-            ResumableChunk lastChunk;
-            if (chunkStack.length == 1) {
-              lastChunk = chunkStack.removeSublist(0, chunkStack.length).first;
-            } else {
-              completer.completeError(StateError(
-                  'Resumable uploads need to result in at least one non-empty '
-                  'chunk at the end.'));
-              return;
-            }
-            final end = lastChunk.endOfChunk;
-
-            // Validate that we have the correct number of bytes if length was
-            // specified.
-            if (_uploadMedia.length != null) {
-              if (end < _uploadMedia.length!) {
-                completer.completeError(client_requests.ApiRequestError(
-                    'Received less bytes than indicated by [Media.length].'));
-                return;
-              } else if (end > _uploadMedia.length!) {
-                completer.completeError(client_requests.ApiRequestError(
-                    'Received more bytes than indicated by [Media.length].'));
-                return;
-              }
-            }
-
-            // Upload last chunk and *do not drain the response* but complete
-            // with it.
-            _uploadChunkResumable(uploadUri, lastChunk, lastChunk: true)
-                .then(completer.complete)
-                .catchError((Object? error, StackTrace stack) {
-              completer.completeError(error ?? NullThrownError(), stack);
-            });
-          }
+          completed = true;
+          completer.completeError(error ?? NullThrownError(), stack);
         });
+      }
+    }, onError: (Object? error, StackTrace stack) {
+      subscription.cancel();
+      if (!completed) {
+        completed = true;
+        completer.completeError(error ?? NullThrownError(), stack);
+      }
+    }, onDone: () {
+      if (!completed) {
+        chunkStack.finalize();
 
-        return completer.future;
-      });
+        ResumableChunk lastChunk;
+        if (chunkStack.length == 1) {
+          lastChunk = chunkStack.removeSublist(0, chunkStack.length).first;
+        } else {
+          completer.completeError(StateError(
+              'Resumable uploads need to result in at least one non-empty '
+              'chunk at the end.'));
+          return;
+        }
+        final end = lastChunk.endOfChunk;
+
+        // Validate that we have the correct number of bytes if length was
+        // specified.
+        if (_uploadMedia.length != null) {
+          if (end < _uploadMedia.length!) {
+            completer.completeError(client_requests.ApiRequestError(
+                'Received less bytes than indicated by [Media.length].'));
+            return;
+          } else if (end > _uploadMedia.length!) {
+            completer.completeError(client_requests.ApiRequestError(
+                'Received more bytes than indicated by [Media.length].'));
+            return;
+          }
+        }
+
+        // Upload last chunk and *do not drain the response* but complete
+        // with it.
+        _uploadChunkResumable(uploadUri, lastChunk, lastChunk: true)
+            .then(completer.complete)
+            .catchError((Object? error, StackTrace stack) {
+          completer.completeError(error ?? NullThrownError(), stack);
+        });
+      }
+    });
+
+    return completer.future;
+  }
 
   /// Starts a resumable upload.
   ///
   /// Returns the [Uri] which should be used for uploading all content.
-  Future<Uri> _startSession() {
+  Future<Uri> _startSession() async {
     var length = 0;
     List<int>? bytes;
     if (_body != null) {
       bytes = utf8.encode(_body!);
       length = bytes.length;
     }
-    final bodyStream = _bytes2Stream(bytes);
+    final bodyStream = bytes == null
+        ? const Stream<List<int>>.empty()
+        : Stream.fromIterable([bytes]);
 
     final request = _RequestImpl(_method, _uri, bodyStream);
     request.headers.addAll({
@@ -509,69 +514,70 @@ class ResumableMediaUploader {
       'x-upload-content-length': '${_uploadMedia.length}',
     });
 
-    return _httpClient.send(request).then(
-          (http.StreamedResponse response) => response.stream.drain().then(
-            (_) {
-              final uploadUri = response.headers['location'];
-              if (response.statusCode != 200 || uploadUri == null) {
-                throw client_requests.ApiRequestError(
-                    'Invalid response for resumable upload attempt '
-                    '(status was: ${response.statusCode})');
-              }
-              return Uri.parse(uploadUri);
-            },
-          ),
-        );
+    final response = await _httpClient.send(request);
+
+    await response.stream.drain();
+
+    final uploadUri = response.headers['location'];
+    if (response.statusCode != 200 || uploadUri == null) {
+      throw client_requests.ApiRequestError(
+        'Invalid response for resumable upload attempt '
+        '(status was: ${response.statusCode})',
+      );
+    }
+    return Uri.parse(uploadUri);
   }
 
   /// Uploads [chunk], retries upon server errors. The response stream will be
   /// drained.
-  Future _uploadChunkDrained(Uri uri, ResumableChunk chunk) =>
-      _uploadChunkResumable(uri, chunk)
-          .then((response) => response.stream.drain());
+  Future _uploadChunkDrained(Uri uri, ResumableChunk chunk) async {
+    final response = await _uploadChunkResumable(uri, chunk);
+    await response.stream.drain();
+  }
 
   /// Does repeated attempts to upload [chunk].
   Future<http.StreamedResponse> _uploadChunkResumable(
-      Uri uri, ResumableChunk chunk,
-      {bool lastChunk = false}) {
-    Future<http.StreamedResponse> tryUpload(int attemptsLeft) =>
-        _uploadChunk(uri, chunk, lastChunk: lastChunk)
-            .then((http.StreamedResponse response) {
-          final status = response.statusCode;
-          if (attemptsLeft > 0 &&
-              (status == 500 || (502 <= status && status < 504))) {
-            return response.stream.drain().then((_) {
-              // Delay the next attempt. Default backoff function is exponential
-              final failedAttempts = _options.numberOfAttempts - attemptsLeft;
-              final duration = _options.backoffFunction(failedAttempts);
-              if (duration == null) {
-                throw client_requests.DetailedApiRequestError(
-                    status,
-                    'Resumable upload: Uploading a chunk resulted in status '
-                    '$status. Maximum number of retries reached.');
-              }
+    Uri uri,
+    ResumableChunk chunk, {
+    bool lastChunk = false,
+  }) {
+    Future<http.StreamedResponse> tryUpload(int attemptsLeft) async {
+      final response = await _uploadChunk(uri, chunk, lastChunk: lastChunk);
 
-              return Future.delayed(duration)
-                  .then((_) => tryUpload(attemptsLeft - 1));
-            });
-          } else if (!lastChunk && status != 308) {
-            return response.stream.drain().then((_) {
-              throw client_requests.DetailedApiRequestError(
-                  status,
-                  'Resumable upload: Uploading a chunk resulted in status '
-                  '$status instead of 308.');
-            });
-          } else if (lastChunk && status != 201 && status != 200) {
-            return response.stream.drain().then((_) {
-              throw client_requests.DetailedApiRequestError(
-                  status,
-                  'Resumable upload: Uploading a chunk resulted in status '
-                  '$status instead of 200 or 201.');
-            });
-          } else {
-            return response;
-          }
-        });
+      final status = response.statusCode;
+      if (attemptsLeft > 0 &&
+          (status == 500 || (502 <= status && status < 504))) {
+        await response.stream.drain();
+        // Delay the next attempt. Default backoff function is exponential
+        final failedAttempts = _options.numberOfAttempts - attemptsLeft;
+        final duration = _options.backoffFunction(failedAttempts);
+        if (duration == null) {
+          throw client_requests.DetailedApiRequestError(
+              status,
+              'Resumable upload: Uploading a chunk resulted in status '
+              '$status. Maximum number of retries reached.');
+        }
+
+        await Future.delayed(duration);
+        return tryUpload(attemptsLeft - 1);
+      } else if (!lastChunk && status != 308) {
+        await response.stream.drain();
+        throw client_requests.DetailedApiRequestError(
+          status,
+          'Resumable upload: Uploading a chunk resulted in status '
+          '$status instead of 308.',
+        );
+      } else if (lastChunk && status != 201 && status != 200) {
+        await response.stream.drain();
+        throw client_requests.DetailedApiRequestError(
+          status,
+          'Resumable upload: Uploading a chunk resulted in status '
+          '$status instead of 200 or 201.',
+        );
+      } else {
+        return response;
+      }
+    }
 
     return tryUpload(_options.numberOfAttempts - 1);
   }
@@ -605,28 +611,10 @@ class ResumableMediaUploader {
           'bytes ${chunk.offset}-${chunk.endOfChunk - 1}/$mediaTotalLength',
     };
 
-    final stream = _listOfBytes2Stream(chunk.byteArrays);
+    final stream = Stream.fromIterable(chunk.byteArrays);
     final request = _RequestImpl('PUT', uri, stream);
     request.headers.addAll(headers);
     return _httpClient.send(request);
-  }
-
-  Stream<List<int>> _bytes2Stream(List<int>? bytes) {
-    final bodyController = StreamController<List<int>>();
-    if (bytes != null) {
-      bodyController.add(bytes);
-    }
-    bodyController.close();
-    return bodyController.stream;
-  }
-
-  Stream<List<int>> _listOfBytes2Stream(List<List<int>> listOfBytes) {
-    final controller = StreamController<List<int>>();
-    for (var array in listOfBytes) {
-      controller.add(array);
-    }
-    controller.close();
-    return controller.stream;
   }
 }
 

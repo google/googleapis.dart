@@ -2,9 +2,9 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library discoveryapis_generator.apis_package_generator;
-
 import 'dart:io';
+
+import 'package:path/path.dart' as p;
 
 import 'dart_api_library.dart';
 import 'dart_api_test_library.dart';
@@ -155,9 +155,9 @@ const userAgent = 'Dart package:${pubspec.name} / ${pubspec.version}';
           }
           sink.writeln('  $lib: $value');
         } else if (value is Map) {
-          sink.writeln('  $lib:\n');
+          sink.writeln('  $lib:');
           value.forEach((k, v) {
-            sink.writeln('    $k: $v\n');
+            sink.writeln('    $k: $v');
           });
         }
       });
@@ -178,5 +178,40 @@ const userAgent = 'Dart package:${pubspec.name} / ${pubspec.version}';
     writeDependencies(Pubspec.dependencies);
     sink.writeln('dev_dependencies:');
     writeDependencies(pubspec.devDependencies);
+
+    // TODO: remove this when the null safe version is published!
+    sink.writeln('dependency_overrides:');
+    writeDependencies({
+      '_discoveryapis_commons': {'path': _commonsDirRelativePath},
+    });
+  }
+
+  /// Returns the relative path from [packageFolderPath] to the commons package
+  /// directory.
+  String get _commonsDirRelativePath {
+    const commonsDir = 'discoveryapis_commons';
+
+    final outputPackageDir =
+        Directory(p.absolute(p.join(p.current, packageFolderPath)));
+
+    var commonsParentDir = outputPackageDir.parent;
+
+    if (commonsParentDir.existsSync() &&
+        commonsParentDir
+            .listSync()
+            .whereType<Directory>()
+            .where((element) => p.basename(element.path) == commonsDir)
+            .isEmpty) {
+      commonsParentDir = commonsParentDir.parent;
+    }
+
+    if (!commonsParentDir.existsSync()) {
+      throw StateError('Could not find the commons directory!');
+    }
+
+    return p.relative(
+      p.join(commonsParentDir.path, commonsDir),
+      from: outputPackageDir.path,
+    );
   }
 }

@@ -1597,6 +1597,123 @@ void main() {
   });
 
   unittest.group('resource-ComputeResource', () {
+    unittest.test('method--download', () {
+      // TODO: Implement tests for media upload;
+      // TODO: Implement tests for media download;
+
+      var mock = HttpServerMock();
+      var res = api.ToyApi(mock).compute;
+      var arg_resourceName = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15),
+            unittest.equals("api/toyApi/0.1/"));
+        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("v1/media/"));
+        pathOffset += 9;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildToyResourceResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .download(arg_resourceName, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkToyResourceResponse(response as api.ToyResourceResponse);
+      })));
+    });
+
+    unittest.test('method--export', () {
+      // TODO: Implement tests for media upload;
+      // TODO: Implement tests for media download;
+
+      var mock = HttpServerMock();
+      var res = api.ToyApi(mock).compute;
+      var arg_fileId = 'foo';
+      var arg_mimeType = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15),
+            unittest.equals("api/toyApi/0.1/"));
+        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("files/"));
+        pathOffset += 6;
+        index = path.indexOf('/export', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals('$arg_fileId'));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/export"));
+        pathOffset += 7;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+            queryMap["mimeType"].first, unittest.equals(arg_mimeType));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = '';
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .export(arg_fileId, arg_mimeType, $fields: arg_$fields)
+          .then(unittest.expectAsync1((_) {}));
+    });
+
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ToyApi(mock).compute;

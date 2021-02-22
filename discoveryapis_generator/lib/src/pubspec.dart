@@ -28,7 +28,7 @@ class Pubspec {
 
   static const dependencies = {
     'http': '">=0.12.2 <0.14.0"',
-    '_discoveryapis_commons': '^0.2.1',
+    '_discoveryapis_commons': '^1.0.0',
   };
 
   static const _defaultDevDependencies = {

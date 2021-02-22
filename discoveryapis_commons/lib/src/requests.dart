@@ -31,13 +31,11 @@ class Media {
 class UploadOptions {
   /// Use either simple uploads (only media) or multipart for media+metadata
   // ignoring the non-standard name since we'd have to update the generator!
-  // ignore: constant_identifier_names
-  static const UploadOptions Default = UploadOptions();
+  static const UploadOptions defaultOptions = UploadOptions();
 
   /// Make resumable uploads
   // ignoring the non-standard name since we'd have to update the generator!
-  // ignore: non_constant_identifier_names
-  static final ResumableUploadOptions Resumable = ResumableUploadOptions();
+  static final ResumableUploadOptions resumable = ResumableUploadOptions();
 
   const UploadOptions();
 }
@@ -66,11 +64,11 @@ class ResumableUploadOptions extends UploadOptions {
   /// next attempt. See [exponentialBackoff] for an example.
   final core.Duration? Function(core.int) backoffFunction;
 
-  ResumableUploadOptions(
-      {this.numberOfAttempts = 3,
-      this.chunkSize = 1024 * 1024,
-      core.Duration? Function(core.int)? backoffFunction})
-      : backoffFunction = backoffFunction ?? exponentialBackoff {
+  ResumableUploadOptions({
+    this.numberOfAttempts = 3,
+    this.chunkSize = 1024 * 1024,
+    this.backoffFunction = exponentialBackoff,
+  }) {
     // See e.g. here:
     // https://developers.google.com/maps-engine/documentation/resumable-upload
     //
@@ -95,13 +93,11 @@ class ResumableUploadOptions extends UploadOptions {
 class DownloadOptions {
   /// Download only metadata.
   // ignoring the non-standard name since we'd have to update the generator!
-  // ignore: constant_identifier_names
-  static const DownloadOptions Metadata = DownloadOptions();
+  static const DownloadOptions metadata = DownloadOptions();
 
   /// Download full media.
   // ignoring the non-standard name since we'd have to update the generator!
-  // ignore: non_constant_identifier_names
-  static final PartialDownloadOptions FullMedia =
+  static final PartialDownloadOptions fullMedia =
       PartialDownloadOptions(ByteRange(0, -1));
 
   const DownloadOptions();
