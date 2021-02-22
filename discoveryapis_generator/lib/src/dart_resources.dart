@@ -398,7 +398,9 @@ $urlPatternCode
     );
 ''');
 
-    final data = enableDataWrapper ? "_response['data']" : '_response';
+    final data = enableDataWrapper
+        ? "(_response as ${imports.core.ref()}Map)['data']"
+        : '_response';
     final plainResponse =
         returnType != null ? returnType.jsonDecode(data) : 'null';
     if (mediaDownload) {

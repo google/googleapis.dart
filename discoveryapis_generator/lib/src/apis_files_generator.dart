@@ -54,7 +54,7 @@ class ApisFilesGenerator {
   /// Generates the client stub code with all the APIs given in the constructor.
   List<GenerateResult> generate() {
     // Get the package name.
-    final pubspec = loadYaml(pubspecFile.readAsStringSync());
+    final pubspec = loadYaml(pubspecFile.readAsStringSync()) as YamlMap;
     final packageName = (pubspec != null ? pubspec['name'] : null) as String;
     if (packageName == null) {
       throw Exception('Invalid pubspec.yaml for package $packageRoot');

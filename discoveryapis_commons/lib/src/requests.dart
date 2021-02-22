@@ -64,12 +64,12 @@ class ResumableUploadOptions extends UploadOptions {
 
   /// Function for determining the [core.Duration] to wait before making the
   /// next attempt. See [exponentialBackoff] for an example.
-  final core.Function backoffFunction;
+  final core.Duration? Function(core.int) backoffFunction;
 
   ResumableUploadOptions(
       {this.numberOfAttempts = 3,
       this.chunkSize = 1024 * 1024,
-      core.Function? backoffFunction})
+      core.Duration? Function(core.int)? backoffFunction})
       : backoffFunction = backoffFunction ?? exponentialBackoff {
     // See e.g. here:
     // https://developers.google.com/maps-engine/documentation/resumable-upload

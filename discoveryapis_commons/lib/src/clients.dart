@@ -543,8 +543,7 @@ class ResumableMediaUploader {
             return response.stream.drain().then((_) {
               // Delay the next attempt. Default backoff function is exponential
               final failedAttempts = _options.numberOfAttempts - attemptsLeft;
-              final duration =
-                  _options.backoffFunction(failedAttempts) as Duration?;
+              final duration = _options.backoffFunction(failedAttempts);
               if (duration == null) {
                 throw client_requests.DetailedApiRequestError(
                     status,

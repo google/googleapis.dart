@@ -310,7 +310,7 @@ void main() {
                 equals('http://example.com/base/abc?alt=json'));
             expect(json is Map, isTrue);
             expect(json, hasLength(1));
-            expect(json['foo'], equals('bar'));
+            expect(json, containsPair('foo', 'bar'));
             return stringResponse(200, responseHeaders, '{"foo2" : "bar2"}');
           }), true);
 
@@ -321,7 +321,7 @@ void main() {
           );
           expect(response is Map, isTrue);
           expect(response, hasLength(1));
-          expect(response['foo2'], equals('bar2'));
+          expect(response, containsPair('foo2', 'bar2'));
         });
 
         test('json-list-request-json-list-response', () async {
@@ -331,9 +331,10 @@ void main() {
             expect('${request.url}',
                 equals('http://example.com/base/abc?alt=json'));
             expect(json is List, isTrue);
-            expect(json, hasLength(2));
-            expect(json[0], equals('a'));
-            expect(json[1], equals(1));
+            final jsonList = json as List;
+            expect(jsonList, hasLength(2));
+            expect(jsonList[0], equals('a'));
+            expect(jsonList[1], equals(1));
             return stringResponse(200, responseHeaders, '["b", 2]');
           }), true);
 
@@ -341,8 +342,7 @@ void main() {
             'abc',
             'GET',
             body: json.encode(['a', 1]),
-          );
-          expect(response is List, isTrue);
+          ) as List;
           expect(response[0], equals('b'));
           expect(response[1], equals(2));
         });
@@ -371,7 +371,7 @@ void main() {
           expect(media.length, equals(_data256.length));
 
           expect(
-            await media.stream.fold([], (dynamic b, d) => b..addAll(d)),
+            await media.stream.fold([], (List b, d) => b..addAll(d)),
             equals(_data256),
           );
         });
@@ -403,7 +403,7 @@ void main() {
           expect(media.length, equals(data64.length));
 
           expect(
-            await media.stream.fold([], (dynamic b, d) => b..addAll(d)),
+            await media.stream.fold([], (List b, d) => b..addAll(d)),
             equals(data64),
           );
         });
@@ -414,10 +414,10 @@ void main() {
             expect(request.method, equals('GET'));
             expect('${request.url}',
                 equals('http://example.com/base/abc?alt=media'));
-            expect(json is List, isTrue);
-            expect(json, hasLength(2));
-            expect(json[0], equals('a'));
-            expect(json[1], equals(1));
+            final jsonList = json as List;
+            expect(jsonList, hasLength(2));
+            expect(jsonList[0], equals('a'));
+            expect(jsonList[1], equals(1));
 
             final headers = {
               'content-length': '${_data256.length}',
@@ -433,7 +433,7 @@ void main() {
           expect(media.contentType, equals('foobar'));
           expect(media.length, equals(_data256.length));
 
-          final d = await media.stream.fold([], (dynamic b, d) => b..addAll(d));
+          final d = await media.stream.fold([], (List b, d) => b..addAll(d));
           expect(d, equals(_data256));
         });
       });
@@ -460,9 +460,12 @@ void main() {
         }
 
         Future<http.StreamedResponse> validateServerRequest(
-                e, http.BaseRequest request, List<int>? data) =>
+          Map e,
+          http.BaseRequest request,
+          List<int>? data,
+        ) =>
             Future.sync(() {
-              final h = e['headers'];
+              final h = e['headers'] as Map;
               final r = e['response'] as http.StreamedResponse;
 
               expect(request.url.toString(), equals(e['url']));
@@ -475,10 +478,13 @@ void main() {
               return r;
             });
 
-        ServerMockCallback serverRequestValidator(List expectations) {
+        ServerMockCallback serverRequestValidator(List<Map> expectations) {
           var i = 0;
           return (http.BaseRequest request, data) => validateServerRequest(
-              expectations[i++], request, data as List<int>?);
+                expectations[i++],
+                request,
+                data as List<int>?,
+              );
         }
 
         test('simple', () async {
@@ -541,8 +547,12 @@ void main() {
 
         group('resumable-upload', () {
           // TODO: respect [stream]
-          List buildExpectations(List<int> bytes, int chunkSize, bool stream,
-              {int numberOfServerErrors = 0}) {
+          List<Map> buildExpectations(
+            List<int> bytes,
+            int chunkSize,
+            bool stream, {
+            int numberOfServerErrors = 0,
+          }) {
             final totalLength = bytes.length;
             var numberOfChunks = totalLength ~/ chunkSize;
             var numberOfBytesInLastChunk = totalLength % chunkSize;
@@ -670,14 +680,17 @@ void main() {
             if (expectedErrorStatus != null) {
               result.catchError(expectAsync1((dynamic error) {
                 expect(error is DetailedApiRequestError, isTrue);
-                expect(error.status, equals(expectedErrorStatus));
+                expect(
+                  (error as DetailedApiRequestError).status,
+                  equals(expectedErrorStatus),
+                );
               }));
             } else {
               result.then(expectAsync1((_) {}));
             }
           }
 
-          Function backoffWrapper(int callCount) =>
+          Duration? Function(int) backoffWrapper(int callCount) =>
               expectAsync1((int failedAttempts) {
                 final duration =
                     ResumableUploadOptions.exponentialBackoff(failedAttempts)

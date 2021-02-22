@@ -1,3 +1,7 @@
+## 1.0.1-dev
+
+- Remove dynamic function invocations.
+
 ## 1.0.0
 
 - Add support for null-safety.

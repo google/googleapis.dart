@@ -1,4 +1,4 @@
-## 0.3.0
+## 1.0.0-dev
 
 - Add support for null-safety.
 - Require Dart 2.12 or later.
