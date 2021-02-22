@@ -69,7 +69,7 @@ Client mockClient(Future<Response> Function(Request _) requestHandler,
 
 /// A client which will keep the VM alive until `close()` was called.
 class ExpectCloseMockClient extends MockClient {
-  late Function _expectedToBeCalled;
+  late void Function() _expectedToBeCalled;
 
   ExpectCloseMockClient(
       Future<Response> Function(Request _) requestHandler, int c)

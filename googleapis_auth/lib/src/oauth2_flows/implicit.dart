@@ -72,7 +72,7 @@ class ImplicitFlow {
     js.context['dartGapiLoaded'] = () {
       timeout.cancel();
       try {
-        final gapi = js.context['gapi']['auth'];
+        final gapi = _gapiAuth;
         try {
           gapi.callMethod('init', [completer.complete]);
           // ignore: avoid_catching_errors
@@ -127,7 +127,7 @@ class ImplicitFlow {
 
     final completer = Completer<LoginResult>();
 
-    final gapi = js.context['gapi']['auth'];
+    final gapi = _gapiAuth;
 
     final json = {
       'client_id': _clientId,
@@ -148,7 +148,7 @@ class ImplicitFlow {
 
     gapi.callMethod('authorize', [
       js.JsObject.jsify(json),
-      (jsTokenObject) {
+      (js.JsObject jsTokenObject) {
         final tokenType = jsTokenObject['token_type'];
         final token = jsTokenObject['access_token'] as String?;
         final expiresInRaw = jsTokenObject['expires_in'];
@@ -259,3 +259,6 @@ String? _getNonce({html.Window? window}) {
   }
   return null;
 }
+
+js.JsObject get _gapiAuth =>
+    (js.context['gapi'] as js.JsObject)['auth'] as js.JsObject;

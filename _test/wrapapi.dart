@@ -59,7 +59,7 @@ class WrapApi {
       body: _body,
     );
     return WrapResponse.fromJson(
-        _response['data'] as core.Map<core.String, core.dynamic>);
+        (_response as core.Map)['data'] as core.Map<core.String, core.dynamic>);
   }
 }
 

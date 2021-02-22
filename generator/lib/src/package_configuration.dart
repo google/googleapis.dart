@@ -280,7 +280,7 @@ package.
   ) {
     final packages = <String, Package>{};
     for (var package in configPackages) {
-      package.forEach((name, values) {
+      (package as Map).forEach((name, values) {
         packages[name as String] = _packageFromYaml(
           name as String,
           values as YamlMap,
