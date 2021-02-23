@@ -125,14 +125,15 @@ class ApiRequester {
   }
 
   Future<http.StreamedResponse> _request(
-      String requestUrl,
-      String method,
-      String? body,
-      Map<String, List<String>>? queryParams,
-      client_requests.Media? uploadMedia,
-      client_requests.UploadOptions? uploadOptions,
-      client_requests.DownloadOptions? downloadOptions,
-      client_requests.ByteRange? downloadRange) {
+    String requestUrl,
+    String method,
+    String? body,
+    Map<String, List<String>>? queryParams,
+    client_requests.Media? uploadMedia,
+    client_requests.UploadOptions? uploadOptions,
+    client_requests.DownloadOptions? downloadOptions,
+    client_requests.ByteRange? downloadRange,
+  ) {
     final downloadAsMedia = downloadOptions != null &&
         downloadOptions != client_requests.DownloadOptions.metadata;
 
@@ -228,22 +229,36 @@ class ApiRequester {
       // 3. Multipart: Upload of data + metadata.
 
       if (uploadOptions is client_requests.ResumableUploadOptions) {
-        final helper = ResumableMediaUploader(_httpClient, uploadMedia, body,
-            uri, method, uploadOptions, _userAgent);
+        final helper = ResumableMediaUploader(
+          _httpClient,
+          uploadMedia,
+          body,
+          uri,
+          method,
+          uploadOptions,
+          _userAgent,
+        );
         return helper.upload();
       }
 
       if (uploadMedia.length == null) {
         throw ArgumentError(
-            'For non-resumable uploads you need to specify the length of the '
-            'media to upload.');
+          'For non-resumable uploads you need to specify the length of the '
+          'media to upload.',
+        );
       }
 
       if (body == null) {
         return simpleUpload();
       } else {
         final uploader = MultipartMediaUploader(
-            _httpClient, uploadMedia, body, uri, method, _userAgent);
+          _httpClient,
+          uploadMedia,
+          body,
+          uri,
+          method,
+          _userAgent,
+        );
         return uploader.upload();
       }
     }
@@ -766,7 +781,8 @@ class Escaper {
 }
 
 Future<http.StreamedResponse> _validateResponse(
-    http.StreamedResponse response) async {
+  http.StreamedResponse response,
+) async {
   final statusCode = response.statusCode;
 
   // TODO: We assume that status codes between [200..400] are OK.
