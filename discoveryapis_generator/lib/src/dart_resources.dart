@@ -149,7 +149,7 @@ class DartResourceMethod {
         if (namedString.isNotEmpty) namedString.write(', ');
         namedString
             .write('${imports.commons.ref()}DownloadOptions downloadOptions = '
-                '${imports.commons}.DownloadOptions.Metadata');
+                '${imports.commons}.DownloadOptions.metadata');
       }
 
       parameterString.write('{$namedString,}');
@@ -405,8 +405,7 @@ $urlPatternCode
         returnType != null ? returnType.jsonDecode(data) : 'null';
     if (mediaDownload) {
       requestCode.write('''
-    if (downloadOptions == null ||
-        downloadOptions == ${imports.commons}.DownloadOptions.Metadata) {
+    if (downloadOptions.isMetadataDownload) {
       return $plainResponse;
     } else {
       return _response;

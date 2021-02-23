@@ -290,7 +290,7 @@ class DartservicesApi {
   async.Future<core.Object> get(
     core.String bucket,
     core.String object, {
-    commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -309,8 +309,7 @@ class DartservicesApi {
       'GET',
       downloadOptions: downloadOptions,
     );
-    if (downloadOptions == null ||
-        downloadOptions == commons.DownloadOptions.Metadata) {
+    if (downloadOptions.isMetadataDownload) {
       return CompileResponse.fromJson(
           _response as core.Map<core.String, core.dynamic>);
     } else {

@@ -40,7 +40,15 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
-    show ApiRequestError, DetailedApiRequestError;
+    show
+        ApiRequestError,
+        DetailedApiRequestError,
+        Media,
+        UploadOptions,
+        ResumableUploadOptions,
+        DownloadOptions,
+        PartialDownloadOptions,
+        ByteRange;
 
 const userAgent = 'dart-api-client toyApi/0.1';
 
@@ -691,6 +699,119 @@ class ComputeResource {
   final commons.ApiRequester _requester;
 
   ComputeResource(commons.ApiRequester client) : _requester = client;
+
+  /// Downloads media.
+  ///
+  /// Download is supported on the URI `/v1/media/{+name}?alt=media`.
+  ///
+  /// Request parameters:
+  ///
+  /// [resourceName] - Name of the media that is being downloaded. See
+  /// ReadRequest.resource_name.
+  /// Value must have pattern `^.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [downloadOptions] - Options for downloading. A download can be either a
+  /// Metadata (default) or Media download. Partial Media downloads are possible
+  /// as well.
+  ///
+  /// Completes with a
+  ///
+  /// - [ToyResourceResponse] for Metadata downloads (see [downloadOptions]).
+  ///
+  /// - [commons.Media] for Media downloads (see [downloadOptions]).
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<core.Object> download(
+    core.String resourceName, {
+    core.String $fields,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
+  }) async {
+    if (resourceName == null) {
+      throw core.ArgumentError('Parameter resourceName is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/media/' + commons.Escaper.ecapeVariableReserved('$resourceName');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+      downloadOptions: downloadOptions,
+    );
+    if (downloadOptions.isMetadataDownload) {
+      return ToyResourceResponse.fromJson(
+          _response as core.Map<core.String, core.dynamic>);
+    } else {
+      return _response;
+    }
+  }
+
+  /// Exports a Google Doc to the requested MIME type and returns the exported
+  /// content.
+  ///
+  /// Please note that the exported content is limited to 10MB.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file.
+  ///
+  /// [mimeType] - The MIME type of the format requested for this export.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [downloadOptions] - Options for downloading. A download can be either a
+  /// Metadata (default) or Media download. Partial Media downloads are possible
+  /// as well.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<core.Object> export(
+    core.String fileId,
+    core.String mimeType, {
+    core.String $fields,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
+  }) async {
+    if (fileId == null) {
+      throw core.ArgumentError('Parameter fileId is required.');
+    }
+    if (mimeType == null) {
+      throw core.ArgumentError('Parameter mimeType is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'mimeType': [mimeType],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'files/' + commons.Escaper.ecapeVariable('$fileId') + '/export';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+      downloadOptions: downloadOptions,
+    );
+    if (downloadOptions.isMetadataDownload) {
+      return null;
+    } else {
+      return _response;
+    }
+  }
 
   /// Request parameters:
   ///

@@ -24,11 +24,11 @@ class Pubspec {
           if (extraDevDependencies != null) ...extraDevDependencies,
         };
 
-  String get sdkConstraint => '>=2.10.0 <3.0.0';
+  String get sdkConstraint => '>=2.11.99 <3.0.0';
 
   static const dependencies = {
     'http': '">=0.12.2 <0.14.0"',
-    '_discoveryapis_commons': '^0.2.1',
+    '_discoveryapis_commons': '^1.0.0',
   };
 
   static const _defaultDevDependencies = {
