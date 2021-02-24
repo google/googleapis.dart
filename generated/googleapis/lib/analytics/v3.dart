@@ -4517,7 +4517,7 @@ class ManagementUploadsResource {
     core.String webPropertyId,
     core.String customDataSourceId, {
     core.String $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media uploadMedia,
   }) async {
     if (accountId == null) {

@@ -115,7 +115,7 @@ class ArchiveResource {
       'POST',
       queryParams: _queryParams,
       uploadMedia: uploadMedia,
-      uploadOptions: commons.UploadOptions.Default,
+      uploadOptions: commons.UploadOptions.defaultOptions,
     );
     return Groups.fromJson(_response as core.Map<core.String, core.dynamic>);
   }

@@ -400,7 +400,7 @@ class ReportsResource {
     core.String reportId,
     core.int reportFragment, {
     core.String $fields,
-    commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
     if (reportId == null) {
       throw core.ArgumentError('Parameter reportId is required.');
@@ -423,8 +423,7 @@ class ReportsResource {
       queryParams: _queryParams,
       downloadOptions: downloadOptions,
     );
-    if (downloadOptions == null ||
-        downloadOptions == commons.DownloadOptions.Metadata) {
+    if (downloadOptions.isMetadataDownload) {
       return null;
     } else {
       return _response;

@@ -1,5 +1,9 @@
 ## 2.0.0-dev
 
+- Now requires `package:_discoveryapis_commons` v1.
+
+### API updates
+
 - `cloudresourcemanager` - added v3
 - `mybusinessaccountmanagement` - added v1
 

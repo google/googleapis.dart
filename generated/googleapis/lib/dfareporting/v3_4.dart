@@ -3714,7 +3714,7 @@ class CreativeAssetsResource {
       body: _body,
       queryParams: _queryParams,
       uploadMedia: uploadMedia,
-      uploadOptions: commons.UploadOptions.Default,
+      uploadOptions: commons.UploadOptions.defaultOptions,
     );
     return CreativeAssetMetadata.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5916,7 +5916,7 @@ class FilesResource {
     core.String reportId,
     core.String fileId, {
     core.String $fields,
-    commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
     if (reportId == null) {
       throw core.ArgumentError('Parameter reportId is required.');
@@ -5939,8 +5939,7 @@ class FilesResource {
       queryParams: _queryParams,
       downloadOptions: downloadOptions,
     );
-    if (downloadOptions == null ||
-        downloadOptions == commons.DownloadOptions.Metadata) {
+    if (downloadOptions.isMetadataDownload) {
       return File.fromJson(_response as core.Map<core.String, core.dynamic>);
     } else {
       return _response;
@@ -10281,7 +10280,7 @@ class ReportsFilesResource {
     core.String reportId,
     core.String fileId, {
     core.String $fields,
-    commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -10309,8 +10308,7 @@ class ReportsFilesResource {
       queryParams: _queryParams,
       downloadOptions: downloadOptions,
     );
-    if (downloadOptions == null ||
-        downloadOptions == commons.DownloadOptions.Metadata) {
+    if (downloadOptions.isMetadataDownload) {
       return File.fromJson(_response as core.Map<core.String, core.dynamic>);
     } else {
       return _response;

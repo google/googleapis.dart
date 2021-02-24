@@ -2744,7 +2744,7 @@ class ObjectsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-    commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -2779,8 +2779,7 @@ class ObjectsResource {
       queryParams: _queryParams,
       downloadOptions: downloadOptions,
     );
-    if (downloadOptions == null ||
-        downloadOptions == commons.DownloadOptions.Metadata) {
+    if (downloadOptions.isMetadataDownload) {
       return Object.fromJson(_response as core.Map<core.String, core.dynamic>);
     } else {
       return _response;
@@ -2949,7 +2948,7 @@ class ObjectsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media uploadMedia,
   }) async {
     final _body =

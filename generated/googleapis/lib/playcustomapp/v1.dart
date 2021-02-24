@@ -106,7 +106,7 @@ class AccountsCustomAppsResource {
     CustomApp request,
     core.String account, {
     core.String $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media uploadMedia,
   }) async {
     final _body =

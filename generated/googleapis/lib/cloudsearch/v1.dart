@@ -1273,7 +1273,7 @@ class MediaResource {
       body: _body,
       queryParams: _queryParams,
       uploadMedia: uploadMedia,
-      uploadOptions: commons.UploadOptions.Default,
+      uploadOptions: commons.UploadOptions.defaultOptions,
     );
     return Media.fromJson(_response as core.Map<core.String, core.dynamic>);
   }

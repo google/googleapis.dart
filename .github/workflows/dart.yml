@@ -37,16 +37,16 @@ jobs:
       - name: mono_repo self validate
         run: pub global run mono_repo generate --validate
   job_002:
-    name: "analyze_and_format; Dart beta; PKGS: _test, _test_package, discoveryapis_commons, discoveryapis_generator, generator, googleapis_auth; `dartfmt -n --set-exit-if-changed .`, `dartanalyzer --fatal-infos .`"
+    name: "analyze_and_format; Dart beta; PKGS: _test, _test_package, discoveryapis_commons, discoveryapis_generator, generated/googleapis, generated/googleapis_beta, generator, googleapis_auth; `dartfmt -n --set-exit-if-changed .`, `dartanalyzer --fatal-infos .`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@v2
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;dart:beta;packages:_test-_test_package-discoveryapis_commons-discoveryapis_generator-generator-googleapis_auth;commands:dartfmt-dartanalyzer"
+          key: "os:ubuntu-latest;pub-cache-hosted;dart:beta;packages:_test-_test_package-discoveryapis_commons-discoveryapis_generator-generated/googleapis-generated/googleapis_beta-generator-googleapis_auth;commands:dartfmt-dartanalyzer"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;dart:beta;packages:_test-_test_package-discoveryapis_commons-discoveryapis_generator-generator-googleapis_auth
+            os:ubuntu-latest;pub-cache-hosted;dart:beta;packages:_test-_test_package-discoveryapis_commons-discoveryapis_generator-generated/googleapis-generated/googleapis_beta-generator-googleapis_auth
             os:ubuntu-latest;pub-cache-hosted;dart:beta
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
@@ -106,6 +106,32 @@ jobs:
       - name: "discoveryapis_generator; dartanalyzer --fatal-infos ."
         if: "always() && steps.discoveryapis_generator_pub_upgrade.conclusion == 'success'"
         working-directory: discoveryapis_generator
+        run: dartanalyzer --fatal-infos .
+      - id: generated_googleapis_pub_upgrade
+        name: "generated/googleapis; pub upgrade --no-precompile"
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: generated/googleapis
+        run: pub upgrade --no-precompile
+      - name: "generated/googleapis; dartfmt -n --set-exit-if-changed ."
+        if: "always() && steps.generated_googleapis_pub_upgrade.conclusion == 'success'"
+        working-directory: generated/googleapis
+        run: dartfmt -n --set-exit-if-changed .
+      - name: "generated/googleapis; dartanalyzer --fatal-infos ."
+        if: "always() && steps.generated_googleapis_pub_upgrade.conclusion == 'success'"
+        working-directory: generated/googleapis
+        run: dartanalyzer --fatal-infos .
+      - id: generated_googleapis_beta_pub_upgrade
+        name: "generated/googleapis_beta; pub upgrade --no-precompile"
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: generated/googleapis_beta
+        run: pub upgrade --no-precompile
+      - name: "generated/googleapis_beta; dartfmt -n --set-exit-if-changed ."
+        if: "always() && steps.generated_googleapis_beta_pub_upgrade.conclusion == 'success'"
+        working-directory: generated/googleapis_beta
+        run: dartfmt -n --set-exit-if-changed .
+      - name: "generated/googleapis_beta; dartanalyzer --fatal-infos ."
+        if: "always() && steps.generated_googleapis_beta_pub_upgrade.conclusion == 'success'"
+        working-directory: generated/googleapis_beta
         run: dartanalyzer --fatal-infos .
       - id: generator_pub_upgrade
         name: "generator; pub upgrade --no-precompile"
@@ -257,51 +283,6 @@ jobs:
         working-directory: googleapis_auth
         run: dartanalyzer --fatal-infos .
   job_004:
-    name: "analyze_and_format; Dart 2.10.0; PKGS: generated/googleapis, generated/googleapis_beta; `dartfmt -n --set-exit-if-changed .`, `dartanalyzer --fatal-infos .`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v2
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;dart:2.10.0;packages:generated/googleapis-generated/googleapis_beta;commands:dartfmt-dartanalyzer"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;dart:2.10.0;packages:generated/googleapis-generated/googleapis_beta
-            os:ubuntu-latest;pub-cache-hosted;dart:2.10.0
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v0.3
-        with:
-          sdk: "2.10.0"
-      - id: checkout
-        uses: actions/checkout@v2
-      - id: generated_googleapis_pub_upgrade
-        name: "generated/googleapis; pub upgrade --no-precompile"
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: generated/googleapis
-        run: pub upgrade --no-precompile
-      - name: "generated/googleapis; dartfmt -n --set-exit-if-changed ."
-        if: "always() && steps.generated_googleapis_pub_upgrade.conclusion == 'success'"
-        working-directory: generated/googleapis
-        run: dartfmt -n --set-exit-if-changed .
-      - name: "generated/googleapis; dartanalyzer --fatal-infos ."
-        if: "always() && steps.generated_googleapis_pub_upgrade.conclusion == 'success'"
-        working-directory: generated/googleapis
-        run: dartanalyzer --fatal-infos .
-      - id: generated_googleapis_beta_pub_upgrade
-        name: "generated/googleapis_beta; pub upgrade --no-precompile"
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: generated/googleapis_beta
-        run: pub upgrade --no-precompile
-      - name: "generated/googleapis_beta; dartfmt -n --set-exit-if-changed ."
-        if: "always() && steps.generated_googleapis_beta_pub_upgrade.conclusion == 'success'"
-        working-directory: generated/googleapis_beta
-        run: dartfmt -n --set-exit-if-changed .
-      - name: "generated/googleapis_beta; dartanalyzer --fatal-infos ."
-        if: "always() && steps.generated_googleapis_beta_pub_upgrade.conclusion == 'success'"
-        working-directory: generated/googleapis_beta
-        run: dartanalyzer --fatal-infos .
-  job_005:
     name: "unittest; Dart beta; PKG: discoveryapis_commons; `pub run test`"
     runs-on: ubuntu-latest
     steps:
@@ -333,8 +314,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-      - job_004
-  job_006:
+  job_005:
     name: "unittest; Dart beta; PKG: discoveryapis_generator; `pub run test`"
     runs-on: ubuntu-latest
     steps:
@@ -366,8 +346,71 @@ jobs:
       - job_001
       - job_002
       - job_003
-      - job_004
+  job_006:
+    name: "unittest; Dart beta; PKG: generated/googleapis; `pub run test`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@v2
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;dart:beta;packages:generated/googleapis;commands:test_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;dart:beta;packages:generated/googleapis
+            os:ubuntu-latest;pub-cache-hosted;dart:beta
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - uses: dart-lang/setup-dart@v0.3
+        with:
+          sdk: beta
+      - id: checkout
+        uses: actions/checkout@v2
+      - id: generated_googleapis_pub_upgrade
+        name: "generated/googleapis; pub upgrade --no-precompile"
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: generated/googleapis
+        run: pub upgrade --no-precompile
+      - name: generated/googleapis; pub run test
+        if: "always() && steps.generated_googleapis_pub_upgrade.conclusion == 'success'"
+        working-directory: generated/googleapis
+        run: pub run test
+    needs:
+      - job_001
+      - job_002
+      - job_003
   job_007:
+    name: "unittest; Dart beta; PKG: generated/googleapis_beta; `pub run test`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@v2
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;dart:beta;packages:generated/googleapis_beta;commands:test_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;dart:beta;packages:generated/googleapis_beta
+            os:ubuntu-latest;pub-cache-hosted;dart:beta
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - uses: dart-lang/setup-dart@v0.3
+        with:
+          sdk: beta
+      - id: checkout
+        uses: actions/checkout@v2
+      - id: generated_googleapis_beta_pub_upgrade
+        name: "generated/googleapis_beta; pub upgrade --no-precompile"
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: generated/googleapis_beta
+        run: pub upgrade --no-precompile
+      - name: generated/googleapis_beta; pub run test
+        if: "always() && steps.generated_googleapis_beta_pub_upgrade.conclusion == 'success'"
+        working-directory: generated/googleapis_beta
+        run: pub run test
+    needs:
+      - job_001
+      - job_002
+      - job_003
+  job_008:
     name: "unittest; Dart dev; PKG: discoveryapis_commons; `pub run test`"
     runs-on: ubuntu-latest
     steps:
@@ -399,8 +442,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-      - job_004
-  job_008:
+  job_009:
     name: "unittest; Dart dev; PKG: discoveryapis_generator; `pub run test`"
     runs-on: ubuntu-latest
     steps:
@@ -432,8 +474,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-      - job_004
-  job_009:
+  job_010:
     name: "unittest; Dart dev; PKG: generated/googleapis; `pub run test`"
     runs-on: ubuntu-latest
     steps:
@@ -465,8 +506,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-      - job_004
-  job_010:
+  job_011:
     name: "unittest; Dart dev; PKG: generated/googleapis_beta; `pub run test`"
     runs-on: ubuntu-latest
     steps:
@@ -498,74 +538,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-      - job_004
-  job_011:
-    name: "unittest; Dart 2.10.0; PKG: generated/googleapis; `pub run test`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v2
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;dart:2.10.0;packages:generated/googleapis;commands:test_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;dart:2.10.0;packages:generated/googleapis
-            os:ubuntu-latest;pub-cache-hosted;dart:2.10.0
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v0.3
-        with:
-          sdk: "2.10.0"
-      - id: checkout
-        uses: actions/checkout@v2
-      - id: generated_googleapis_pub_upgrade
-        name: "generated/googleapis; pub upgrade --no-precompile"
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: generated/googleapis
-        run: pub upgrade --no-precompile
-      - name: generated/googleapis; pub run test
-        if: "always() && steps.generated_googleapis_pub_upgrade.conclusion == 'success'"
-        working-directory: generated/googleapis
-        run: pub run test
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
   job_012:
-    name: "unittest; Dart 2.10.0; PKG: generated/googleapis_beta; `pub run test`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v2
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;dart:2.10.0;packages:generated/googleapis_beta;commands:test_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;dart:2.10.0;packages:generated/googleapis_beta
-            os:ubuntu-latest;pub-cache-hosted;dart:2.10.0
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v0.3
-        with:
-          sdk: "2.10.0"
-      - id: checkout
-        uses: actions/checkout@v2
-      - id: generated_googleapis_beta_pub_upgrade
-        name: "generated/googleapis_beta; pub upgrade --no-precompile"
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: generated/googleapis_beta
-        run: pub upgrade --no-precompile
-      - name: generated/googleapis_beta; pub run test
-        if: "always() && steps.generated_googleapis_beta_pub_upgrade.conclusion == 'success'"
-        working-directory: generated/googleapis_beta
-        run: pub run test
-    needs:
-      - job_001
-      - job_002
-      - job_003
-      - job_004
-  job_013:
     name: "unittest; Dart beta; PKG: googleapis_auth; `pub run test -p vm`"
     runs-on: ubuntu-latest
     steps:
@@ -597,8 +570,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-      - job_004
-  job_014:
+  job_013:
     name: "unittest; Dart dev; PKG: googleapis_auth; `pub run test -p vm`"
     runs-on: ubuntu-latest
     steps:
@@ -630,8 +602,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-      - job_004
-  job_015:
+  job_014:
     name: "unittest; Dart beta; PKG: googleapis_auth; `pub run test -p chrome`"
     runs-on: ubuntu-latest
     steps:
@@ -663,8 +634,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-      - job_004
-  job_016:
+  job_015:
     name: "unittest; Dart dev; PKG: googleapis_auth; `pub run test -p chrome`"
     runs-on: ubuntu-latest
     steps:
@@ -696,4 +666,3 @@ jobs:
       - job_001
       - job_002
       - job_003
-      - job_004
