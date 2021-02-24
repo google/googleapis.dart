@@ -4,4 +4,4 @@
 
 /// Hardcoded dart version as `Platform` from `dart:io` is not available when
 /// targeting javascript.
-const dartVersion = '2.0.0';
+const dartVersion = 'unknown';
