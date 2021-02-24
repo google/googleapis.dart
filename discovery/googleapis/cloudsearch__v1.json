@@ -1826,7 +1826,7 @@
             }
         }
     },
-    "revision": "20210202",
+    "revision": "20210213",
     "rootUrl": "https://cloudsearch.googleapis.com/",
     "schemas": {
         "BooleanOperatorOptions": {

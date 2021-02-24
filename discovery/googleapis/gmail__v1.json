@@ -2613,7 +2613,7 @@
             }
         }
     },
-    "revision": "20210213",
+    "revision": "20210222",
     "rootUrl": "https://gmail.googleapis.com/",
     "schemas": {
         "AutoForwarding": {

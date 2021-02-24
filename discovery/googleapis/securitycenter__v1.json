@@ -1768,7 +1768,7 @@
             }
         }
     },
-    "revision": "20210212",
+    "revision": "20210219",
     "rootUrl": "https://securitycenter.googleapis.com/",
     "schemas": {
         "Asset": {
