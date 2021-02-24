@@ -9166,7 +9166,12 @@ class LogEntry {
   core.Map<core.String, core.Object> jsonPayload;
 
   /// A set of user-defined (key, value) data that provides additional
-  /// information about the log entry.
+  /// information about the log entry.Cloud Logging truncates label keys that
+  /// exceed 512 B and label values that exceed 64 KB upon their associated log
+  /// entry being written.
+  ///
+  /// The truncation is indicated by an ellipsis at the end of the character
+  /// string.
   ///
   /// Optional.
   core.Map<core.String, core.String> labels;
@@ -9201,7 +9206,7 @@ class LogEntry {
   /// The Kubernetes pod labels that used to be in metadata.userLabels will now
   /// be present in the labels field with a key prefix of k8s-pod/. The system
   /// labels that were present in the metadata.systemLabels field will no longer
-  /// be available in the LogEntry.
+  /// be available in the log entry.
   ///
   /// Output only. Deprecated.
   MonitoredResourceMetadata metadata;

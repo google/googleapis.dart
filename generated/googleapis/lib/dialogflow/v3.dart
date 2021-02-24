@@ -577,7 +577,7 @@ class ProjectsLocationsAgentsEntityTypesResource {
   /// `EntityType.entities.value` * `EntityType.entities.synonyms` *
   /// `EntityType.excluded_phrases.value` If not specified, the agent's default
   /// language is used.
-  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
   ///
@@ -685,7 +685,7 @@ class ProjectsLocationsAgentsEntityTypesResource {
   /// following fields are language dependent: * `EntityType.entities.value` *
   /// `EntityType.entities.synonyms` * `EntityType.excluded_phrases.value` If
   /// not specified, the agent's default language is used.
-  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
   ///
@@ -736,7 +736,7 @@ class ProjectsLocationsAgentsEntityTypesResource {
   /// fields are language dependent: * `EntityType.entities.value` *
   /// `EntityType.entities.synonyms` * `EntityType.excluded_phrases.value` If
   /// not specified, the agent's default language is used.
-  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
   ///
@@ -802,7 +802,7 @@ class ProjectsLocationsAgentsEntityTypesResource {
   /// `EntityType.entities.value` * `EntityType.entities.synonyms` *
   /// `EntityType.excluded_phrases.value` If not specified, the agent's default
   /// language is used.
-  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
   ///
@@ -1973,7 +1973,7 @@ class ProjectsLocationsAgentsFlowsResource {
   /// `Flow.event_handlers.trigger_fulfillment.messages` *
   /// `Flow.transition_routes.trigger_fulfillment.messages` If not specified,
   /// the agent's default language is used.
-  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
   ///
@@ -2080,7 +2080,7 @@ class ProjectsLocationsAgentsFlowsResource {
   /// `Flow.event_handlers.trigger_fulfillment.messages` *
   /// `Flow.transition_routes.trigger_fulfillment.messages` If not specified,
   /// the agent's default language is used.
-  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
   ///
@@ -2179,7 +2179,7 @@ class ProjectsLocationsAgentsFlowsResource {
   /// language dependent: * `Flow.event_handlers.trigger_fulfillment.messages` *
   /// `Flow.transition_routes.trigger_fulfillment.messages` If not specified,
   /// the agent's default language is used.
-  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
   ///
@@ -2243,7 +2243,7 @@ class ProjectsLocationsAgentsFlowsResource {
   /// `Flow.event_handlers.trigger_fulfillment.messages` *
   /// `Flow.transition_routes.trigger_fulfillment.messages` If not specified,
   /// the agent's default language is used.
-  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
   ///
@@ -2416,7 +2416,7 @@ class ProjectsLocationsAgentsFlowsPagesResource {
   /// `Page.transition_routes.trigger_fulfillment.messages` *
   /// `Page.transition_route_groups.transition_routes.trigger_fulfillment.messages`
   /// If not specified, the agent's default language is used.
-  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
   ///
@@ -2525,7 +2525,7 @@ class ProjectsLocationsAgentsFlowsPagesResource {
   /// `Page.transition_routes.trigger_fulfillment.messages` *
   /// `Page.transition_route_groups.transition_routes.trigger_fulfillment.messages`
   /// If not specified, the agent's default language is used.
-  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
   ///
@@ -2579,7 +2579,7 @@ class ProjectsLocationsAgentsFlowsPagesResource {
   /// `Page.transition_routes.trigger_fulfillment.messages` *
   /// `Page.transition_route_groups.transition_routes.trigger_fulfillment.messages`
   /// If not specified, the agent's default language is used.
-  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
   ///
@@ -2647,7 +2647,7 @@ class ProjectsLocationsAgentsFlowsPagesResource {
   /// `Page.transition_routes.trigger_fulfillment.messages` *
   /// `Page.transition_route_groups.transition_routes.trigger_fulfillment.messages`
   /// If not specified, the agent's default language is used.
-  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
   ///
@@ -2716,7 +2716,7 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
   /// [languageCode] - The language to list transition route groups for. The
   /// field `messages` in TransitionRoute is language dependent. If not
   /// specified, the agent's default language is used.
-  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
   ///
@@ -2822,7 +2822,7 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
   /// [languageCode] - The language to list transition route groups for. The
   /// field `messages` in TransitionRoute is language dependent. If not
   /// specified, the agent's default language is used.
-  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
   ///
@@ -2872,7 +2872,7 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
   /// [languageCode] - The language to list transition route groups for. The
   /// field `messages` in TransitionRoute is language dependent. If not
   /// specified, the agent's default language is used.
-  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
   ///
@@ -2939,7 +2939,7 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
   /// [languageCode] - The language to list transition route groups for. The
   /// field `messages` in TransitionRoute is language dependent. If not
   /// specified, the agent's default language is used.
-  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
   ///
@@ -3295,7 +3295,7 @@ class ProjectsLocationsAgentsIntentsResource {
   /// [languageCode] - The language of the following fields in `intent`: *
   /// `Intent.training_phrases.parts.text` If not specified, the agent's default
   /// language is used.
-  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
   ///
@@ -3391,7 +3391,7 @@ class ProjectsLocationsAgentsIntentsResource {
   /// [languageCode] - The language to retrieve the intent for. The following
   /// fields are language dependent: * `Intent.training_phrases.parts.text` If
   /// not specified, the agent's default language is used.
-  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
   ///
@@ -3448,7 +3448,7 @@ class ProjectsLocationsAgentsIntentsResource {
   /// [languageCode] - The language to list intents for. The following fields
   /// are language dependent: * `Intent.training_phrases.parts.text` If not
   /// specified, the agent's default language is used.
-  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
   ///
@@ -3514,7 +3514,7 @@ class ProjectsLocationsAgentsIntentsResource {
   /// [languageCode] - The language of the following fields in `intent`: *
   /// `Intent.training_phrases.parts.text` If not specified, the agent's default
   /// language is used.
-  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
   ///
@@ -5434,7 +5434,7 @@ class GoogleCloudDialogflowCxV3Agent {
   /// The default language of the agent as a language tag.
   ///
   /// See
-  /// [Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// for a list of the currently supported language codes. This field cannot be
   /// set by the Agents.UpdateAgent method.
   ///
@@ -9404,7 +9404,7 @@ class GoogleCloudDialogflowCxV3QueryInput {
   /// The language of the input.
   ///
   /// See
-  /// [Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// for a list of the currently supported language codes. Note that queries in
   /// the same session do not necessarily need to specify the same language.
   ///
@@ -9458,6 +9458,9 @@ class GoogleCloudDialogflowCxV3QueryParameters {
   ///
   /// If not provided, sentiment analysis is not performed.
   core.bool analyzeQueryTextSentiment;
+
+  /// Whether to disable webhook calls for this request.
+  core.bool disableWebhook;
 
   /// The geo location of this conversational query.
   GoogleTypeLatLng geoLocation;
@@ -9520,6 +9523,9 @@ class GoogleCloudDialogflowCxV3QueryParameters {
       analyzeQueryTextSentiment =
           _json['analyzeQueryTextSentiment'] as core.bool;
     }
+    if (_json.containsKey('disableWebhook')) {
+      disableWebhook = _json['disableWebhook'] as core.bool;
+    }
     if (_json.containsKey('geoLocation')) {
       geoLocation = GoogleTypeLatLng.fromJson(
           _json['geoLocation'] as core.Map<core.String, core.dynamic>);
@@ -9568,6 +9574,7 @@ class GoogleCloudDialogflowCxV3QueryParameters {
   core.Map<core.String, core.Object> toJson() => {
         if (analyzeQueryTextSentiment != null)
           'analyzeQueryTextSentiment': analyzeQueryTextSentiment,
+        if (disableWebhook != null) 'disableWebhook': disableWebhook,
         if (geoLocation != null) 'geoLocation': geoLocation.toJson(),
         if (parameters != null) 'parameters': parameters,
         if (payload != null) 'payload': payload,
@@ -9616,7 +9623,7 @@ class GoogleCloudDialogflowCxV3QueryResult {
   /// The language that was triggered during intent detection.
   ///
   /// See
-  /// [Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// for a list of the currently supported language codes.
   core.String languageCode;
 
@@ -9858,9 +9865,8 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
   /// ended.
   ///
   /// This message is generated by Dialogflow only when the conversation reaches
-  /// `END_SESSION` or `END_PAGE` page. It is not supposed to be defined by the
-  /// user. It's guaranteed that there is at most one such message in each
-  /// response.
+  /// `END_SESSION` page. It is not supposed to be defined by the user. It's
+  /// guaranteed that there is at most one such message in each response.
   ///
   /// Output only.
   GoogleCloudDialogflowCxV3ResponseMessageEndInteraction endInteraction;
@@ -13955,7 +13961,7 @@ class GoogleCloudDialogflowCxV3beta1QueryInput {
   /// The language of the input.
   ///
   /// See
-  /// [Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// for a list of the currently supported language codes. Note that queries in
   /// the same session do not necessarily need to specify the same language.
   ///
@@ -14050,9 +14056,8 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessage {
   /// ended.
   ///
   /// This message is generated by Dialogflow only when the conversation reaches
-  /// `END_SESSION` or `END_PAGE` page. It is not supposed to be defined by the
-  /// user. It's guaranteed that there is at most one such message in each
-  /// response.
+  /// `END_SESSION` page. It is not supposed to be defined by the user. It's
+  /// guaranteed that there is at most one such message in each response.
   ///
   /// Output only.
   GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction endInteraction;

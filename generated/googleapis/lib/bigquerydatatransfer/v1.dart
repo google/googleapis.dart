@@ -759,12 +759,10 @@ class ProjectsLocationsTransferConfigsResource {
   /// Request parameters:
   ///
   /// [name] - The resource name of the transfer config. Transfer config names
-  /// have the form of
+  /// have the form
   /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`.
-  /// The name is automatically generated based on the config_id specified in
-  /// CreateTransferConfigRequest along with project_id and region. If config_id
-  /// is not provided, usually a uuid, even though it is not guaranteed or
-  /// required, will be generated for config_id.
+  /// Where `config_id` is usually a uuid, even though it is not guaranteed or
+  /// required. The name is ignored when creating a transfer config.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/transferConfigs/\[^/\]+$`.
   ///
@@ -1431,12 +1429,10 @@ class ProjectsTransferConfigsResource {
   /// Request parameters:
   ///
   /// [name] - The resource name of the transfer config. Transfer config names
-  /// have the form of
+  /// have the form
   /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`.
-  /// The name is automatically generated based on the config_id specified in
-  /// CreateTransferConfigRequest along with project_id and region. If config_id
-  /// is not provided, usually a uuid, even though it is not guaranteed or
-  /// required, will be generated for config_id.
+  /// Where `config_id` is usually a uuid, even though it is not guaranteed or
+  /// required. The name is ignored when creating a transfer config.
   /// Value must have pattern `^projects/\[^/\]+/transferConfigs/\[^/\]+$`.
   ///
   /// [authorizationCode] - Optional OAuth2 authorization code to use with this
@@ -2809,12 +2805,10 @@ class TransferConfig {
 
   /// The resource name of the transfer config.
   ///
-  /// Transfer config names have the form of
+  /// Transfer config names have the form
   /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`.
-  /// The name is automatically generated based on the config_id specified in
-  /// CreateTransferConfigRequest along with project_id and region. If config_id
-  /// is not provided, usually a uuid, even though it is not guaranteed or
-  /// required, will be generated for config_id.
+  /// Where `config_id` is usually a uuid, even though it is not guaranteed or
+  /// required. The name is ignored when creating a transfer config.
   core.String name;
 
   /// Next time when data transfer will run.
@@ -2850,13 +2844,13 @@ class TransferConfig {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "TRANSFER_STATE_UNSPECIFIED" : State placeholder.
+  /// - "TRANSFER_STATE_UNSPECIFIED" : State placeholder (0).
   /// - "PENDING" : Data transfer is scheduled and is waiting to be picked up by
-  /// data transfer backend.
-  /// - "RUNNING" : Data transfer is in progress.
-  /// - "SUCCEEDED" : Data transfer completed successfully.
-  /// - "FAILED" : Data transfer failed.
-  /// - "CANCELLED" : Data transfer is cancelled.
+  /// data transfer backend (2).
+  /// - "RUNNING" : Data transfer is in progress (3).
+  /// - "SUCCEEDED" : Data transfer completed successfully (4).
+  /// - "FAILED" : Data transfer failed (5).
+  /// - "CANCELLED" : Data transfer is cancelled (6).
   core.String state;
 
   /// Data transfer modification time.
@@ -3072,13 +3066,13 @@ class TransferRun {
   ///
   /// Ignored for input requests.
   /// Possible string values are:
-  /// - "TRANSFER_STATE_UNSPECIFIED" : State placeholder.
+  /// - "TRANSFER_STATE_UNSPECIFIED" : State placeholder (0).
   /// - "PENDING" : Data transfer is scheduled and is waiting to be picked up by
-  /// data transfer backend.
-  /// - "RUNNING" : Data transfer is in progress.
-  /// - "SUCCEEDED" : Data transfer completed successfully.
-  /// - "FAILED" : Data transfer failed.
-  /// - "CANCELLED" : Data transfer is cancelled.
+  /// data transfer backend (2).
+  /// - "RUNNING" : Data transfer is in progress (3).
+  /// - "SUCCEEDED" : Data transfer completed successfully (4).
+  /// - "FAILED" : Data transfer failed (5).
+  /// - "CANCELLED" : Data transfer is cancelled (6).
   core.String state;
 
   /// Last time the data transfer run state was updated.

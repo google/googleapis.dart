@@ -161,8 +161,7 @@ class LiensResource {
   ///
   /// Callers of this method will require permission on the `parent` resource.
   /// For example, a Lien with a `parent` of `projects/1234` requires permission
-  /// requires permission `resourcemanager.projects.get` or
-  /// `resourcemanager.projects.updateLiens`.
+  /// `resourcemanager.projects.get`
   ///
   /// Request parameters:
   ///

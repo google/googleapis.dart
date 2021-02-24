@@ -471,7 +471,8 @@ class GoogleCloudBillingBudgetsV1BudgetAmount {
 class GoogleCloudBillingBudgetsV1CustomPeriod {
   /// The end date of the time period.
   ///
-  /// If unset, specifies to track all usage incurred since the start_date.
+  /// Budgets with elapsed end date won't be processed. If unset, specifies to
+  /// track all usage incurred since the start_date.
   ///
   /// Optional.
   GoogleTypeDate endDate;
@@ -534,7 +535,7 @@ class GoogleCloudBillingBudgetsV1Filter {
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "CREDIT_TYPES_TREATMENT_UNSPECIFIED" : This is an invalid value.
+  /// - "CREDIT_TYPES_TREATMENT_UNSPECIFIED"
   /// - "INCLUDE_ALL_CREDITS" : All types of credit are subtracted from the
   /// gross cost to determine the spend for threshold calculations.
   /// - "EXCLUDE_ALL_CREDITS" : All types of credit are added to the net cost to

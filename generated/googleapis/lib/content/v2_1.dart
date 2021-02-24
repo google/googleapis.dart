@@ -28,6 +28,7 @@
 ///   - [AccountsReturncarrierResource]
 /// - [AccountstatusesResource]
 /// - [AccounttaxResource]
+/// - [BuyongoogleprogramsResource]
 /// - [CollectionsResource]
 /// - [CollectionstatusesResource]
 /// - [CssesResource]
@@ -81,6 +82,8 @@ class ShoppingContentApi {
   AccountstatusesResource get accountstatuses =>
       AccountstatusesResource(_requester);
   AccounttaxResource get accounttax => AccounttaxResource(_requester);
+  BuyongoogleprogramsResource get buyongoogleprograms =>
+      BuyongoogleprogramsResource(_requester);
   CollectionsResource get collections => CollectionsResource(_requester);
   CollectionstatusesResource get collectionstatuses =>
       CollectionstatusesResource(_requester);
@@ -1461,6 +1464,117 @@ class AccounttaxResource {
     );
     return AccountTax.fromJson(
         _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class BuyongoogleprogramsResource {
+  final commons.ApiRequester _requester;
+
+  BuyongoogleprogramsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Retrieves a status of BoG program for your Merchant Center account.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account.
+  ///
+  /// [regionCode] - The Program region code \[ISO 3166-1
+  /// alpha-2\](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently
+  /// only US is available.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BuyOnGoogleProgramStatus].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BuyOnGoogleProgramStatus> get(
+    core.String merchantId,
+    core.String regionCode, {
+    core.String $fields,
+  }) async {
+    if (merchantId == null) {
+      throw core.ArgumentError('Parameter merchantId is required.');
+    }
+    if (regionCode == null) {
+      throw core.ArgumentError('Parameter regionCode is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/buyongoogleprograms/' +
+        commons.Escaper.ecapeVariable('$regionCode');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return BuyOnGoogleProgramStatus.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Onboards BoG in your Merchant Center account.
+  ///
+  /// By using this method, you agree to the Terms of Service.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account.
+  ///
+  /// [regionCode] - The program region code \[ISO 3166-1
+  /// alpha-2\](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently
+  /// only US is available.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> onboard(
+    OnboardBuyOnGoogleProgramRequest request,
+    core.String merchantId,
+    core.String regionCode, {
+    core.String $fields,
+  }) async {
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
+    if (merchantId == null) {
+      throw core.ArgumentError('Parameter merchantId is required.');
+    }
+    if (regionCode == null) {
+      throw core.ArgumentError('Parameter regionCode is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/buyongoogleprograms/' +
+        commons.Escaper.ecapeVariable('$regionCode') +
+        '/onboard';
+
+    await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      downloadOptions: null,
+    );
   }
 }
 
@@ -9695,6 +9809,55 @@ class BusinessDayConfig {
       };
 }
 
+/// Response message for the GetProgramStatus method.
+class BuyOnGoogleProgramStatus {
+  /// The customer service pending email.
+  core.String customerServicePendingEmail;
+
+  /// The customer service verified email.
+  core.String customerServiceVerifiedEmail;
+
+  /// The current participation stage for the program.
+  /// Possible string values are:
+  /// - "PROGRAM_PARTICIPATION_STAGE_UNSPECIFIED" : Default value when
+  /// participation stage is not set.
+  /// - "NOT_ELIGIBLE" : Merchant is not eligible for onboarding to a given
+  /// program in a specific region code.
+  /// - "ELIGIBLE" : Merchant is eligible for onboarding to a given program in a
+  /// specific region code.
+  /// - "ONBOARDING" : Merchant is onboarding to a given program in a specific
+  /// region code.
+  /// - "ACTIVE" : Merchant's program participation is active for a specific
+  /// region code.
+  /// - "PAUSED" : Participation has been paused.
+  core.String participationStage;
+
+  BuyOnGoogleProgramStatus();
+
+  BuyOnGoogleProgramStatus.fromJson(core.Map _json) {
+    if (_json.containsKey('customerServicePendingEmail')) {
+      customerServicePendingEmail =
+          _json['customerServicePendingEmail'] as core.String;
+    }
+    if (_json.containsKey('customerServiceVerifiedEmail')) {
+      customerServiceVerifiedEmail =
+          _json['customerServiceVerifiedEmail'] as core.String;
+    }
+    if (_json.containsKey('participationStage')) {
+      participationStage = _json['participationStage'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (customerServicePendingEmail != null)
+          'customerServicePendingEmail': customerServicePendingEmail,
+        if (customerServiceVerifiedEmail != null)
+          'customerServiceVerifiedEmail': customerServiceVerifiedEmail,
+        if (participationStage != null)
+          'participationStage': participationStage,
+      };
+}
+
 class CarrierRate {
   /// Carrier service, such as `"UPS"` or `"Fedex"`.
   ///
@@ -13581,6 +13744,25 @@ class MonetaryAmount {
   core.Map<core.String, core.Object> toJson() => {
         if (priceAmount != null) 'priceAmount': priceAmount.toJson(),
         if (taxAmount != null) 'taxAmount': taxAmount.toJson(),
+      };
+}
+
+/// Request message for the OnboardProgram method.
+class OnboardBuyOnGoogleProgramRequest {
+  /// The customer service email.
+  core.String customerServiceEmail;
+
+  OnboardBuyOnGoogleProgramRequest();
+
+  OnboardBuyOnGoogleProgramRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('customerServiceEmail')) {
+      customerServiceEmail = _json['customerServiceEmail'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (customerServiceEmail != null)
+          'customerServiceEmail': customerServiceEmail,
       };
 }
 

@@ -7,6 +7,7 @@
 See [package:googleapis](https://pub.dev/packages/googleapis)
 for the stable versions of the changed APIs.
 
+- `ondemandscanning` - new!
 - `policysimulator` - new!
 - `workflowexecution` - removed. Now stable.
 - `workflows` - removed. Now stable.

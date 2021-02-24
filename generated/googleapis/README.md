@@ -1115,6 +1115,10 @@ View Google Search Console data for your verified sites.
 
 Official API documentation: https://developers.google.com/webmaster-tools/
 
+#### Web Risk API - webrisk v1
+
+Official API documentation: https://cloud.google.com/web-risk/
+
 #### Web Security Scanner API - websecurityscanner v1
 
 Scans your Compute and App Engine apps for common web vulnerabilities.

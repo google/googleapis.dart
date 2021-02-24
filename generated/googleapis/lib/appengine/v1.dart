@@ -4317,6 +4317,13 @@ class LocationMetadata {
   /// location.@OutputOnly
   core.bool flexibleEnvironmentAvailable;
 
+  /// Search API
+  /// (https://cloud.google.com/appengine/docs/standard/python/search) is
+  /// available in the given location.
+  ///
+  /// Output only.
+  core.bool searchApiAvailable;
+
   /// App Engine standard environment is available in the given
   /// location.@OutputOnly
   core.bool standardEnvironmentAvailable;
@@ -4328,6 +4335,9 @@ class LocationMetadata {
       flexibleEnvironmentAvailable =
           _json['flexibleEnvironmentAvailable'] as core.bool;
     }
+    if (_json.containsKey('searchApiAvailable')) {
+      searchApiAvailable = _json['searchApiAvailable'] as core.bool;
+    }
     if (_json.containsKey('standardEnvironmentAvailable')) {
       standardEnvironmentAvailable =
           _json['standardEnvironmentAvailable'] as core.bool;
@@ -4337,6 +4347,8 @@ class LocationMetadata {
   core.Map<core.String, core.Object> toJson() => {
         if (flexibleEnvironmentAvailable != null)
           'flexibleEnvironmentAvailable': flexibleEnvironmentAvailable,
+        if (searchApiAvailable != null)
+          'searchApiAvailable': searchApiAvailable,
         if (standardEnvironmentAvailable != null)
           'standardEnvironmentAvailable': standardEnvironmentAvailable,
       };

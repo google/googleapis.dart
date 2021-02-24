@@ -69,6 +69,7 @@
 /// - [RegionHealthChecksResource]
 /// - [RegionInstanceGroupManagersResource]
 /// - [RegionInstanceGroupsResource]
+/// - [RegionInstancesResource]
 /// - [RegionNetworkEndpointGroupsResource]
 /// - [RegionNotificationEndpointsResource]
 /// - [RegionOperationsResource]
@@ -214,6 +215,8 @@ class ComputeApi {
       RegionInstanceGroupManagersResource(_requester);
   RegionInstanceGroupsResource get regionInstanceGroups =>
       RegionInstanceGroupsResource(_requester);
+  RegionInstancesResource get regionInstances =>
+      RegionInstancesResource(_requester);
   RegionNetworkEndpointGroupsResource get regionNetworkEndpointGroups =>
       RegionNetworkEndpointGroupsResource(_requester);
   RegionNotificationEndpointsResource get regionNotificationEndpoints =>
@@ -14426,6 +14429,79 @@ class InstancesResource {
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
         '/attachDisk';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates multiple instances.
+  ///
+  /// Count specifies the number of instances to create.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> bulkInsert(
+    BulkInsertInstanceResource request,
+    core.String project,
+    core.String zone, {
+    core.String requestId,
+    core.String $fields,
+  }) async {
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
+    if (project == null) {
+      throw core.ArgumentError('Parameter project is required.');
+    }
+    if (zone == null) {
+      throw core.ArgumentError('Parameter zone is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/instances/bulkInsert';
 
     final _response = await _requester.request(
       _url,
@@ -30001,6 +30077,85 @@ class RegionInstanceGroupsResource {
         '/instanceGroups/' +
         commons.Escaper.ecapeVariable('$instanceGroup') +
         '/setNamedPorts';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class RegionInstancesResource {
+  final commons.ApiRequester _requester;
+
+  RegionInstancesResource(commons.ApiRequester client) : _requester = client;
+
+  /// Creates multiple instances in a given region.
+  ///
+  /// Count specifies the number of instances to create.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> bulkInsert(
+    BulkInsertInstanceResource request,
+    core.String project,
+    core.String region, {
+    core.String requestId,
+    core.String $fields,
+  }) async {
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
+    if (project == null) {
+      throw core.ArgumentError('Parameter project is required.');
+    }
+    if (region == null) {
+      throw core.ArgumentError('Parameter region is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/instances/bulkInsert';
 
     final _response = await _requester.request(
       _url,
@@ -48803,11 +48958,17 @@ class BackendBucketCdnPolicy {
   /// - "USE_ORIGIN_HEADERS"
   core.String cacheMode;
 
-  /// Specifies a separate client (e.g. browser client) TTL, separate from the
-  /// TTL for Cloud CDN's edge caches.
+  /// Specifies a separate client (e.g. browser client) maximum TTL.
   ///
-  /// Leaving this empty will use the same cache TTL for both Cloud CDN and the
-  /// client-facing response. The maximum allowed value is 86400s (1 day).
+  /// This is used to clamp the max-age (or Expires) value sent to the client.
+  /// With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for
+  /// the response max-age directive, along with a "public" directive. For
+  /// cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age
+  /// from the origin (if specified), or else sets the response max-age
+  /// directive to the lesser of the client_ttl and default_ttl, and also
+  /// ensures a "public" cache-control directive is present. If a client TTL is
+  /// not specified, a default value (1 hour) will be used. The maximum allowed
+  /// value is 86400s (1 day).
   core.int clientTtl;
 
   /// Specifies the default TTL for cached content served by this origin for
@@ -49825,11 +49986,17 @@ class BackendServiceCdnPolicy {
   /// - "USE_ORIGIN_HEADERS"
   core.String cacheMode;
 
-  /// Specifies a separate client (e.g. browser client) TTL, separate from the
-  /// TTL for Cloud CDN's edge caches.
+  /// Specifies a separate client (e.g. browser client) maximum TTL.
   ///
-  /// Leaving this empty will use the same cache TTL for both Cloud CDN and the
-  /// client-facing response. The maximum allowed value is 86400s (1 day).
+  /// This is used to clamp the max-age (or Expires) value sent to the client.
+  /// With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for
+  /// the response max-age directive, along with a "public" directive. For
+  /// cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age
+  /// from the origin (if specified), or else sets the response max-age
+  /// directive to the lesser of the client_ttl and default_ttl, and also
+  /// ensures a "public" cache-control directive is present. If a client TTL is
+  /// not specified, a default value (1 hour) will be used. The maximum allowed
+  /// value is 86400s (1 day).
   core.int clientTtl;
 
   /// Specifies the default TTL for cached content served by this origin for
@@ -50543,6 +50710,132 @@ class Binding {
         if (condition != null) 'condition': condition.toJson(),
         if (members != null) 'members': members,
         if (role != null) 'role': role,
+      };
+}
+
+class BulkInsertInstanceResource {
+  /// The maximum number of instances to create.
+  core.String count;
+
+  /// The instance properties defining the VM instances to be created.
+  ///
+  /// Required if sourceInstanceTemplate is not provided.
+  InstanceProperties instanceProperties;
+  LocationPolicy locationPolicy;
+
+  /// The minimum number of instances to create.
+  ///
+  /// If no min_count is specified then count is used as the default value. If
+  /// min_count instances cannot be created, then no instances will be created.
+  core.String minCount;
+
+  /// The string pattern used for the names of the VMs.
+  ///
+  /// Either name_pattern or predefined_names must be set. The pattern should
+  /// contain one consecutive sequence of placeholder hash characters (#) with
+  /// each character corresponding to one digit of the generated instance name.
+  /// Example: name_pattern of inst-#### will generate instance names like
+  /// inst-0001, inst-0002, ... . If there already exist instance(s) whose names
+  /// match the name pattern in the same project and zone, then the generated
+  /// instance numbers will start after the biggest existing number. For
+  /// example, if there exists an instance with name inst-0050, then instance
+  /// names generated using the pattern inst-#### will be inst-0051, inst-0052,
+  /// etc. The name pattern placeholder #...# can contain up to 18 characters.
+  core.String namePattern;
+
+  /// Per-instance properties to be set on individual instances.
+  ///
+  /// Keys of this map specify requested instance names. Can be empty if
+  /// name_pattern is used.
+  core.Map<core.String, BulkInsertInstanceResourcePerInstanceProperties>
+      perInstanceProperties;
+
+  /// Specifies the instance template from which to create instances.
+  ///
+  /// You may combine sourceInstanceTemplate with instanceProperties to override
+  /// specific values from an existing instance template. Bulk API follows the
+  /// semantics of JSON Merge Patch described by RFC 7396.
+  ///
+  /// It can be a full or partial URL. For example, the following are all valid
+  /// URLs to an instance template:
+  /// -
+  /// https://www.googleapis.com/compute/v1/projects/project/global/instanceTemplates/instanceTemplate
+  /// - projects/project/global/instanceTemplates/instanceTemplate
+  /// - global/instanceTemplates/instanceTemplate
+  ///
+  /// This field is optional.
+  core.String sourceInstanceTemplate;
+
+  BulkInsertInstanceResource();
+
+  BulkInsertInstanceResource.fromJson(core.Map _json) {
+    if (_json.containsKey('count')) {
+      count = _json['count'] as core.String;
+    }
+    if (_json.containsKey('instanceProperties')) {
+      instanceProperties = InstanceProperties.fromJson(
+          _json['instanceProperties'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('locationPolicy')) {
+      locationPolicy = LocationPolicy.fromJson(
+          _json['locationPolicy'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('minCount')) {
+      minCount = _json['minCount'] as core.String;
+    }
+    if (_json.containsKey('namePattern')) {
+      namePattern = _json['namePattern'] as core.String;
+    }
+    if (_json.containsKey('perInstanceProperties')) {
+      perInstanceProperties = (_json['perInstanceProperties'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              BulkInsertInstanceResourcePerInstanceProperties.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
+    }
+    if (_json.containsKey('sourceInstanceTemplate')) {
+      sourceInstanceTemplate = _json['sourceInstanceTemplate'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (count != null) 'count': count,
+        if (instanceProperties != null)
+          'instanceProperties': instanceProperties.toJson(),
+        if (locationPolicy != null) 'locationPolicy': locationPolicy.toJson(),
+        if (minCount != null) 'minCount': minCount,
+        if (namePattern != null) 'namePattern': namePattern,
+        if (perInstanceProperties != null)
+          'perInstanceProperties': perInstanceProperties
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (sourceInstanceTemplate != null)
+          'sourceInstanceTemplate': sourceInstanceTemplate,
+      };
+}
+
+/// Per-instance properties to be set on individual instances.
+///
+/// To be extended in the future.
+class BulkInsertInstanceResourcePerInstanceProperties {
+  /// This field is only temporary.
+  ///
+  /// It will be removed. Do not use it.
+  core.String name;
+
+  BulkInsertInstanceResourcePerInstanceProperties();
+
+  BulkInsertInstanceResourcePerInstanceProperties.fromJson(core.Map _json) {
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
       };
 }
 
@@ -52041,8 +52334,12 @@ class Disk {
   /// example, the following are valid values:
   /// -
   /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk
+  /// -
+  /// https://www.googleapis.com/compute/v1/projects/project/regions/region/disks/disk
   /// - projects/project/zones/zone/disks/disk
+  /// - projects/project/regions/region/disks/disk
   /// - zones/zone/disks/disk
+  /// - regions/region/disks/disk
   core.String sourceDisk;
 
   /// The unique ID of the disk used to create this disk.
@@ -57677,11 +57974,12 @@ class HealthCheck {
   /// Name of the resource.
   ///
   /// Provided by the client when the resource is created. The name must be 1-63
-  /// characters long, and comply with RFC1035. Specifically, the name must be
-  /// 1-63 characters long and match the regular expression
-  /// `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a
-  /// lowercase letter, and all following characters must be a dash, lowercase
-  /// letter, or digit, except the last character, which cannot be a dash.
+  /// characters long, and comply with RFC1035. For example, a name that is 1-63
+  /// characters long, matches the regular expression
+  /// `[a-z]([-a-z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This
+  /// regular expression describes a name where the first character is a
+  /// lowercase letter, and all following characters are a dash, lowercase
+  /// letter, or digit, except the last character, which isn't a dash.
   core.String name;
 
   /// Region where the health check resides.
@@ -69000,6 +69298,58 @@ class LocalDisk {
       };
 }
 
+/// Configuration for location policy among multiple possible locations (e.g.
+/// preferences for zone selection among zones in a single region).
+class LocationPolicy {
+  /// Location configurations mapped by location name.
+  ///
+  /// Currently only zone names are supported and must be represented as valid
+  /// internal URLs, like: zones/us-central1-a.
+  core.Map<core.String, LocationPolicyLocation> locations;
+
+  LocationPolicy();
+
+  LocationPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey('locations')) {
+      locations =
+          (_json['locations'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  LocationPolicyLocation.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (locations != null)
+          'locations':
+              locations.map((key, item) => core.MapEntry(key, item.toJson())),
+      };
+}
+
+class LocationPolicyLocation {
+  ///
+  /// Possible string values are:
+  /// - "ALLOW"
+  /// - "DENY"
+  /// - "PREFERENCE_UNSPECIFIED"
+  core.String preference;
+
+  LocationPolicyLocation();
+
+  LocationPolicyLocation.fromJson(core.Map _json) {
+    if (_json.containsKey('preference')) {
+      preference = _json['preference'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (preference != null) 'preference': preference,
+      };
+}
+
 /// Specifies what kind of log the caller must write
 class LogConfig {
   /// Cloud audit options.
@@ -75692,6 +76042,12 @@ class Operation {
   /// Output only.
   core.String name;
 
+  /// An ID that represents a group of operations, such as when a group of
+  /// operations results from a `bulkInsert` API request.
+  ///
+  /// Output only.
+  core.String operationGroupId;
+
   /// The type of operation, such as `insert`, `update`, or `delete`, and so on.
   ///
   /// Output only.
@@ -75810,6 +76166,9 @@ class Operation {
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
+    if (_json.containsKey('operationGroupId')) {
+      operationGroupId = _json['operationGroupId'] as core.String;
+    }
     if (_json.containsKey('operationType')) {
       operationType = _json['operationType'] as core.String;
     }
@@ -75864,6 +76223,7 @@ class Operation {
         if (insertTime != null) 'insertTime': insertTime,
         if (kind != null) 'kind': kind,
         if (name != null) 'name': name,
+        if (operationGroupId != null) 'operationGroupId': operationGroupId,
         if (operationType != null) 'operationType': operationType,
         if (progress != null) 'progress': progress,
         if (region != null) 'region': region,
@@ -87640,9 +88000,8 @@ class Subnetwork {
   /// Provide this property when you create the subnetwork. For example,
   /// 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping
   /// within a network. Only IPv4 is supported. This field is set at resource
-  /// creation time. This may be a RFC 1918 IP range, or a privately routed,
-  /// non-RFC 1918 IP range, not belonging to Google. The range can be expanded
-  /// after creation using expandIpCidrRange.
+  /// creation time. The range can be any range listed in the Valid ranges list.
+  /// The range can be expanded after creation using expandIpCidrRange.
   core.String ipCidrRange;
 
   /// The range of internal IPv6 addresses that are owned by this subnetwork.
@@ -88335,8 +88694,8 @@ class SubnetworkSecondaryRange {
   ///
   /// Provide this property when you create the subnetwork. Ranges must be
   /// unique and non-overlapping with all primary and secondary IP ranges within
-  /// a network. Only IPv4 is supported. This may be a RFC 1918 IP range, or a
-  /// privately, non-RFC 1918 IP range, not belonging to Google.
+  /// a network. Only IPv4 is supported. The range can be any range listed in
+  /// the Valid ranges list.
   core.String ipCidrRange;
 
   /// The name associated with this subnetwork secondary range, used when adding

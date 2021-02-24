@@ -996,8 +996,8 @@ class ProjectsLocationsOperationsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Waits for the specified long-running operation until it is done or reaches
-  /// at most a specified timeout, returning the latest state.
+  /// Waits until the specified long-running operation is done or reaches at
+  /// most a specified timeout, returning the latest state.
   ///
   /// If the operation is already done, the latest state is immediately
   /// returned. If the timeout specified is greater than the default HTTP/RPC
