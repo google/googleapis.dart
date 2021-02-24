@@ -1,5 +1,12 @@
 ## 2.0.0-dev
 
+- Now requires `package:_discoveryapis_commons` v1.
+
+### API changes
+
+See [package:googleapis](https://pub.dev/packages/googleapis)
+for the stable versions of the changed APIs.
+
 - `policysimulator` - new!
 - `workflowexecution` - removed. Now stable.
 - `workflows` - removed. Now stable.

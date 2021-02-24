@@ -297,7 +297,7 @@ class UsersDraftsResource {
     Draft request,
     core.String userId, {
     core.String $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media uploadMedia,
   }) async {
     final _body =
@@ -535,7 +535,7 @@ class UsersDraftsResource {
     Draft request,
     core.String userId, {
     core.String $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media uploadMedia,
   }) async {
     final _body =
@@ -605,7 +605,7 @@ class UsersDraftsResource {
     core.String userId,
     core.String id, {
     core.String $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media uploadMedia,
   }) async {
     final _body =
@@ -1292,7 +1292,7 @@ class UsersMessagesResource {
     core.bool neverMarkSpam,
     core.bool processForCalendar,
     core.String $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media uploadMedia,
   }) async {
     final _body =
@@ -1381,7 +1381,7 @@ class UsersMessagesResource {
     core.bool deleted,
     core.String internalDateSource,
     core.String $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media uploadMedia,
   }) async {
     final _body =
@@ -1573,7 +1573,7 @@ class UsersMessagesResource {
     Message request,
     core.String userId, {
     core.String $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media uploadMedia,
   }) async {
     final _body =

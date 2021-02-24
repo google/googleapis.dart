@@ -140,7 +140,7 @@ class DartResourceMethod {
         if (mediaUploadResumable) {
           // only take options if resume is supported
           namedString.write('${imports.commons}.UploadOptions uploadOptions = '
-              '${imports.commons}.UploadOptions.Default, ');
+              '${imports.commons}.UploadOptions.defaultOptions, ');
         }
         namedString.write('${imports.commons}.Media$orNull uploadMedia');
       }
@@ -378,7 +378,7 @@ final _queryParams = <${core}String, ${core}List<${core}String>>{
     final mediaResumableArg = mediaUploadResumable
         ? 'uploadOptions: uploadOptions,'
         : mediaUpload
-            ? 'uploadOptions: ${imports.commons}.UploadOptions.Default,'
+            ? 'uploadOptions: ${imports.commons}.UploadOptions.defaultOptions,'
             : '';
 
     final requestCode = StringBuffer();

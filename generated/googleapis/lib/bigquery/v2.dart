@@ -648,7 +648,7 @@ class JobsResource {
     Job request,
     core.String projectId, {
     core.String $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media uploadMedia,
   }) async {
     final _body =

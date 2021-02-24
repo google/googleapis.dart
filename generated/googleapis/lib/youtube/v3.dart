@@ -403,7 +403,7 @@ class CaptionsResource {
     core.String tfmt,
     core.String tlang,
     core.String $fields,
-    commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
@@ -425,8 +425,7 @@ class CaptionsResource {
       queryParams: _queryParams,
       downloadOptions: downloadOptions,
     );
-    if (downloadOptions == null ||
-        downloadOptions == commons.DownloadOptions.Metadata) {
+    if (downloadOptions.isMetadataDownload) {
       return null;
     } else {
       return _response;
@@ -482,7 +481,7 @@ class CaptionsResource {
     core.String onBehalfOfContentOwner,
     core.bool sync,
     core.String $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media uploadMedia,
   }) async {
     final _body =
@@ -640,7 +639,7 @@ class CaptionsResource {
     core.String onBehalfOfContentOwner,
     core.bool sync,
     core.String $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media uploadMedia,
   }) async {
     final _body =
@@ -742,7 +741,7 @@ class ChannelBannersResource {
     core.String onBehalfOfContentOwner,
     core.String onBehalfOfContentOwnerChannel,
     core.String $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media uploadMedia,
   }) async {
     final _body =
@@ -4673,7 +4672,7 @@ class ThumbnailsResource {
     core.String videoId, {
     core.String onBehalfOfContentOwner,
     core.String $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media uploadMedia,
   }) async {
     if (videoId == null) {
@@ -5002,7 +5001,7 @@ class VideosResource {
     core.String onBehalfOfContentOwnerChannel,
     core.bool stabilize,
     core.String $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media uploadMedia,
   }) async {
     final _body =
@@ -5385,7 +5384,7 @@ class WatermarksResource {
     core.String channelId, {
     core.String onBehalfOfContentOwner,
     core.String $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media uploadMedia,
   }) async {
     final _body =

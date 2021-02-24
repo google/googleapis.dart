@@ -10,7 +10,7 @@ packages:
     example: resources/googleapis/examples/main.dart
     mono_pkg: resources/googleapis/_mono_pkg.yaml
     extraDevDependencies:
-        googleapis_auth: ^0.2.12
+        googleapis_auth: ^1.0.0
     apis:
     - abusiveexperiencereport:v1 # https://developers.google.com/abusive-experience-report/
     - acceleratedmobilepageurl:v1 # https://developers.google.com/amp/cache/

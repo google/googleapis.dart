@@ -360,7 +360,7 @@ class ImageConfigurationsResource {
       'POST',
       queryParams: _queryParams,
       uploadMedia: uploadMedia,
-      uploadOptions: commons.UploadOptions.Default,
+      uploadOptions: commons.UploadOptions.defaultOptions,
     );
     return ImageConfiguration.fromJson(
         _response as core.Map<core.String, core.dynamic>);

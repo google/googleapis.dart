@@ -474,7 +474,7 @@ class EditsApksResource {
     core.String packageName,
     core.String editId, {
     core.String $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media uploadMedia,
   }) async {
     if (packageName == null) {
@@ -611,7 +611,7 @@ class EditsBundlesResource {
     core.String editId, {
     core.bool ackBundleInstallationWarning,
     core.String $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media uploadMedia,
   }) async {
     if (packageName == null) {
@@ -704,7 +704,7 @@ class EditsDeobfuscationfilesResource {
     core.int apkVersionCode,
     core.String deobfuscationFileType, {
     core.String $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media uploadMedia,
   }) async {
     if (packageName == null) {
@@ -1198,7 +1198,7 @@ class EditsExpansionfilesResource {
     core.int apkVersionCode,
     core.String expansionFileType, {
     core.String $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media uploadMedia,
   }) async {
     if (packageName == null) {
@@ -1547,7 +1547,7 @@ class EditsImagesResource {
     core.String language,
     core.String imageType, {
     core.String $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media uploadMedia,
   }) async {
     if (packageName == null) {
@@ -2707,7 +2707,7 @@ class InternalappsharingartifactsResource {
   async.Future<InternalAppSharingArtifact> uploadapk(
     core.String packageName, {
     core.String $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media uploadMedia,
   }) async {
     if (packageName == null) {
@@ -2775,7 +2775,7 @@ class InternalappsharingartifactsResource {
   async.Future<InternalAppSharingArtifact> uploadbundle(
     core.String packageName, {
     core.String $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media uploadMedia,
   }) async {
     if (packageName == null) {
@@ -3738,7 +3738,7 @@ class SystemapksVariantsResource {
     core.String versionCode,
     core.int variantId, {
     core.String $fields,
-    commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -3767,8 +3767,7 @@ class SystemapksVariantsResource {
       queryParams: _queryParams,
       downloadOptions: downloadOptions,
     );
-    if (downloadOptions == null ||
-        downloadOptions == commons.DownloadOptions.Metadata) {
+    if (downloadOptions.isMetadataDownload) {
       return null;
     } else {
       return _response;

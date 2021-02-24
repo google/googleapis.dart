@@ -1005,7 +1005,7 @@ class AccountsReportsResource {
     core.int startIndex,
     core.bool useTimezoneReporting,
     core.String $fields,
-    commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1041,8 +1041,7 @@ class AccountsReportsResource {
       queryParams: _queryParams,
       downloadOptions: downloadOptions,
     );
-    if (downloadOptions == null ||
-        downloadOptions == commons.DownloadOptions.Metadata) {
+    if (downloadOptions.isMetadataDownload) {
       return AdsenseReportsGenerateResponse.fromJson(
           _response as core.Map<core.String, core.dynamic>);
     } else {
@@ -2091,7 +2090,7 @@ class ReportsResource {
     core.int startIndex,
     core.bool useTimezoneReporting,
     core.String $fields,
-    commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
     if (startDate == null) {
       throw core.ArgumentError('Parameter startDate is required.');
@@ -2124,8 +2123,7 @@ class ReportsResource {
       queryParams: _queryParams,
       downloadOptions: downloadOptions,
     );
-    if (downloadOptions == null ||
-        downloadOptions == commons.DownloadOptions.Metadata) {
+    if (downloadOptions.isMetadataDownload) {
       return AdsenseReportsGenerateResponse.fromJson(
           _response as core.Map<core.String, core.dynamic>);
     } else {

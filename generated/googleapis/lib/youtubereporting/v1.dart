@@ -443,7 +443,7 @@ class MediaResource {
   async.Future<core.Object> download(
     core.String resourceName, {
     core.String $fields,
-    commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
@@ -461,8 +461,7 @@ class MediaResource {
       queryParams: _queryParams,
       downloadOptions: downloadOptions,
     );
-    if (downloadOptions == null ||
-        downloadOptions == commons.DownloadOptions.Metadata) {
+    if (downloadOptions.isMetadataDownload) {
       return GdataMedia.fromJson(
           _response as core.Map<core.String, core.dynamic>);
     } else {

@@ -1736,7 +1736,7 @@ class FilesResource {
     core.String fileId,
     core.String mimeType, {
     core.String $fields,
-    commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -1758,8 +1758,7 @@ class FilesResource {
       queryParams: _queryParams,
       downloadOptions: downloadOptions,
     );
-    if (downloadOptions == null ||
-        downloadOptions == commons.DownloadOptions.Metadata) {
+    if (downloadOptions.isMetadataDownload) {
       return null;
     } else {
       return _response;
@@ -1866,7 +1865,7 @@ class FilesResource {
     core.bool supportsTeamDrives,
     core.bool updateViewedDate,
     core.String $fields,
-    commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -1893,8 +1892,7 @@ class FilesResource {
       queryParams: _queryParams,
       downloadOptions: downloadOptions,
     );
-    if (downloadOptions == null ||
-        downloadOptions == commons.DownloadOptions.Metadata) {
+    if (downloadOptions.isMetadataDownload) {
       return File.fromJson(_response as core.Map<core.String, core.dynamic>);
     } else {
       return _response;
@@ -1974,7 +1972,7 @@ class FilesResource {
     core.bool useContentAsIndexableText,
     core.String visibility,
     core.String $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media uploadMedia,
   }) async {
     final _body =
@@ -2579,7 +2577,7 @@ class FilesResource {
     core.bool updateViewedDate,
     core.bool useContentAsIndexableText,
     core.String $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media uploadMedia,
   }) async {
     final _body =
@@ -2697,7 +2695,7 @@ class FilesResource {
     core.bool supportsTeamDrives,
     core.bool updateViewedDate,
     core.String $fields,
-    commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
     final _body =
         request == null ? null : convert_1.json.encode(request.toJson());
@@ -2727,8 +2725,7 @@ class FilesResource {
       queryParams: _queryParams,
       downloadOptions: downloadOptions,
     );
-    if (downloadOptions == null ||
-        downloadOptions == commons.DownloadOptions.Metadata) {
+    if (downloadOptions.isMetadataDownload) {
       return Channel.fromJson(_response as core.Map<core.String, core.dynamic>);
     } else {
       return _response;
